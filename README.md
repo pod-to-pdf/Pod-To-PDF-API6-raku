@@ -1,35 +1,27 @@
-# Pod::To::Markdown (Perl6)
+# Pod::To::PDF (Perl6)
 
-[![Build Status](https://travis-ci.org/softmoth/perl6-pod-to-markdown.svg?branch=master)](https://travis-ci.org/softmoth/perl6-pod-to-markdown)
+[![Build Status](https://travis-ci.org/p6-pdf/perl6-Pod-To-PDF.svg?branch=master)](https://travis-ci.org/p6-pdf/perl6-Pod-To-PDF)
 
-Render Pod as Markdown.
+Render Pod as PDF.
 
 ## Installation
 
 Using panda:
 ```
 $ panda update
-$ panda install Pod::To::Markdown
-```
-
-Using ufo:
-```
-$ ufo
-$ make
-$ make test
-$ make install
+$ panda install Pod::To::PDF
 ```
 
 ## Usage:
 
 From command line:
 
-    $ perl6 --doc=Markdown lib/class.pm
+    $ perl6 --doc=PDF lib/class.pm > class.pdf
 
 From Perl6:
 
 ```
-use Pod::To::Markdown;
+use Pod::To::PDF;
 
 =NAME
 foobar.pl
@@ -37,5 +29,5 @@ foobar.pl
 =SYNOPSIS
     foobar.pl <options> files ...
 	
-say pod2markdown($=pod);
+"class.pdf".IO.spurt( pod2pdf($=pod), :enc<latin-1> );
 ```
