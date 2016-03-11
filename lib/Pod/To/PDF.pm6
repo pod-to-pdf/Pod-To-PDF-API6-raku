@@ -34,6 +34,7 @@ class Pod::To::PDF {
     use PDF::Content::Doc;
 
     class Listener does Pod::TreeWalker::Listener {
+	has $.pdf;
 	has @.events;
 
 	multi method start (Pod::Block::Code $node) {
@@ -140,12 +141,14 @@ class Pod::To::PDF {
 	}
 
 	method text (Str $text) {
-	    @.events.push( { :text($text) } );
+	    my $gfx = $.pdf.page[0].gfx;
+	    my $block = $gfx.print($text, :width(500), :stage);
+	    @.events.push( { :$text, :$block } );
 	}
     }
 
-    has Listener $.listener .= new;
     has $.pdf = PDF::Content::Doc.new;
+    has Listener $.listener .= new: :$!pdf;
     
     has UInt $!indent = 0;
     has Bool $!in-code-block = False;
@@ -164,11 +167,14 @@ class Pod::To::PDF {
 	~ $.pdf;
     }
     method !publish( @events ) {
-	my $page = $.pdf.add-page;
+	my $page = $.pdf.page[0];
 	my $gfx = $page.gfx;
 	$gfx.text: -> $_ {
-	    .text-position = [200, 200];
-	    .say("to be or not to be, that is the question");
+	    .text-position = [10, 600];
+	    for @events.grep( *.<block> ) {
+		$gfx.say: .<block>;
+		$gfx.say: '';
+	    }
 	}
     }
 
