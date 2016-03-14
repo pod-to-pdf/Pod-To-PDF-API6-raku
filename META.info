@@ -2,8 +2,8 @@
   "name"        : "Pod::To::PDF",
   "version"     : "0.0.1",
   "description" : "Render Perl6 Pod as PDF",
-  "author"      : "Jorn van Engelen",
-  "depends"     : [ "PDF::Content", "Pod::TreeWalker ],
+  "author"      : "David Warring",
+  "depends"     : [ "PDF::Basic", "Pod::TreeWalker ],
   "provides"    : {
     "Pod::To::PDF"     : "lib/Pod/To/PDF.pm6"
   },

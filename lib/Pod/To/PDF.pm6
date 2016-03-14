@@ -31,7 +31,7 @@ class Pod::To::PDF {
 
     use Pod::TreeWalker;
     use Pod::TreeWalker::Listener;
-    use PDF::Content::Doc;
+    use PDF::Basic::Doc;
 
     class Listener does Pod::TreeWalker::Listener {
 	has $.pdf;
@@ -147,7 +147,7 @@ class Pod::To::PDF {
 	}
     }
 
-    has $.pdf = PDF::Content::Doc.new;
+    has $.pdf = PDF::Basic::Doc.new;
     has Listener $.listener .= new: :$!pdf;
     
     has UInt $!indent = 0;
