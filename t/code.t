@@ -68,7 +68,7 @@ asdf
 
 asdf
 
-=code Abbriviated
+=code Abbreviated
 
 asdf
 

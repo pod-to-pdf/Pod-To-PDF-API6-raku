@@ -34,7 +34,12 @@ asdf
 
 asdf};
 
-is pod2pdf($=pod).trim, $markdown.trim,
+my $pdf;
+##lives-ok {
+$pdf = pod2pdf($=pod);##}
+$pdf.save-as: "/tmp/out.pdf";
+
+is pod2pdf($=pod).page(1).gfx.content-dump, $markdown.trim,
    'Various types of headings convert correctly';
 
 		    

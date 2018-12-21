@@ -1,15 +1,14 @@
 # Pod::To::PDF (Perl6)
 
-[![Build Status](https://travis-ci.org/p6-pdf/perl6-Pod-To-PDF.svg?branch=master)](https://travis-ci.org/p6-pdf/perl6-Pod-To-PDF)
+[![Build Status](https://travis-ci.org/p6-pdf/Pod-To-PDF-p6.svg?branch=master)](https://travis-ci.org/p6-pdf/Pod-To-PDF-p6)
 
 Render Pod as PDF.
 
 ## Installation
 
-Using panda:
+Using zef:
 ```
-$ panda update
-$ panda install Pod::To::PDF
+$ zef install Pod::To::PDF
 ```
 
 ## Usage:
