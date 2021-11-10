@@ -3,9 +3,9 @@
   "version"     : "0.0.1",
   "description" : "Render Perl6 Pod as PDF",
   "author"      : "David Warring",
-  "depends"     : [ "PDF::API6" ],
+  "depends"     : [ "PDF::API6", "PDF::Content", "PDF::Tags" ],
   "provides"    : {
-    "Pod::To::PDF"     : "lib/Pod/To/PDF.pm6"
+    "Pod::To::PDF"     : "lib/Pod/To/PDF.rakumod"
   },
-  "source-url"  : "git://github.com/p6-pdf/Pod-to-PDF-p6.git"
+  "source-url"  : "git://github.com/pdf-raku/Pod-to-PDF-raku.git"
 }

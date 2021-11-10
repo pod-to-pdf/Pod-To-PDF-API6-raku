@@ -1,5 +1,4 @@
 use v6;
-use lib <blib/lib lib>;
 
 use Test;
 use Pod::To::PDF;

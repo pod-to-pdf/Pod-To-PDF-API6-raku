@@ -1,8 +1,10 @@
 use v6;
-use lib <blib/lib lib>;
 
 use Test;
 use Pod::To::PDF;
+use PDF::Tags;
+use PDF::API6;
+
 plan 1;
 
 my $markdown = q{This text is of _minor significance_.
@@ -21,8 +23,12 @@ This text contains a link to [http://www.google.com/](http://www.google.com/).
 
 This text contains a link with label to [google](http://www.google.com/).};
 
-is pod2pdf($=pod).trim, $markdown.trim,
-    'Decodes formatted text correctly';
+my PDF::API6 $pdf = pod2pdf($=pod);
+$pdf.save-as: "/tmp/formatted.pdf";
+my PDF::Tags() $tags = $pdf;
+
+##is $tags[0].Str, $xml,
+##   'Various types of code blocks convert correctly.';
 
 =begin pod
 This text is of U<minor significance>.

@@ -1,44 +1,67 @@
 class Pod::To::PDF {
 
     use PDF::API6;
+    use PDF::Tags;
+    use PDF::Tags::Elem;
     use PDF::Content;
 
     has PDF::API6 $.pdf .= new;
     has PDF::Content $.gfx = self!new-page;
+    has PDF::Tags $!tags .= create: :$!pdf;
+    has PDF::Tags::Elem $.root is built = $!tags.Document;
     has UInt $!indent = 0;
     has $!y;
 
     sub pod2pdf($pod, :$class = $?CLASS) is export {
         my $obj = $class.new;
+        my $*elem = $obj.root;
         $obj.pod2pdf($pod);
         $obj.pdf;
     }
 
-    method render($pod) {
-	$.pod2pdf($pod, :class(self));
+    method render($class: $pod) {
+	$.pod2pdf($pod, :$class);
     }
 
     multi method pod2pdf(Pod::Block::Named $pod) {
         given $pod.name {
             when 'pod'  { $.pod2pdf($pod.contents)     }
-            when 'para' { $.say; $.pod2pdf($pod.contents[0]) }
+            when 'para' {
+                $.say;
+                temp $*elem = $*elem.Paragraph: $!gfx, {
+                    $.pod2pdf($_) for $pod.contents;
+                }
+            }
             when 'config' { }
             when 'nested' { }
             default     {
+                warn $pod.WHAT.raku;
                 $.say($pod.name);
                 $.pod2pdf($pod.contents)
             }
         }
     }
 
+    multi method pod2pdf(Pod::Block::Code $pod) {
+        $.say;
+        temp $*elem = $*elem.Code: $!gfx, {
+            my @lines = $pod.contents.join.lines;
+             $.pod2pdf(@lines);
+        }
+    }
+
     multi method pod2pdf(Pod::Heading $pod) {
         $!indent += min($pod.level, 2);
-        $.pod2pdf($pod.contents);
+        temp $*elem = $*elem.Header: $!gfx, {
+            $.pod2pdf($pod.contents);
+        }
     }
 
     multi method pod2pdf(Pod::Block::Para $pod) {
         $.say;
-        $.pod2pdf($pod.contents);
+        temp $*elem = $*elem.Paragraph: $!gfx, {
+            $.pod2pdf($pod.contents);
+        }
     }
 
     multi method pod2pdf(List $pod) {
@@ -52,24 +75,28 @@ class Pod::To::PDF {
     }
 
     multi method pod2pdf($pod) is default {
-        warn "fallback render of {$pod.WHAT}";
-        $.say($pod.perl);
+        warn "fallback render of {$pod.WHAT.raku}";
+        $.say($pod.raku);
     }
 
-    method say(Str $text = '') {
+    multi method say {
+        $!y -= 20;
+    }
+    multi method say(Str $text) {
         self!new-page if $!y <= 20;
-        $!gfx.say(self!indent() ~ $text, :position[10, $!y]);
-        $!y -= 10;
+        my $width = $!gfx.canvas.width - self!indent - 10;
+        my @p = $!gfx.say($text, :position[:left(10 + self!indent), :top($!y)], :$width);
+        $!y = @p[1] - 15;
     }
 
     method !new-page {
         $!y = 720;
-        $!gfx = $!pdf.add-page.gfx;
+        my $page = $!pdf.add-page;
+        $!gfx = $page.gfx;
     }
 
     method !indent {
-        constant nbsp = "\c[NO-BREAK SPACE]";
-        nbsp x (2 * $!indent);
+        10 * $!indent;
     }
 }
 
@@ -79,9 +106,9 @@ Pod::To::PDF - Render Pod as PDF
 =begin SYNOPSIS
 From command line:
 
-    $ perl6 --doc=PDF lib/to/class.pm >to-class.pdf
+    $ raku --doc=PDF lib/to/class.rakumod >to-class.pdf
 
-From Perl6:
+From Raku:
 =begin code
 use Pod::To::PDF;
 
