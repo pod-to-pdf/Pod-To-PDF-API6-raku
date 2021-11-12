@@ -1,6 +1,4 @@
-# Pod::To::PDF (Perl6)
-
-[![Build Status](https://travis-ci.org/p6-pdf/Pod-To-PDF-p6.svg?branch=master)](https://travis-ci.org/p6-pdf/Pod-To-PDF-p6)
+# Pod::To::PDF (Raku)
 
 Render Pod as PDF.
 
@@ -15,18 +13,18 @@ $ zef install Pod::To::PDF
 
 From command line:
 
-    $ perl6 --doc=PDF lib/class.pm > class.pdf
+    $ raku --doc=PDF lib/class.rakumod > class.pdf
 
-From Perl6:
+From Raku:
 
 ```
 use Pod::To::PDF;
 
 =NAME
-foobar.pl
+foobar.raku
 
 =SYNOPSIS
-    foobar.pl <options> files ...
+    foobarraku <options> files ...
 	
 "class.pdf".IO.spurt( pod2pdf($=pod), :enc<latin-1> );
 ```

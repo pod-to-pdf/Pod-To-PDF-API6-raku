@@ -32,9 +32,8 @@ class Pod::To::PDF {
             when 'pod'  { $.pod2pdf($pod.contents)     }
             when 'para' {
                 $.say;
-                temp $*tag = $*tag.Paragraph: $!gfx, {
-                    $.pod2pdf($_) for $pod.contents;
-                }
+                temp $*tag .= Paragraph;
+                $.pod2pdf($_) for $pod.contents;
             }
             when 'config' { }
             when 'nested' { }
@@ -52,9 +51,10 @@ class Pod::To::PDF {
         temp $!style.mono = True;
         temp $!style.font-size *= .8;
         temp $!indent += 1;
-        temp $*tag = $*tag.Code: $!gfx, {
-            my @lines = $pod.contents.join.lines;
+        temp $*tag .= Code;
+        self!mark: {
             # todo syntax hightlighting
+            my @lines = $pod.contents.join.lines;
             $.say($_) for @lines;
         }
     }
@@ -63,16 +63,14 @@ class Pod::To::PDF {
         $.say;
         temp $!style.bold = True;
         temp $!indent += min($pod.level, 2);
-        temp $*tag = $*tag.Header: $!gfx, {
-            $.pod2pdf($pod.contents);
-        }
+        temp $*tag .= Header;
+        $.pod2pdf($pod.contents);
     }
 
     multi method pod2pdf(Pod::Block::Para $pod) {
         $.say;
-        temp $*tag = $*tag.Paragraph: $!gfx, {
-            $.pod2pdf($pod.contents);
-        }
+        temp $*tag .= Paragraph;
+        $.pod2pdf($pod.contents);
     }
 
     multi method  pod2pdf(Pod::FormattingCode $pod) {
@@ -87,6 +85,9 @@ class Pod::To::PDF {
             }
             when 'Z' {
                 temp $!style.invisible = True;
+                $.pod2pdf($pod.contents);
+            }
+            when 'L' {
                 $.pod2pdf($pod.contents);
             }
             default {
@@ -115,24 +116,43 @@ class Pod::To::PDF {
         $!x = 0;
         $!y -= $.line-height;
     }
-    multi method say(Str $text) {
+    method !gfx {
         self!new-page if $!y <= 20;
+        $!gfx;
+    }
+    multi method say(Str $text) {
         $.print($text, :nl);
+    }
+    method !mark(&action) {
+        given self!gfx {
+            if .open-tags.first(*.mcid.defined) {
+                # caller is already marking
+                action();
+            }
+            else {
+                $*tag.mark: $_, &action
+            }
+        }
     }
     method print(Str $text, Bool :$nl) {
         my $width = $!gfx.canvas.width - self!indent - 10;
         my $height = $!y - 10;
         self!new-page if $width <= 0 || $height <= 0;
         my PDF::Content::Text::Box $tb .= new: :$text, :$width, :$height, :indent($!x), :$.leading, :$.font, :$.font-size;
-        $!gfx.print($tb, :position[10 + self!indent, $!y], :$nl)
-            unless $!style.invisible;
+        unless $!style.invisible {
+            self!mark: {
+                self!gfx.print($tb, :position[10 + self!indent, $!y], :$nl)
+            }
+        }
         my $lines = +$tb.lines;
         $lines-- if $lines && !$nl;
         $!x = $nl ?? 0 !! $tb.lines.tail.content-width + $tb.space-width;
         $!y -= $lines * $.line-height;
         if $tb.overflow {
             $.say() unless $nl;
-            $.print: $tb.overflow.join;
+            self!mark: {
+                $.print: $tb.overflow.join;
+            }
         }
     }
 
