@@ -5,7 +5,8 @@
   "author"      : "David Warring",
   "depends"     : [ "PDF::API6", "PDF::Content:ver<0.5.10+>", "PDF::Tags" ],
   "provides"    : {
-    "Pod::To::PDF"     : "lib/Pod/To/PDF.rakumod"
+    "Pod::To::PDF" : "lib/Pod/To/PDF.rakumod",
+    "Pod::To::PDF::Style" : "lib/Pod/To/PDF/Style.rakumod"
   },
   "source-url"  : "git://github.com/pdf-raku/Pod-to-PDF-raku.git"
 }

@@ -5,16 +5,14 @@ class Pod::To::PDF {
     use PDF::Tags::Elem;
     use PDF::Content;
     use PDF::Content::Text::Box;
+    use  Pod::To::PDF::Style;
 
     has PDF::API6 $.pdf .= new;
     has PDF::Content $.gfx = self!new-page;
     has PDF::Tags $!tags .= create: :$!pdf;
     has PDF::Tags::Elem $.root is built = $!tags.Document;
     has UInt $!indent = 0;
-    class State is rw {
-        has $.line-height = 10;
-    }
-    has State $!state handles<line-height> .= new;
+    has Pod::To::PDF::Style $!style handles<line-height font font-size leading> .= new;
     has $!x;
     has $!y;
 
@@ -50,6 +48,10 @@ class Pod::To::PDF {
 
     multi method pod2pdf(Pod::Block::Code $pod) {
         $.say;
+        $.say;
+        temp $!style.mono = True;
+        temp $!style.font-size *= .8;
+        temp $!indent += 1;
         temp $*tag = $*tag.Code: $!gfx, {
             my @lines = $pod.contents.join.lines;
             # todo syntax hightlighting
@@ -59,7 +61,8 @@ class Pod::To::PDF {
 
     multi method pod2pdf(Pod::Heading $pod) {
         $.say;
-        $!indent += min($pod.level, 2);
+        temp $!style.bold = True;
+        temp $!indent += min($pod.level, 2);
         temp $*tag = $*tag.Header: $!gfx, {
             $.pod2pdf($pod.contents);
         }
@@ -99,9 +102,8 @@ class Pod::To::PDF {
     method print(Str $text, Bool :$nl) {
         my $width = $!gfx.canvas.width - self!indent - 10;
         my $height = $!y - 10;
-        my PDF::Content::Text::Box $tb = $!gfx.text-box: :$text, :$width, :$height, :indent($!x);
-        $.line-height = $tb.leading * $tb.font-size;
-        self!new-page if $!y <= 10;
+        self!new-page if $width <= 0 || $height <= 0;
+        my PDF::Content::Text::Box $tb .= new: :$text, :$width, :$height, :indent($!x), :$.leading, :$.font, :$.font-size;
         $!gfx.print($tb, :position[10 + self!indent, $!y], :$nl);
         my $lines = +$tb.lines;
         $lines-- if $lines && !$nl;
