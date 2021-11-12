@@ -4,23 +4,29 @@ class Pod::To::PDF {
     use PDF::Tags;
     use PDF::Tags::Elem;
     use PDF::Content;
+    use PDF::Content::Text::Box;
 
     has PDF::API6 $.pdf .= new;
     has PDF::Content $.gfx = self!new-page;
     has PDF::Tags $!tags .= create: :$!pdf;
     has PDF::Tags::Elem $.root is built = $!tags.Document;
     has UInt $!indent = 0;
+    class State is rw {
+        has $.line-height = 10;
+    }
+    has State $!state handles<line-height> .= new;
+    has $!x;
     has $!y;
+
+    method render($class: $pod) {
+	pod2pdf($pod, :$class);
+    }
 
     sub pod2pdf($pod, :$class = $?CLASS) is export {
         my $obj = $class.new;
-        my $*elem = $obj.root;
+        my $*tag = $obj.root;
         $obj.pod2pdf($pod);
         $obj.pdf;
-    }
-
-    method render($class: $pod) {
-	$.pod2pdf($pod, :$class);
     }
 
     multi method pod2pdf(Pod::Block::Named $pod) {
@@ -28,7 +34,7 @@ class Pod::To::PDF {
             when 'pod'  { $.pod2pdf($pod.contents)     }
             when 'para' {
                 $.say;
-                temp $*elem = $*elem.Paragraph: $!gfx, {
+                temp $*tag = $*tag.Paragraph: $!gfx, {
                     $.pod2pdf($_) for $pod.contents;
                 }
             }
@@ -44,52 +50,71 @@ class Pod::To::PDF {
 
     multi method pod2pdf(Pod::Block::Code $pod) {
         $.say;
-        temp $*elem = $*elem.Code: $!gfx, {
+        temp $*tag = $*tag.Code: $!gfx, {
             my @lines = $pod.contents.join.lines;
-             $.pod2pdf(@lines);
+            # todo syntax hightlighting
+            $.say($_) for @lines;
         }
     }
 
     multi method pod2pdf(Pod::Heading $pod) {
+        $.say;
         $!indent += min($pod.level, 2);
-        temp $*elem = $*elem.Header: $!gfx, {
+        temp $*tag = $*tag.Header: $!gfx, {
             $.pod2pdf($pod.contents);
         }
     }
 
     multi method pod2pdf(Pod::Block::Para $pod) {
         $.say;
-        temp $*elem = $*elem.Paragraph: $!gfx, {
+        temp $*tag = $*tag.Paragraph: $!gfx, {
             $.pod2pdf($pod.contents);
         }
     }
 
     multi method pod2pdf(List $pod) {
+        $.say;
         for $pod.list {
             $.pod2pdf($_);
         };
     }
 
     multi method pod2pdf(Str $pod) {
-        $.say($pod);
+        $.print($pod);
     }
 
     multi method pod2pdf($pod) is default {
         warn "fallback render of {$pod.WHAT.raku}";
-        $.say($pod.raku);
+        $.print($pod.raku);
     }
 
     multi method say {
-        $!y -= 20;
+        $!x = 0;
+        $!y -= $.line-height;
     }
     multi method say(Str $text) {
         self!new-page if $!y <= 20;
+        $.print($text, :nl);
+    }
+    method print(Str $text, Bool :$nl) {
         my $width = $!gfx.canvas.width - self!indent - 10;
-        my @p = $!gfx.say($text, :position[:left(10 + self!indent), :top($!y)], :$width);
-        $!y = @p[1] - 15;
+        my $height = $!y - 10;
+        my PDF::Content::Text::Box $tb = $!gfx.text-box: :$text, :$width, :$height, :indent($!x);
+        $.line-height = $tb.leading * $tb.font-size;
+        self!new-page if $!y <= 10;
+        $!gfx.print($tb, :position[10 + self!indent, $!y], :$nl);
+        my $lines = +$tb.lines;
+        $lines-- if $lines && !$nl;
+        $!x = $nl ?? 0 !! $tb.lines.tail.content-width + $tb.space-width;
+        $!y -= $lines * $.line-height;
+        if $tb.overflow {
+            $.say() unless $nl;
+            $.print: $tb.overflow.join;
+        }
     }
 
     method !new-page {
+        $!x = 0;
         $!y = 720;
         my $page = $!pdf.add-page;
         $!gfx = $page.gfx;
