@@ -75,8 +75,28 @@ class Pod::To::PDF {
         }
     }
 
+    multi method  pod2pdf(Pod::FormattingCode $pod) {
+        given $pod.type {
+            when 'I' {
+                temp $!style.italic = True;
+                $.pod2pdf($pod.contents);
+            }
+            when 'B' {
+                temp $!style.bold = True;
+                $.pod2pdf($pod.contents);
+            }
+            when 'Z' {
+                temp $!style.invisible = True;
+                $.pod2pdf($pod.contents);
+            }
+            default {
+                warn "todo: POD formatting code: $_";
+                $.pod2pdf($pod.contents);
+            }
+        }
+    }
+
     multi method pod2pdf(List $pod) {
-        $.say;
         for $pod.list {
             $.pod2pdf($_);
         };
@@ -104,7 +124,8 @@ class Pod::To::PDF {
         my $height = $!y - 10;
         self!new-page if $width <= 0 || $height <= 0;
         my PDF::Content::Text::Box $tb .= new: :$text, :$width, :$height, :indent($!x), :$.leading, :$.font, :$.font-size;
-        $!gfx.print($tb, :position[10 + self!indent, $!y], :$nl);
+        $!gfx.print($tb, :position[10 + self!indent, $!y], :$nl)
+            unless $!style.invisible;
         my $lines = +$tb.lines;
         $lines-- if $lines && !$nl;
         $!x = $nl ?? 0 !! $tb.lines.tail.content-width + $tb.space-width;

@@ -7,27 +7,23 @@ use PDF::API6;
 
 plan 1;
 
-my $markdown = q{This text is of _minor significance_.
-
-This text is of *major significance*.
-
-This text is of **fundamental significance**.
-
-This text is verbatim C<with> B<disarmed> Z<formatting>.
-
-This text is <var>to be replaced</var>.
-
-This text is invisible.
-
-This text contains a link to [http://www.google.com/](http://www.google.com/).
-
-This text contains a link with label to [google](http://www.google.com/).};
+my $xml = q{<Document>
+  <P>This text is of minor significance .</P>
+  <P>This text is of major significance .</P>
+  <P>This text is of fundamental significance .</P>
+  <P>This text is verbatim C&lt;with&gt; B&lt;disarmed&gt; Z&lt;formatting&gt;.</P>
+  <P>This text is to be replaced .</P>
+  <P>This text is invisible.</P>
+  <P>This text contains a link to http://www.google.com/ .</P>
+  <P>This text contains a link with label to google .</P>
+</Document>
+};
 
 my PDF::API6 $pdf = pod2pdf($=pod);
 $pdf.save-as: "/tmp/formatted.pdf";
 my PDF::Tags() $tags = $pdf;
 
-##is $tags[0].Str, $xml,
+is $tags[0].Str, $xml,
 ##   'Various types of code blocks convert correctly.';
 
 =begin pod

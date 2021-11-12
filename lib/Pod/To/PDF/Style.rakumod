@@ -7,6 +7,7 @@ has Bool $.bold;
 has Bool $.italic;
 has Bool $.underline;
 has Bool $.mono;
+has Bool $.invisible;
 has Numeric $.font-size = 10;
 
 method leading { 1.1 }
@@ -28,7 +29,7 @@ constant %CoreFont = %(
     :n-I-n<times-italic>,     :n-I-M<courier-oblique>
     :B-I-n<times-boldoitalic>, :B-I-M<courier-boldoblique>
 );
-has %!fonts;
+has %.fonts;
 
 method font {
     my $key = self!font-key;
