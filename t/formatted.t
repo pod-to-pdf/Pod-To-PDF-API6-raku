@@ -8,14 +8,14 @@ use PDF::API6;
 plan 1;
 
 my $xml = q{<Document>
-  <P>This text is of minor significance .</P>
-  <P>This text is of major significance .</P>
-  <P>This text is of fundamental significance .</P>
+  <P>This text is of minor significance.</P>
+  <P>This text is of major significance.</P>
+  <P>This text is of fundamental significance.</P>
   <P>This text is verbatim C&lt;with&gt; B&lt;disarmed&gt; Z&lt;formatting&gt;.</P>
-  <P>This text is to be replaced .</P>
+  <P>This text is to be replaced.</P>
   <P>This text is invisible.</P>
-  <P>This text contains a link to http://www.google.com/ .</P>
-  <P>This text contains a link with label to google .</P>
+  <P>This text contains a link to http://www.google.com/.</P>
+  <P>This text contains a link with label to google.</P>
 </Document>
 };
 

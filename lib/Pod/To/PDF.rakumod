@@ -5,8 +5,8 @@ class Pod::To::PDF {
     use PDF::Tags::Elem;
     use PDF::Content;
     use PDF::Content::Text::Box;
-    use  Pod::To::PDF::Style;
-
+    use Pod::To::PDF::Style;
+    use PDF::Page;
     has PDF::API6 $.pdf .= new;
     has PDF::Content $.gfx = self!new-page;
     has PDF::Tags $!tags .= create: :$!pdf;
@@ -15,6 +15,7 @@ class Pod::To::PDF {
     has Pod::To::PDF::Style $!style handles<line-height font font-size leading> .= new;
     has $!x;
     has $!y;
+    has $.margin = 10;
 
     method render($class: $pod) {
 	pod2pdf($pod, :$class);
@@ -54,8 +55,7 @@ class Pod::To::PDF {
         temp $*tag .= Code;
         self!mark: {
             # todo syntax hightlighting
-            my @lines = $pod.contents.join.lines;
-            $.say($_) for @lines;
+            $.say($pod.contents.join, :verbatum);
         }
     }
 
@@ -88,7 +88,32 @@ class Pod::To::PDF {
                 $.pod2pdf($pod.contents);
             }
             when 'L' {
-                $.pod2pdf($pod.contents);
+                my $x = $!x;
+                my $y = $!y;
+                my $text = $pod.contents.join;
+                # avoid line spanning, for now
+                self!mark: :name<Link>, {
+                    $.print($text);
+                }
+                if $!y > $y {
+                    # got line break.
+                    # Todo /QuadPoint regions for line-spanning links
+                    # see 14.8.4.4.2 Link Elements
+                    $x = 0;
+                }
+                my $pad = 2;
+                my $x2 = $!margin + $!x;
+                my @bbox = [$x + $!margin, $!y, $!x + $!margin, $!y + $.font-size];
+                given $pod.meta.head // $text -> $uri {
+                    my $action = $!pdf.action: :$uri;
+                    my PDF::Page $page = self!gfx.canvas;
+                    my @rect = self!gfx.base-coords: |@bbox;
+                    $!pdf.annotation(
+                        :$page,
+                        :$action,
+                        :@rect,
+                    );
+                }
             }
             default {
                 warn "todo: POD formatting code: $_";
@@ -120,28 +145,29 @@ class Pod::To::PDF {
         self!new-page if $!y <= 20;
         $!gfx;
     }
-    multi method say(Str $text) {
-        $.print($text, :nl);
+    multi method say(Str $text, |c) {
+        $.print($text, :nl, |c);
     }
-    method !mark(&action) {
+    method !mark(&action, |c) {
         given self!gfx {
             if .open-tags.first(*.mcid.defined) {
                 # caller is already marking
                 action();
             }
             else {
-                $*tag.mark: $_, &action
+                $*tag.mark: $_, &action, |c;
             }
         }
     }
-    method print(Str $text, Bool :$nl) {
-        my $width = $!gfx.canvas.width - self!indent - 10;
-        my $height = $!y - 10;
+    method print(Str $text, Bool :$nl, |c) {
+        my $width = $!gfx.canvas.width - self!indent - $!margin;
+        my $height = $!y - $!margin;
+        my @bbox;
         self!new-page if $width <= 0 || $height <= 0;
-        my PDF::Content::Text::Box $tb .= new: :$text, :$width, :$height, :indent($!x), :$.leading, :$.font, :$.font-size;
+        my PDF::Content::Text::Box $tb .= new: :$text, :$width, :$height, :indent($!x), :$.leading, :$.font, :$.font-size, |c;
         unless $!style.invisible {
             self!mark: {
-                self!gfx.print($tb, :position[10 + self!indent, $!y], :$nl)
+                self!gfx.print($tb, :position[$!margin + self!indent, $!y], :$nl)
             }
         }
         my $lines = +$tb.lines;
@@ -150,9 +176,7 @@ class Pod::To::PDF {
         $!y -= $lines * $.line-height;
         if $tb.overflow {
             $.say() unless $nl;
-            self!mark: {
-                $.print: $tb.overflow.join;
-            }
+            $.print: $tb.overflow.join;
         }
     }
 
