@@ -26,7 +26,7 @@ constant %CoreFont = %(
     # Normal Fonts                 # Mono Fonts
     :n-n-n<times>,             :n-n-M<courier>,  
     :B-n-n<times-bold>,        :B-n-M<courier-bold>,
-    :n-I-n<times-italic>,     :n-I-M<courier-oblique>
+    :n-I-n<times-italic>,      :n-I-M<courier-oblique>
     :B-I-n<times-boldoitalic>, :B-I-M<courier-boldoblique>
 );
 has %.fonts;

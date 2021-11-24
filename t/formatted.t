@@ -20,8 +20,9 @@ my $xml = q{<Document>
 };
 
 my PDF::API6 $pdf = pod2pdf($=pod);
-$pdf.save-as: "/tmp/formatted.pdf";
-my PDF::Tags() $tags = $pdf;
+$pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
+$pdf.save-as: "t/formatted.pdf", :!info;
+my PDF::Tags $tags .= read: :$pdf;
 
 is $tags[0].Str, $xml,
 ##   'Various types of code blocks convert correctly.';

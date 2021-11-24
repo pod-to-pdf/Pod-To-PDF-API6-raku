@@ -2,6 +2,8 @@ use v6;
 
 use Test;
 use Pod::To::PDF;
+use PDF::API6;
+
 plan 1;
 
 my $markdown = q{module Asdf1
@@ -39,23 +41,31 @@ method asdf(
 
 Method asdf2};
 
-is pod2pdf($=pod).trim, $markdown.trim,
-    'Converts definitions to Markdown correctly';
+my $xml = q{<Blah>
+         </Blah>};
 
-#| asdf1
+my PDF::API6 $pdf = pod2pdf($=pod);
+$pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
+$pdf.save-as: "t/definition.pdf", :!info;
+my PDF::Tags $tags .= read: :$pdf;
+
+is $tags[0].Str, $xml,
+    'Converts definitions correctly';
+
+#| This is a module
 module Asdf1 {
-    #| Sub asdf1
+    #| This is a sub
     sub asdf(Str $asdf1, Str :$asdf2? = 'asdf') returns Str {
 	return '';
     }
 }
 
-#| Asdf2
+#| This is a class
 class Asdf2 does Positional  {
-    #| t
+    #| This is an attribute
     has Str $.t = 'asdf';
     
-    #| Method asdf2
+    #| This is a method
     method asdf(Str :$asdf? = 'asdf') returns Str {
 	
     }
