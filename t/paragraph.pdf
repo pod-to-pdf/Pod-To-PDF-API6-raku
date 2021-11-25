@@ -1,0 +1,221 @@
+%PDF-1.3
+%¥±ë¼
+1 0 obj
+<<
+  /Type /Catalog
+  /MarkInfo << /Marked true >>
+  /Pages 2 0 R
+  /StructTreeRoot 6 0 R
+>>
+endobj
+
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [ 3 0 R ] >>
+endobj
+
+3 0 obj
+<<
+  /Type /Page
+  /Contents 4 0 R
+  /MediaBox [ 0 0 612 792 ]
+  /Parent 2 0 R
+  /Resources << /Font << /F1 5 0 R >> >>
+  /StructParents 0
+>>
+endobj
+
+4 0 obj
+<< /Length 615 >> stream
+/P << /MCID 0 >> BDC
+  BT
+    1 0 0 1 10 772 Tm
+    /F1 10 Tf
+    (This is all a paragraph.) Tj
+  ET
+EMC
+/P << /MCID 1 >> BDC
+  BT
+    1 0 0 1 10 750 Tm
+    (This is the next paragraph.) Tj
+  ET
+EMC
+/P << /MCID 2 >> BDC
+  BT
+    1 0 0 1 10 728 Tm
+    (This is the third paragraph.) Tj
+  ET
+EMC
+/P << /MCID 3 >> BDC
+  BT
+    1 0 0 1 10 706 Tm
+    (Abbreviated paragraph) Tj
+  ET
+EMC
+/P << /MCID 4 >> BDC
+  BT
+    1 0 0 1 10 684 Tm
+    (Paragraph paragraph) Tj
+  ET
+EMC
+/P << /MCID 5 >> BDC
+  BT
+    1 0 0 1 10 662 Tm
+    (Block) Tj
+  ET
+EMC
+/P << /MCID 6 >> BDC
+  BT
+    1 0 0 1 10 640 Tm
+    (paragraph) Tj
+  ET
+EMC
+endstream
+endobj
+
+5 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Times-Roman
+  /Encoding /WinAnsiEncoding
+>>
+endobj
+
+6 0 obj
+<<
+  /Type /StructTreeRoot
+  /K [ 7 0 R ]
+  /ParentTree << /Nums [ 0 [ 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R ] ] >>
+>>
+endobj
+
+7 0 obj
+<<
+  /Type /StructElem
+  /S /Document
+  /K [ 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R ]
+  /P 6 0 R
+>>
+endobj
+
+8 0 obj
+<<
+  /Type /StructElem
+  /S /P
+  /ActualText (This is all a paragraph.)
+  /K [ 9 0 R ]
+  /P 7 0 R
+>>
+endobj
+
+9 0 obj
+<< /Type /MCR /MCID 0 /Pg 3 0 R >>
+endobj
+
+10 0 obj
+<<
+  /Type /StructElem
+  /S /P
+  /ActualText (This is the next paragraph.)
+  /K [ 11 0 R ]
+  /P 7 0 R
+>>
+endobj
+
+11 0 obj
+<< /Type /MCR /MCID 1 /Pg 3 0 R >>
+endobj
+
+12 0 obj
+<<
+  /Type /StructElem
+  /S /P
+  /ActualText (This is the third paragraph.)
+  /K [ 13 0 R ]
+  /P 7 0 R
+>>
+endobj
+
+13 0 obj
+<< /Type /MCR /MCID 2 /Pg 3 0 R >>
+endobj
+
+14 0 obj
+<<
+  /Type /StructElem
+  /S /P
+  /ActualText (Abbreviated paragraph)
+  /K [ 15 0 R ]
+  /P 7 0 R
+>>
+endobj
+
+15 0 obj
+<< /Type /MCR /MCID 3 /Pg 3 0 R >>
+endobj
+
+16 0 obj
+<<
+  /Type /StructElem
+  /S /P
+  /ActualText (Paragraph paragraph)
+  /K [ 17 0 R ]
+  /P 7 0 R
+>>
+endobj
+
+17 0 obj
+<< /Type /MCR /MCID 4 /Pg 3 0 R >>
+endobj
+
+18 0 obj
+<< /Type /StructElem /S /P /ActualText (Block) /K [ 19 0 R ] /P 7 0 R >>
+endobj
+
+19 0 obj
+<< /Type /MCR /MCID 5 /Pg 3 0 R >>
+endobj
+
+20 0 obj
+<<
+  /Type /StructElem
+  /S /P
+  /ActualText (paragraph)
+  /K [ 21 0 R ]
+  /P 7 0 R
+>>
+endobj
+
+21 0 obj
+<< /Type /MCR /MCID 6 /Pg 3 0 R >>
+endobj
+
+xref
+0 22
+0000000000 65535 f 
+0000000015 00000 n 
+0000000124 00000 n 
+0000000184 00000 n 
+0000000342 00000 n 
+0000001009 00000 n 
+0000001117 00000 n 
+0000001262 00000 n 
+0000001387 00000 n 
+0000001504 00000 n 
+0000001555 00000 n 
+0000001677 00000 n 
+0000001729 00000 n 
+0000001852 00000 n 
+0000001904 00000 n 
+0000002020 00000 n 
+0000002072 00000 n 
+0000002186 00000 n 
+0000002238 00000 n 
+0000002328 00000 n 
+0000002380 00000 n 
+0000002484 00000 n 
+trailer
+<< /ID [ (t/paragraph.t   ) (t/paragraph.t   ) ] /Root 1 0 R /Size 22 >>
+startxref
+2536
+%%EOF

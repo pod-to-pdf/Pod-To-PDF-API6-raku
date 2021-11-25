@@ -2,22 +2,27 @@ use v6;
 
 use Test;
 use Pod::To::PDF;
+use PDF::API6;
 
 plan 1;
 
-my $markdown = q{This is all a paragraph.
+my $xml = q{<Document>
+  <P>This is all a paragraph.</P>
+  <P>This is the next paragraph.</P>
+  <P>This is the third paragraph.</P>
+  <P>Abbreviated paragraph</P>
+  <P>Paragraph paragraph</P>
+  <P>Block</P>
+  <P>paragraph</P>
+</Document>
+};
 
-This is the next paragraph.
+my PDF::API6 $pdf = pod2pdf($=pod);
+$pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
+$pdf.save-as: "t/paragraph.pdf", :!info;
+my PDF::Tags $tags .= read: :$pdf;
 
-This is the third paragraph.
-
-Abbriviated paragraph
-
-Paragraph paragraph
-
-Block paragraph};
-
-is pod2pdf($=pod), $markdown,
+is $tags[0].Str, $xml,
     'Paragraphs convert correctly.';
 
 =begin pod
@@ -31,7 +36,7 @@ This is the
 third paragraph.
 =end pod
 
-=para Abbriviated paragraph
+=para Abbreviated paragraph
 
 =for para
 Paragraph

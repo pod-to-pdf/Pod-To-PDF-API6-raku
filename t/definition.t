@@ -6,43 +6,39 @@ use PDF::API6;
 
 plan 1;
 
-my $markdown = q{module Asdf1
-------------
-
-asdf1
-
-### sub asdf
-
-```
-sub asdf(
+my $xml = q{<Document>
+  <Sect>
+    <H2>Module Asdf1</H2>
+    <Code>module Asdf1</Code>
+    <P>This is a module</P>
+  </Sect>
+  <Sect>
+    <H3>Sub asdf</H3>
+    <Code>sub asdf(
     Str $asdf1, 
-    Str :$asdf2 = "asdf"
-) returns Str
-```
-
-Sub asdf1
-
-class Asdf2
------------
-
-Asdf2
-
-### has Str $.t
-
-t
-
-### method asdf
-
-```
-method asdf(
-    Str :$asdf = "asdf"
-) returns Str
-```
-
-Method asdf2};
-
-my $xml = q{<Blah>
-         </Blah>};
+    Str :$asdf2 = "asdf", 
+) returns Str</Code>
+    <P>This is a sub</P>
+  </Sect>
+  <Sect>
+    <H2>Class Asdf2</H2>
+    <Code>class Asdf2</Code>
+    <P>This is a class</P>
+  </Sect>
+  <Sect>
+    <H3>Attribute t</H3>
+    <Code>has Str $.t</Code>
+    <P>This is an attribute</P>
+  </Sect>
+  <Sect>
+    <H3>Method asdf</H3>
+    <Code>method asdf(
+    Str :$asdf = "asdf", 
+) returns Str</Code>
+    <P>This is a method</P>
+  </Sect>
+</Document>
+};
 
 my PDF::API6 $pdf = pod2pdf($=pod);
 $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');

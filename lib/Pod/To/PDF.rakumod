@@ -1,4 +1,4 @@
-class Pod::To::PDF {
+class Pod::To::PDF:ver<0.0.1> {
 
     use PDF::API6;
     use PDF::Tags;
@@ -9,17 +9,23 @@ class Pod::To::PDF {
     use PDF::Page;
     use Pod::To::Text;
 
+    subset Level of Int:D where 1..6;
+
     has PDF::API6 $.pdf .= new;
-    has PDF::Content $.gfx;
-    has PDF::Tags $!tags .= create: :$!pdf;
-    has PDF::Tags::Elem $.root is built = $!tags.Document;
+    has PDF::Tags $.tags .= create: :$!pdf;
+    has PDF::Tags::Elem $.root = $!tags.Document;
+    has PDF::Content $!gfx;
     has UInt $!indent = 0;
-    has Pod::To::PDF::Style $!style handles<line-height font font-size leading> .= new;
+    has Pod::To::PDF::Style $.style handles<line-height font font-size leading bold invisible italic mono> .= new;
     has $!x;
     has $!y;
     has $.margin = 10;
+    has $!collapse;
 
-    submethod TWEAK { self!new-page() }
+    submethod TWEAK {
+        $!pdf.creator.push: "{self.^name}-{self.^ver}";
+        self!new-page()
+    }
 
     method render($class: $pod) {
 	pod2pdf($pod, :$class);
@@ -36,13 +42,17 @@ class Pod::To::PDF {
         given $pod.name {
             when 'pod'  { $.pod2pdf($pod.contents)     }
             when 'para' {
-                $.say;
-                temp $*tag .= Paragraph;
-                $.pod2pdf($_) for $pod.contents;
-                $.say;
+                self!nest: {
+                    $.pod2pdf: $pod.contents;
+                }
             }
             when 'config' { }
-            when 'nested' { }
+            when 'nested' {
+                self!nest: {
+                    $!indent++;
+                    $.pod2pdf: $pod.contents;
+                }
+            }
             default     {
                 warn $pod.WHAT.raku;
                 $.say($pod.name);
@@ -53,36 +63,36 @@ class Pod::To::PDF {
 
     multi method pod2pdf(Pod::Block::Code $pod) {
         $.say;
-        self!code: $pod;
+        self!code: $pod.contents.join;
     }
 
     multi method pod2pdf(Pod::Heading $pod) {
         $.say;
-        temp $!style.bold = True;
-        temp $!indent += min($pod.level, 2);
-        temp $*tag .= Header;
-        $.pod2pdf($pod.contents);
+        my Level $level = min($pod.level, 6);
+        self!heading( node2text($pod.contents), :$level);
     }
 
     multi method pod2pdf(Pod::Block::Para $pod) {
         $.say;
-        temp $*tag .= Paragraph;
-        $.pod2pdf($pod.contents);
+        self!nest: {
+            $*tag .= Paragraph;
+            $.pod2pdf($pod.contents);
+        }
         $.say;
     }
 
     multi method pod2pdf(Pod::FormattingCode $pod) {
         given $pod.type {
             when 'I' {
-                temp $!style.italic = True;
+                temp $.italic = True;
                 $.pod2pdf($pod.contents);
             }
             when 'B' {
-                temp $!style.bold = True;
+                temp $.bold = True;
                 $.pod2pdf($pod.contents);
             }
             when 'Z' {
-                temp $!style.invisible = True;
+                temp $.invisible = True;
                 $.pod2pdf($pod.contents);
             }
             when 'L' {
@@ -96,7 +106,7 @@ class Pod::To::PDF {
                 if $!y > $y {
                     # got line break.
                     # Todo /QuadPoint regions for line-spanning links
-                    # see 14.8.4.4.2 Link Elements
+                    # see PDF ISO32000 14.8.4.4.2 Link Elements
                     $x = 0;
                 }
                 my $pad = 2;
@@ -120,68 +130,110 @@ class Pod::To::PDF {
         }
     }
 
-    multi method pod2pdf(Pod::Block::Declarator $pod) {
-        temp $*tag .= Article;
+    multi method pod2pdf(Pod::Item $pod) {
+        $.say;
+        self!nest: {
+            $*tag .= ListItem;
 
-        my $what = do given $pod.WHEREFORE {
-            when Method {
-                my @params=$_.signature.params[1..*];
-                  @params.pop if @params.tail.name eq '%_';
-                  'method ' ~ $_.name ~ signature2text(@params, $_.returns)
+            $*tag.Lbl.mark: self!gfx, {
+                my constant BulletPoints = ("\c[BULLET]", "\c[WHITE BULLET]", '-');
+                my Level $list-level = min($pod.level // 1, 3);
+                my $bp = BulletPoints[$list-level - 1];
+                .print: $bp, |self!text-position;
             }
-            when Sub {
-                'sub ' ~ $_.name ~ signature2text($_.signature.params, $_.returns)
-            }
-            when Attribute {
-                'attribute ' ~ .gist
-            }
-            when .HOW ~~ Metamodel::EnumHOW {
-                "enum $_.raku() { signature2text $_.enums.pairs } \n"
-            }
-            when .HOW ~~ Metamodel::ClassHOW {
-                'class ' ~ .raku
-            }
-            when .HOW ~~ Metamodel::ModuleHOW {
-                'module ' ~ .raku
-            }
-            when .HOW ~~ Metamodel::SubsetHOW {
-                'subset ' ~ .raku ~ ' of ' ~ .^refinee().raku
-            }
-            when .HOW ~~ Metamodel::PackageHOW {
-                'package ' ~ .raku
-            }
-            default {
-                ''
-            }
-        }
-        {
-            temp $*tag .= Header;
-            temp $!style.bold = True;
-            $.say($what);
-        }
-        {
-            temp $*tag .= Paragraph;
-            temp $!indent = $!indent + 1;
+
+            $*tag .= ListBody;
+            $!collapse = True;
+            $!indent++;
             $.pod2pdf($pod.contents);
         }
+    }
+
+    multi method pod2pdf(Pod::Block::Declarator $pod) {
+        my $w := $pod.WHEREFORE;
+        my Level $level = 3;
+        my ($type, $code, $name, $decl) = do given $w {
+            when Method {
+                my @params = .signature.params.skip(1);
+                @params.pop if @params.tail.name eq '%_';
+                (
+                    (.multi ?? 'multi ' !! '') ~ 'method',
+                    .name ~ signature2text(@params, .returns),
+                )
+            }
+            when Sub {
+                (
+                    (.multi ?? 'multi ' !! '') ~ 'sub',
+                    .name ~ signature2text(.signature.params, .returns)
+                )
+            }
+            when Attribute {
+                my $gist = .gist;
+                my $name = .name.subst('$!', '');
+                $gist .= subst('!', '.')
+                    if .has_accessor;
+
+                ('attribute', $gist, $name, 'has');
+            }
+            when .HOW ~~ Metamodel::EnumHOW {
+                ('enum', .raku() ~ signature2text($_.enums.pairs));
+            }
+            when .HOW ~~ Metamodel::ClassHOW {
+                $level = 2;
+                ('class', .raku, .^name);
+            }
+            when .HOW ~~ Metamodel::ModuleHOW {
+                $level = 2;
+                ('module', .raku, .^name);
+            }
+            when .HOW ~~ Metamodel::SubsetHOW {
+                ('subset', .raku ~ ' of ' ~ .^refinee().raku);
+            }
+            when .HOW ~~ Metamodel::PackageHOW {
+                ('package', .raku)
+            }
+            default {
+                '', ''
+            }
+        }
+
+        $name //= $w.?name // '';
+        $decl //= $type;
+
+        self!nest: {
+            $*tag .= Section;
+
+            self!heading($type.tclc ~ ' ' ~ $name, :$level);
+
+            if $code {
+                self!code($decl ~ ' ' ~ $code);
+            }
+
+            if $pod.contents {
+                self!nest: {
+                    $.say;
+                    $*tag .= Paragraph;
+                    $.pod2pdf($pod.contents);
+                }
+            }
+        }
+
         $.say;
         $.say;
     }
 
     sub signature2text($params, Mu $returns?) {
+        my constant NL = "\n    ";
         my $result = '(';
 
         if $params.elems {
-            $result ~= "\n\t" ~ $params.map(&param2text).join("\n\t")
-        }
-        unless $returns<> =:= Mu {
-            $result ~= "\n\t--> " ~ $returns.raku
-        }
-        if $result.chars > 1 {
-            $result ~= "\n";
+            $result ~= NL ~ $params.map(&param2text).join(NL) ~ "\n";
         }
         $result ~= ')';
-        return $result;
+        unless $returns<> =:= Mu {
+            $result ~= " returns " ~ $returns.raku
+        }
+        $result;
     }
     sub param2text($p) {
         $p.raku ~ ',' ~ ( $p.WHY ?? ' # ' ~ $p.WHY !! ' ')
@@ -204,7 +256,8 @@ class Pod::To::PDF {
 
     multi method say {
         $!x = 0;
-        $!y -= $.line-height;
+        $!y -= $.line-height
+            unless $!collapse;
     }
     multi method say(Str $text, |c) {
         $.print($text, :nl, |c);
@@ -216,10 +269,11 @@ class Pod::To::PDF {
         my $height = $!y - $!margin;
         my @bbox;
         
+        $!collapse = False;
         my PDF::Content::Text::Box $tb .= new: :$text, :$width, :$height, :indent($!x), :$.leading, :$.font, :$.font-size, |c;
         self!mark: {
-            unless $!style.invisible {
-                $gfx.print($tb, :position[$!margin + self!indent, $!y], :$nl)
+            unless $.invisible {
+                $gfx.print: $tb, |self!text-position(), :$nl;
             }
         }
         my $lines = +$tb.lines;
@@ -234,11 +288,15 @@ class Pod::To::PDF {
         }
     }
 
+    method !text-position {
+        :position[$!margin + self!indent, $!y]
+    }
+
     method !mark(&action, |c) {
         given self!gfx {
             if .open-tags.first(*.mcid.defined) {
                 # caller is already marking
-                action();
+                action($_);
             }
             else {
                 $*tag.mark: $_, &action, |c;
@@ -246,15 +304,38 @@ class Pod::To::PDF {
         }
     }
 
-    method !code($node) {
+    method !nest(&codez) {
+        temp $!style .= clone;
+        temp $!indent;
+        temp $*tag;
+        &codez();
+    }
+
+    method !heading(Str:D $text, Level :$level = 2) {
+        constant HeadingSizes = 20, 16, 13, 11.5, 10, 10; 
+        $.say if $level <= 2;
+        self!nest: {
+            $*tag .= add-kid: :name('H' ~ $level);
+            $.font-size = HeadingSizes[$level - 1];
+            if $level < 5 {
+                $.bold = True;
+            }
+            else {
+                $.italic = True;
+            }
+            $.say: $text;
+        }
+    }
+    method !code(Str $raw) {
         $.say;
-        temp $!style.mono = True;
-        temp $!style.font-size *= .8;
-        temp $!indent += 1;
-        temp $*tag .= Code;
-        self!mark: {
-            # todo syntax hightlighting
-            $.say(node2text($node), :verbatim);
+        self!nest: {
+            $.mono = True;
+            $.font-size *= .8;
+            $!indent++;
+            $*tag .= Code;
+            self!mark: {
+                $.say($raw, :verbatim);
+            }
         }
     }
 
@@ -263,6 +344,7 @@ class Pod::To::PDF {
             self!new-page;
         }
         elsif $!x > 0 && $!x > $!gfx.canvas.width - self!indent - $!margin {
+            $!collapse = False;
             self.say;
         }
         $!gfx;
@@ -270,22 +352,19 @@ class Pod::To::PDF {
     method !new-page {
         my PDF::Page $page = $!pdf.add-page;
         $!x = 0;
-        $!y = $page.height - $!margin;
+        $!y = $page.height - 2 * $!margin;
         $!gfx = $page.gfx;
+        # suppress whitespace before significant content
+        $!collapse = True;
     }
 
     method !indent {
         10 * $!indent;
     }
 
-    sub node2text($node --> Str) is export {
-        given $node {
-            when Pod::Block { node2text($node.contents) }
-            when Positional { $node.map(&node2text).join }
-            default { $node.Str }
-        }
-    }
-
+    multi sub node2text(Pod::Block $_) { node2text(.contents) }
+    multi sub node2text(@pod) { @pod.map(&node2text).join: ' ' }
+    multi sub node2text(Str() $_) { .trim }
 }
 
 =NAME

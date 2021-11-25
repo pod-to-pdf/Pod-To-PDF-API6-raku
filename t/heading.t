@@ -2,46 +2,33 @@ use v6;
 
 use Test;
 use Pod::To::PDF;
+use PDF::API6;
 
 plan 1;
 
-my $markdown = q{Abbreviated heading
-===================
+my $xml = q{<Document>
+  <H1>Abbreviated heading</H1>
+  <P>asdf</P>
+  <H1>Paragraph heading</H1>
+  <P>asdf</P>
+  <H1>Delimited heading</H1>
+  <P>asdf</P>
+  <H2>Head2</H2>
+  <P>asdf</P>
+  <H3>Head3</H3>
+  <P>asdf</P>
+  <H4>Head4</H4>
+  <P>asdf</P>
+</Document>
+};
 
-asdf
+my PDF::API6 $pdf = pod2pdf($=pod);
+$pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
+$pdf.save-as: "t/heading.pdf", :!info;
+my PDF::Tags $tags .= read: :$pdf;
 
-Paragraph heading
-=================
-
-asdf
-
-Delimited heading
-=================
-
-asdf
-
-Head2
------
-
-asdf
-
-### Head3
-
-asdf
-
-#### Head4
-
-asdf};
-
-my $pdf;
-##lives-ok {
-$pdf = pod2pdf($=pod);##}
-$pdf.save-as: "/tmp/out.pdf";
-
-is pod2pdf($=pod).page(1).gfx.content-dump, $markdown.trim,
+is $tags[0].Str, $xml,
    'Various types of headings convert correctly';
-
-		    
 
 =begin pod
 =head1 Abbreviated heading
