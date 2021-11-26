@@ -6,14 +6,15 @@ class Pod::To::PDF:ver<0.0.1> {
     use PDF::Content;
     use PDF::Content::Text::Box;
     use Pod::To::PDF::Style;
-    use PDF::Page;
     use Pod::To::Text;
+    use PDF::Page;
 
     subset Level of Int:D where 1..6;
 
     has PDF::API6 $.pdf .= new;
     has PDF::Tags $.tags .= create: :$!pdf;
     has PDF::Tags::Elem $.root = $!tags.Document;
+    has PDF::Page $!page;
     has PDF::Content $!gfx;
     has UInt $!indent = 0;
     has Pod::To::PDF::Style $.style handles<line-height font font-size leading bold invisible italic mono> .= new;
@@ -21,20 +22,24 @@ class Pod::To::PDF:ver<0.0.1> {
     has $!y;
     has $.margin = 10;
     has $!collapse;
+    has @.toc;
 
     submethod TWEAK {
         $!pdf.creator.push: "{self.^name}-{self.^ver}";
         self!new-page()
     }
 
-    method render($class: $pod) {
-	pod2pdf($pod, :$class);
+    method render($class: $pod, |c) {
+	pod2pdf($pod, :$class, |c);
     }
 
-    sub pod2pdf($pod, :$class = $?CLASS) is export {
+    sub pod2pdf($pod, :$class = $?CLASS, :$toc = True) is export {
         my $obj = $class.new;
         my $*tag = $obj.root;
         $obj.pod2pdf($pod);
+        if $toc && $obj.toc {
+            $obj.pdf.outlines.kids = $obj.toc;
+        }
         $obj.pdf;
     }
 
@@ -114,10 +119,10 @@ class Pod::To::PDF:ver<0.0.1> {
                 my @bbox = [$x + $!margin, $!y, $!x + $!margin, $!y + $.font-size];
                 given $pod.meta.head // $text -> $uri {
                     my $action = $!pdf.action: :$uri;
-                    my PDF::Page $page = self!gfx.canvas;
+                    $!page = self!gfx.canvas;
                     my @rect = self!gfx.base-coords: |@bbox;
                     $!pdf.annotation(
-                        :$page,
+                        :$!page,
                         :$action,
                         :@rect,
                     );
@@ -267,24 +272,31 @@ class Pod::To::PDF:ver<0.0.1> {
         my $gfx = self!gfx;
         my $width = $!gfx.canvas.width - self!indent - $!margin - $!x;
         my $height = $!y - $!margin;
-        my @bbox;
         
         $!collapse = False;
         my PDF::Content::Text::Box $tb .= new: :$text, :$width, :$height, :indent($!x), :$.leading, :$.font, :$.font-size, |c;
         self!mark: {
-            unless $.invisible {
-                $gfx.print: $tb, |self!text-position(), :$nl;
-            }
+            $gfx.print: $tb, |self!text-position(), :$nl
+                unless $.invisible;
         }
-        my $lines = +$tb.lines;
-        $lines-- if $lines && !$nl;
-        $!y -= $lines * $.line-height;
-        $!x = 0 if $lines;
-        $!x += $tb.lines.tail.content-width + $tb.space-width
-            unless $nl;
+
         if $tb.overflow {
             $.say() unless $nl;
-            $.print: $tb.overflow.join;
+            @.print: $tb.overflow.join;
+        }
+        else {
+            # calculate text bounding box and advance x, y
+            my $lines = +$tb.lines;
+            my @bbox = $!x + $!margin, $!y + $tb.content-height, $!x + $!margin, $tb.content-width;
+            @bbox[0] = $!margin if $lines > 1;
+            $lines-- if $lines && !$nl;
+            $!y -= $lines * $.line-height;
+            if $lines {
+                $!x = 0;
+            }
+            $!x += $tb.lines.tail.content-width + $tb.space-width
+                unless $nl;
+            @bbox;
         }
     }
 
@@ -311,7 +323,18 @@ class Pod::To::PDF:ver<0.0.1> {
         &codez();
     }
 
-    method !heading(Str:D $text, Level :$level = 2) {
+    method !add-toc-entry(Hash $entry, Level $level, @kids = @!toc, Level :$cur = 1, ) {
+        if $level == $cur {
+            @kids.push: $entry;
+        }
+        else {
+            # descend
+            @kids.push({}) unless @kids;
+            @kids.tail<kids> //= [];
+            self!add-toc-entry($entry, $level, :cur($cur+1), @kids.tail<kids>);
+        }
+    }
+    method !heading(Str:D $Title, Level :$level = 2) {
         constant HeadingSizes = 20, 16, 13, 11.5, 10, 10; 
         $.say if $level <= 2;
         self!nest: {
@@ -323,7 +346,13 @@ class Pod::To::PDF:ver<0.0.1> {
             else {
                 $.italic = True;
             }
-            $.say: $text;
+
+            my @bbox = @.say: $Title;
+
+            # Register in table of contents
+            my @rect = $!gfx.base-coords: |@bbox;
+            my PDF::Destination $dest = $!pdf.destination: :$!page, :@rect;
+            self!add-toc-entry: { :$Title, :$dest  }, $level;
         }
     }
     method !code(Str $raw) {
@@ -350,10 +379,10 @@ class Pod::To::PDF:ver<0.0.1> {
         $!gfx;
     }
     method !new-page {
-        my PDF::Page $page = $!pdf.add-page;
+        $!page = $!pdf.add-page;
+        $!gfx = $!page.gfx;
         $!x = 0;
-        $!y = $page.height - 2 * $!margin;
-        $!gfx = $page.gfx;
+        $!y = $!page.height - 2 * $!margin;
         # suppress whitespace before significant content
         $!collapse = True;
     }
