@@ -19,12 +19,14 @@ From Raku:
 
 ```
 use Pod::To::PDF;
+use PDF::API6;
 
 =NAME
 foobar.raku
 
 =SYNOPSIS
     foobarraku <options> files ...
-	
-"class.pdf".IO.spurt( pod2pdf($=pod), :enc<latin-1> );
+
+my PDF::API6 $pdf = pod2pdf($=pod);
+$pdf.save-as: "class.pdf";
 ```

@@ -4,6 +4,7 @@ class Pod::To::PDF:ver<0.0.1> {
     use PDF::Tags;
     use PDF::Tags::Elem;
     use PDF::Content;
+    use PDF::Content::Tag :Tags;
     use PDF::Content::Text::Box;
     use Pod::To::PDF::Style;
     use Pod::To::Text;
@@ -17,20 +18,23 @@ class Pod::To::PDF:ver<0.0.1> {
     has PDF::Page $!page;
     has PDF::Content $!gfx;
     has UInt $!indent = 0;
-    has Pod::To::PDF::Style $.style handles<line-height font font-size leading bold invisible italic mono> .= new;
+    has Pod::To::PDF::Style $.style handles<font font-size leading line-height bold invisible italic mono> .= new;
     has $!x;
     has $!y;
     has $.margin = 10;
-    has $!collapse;
+    has UInt $!pad = 0;
     has @.toc;
 
     submethod TWEAK {
         $!pdf.creator.push: "{self.^name}-{self.^ver}";
-        self!new-page()
     }
 
     method render($class: $pod, |c) {
-	pod2pdf($pod, :$class, |c);
+	pod2pdf($pod, :$class, |c).Str;
+    }
+
+    proto method pod2pdf($p, |) {
+        {*}
     }
 
     sub pod2pdf($pod, :$class = $?CLASS, :$toc = True) is export {
@@ -47,14 +51,11 @@ class Pod::To::PDF:ver<0.0.1> {
         given $pod.name {
             when 'pod'  { $.pod2pdf($pod.contents)     }
             when 'para' {
-                self!nest: {
-                    $.pod2pdf: $pod.contents;
-                }
+                $.pod2pdf: $pod.contents;
             }
             when 'config' { }
             when 'nested' {
-                self!nest: {
-                    $!indent++;
+                self!style: :indent, {
                     $.pod2pdf: $pod.contents;
                 }
             }
@@ -67,23 +68,24 @@ class Pod::To::PDF:ver<0.0.1> {
     }
 
     multi method pod2pdf(Pod::Block::Code $pod) {
-        $.say;
+        $.pad;
         self!code: $pod.contents.join;
+        $.pad;
     }
 
     multi method pod2pdf(Pod::Heading $pod) {
-        $.say;
-        my Level $level = min($pod.level, 6);
-        self!heading( node2text($pod.contents), :$level);
+        $.pad: {
+            my Level $level = min($pod.level, 6);
+            self!heading( node2text($pod.contents), :$level);
+        }
     }
 
     multi method pod2pdf(Pod::Block::Para $pod) {
-        $.say;
-        self!nest: {
-            $*tag .= Paragraph;
-            $.pod2pdf($pod.contents);
+        $.pad: {
+            self!style: :tag(Paragraph), {
+                $.pod2pdf($pod.contents);
+            }
         }
-        $.say;
     }
 
     multi method pod2pdf(Pod::FormattingCode $pod) {
@@ -114,9 +116,8 @@ class Pod::To::PDF:ver<0.0.1> {
                     # see PDF ISO32000 14.8.4.4.2 Link Elements
                     $x = 0;
                 }
-                my $pad = 2;
-                my $x2 = $!margin + $!x;
-                my @bbox = [$x + $!margin, $!y, $!x + $!margin, $!y + $.font-size];
+
+                my @bbox = [$x + $!margin - 2, $!y - 2, $!x + $!margin, $!y + $.font-size];
                 given $pod.meta.head // $text -> $uri {
                     my $action = $!pdf.action: :$uri;
                     $!page = self!gfx.canvas;
@@ -136,21 +137,19 @@ class Pod::To::PDF:ver<0.0.1> {
     }
 
     multi method pod2pdf(Pod::Item $pod) {
-        $.say;
-        self!nest: {
-            $*tag .= ListItem;
+        $.pad: {
+            self!style: :tag(ListItem), {
+                $*tag.Lbl.mark: self!gfx, {
+                    my constant BulletPoints = ("\c[BULLET]", "\c[WHITE BULLET]", '-');
+                    my Level $list-level = min($pod.level // 1, 3);
+                    my $bp = BulletPoints[$list-level - 1];
+                    .print: $bp, |self!text-position;
+                }
 
-            $*tag.Lbl.mark: self!gfx, {
-                my constant BulletPoints = ("\c[BULLET]", "\c[WHITE BULLET]", '-');
-                my Level $list-level = min($pod.level // 1, 3);
-                my $bp = BulletPoints[$list-level - 1];
-                .print: $bp, |self!text-position;
+                self!style: :tag(ListBody), :indent, {
+                    $.pod2pdf($pod.contents);
+                }
             }
-
-            $*tag .= ListBody;
-            $!collapse = True;
-            $!indent++;
-            $.pod2pdf($pod.contents);
         }
     }
 
@@ -205,26 +204,23 @@ class Pod::To::PDF:ver<0.0.1> {
         $name //= $w.?name // '';
         $decl //= $type;
 
-        self!nest: {
-            $*tag .= Section;
+        $.pad: {
+            self!style: :tag(Section), {
+                self!heading($type.tclc ~ ' ' ~ $name, :$level);
 
-            self!heading($type.tclc ~ ' ' ~ $name, :$level);
+                if $code {
+                    $.pad(1);
+                    self!code($decl ~ ' ' ~ $code);
+                }
 
-            if $code {
-                self!code($decl ~ ' ' ~ $code);
-            }
-
-            if $pod.contents {
-                self!nest: {
-                    $.say;
-                    $*tag .= Paragraph;
-                    $.pod2pdf($pod.contents);
+                if $pod.contents {
+                    $.pad(1);
+                    self!style: :tag(Paragraph), {
+                        $.pod2pdf($pod.contents);
+                    }
                 }
             }
         }
-
-        $.say;
-        $.say;
     }
 
     sub signature2text($params, Mu $returns?) {
@@ -244,7 +240,7 @@ class Pod::To::PDF:ver<0.0.1> {
         $p.raku ~ ',' ~ ( $p.WHY ?? ' # ' ~ $p.WHY !! ' ')
     }
 
-    multi method pod2pdf(List $pod) {
+    multi method pod2pdf(Array $pod) {
         for $pod.list {
             $.pod2pdf($_);
         };
@@ -254,26 +250,28 @@ class Pod::To::PDF:ver<0.0.1> {
         $.print($pod);
     }
 
-    multi method pod2pdf($pod) is default {
+    multi method pod2pdf($pod) {
         warn "fallback render of {$pod.WHAT.raku}";
         $.say: pod2text($pod);
     }
 
     multi method say {
         $!x = 0;
-        $!y -= $.line-height
-            unless $!collapse;
+        $!y -= $.line-height;
     }
     multi method say(Str $text, |c) {
-        $.print($text, :nl, |c);
+        @.print($text, :nl, |c);
     }
 
+    multi method pad(&codez) { $.pad; &codez(); $.pad}
+    multi method pad($!pad = 2) { }
+
     method print(Str $text, Bool :$nl, |c) {
+        $.say for ^$!pad;
+        $!pad = 0;
         my $gfx = self!gfx;
         my $width = $!gfx.canvas.width - self!indent - $!margin - $!x;
         my $height = $!y - $!margin;
-        
-        $!collapse = False;
         my PDF::Content::Text::Box $tb .= new: :$text, :$width, :$height, :indent($!x), :$.leading, :$.font, :$.font-size, |c;
         self!mark: {
             $gfx.print: $tb, |self!text-position(), :$nl
@@ -289,13 +287,16 @@ class Pod::To::PDF:ver<0.0.1> {
             my $lines = +$tb.lines;
             my @bbox = $!x + $!margin, $!y + $tb.content-height, $!x + $!margin, $tb.content-width;
             @bbox[0] = $!margin if $lines > 1;
-            $lines-- if $lines && !$nl;
-            $!y -= $lines * $.line-height;
-            if $lines {
+            if $nl {
+                # advance to next line
                 $!x = 0;
             }
-            $!x += $tb.lines.tail.content-width + $tb.space-width
-                unless $nl;
+            else {
+                # continue this line
+                my $last-line = $tb.lines.pop;
+                $!x += $last-line.content-width + $tb.space-width;
+            }
+            $!y -= $tb.content-height;
             @bbox;
         }
     }
@@ -316,10 +317,12 @@ class Pod::To::PDF:ver<0.0.1> {
         }
     }
 
-    method !nest(&codez) {
-        temp $!style .= clone;
+    method !style(&codez, Bool :$indent, Str :$tag, |c) {
+        temp $!style .= clone: |c;
         temp $!indent;
         temp $*tag;
+        $*tag .= add-kid: :name($_) with $tag;
+        $!indent += 1 if $indent;
         &codez();
     }
 
@@ -334,12 +337,17 @@ class Pod::To::PDF:ver<0.0.1> {
             self!add-toc-entry($entry, $level, :cur($cur+1), @kids.tail<kids>);
         }
     }
+
     method !heading(Str:D $Title, Level :$level = 2) {
-        constant HeadingSizes = 20, 16, 13, 11.5, 10, 10; 
-        $.say if $level <= 2;
-        self!nest: {
-            $*tag .= add-kid: :name('H' ~ $level);
+        self!style: :tag('H' ~ $level), {
+            my constant HeadingSizes = 20, 16, 13, 11.5, 10, 10;
             $.font-size = HeadingSizes[$level - 1];
+
+            given $level {
+                when 1 { self!new-page }
+                when 2 { $!pad++ }
+            }
+
             if $level < 5 {
                 $.bold = True;
             }
@@ -355,36 +363,31 @@ class Pod::To::PDF:ver<0.0.1> {
             self!add-toc-entry: { :$Title, :$dest  }, $level;
         }
     }
+
     method !code(Str $raw) {
-        $.say;
-        self!nest: {
-            $.mono = True;
+        self!style: :mono, :indent, :tag(CODE), {
             $.font-size *= .8;
-            $!indent++;
-            $*tag .= Code;
-            self!mark: {
-                $.say($raw, :verbatim);
-            }
+            $.say($raw, :verbatim);
         }
     }
 
     method !gfx {
-        if $!y <= 2 * $!margin {
+        if !$!page.defined || $!y <= 2 * $!margin {
             self!new-page;
         }
         elsif $!x > 0 && $!x > $!gfx.canvas.width - self!indent - $!margin {
-            $!collapse = False;
             self.say;
         }
         $!gfx;
     }
+
     method !new-page {
         $!page = $!pdf.add-page;
         $!gfx = $!page.gfx;
         $!x = 0;
         $!y = $!page.height - 2 * $!margin;
         # suppress whitespace before significant content
-        $!collapse = True;
+        $!pad = 0;
     }
 
     method !indent {
@@ -405,17 +408,17 @@ From command line:
     $ raku --doc=PDF lib/to/class.rakumod >to-class.pdf
 
 From Raku:
-=begin code
-use Pod::To::PDF;
+    =begin code :lang<raku>
+    use Pod::To::PDF;
 
-=NAME
-foobar.pl
+    =NAME
+    foobar.pl
 
-=SYNOPSIS
-    foobar.pl <options> files ...
-	
-say pod2pdf($=pod);
-=end code
+    =SYNOPSIS
+        foobar.pl <options> files ...
+
+    pod2pdf($=pod).save-as: "foobar.pdf";
+    =end code
 =end SYNOPSIS
 
 =begin EXPORTS
@@ -423,5 +426,19 @@ say pod2pdf($=pod);
     sub pod2pdf; # See below
 =end EXPORTS
 
-=DESCRIPTION
+=begin DESCRIPTION
+This is a fully featured module for rendering POD to PDF.
 
+The pdf2pdf() function returns a PDF::API6 object which can be further
+manipulated, or saved to a PDF file.
+
+    use PDF::API6;
+    my PDF::API6 $pdf = pod2pdf($=pod);
+    $pdf.save-as: "class.pdf"
+                
+The render() method returns a byte string which can be written to a
+`latin-1` encoded file.
+
+    "class.pdf".IO.spurt: Pod::To::PDF.render($=pod), :enc<latin-1>;
+
+=end DESCRIPTION
