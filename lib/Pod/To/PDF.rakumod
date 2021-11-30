@@ -1,5 +1,4 @@
 class Pod::To::PDF:ver<0.0.1> {
-
     use PDF::API6;
     use PDF::Tags;
     use PDF::Tags::Elem;
@@ -48,16 +47,59 @@ class Pod::To::PDF:ver<0.0.1> {
         $obj.pdf;
     }
 
+    method !table-row(@row, :$tag!) {
+        temp $*tag .= TableRow;
+        my \cols = +@row;
+        my constant pad = 3;
+        my @overflow;
+        # simple fixed column widths, for now
+        my $x0 = $!margin + self!indent;
+        my \total-width = self!gfx.canvas.width - $x0;
+        my $width = total-width / cols  - pad * (cols-1);
+        my $row-height = 0;
+        for 0 ..^ cols {
+            if @row[$_] -> $text {
+                my $left = $x0 + $_ * ($width + pad);
+                my $tb = self!text-box: $text, :$width, :height(0);
+                temp $*tag .= add-kid: :name($tag);
+                self!mark: {
+                    self!gfx.print: $tb, :position[$left, $!y];
+                }
+                given $tb.height {
+                    $row-height = $_ if $_ > $row-height;
+                }
+                if $tb.overflow -> $overflow {
+                    @overflow[$_] = $overflow.join;
+                }
+            }
+        }
+        if @overflow {
+            self!table-row(@overflow);
+        }
+        else {
+            $!y -= $row-height - pad;
+        }
+    }
+
     multi method pod2pdf(Pod::Block::Table $pod) {
         $.pad: {
+            temp $*tag .= Table;
             if $pod.caption -> $caption {
+                temp $*tag .= Caption;
                 $.say: $caption;
             }
-            # stub
-            $.say: $pod.headers.map({node2text($_)}).join: '|';
-            $.say('------------------');
-            for $pod.contents -> $row {
-                $.say: $row.map({node2text($_)}).join: '|';
+            if $pod.headers.map: {node2text($_)} -> @hdr {
+                self!style: :bold, :tag(TableHead), {
+                    self!table-row: @hdr, :tag(TableHeader);
+                }
+            }
+            if $pod.contents -> @rows {
+                self!style: :tag(TableBody), {
+                    for @rows {
+                        my @row = .map: {node2text($_)};
+                        self!table-row: @row, :tag(TableData);
+                    }
+                }
             }
         }
     }
@@ -280,19 +322,21 @@ class Pod::To::PDF:ver<0.0.1> {
 
     multi method pad(&codez) { $.pad; &codez(); $.pad}
     multi method pad($!pad = 2) { }
-    method !text-box(Str $text, |c) {
-        PDF::Content::Text::Box.new: :$text, :indent($!x), :$.leading, :$.font, :$.font-size, |c;
+    method !text-box(
+        Str $text,
+        :$width = self!gfx.canvas.width - self!indent - $!margin - $!x,
+        :$height = $!y - $!margin,
+        |c) {
+        PDF::Content::Text::Box.new: :$text, :indent($!x), :$.leading, :$.font, :$.font-size, :$width, :$height, |c;
     }
 
     method print(Str $text, Bool :$nl, |c) {
         $.say for ^$!pad;
         $!pad = 0;
-        my $gfx = self!gfx;
-        my $width = $!gfx.canvas.width - self!indent - $!margin - $!x;
-        my $height = $!y - $!margin;
-        my PDF::Content::Text::Box $tb = self!text-box: $text, :$width, :$height, |c;
+        my PDF::Content::Text::Box $tb = self!text-box: $text, |c;
+
         self!mark: {
-            $gfx.print: $tb, |self!text-position(), :$nl
+            self!gfx.print: $tb, |self!text-position(), :$nl
                 unless $.invisible;
         }
 
