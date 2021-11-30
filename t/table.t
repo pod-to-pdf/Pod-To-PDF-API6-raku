@@ -2,70 +2,18 @@ use v6;
 
 use Test;
 use Pod::To::PDF;
+use PDF::API6;
+use PDF::Tags;
 plan 1;
 
-my $markdown = q{asdf
+my $xml = q{<Blah></Blah>};
 
-<table>
-  <tr>
-    <td>A A</td>
-    <td>B B</td>
-    <td>C C</td>
-  </tr>
-  <tr>
-    <td>1 1</td>
-    <td>2 2</td>
-    <td>3 3</td>
-  </tr>
-</table>
+my PDF::API6 $pdf = pod2pdf($=pod);
+$pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
+$pdf.save-as: "t/table.pdf", :!info;
+my PDF::Tags $tags .= read: :$pdf;
 
-asdf
-
-<table>
-  <thead>
-    <tr>
-      <td>H 1</td>
-      <td>H 2</td>
-      <td>H 3</td>
-    </tr>
-  </thead>
-  <tr>
-    <td>A A</td>
-    <td>B B</td>
-    <td>C C</td>
-  </tr>
-  <tr>
-    <td>1 1</td>
-    <td>2 2</td>
-    <td>3 3</td>
-  </tr>
-</table>
-
-asdf
-
-<table>
-  <thead>
-    <tr>
-      <td>H11</td>
-      <td>HHH 222</td>
-      <td>H 3</td>
-    </tr>
-  </thead>
-  <tr>
-    <td>AAA</td>
-    <td>BB</td>
-    <td>C C C C</td>
-  </tr>
-  <tr>
-    <td>1 1</td>
-    <td>2 2 2 2</td>
-    <td>3 3</td>
-  </tr>
-</table>
-
-asdf};
-
-is pod2pdf($=pod).trim, $markdown.trim,
+is $tags[0].Str, $xml,
     'Converts tables correctly';
 
 =begin pod

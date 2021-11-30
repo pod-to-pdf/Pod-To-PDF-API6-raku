@@ -4,6 +4,7 @@ class Pod::To::PDF:ver<0.0.1> {
     use PDF::Tags;
     use PDF::Tags::Elem;
     use PDF::Content;
+    use PDF::Content::Color :&color;
     use PDF::Content::Tag :Tags;
     use PDF::Content::Text::Box;
     use Pod::To::PDF::Style;
@@ -47,6 +48,20 @@ class Pod::To::PDF:ver<0.0.1> {
         $obj.pdf;
     }
 
+    multi method pod2pdf(Pod::Block::Table $pod) {
+        $.pad: {
+            if $pod.caption -> $caption {
+                $.say: $caption;
+            }
+            # stub
+            $.say: $pod.headers.map({node2text($_)}).join: '|';
+            $.say('------------------');
+            for $pod.contents -> $row {
+                $.say: $row.map({node2text($_)}).join: '|';
+            }
+        }
+    }
+
     multi method pod2pdf(Pod::Block::Named $pod) {
         given $pod.name {
             when 'pod'  { $.pod2pdf($pod.contents)     }
@@ -68,9 +83,9 @@ class Pod::To::PDF:ver<0.0.1> {
     }
 
     multi method pod2pdf(Pod::Block::Code $pod) {
-        $.pad;
-        self!code: $pod.contents.join;
-        $.pad;
+        $.pad: {
+            self!code: $pod.contents.join;
+        }
     }
 
     multi method pod2pdf(Pod::Heading $pod) {
@@ -265,6 +280,9 @@ class Pod::To::PDF:ver<0.0.1> {
 
     multi method pad(&codez) { $.pad; &codez(); $.pad}
     multi method pad($!pad = 2) { }
+    method !text-box(Str $text, |c) {
+        PDF::Content::Text::Box.new: :$text, :indent($!x), :$.leading, :$.font, :$.font-size, |c;
+    }
 
     method print(Str $text, Bool :$nl, |c) {
         $.say for ^$!pad;
@@ -272,7 +290,7 @@ class Pod::To::PDF:ver<0.0.1> {
         my $gfx = self!gfx;
         my $width = $!gfx.canvas.width - self!indent - $!margin - $!x;
         my $height = $!y - $!margin;
-        my PDF::Content::Text::Box $tb .= new: :$text, :$width, :$height, :indent($!x), :$.leading, :$.font, :$.font-size, |c;
+        my PDF::Content::Text::Box $tb = self!text-box: $text, :$width, :$height, |c;
         self!mark: {
             $gfx.print: $tb, |self!text-position(), :$nl
                 unless $.invisible;
@@ -285,8 +303,8 @@ class Pod::To::PDF:ver<0.0.1> {
         else {
             # calculate text bounding box and advance x, y
             my $lines = +$tb.lines;
-            my @bbox = $!x + $!margin, $!y + $tb.content-height, $!x + $!margin, $tb.content-width;
-            @bbox[0] = $!margin if $lines > 1;
+            my $x0 = $!margin + self!indent;
+            $x0 += $!x if $lines <= 1;
             if $nl {
                 # advance to next line
                 $!x = 0;
@@ -297,7 +315,9 @@ class Pod::To::PDF:ver<0.0.1> {
                 $!x += $last-line.content-width + $tb.space-width;
             }
             $!y -= $tb.content-height;
-            @bbox;
+            my $y0 = $!y + $.line-height;
+
+            ($x0, $y0, $tb.content-width, $tb.content-height);
         }
     }
 
@@ -366,8 +386,19 @@ class Pod::To::PDF:ver<0.0.1> {
 
     method !code(Str $raw) {
         self!style: :mono, :indent, :tag(CODE), {
+            my constant \pad = 3;
             $.font-size *= .8;
-            $.say($raw, :verbatim);
+            my $gfx = self!gfx;
+            my (\x0, \y0, \w, \h) = @.say($raw, :verbatim);
+
+            $gfx.graphics: {
+                constant \pad = 2;
+                my @rect = (x0 - pad, y0 - pad, w + 2*pad, h + 2*pad);
+                .FillColor = color 0;
+                .FillAlpha = 0.1;
+                .Rectangle: |@rect;
+                .Fill;
+            }
         }
     }
 
