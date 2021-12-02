@@ -70,6 +70,38 @@ my $xml = q{<Document>
     </TBody>
   </Table>
   <P>asdf</P>
+  <Table>
+    <Caption>Table 4</Caption>
+    <THead>
+      <TR>
+        <TH>H 1</TH>
+        <TH>H 2</TH>
+        <TH>H 3</TH>
+        <TH>H 4</TH>
+      </TR>
+    </THead>
+    <TBody>
+      <TR>
+        <TD>Hello, I'm kinda long, I think</TD>
+        <TD>B B</TD>
+        <TD>C C</TD>
+        <TD/>
+      </TR>
+      <TR>
+        <TD>1 1</TD>
+        <TD>Me also, methinks</TD>
+        <TD>3 3</TD>
+        <TD>This should definitely wrap. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</TD>
+      </TR>
+      <TR>
+        <TD>ww</TD>
+        <TD>xx</TD>
+        <TD>yy</TD>
+        <TD>zz</TD>
+      </TR>
+    </TBody>
+  </Table>
+  <P>asdf</P>
 </Document>
 };
 
@@ -107,4 +139,14 @@ asdf
        2 2
 =end table
 asdf
+
+=begin table :caption('Table 4')
+H 1 | H 2 | H 3 | H 4
+====|=====|=====|====
+Hello, I'm kinda long, I think | B B | C C
+1 1 | Me also, methinks | 3 3 | This should definitely wrap. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+ww | xx | yy | zz
+=end table
+asdf
+
 =end pod

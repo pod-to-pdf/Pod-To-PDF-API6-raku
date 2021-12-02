@@ -6,6 +6,7 @@ class Pod::To::PDF:ver<0.0.1> {
     use PDF::Content::Color :&color;
     use PDF::Content::Tag :Tags;
     use PDF::Content::Text::Box;
+    use PDF::Destination :Fit;
     use Pod::To::PDF::Style;
     use Pod::To::Text;
     use PDF::Page;
@@ -47,57 +48,123 @@ class Pod::To::PDF:ver<0.0.1> {
         $obj.pdf;
     }
 
-    method !table-row(@row, :$tag!) {
-        temp $*tag .= TableRow;
-        my \cols = +@row;
-        my constant pad = 3;
-        my @overflow;
-        # simple fixed column widths, for now
-        my $x0 = $!margin + self!indent;
-        my \total-width = self!gfx.canvas.width - $x0;
-        my $width = total-width / cols  - pad * (cols-1);
-        my $row-height = 0;
-        for 0 ..^ cols {
-            if @row[$_] -> $text {
-                my $left = $x0 + $_ * ($width + pad);
-                my $tb = self!text-box: $text, :$width, :height(0);
-                temp $*tag .= add-kid: :name($tag);
-                self!mark: {
-                    self!gfx.print: $tb, :position[$left, $!y];
-                }
-                given $tb.height {
-                    $row-height = $_ if $_ > $row-height;
-                }
-                if $tb.overflow -> $overflow {
-                    @overflow[$_] = $overflow.join;
-                }
+    my constant vpad = 2;
+    my constant hpad = 10;
+    
+    sub fit-widths($width is copy, @widths) {
+        my $cell-width = $width / +@widths;
+        my @idx;
+
+        for @widths.pairs {
+            if .value <= $cell-width {
+                $width -= .value;
+            }
+            else {
+                @idx.push: .key;
             }
         }
-        if @overflow {
-            self!table-row(@overflow);
-        }
-        else {
-            $!y -= $row-height - pad;
+
+        if @idx {
+            if @idx < @widths {
+                my @over;
+                my $i = 0;
+                @over[$_] := @widths[ @idx[$_] ]
+                    for  ^+@idx;
+                fit-widths($width, @over);
+            }
+            else {
+                $_ = $cell-width
+                      for @widths;
+            }
         }
     }
 
+    method !table-row(@row, @widths, :$cell = TableData) {
+        if +@row -> \cols {
+            my @overflow;
+            # simple fixed column widths, for now
+            my $left = $!margin + self!indent;
+            my $row-height = 0;
+            my $height = $!y - $!margin;
+
+            for ^cols {
+                my $width = @widths[$_];
+                temp $*tag = $*tag[$_] // $*tag.add-kid: :name($cell);
+
+                if @row[$_] -> $tb is rw {
+                    if $tb.width > $width || $tb.height > $height {
+                        $tb .= clone: :$width, :$height;
+                    }
+                    self!mark: {
+                        self!gfx.print: $tb, :position[$left, $!y];
+                    }
+                    given $tb.content-height {
+                        $row-height = $_ if $_ > $row-height;
+                    }
+                    if $tb.overflow -> $overflow {
+                        my $text = $overflow.join;
+                        @overflow[$_] = $tb.clone: :$text, :$width, :height(0);
+                    }
+                }
+                $left += $width + hpad;
+            }
+            if @overflow {
+                self!table-row(@overflow, @widths, :$cell);
+            }
+            else {
+                $!y -= $row-height + vpad;
+            }
+        }
+    }
+
+    method !build-table($pod, @table) {
+        my $x0 = $!margin + self!indent;
+        my \total-width = self!gfx.canvas.width - $x0;
+        @table = ();
+ 
+        self!style: :bold, {
+            @table.push: $pod.headers.map: {
+                my $text = pod2text($_);
+                self!text-box: $text, :width(0), :height(0), :indent(0);
+            }
+        }
+ 
+        $pod.contents.map: {
+            @table.push: .map: {
+                my $text = pod2text($_);
+                self!text-box: $text, :width(0), :height(0), :indent(0);
+            }
+        }
+
+        my $cols = @table.max: *.Int;
+        my @widths = (^$cols).map: -> $col { @table.map({.[$col].?width // 0}).max };
+       fit-widths(total-width - hpad * (@widths-1), @widths);
+       @widths;
+    }
+
     multi method pod2pdf(Pod::Block::Table $pod) {
+        my @widths = self!build-table: $pod, my @table;
+        
         $.pad: {
             temp $*tag .= Table;
             if $pod.caption -> $caption {
                 temp $*tag .= Caption;
                 $.say: $caption;
             }
-            if $pod.headers.map: {node2text($_)} -> @hdr {
-                self!style: :bold, :tag(TableHead), {
-                    self!table-row: @hdr, :tag(TableHeader);
-                }
+            my PDF::Content::Text::Box @header = @table.shift.List;
+            if @header {
+                temp $*tag .= TableHead;
+                $*tag .= TableRow;
+                self!table-row: @header, @widths, :cell(TableHeader);
             }
-            if $pod.contents -> @rows {
-                self!style: :tag(TableBody), {
-                    for @rows {
-                        my @row = .map: {node2text($_)};
-                        self!table-row: @row, :tag(TableData);
+
+            if @table {
+                temp $*tag .= TableBody;
+                for @table {
+                    my @row = .List;
+                    if @row {
+                        temp $*tag .= TableRow;
+                        self!table-row: @row, @widths, :cell(TableData)
                     }
                 }
             }
@@ -162,23 +229,18 @@ class Pod::To::PDF:ver<0.0.1> {
             when 'L' {
                 my $x = $!x;
                 my $y = $!y;
-                my $text = $pod.contents.join;
-                # avoid line spanning, for now
+                my $text = pod2text($pod.contents);
+                my @rect;
                 self!mark: :name<Link>, {
-                    $.print($text);
+                    my ($x, $y, \w, \h) = @.print($text);
+                    $y -= ($.leading - 1) * $.font-size;
+                    @rect = self!gfx.base-coords: $x,  $y,  $x+w,  $y+h;
                 }
-                if $!y > $y {
-                    # got line break.
-                    # Todo /QuadPoint regions for line-spanning links
-                    # see PDF ISO32000 14.8.4.4.2 Link Elements
-                    $x = 0;
-                }
+                # Todo /QuadPoint regions for line-spanning links
+                # see PDF ISO32000 14.8.4.4.2 Link Elements
 
-                my @bbox = [$x + $!margin - 2, $!y - 2, $!x + $!margin, $!y + $.font-size];
                 given $pod.meta.head // $text -> $uri {
                     my $action = $!pdf.action: :$uri;
-                    $!page = self!gfx.canvas;
-                    my @rect = self!gfx.base-coords: |@bbox;
                     $!pdf.annotation(
                         :$!page,
                         :$action,
@@ -334,6 +396,8 @@ class Pod::To::PDF:ver<0.0.1> {
         $.say for ^$!pad;
         $!pad = 0;
         my PDF::Content::Text::Box $tb = self!text-box: $text, |c;
+        my $w = $tb.content-width;
+        my $h = $tb.content-height;
 
         self!mark: {
             self!gfx.print: $tb, |self!text-position(), :$nl
@@ -359,9 +423,9 @@ class Pod::To::PDF:ver<0.0.1> {
                 $!x += $last-line.content-width + $tb.space-width;
             }
             $!y -= $tb.content-height;
-            my $y0 = $!y + $.line-height;
+            my $y0 = $!y;
 
-            ($x0, $y0, $tb.content-width, $tb.content-height);
+            ($x0, $y0, $w, $h);
         }
     }
 
@@ -419,11 +483,10 @@ class Pod::To::PDF:ver<0.0.1> {
                 $.italic = True;
             }
 
-            my @bbox = @.say: $Title;
-
+            my (\x, \y, \w, \h) = @.say($Title);
+            my ($left, $top) = $!gfx.base-coords: x, y+h + $.line-height;
             # Register in table of contents
-            my @rect = $!gfx.base-coords: |@bbox;
-            my PDF::Destination $dest = $!pdf.destination: :$!page, :@rect;
+            my PDF::Destination $dest = $!pdf.destination: :$!page, :fit(FitBoxHoriz), :$top;
             self!add-toc-entry: { :$Title, :$dest  }, $level;
         }
     }
@@ -433,11 +496,11 @@ class Pod::To::PDF:ver<0.0.1> {
             my constant \pad = 3;
             $.font-size *= .8;
             my $gfx = self!gfx;
-            my (\x0, \y0, \w, \h) = @.say($raw, :verbatim);
+            my (\x, \y, \w, \h) = @.say($raw, :verbatim);
 
             $gfx.graphics: {
                 constant \pad = 2;
-                my @rect = (x0 - pad, y0 - pad, w + 2*pad, h + 2*pad);
+                my @rect = (x - pad, y - pad, w + 2*pad, h + 2*pad + $.line-height);
                 .FillColor = color 0;
                 .FillAlpha = 0.1;
                 .Rectangle: |@rect;
