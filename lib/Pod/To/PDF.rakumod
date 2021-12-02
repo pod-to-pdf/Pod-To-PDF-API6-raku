@@ -31,7 +31,8 @@ class Pod::To::PDF:ver<0.0.1> {
     }
 
     method render($class: $pod, |c) {
-	pod2pdf($pod, :$class, |c).Str;
+        my PDF::API6 $pdf = pod2pdf($pod, :$class, |c);
+	$pdf.Str;
     }
 
     proto method pod2pdf($p, |) {
@@ -184,10 +185,25 @@ class Pod::To::PDF:ver<0.0.1> {
                 }
             }
             default     {
-                warn $pod.WHAT.raku;
-                warn pod2text($pod.contents);
-                $.say($pod.name);
-                $.pod2pdf($pod.contents)
+                given $pod.name {
+                    when 'TITLE' {
+                        my $title = pod2text($pod.contents);
+                        $!pdf.info.Title = $title;
+                        $.pad: {
+                            self!heading: pod2text($pod.contents), :level(1);
+                        }
+                    }
+                    when 'SUBTITLE' {
+                        $.pad: {
+                            self!heading: pod2text($pod.contents), :level(2);
+                        }
+                    }
+                    default {
+                        warn "unrecognised POD named block: $_";
+                        $.say($_);
+                        $.pod2pdf($pod.contents);
+                    }
+                }
             }
         }
     }
@@ -391,7 +407,7 @@ class Pod::To::PDF:ver<0.0.1> {
     multi method pad($!pad = 2) { }
     method !text-box(
         Str $text,
-        :$width = self!gfx.canvas.width - self!indent - $!margin - $!x,
+        :$width = self!gfx.canvas.width - self!indent - 2*$!margin,
         :$height = $!y - $!margin,
         |c) {
         PDF::Content::Text::Box.new: :$text, :indent($!x), :$.leading, :$.font, :$.font-size, :$width, :$height, |c;
@@ -424,8 +440,10 @@ class Pod::To::PDF:ver<0.0.1> {
             }
             else {
                 # continue this line
-                my $last-line = $tb.lines.pop;
-                $!x += $last-line.content-width + $tb.space-width;
+                with $tb.lines.pop {
+                    $w = .content-width - .indent;
+                    $!x += $w + $tb.space-width;
+                }
             }
             $!y -= $tb.content-height;
             my $y0 = $!y;
@@ -475,11 +493,7 @@ class Pod::To::PDF:ver<0.0.1> {
         self!style: :tag('H' ~ $level), {
             my constant HeadingSizes = 20, 16, 13, 11.5, 10, 10;
             $.font-size = HeadingSizes[$level - 1];
-
-            given $level {
-                when 1 { self!new-page }
-                when 2 { $!pad++ }
-            }
+            self!new-page if $level == 1;
 
             if $level < 5 {
                 $.bold = True;
@@ -501,16 +515,18 @@ class Pod::To::PDF:ver<0.0.1> {
             my constant \pad = 5;
             $.font-size *= .8;
             my $gfx = self!gfx;
-            my (\x, \y, \w, \h) = @.say($raw, :verbatim);
+            my (\x, \y, \w, \h) = @.say($raw.chomp, :verbatim);
 
             my $x0 =  self!indent + $!margin + $!x;
             my $width = self!gfx.canvas.width - $!margin - $x0;
             $gfx.graphics: {
                 constant \pad = 2;
                 .FillColor = color 0;
+                .StrokeColor = color 0;
                 .FillAlpha = 0.1;
+                .StrokeAlpha = 0.25;
                 .Rectangle: $x0 - pad, y - pad, $width, h + 2*pad + $.line-height;
-                .Fill;
+                .paint: :fill, :stroke;
             }
         }
     }

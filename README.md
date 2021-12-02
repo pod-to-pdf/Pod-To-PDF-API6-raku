@@ -1,6 +1,6 @@
 # Pod::To::PDF (Raku)
 
-Render Pod as PDF.
+Render Pod as PDF. (Experimental)
 
 ## Installation
 
@@ -11,9 +11,9 @@ $ zef install Pod::To::PDF
 
 ## Usage:
 
-From command line:
+From command line (currently a bit awkward):
 
-    $ raku --doc=PDF lib/class.rakumod > class.pdf
+    $ raku --doc=PDF lib/class.rakumod | raku -e'"class.pdf".IO.spurt: $*IN.slurp.encode("latin-1")'
 
 From Raku:
 
