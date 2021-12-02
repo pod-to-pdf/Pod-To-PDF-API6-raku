@@ -22,7 +22,7 @@ class Pod::To::PDF:ver<0.0.1> {
     has Pod::To::PDF::Style $.style handles<font font-size leading line-height bold invisible italic mono> .= new;
     has $!x;
     has $!y;
-    has $.margin = 10;
+    has $.margin = 20;
     has UInt $!pad = 0;
     has @.toc;
 
@@ -119,7 +119,7 @@ class Pod::To::PDF:ver<0.0.1> {
 
     method !build-table($pod, @table) {
         my $x0 = $!margin + self!indent;
-        my \total-width = self!gfx.canvas.width - $x0;
+        my \total-width = self!gfx.canvas.width - $x0 - $!margin;
         @table = ();
  
         self!style: :bold, {
@@ -185,6 +185,7 @@ class Pod::To::PDF:ver<0.0.1> {
             }
             default     {
                 warn $pod.WHAT.raku;
+                warn pod2text($pod.contents);
                 $.say($pod.name);
                 $.pod2pdf($pod.contents)
             }
@@ -214,12 +215,16 @@ class Pod::To::PDF:ver<0.0.1> {
 
     multi method pod2pdf(Pod::FormattingCode $pod) {
         given $pod.type {
-            when 'I' {
-                temp $.italic = True;
-                $.pod2pdf($pod.contents);
-            }
             when 'B' {
                 temp $.bold = True;
+                $.pod2pdf($pod.contents);
+            }
+            when 'C' {
+                temp $.mono = True;
+                $.pod2pdf($pod.contents);
+            }
+            when 'I' {
+                temp $.italic = True;
                 $.pod2pdf($pod.contents);
             }
             when 'Z' {
@@ -493,17 +498,18 @@ class Pod::To::PDF:ver<0.0.1> {
 
     method !code(Str $raw) {
         self!style: :mono, :indent, :tag(CODE), {
-            my constant \pad = 3;
+            my constant \pad = 5;
             $.font-size *= .8;
             my $gfx = self!gfx;
             my (\x, \y, \w, \h) = @.say($raw, :verbatim);
 
+            my $x0 =  self!indent + $!margin + $!x;
+            my $width = self!gfx.canvas.width - $!margin - $x0;
             $gfx.graphics: {
                 constant \pad = 2;
-                my @rect = (x - pad, y - pad, w + 2*pad, h + 2*pad + $.line-height);
                 .FillColor = color 0;
                 .FillAlpha = 0.1;
-                .Rectangle: |@rect;
+                .Rectangle: $x0 - pad, y - pad, $width, h + 2*pad + $.line-height;
                 .Fill;
             }
         }

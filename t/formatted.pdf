@@ -31,7 +31,7 @@ endobj
   /Subtype /Link
   /A 5 0 R
   /P 3 0 R
-  /Rect [ 118.89 639 325.56 650 ]
+  /Rect [ 128.89 619 335.56 630 ]
 >>
 endobj
 
@@ -45,7 +45,7 @@ endobj
   /Subtype /Link
   /A 7 0 R
   /P 3 0 R
-  /Rect [ 161.11 606 339.44 617 ]
+  /Rect [ 171.11 586 349.44 597 ]
 >>
 endobj
 
@@ -57,90 +57,90 @@ endobj
 << /Length 2006 >> stream
 /P << /MCID 0 >> BDC
   BT
-    1 0 0 1 10 772 Tm
+    1 0 0 1 20 752 Tm
     /F1 10 Tf
     (This text is of) Tj
   ET
 EMC
 /P << /MCID 1 >> BDC
   BT
-    1 0 0 1 10 772 Tm
+    1 0 0 1 20 752 Tm
     [ -5778 (minor significance) ] TJ
   ET
 EMC
 /P << /MCID 2 >> BDC
   BT
-    1 0 0 1 10 772 Tm
+    1 0 0 1 20 752 Tm
     [ -19277 (.) ] TJ
   ET
 EMC
 /P << /MCID 3 >> BDC
   BT
-    1 0 0 1 10 750 Tm
+    1 0 0 1 20 730 Tm
     (This text is of) Tj
   ET
 EMC
 /P << /MCID 4 >> BDC
   BT
-    1 0 0 1 10 750 Tm
+    1 0 0 1 20 730 Tm
     /F2 10 Tf
     [ -5778 (major significance) ] TJ
   ET
 EMC
 /P << /MCID 5 >> BDC
   BT
-    1 0 0 1 10 750 Tm
+    1 0 0 1 20 730 Tm
     /F1 10 Tf
     [ -19278 (.) ] TJ
   ET
 EMC
 /P << /MCID 6 >> BDC
   BT
-    1 0 0 1 10 728 Tm
+    1 0 0 1 20 708 Tm
     (This text is of) Tj
   ET
 EMC
 /P << /MCID 7 >> BDC
   BT
-    1 0 0 1 10 728 Tm
+    1 0 0 1 20 708 Tm
     /F3 10 Tf
     [ -5778 (fundamental significance) ] TJ
   ET
 EMC
 /P << /MCID 8 >> BDC
   BT
-    1 0 0 1 10 728 Tm
+    1 0 0 1 20 708 Tm
     /F1 10 Tf
     [ -22501 (.) ] TJ
   ET
 EMC
 /P << /MCID 9 >> BDC
   BT
-    1 0 0 1 10 706 Tm
+    1 0 0 1 20 686 Tm
     (This text is verbatim C<with> B<disarmed> Z<formatting>.) Tj
   ET
 EMC
 /P << /MCID 10 >> BDC
   BT
-    1 0 0 1 10 684 Tm
+    1 0 0 1 20 664 Tm
     (This text is) Tj
   ET
 EMC
 /P << /MCID 11 >> BDC
   BT
-    1 0 0 1 10 684 Tm
+    1 0 0 1 20 664 Tm
     [ -4695 (to be replaced) ] TJ
   ET
 EMC
 /P << /MCID 12 >> BDC
   BT
-    1 0 0 1 10 684 Tm
+    1 0 0 1 20 664 Tm
     [ -15249 (.) ] TJ
   ET
 EMC
 /P << /MCID 13 >> BDC
   BT
-    1 0 0 1 10 662 Tm
+    1 0 0 1 20 642 Tm
     (This text is) Tj
   ET
 EMC
@@ -148,25 +148,25 @@ EMC
 EMC
 /P << /MCID 15 >> BDC
   BT
-    1 0 0 1 10 662 Tm
+    1 0 0 1 20 642 Tm
     [ -12084 (invisible.) ] TJ
   ET
 EMC
 /P << /MCID 16 >> BDC
   BT
-    1 0 0 1 10 640 Tm
+    1 0 0 1 20 620 Tm
     (This text contains a link to) Tj
   ET
 EMC
 /Link << /MCID 17 >> BDC
   BT
-    1 0 0 1 10 640 Tm
+    1 0 0 1 20 620 Tm
     [ -10889 (http://www.google.com/) ] TJ
   ET
 EMC
 /P << /MCID 18 >> BDC
   BT
-    1 0 0 1 10 640 Tm
+    1 0 0 1 20 620 Tm
     [ -31806 ] TJ
     11 TL
     T*
@@ -175,19 +175,19 @@ EMC
 EMC
 /P << /MCID 19 >> BDC
   BT
-    1 0 0 1 10 607 Tm
+    1 0 0 1 20 587 Tm
     (This text contains a link with label to) Tj
   ET
 EMC
 /Link << /MCID 20 >> BDC
   BT
-    1 0 0 1 10 607 Tm
+    1 0 0 1 20 587 Tm
     [ -15111 (google) ] TJ
   ET
 EMC
 /P << /MCID 21 >> BDC
   BT
-    1 0 0 1 10 607 Tm
+    1 0 0 1 20 587 Tm
     [ -33194 ] TJ
     T*
     (.) Tj

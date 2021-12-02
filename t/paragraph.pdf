@@ -28,44 +28,44 @@ endobj
 << /Length 615 >> stream
 /P << /MCID 0 >> BDC
   BT
-    1 0 0 1 10 772 Tm
+    1 0 0 1 20 752 Tm
     /F1 10 Tf
     (This is all a paragraph.) Tj
   ET
 EMC
 /P << /MCID 1 >> BDC
   BT
-    1 0 0 1 10 750 Tm
+    1 0 0 1 20 730 Tm
     (This is the next paragraph.) Tj
   ET
 EMC
 /P << /MCID 2 >> BDC
   BT
-    1 0 0 1 10 728 Tm
+    1 0 0 1 20 708 Tm
     (This is the third paragraph.) Tj
   ET
 EMC
 /P << /MCID 3 >> BDC
   BT
-    1 0 0 1 10 706 Tm
+    1 0 0 1 20 686 Tm
     (Abbreviated paragraph) Tj
   ET
 EMC
 /P << /MCID 4 >> BDC
   BT
-    1 0 0 1 10 684 Tm
+    1 0 0 1 20 664 Tm
     (Paragraph paragraph) Tj
   ET
 EMC
 /P << /MCID 5 >> BDC
   BT
-    1 0 0 1 10 662 Tm
+    1 0 0 1 20 642 Tm
     (Block) Tj
   ET
 EMC
 /P << /MCID 6 >> BDC
   BT
-    1 0 0 1 10 640 Tm
+    1 0 0 1 20 620 Tm
     (paragraph) Tj
   ET
 EMC
