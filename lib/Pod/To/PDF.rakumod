@@ -6,10 +6,12 @@ class Pod::To::PDF:ver<0.0.1> {
     use PDF::Content::Color :&color;
     use PDF::Content::Tag :Tags;
     use PDF::Content::Text::Box;
-    use PDF::Destination :Fit;
     use Pod::To::PDF::Style;
     use Pod::To::Text;
+    # PDF::Class
+    use PDF::Destination :Fit;
     use PDF::Page;
+    use PDF::StructElem;
 
     subset Level of Int:D where 1..6;
 
@@ -19,7 +21,7 @@ class Pod::To::PDF:ver<0.0.1> {
     has PDF::Page $!page;
     has PDF::Content $!gfx;
     has UInt $!indent = 0;
-    has Pod::To::PDF::Style $.style handles<font font-size leading line-height bold invisible italic mono> .= new;
+    has Pod::To::PDF::Style $.style handles<font font-size leading line-height bold invisible italic mono underline> .= new;
     has $!x;
     has $!y;
     has $.margin = 20;
@@ -80,24 +82,27 @@ class Pod::To::PDF:ver<0.0.1> {
         }
     }
 
-    method !table-row(@row, @widths, :$cell = TableData) {
+    method !table-row(@row, @widths, Bool :$header) {
         if +@row -> \cols {
             my @overflow;
             # simple fixed column widths, for now
-            my $left = $!margin + self!indent;
+            my $tab = $!margin + self!indent;
             my $row-height = 0;
             my $height = $!y - $!margin;
+            my $name = $header ?? TableHeader !! TableData;
 
             for ^cols {
                 my $width = @widths[$_];
-                temp $*tag = $*tag[$_] // $*tag.add-kid: :name($cell);
+                temp $*tag = $*tag[$_] // $*tag.add-kid: :$name;
 
                 if @row[$_] -> $tb is rw {
                     if $tb.width > $width || $tb.height > $height {
                         $tb .= clone: :$width, :$height;
                     }
                     self!mark: {
-                        self!gfx.print: $tb, :position[$left, $!y];
+                        self!gfx.print: $tb, :position[$tab, $!y];
+                        self!underline: $tb, :$tab, :$width
+                            if $header;
                     }
                     given $tb.content-height {
                         $row-height = $_ if $_ > $row-height;
@@ -107,15 +112,20 @@ class Pod::To::PDF:ver<0.0.1> {
                         @overflow[$_] = $tb.clone: :$text, :$width, :height(0);
                     }
                 }
-                $left += $width + hpad;
+                $tab += $width + hpad;
             }
             if @overflow {
-                self!table-row(@overflow, @widths, :$cell);
+                self!table-row(@overflow, @widths, :$header);
             }
             else {
                 $!y -= $row-height + vpad;
             }
         }
+    }
+
+    method !table-cell($pod) {
+        my $text = pod2text($pod);
+        self!text-box: $text, :width(0), :height(0), :indent(0);
     }
 
     method !build-table($pod, @table) {
@@ -124,17 +134,13 @@ class Pod::To::PDF:ver<0.0.1> {
         @table = ();
  
         self!style: :bold, {
-            @table.push: $pod.headers.map: {
-                my $text = pod2text($_);
-                self!text-box: $text, :width(0), :height(0), :indent(0);
-            }
+            my @row = $pod.headers.map: { self!table-cell($_) }
+            @table.push: @row;
         }
  
         $pod.contents.map: {
-            @table.push: .map: {
-                my $text = pod2text($_);
-                self!text-box: $text, :width(0), :height(0), :indent(0);
-            }
+            my @row = .map: { self!table-cell($_) }
+            @table.push: @row;
         }
 
         my $cols = @table.max: *.Int;
@@ -156,7 +162,7 @@ class Pod::To::PDF:ver<0.0.1> {
             if @header {
                 temp $*tag .= TableHead;
                 $*tag .= TableRow;
-                self!table-row: @header, @widths, :cell(TableHeader);
+                self!table-row: @header, @widths, :header;
             }
 
             if @table {
@@ -165,7 +171,7 @@ class Pod::To::PDF:ver<0.0.1> {
                     my @row = .List;
                     if @row {
                         temp $*tag .= TableRow;
-                        self!table-row: @row, @widths, :cell(TableData)
+                        self!table-row: @row, @widths;
                     }
                 }
             }
@@ -241,6 +247,10 @@ class Pod::To::PDF:ver<0.0.1> {
             }
             when 'I' {
                 temp $.italic = True;
+                $.pod2pdf($pod.contents);
+            }
+            when 'U' {
+                temp $.underline = True;
                 $.pod2pdf($pod.contents);
             }
             when 'Z' {
@@ -420,9 +430,12 @@ class Pod::To::PDF:ver<0.0.1> {
         my $w = $tb.content-width;
         my $h = $tb.content-height;
 
-        self!mark: {
-            self!gfx.print: $tb, |self!text-position(), :$nl
-                unless $.invisible;
+        unless $.invisible {
+            self!mark: {
+                self!gfx.print: $tb, |self!text-position(), :$nl;
+                self!underline: $tb
+                    if $.underline;
+            }
         }
 
         if $tb.overflow {
@@ -489,8 +502,8 @@ class Pod::To::PDF:ver<0.0.1> {
         }
     }
 
-    method !heading(Str:D $Title, Level :$level = 2) {
-        self!style: :tag('H' ~ $level), {
+    method !heading(Str:D $Title, Level :$level = 2, :$underline = $level == 1) {
+        self!style: :tag('H' ~ $level), :$underline, {
             my constant HeadingSizes = 20, 16, 13, 11.5, 10, 10;
             $.font-size = HeadingSizes[$level - 1];
             self!new-page if $level == 1;
@@ -506,7 +519,8 @@ class Pod::To::PDF:ver<0.0.1> {
             my ($left, $top) = $!gfx.base-coords: x, y+h + $.line-height;
             # Register in table of contents
             my PDF::Destination $dest = $!pdf.destination: :$!page, :fit(FitBoxHoriz), :$top;
-            self!add-toc-entry: { :$Title, :$dest  }, $level;
+            my PDF::StructElem $SE = $*tag.cos;
+            self!add-toc-entry: { :$Title, :$dest, :$SE  }, $level;
         }
     }
 
@@ -528,6 +542,28 @@ class Pod::To::PDF:ver<0.0.1> {
                 .Rectangle: $x0 - pad, y - pad, $width, h + 2*pad + $.line-height;
                 .paint: :fill, :stroke;
             }
+        }
+    }
+
+    method !line($x0, $y0, $x1, $y1 = $y0, :$linewidth = 1) {
+        given self!gfx {
+            .Save;
+            .SetLineWidth: $linewidth;
+            .MoveTo: $x0, $y0;
+            .LineTo: $x1, $y1;
+            .Stroke;
+            .Restore;
+        }
+    }
+
+    method !underline(PDF::Content::Text::Box $tb, :$tab = $!margin, :$width) {
+        my $y = $!y + $tb.underline-position;
+        my $linewidth = $tb.underline-thickness;
+        for $tb.lines {
+            my $x0 = $tab + .indent;
+            my $x1 = $tab + ($width // .content-width);
+            self!line($x0, $y, $x1, :$linewidth);
+            $y -= .height * $tb.leading;
         }
     }
 
@@ -565,7 +601,7 @@ Pod::To::PDF - Render Pod as PDF
 =begin SYNOPSIS
 From command line:
 
-    $ raku --doc=PDF lib/to/class.rakumod >to-class.pdf
+    $ raku --doc=PDF lib/to/class.rakumod | raku -e'"class.pdf".IO.spurt: $*IN.slurp.encode("latin-1")' > to-class.pdf
 
 From Raku:
     =begin code :lang<raku>
