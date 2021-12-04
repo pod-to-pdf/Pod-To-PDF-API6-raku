@@ -11,9 +11,9 @@ $ zef install Pod::To::PDF
 
 ## Usage:
 
-From command line (currently a bit awkward):
+From command line:
 
-    $ raku --doc=PDF lib/class.rakumod | raku -e'"class.pdf".IO.spurt: $*IN.slurp.encode("latin-1")'
+    $ pod2pdf lib/class.rakumod > class.pdf
 
 From Raku:
 

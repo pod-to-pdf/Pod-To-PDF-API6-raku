@@ -26,9 +26,11 @@ class Pod::To::PDF:ver<0.0.1> {
     has $!y;
     has $.margin = 20;
     has UInt $!pad = 0;
+    has Bool $.contents = True;
     has @.toc;
 
-    submethod TWEAK {
+    submethod TWEAK(:$title) {
+        self.title = $_ with $title;
         $!pdf.creator.push: "{self.^name}-{self.^ver}";
     }
 
@@ -41,12 +43,12 @@ class Pod::To::PDF:ver<0.0.1> {
         {*}
     }
 
-    sub pod2pdf($pod, :$class = $?CLASS, :$toc = True) is export {
-        my $obj = $class.new;
+    our sub pod2pdf($pod, :$class = $?CLASS, |c) is export {
+        my $obj = $class.new: |c;
         my $*tag = $obj.root;
         $obj.pod2pdf($pod);
-        if $toc && $obj.toc {
-            $obj.pdf.outlines.kids = $obj.toc;
+        if $obj.toc -> $toc {
+            $obj.pdf.outlines.kids = $toc;
         }
         $obj.pdf;
     }
@@ -178,6 +180,8 @@ class Pod::To::PDF:ver<0.0.1> {
         }
     }
 
+    method title is rw { $!pdf.info.Title; }
+
     multi method pod2pdf(Pod::Block::Named $pod) {
         given $pod.name {
             when 'pod'  { $.pod2pdf($pod.contents)     }
@@ -193,10 +197,10 @@ class Pod::To::PDF:ver<0.0.1> {
             default     {
                 given $pod.name {
                     when 'TITLE' {
-                        my $title = pod2text($pod.contents);
-                        $!pdf.info.Title = $title;
+                        my Str $title = pod2text($pod.contents);
+                        self.title //= $title;
                         $.pad: {
-                            self!heading: pod2text($pod.contents), :level(1);
+                            self!heading: $title, :level(1);
                         }
                     }
                     when 'SUBTITLE' {
@@ -516,11 +520,14 @@ class Pod::To::PDF:ver<0.0.1> {
             }
 
             my (\x, \y, \w, \h) = @.say($Title);
+
             my ($left, $top) = $!gfx.base-coords: x, y+h + $.line-height;
-            # Register in table of contents
-            my PDF::Destination $dest = $!pdf.destination: :$!page, :fit(FitBoxHoriz), :$top;
-            my PDF::StructElem $SE = $*tag.cos;
-            self!add-toc-entry: { :$Title, :$dest, :$SE  }, $level;
+            if $!contents {
+                # Register in table of contents
+                my PDF::Destination $dest = $!pdf.destination: :$!page, :fit(FitBoxHoriz), :$top;
+                my PDF::StructElem $SE = $*tag.cos;
+                self!add-toc-entry: { :$Title, :$dest, :$SE  }, $level;
+            }
         }
     }
 
@@ -623,18 +630,27 @@ From Raku:
 =end EXPORTS
 
 =begin DESCRIPTION
-This is a fully featured module for rendering POD to PDF.
+This is an experimental module for rendering POD to PDF.
 
-The pdf2pdf() function returns a PDF::API6 object which can be further
-manipulated, or saved to a PDF file.
+From command line:
+    =begin code :lang<shell>
+    $ pod2pdf.raku class.pod > class.pdf
+    =end code
+From Raku code, the C<pod2pdf> function returns a PDF::API6 object which can
+be further manipulated, or saved to a PDF file.
 
+    =begin code :lang<raku>
+    use Pod::To::PDF;
     use PDF::API6;
+ 
+    =NAME
+    foobar.raku
+
+    =SYNOPSIS
+        foobarraku <options> files ...
+
     my PDF::API6 $pdf = pod2pdf($=pod);
     $pdf.save-as: "class.pdf"
-                
-The render() method returns a byte string which can be written to a
-`latin-1` encoded file.
-
-    "class.pdf".IO.spurt: Pod::To::PDF.render($=pod), :enc<latin-1>;
+    =end code
 
 =end DESCRIPTION
