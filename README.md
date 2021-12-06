@@ -13,7 +13,7 @@ $ zef install Pod::To::PDF
 
 From command line:
 
-    $ pod2pdf lib/class.rakumod > class.pdf
+    $ pod2pdf.raku lib/class.rakumod > class.pdf
 
 From Raku:
 

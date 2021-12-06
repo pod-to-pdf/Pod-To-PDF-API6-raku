@@ -9,6 +9,7 @@ class Pod::To::PDF:ver<0.0.1> {
     use Pod::To::PDF::Style;
     use Pod::To::Text;
     # PDF::Class
+    use PDF::Annot::Link;
     use PDF::Destination :Fit;
     use PDF::Page;
     use PDF::StructElem;
@@ -27,7 +28,8 @@ class Pod::To::PDF:ver<0.0.1> {
     has $.margin = 20;
     has UInt $!pad = 0;
     has Bool $.contents = True;
-    has @.toc;
+    has @.toc; # table of contents
+    has PDF::Annot::Link %!refs;
 
     submethod TWEAK(:$title) {
         self.title = $_ with $title;
@@ -82,6 +84,13 @@ class Pod::To::PDF:ver<0.0.1> {
                       for @widths;
             }
         }
+    }
+
+    sub dest-name(Str:D $_) {
+        .lc
+        .trim
+        .subst(/\s+/, '-', :g)
+        .subst('#', '', :g);
     }
 
     method !table-row(@row, @widths, Bool :$header) {
@@ -275,8 +284,10 @@ class Pod::To::PDF:ver<0.0.1> {
                 # see PDF ISO32000 14.8.4.4.2 Link Elements
 
                 given $pod.meta.head // $text -> $uri {
-                    my $action = $!pdf.action: :$uri;
-                    $!pdf.annotation(
+                    my $action = $uri.starts-with('#')
+                         ?? $!pdf.action: :destination(dest-name($uri))
+                         !! $!pdf.action: :$uri;
+                    my PDF::Annot::Link $link = $!pdf.annotation(
                         :$!page,
                         :$action,
                         :@rect,
@@ -522,9 +533,10 @@ class Pod::To::PDF:ver<0.0.1> {
             my (\x, \y, \w, \h) = @.say($Title);
 
             my ($left, $top) = $!gfx.base-coords: x, y+h + $.line-height;
+            # Register in table of contents
+            my $name = dest-name($Title);
+            my Str $dest = $!pdf.destination: :$name, :$!page, :fit(FitBoxHoriz), :$top;
             if $!contents {
-                # Register in table of contents
-                my PDF::Destination $dest = $!pdf.destination: :$!page, :fit(FitBoxHoriz), :$top;
                 my PDF::StructElem $SE = $*tag.cos;
                 self!add-toc-entry: { :$Title, :$dest, :$SE  }, $level;
             }
