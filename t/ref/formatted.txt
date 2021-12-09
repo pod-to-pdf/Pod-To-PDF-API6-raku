@@ -1,0 +1,15 @@
+This text is of minor significance.
+
+This text is of major significance.
+
+This text is of fundamental significance.
+
+This text is verbatim C<with> B<disarmed> Z<formatting>.
+
+This text is to be replaced.
+
+This text is blablainvisible.
+
+This text contains a link to http://www.google.com/.
+
+This text contains a link with label to google.

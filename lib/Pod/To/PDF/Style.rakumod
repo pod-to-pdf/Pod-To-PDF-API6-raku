@@ -7,8 +7,8 @@ has Bool $.bold;
 has Bool $.italic;
 has Bool $.underline;
 has Bool $.mono;
-has Bool $.invisible;
 has Numeric $.font-size = 10;
+has UInt $.lines-before = 1;
 
 method leading { 1.1 }
 method line-height {

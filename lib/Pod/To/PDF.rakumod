@@ -22,23 +22,22 @@ class Pod::To::PDF:ver<0.0.1> {
     has PDF::Page $!page;
     has PDF::Content $!gfx;
     has UInt $!indent = 0;
-    has Pod::To::PDF::Style $.style handles<font font-size leading line-height bold invisible italic mono underline> .= new;
+    has Pod::To::PDF::Style $.style handles<font font-size leading line-height bold italic mono underline lines-before> .= new;
     has $!x;
     has $!y;
     has $.margin = 20;
     has UInt $!pad = 0;
     has Bool $.contents = True;
     has @.toc; # table of contents
-    has PDF::Annot::Link %!refs;
 
     submethod TWEAK(:$title) {
         self.title = $_ with $title;
         $!pdf.creator.push: "{self.^name}-{self.^ver}";
     }
 
+    # raku --doc=PDF encodes as utf-8, but we're binary
     method render($class: $pod, |c) {
-        my PDF::API6 $pdf = pod2pdf($pod, :$class, |c);
-	$pdf.Str;
+        fail "please use pod2pdf.raku script to render Pod as PDF";
     }
 
     proto method pod2pdf($p, |) {
@@ -87,9 +86,8 @@ class Pod::To::PDF:ver<0.0.1> {
     }
 
     sub dest-name(Str:D $_) {
-        .lc
         .trim
-        .subst(/\s+/, '-', :g)
+        .subst(/\s+/, '_', :g)
         .subst('#', '', :g);
     }
 
@@ -101,6 +99,7 @@ class Pod::To::PDF:ver<0.0.1> {
             my $row-height = 0;
             my $height = $!y - $!margin;
             my $name = $header ?? TableHeader !! TableData;
+            my $head-space = $.line-height - $.font-size;
 
             for ^cols {
                 my $width = @widths[$_];
@@ -112,8 +111,11 @@ class Pod::To::PDF:ver<0.0.1> {
                     }
                     self!mark: {
                         self!gfx.print: $tb, :position[$tab, $!y];
-                        self!underline: $tb, :$tab, :$width
-                            if $header;
+                        if $header {
+                            # draw underline
+                            my $y = $!y + $tb.underline-position - $head-space;
+                            self!line: $tab, $y, $tab + $width;
+                        }
                     }
                     given $tb.content-height {
                         $row-height = $_ if $_ > $row-height;
@@ -130,6 +132,7 @@ class Pod::To::PDF:ver<0.0.1> {
             }
             else {
                 $!y -= $row-height + vpad;
+                $!y -= $head-space if $header;
             }
         }
     }
@@ -144,7 +147,7 @@ class Pod::To::PDF:ver<0.0.1> {
         my \total-width = self!gfx.canvas.width - $x0 - $!margin;
         @table = ();
  
-        self!style: :bold, {
+        self!style: :bold, :lines-before(3), {
             my @row = $pod.headers.map: { self!table-cell($_) }
             @table.push: @row;
         }
@@ -267,8 +270,7 @@ class Pod::To::PDF:ver<0.0.1> {
                 $.pod2pdf($pod.contents);
             }
             when 'Z' {
-                temp $.invisible = True;
-                $.pod2pdf($pod.contents);
+                # invisable
             }
             when 'L' {
                 my $x = $!x;
@@ -370,7 +372,7 @@ class Pod::To::PDF:ver<0.0.1> {
         $decl //= $type;
 
         $.pad: {
-            self!style: :tag(Section), {
+            self!style: :tag(Section), :lines-before(3), {
                 self!heading($type.tclc ~ ' ' ~ $name, :$level);
 
                 if $code {
@@ -379,7 +381,7 @@ class Pod::To::PDF:ver<0.0.1> {
                 }
 
                 if $pod.contents {
-                    $.pad(1);
+                    $.pad;
                     self!style: :tag(Paragraph), {
                         $.pod2pdf($pod.contents);
                     }
@@ -445,12 +447,10 @@ class Pod::To::PDF:ver<0.0.1> {
         my $w = $tb.content-width;
         my $h = $tb.content-height;
 
-        unless $.invisible {
-            self!mark: {
-                self!gfx.print: $tb, |self!text-position(), :$nl;
-                self!underline: $tb
-                    if $.underline;
-            }
+        self!mark: {
+            self!gfx.print: $tb, |self!text-position(), :$nl;
+            self!underline: $tb
+                if $.underline;
         }
 
         if $tb.overflow {
@@ -521,7 +521,12 @@ class Pod::To::PDF:ver<0.0.1> {
         self!style: :tag('H' ~ $level), :$underline, {
             my constant HeadingSizes = 20, 16, 13, 11.5, 10, 10;
             $.font-size = HeadingSizes[$level - 1];
-            self!new-page if $level == 1;
+            if $level == 1 {
+                self!new-page;
+            }
+            elsif $level == 2 {
+                $.lines-before = 3;
+            }
 
             if $level < 5 {
                 $.bold = True;
@@ -543,14 +548,16 @@ class Pod::To::PDF:ver<0.0.1> {
         }
     }
 
-    method !code(Str $raw) {
+    method !code(Str $raw is copy) {
         self!style: :mono, :indent, :tag(CODE), {
+            $raw .= chomp;
+            $.lines-before = min(+$raw.lines, 3);
             my constant \pad = 5;
             $.font-size *= .8;
             my $gfx = self!gfx;
             my (\x, \y, \w, \h) = @.say($raw.chomp, :verbatim);
 
-            my $x0 =  self!indent + $!margin + $!x;
+            my $x0 =  self!indent + $!margin;
             my $width = self!gfx.canvas.width - $!margin - $x0;
             $gfx.graphics: {
                 constant \pad = 2;
@@ -587,7 +594,8 @@ class Pod::To::PDF:ver<0.0.1> {
     }
 
     method !gfx {
-        if !$!page.defined || $!y <= 2 * $!margin {
+        my $y = $!y - $.lines-before * $.line-height;
+        if !$!page.defined || $y <= 2 * $!margin {
             self!new-page;
         }
         elsif $!x > 0 && $!x > $!gfx.canvas.width - self!indent - $!margin {
