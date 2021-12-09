@@ -16,6 +16,7 @@ my $xml = q{<Document>
   <P>This text is invisible.</P>
   <P>This text contains a link to http://www.google.com/.</P>
   <P>This text contains a link with label to google.</P>
+  <P>A tap on an on demand supply will initiate the production of values, and tapping the supply again may result in a new set of values. For example, Supply.interval produces a fresh timer with the appropriate interval each time it is tapped. If the tap is closed, the timer simply stops emitting values to that tap.</P>
 </Document>
 };
 
@@ -43,4 +44,11 @@ This text is Z<blabla>invisible.
 This text contains a link to L<http://www.google.com/>.
 
 This text contains a link with label to L<google|http://www.google.com/>.
+
+A tap on an C<on demand> supply will initiate the production of values, and
+tapping the supply again may result in a new set of values. For example,
+C<Supply.interval> produces a fresh timer with the appropriate interval each
+time it is tapped. If the tap is closed, the timer simply stops emitting values
+to that tap.
+
 =end pod

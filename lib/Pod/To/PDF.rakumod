@@ -446,9 +446,10 @@ class Pod::To::PDF:ver<0.0.1> {
         my PDF::Content::Text::Box $tb = self!text-box: $text, |c;
         my $w = $tb.content-width;
         my $h = $tb.content-height;
+        my Pair $pos = self!text-position();
 
         self!mark: {
-            self!gfx.print: $tb, |self!text-position(), :$nl;
+            self!gfx.print: $tb, |$pos, :$nl;
             self!underline: $tb
                 if $.underline;
         }
@@ -460,13 +461,13 @@ class Pod::To::PDF:ver<0.0.1> {
         else {
             # calculate text bounding box and advance x, y
             my $lines = +$tb.lines;
-            my $x0 = $!margin + self!indent;
-            $x0 += $!x if $lines <= 1;
+            my $x0 = $pos.value[0];
             if $nl {
                 # advance to next line
                 $!x = 0;
             }
             else {
+                $!x = 0 if $tb.lines > 1;
                 # continue this line
                 with $tb.lines.pop {
                     $w = .content-width - .indent;
@@ -475,7 +476,6 @@ class Pod::To::PDF:ver<0.0.1> {
             }
             $!y -= $tb.content-height;
             my $y0 = $!y;
-
             ($x0, $y0, $w, $h);
         }
     }
