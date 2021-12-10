@@ -22,7 +22,7 @@ class Pod::To::PDF:ver<0.0.1> {
     has PDF::Page $!page;
     has PDF::Content $!gfx;
     has UInt $!indent = 0;
-    has Pod::To::PDF::Style $.style handles<font font-size leading line-height bold italic mono underline lines-before> .= new;
+    has Pod::To::PDF::Style $.style handles<font font-size leading line-height bold italic mono underline lines-before link> .= new;
     has $!x;
     has $!y;
     has $.margin = 20;
@@ -37,7 +37,7 @@ class Pod::To::PDF:ver<0.0.1> {
 
     # raku --doc=PDF encodes as utf-8, but we're binary
     method render($class: $pod, |c) {
-        fail "please use pod2pdf.raku script to render Pod as PDF";
+        fail "please use script pod2pdf.raku to render Pod as PDF";
     }
 
     proto method pod2pdf($p, |) {
@@ -273,27 +273,15 @@ class Pod::To::PDF:ver<0.0.1> {
                 # invisable
             }
             when 'L' {
-                my $x = $!x;
-                my $y = $!y;
                 my $text = pod2text($pod.contents);
-                my @rect;
-                self!mark: :name<Link>, {
-                    my ($x, $y, \w, \h) = @.print($text);
-                    $y -= ($.leading - 1) * $.font-size;
-                    @rect = self!gfx.base-coords: $x,  $y,  $x+w,  $y+h;
-                }
-                # Todo /QuadPoint regions for line-spanning links
-                # see PDF ISO32000 14.8.4.4.2 Link Elements
-
                 given $pod.meta.head // $text -> $uri {
-                    my $action = $uri.starts-with('#')
-                         ?? $!pdf.action: :destination(dest-name($uri))
-                         !! $!pdf.action: :$uri;
-                    my PDF::Annot::Link $link = $!pdf.annotation(
-                        :$!page,
-                        :$action,
-                        :@rect,
-                    );
+                    temp $.link = $uri.starts-with('#')
+                        ?? $!pdf.action: :destination(dest-name($uri))
+                        !! $!pdf.action: :$uri;
+
+                    self!mark: :name<Link>, {
+                        $.print($text);
+                    }
                 }
             }
             default {
@@ -447,12 +435,25 @@ class Pod::To::PDF:ver<0.0.1> {
         my $w = $tb.content-width;
         my $h = $tb.content-height;
         my Pair $pos = self!text-position();
+        my $gfx = self!gfx;
+
+        if $.link {
+            use PDF::Content::Color :ColorName;
+            $gfx.Save;
+            given color Blue {
+                $gfx.FillColor = $_;
+                $gfx.StrokeColor = $_;
+            }
+        }
 
         self!mark: {
-            self!gfx.print: $tb, |$pos, :$nl;
+            $gfx.print: $tb, |$pos, :$nl;
             self!underline: $tb
-                if $.underline;
+                if $.underline || $.link;
+            self!link: $tb if $.link;
         }
+
+        $gfx.Restore if $.link;
 
         if $tb.overflow {
             $.say() unless $nl;
@@ -468,6 +469,7 @@ class Pod::To::PDF:ver<0.0.1> {
             }
             else {
                 $!x = 0 if $tb.lines > 1;
+                $x0 += $!x;
                 # continue this line
                 with $tb.lines.pop {
                     $w = .content-width - .indent;
@@ -475,8 +477,7 @@ class Pod::To::PDF:ver<0.0.1> {
                 }
             }
             $!y -= $tb.content-height;
-            my $y0 = $!y;
-            ($x0, $y0, $w, $h);
+            ($x0, $!y, $w, $h);
         }
     }
 
@@ -582,13 +583,36 @@ class Pod::To::PDF:ver<0.0.1> {
         }
     }
 
-    method !underline(PDF::Content::Text::Box $tb, :$tab = $!margin, :$width) {
+    method !underline(PDF::Content::Text::Box $tb, :$tab = $!margin, ) {
         my $y = $!y + $tb.underline-position;
         my $linewidth = $tb.underline-thickness;
         for $tb.lines {
             my $x0 = $tab + .indent;
-            my $x1 = $tab + ($width // .content-width);
+            my $x1 = $tab + .content-width;
             self!line($x0, $y, $x1, :$linewidth);
+            $y -= .height * $tb.leading;
+        }
+    }
+
+    method !link(PDF::Content::Text::Box $tb, :$tab = $!margin, ) {
+        my constant pad = 2;
+        my $y = $!y + $tb.underline-position;
+        for $tb.lines {
+            my $x0 = $tab + .indent;
+            my $x1 = $tab + .content-width;
+            my @rect = $!gfx.base-coords: $x0, $y, $x1, $y + $.line-height;
+            @rect Z+= [-pad, -pad, pad, pad];
+
+            my PDF::Annot::Link $link = $!pdf.annotation(
+                :$!page,
+                :action($.link),
+                :@rect,
+                :Border[0, 0, 0],
+            );
+
+            # add the link to the struct tree
+            $*tag.Link($!gfx, $link);
+
             $y -= .height * $tb.leading;
         }
     }
