@@ -35,7 +35,7 @@ endobj
 EMC
 /Lbl << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 752 Tm
+    1 0 0 1 20 730 Tm
     (•) Tj
   ET
 EMC
@@ -47,7 +47,7 @@ EMC
 EMC
 /Lbl << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 730 Tm
+    1 0 0 1 20 708 Tm
     (•) Tj
   ET
 EMC
@@ -65,7 +65,7 @@ EMC
 EMC
 /Lbl << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 686 Tm
+    1 0 0 1 20 664 Tm
     (•) Tj
   ET
 EMC
@@ -83,7 +83,7 @@ EMC
 EMC
 /Lbl << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 642 Tm
+    1 0 0 1 20 620 Tm
     (•) Tj
   ET
 EMC
@@ -101,7 +101,7 @@ EMC
 EMC
 /Lbl << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 598 Tm
+    1 0 0 1 20 576 Tm
     (•) Tj
   ET
 EMC
@@ -113,7 +113,7 @@ EMC
 EMC
 /Lbl << /MCID 14 >> BDC
   BT
-    1 0 0 1 20 576 Tm
+    1 0 0 1 20 554 Tm
     (•) Tj
   ET
 EMC
@@ -125,7 +125,7 @@ EMC
 EMC
 /Lbl << /MCID 16 >> BDC
   BT
-    1 0 0 1 20 554 Tm
+    1 0 0 1 20 532 Tm
     (•) Tj
   ET
 EMC
@@ -170,7 +170,7 @@ endobj
   /Type /StructTreeRoot
   /K [ 7 0 R ]
   /ParentTree <<
-    /Nums [ 0 [ 8 0 R 11 0 R 14 0 R 17 0 R 20 0 R 22 0 R 25 0 R 28 0 R 30 0 R 33 0 R 36 0 R 38 0 R 41 0 R 44 0 R 47 0 R 50 0 R 53 0 R 56 0 R 58 0 R 60 0 R 62 0 R ] ]
+    /Nums [ 0 [ 9 0 R 13 0 R 17 0 R 21 0 R 25 0 R 28 0 R 32 0 R 36 0 R 39 0 R 43 0 R 47 0 R 50 0 R 54 0 R 58 0 R 62 0 R 66 0 R 70 0 R 74 0 R 77 0 R 80 0 R 83 0 R ] ]
   >>
 >>
 endobj
@@ -179,291 +179,399 @@ endobj
 <<
   /Type /StructElem
   /S /Document
-  /K [ 8 0 R 10 0 R 16 0 R 22 0 R 24 0 R 30 0 R 32 0 R 38 0 R 40 0 R 46 0 R 52 0 R 62 0 R ]
+  /K [ 8 0 R 11 0 R 19 0 R 27 0 R 30 0 R 38 0 R 41 0 R 49 0 R 52 0 R 60 0 R 68 0 R 82 0 R ]
   /P 6 0 R
 >>
 endobj
 
 8 0 obj
-<< /Type /StructElem /S /P /ActualText (asdf) /K [ 9 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /P /K [ 9 0 R ] /P 7 0 R >>
 endobj
 
 9 0 obj
-<< /Type /MCR /MCID 0 /Pg 3 0 R >>
+<< /Type /StructElem /S /Span /ActualText (asdf) /K [ 10 0 R ] /P 8 0 R >>
 endobj
 
 10 0 obj
-<< /Type /StructElem /S /LI /K [ 11 0 R 13 0 R ] /P 7 0 R >>
+<< /Type /MCR /MCID 0 /Pg 3 0 R >>
 endobj
 
 11 0 obj
-<< /Type /StructElem /S /Lbl /ActualText (€) /K [ 12 0 R ] /P 10 0 R >>
+<< /Type /StructElem /S /LI /K [ 12 0 R 15 0 R ] /P 7 0 R >>
 endobj
 
 12 0 obj
-<< /Type /MCR /MCID 1 /Pg 3 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 13 0 R ] /P 11 0 R >>
 endobj
 
 13 0 obj
-<< /Type /StructElem /S /LBody /K [ 14 0 R ] /P 10 0 R >>
+<< /Type /StructElem /S /Span /ActualText (€) /K [ 14 0 R ] /P 12 0 R >>
 endobj
 
 14 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /ActualText (Abbreviated 1)
-  /K [ 15 0 R ]
-  /P 13 0 R
->>
+<< /Type /MCR /MCID 1 /Pg 3 0 R >>
 endobj
 
 15 0 obj
-<< /Type /MCR /MCID 2 /Pg 3 0 R >>
+<< /Type /StructElem /S /LBody /K [ 16 0 R ] /P 11 0 R >>
 endobj
 
 16 0 obj
-<< /Type /StructElem /S /LI /K [ 17 0 R 19 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /P /K [ 17 0 R ] /P 15 0 R >>
 endobj
 
 17 0 obj
-<< /Type /StructElem /S /Lbl /ActualText (€) /K [ 18 0 R ] /P 16 0 R >>
-endobj
-
-18 0 obj
-<< /Type /MCR /MCID 3 /Pg 3 0 R >>
-endobj
-
-19 0 obj
-<< /Type /StructElem /S /LBody /K [ 20 0 R ] /P 16 0 R >>
-endobj
-
-20 0 obj
 <<
   /Type /StructElem
-  /S /P
-  /ActualText (Abbreviated 2)
-  /K [ 21 0 R ]
-  /P 19 0 R
+  /S /Span
+  /ActualText (Abbreviated 1)
+  /K [ 18 0 R ]
+  /P 16 0 R
 >>
 endobj
 
+18 0 obj
+<< /Type /MCR /MCID 2 /Pg 3 0 R >>
+endobj
+
+19 0 obj
+<< /Type /StructElem /S /LI /K [ 20 0 R 23 0 R ] /P 7 0 R >>
+endobj
+
+20 0 obj
+<< /Type /StructElem /S /Lbl /K [ 21 0 R ] /P 19 0 R >>
+endobj
+
 21 0 obj
-<< /Type /MCR /MCID 4 /Pg 3 0 R >>
+<< /Type /StructElem /S /Span /ActualText (€) /K [ 22 0 R ] /P 20 0 R >>
 endobj
 
 22 0 obj
-<< /Type /StructElem /S /P /ActualText (asdf) /K [ 23 0 R ] /P 7 0 R >>
+<< /Type /MCR /MCID 3 /Pg 3 0 R >>
 endobj
 
 23 0 obj
-<< /Type /MCR /MCID 5 /Pg 3 0 R >>
+<< /Type /StructElem /S /LBody /K [ 24 0 R ] /P 19 0 R >>
 endobj
 
 24 0 obj
-<< /Type /StructElem /S /LI /K [ 25 0 R 27 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /P /K [ 25 0 R ] /P 23 0 R >>
 endobj
 
 25 0 obj
-<< /Type /StructElem /S /Lbl /ActualText (€) /K [ 26 0 R ] /P 24 0 R >>
+<<
+  /Type /StructElem
+  /S /Span
+  /ActualText (Abbreviated 2)
+  /K [ 26 0 R ]
+  /P 24 0 R
+>>
 endobj
 
 26 0 obj
-<< /Type /MCR /MCID 6 /Pg 3 0 R >>
+<< /Type /MCR /MCID 4 /Pg 3 0 R >>
 endobj
 
 27 0 obj
-<< /Type /StructElem /S /LBody /K [ 28 0 R ] /P 24 0 R >>
+<< /Type /StructElem /S /P /K [ 28 0 R ] /P 7 0 R >>
 endobj
 
 28 0 obj
 <<
   /Type /StructElem
-  /S /P
-  /ActualText (Paragraph item)
+  /S /Span
+  /ActualText (asdf)
   /K [ 29 0 R ]
   /P 27 0 R
 >>
 endobj
 
 29 0 obj
-<< /Type /MCR /MCID 7 /Pg 3 0 R >>
+<< /Type /MCR /MCID 5 /Pg 3 0 R >>
 endobj
 
 30 0 obj
-<< /Type /StructElem /S /P /ActualText (asdf) /K [ 31 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /LI /K [ 31 0 R 34 0 R ] /P 7 0 R >>
 endobj
 
 31 0 obj
-<< /Type /MCR /MCID 8 /Pg 3 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 32 0 R ] /P 30 0 R >>
 endobj
 
 32 0 obj
-<< /Type /StructElem /S /LI /K [ 33 0 R 35 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /Span /ActualText (€) /K [ 33 0 R ] /P 31 0 R >>
 endobj
 
 33 0 obj
-<< /Type /StructElem /S /Lbl /ActualText (€) /K [ 34 0 R ] /P 32 0 R >>
+<< /Type /MCR /MCID 6 /Pg 3 0 R >>
 endobj
 
 34 0 obj
-<< /Type /MCR /MCID 9 /Pg 3 0 R >>
+<< /Type /StructElem /S /LBody /K [ 35 0 R ] /P 30 0 R >>
 endobj
 
 35 0 obj
-<< /Type /StructElem /S /LBody /K [ 36 0 R ] /P 32 0 R >>
+<< /Type /StructElem /S /P /K [ 36 0 R ] /P 34 0 R >>
 endobj
 
 36 0 obj
 <<
   /Type /StructElem
-  /S /P
-  /ActualText (Block item)
+  /S /Span
+  /ActualText (Paragraph item)
   /K [ 37 0 R ]
   /P 35 0 R
 >>
 endobj
 
 37 0 obj
-<< /Type /MCR /MCID 10 /Pg 3 0 R >>
+<< /Type /MCR /MCID 7 /Pg 3 0 R >>
 endobj
 
 38 0 obj
-<< /Type /StructElem /S /P /ActualText (asdf) /K [ 39 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /P /K [ 39 0 R ] /P 7 0 R >>
 endobj
 
 39 0 obj
-<< /Type /MCR /MCID 11 /Pg 3 0 R >>
-endobj
-
-40 0 obj
-<< /Type /StructElem /S /LI /K [ 41 0 R 43 0 R ] /P 7 0 R >>
-endobj
-
-41 0 obj
-<< /Type /StructElem /S /Lbl /ActualText (€) /K [ 42 0 R ] /P 40 0 R >>
-endobj
-
-42 0 obj
-<< /Type /MCR /MCID 12 /Pg 3 0 R >>
-endobj
-
-43 0 obj
-<< /Type /StructElem /S /LBody /K [ 44 0 R ] /P 40 0 R >>
-endobj
-
-44 0 obj
 <<
   /Type /StructElem
-  /S /P
-  /ActualText (Abbreviated)
-  /K [ 45 0 R ]
-  /P 43 0 R
+  /S /Span
+  /ActualText (asdf)
+  /K [ 40 0 R ]
+  /P 38 0 R
 >>
 endobj
 
+40 0 obj
+<< /Type /MCR /MCID 8 /Pg 3 0 R >>
+endobj
+
+41 0 obj
+<< /Type /StructElem /S /LI /K [ 42 0 R 45 0 R ] /P 7 0 R >>
+endobj
+
+42 0 obj
+<< /Type /StructElem /S /Lbl /K [ 43 0 R ] /P 41 0 R >>
+endobj
+
+43 0 obj
+<< /Type /StructElem /S /Span /ActualText (€) /K [ 44 0 R ] /P 42 0 R >>
+endobj
+
+44 0 obj
+<< /Type /MCR /MCID 9 /Pg 3 0 R >>
+endobj
+
 45 0 obj
-<< /Type /MCR /MCID 13 /Pg 3 0 R >>
+<< /Type /StructElem /S /LBody /K [ 46 0 R ] /P 41 0 R >>
 endobj
 
 46 0 obj
-<< /Type /StructElem /S /LI /K [ 47 0 R 49 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /P /K [ 47 0 R ] /P 45 0 R >>
 endobj
 
 47 0 obj
-<< /Type /StructElem /S /Lbl /ActualText (€) /K [ 48 0 R ] /P 46 0 R >>
+<<
+  /Type /StructElem
+  /S /Span
+  /ActualText (Block item)
+  /K [ 48 0 R ]
+  /P 46 0 R
+>>
 endobj
 
 48 0 obj
-<< /Type /MCR /MCID 14 /Pg 3 0 R >>
+<< /Type /MCR /MCID 10 /Pg 3 0 R >>
 endobj
 
 49 0 obj
-<< /Type /StructElem /S /LBody /K [ 50 0 R ] /P 46 0 R >>
+<< /Type /StructElem /S /P /K [ 50 0 R ] /P 7 0 R >>
 endobj
 
 50 0 obj
 <<
   /Type /StructElem
-  /S /P
-  /ActualText (Paragraph item)
+  /S /Span
+  /ActualText (asdf)
   /K [ 51 0 R ]
   /P 49 0 R
 >>
 endobj
 
 51 0 obj
-<< /Type /MCR /MCID 15 /Pg 3 0 R >>
+<< /Type /MCR /MCID 11 /Pg 3 0 R >>
 endobj
 
 52 0 obj
-<< /Type /StructElem /S /LI /K [ 53 0 R 55 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /LI /K [ 53 0 R 56 0 R ] /P 7 0 R >>
 endobj
 
 53 0 obj
-<< /Type /StructElem /S /Lbl /ActualText (€) /K [ 54 0 R ] /P 52 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 54 0 R ] /P 52 0 R >>
 endobj
 
 54 0 obj
-<< /Type /MCR /MCID 16 /Pg 3 0 R >>
+<< /Type /StructElem /S /Span /ActualText (€) /K [ 55 0 R ] /P 53 0 R >>
 endobj
 
 55 0 obj
-<< /Type /StructElem /S /LBody /K [ 56 0 R 58 0 R 60 0 R ] /P 52 0 R >>
+<< /Type /MCR /MCID 12 /Pg 3 0 R >>
 endobj
 
 56 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /ActualText (Block item)
-  /K [ 57 0 R ]
-  /P 55 0 R
->>
+<< /Type /StructElem /S /LBody /K [ 57 0 R ] /P 52 0 R >>
 endobj
 
 57 0 obj
-<< /Type /MCR /MCID 17 /Pg 3 0 R >>
+<< /Type /StructElem /S /P /K [ 58 0 R ] /P 56 0 R >>
 endobj
 
 58 0 obj
 <<
   /Type /StructElem
-  /S /P
-  /ActualText (with multiple)
+  /S /Span
+  /ActualText (Abbreviated)
   /K [ 59 0 R ]
-  /P 55 0 R
+  /P 57 0 R
 >>
 endobj
 
 59 0 obj
-<< /Type /MCR /MCID 18 /Pg 3 0 R >>
+<< /Type /MCR /MCID 13 /Pg 3 0 R >>
 endobj
 
 60 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /ActualText (paragraphs)
-  /K [ 61 0 R ]
-  /P 55 0 R
->>
+<< /Type /StructElem /S /LI /K [ 61 0 R 64 0 R ] /P 7 0 R >>
 endobj
 
 61 0 obj
-<< /Type /MCR /MCID 19 /Pg 3 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 62 0 R ] /P 60 0 R >>
 endobj
 
 62 0 obj
-<< /Type /StructElem /S /P /ActualText (asdf) /K [ 63 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /Span /ActualText (€) /K [ 63 0 R ] /P 61 0 R >>
 endobj
 
 63 0 obj
+<< /Type /MCR /MCID 14 /Pg 3 0 R >>
+endobj
+
+64 0 obj
+<< /Type /StructElem /S /LBody /K [ 65 0 R ] /P 60 0 R >>
+endobj
+
+65 0 obj
+<< /Type /StructElem /S /P /K [ 66 0 R ] /P 64 0 R >>
+endobj
+
+66 0 obj
+<<
+  /Type /StructElem
+  /S /Span
+  /ActualText (Paragraph item)
+  /K [ 67 0 R ]
+  /P 65 0 R
+>>
+endobj
+
+67 0 obj
+<< /Type /MCR /MCID 15 /Pg 3 0 R >>
+endobj
+
+68 0 obj
+<< /Type /StructElem /S /LI /K [ 69 0 R 72 0 R ] /P 7 0 R >>
+endobj
+
+69 0 obj
+<< /Type /StructElem /S /Lbl /K [ 70 0 R ] /P 68 0 R >>
+endobj
+
+70 0 obj
+<< /Type /StructElem /S /Span /ActualText (€) /K [ 71 0 R ] /P 69 0 R >>
+endobj
+
+71 0 obj
+<< /Type /MCR /MCID 16 /Pg 3 0 R >>
+endobj
+
+72 0 obj
+<< /Type /StructElem /S /LBody /K [ 73 0 R 76 0 R 79 0 R ] /P 68 0 R >>
+endobj
+
+73 0 obj
+<< /Type /StructElem /S /P /K [ 74 0 R ] /P 72 0 R >>
+endobj
+
+74 0 obj
+<<
+  /Type /StructElem
+  /S /Span
+  /ActualText (Block item)
+  /K [ 75 0 R ]
+  /P 73 0 R
+>>
+endobj
+
+75 0 obj
+<< /Type /MCR /MCID 17 /Pg 3 0 R >>
+endobj
+
+76 0 obj
+<< /Type /StructElem /S /P /K [ 77 0 R ] /P 72 0 R >>
+endobj
+
+77 0 obj
+<<
+  /Type /StructElem
+  /S /Span
+  /ActualText (with multiple)
+  /K [ 78 0 R ]
+  /P 76 0 R
+>>
+endobj
+
+78 0 obj
+<< /Type /MCR /MCID 18 /Pg 3 0 R >>
+endobj
+
+79 0 obj
+<< /Type /StructElem /S /P /K [ 80 0 R ] /P 72 0 R >>
+endobj
+
+80 0 obj
+<<
+  /Type /StructElem
+  /S /Span
+  /ActualText (paragraphs)
+  /K [ 81 0 R ]
+  /P 79 0 R
+>>
+endobj
+
+81 0 obj
+<< /Type /MCR /MCID 19 /Pg 3 0 R >>
+endobj
+
+82 0 obj
+<< /Type /StructElem /S /P /K [ 83 0 R ] /P 7 0 R >>
+endobj
+
+83 0 obj
+<<
+  /Type /StructElem
+  /S /Span
+  /ActualText (asdf)
+  /K [ 84 0 R ]
+  /P 82 0 R
+>>
+endobj
+
+84 0 obj
 << /Type /MCR /MCID 20 /Pg 3 0 R >>
 endobj
 
 xref
-0 64
+0 85
 0000000000 65535 f 
 0000000015 00000 n 
 0000000124 00000 n 
@@ -473,63 +581,84 @@ xref
 0000002083 00000 n 
 0000002332 00000 n 
 0000002492 00000 n 
-0000002579 00000 n 
-0000002630 00000 n 
-0000002708 00000 n 
-0000002797 00000 n 
-0000002849 00000 n 
-0000002924 00000 n 
-0000003033 00000 n 
-0000003085 00000 n 
-0000003163 00000 n 
-0000003252 00000 n 
-0000003304 00000 n 
-0000003379 00000 n 
-0000003488 00000 n 
-0000003540 00000 n 
-0000003629 00000 n 
-0000003681 00000 n 
-0000003759 00000 n 
-0000003848 00000 n 
-0000003900 00000 n 
-0000003975 00000 n 
-0000004085 00000 n 
-0000004137 00000 n 
-0000004226 00000 n 
-0000004278 00000 n 
-0000004356 00000 n 
-0000004445 00000 n 
-0000004497 00000 n 
-0000004572 00000 n 
-0000004678 00000 n 
-0000004731 00000 n 
-0000004820 00000 n 
-0000004873 00000 n 
-0000004951 00000 n 
-0000005040 00000 n 
-0000005093 00000 n 
-0000005168 00000 n 
-0000005275 00000 n 
-0000005328 00000 n 
-0000005406 00000 n 
-0000005495 00000 n 
-0000005548 00000 n 
-0000005623 00000 n 
-0000005733 00000 n 
-0000005786 00000 n 
-0000005864 00000 n 
-0000005953 00000 n 
-0000006006 00000 n 
-0000006095 00000 n 
-0000006201 00000 n 
-0000006254 00000 n 
-0000006363 00000 n 
-0000006416 00000 n 
-0000006522 00000 n 
-0000006575 00000 n 
-0000006664 00000 n 
+0000002560 00000 n 
+0000002651 00000 n 
+0000002703 00000 n 
+0000002781 00000 n 
+0000002854 00000 n 
+0000002944 00000 n 
+0000002996 00000 n 
+0000003071 00000 n 
+0000003142 00000 n 
+0000003254 00000 n 
+0000003306 00000 n 
+0000003384 00000 n 
+0000003457 00000 n 
+0000003547 00000 n 
+0000003599 00000 n 
+0000003674 00000 n 
+0000003745 00000 n 
+0000003857 00000 n 
+0000003909 00000 n 
+0000003979 00000 n 
+0000004082 00000 n 
+0000004134 00000 n 
+0000004212 00000 n 
+0000004285 00000 n 
+0000004375 00000 n 
+0000004427 00000 n 
+0000004502 00000 n 
+0000004573 00000 n 
+0000004686 00000 n 
+0000004738 00000 n 
+0000004808 00000 n 
+0000004911 00000 n 
+0000004963 00000 n 
+0000005041 00000 n 
+0000005114 00000 n 
+0000005204 00000 n 
+0000005256 00000 n 
+0000005331 00000 n 
+0000005402 00000 n 
+0000005511 00000 n 
+0000005564 00000 n 
+0000005634 00000 n 
+0000005737 00000 n 
+0000005790 00000 n 
+0000005868 00000 n 
+0000005941 00000 n 
+0000006031 00000 n 
+0000006084 00000 n 
+0000006159 00000 n 
+0000006230 00000 n 
+0000006340 00000 n 
+0000006393 00000 n 
+0000006471 00000 n 
+0000006544 00000 n 
+0000006634 00000 n 
+0000006687 00000 n 
+0000006762 00000 n 
+0000006833 00000 n 
+0000006946 00000 n 
+0000006999 00000 n 
+0000007077 00000 n 
+0000007150 00000 n 
+0000007240 00000 n 
+0000007293 00000 n 
+0000007382 00000 n 
+0000007453 00000 n 
+0000007562 00000 n 
+0000007615 00000 n 
+0000007686 00000 n 
+0000007798 00000 n 
+0000007851 00000 n 
+0000007922 00000 n 
+0000008031 00000 n 
+0000008084 00000 n 
+0000008154 00000 n 
+0000008257 00000 n 
 trailer
-<< /ID [ (t/item.t        ) (t/item.t        ) ] /Root 1 0 R /Size 64 >>
+<< /ID [ (t/item.t        ) (t/item.t        ) ] /Root 1 0 R /Size 85 >>
 startxref
-6717
+8310
 %%EOF

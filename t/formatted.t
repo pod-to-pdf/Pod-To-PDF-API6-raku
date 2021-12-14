@@ -26,7 +26,7 @@ $pdf.save-as: "t/formatted.pdf", :!info;
 my PDF::Tags $tags .= read: :$pdf;
 
 is $tags[0].Str, $xml,
-##   'Various types of code blocks convert correctly.';
+   'Various types of code blocks convert correctly.';
 
 =begin pod
 This text is of U<minor significance>.
