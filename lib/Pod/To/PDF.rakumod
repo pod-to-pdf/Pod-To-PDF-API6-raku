@@ -23,8 +23,7 @@ class Pod::To::PDF:ver<0.0.1> {
     has PDF::Content $!gfx;
     has UInt $!indent = 0;
     has Pod::To::PDF::Style $.style handles<font font-size leading line-height bold italic mono underline lines-before link> .= new;
-    has $!x;
-    has $!y;
+    has ($!tx, $!ty); # current text-flow x, y position
     has $.margin = 20;
     has UInt $!pad = 0;
     has Bool $.contents = True;
@@ -35,9 +34,13 @@ class Pod::To::PDF:ver<0.0.1> {
         $!pdf.creator.push: "{self.^name}-{self.^ver}";
     }
 
-    # raku --doc=PDF encodes as utf-8, but we're binary
     method render($class: $pod, |c) {
-        fail "please use script pod2pdf.raku to render Pod as PDF";
+        # raku --doc=PDF encodes as utf-8, but we're binary
+        # dump XML instead
+        my $obj = $class.new: |c;
+        my $*tag = $obj.root;
+        $obj.pod2pdf($pod);
+        $obj.tags.xml;
     }
 
     proto method pod2pdf($p, |) {
@@ -97,7 +100,7 @@ class Pod::To::PDF:ver<0.0.1> {
             # simple fixed column widths, for now
             my $tab = $!margin + self!indent;
             my $row-height = 0;
-            my $height = $!y - $!margin;
+            my $height = $!ty - $!margin;
             my $name = $header ?? TableHeader !! TableData;
             my $head-space = $.line-height - $.font-size;
 
@@ -110,10 +113,10 @@ class Pod::To::PDF:ver<0.0.1> {
                         $tb .= clone: :$width, :$height;
                     }
                     self!mark: {
-                        self!gfx.print: $tb, :position[$tab, $!y];
+                        self!gfx.print: $tb, :position[$tab, $!ty];
                         if $header {
                             # draw underline
-                            my $y = $!y + $tb.underline-position - $head-space;
+                            my $y = $!ty + $tb.underline-position - $head-space;
                             self!line: $tab, $y, $tab + $width;
                         }
                     }
@@ -131,8 +134,8 @@ class Pod::To::PDF:ver<0.0.1> {
                 self!table-row(@overflow, @widths, :$header);
             }
             else {
-                $!y -= $row-height + vpad;
-                $!y -= $head-space if $header;
+                $!ty -= $row-height + vpad;
+                $!ty -= $head-space if $header;
             }
         }
     }
@@ -278,10 +281,8 @@ class Pod::To::PDF:ver<0.0.1> {
                     temp $.link = $uri.starts-with('#')
                         ?? $!pdf.action: :destination(dest-name($uri))
                         !! $!pdf.action: :$uri;
-
-                    self!mark: :name<Link>, {
-                        $.print($text);
-                    }
+                    temp $*tag .= Link;
+                    $.print($text);
                 }
             }
             default {
@@ -294,12 +295,18 @@ class Pod::To::PDF:ver<0.0.1> {
     multi method pod2pdf(Pod::Item $pod) {
         $.pad: {
             self!style: :tag(ListItem), {
-                $*tag.Lbl.mark: self!gfx, {
-                    my constant BulletPoints = ("\c[BULLET]", "\c[WHITE BULLET]", '-');
+                {
+                    my constant BulletPoints = ("\c[BULLET]",
+                                                "\c[WHITE BULLET]",
+                                                '-');
                     my Level $list-level = min($pod.level // 1, 3);
                     my $bp = BulletPoints[$list-level - 1];
-                    .print: $bp, |self!text-position;
+                    temp $*tag .= Label;
+                    $.print: $bp;
                 }
+
+                # slightly iffy $!ty fixup
+                $!ty += 2 * $.line-height;
 
                 self!style: :tag(ListBody), :indent, {
                     $.pod2pdf($pod.contents);
@@ -411,8 +418,8 @@ class Pod::To::PDF:ver<0.0.1> {
     }
 
     multi method say {
-        $!x = 0;
-        $!y -= $.line-height;
+        $!tx = 0;
+        $!ty -= $.line-height;
     }
     multi method say(Str $text, |c) {
         @.print($text, :nl, |c);
@@ -423,9 +430,9 @@ class Pod::To::PDF:ver<0.0.1> {
     method !text-box(
         Str $text,
         :$width = self!gfx.canvas.width - self!indent - 2*$!margin,
-        :$height = $!y - $!margin,
+        :$height = $!ty - $!margin,
         |c) {
-        PDF::Content::Text::Box.new: :$text, :indent($!x), :$.leading, :$.font, :$.font-size, :$width, :$height, |c;
+        PDF::Content::Text::Box.new: :$text, :indent($!tx), :$.leading, :$.font, :$.font-size, :$width, :$height, |c;
     }
 
     method print(Str $text, Bool :$nl, |c) {
@@ -465,31 +472,31 @@ class Pod::To::PDF:ver<0.0.1> {
             my $x0 = $pos.value[0];
             if $nl {
                 # advance to next line
-                $!x = 0;
+                $!tx = 0;
             }
             else {
-                $!x = 0 if $tb.lines > 1;
-                $x0 += $!x;
+                $!tx = 0 if $tb.lines > 1;
+                $x0 += $!tx;
                 # continue this line
                 with $tb.lines.pop {
                     $w = .content-width - .indent;
-                    $!x += $w + $tb.space-width;
+                    $!tx += $w + $tb.space-width;
                 }
             }
-            $!y -= $tb.content-height;
-            ($x0, $!y, $w, $h);
+            $!ty -= $tb.content-height;
+            ($x0, $!ty, $w, $h);
         }
     }
 
     method !text-position {
-        :position[$!margin + self!indent, $!y]
+        :position[$!margin + self!indent, $!ty]
     }
 
     method !mark(&action, |c) {
         given self!gfx {
             if .open-tags.first(*.mcid.defined) {
                 # caller is already marking
-                action($_);
+                .tag: $*tag.name, &action, |$*tag.attributes;
             }
             else {
                 $*tag.mark: $_, &action, |c;
@@ -584,7 +591,7 @@ class Pod::To::PDF:ver<0.0.1> {
     }
 
     method !underline(PDF::Content::Text::Box $tb, :$tab = $!margin, ) {
-        my $y = $!y + $tb.underline-position;
+        my $y = $!ty + $tb.underline-position;
         my $linewidth = $tb.underline-thickness;
         for $tb.lines {
             my $x0 = $tab + .indent;
@@ -596,7 +603,7 @@ class Pod::To::PDF:ver<0.0.1> {
 
     method !link(PDF::Content::Text::Box $tb, :$tab = $!margin, ) {
         my constant pad = 2;
-        my $y = $!y + $tb.underline-position;
+        my $y = $!ty + $tb.underline-position;
         for $tb.lines {
             my $x0 = $tab + .indent;
             my $x1 = $tab + .content-width;
@@ -608,21 +615,21 @@ class Pod::To::PDF:ver<0.0.1> {
                 :action($.link),
                 :@rect,
                 :Border[0, 0, 0],
+                :content($tb.text),
             );
 
-            # add the link to the struct tree
-            $*tag.Link($!gfx, $link);
+##            $*tag.Link($!gfx, $link);
 
             $y -= .height * $tb.leading;
         }
     }
 
     method !gfx {
-        my $y = $!y - $.lines-before * $.line-height;
+        my $y = $!ty - $.lines-before * $.line-height;
         if !$!page.defined || $y <= 2 * $!margin {
             self!new-page;
         }
-        elsif $!x > 0 && $!x > $!gfx.canvas.width - self!indent - $!margin {
+        elsif $!tx > 0 && $!tx > $!gfx.canvas.width - self!indent - $!margin {
             self.say;
         }
         $!gfx;
@@ -631,8 +638,8 @@ class Pod::To::PDF:ver<0.0.1> {
     method !new-page {
         $!page = $!pdf.add-page;
         $!gfx = $!page.gfx;
-        $!x = 0;
-        $!y = $!page.height - 2 * $!margin;
+        $!tx = 0;
+        $!ty = $!page.height - 2 * $!margin;
         # suppress whitespace before significant content
         $!pad = 0;
     }
