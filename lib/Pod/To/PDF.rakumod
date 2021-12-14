@@ -10,7 +10,7 @@ class Pod::To::PDF:ver<0.0.1> {
     use Pod::To::Text;
     # PDF::Class
     use PDF::Annot::Link;
-    use PDF::Destination :Fit;
+    use PDF::Destination :Fit, :DestRef;
     use PDF::Page;
     use PDF::StructElem;
 
@@ -29,8 +29,9 @@ class Pod::To::PDF:ver<0.0.1> {
     has Bool $.contents = True;
     has @.toc; # table of contents
 
-    submethod TWEAK(:$title) {
+    submethod TWEAK(Str :$title, Str :$lang = 'en') {
         self.title = $_ with $title;
+        self.lang = $_ with $lang;
         $!pdf.creator.push: "{self.^name}-{self.^ver}";
     }
 
@@ -41,10 +42,6 @@ class Pod::To::PDF:ver<0.0.1> {
         my $*tag = $obj.root;
         $obj.pod2pdf($pod);
         $obj.tags.xml;
-    }
-
-    proto method pod2pdf($p, |) {
-        {*}
     }
 
     our sub pod2pdf($pod, :$class = $?CLASS, |c) is export {
@@ -196,6 +193,7 @@ class Pod::To::PDF:ver<0.0.1> {
     }
 
     method title is rw { $!pdf.info.Title; }
+    method lang is rw { $!pdf.catalog.Lang; }
 
     multi method pod2pdf(Pod::Block::Named $pod) {
         given $pod.name {
@@ -385,6 +383,10 @@ class Pod::To::PDF:ver<0.0.1> {
         }
     }
 
+    multi method pod2pdf(Pod::Block::Comment) {
+        # do nothing
+    }
+
     sub signature2text($params, Mu $returns?) {
         my constant NL = "\n    ";
         my $result = '(';
@@ -443,6 +445,7 @@ class Pod::To::PDF:ver<0.0.1> {
         my $h = $tb.content-height;
         my Pair $pos = self!text-position();
         my $gfx = self!gfx;
+        temp $*tag;
 
         if $.link {
             use PDF::Content::Color :ColorName;
@@ -451,13 +454,14 @@ class Pod::To::PDF:ver<0.0.1> {
                 $gfx.FillColor = $_;
                 $gfx.StrokeColor = $_;
             }
+            self!link: $tb;
+            $*tag = $_ with $*tag.kids.tail;
         }
 
         self!mark: {
             $gfx.print: $tb, |$pos, :$nl;
             self!underline: $tb
                 if $.underline || $.link;
-            self!link: $tb if $.link;
         }
 
         $gfx.Restore if $.link;
@@ -543,12 +547,13 @@ class Pod::To::PDF:ver<0.0.1> {
                 $.italic = True;
             }
 
+            $*tag.cos.title = $Title;
             my (\x, \y, \w, \h) = @.say($Title);
 
-            my ($left, $top) = $!gfx.base-coords: x, y+h + $.line-height;
+            my ($_left, $top) = $!gfx.base-coords: x, y+h + $.line-height;
             # Register in table of contents
             my $name = dest-name($Title);
-            my Str $dest = $!pdf.destination: :$name, :$!page, :fit(FitBoxHoriz), :$top;
+            my DestRef $dest = $!pdf.destination: :$name, :$!page, :fit(FitBoxHoriz), :$top;
             if $!contents {
                 my PDF::StructElem $SE = $*tag.cos;
                 self!add-toc-entry: { :$Title, :$dest, :$SE  }, $level;
@@ -618,9 +623,8 @@ class Pod::To::PDF:ver<0.0.1> {
                 :content($tb.text),
             );
 
-##            $*tag.Link($!gfx, $link);
-
             $y -= .height * $tb.leading;
+            $*tag.Link($!gfx, $link);
         }
     }
 

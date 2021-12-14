@@ -14,8 +14,20 @@ my $xml = q{<Document>
   <P>This text is verbatim C&lt;with&gt; B&lt;disarmed&gt; Z&lt;formatting&gt;.</P>
   <P>This text is to be replaced.</P>
   <P>This text is invisible.</P>
-  <P>This text contains a link to http://www.google.com/.</P>
-  <P>This text contains a link with label to google.</P>
+  <P>
+    This text contains a link to
+    <Link>
+      http://www.google.com/
+    </Link>
+    .
+  </P>
+  <P>
+    This text contains a link with label to
+    <Link>
+      google
+    </Link>
+    .
+  </P>
   <P>A tap on an on demand supply will initiate the production of values, and tapping the supply again may result in a new set of values. For example, Supply.interval produces a fresh timer with the appropriate interval each time it is tapped. If the tap is closed, the timer simply stops emitting values to that tap.</P>
 </Document>
 };
@@ -25,7 +37,7 @@ $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
 $pdf.save-as: "t/formatted.pdf", :!info;
 my PDF::Tags $tags .= read: :$pdf;
 
-is $tags[0].Str, $xml,
+is $tags[0].Str(:omit<Span>), $xml,
    'Various types of code blocks convert correctly.';
 
 =begin pod

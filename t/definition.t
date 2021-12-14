@@ -45,7 +45,7 @@ $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
 $pdf.save-as: "t/definition.pdf", :!info;
 my PDF::Tags $tags .= read: :$pdf;
 
-is $tags[0].Str, $xml,
+is $tags[0].Str(:omit<Span>), $xml,
     'Converts definitions correctly';
 
 #| This is a module

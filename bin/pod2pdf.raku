@@ -3,23 +3,24 @@ use Pod::To::PDF;
 use PDF;
 
 sub MAIN(
-    Str $file?, #= input Pod file
+    Str $file = '-',         #= input Pod file
+    Str $out-file = '-',     #= output PDF file
     Bool :$contents = True,  #= build table of contents
     UInt :$margin = 20,      #= margin size (points)
     Str  :$title,            #= title for the document
-    Str  :save-as($out-file),   #= saved PDF or JSON file
+    Str  :$lang = 'en',      #= language code (default 'en')
     Str  :class($class-name) = 'Pod::To::PDF', # Pod rendering class
 ) {
     require ::($class-name);
     my $class = ::($class-name);
-    my IO() $src = $file // $*IN;
+    my IO() $src = $file eq '-' ?? $*IN !! $file;
     my $pod = load($file);
-    my PDF $pdf = pod2pdf($pod, :$class, :$contents, :$margin, :$title);
-    if $out-file {
-        $pdf.save-as: $out-file;
+    my PDF $pdf = pod2pdf($pod, :$class, :$contents, :$margin, :$title, :$lang);
+    if $out-file eq '-' {
+        $*OUT.write: $pdf.Blob;
     }
     else {
-        $*OUT.write: $pdf.Blob;
+        $pdf.save-as: $out-file;
     }
 }
 

@@ -3,6 +3,7 @@
 1 0 obj
 <<
   /Type /Catalog
+  /Lang (en)
   /MarkInfo << /Marked true >>
   /Pages 2 0 R
   /StructTreeRoot 13 0 R
@@ -34,6 +35,7 @@ endobj
   /Contents (http://www.google.com/)
   /P 3 0 R
   /Rect [ 129.39 617 231.17 632 ]
+  /StructParent 1
 >>
 endobj
 
@@ -50,6 +52,7 @@ endobj
   /Contents (google)
   /P 3 0 R
   /Rect [ 171.61 595 202.83 610 ]
+  /StructParent 2
 >>
 endobj
 
@@ -299,7 +302,7 @@ endobj
   /Type /StructTreeRoot
   /K [ 14 0 R ]
   /ParentTree <<
-    /Nums [ 0 [ 16 0 R 18 0 R 20 0 R 23 0 R 25 0 R 27 0 R 30 0 R 32 0 R 34 0 R 37 0 R 40 0 R 42 0 R 44 0 R 47 0 R 49 0 R 52 0 R 55 0 R 57 0 R 60 0 R 63 0 R 65 0 R 68 0 R 70 0 R 72 0 R 74 0 R 76 0 R ] ]
+    /Nums [ 0 [ 16 0 R 18 0 R 20 0 R 23 0 R 25 0 R 27 0 R 30 0 R 32 0 R 34 0 R 37 0 R 40 0 R 42 0 R 44 0 R 47 0 R 49 0 R 52 0 R 56 0 R 58 0 R 61 0 R 65 0 R 67 0 R 70 0 R 72 0 R 74 0 R 76 0 R 78 0 R ] 1 54 0 R 2 63 0 R ]
   >>
 >>
 endobj
@@ -308,7 +311,7 @@ endobj
 <<
   /Type /StructElem
   /S /Document
-  /K [ 15 0 R 22 0 R 29 0 R 36 0 R 39 0 R 46 0 R 51 0 R 59 0 R 67 0 R ]
+  /K [ 15 0 R 22 0 R 29 0 R 36 0 R 39 0 R 46 0 R 51 0 R 60 0 R 69 0 R ]
   /P 13 0 R
 >>
 endobj
@@ -524,7 +527,7 @@ endobj
 endobj
 
 51 0 obj
-<< /Type /StructElem /S /P /K [ 52 0 R 54 0 R 57 0 R ] /P 14 0 R >>
+<< /Type /StructElem /S /P /K [ 52 0 R 54 0 R 58 0 R ] /P 14 0 R >>
 endobj
 
 52 0 obj
@@ -542,236 +545,246 @@ endobj
 endobj
 
 54 0 obj
-<< /Type /StructElem /S /Link /K [ 55 0 R ] /P 51 0 R >>
+<< /Type /StructElem /S /Link /K [ 55 0 R 56 0 R ] /P 51 0 R >>
 endobj
 
 55 0 obj
+<< /Type /OBJR /Obj 4 0 R /Pg 3 0 R >>
+endobj
+
+56 0 obj
 <<
   /Type /StructElem
   /S /Span
   /ActualText (http://www.google.com/)
-  /K [ 56 0 R ]
+  /K [ 57 0 R ]
   /P 54 0 R
 >>
 endobj
 
-56 0 obj
+57 0 obj
 << /Type /MCR /MCID 16 /Pg 3 0 R >>
 endobj
 
-57 0 obj
-<< /Type /StructElem /S /Span /ActualText (.) /K [ 58 0 R ] /P 51 0 R >>
-endobj
-
 58 0 obj
-<< /Type /MCR /MCID 17 /Pg 3 0 R >>
+<< /Type /StructElem /S /Span /ActualText (.) /K [ 59 0 R ] /P 51 0 R >>
 endobj
 
 59 0 obj
-<< /Type /StructElem /S /P /K [ 60 0 R 62 0 R 65 0 R ] /P 14 0 R >>
+<< /Type /MCR /MCID 17 /Pg 3 0 R >>
 endobj
 
 60 0 obj
+<< /Type /StructElem /S /P /K [ 61 0 R 63 0 R 67 0 R ] /P 14 0 R >>
+endobj
+
+61 0 obj
 <<
   /Type /StructElem
   /S /Span
   /ActualText (This text contains a link with label to )
-  /K [ 61 0 R ]
-  /P 59 0 R
+  /K [ 62 0 R ]
+  /P 60 0 R
 >>
 endobj
 
-61 0 obj
+62 0 obj
 << /Type /MCR /MCID 18 /Pg 3 0 R >>
 endobj
 
-62 0 obj
-<< /Type /StructElem /S /Link /K [ 63 0 R ] /P 59 0 R >>
+63 0 obj
+<< /Type /StructElem /S /Link /K [ 64 0 R 65 0 R ] /P 60 0 R >>
 endobj
 
-63 0 obj
+64 0 obj
+<< /Type /OBJR /Obj 6 0 R /Pg 3 0 R >>
+endobj
+
+65 0 obj
 <<
   /Type /StructElem
   /S /Span
   /ActualText (google)
-  /K [ 64 0 R ]
-  /P 62 0 R
+  /K [ 66 0 R ]
+  /P 63 0 R
 >>
-endobj
-
-64 0 obj
-<< /Type /MCR /MCID 19 /Pg 3 0 R >>
-endobj
-
-65 0 obj
-<< /Type /StructElem /S /Span /ActualText (.) /K [ 66 0 R ] /P 59 0 R >>
 endobj
 
 66 0 obj
-<< /Type /MCR /MCID 20 /Pg 3 0 R >>
+<< /Type /MCR /MCID 19 /Pg 3 0 R >>
 endobj
 
 67 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 68 0 R 70 0 R 72 0 R 74 0 R 76 0 R ]
-  /P 14 0 R
->>
+<< /Type /StructElem /S /Span /ActualText (.) /K [ 68 0 R ] /P 60 0 R >>
 endobj
 
 68 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (A tap on an )
-  /K [ 69 0 R ]
-  /P 67 0 R
->>
+<< /Type /MCR /MCID 20 /Pg 3 0 R >>
 endobj
 
 69 0 obj
-<< /Type /MCR /MCID 21 /Pg 3 0 R >>
+<<
+  /Type /StructElem
+  /S /P
+  /K [ 70 0 R 72 0 R 74 0 R 76 0 R 78 0 R ]
+  /P 14 0 R
+>>
 endobj
 
 70 0 obj
 <<
   /Type /StructElem
   /S /Span
-  /ActualText (on demand)
+  /ActualText (A tap on an )
   /K [ 71 0 R ]
-  /P 67 0 R
+  /P 69 0 R
 >>
 endobj
 
 71 0 obj
-<< /Type /MCR /MCID 22 /Pg 3 0 R >>
+<< /Type /MCR /MCID 21 /Pg 3 0 R >>
 endobj
 
 72 0 obj
 <<
   /Type /StructElem
   /S /Span
-  /ActualText ( supply will initiate the production of values, and tapping the supply again may result in a new set of values. For example, )
+  /ActualText (on demand)
   /K [ 73 0 R ]
-  /P 67 0 R
+  /P 69 0 R
 >>
 endobj
 
 73 0 obj
-<< /Type /MCR /MCID 23 /Pg 3 0 R >>
+<< /Type /MCR /MCID 22 /Pg 3 0 R >>
 endobj
 
 74 0 obj
 <<
   /Type /StructElem
   /S /Span
-  /ActualText (Supply.interval)
+  /ActualText ( supply will initiate the production of values, and tapping the supply again may result in a new set of values. For example, )
   /K [ 75 0 R ]
-  /P 67 0 R
+  /P 69 0 R
 >>
 endobj
 
 75 0 obj
-<< /Type /MCR /MCID 24 /Pg 3 0 R >>
+<< /Type /MCR /MCID 23 /Pg 3 0 R >>
 endobj
 
 76 0 obj
 <<
   /Type /StructElem
   /S /Span
-  /ActualText ( produces a fresh timer with the appropriate interval each time it is tapped. If the tap is closed, the timer simply stops emitting values to that tap.)
+  /ActualText (Supply.interval)
   /K [ 77 0 R ]
-  /P 67 0 R
+  /P 69 0 R
 >>
 endobj
 
 77 0 obj
+<< /Type /MCR /MCID 24 /Pg 3 0 R >>
+endobj
+
+78 0 obj
+<<
+  /Type /StructElem
+  /S /Span
+  /ActualText ( produces a fresh timer with the appropriate interval each time it is tapped. If the tap is closed, the timer simply stops emitting values to that tap.)
+  /K [ 79 0 R ]
+  /P 69 0 R
+>>
+endobj
+
+79 0 obj
 << /Type /MCR /MCID 25 /Pg 3 0 R >>
 endobj
 
 xref
-0 78
+0 80
 0000000000 65535 f 
 0000000015 00000 n 
-0000000125 00000 n 
-0000000185 00000 n 
-0000000402 00000 n 
-0000000569 00000 n 
-0000000643 00000 n 
-0000000794 00000 n 
-0000000868 00000 n 
-0000003934 00000 n 
-0000004042 00000 n 
-0000004152 00000 n 
-0000004260 00000 n 
-0000004365 00000 n 
-0000004652 00000 n 
-0000004794 00000 n 
-0000004879 00000 n 
-0000004994 00000 n 
-0000005046 00000 n 
-0000005163 00000 n 
-0000005215 00000 n 
-0000005305 00000 n 
-0000005357 00000 n 
-0000005442 00000 n 
-0000005557 00000 n 
-0000005609 00000 n 
-0000005726 00000 n 
-0000005778 00000 n 
-0000005868 00000 n 
-0000005920 00000 n 
-0000006005 00000 n 
-0000006120 00000 n 
-0000006172 00000 n 
-0000006295 00000 n 
-0000006347 00000 n 
-0000006437 00000 n 
-0000006489 00000 n 
-0000006560 00000 n 
-0000006715 00000 n 
-0000006767 00000 n 
-0000006852 00000 n 
-0000006964 00000 n 
-0000007017 00000 n 
-0000007130 00000 n 
-0000007183 00000 n 
-0000007273 00000 n 
-0000007326 00000 n 
-0000007404 00000 n 
-0000007516 00000 n 
-0000007569 00000 n 
-0000007678 00000 n 
-0000007731 00000 n 
-0000007816 00000 n 
-0000007944 00000 n 
-0000007997 00000 n 
-0000008071 00000 n 
-0000008192 00000 n 
-0000008245 00000 n 
-0000008335 00000 n 
-0000008388 00000 n 
-0000008473 00000 n 
-0000008612 00000 n 
-0000008665 00000 n 
-0000008739 00000 n 
-0000008844 00000 n 
-0000008897 00000 n 
-0000008987 00000 n 
-0000009040 00000 n 
-0000009147 00000 n 
-0000009258 00000 n 
-0000009311 00000 n 
-0000009419 00000 n 
-0000009472 00000 n 
-0000009696 00000 n 
-0000009749 00000 n 
-0000009863 00000 n 
-0000009916 00000 n 
-0000010166 00000 n 
+0000000138 00000 n 
+0000000198 00000 n 
+0000000415 00000 n 
+0000000600 00000 n 
+0000000674 00000 n 
+0000000843 00000 n 
+0000000917 00000 n 
+0000003983 00000 n 
+0000004091 00000 n 
+0000004201 00000 n 
+0000004309 00000 n 
+0000004414 00000 n 
+0000004719 00000 n 
+0000004861 00000 n 
+0000004946 00000 n 
+0000005061 00000 n 
+0000005113 00000 n 
+0000005230 00000 n 
+0000005282 00000 n 
+0000005372 00000 n 
+0000005424 00000 n 
+0000005509 00000 n 
+0000005624 00000 n 
+0000005676 00000 n 
+0000005793 00000 n 
+0000005845 00000 n 
+0000005935 00000 n 
+0000005987 00000 n 
+0000006072 00000 n 
+0000006187 00000 n 
+0000006239 00000 n 
+0000006362 00000 n 
+0000006414 00000 n 
+0000006504 00000 n 
+0000006556 00000 n 
+0000006627 00000 n 
+0000006782 00000 n 
+0000006834 00000 n 
+0000006919 00000 n 
+0000007031 00000 n 
+0000007084 00000 n 
+0000007197 00000 n 
+0000007250 00000 n 
+0000007340 00000 n 
+0000007393 00000 n 
+0000007471 00000 n 
+0000007583 00000 n 
+0000007636 00000 n 
+0000007745 00000 n 
+0000007798 00000 n 
+0000007883 00000 n 
+0000008011 00000 n 
+0000008064 00000 n 
+0000008145 00000 n 
+0000008201 00000 n 
+0000008322 00000 n 
+0000008375 00000 n 
+0000008465 00000 n 
+0000008518 00000 n 
+0000008603 00000 n 
+0000008742 00000 n 
+0000008795 00000 n 
+0000008876 00000 n 
+0000008932 00000 n 
+0000009037 00000 n 
+0000009090 00000 n 
+0000009180 00000 n 
+0000009233 00000 n 
+0000009340 00000 n 
+0000009451 00000 n 
+0000009504 00000 n 
+0000009612 00000 n 
+0000009665 00000 n 
+0000009889 00000 n 
+0000009942 00000 n 
+0000010056 00000 n 
+0000010109 00000 n 
+0000010359 00000 n 
 trailer
-<< /ID [ (t/formatted.t   ) (t/formatted.t   ) ] /Root 1 0 R /Size 78 >>
+<< /ID [ (t/formatted.t   ) (t/formatted.t   ) ] /Root 1 0 R /Size 80 >>
 startxref
-10219
+10412
 %%EOF
