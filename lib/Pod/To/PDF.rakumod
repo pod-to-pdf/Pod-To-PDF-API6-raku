@@ -279,7 +279,7 @@ class Pod::To::PDF:ver<0.0.1> {
                     temp $.link = $uri.starts-with('#')
                         ?? $!pdf.action: :destination(dest-name($uri))
                         !! $!pdf.action: :$uri;
-                    temp $*tag .= Link;
+##                    temp $*tag .= Link;
                     $.print($text);
                 }
             }
