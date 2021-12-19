@@ -170,8 +170,10 @@ class Pod::To::PDF:ver<0.0.1> {
             temp $*tag .= Table;
             if $pod.caption -> $caption {
                 temp $*tag .= Caption;
+                temp $.italic = True;
                 $.say: $caption;
             }
+            self!pad-here;
             my PDF::Content::Text::Box @header = @table.shift.List;
             if @header {
                 temp $*tag .= TableHead;
@@ -196,6 +198,7 @@ class Pod::To::PDF:ver<0.0.1> {
     method lang is rw { $!pdf.catalog.Lang; }
 
     multi method pod2pdf(Pod::Block::Named $pod) {
+        $.pad: {
         given $pod.name {
             when 'pod'  { $.pod2pdf($pod.contents)     }
             when 'para' {
@@ -228,7 +231,7 @@ class Pod::To::PDF:ver<0.0.1> {
                     }
                 }
             }
-        }
+        } }
     }
 
     multi method pod2pdf(Pod::Block::Code $pod) {
@@ -437,9 +440,12 @@ class Pod::To::PDF:ver<0.0.1> {
         PDF::Content::Text::Box.new: :$text, :indent($!tx), :$.leading, :$.font, :$.font-size, :$width, :$height, |c;
     }
 
-    method print(Str $text, Bool :$nl, |c) {
+    method !pad-here {
         $.say for ^$!pad;
         $!pad = 0;
+    }
+    method print(Str $text, Bool :$nl, |c) {
+        self!pad-here;
         my PDF::Content::Text::Box $tb = self!text-box: $text, |c;
         my $w = $tb.content-width;
         my $h = $tb.content-height;
@@ -497,7 +503,7 @@ class Pod::To::PDF:ver<0.0.1> {
     }
 
     method !mark(&action, |c) {
-        given self!gfx {
+        given $!gfx {
             if .open-tags.first(*.mcid.defined) {
                 # caller is already marking
                 .tag: $*tag.name, &action, |$*tag.attributes;
@@ -567,12 +573,11 @@ class Pod::To::PDF:ver<0.0.1> {
             $.lines-before = min(+$raw.lines, 3);
             my constant \pad = 5;
             $.font-size *= .8;
-            my $gfx = self!gfx;
-            my (\x, \y, \w, \h) = @.say($raw.chomp, :verbatim);
+            my (\x, \y, \w, \h) = @.say($raw, :verbatim);
 
             my $x0 =  self!indent + $!margin;
-            my $width = self!gfx.canvas.width - $!margin - $x0;
-            $gfx.graphics: {
+            my $width = $!gfx.canvas.width - $!margin - $x0;
+            $!gfx.graphics: {
                 constant \pad = 2;
                 .FillColor = color 0;
                 .StrokeColor = color 0;
@@ -585,7 +590,7 @@ class Pod::To::PDF:ver<0.0.1> {
     }
 
     method !line($x0, $y0, $x1, $y1 = $y0, :$linewidth = 1) {
-        given self!gfx {
+        given $!gfx {
             .Save;
             .SetLineWidth: $linewidth;
             .MoveTo: $x0, $y0;
@@ -614,13 +619,15 @@ class Pod::To::PDF:ver<0.0.1> {
             my $x1 = $tab + .content-width;
             my @rect = $!gfx.base-coords: $x0, $y, $x1, $y + $.line-height;
             @rect Z+= [-pad, -pad, pad, pad];
+            my @Border = 0, 0, 0;
+            my Str $content = $tb.text;
 
             my PDF::Annot::Link $link = $!pdf.annotation(
                 :$!page,
                 :action($.link),
                 :@rect,
-                :Border[0, 0, 0],
-                :content($tb.text),
+                :@Border,
+                :$content,
             );
 
             $y -= .height * $tb.leading;
