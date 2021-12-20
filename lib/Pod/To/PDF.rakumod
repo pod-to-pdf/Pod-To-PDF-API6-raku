@@ -29,29 +29,32 @@ class Pod::To::PDF:ver<0.0.1> {
     has Bool $.contents = True;
     has @.toc; # table of contents
 
-    submethod TWEAK(Str :$title, Str :$lang = 'en') {
+    method read($pod, :$*tag is copy = self.root) {
+        self.pod2pdf($pod);
+    }
+
+    method pdf {
+        if @!toc {
+            $!pdf.outlines.kids = @!toc;
+        }
+        $!pdf;
+    }
+
+    submethod TWEAK(Str :$title, Str :$lang = 'en', :$pod) {
         self.title = $_ with $title;
         self.lang = $_ with $lang;
         $!pdf.creator.push: "{self.^name}-{self.^ver}";
+        self.read($_) with $pod;
     }
 
     method render($class: $pod, |c) {
         # raku --doc=PDF encodes as utf-8, but we're binary
         # dump XML instead
-        my $obj = $class.new: |c;
-        my $*tag = $obj.root;
-        $obj.pod2pdf($pod);
-        $obj.tags.xml;
+        $class.new(|c, :$pod).xml;
     }
 
     our sub pod2pdf($pod, :$class = $?CLASS, |c) is export {
-        my $obj = $class.new: |c;
-        my $*tag = $obj.root;
-        $obj.pod2pdf($pod);
-        if $obj.toc -> $toc {
-            $obj.pdf.outlines.kids = $toc;
-        }
-        $obj.pdf;
+        $class.new(|c, :$pod).pdf;
     }
 
     my constant vpad = 2;
