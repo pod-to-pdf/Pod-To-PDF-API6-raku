@@ -16,14 +16,6 @@ method leading { 1.1 }
 method line-height {
     $.leading * $!font-size;
 }
-method !font-key {
-    join(
-        '-', 
-        ($!bold ?? 'B' !! 'n'),
-        ($!italic ?? 'I' !! 'n'),
-        ($!mono ?? 'M' !! 'n'),
-    );
-}
 constant %CoreFont = %(
     # Normal Fonts                 # Mono Fonts
     :n-n-n<times>,             :n-n-M<courier>,  
@@ -31,12 +23,23 @@ constant %CoreFont = %(
     :n-I-n<times-italic>,      :n-I-M<courier-oblique>
     :B-I-n<times-boldoitalic>, :B-I-M<courier-boldoblique>
 );
+my subset FontKey of Str where %CoreFont{$_}:exists;
 has %.fonts;
+has $!font-key;
+method !font-key {
+    $!font-key //= join(
+        '-', 
+        ($!bold ?? 'B' !! 'n'),
+        ($!italic ?? 'I' !! 'n'),
+        ($!mono ?? 'M' !! 'n'),
+    );
+}
 
 method font {
-    my $key = self!font-key;
-    %!fonts{$key} //= do {
-        my Str:D $font-name = %CoreFont{$key};
-        PDF::Content::Font::CoreFont.load-font($font-name);
+    given self!font-key -> FontKey $key {
+        %!fonts{$key} //= do {
+            my Str:D $font-name = %CoreFont{$key};
+            PDF::Content::Font::CoreFont.load-font($font-name);
+        }
     }
 }
