@@ -7,55 +7,97 @@ use PDF::API6;
 plan 1;
 
 my $xml = q{<Document>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <LI>
-    <Lbl>•</Lbl>
+    <Lbl>
+      •
+    </Lbl>
     <LBody>
-      <P>Abbreviated 1</P>
+      <P>
+        Abbreviated 1
+      </P>
     </LBody>
   </LI>
   <LI>
-    <Lbl>•</Lbl>
+    <Lbl>
+      •
+    </Lbl>
     <LBody>
-      <P>Abbreviated 2</P>
+      <P>
+        Abbreviated 2
+      </P>
     </LBody>
   </LI>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <LI>
-    <Lbl>•</Lbl>
+    <Lbl>
+      •
+    </Lbl>
     <LBody>
-      <P>Paragraph item</P>
+      <P>
+        Paragraph item
+      </P>
     </LBody>
   </LI>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <LI>
-    <Lbl>•</Lbl>
+    <Lbl>
+      •
+    </Lbl>
     <LBody>
-      <P>Block item</P>
+      <P>
+        Block item
+      </P>
     </LBody>
   </LI>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <LI>
-    <Lbl>•</Lbl>
+    <Lbl>
+      •
+    </Lbl>
     <LBody>
-      <P>Abbreviated</P>
+      <P>
+        Abbreviated
+      </P>
     </LBody>
   </LI>
   <LI>
-    <Lbl>•</Lbl>
+    <Lbl>
+      •
+    </Lbl>
     <LBody>
-      <P>Paragraph item</P>
+      <P>
+        Paragraph item
+      </P>
     </LBody>
   </LI>
   <LI>
-    <Lbl>•</Lbl>
+    <Lbl>
+      •
+    </Lbl>
     <LBody>
-      <P>Block item</P>
-      <P>with multiple</P>
-      <P>paragraphs</P>
+      <P>
+        Block item
+      </P>
+      <P>
+        with multiple
+      </P>
+      <P>
+        paragraphs
+      </P>
     </LBody>
   </LI>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
 </Document>
 };
 
@@ -65,7 +107,7 @@ $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
 $pdf.save-as: "t/item.pdf", :!info;
 my PDF::Tags $tags = $doc.tags;
 
-is $tags[0].Str(:omit<Span>), $xml,
+is $tags[0].Str, $xml,
    'Various types of items convert correctly';
 
 

@@ -8,13 +8,19 @@ use PDF::API6;
 plan 1;
 
 my $xml = q{<Document>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <Code>indented</Code>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <Code>indented
 multi
 line</Code>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <Code>indented
 multi
 line
@@ -23,15 +29,23 @@ line
 and
 broken
 up</Code>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <Code>Abbreviated</Code>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <Code>Paragraph
 code</Code>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <Code>Delimited
 code</Code>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
 </Document>
 };
 
@@ -41,7 +55,7 @@ $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
 $pdf.save-as: "t/code.pdf", :!info;
 my PDF::Tags $tags = $doc.tags;
 
-is $tags[0].Str(:omit<Span>), $xml,
+is $tags[0].Str, $xml,
    'Various types of code blocks convert correctly.';
 
 =begin pod

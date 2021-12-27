@@ -7,13 +7,27 @@ use PDF::API6;
 plan 1;
 
 my $xml = q{<Document>
-  <P>This is all a paragraph.</P>
-  <P>This is the next paragraph.</P>
-  <P>This is the third paragraph.</P>
-  <P>Abbreviated paragraph</P>
-  <P>Paragraph paragraph</P>
-  <P>Block</P>
-  <P>paragraph</P>
+  <P>
+    This is all a paragraph.
+  </P>
+  <P>
+    This is the next paragraph.
+  </P>
+  <P>
+    This is the third paragraph.
+  </P>
+  <P>
+    Abbreviated paragraph
+  </P>
+  <P>
+    Paragraph paragraph
+  </P>
+  <P>
+    Block
+  </P>
+  <P>
+    paragraph
+  </P>
 </Document>
 };
 
@@ -23,7 +37,7 @@ $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
 $pdf.save-as: "t/paragraph.pdf", :!info;
 my PDF::Tags $tags = $doc.tags;
 
-is $tags[0].Str(:omit<Span>), $xml,
+is $tags[0].Str, $xml,
     'Paragraphs convert correctly.';
 
 =begin pod

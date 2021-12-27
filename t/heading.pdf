@@ -8,20 +8,20 @@
   /MarkInfo << /Marked true >>
   /Outlines 12 0 R
   /Pages 5 0 R
-  /StructTreeRoot 59 0 R
+  /StructTreeRoot 31 0 R
 >>
 endobj
 
 2 0 obj
 <<
-  /Abbreviated_heading1 [ 3 0 R /FitBH 774 ]
-  /Delimited_heading1 [ 10 0 R /FitBH 774 ]
-  /Head2 [ 10 0 R /FitBH 647.5 ]
-  /Head3 [ 10 0 R /FitBH 576 ]
-  /Head4 [ 10 0 R /FitBH 512.75 ]
-  /Heading3 [ 10 0 R /FitBH 715.7 ]
-  /Paragraph_heading1 [ 6 0 R /FitBH 774 ]
-  /Subheading2 [ 6 0 R /FitBH 690.4 ]
+  /Abbreviated_heading1 [ 3 0 R /FitBH 796 ]
+  /Delimited_heading1 [ 10 0 R /FitBH 796 ]
+  /Head2 [ 10 0 R /FitBH 665.1 ]
+  /Head3 [ 10 0 R /FitBH 590.3 ]
+  /Head4 [ 10 0 R /FitBH 525.4 ]
+  /Heading3 [ 10 0 R /FitBH 730 ]
+  /Paragraph_heading1 [ 6 0 R /FitBH 796 ]
+  /Subheading2 [ 6 0 R /FitBH 708 ]
 >>
 endobj
 
@@ -37,14 +37,12 @@ endobj
 endobj
 
 4 0 obj
-<< /Length 255 >> stream
+<< /Length 238 >> stream
 /H1 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
     /F1 20 Tf
     (Abbreviated heading1) Tj
-    22 TL
-    T*
   ET
   q
     1 w
@@ -79,14 +77,12 @@ endobj
 endobj
 
 7 0 obj
-<< /Length 367 >> stream
+<< /Length 331 >> stream
 /H1 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
     /F1 20 Tf
     (Paragraph heading1) Tj
-    22 TL
-    T*
   ET
   q
     1 w
@@ -107,8 +103,6 @@ EMC
     1 0 0 1 20 672.8 Tm
     /F1 16 Tf
     (Subheading2) Tj
-    17.6 TL
-    T*
   ET
 EMC
 endstream
@@ -144,14 +138,12 @@ endobj
 endobj
 
 11 0 obj
-<< /Length 955 >> stream
+<< /Length 861 >> stream
 /H1 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
     /F1 20 Tf
     (Delimited heading1) Tj
-    22 TL
-    T*
   ET
   q
     1 w
@@ -165,8 +157,6 @@ EMC
     1 0 0 1 20 701.4 Tm
     /F1 13 Tf
     (Heading3) Tj
-    14.3 TL
-    T*
   ET
 EMC
 /P << /MCID 2 >> BDC
@@ -181,8 +171,6 @@ EMC
     1 0 0 1 20 629.9 Tm
     /F1 16 Tf
     (Head2) Tj
-    17.6 TL
-    T*
   ET
 EMC
 /P << /MCID 4 >> BDC
@@ -197,8 +185,6 @@ EMC
     1 0 0 1 20 561.7 Tm
     /F1 13 Tf
     (Head3) Tj
-    14.3 TL
-    T*
   ET
 EMC
 /P << /MCID 6 >> BDC
@@ -213,8 +199,6 @@ EMC
     1 0 0 1 20 500.1 Tm
     /F1 11.5 Tf
     (Head4) Tj
-    12.65 TL
-    T*
   ET
 EMC
 /P << /MCID 8 >> BDC
@@ -228,7 +212,7 @@ endstream
 endobj
 
 12 0 obj
-<< /Count 9 /First 13 0 R /Last 60 0 R >>
+<< /Count 9 /First 13 0 R /Last 32 0 R >>
 endobj
 
 13 0 obj
@@ -236,7 +220,7 @@ endobj
   /Count 1
   /Dest /Abbreviated_heading1
   /Next 14 0 R
-  /SE 20 0 R
+  /SE 18 0 R
   /Title (Abbreviated heading1)
 >>
 endobj
@@ -247,9 +231,9 @@ endobj
   /Dest /Paragraph_heading1
   /First 15 0 R
   /Last 15 0 R
-  /Next 60 0 R
+  /Next 32 0 R
   /Prev 13 0 R
-  /SE 26 0 R
+  /SE 20 0 R
   /Title (Paragraph heading1)
 >>
 endobj
@@ -259,411 +243,197 @@ endobj
 endobj
 
 16 0 obj
-<< /Type /StructElem /S /H2 /K [ 17 0 R ] /P 19 0 R /T (Subheading2) >>
+<<
+  /Type /StructElem
+  /S /H2
+  /K [ 2 ]
+  /P 17 0 R
+  /Pg 6 0 R
+  /T (Subheading2)
+>>
 endobj
 
 17 0 obj
 <<
   /Type /StructElem
-  /S /Span
-  /ActualText (Subheading2\n)
-  /K [ 18 0 R ]
-  /P 16 0 R
+  /S /Document
+  /K [ 18 0 R 19 0 R 20 0 R 21 0 R 16 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R ]
+  /P 31 0 R
 >>
 endobj
 
 18 0 obj
-<< /Type /MCR /MCID 2 /Pg 6 0 R >>
+<<
+  /Type /StructElem
+  /S /H1
+  /K [ 0 ]
+  /P 17 0 R
+  /Pg 3 0 R
+  /T (Abbreviated heading1)
+>>
 endobj
 
 19 0 obj
-<<
-  /Type /StructElem
-  /S /Document
-  /K [ 20 0 R 23 0 R 26 0 R 29 0 R 16 0 R 32 0 R 35 0 R 38 0 R 41 0 R 44 0 R 47 0 R 50 0 R 53 0 R 56 0 R ]
-  /P 59 0 R
->>
+<< /Type /StructElem /S /P /K [ 1 ] /P 17 0 R /Pg 3 0 R >>
 endobj
 
 20 0 obj
 <<
   /Type /StructElem
   /S /H1
-  /K [ 21 0 R ]
-  /P 19 0 R
-  /T (Abbreviated heading1)
->>
-endobj
-
-21 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (Abbreviated heading1\n)
-  /K [ 22 0 R ]
-  /P 20 0 R
->>
-endobj
-
-22 0 obj
-<< /Type /MCR /MCID 0 /Pg 3 0 R >>
-endobj
-
-23 0 obj
-<< /Type /StructElem /S /P /K [ 24 0 R ] /P 19 0 R >>
-endobj
-
-24 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (asdf)
-  /K [ 25 0 R ]
-  /P 23 0 R
->>
-endobj
-
-25 0 obj
-<< /Type /MCR /MCID 1 /Pg 3 0 R >>
-endobj
-
-26 0 obj
-<<
-  /Type /StructElem
-  /S /H1
-  /K [ 27 0 R ]
-  /P 19 0 R
+  /K [ 0 ]
+  /P 17 0 R
+  /Pg 6 0 R
   /T (Paragraph heading1)
 >>
 endobj
 
-27 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (Paragraph heading1\n)
-  /K [ 28 0 R ]
-  /P 26 0 R
->>
+21 0 obj
+<< /Type /StructElem /S /P /K [ 1 ] /P 17 0 R /Pg 6 0 R >>
 endobj
 
-28 0 obj
-<< /Type /MCR /MCID 0 /Pg 6 0 R >>
-endobj
-
-29 0 obj
-<< /Type /StructElem /S /P /K [ 30 0 R ] /P 19 0 R >>
-endobj
-
-30 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (asdf)
-  /K [ 31 0 R ]
-  /P 29 0 R
->>
-endobj
-
-31 0 obj
-<< /Type /MCR /MCID 1 /Pg 6 0 R >>
-endobj
-
-32 0 obj
+22 0 obj
 <<
   /Type /StructElem
   /S /H1
-  /K [ 33 0 R ]
-  /P 19 0 R
+  /K [ 0 ]
+  /P 17 0 R
+  /Pg 10 0 R
   /T (Delimited heading1)
 >>
 endobj
 
-33 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (Delimited heading1\n)
-  /K [ 34 0 R ]
-  /P 32 0 R
->>
+23 0 obj
+<< /Type /StructElem /S /H3 /K [ 1 ] /P 17 0 R /Pg 10 0 R /T (Heading3) >>
 endobj
 
-34 0 obj
-<< /Type /MCR /MCID 0 /Pg 10 0 R >>
+24 0 obj
+<< /Type /StructElem /S /P /K [ 2 ] /P 17 0 R /Pg 10 0 R >>
 endobj
 
-35 0 obj
-<< /Type /StructElem /S /H3 /K [ 36 0 R ] /P 19 0 R /T (Heading3) >>
+25 0 obj
+<< /Type /StructElem /S /H2 /K [ 3 ] /P 17 0 R /Pg 10 0 R /T (Head2) >>
 endobj
 
-36 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (Heading3\n)
-  /K [ 37 0 R ]
-  /P 35 0 R
->>
+26 0 obj
+<< /Type /StructElem /S /P /K [ 4 ] /P 17 0 R /Pg 10 0 R >>
 endobj
 
-37 0 obj
-<< /Type /MCR /MCID 1 /Pg 10 0 R >>
+27 0 obj
+<< /Type /StructElem /S /H3 /K [ 5 ] /P 17 0 R /Pg 10 0 R /T (Head3) >>
 endobj
 
-38 0 obj
-<< /Type /StructElem /S /P /K [ 39 0 R ] /P 19 0 R >>
+28 0 obj
+<< /Type /StructElem /S /P /K [ 6 ] /P 17 0 R /Pg 10 0 R >>
 endobj
 
-39 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (asdf)
-  /K [ 40 0 R ]
-  /P 38 0 R
->>
+29 0 obj
+<< /Type /StructElem /S /H4 /K [ 7 ] /P 17 0 R /Pg 10 0 R /T (Head4) >>
 endobj
 
-40 0 obj
-<< /Type /MCR /MCID 2 /Pg 10 0 R >>
+30 0 obj
+<< /Type /StructElem /S /P /K [ 8 ] /P 17 0 R /Pg 10 0 R >>
 endobj
 
-41 0 obj
-<< /Type /StructElem /S /H2 /K [ 42 0 R ] /P 19 0 R /T (Head2) >>
-endobj
-
-42 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (Head2\n)
-  /K [ 43 0 R ]
-  /P 41 0 R
->>
-endobj
-
-43 0 obj
-<< /Type /MCR /MCID 3 /Pg 10 0 R >>
-endobj
-
-44 0 obj
-<< /Type /StructElem /S /P /K [ 45 0 R ] /P 19 0 R >>
-endobj
-
-45 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (asdf)
-  /K [ 46 0 R ]
-  /P 44 0 R
->>
-endobj
-
-46 0 obj
-<< /Type /MCR /MCID 4 /Pg 10 0 R >>
-endobj
-
-47 0 obj
-<< /Type /StructElem /S /H3 /K [ 48 0 R ] /P 19 0 R /T (Head3) >>
-endobj
-
-48 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (Head3\n)
-  /K [ 49 0 R ]
-  /P 47 0 R
->>
-endobj
-
-49 0 obj
-<< /Type /MCR /MCID 5 /Pg 10 0 R >>
-endobj
-
-50 0 obj
-<< /Type /StructElem /S /P /K [ 51 0 R ] /P 19 0 R >>
-endobj
-
-51 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (asdf)
-  /K [ 52 0 R ]
-  /P 50 0 R
->>
-endobj
-
-52 0 obj
-<< /Type /MCR /MCID 6 /Pg 10 0 R >>
-endobj
-
-53 0 obj
-<< /Type /StructElem /S /H4 /K [ 54 0 R ] /P 19 0 R /T (Head4) >>
-endobj
-
-54 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (Head4\n)
-  /K [ 55 0 R ]
-  /P 53 0 R
->>
-endobj
-
-55 0 obj
-<< /Type /MCR /MCID 7 /Pg 10 0 R >>
-endobj
-
-56 0 obj
-<< /Type /StructElem /S /P /K [ 57 0 R ] /P 19 0 R >>
-endobj
-
-57 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /ActualText (asdf)
-  /K [ 58 0 R ]
-  /P 56 0 R
->>
-endobj
-
-58 0 obj
-<< /Type /MCR /MCID 8 /Pg 10 0 R >>
-endobj
-
-59 0 obj
+31 0 obj
 <<
   /Type /StructTreeRoot
-  /K [ 19 0 R ]
+  /K [ 17 0 R ]
   /ParentTree <<
-    /Nums [ 0 [ 21 0 R 24 0 R ] 1 [ 27 0 R 30 0 R 17 0 R ] 2 [ 33 0 R 36 0 R 39 0 R 42 0 R 45 0 R 48 0 R 51 0 R 54 0 R 57 0 R ] ]
+    /Nums [ 0 [ 18 0 R 19 0 R ] 1 [ 20 0 R 21 0 R 16 0 R ] 2 [ 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R ] ]
   >>
 >>
 endobj
 
-60 0 obj
+32 0 obj
 <<
   /Count 6
   /Dest /Delimited_heading1
-  /First 61 0 R
-  /Last 63 0 R
+  /First 33 0 R
+  /Last 35 0 R
   /Prev 14 0 R
-  /SE 32 0 R
+  /SE 22 0 R
   /Title (Delimited heading1)
 >>
 endobj
 
-61 0 obj
-<< /Count 2 /First 62 0 R /Last 62 0 R /Next 63 0 R >>
+33 0 obj
+<< /Count 2 /First 34 0 R /Last 34 0 R /Next 35 0 R >>
 endobj
 
-62 0 obj
-<< /Count 1 /Dest /Heading3 /SE 35 0 R /Title (Heading3) >>
+34 0 obj
+<< /Count 1 /Dest /Heading3 /SE 23 0 R /Title (Heading3) >>
 endobj
 
-63 0 obj
+35 0 obj
 <<
   /Count 3
   /Dest /Head2
-  /First 64 0 R
-  /Last 64 0 R
-  /Prev 61 0 R
-  /SE 41 0 R
+  /First 36 0 R
+  /Last 36 0 R
+  /Prev 33 0 R
+  /SE 25 0 R
   /Title (Head2)
 >>
 endobj
 
-64 0 obj
+36 0 obj
 <<
   /Count 2
   /Dest /Head3
-  /First 65 0 R
-  /Last 65 0 R
-  /SE 47 0 R
+  /First 37 0 R
+  /Last 37 0 R
+  /SE 27 0 R
   /Title (Head3)
 >>
 endobj
 
-65 0 obj
-<< /Count 1 /Dest /Head4 /SE 53 0 R /Title (Head4) >>
+37 0 obj
+<< /Count 1 /Dest /Head4 /SE 29 0 R /Title (Head4) >>
 endobj
 
 xref
-0 66
+0 38
 0000000000 65535 f 
 0000000015 00000 n 
 0000000172 00000 n 
-0000000498 00000 n 
-0000000666 00000 n 
-0000000973 00000 n 
-0000001046 00000 n 
-0000001214 00000 n 
-0000001633 00000 n 
-0000001740 00000 n 
-0000001848 00000 n 
-0000002018 00000 n 
-0000003026 00000 n 
-0000003085 00000 n 
-0000003209 00000 n 
-0000003375 00000 n 
-0000003458 00000 n 
-0000003547 00000 n 
-0000003659 00000 n 
-0000003711 00000 n 
-0000003888 00000 n 
-0000003996 00000 n 
-0000004117 00000 n 
-0000004169 00000 n 
-0000004240 00000 n 
+0000000495 00000 n 
+0000000663 00000 n 
+0000000953 00000 n 
+0000001026 00000 n 
+0000001194 00000 n 
+0000001577 00000 n 
+0000001684 00000 n 
+0000001792 00000 n 
+0000001962 00000 n 
+0000002876 00000 n 
+0000002935 00000 n 
+0000003059 00000 n 
+0000003225 00000 n 
+0000003308 00000 n 
+0000003414 00000 n 
+0000003591 00000 n 
+0000003706 00000 n 
+0000003782 00000 n 
+0000003895 00000 n 
+0000003971 00000 n 
+0000004085 00000 n 
+0000004177 00000 n 
+0000004254 00000 n 
 0000004343 00000 n 
-0000004395 00000 n 
-0000004501 00000 n 
-0000004620 00000 n 
-0000004672 00000 n 
-0000004743 00000 n 
-0000004846 00000 n 
-0000004898 00000 n 
-0000005004 00000 n 
-0000005123 00000 n 
-0000005176 00000 n 
-0000005262 00000 n 
-0000005371 00000 n 
-0000005424 00000 n 
-0000005495 00000 n 
-0000005598 00000 n 
-0000005651 00000 n 
-0000005734 00000 n 
-0000005840 00000 n 
-0000005893 00000 n 
-0000005964 00000 n 
-0000006067 00000 n 
-0000006120 00000 n 
-0000006203 00000 n 
-0000006309 00000 n 
-0000006362 00000 n 
-0000006433 00000 n 
-0000006536 00000 n 
-0000006589 00000 n 
-0000006672 00000 n 
-0000006778 00000 n 
-0000006831 00000 n 
-0000006902 00000 n 
-0000007005 00000 n 
-0000007058 00000 n 
-0000007273 00000 n 
-0000007424 00000 n 
-0000007496 00000 n 
-0000007573 00000 n 
-0000007698 00000 n 
-0000007808 00000 n 
+0000004420 00000 n 
+0000004509 00000 n 
+0000004586 00000 n 
+0000004675 00000 n 
+0000004752 00000 n 
+0000004967 00000 n 
+0000005118 00000 n 
+0000005190 00000 n 
+0000005267 00000 n 
+0000005392 00000 n 
+0000005502 00000 n 
 trailer
-<< /ID [ (t/heading.t     ) (t/heading.t     ) ] /Root 1 0 R /Size 66 >>
+<< /ID [ (t/heading.t     ) (t/heading.t     ) ] /Root 1 0 R /Size 38 >>
 startxref
-7879
+5573
 %%EOF

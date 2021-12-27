@@ -7,101 +7,198 @@ use PDF::Tags;
 plan 1;
 
 my $xml = q{<Document>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <Table>
-    <Caption>Table 1</Caption>
+    <Caption>
+      Table 1
+    </Caption>
     <TBody>
       <TR>
-        <TD>A A</TD>
-        <TD>B B</TD>
-        <TD>C C</TD>
+        <TD>
+          A A
+        </TD>
+        <TD>
+          B B
+        </TD>
+        <TD>
+          C C
+        </TD>
       </TR>
       <TR>
-        <TD>1 1</TD>
-        <TD>2 2</TD>
-        <TD>3 3</TD>
+        <TD>
+          1 1
+        </TD>
+        <TD>
+          2 2
+        </TD>
+        <TD>
+          3 3
+        </TD>
       </TR>
     </TBody>
   </Table>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <Table>
-    <Caption>Table 2</Caption>
+    <Caption>
+      Table 2
+    </Caption>
     <THead>
       <TR>
-        <TH>H 1</TH>
-        <TH>H 2</TH>
-        <TH>H 3</TH>
+        <TH>
+          H 1
+        </TH>
+        <TH>
+          H 2
+        </TH>
+        <TH>
+          H 3
+        </TH>
       </TR>
     </THead>
     <TBody>
       <TR>
-        <TD>A A</TD>
-        <TD>B B</TD>
-        <TD>C C</TD>
+        <TD>
+          A A
+        </TD>
+        <TD>
+          B B
+        </TD>
+        <TD>
+          C C
+        </TD>
       </TR>
       <TR>
-        <TD>1 1</TD>
-        <TD>2 2</TD>
-        <TD>3 3</TD>
+        <TD>
+          1 1
+        </TD>
+        <TD>
+          2 2
+        </TD>
+        <TD>
+          3 3
+        </TD>
       </TR>
     </TBody>
   </Table>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <Table>
-    <Caption>Table 3</Caption>
+    <Caption>
+      Table 3
+    </Caption>
     <THead>
       <TR>
-        <TH>H11</TH>
-        <TH>HHH 222</TH>
-        <TH>H 3</TH>
+        <TH>
+          H11
+        </TH>
+        <TH>
+          HHH 222
+        </TH>
+        <TH>
+          H 3
+        </TH>
       </TR>
     </THead>
     <TBody>
       <TR>
-        <TD>AAA</TD>
-        <TD>BB</TD>
-        <TD>C C C C</TD>
+        <TD>
+          AAA
+        </TD>
+        <TD>
+          BB
+        </TD>
+        <TD>
+          C C C C
+        </TD>
       </TR>
       <TR>
-        <TD>1 1</TD>
-        <TD>2 2 2 2</TD>
-        <TD>3 3</TD>
+        <TD>
+          1 1
+        </TD>
+        <TD>
+          2 2 2 2
+        </TD>
+        <TD>
+          3 3
+        </TD>
       </TR>
     </TBody>
   </Table>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
   <Table>
-    <Caption>Table 4</Caption>
+    <Caption>
+      Table 4
+    </Caption>
     <THead>
       <TR>
-        <TH>H 1</TH>
-        <TH>H 2</TH>
-        <TH>H 3</TH>
-        <TH>H 4</TH>
+        <TH>
+          H 1
+        </TH>
+        <TH>
+          H 2
+        </TH>
+        <TH>
+          H 3
+        </TH>
+        <TH>
+          H 4
+        </TH>
       </TR>
     </THead>
     <TBody>
       <TR>
-        <TD>Hello, I'm kinda long, I think</TD>
-        <TD>B B</TD>
-        <TD>C C</TD>
-        <TD/>
+        <TD>
+          Hello, I'm kinda long, I think
+        </TD>
+        <TD>
+          B B
+        </TD>
+        <TD>
+          C C
+        </TD>
+        <TD>
+        </TD>
       </TR>
       <TR>
-        <TD>1 1</TD>
-        <TD>Me also, methinks</TD>
-        <TD>3 3</TD>
-        <TD>This should definitely wrap. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</TD>
+        <TD>
+          1 1
+        </TD>
+        <TD>
+          Me also, methinks
+        </TD>
+        <TD>
+          3 3
+        </TD>
+        <TD>
+          This should definitely wrap. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        </TD>
       </TR>
       <TR>
-        <TD>ww</TD>
-        <TD>xx</TD>
-        <TD>yy</TD>
-        <TD>zz</TD>
+        <TD>
+          ww
+        </TD>
+        <TD>
+          xx
+        </TD>
+        <TD>
+          yy
+        </TD>
+        <TD>
+          zz
+        </TD>
       </TR>
     </TBody>
   </Table>
-  <P>asdf</P>
+  <P>
+    asdf
+  </P>
 </Document>
 };
 
@@ -111,7 +208,7 @@ $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
 $pdf.save-as: "t/table.pdf", :!info;
 my PDF::Tags $tags = $doc.tags;
 
-is $tags[0].Str(:omit<Span>), $xml,
+is $tags[0].Str, $xml,
     'Converts tables correctly';
 
 =begin pod

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="https://pdf-raku.github.io/css/tagged-pdf.css"?>
+<Document>
+  <H1>
+    class Bag
+  </H1>
+  <H2>
+    Immutable collection of distinct objects with integer weights
+  </H2>
+  <Code>class Bag does Baggy { }</Code>
+  <P>
+    A Bag is an immutable bag/multiset implementing <Link>Associative</Link>, meaning a collection of distinct elements in no particular order that each
+have an integer weight assigned to them signifying how many copies of that element are considered "in the bag". (For mutable bags, see <Link></Link><Link>
+BagHash</Link> instead.)
+  </P>
+  <P>
+    Bags are often used for performing weighted random selections - see <Link>.pick</Link> and <Link>.roll</Link>.
+  </P>
+  <P>
+    Objects/values of any type are allowed as bag elements. Within a Bag, items that would compare positively with the <Link>===</Link> operator are
+considered the same element, with the number of how many there are as its weight. But of course you can also easily get back the expanded
+list of items (without the order):
+  </P>
+  <Code>my $breakfast = bag &lt;spam eggs spam spam bacon spam&gt;;
+
+say $breakfast.elems;      # OUTPUT: «3»
+say $breakfast.keys.sort;  # OUTPUT: «bacon eggs spam»
+
+say $breakfast.total;      # OUTPUT: «6»
+say $breakfast.kxxv.sort;  # OUTPUT: «bacon eggs spam spam spam spam»</Code>
+  <P>
+    Bags can be treated as object hashes using the <Link>{ }   postcircumfix operator</Link>, or the <Link></Link><Link>&lt; &gt;
+postcircumfix operator</Link> for literal string keys, which returns the corresponding integer weight
+for keys that are elements of the bag, and 0 for keys that aren't:
+  </P>
+  <Code>my $breakfast = bag &lt;spam eggs spam spam bacon spam&gt;;
+say $breakfast&lt;bacon&gt;;    # OUTPUT: «1»
+say $breakfast&lt;spam&gt;;     # OUTPUT: «4»
+say $breakfast&lt;sausage&gt;;  # OUTPUT: «0»</Code>
+  <H1>
+    Creating Bag objects
+  </H1>
+  <P>
+    Bags can be composed using the <Link>bag</Link> subroutine (or Bag.new, for which it is a shorthand).
+Any positional parameters, regardless of their type, become elements of the bag:
+  </P>
+  <Code>my $n = bag "a" =&gt; 0, "b" =&gt; 1, "c" =&gt; 2, "c" =&gt; 2;
+say $n.keys.raku;        # OUTPUT: «(:c(2), :b(1), :a(0)).Seq»
+say $n.keys.map(&amp;WHAT);  # OUTPUT: «((Pair) (Pair) (Pair))»
+say $n.values.raku;      # OUTPUT: «(2, 1, 1).Seq»</Code>
+  <P>
+    Alternatively, the .Bag coercer (or its functional form, Bag()) can be called on an existing object to coerce it to a Bag. Its semantics depend
+on the type and contents of the object. In general it evaluates the object in list context and creates a bag with the resulting items as elements,
+although for Hash-like objects or Pair items, only the keys become elements of the bag, and the (cumulative) values become the associated
+integer weights:
+  </P>
+  <Code>my $n = ("a" =&gt; 0, "b" =&gt; 1, "c" =&gt; 2, "c" =&gt; 2).Bag;
+say $n.keys.raku;        # OUTPUT: «("b", "c").Seq»
+say $n.keys.map(&amp;WHAT);  # OUTPUT: «((Str) (Str))»
+say $n.values.raku;      # OUTPUT: «(1, 4).Seq»</Code>
+  <P>
+    Furthermore, you can get a Bag by using bag operators (see next section) on objects of other types such as <Link>List</Link>, which will act like they
+internally call .Bag on them before performing the operation. Be aware of the tight precedence of those operators though, which may require
+you to use parentheses around arguments:
+  </P>
+  <Code>say (1..5) (+) 4;  # OUTPUT: «Bag(1 2 3 4(2) 5)»</Code>
+  <P>
+    Of course, you can also create a Bag with the .new method.
+  </P>
+  <Code>my $breakfast = Bag.new( &lt;spam eggs spam spam bacon spam&gt; );</Code>
+  <P>
+    Since 6.d (2019.03 and later) you can also use this syntax for parameterization of the Bag, to specify which type of values are acceptable:
+  </P>
+  <Code># only allow strings (Str) in the Bag
+my $breakfast = Bag[Str].new( &lt;spam eggs spam spam bacon spam&gt; );
+
+# only allow whole numbers (Int) in the Bag
+my $breakfast = Bag[Int].new( &lt;spam eggs spam spam bacon spam&gt; );
+# Type check failed in binding; expected Int but got Str ("spam")</Code>
+  <P>
+    Finally, you can create Bag masquerading as a hash by using the is trait:
+  </P>
+  <Code>my %b is Bag = &lt;a b c&gt;;
+say %b&lt;a&gt;;  # True
+say %b&lt;d&gt;;  # False</Code>
+  <P>
+    Since 6.d (2019.03 and later), this syntax also allows you to specify the type of values you would like to allow:
+  </P>
+  <Code># limit to strings
+my %b is Bag[Str] = &lt;a b c&gt;;
+say %b&lt;a&gt;;  # True
+say %b&lt;d&gt;;  # False
+
+# limit to whole numbers
+my %b is Bag[Int] = &lt;a b c&gt;;
+# Type check failed in binding; expected Int but got Str ("a")</Code>
+  <H1>
+    Operators
+  </H1>
+  <P>
+    See <Link>Operators with set semantics</Link> for a complete list of "set operators" applicable to, among other types, Bag.
+  </P>
+  <P>
+    Examples:
+  </P>
+  <Code>my ($a, $b) = bag(2, 2, 4), bag(2, 3, 3, 4);
+
+say $a (&lt;) $b;   # OUTPUT: «False»
+say $a (&lt;=) $b;  # OUTPUT: «False»
+say $a (^) $b;   # OUTPUT: «Bag(3(2) 2)»
+say $a (+) $b;   # OUTPUT: «Bag(2(3) 4(2) 3(2))»
+
+# Unicode versions:
+say $a  $b;  # OUTPUT: «False»
+say $a  $b;  # OUTPUT: «False»
+say $a  $b;  # OUTPUT: «Bag(3(2) 2)»
+say $a  $b;  # OUTPUT: «Bag(2(3) 4(2) 3(2))»</Code>
+  <H1>
+    Subroutines
+  </H1>
+  <H2>
+    sub bag
+  </H2>
+  <Code>sub bag(*@args --&gt; Bag)</Code>
+  <P>
+    Creates a new Bag from @args.
+  </P>
+  <H1>
+    Note on reverse and ordering
+  </H1>
+  <P>
+    This method is inherited from <Link>Any</Link>, however, Mixes do not have an inherent order and you should not trust it returning a consistent output.
+  </P>
+  <H1>
+    See also
+  </H1>
+  <P>
+    <Link>Sets, Bags, and Mixes</Link>
+  </P>
+</Document>
