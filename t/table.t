@@ -1,7 +1,7 @@
 use v6;
 
 use Test;
-use Pod::To::PDF;
+use Pod::To::PDF::API6;
 use PDF::API6;
 use PDF::Tags;
 plan 1;
@@ -202,7 +202,7 @@ my $xml = q{<Document>
 </Document>
 };
 
-my Pod::To::PDF $doc .= new: :$=pod;
+my Pod::To::PDF::API6 $doc .= new: :$=pod;
 my PDF::API6 $pdf = $doc.pdf;
 $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
 $pdf.save-as: "t/table.pdf", :!info;

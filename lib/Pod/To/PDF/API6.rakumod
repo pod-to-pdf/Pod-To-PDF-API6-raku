@@ -1,4 +1,4 @@
-class Pod::To::PDF:ver<0.0.1> {
+class Pod::To::PDF::API6:ver<0.0.1> {
     use PDF::API6;
     use PDF::Tags;
     use PDF::Tags::Elem;
@@ -6,7 +6,7 @@ class Pod::To::PDF:ver<0.0.1> {
     use PDF::Content::Color :&color;
     use PDF::Content::Tag :Tags;
     use PDF::Content::Text::Box;
-    use Pod::To::PDF::Style;
+    use Pod::To::PDF::API6::Style;
     use Pod::To::Text;
     use File::Temp;
     # PDF::Class
@@ -23,7 +23,7 @@ class Pod::To::PDF:ver<0.0.1> {
     has PDF::Page $!page;
     has PDF::Content $!gfx;
     has UInt $!indent = 0;
-    has Pod::To::PDF::Style $.style handles<font font-size leading line-height bold italic mono underline lines-before link> .= new;
+    has Pod::To::PDF::API6::Style $.style handles<font font-size leading line-height bold italic mono underline lines-before link> .= new;
     has $!tx = 0; # text-flow x
     has $!ty = 0; # text-flow y
     has $.margin = 20;
@@ -686,7 +686,7 @@ class Pod::To::PDF:ver<0.0.1> {
 }
 
 =NAME
-Pod::To::PDF - Render Pod as PDF
+Pod::To::PDF::API6 - Render Pod as PDF
 
 =begin SYNOPSIS
 From command line:
@@ -695,7 +695,7 @@ From command line:
 
 From Raku:
     =begin code :lang<raku>
-    use Pod::To::PDF;
+    use Pod::To::PDF::API6;
 
     =NAME
     foobar.pl
@@ -708,7 +708,7 @@ From Raku:
 =end SYNOPSIS
 
 =begin EXPORTS
-    class Pod::To::PDF;
+    class Pod::To::PDF::API6;
     sub pod2pdf; # See below
 =end EXPORTS
 
@@ -723,7 +723,7 @@ From Raku code, the C<pod2pdf> function returns a PDF::API6 object which can
 be further manipulated, or saved to a PDF file.
 
     =begin code :lang<raku>
-    use Pod::To::PDF;
+    use Pod::To::PDF::API6;
     use PDF::API6;
  
     =NAME

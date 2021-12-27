@@ -1,5 +1,5 @@
 #| Basic core-font styler
-unit class Pod::To::PDF::Style is rw;
+unit class Pod::To::PDF::API6::Style is rw;
 
 use PDF::Content::Font::CoreFont;
 use PDF::Action;
