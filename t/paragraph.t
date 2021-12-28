@@ -28,6 +28,9 @@ my $xml = q{<Document>
   <P>
     paragraph
   </P>
+  <P>
+    Paragraph with formatting, <Code>code</Code> and <Link>links</Link>.
+  </P>
 </Document>
 };
 
@@ -62,3 +65,5 @@ Block
 
 paragraph
 =end para
+
+=para Paragraph with B<formatting>, C<code> and L<links|#blah>.

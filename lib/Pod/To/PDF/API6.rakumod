@@ -273,7 +273,10 @@ class Pod::To::PDF::API6:ver<0.0.1> {
                 temp $.bold = True;
                 $.pod2pdf($pod.contents);
             }
-            when 'C'|'T' {
+            when 'C' {
+                self!code: pod2text($pod), :inline;
+            }
+            when 'T' {
                 temp $.mono = True;
                 $.pod2pdf($pod.contents);
             }
@@ -585,25 +588,24 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         }
     }
 
-    method !code(Str $raw is copy) {
+    method !code(Str $raw is copy, :$inline) {
         $raw .= chomp;
-        self!style: :mono, :indent, :tag(CODE), {
+        self!style: :mono, :indent(!$inline), :tag(CODE), {
             while $raw {
                 $.lines-before = min(+$raw.lines, 3);
-                my constant \pad = 5;
                 $.font-size *= .8;
                 my (\x, \y, \w, \h, \overflow) = @.print: $raw, :verbatim, :!reflow;
                 $raw = overflow;
 
-                my $x0 =  self!indent + $!margin;
-                my $width = $!gfx.canvas.width - $!margin - $x0;
+                my $pad = $inline ?? 1 !! 3;
+                my $x0 = $inline ?? x !! self!indent + $!margin;
+                my $width = $inline ?? w !! $!gfx.canvas.width - $!margin - $x0;
                 $!gfx.graphics: {
-                    constant \pad = 2;
                     .FillColor = color 0;
                     .StrokeColor = color 0;
                     .FillAlpha = 0.1;
                     .StrokeAlpha = 0.25;
-                    .Rectangle: $x0 - pad, y - pad, $width, h + 2*pad;
+                    .Rectangle: $x0 - $pad, y - $pad, $width + 2 * $pad, h + 2 * $pad;
                     .paint: :fill, :stroke;
                 }
             }

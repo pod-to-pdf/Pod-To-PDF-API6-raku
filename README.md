@@ -13,7 +13,7 @@ $ zef install Pod::To::PDF::API6
 
 From command line:
 
-    $ raku --doc=PDF::API lib/class.rakumod | xargs xpdf
+    $ raku --doc=PDF::API6 lib/class.rakumod | xargs xpdf
 
 From Raku:
 
