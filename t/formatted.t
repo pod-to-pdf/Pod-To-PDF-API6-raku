@@ -12,10 +12,10 @@ my $xml = q{<Document>
     This text is of minor significance.
   </P>
   <P>
-    This text is of major significance.
+    This text is of <Span FontWeight="italic">major significance</Span>.
   </P>
   <P>
-    This text is of fundamental significance.
+    This text is of <Span FontStyle="bold">fundamental significance</Span>.
   </P>
   <P>
     This text is verbatim C<with> B<disarmed> Z<formatting>.

@@ -47,7 +47,7 @@ endobj
 endobj
 
 6 0 obj
-<< /Length 1430 >> stream
+<< /Length 1352 >> stream
 /P << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
@@ -97,7 +97,7 @@ EMC
     (Paragraph with ) Tj
   ET
 EMC
-/P << /MCID 8 >> BDC
+/Span << /MCID 8 >> BDC
   BT
     1 0 0 1 20 598 Tm
     /F2 10 Tf
@@ -135,18 +135,11 @@ Q
 EMC
 q
   0 0 1 rg
-  0 0 1 RG
   /Link << /MCID 12 >> BDC
     BT
       1 0 0 1 20 598 Tm
       [ -16786 (links) ] TJ
     ET
-    q
-      0.5 w
-      187.86 597 m
-      207.31 597 l
-      S
-    Q
   EMC
 Q
 /P << /MCID 13 >> BDC
@@ -198,7 +191,7 @@ endobj
   /Type /StructTreeRoot
   /K [ 13 0 R ]
   /ParentTree <<
-    /Nums [ 0 [ 14 0 R 15 0 R 16 0 R 17 0 R 18 0 R 19 0 R 20 0 R 21 0 R 21 0 R 21 0 R 22 0 R 21 0 R 23 0 R 21 0 R ] 1 23 0 R ]
+    /Nums [ 0 [ 14 0 R 15 0 R 16 0 R 17 0 R 18 0 R 19 0 R 20 0 R 21 0 R 22 0 R 21 0 R 23 0 R 21 0 R 24 0 R 21 0 R ] 1 24 0 R ]
   >>
 >>
 endobj
@@ -244,26 +237,36 @@ endobj
 <<
   /Type /StructElem
   /S /P
-  /K [ 7 8 9 22 0 R 11 23 0 R 13 ]
+  /K [ 7 22 0 R 9 23 0 R 11 24 0 R 13 ]
   /P 13 0 R
   /Pg 3 0 R
 >>
 endobj
 
 22 0 obj
-<< /Type /StructElem /S /Code /K [ 10 ] /P 21 0 R >>
+<<
+  /Type /StructElem
+  /S /Span
+  /A << /FontStyle (bold) >>
+  /K [ 8 ]
+  /P 21 0 R
+>>
 endobj
 
 23 0 obj
-<< /Type /StructElem /S /Link /K [ 24 0 R 12 ] /P 21 0 R >>
+<< /Type /StructElem /S /Code /K [ 10 ] /P 21 0 R >>
 endobj
 
 24 0 obj
+<< /Type /StructElem /S /Link /K [ 25 0 R 12 ] /P 21 0 R >>
+endobj
+
+25 0 obj
 << /Type /OBJR /Obj 4 0 R /Pg 3 0 R >>
 endobj
 
 xref
-0 25
+0 26
 0000000000 65535 f 
 0000000015 00000 n 
 0000000138 00000 n 
@@ -271,26 +274,27 @@ xref
 0000000447 00000 n 
 0000000615 00000 n 
 0000000669 00000 n 
-0000002152 00000 n 
-0000002199 00000 n 
-0000002247 00000 n 
-0000002355 00000 n 
-0000002463 00000 n 
-0000002568 00000 n 
-0000002780 00000 n 
-0000002915 00000 n 
-0000002991 00000 n 
-0000003067 00000 n 
-0000003143 00000 n 
-0000003219 00000 n 
-0000003295 00000 n 
-0000003371 00000 n 
-0000003447 00000 n 
-0000003557 00000 n 
-0000003627 00000 n 
-0000003704 00000 n 
+0000002074 00000 n 
+0000002121 00000 n 
+0000002169 00000 n 
+0000002277 00000 n 
+0000002385 00000 n 
+0000002490 00000 n 
+0000002702 00000 n 
+0000002837 00000 n 
+0000002913 00000 n 
+0000002989 00000 n 
+0000003065 00000 n 
+0000003141 00000 n 
+0000003217 00000 n 
+0000003293 00000 n 
+0000003369 00000 n 
+0000003484 00000 n 
+0000003590 00000 n 
+0000003660 00000 n 
+0000003737 00000 n 
 trailer
-<< /ID [ (t/paragraph.t   ) (t/paragraph.t   ) ] /Root 1 0 R /Size 25 >>
+<< /ID [ (t/paragraph.t   ) (t/paragraph.t   ) ] /Root 1 0 R /Size 26 >>
 startxref
-3760
+3793
 %%EOF

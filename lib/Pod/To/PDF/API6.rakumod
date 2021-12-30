@@ -50,12 +50,16 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     }
 
     method render($class: $pod, |c) {
-        my $renderer = $class.new(|c, :$pod);
-        my PDF::API6 $pdf = $renderer.pdf;
-        # save to a temporary file, since PDF is a binary format
-        my ($file-name, ) = tempfile("pod2pdf-****.pdf", :!unlink);
-        $pdf.save-as: $file-name;
-        $file-name;
+        state %cache{Any};
+        %cache{$pod} //= do {
+            # render method may be called more than once: Rakudo #4690
+            my $renderer = $class.new(|c, :$pod);
+            my PDF::API6 $pdf = $renderer.pdf;
+            # save to a temporary file, since PDF is a binary format
+            my ($file-name, ) = tempfile("pod2pdf-api6****.pdf", :!unlink);
+            $pdf.save-as: $file-name;
+            $file-name;
+        }
     }
 
     our sub pod2pdf($pod, :$class = $?CLASS, |c) is export {
@@ -124,7 +128,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
                         if $header {
                             # draw underline
                             my $y = $!ty + $tb.underline-position - $head-space;
-                            self!line: $tab, $y, $tab + $width;
+                            self!draw-line: $tab, $y, $tab + $width;
                         }
                     }
                     given $tb.content-height {
@@ -270,8 +274,9 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     multi method pod2pdf(Pod::FormattingCode $pod) {
         given $pod.type {
             when 'B' {
-                temp $.bold = True;
-                $.pod2pdf($pod.contents);
+                self!style: :tag<Span>, :bold, {
+                    $.pod2pdf($pod.contents);
+                }
             }
             when 'C' {
                 self!code: pod2text($pod), :inline;
@@ -286,8 +291,9 @@ class Pod::To::PDF::API6:ver<0.0.1> {
                 $.pod2pdf($pod.contents);
             }
             when 'I' {
-                temp $.italic = True;
-                $.pod2pdf($pod.contents);
+                self!style: :tag<Span>, :italic, {
+                    $.pod2pdf($pod.contents);
+                }
             }
             when 'U' {
                 temp $.underline = True;
@@ -476,10 +482,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         if $.link {
             use PDF::Content::Color :ColorName;
             $gfx.Save;
-            given color Blue {
-                $gfx.FillColor = $_;
-                $gfx.StrokeColor = $_;
-            }
+            $gfx.FillColor = color Blue;
             self!link: $tb;
             $*tag = $_ with $*tag.kids.tail;
         }
@@ -487,7 +490,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         self!mark: {
             $gfx.print: $tb, |$pos, :$nl, |c;
             self!underline: $tb
-                if $.underline || $.link;
+                if $.underline;
         }
 
         $gfx.Restore if $.link;
@@ -534,17 +537,23 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         }
     }
 
-    method !style(&codez, Bool :$indent, Str :$tag, Bool :$pad, |c) {
+    method !style(&codez, Bool :$indent, Str :tag($name), Bool :$pad, |c) {
         temp $!style .= clone: |c;
         temp $!indent;
         temp $*tag;
-        $*tag .= add-kid: :name($_) with $tag;
+        if $name.defined {
+            $*tag .= add-kid: :$name;
+            given $*tag.cos {
+                .<A><FontStyle> = 'bold' if c<bold>;
+                .<A><FontWeight> = 'italic' if c<italic>;
+            }
+        }
         $!indent += 1 if $indent;
         $pad ?? $.pad(&codez) !! &codez();
     }
 
     method !add-toc-entry(Hash $entry, Level $level, @kids = @!toc, Level :$cur = 1, ) {
-        if $level == $cur {
+        if $cur >= $level {
             @kids.push: $entry;
         }
         else {
@@ -592,12 +601,13 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         $raw .= chomp;
         self!style: :mono, :indent(!$inline), :tag(CODE), {
             while $raw {
-                $.lines-before = min(+$raw.lines, 3);
+                $.lines-before = min(+$raw.lines, 3)
+                    unless $inline;
                 $.font-size *= .8;
                 my (\x, \y, \w, \h, \overflow) = @.print: $raw, :verbatim, :!reflow;
                 $raw = overflow;
 
-                my $pad = $inline ?? 1 !! 3;
+                my $pad = $inline ?? 1 !! 5;
                 my $x0 = $inline ?? x !! self!indent + $!margin;
                 my $width = $inline ?? w !! $!gfx.canvas.width - $!margin - $x0;
                 $!gfx.graphics: {
@@ -612,7 +622,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         }
     }
 
-    method !line($x0, $y0, $x1, $y1 = $y0, :$linewidth = 1) {
+    method !draw-line($x0, $y0, $x1, $y1 = $y0, :$linewidth = 1) {
         given $!gfx {
             .Save;
             .SetLineWidth: $linewidth;
@@ -629,7 +639,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         for $tb.lines {
             my $x0 = $tab + .indent;
             my $x1 = $tab + .content-width;
-            self!line($x0, $y, $x1, :$linewidth);
+            self!draw-line($x0, $y, $x1, :$linewidth);
             $y -= .height * $tb.leading;
         }
     }
@@ -684,7 +694,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
 
     multi sub node2text(Pod::Block $_) { node2text(.contents) }
     multi sub node2text(@pod) { @pod.map(&node2text).join: ' ' }
-    multi sub node2text(Str() $_) { .trim }
+    multi sub node2text(Str() $_) { $_ }
 }
 
 =NAME

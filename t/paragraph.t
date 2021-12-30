@@ -29,7 +29,7 @@ my $xml = q{<Document>
     paragraph
   </P>
   <P>
-    Paragraph with formatting, <Code>code</Code> and <Link>links</Link>.
+    Paragraph with <Span FontStyle="bold">formatting</Span>, <Code>code</Code> and <Link>links</Link>.
   </P>
 </Document>
 };
