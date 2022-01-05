@@ -17,7 +17,7 @@ method line-height {
     $.leading * $!font-size;
 }
 constant %CoreFont = %(
-    # Normal Fonts                 # Mono Fonts
+    # Normal Fonts              # Mono Fonts
     :n-n-n<times>,             :n-n-M<courier>,  
     :B-n-n<times-bold>,        :B-n-M<courier-bold>,
     :n-I-n<times-italic>,      :n-I-M<courier-oblique>

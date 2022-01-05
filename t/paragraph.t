@@ -29,8 +29,23 @@ my $xml = q{<Document>
     paragraph
   </P>
   <P>
+    spaces and tabs are ignored
+  </P>
+  <P>
+    sanity test of 
+    <Lbl>
+      <Link>[1]</Link>
+    </Lbl>
+     footnotes.
+  </P>
+  <P>
     Paragraph with <Span FontStyle="bold">formatting</Span>, <Code>code</Code> and <Link>links</Link>.
   </P>
+  <Note>
+    <Lbl>
+      <Link>[1]</Link>
+    </Lbl>
+    if you click, here, you should got back to the paragraph</Note>
 </Document>
 };
 
@@ -65,5 +80,9 @@ Block
 
 paragraph
 =end para
+
+=para spaces  and	tabs are ignored
+
+=para sanity test of N<if you click, here, you should got back to the paragraph> footnotes.
 
 =para Paragraph with B<formatting>, C<code> and L<links|#blah>.

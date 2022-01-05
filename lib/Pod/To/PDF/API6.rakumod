@@ -10,12 +10,14 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     use Pod::To::Text;
     use File::Temp;
     # PDF::Class
+    use PDF::Action;
     use PDF::Annot::Link;
     use PDF::Destination :Fit, :DestRef;
     use PDF::Page;
     use PDF::StructElem;
 
     subset Level of Int:D where 1..6;
+    my constant Gutter = 3;
 
     has PDF::API6 $.pdf .= new;
     has PDF::Tags $.tags .= create: :$!pdf;
@@ -30,9 +32,14 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     has UInt $!pad = 0;
     has Bool $.contents = True;
     has @.toc; # table of contents
+    has $!gutter = Gutter;
+    has @!footnotes;
+    has DestRef $!gutter-link;    # forward link to footnote area
+    has DestRef @!footnotes-back; # per-footnote return links
 
     method read($pod, :$*tag is copy = self.root) {
         self.pod2pdf($pod);
+        self!finish-page;
     }
 
     method pdf {
@@ -52,12 +59,12 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     method render($class: $pod, |c) {
         state %cache{Any};
         %cache{$pod} //= do {
-            # render method may be called more than once: Rakudo #4690
+            # render method may be called more than once: Rakudo #2588
             my $renderer = $class.new(|c, :$pod);
             my PDF::API6 $pdf = $renderer.pdf;
             # save to a temporary file, since PDF is a binary format
-            my ($file-name, ) = tempfile("pod2pdf-api6****.pdf", :!unlink);
-            $pdf.save-as: $file-name;
+            my (Str $file-name, IO::Handle $fh) = tempfile("pod2pdf-api6-****.pdf", :!unlink);
+            $pdf.save-as: $fh;
             $file-name;
         }
     }
@@ -142,6 +149,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
                 $tab += $width + hpad;
             }
             if @overflow {
+                # continue table
                 self!style: :lines-before(3), {
                     self!table-row(@overflow, @widths, :$header);
                 }
@@ -295,6 +303,16 @@ class Pod::To::PDF::API6:ver<0.0.1> {
                     $.pod2pdf($pod.contents);
                 }
             }
+            when 'N' {
+                @!footnotes-back.push: self!dest;
+                $!gutter-link //= self!dest: :left(0), :top($!margin + $!gutter * $.line-height);
+                my $ind = '[' ~ @!footnotes+1 ~ ']';
+                my PDF::Action $link = $!pdf.action: :destination($!gutter-link);
+                self!style: :tag(Label), :$link, {  $.pod2pdf($ind); }
+                my @contents = $ind, $pod.contents.Slip;
+                @!footnotes.push: @contents;
+                $!gutter += self!text-box(pod2text(@contents)).lines;
+            }
             when 'U' {
                 temp $.underline = True;
                 $.pod2pdf($pod.contents);
@@ -414,7 +432,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     }
 
     multi method pod2pdf(Pod::Block::Comment) {
-        # do nothing
+        # ignore comments
     }
 
     sub signature2text($params, Mu $returns?) {
@@ -586,15 +604,25 @@ class Pod::To::PDF::API6:ver<0.0.1> {
             my (\x, \y, \w, \h) = @.print: $Title;
             $.say();
 
-            my ($_left, $top) = $!gfx.base-coords: x, y+h + $.line-height;
-            # Register in table of contents
-            my $name = dest-name($Title);
-            my DestRef $dest = $!pdf.destination: :$name, :$!page, :fit(FitBoxHoriz), :$top;
             if $!contents {
+                # Register in table of contents
+                my $name = dest-name($Title);
+                my DestRef $dest = self!dest: :$name, :fit(FitBoxHoriz), :top(y+h + $.line-height);
                 my PDF::StructElem $SE = $*tag.cos;
                 self!add-toc-entry: { :$Title, :$dest, :$SE  }, $level;
             }
         }
+    }
+
+    method !dest(
+        :$fit = FitXYZoom,
+        :$page = $!page,
+        :$left is copy = $!tx + $!margin - hpad,
+        :$top is copy  = $!ty + $.line-height,
+        |c,
+    ) {
+        ($left, $top) = $!gfx.base-coords: $left, $top;
+        $!pdf.destination: :$page, :$fit, :$left, :$top, |c;
     }
 
     method !code(Str $raw is copy, :$inline) {
@@ -669,8 +697,8 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     }
 
     method !gfx {
-        my $y = $!ty - $.lines-before * $.line-height;
-        if !$!page.defined || $y <= 2 * $!margin {
+        my $y = $!ty - ($.lines-before + $!gutter) * $.line-height;
+        if !$!page.defined || $y <= $!margin {
             self!new-page;
         }
         elsif $!tx > 0 && $!tx > $!gfx.canvas.width - self!indent - $!margin {
@@ -679,7 +707,31 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         $!gfx;
     }
 
+    method !finish-page {
+        if @!footnotes {
+            temp $!style .= new: :lines-before(0); # avoid current styling
+            $!tx = 0;
+            $!ty = $!margin + ($!gutter-2) * $.line-height;
+            $!gutter = 0;
+            self!draw-line($!margin, $!ty, $!gfx.canvas.width - 2*$!margin, $!ty);
+            while @!footnotes {
+                $.pad(1);
+                my $footnote = @!footnotes.shift;
+                my $destination = @!footnotes-back.shift;
+                self!style: :tag(Note), {
+                    my PDF::Action $link = $!pdf.action: :$destination;
+                    self!style: :tag(Label), :$link, {
+                        $.print($footnote.shift);
+                    } # [n]
+                    $.pod2pdf($footnote);
+                }
+            }
+        }
+    }
+
     method !new-page {
+        self!finish-page();
+        $!gutter = Gutter;
         $!page = $!pdf.add-page;
         $!gfx = $!page.gfx;
         $!tx = 0;
