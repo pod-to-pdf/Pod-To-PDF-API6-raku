@@ -2,8 +2,8 @@
 %¥±ë¼
 1 0 obj
 <<
-  /CreationDate (D:20211231110638+13'00')
-  /Creator (PDF::Class-0.4.18; PDF::Content-0.5.16; PDF-0.4.17; Raku-6.d; PDF::Tags-0.0.13; Pod::To::PDF::API6-0.0.1)
+  /CreationDate (D:20220107070405+13'00')
+  /Creator (PDF::Class-0.4.18; PDF::Content-0.5.16; PDF-0.4.18; Raku-6.d; PDF::Tags-0.0.13; Pod::To::PDF::API6-0.0.1)
   /Producer (PDF::API6-0.2.4)
   /Title (class Supply)
 >>
@@ -17,14 +17,14 @@ endobj
   /MarkInfo << /Marked true >>
   /Outlines 154 0 R
   /Pages 22 0 R
-  /StructTreeRoot 784 0 R
+  /StructTreeRoot 779 0 R
 >>
 endobj
 
 3 0 obj
 <<
   /Asynchronous_data_stream_with_multiple_subscribers [ 4 0 R /FitBH 730 ]
-  /Examples [ 96 0 R /FitBH 357.1 ]
+  /Examples [ 96 0 R /FitBH 302.1 ]
   /I#2fO_features_exposed_as_supplies [ 142 0 R /FitBH 796 ]
   /Methods_that_combine_supplies [ 134 0 R /FitBH 796 ]
   /Methods_that_return_Taps [ 23 0 R /FitBH 796 ]
@@ -32,7 +32,7 @@ endobj
   /Methods_that_wait_until_the_supply_is_done [ 45 0 R /FitBH 796 ]
   /Utility_methods [ 35 0 R /FitBH 796 ]
   /class_Supply [ 4 0 R /FitBH 796 ]
-  /control_messages [ 90 0 R /FitBH 273.2 ]
+  /control_messages [ 90 0 R /FitBH 229.2 ]
   /method_Capture [ 35 0 R /FitBH 730 ]
   /method_Channel [ 35 0 R /FitBH 615.6 ]
   /method_IO::Notification.watch-path [ 142 0 R /FitBH 463.8 ]
@@ -41,7 +41,7 @@ endobj
   /method_act [ 23 0 R /FitBH 307.6 ]
   /method_batch [ 68 0 R /FitBH 362.6 ]
   /method_collate [ 49 0 R /FitBH 637.6 ]
-  /method_delayed [ 82 0 R /FitBH 461.6 ]
+  /method_delayed [ 80 0 R /FitBH 384.6 ]
   /method_do [ 59 0 R /FitBH 353.8 ]
   /method_elems [ 68 0 R /FitBH 226.2 ]
   /method_first [ 72 0 R /FitBH 327.4 ]
@@ -51,39 +51,39 @@ endobj
   /method_grep [ 68 0 R /FitBH 653 ]
   /method_head [ 72 0 R /FitBH 787.2 ]
   /method_interval [ 68 0 R /FitBH 787.2 ]
-  /method_lines [ 100 0 R /FitBH 340.6 ]
+  /method_lines [ 100 0 R /FitBH 291.32 ]
   /method_list [ 45 0 R /FitBH 529.8 ]
   /method_live [ 35 0 R /FitBH 303.2 ]
   /method_map [ 68 0 R /FitBH 507.8 ]
-  /method_max [ 106 0 R /FitBH 417.6 ]
+  /method_max [ 106 0 R /FitBH 364.8 ]
   /method_merge [ 134 0 R /FitBH 730 ]
-  /method_migrate [ 126 0 R /FitBH 494.6 ]
-  /method_min [ 106 0 R /FitBH 303.2 ]
-  /method_minmax [ 106 0 R /FitBH 188.8 ]
+  /method_migrate [ 124 0 R /FitBH 391.2 ]
+  /method_min [ 106 0 R /FitBH 250.4 ]
+  /method_minmax [ 124 0 R /FitBH 787.2 ]
   /method_on-close [ 59 0 R /FitBH 250.4 ]
-  /method_produce [ 100 0 R /FitBH 459.4 ]
+  /method_produce [ 100 0 R /FitBH 410.12 ]
   /method_reduce [ 49 0 R /FitBH 499 ]
-  /method_repeated [ 106 0 R /FitBH 672.8 ]
+  /method_repeated [ 106 0 R /FitBH 620 ]
   /method_reverse [ 45 0 R /FitBH 197.6 ]
-  /method_rotate [ 82 0 R /FitBH 705.8 ]
-  /method_rotor [ 82 0 R /FitBH 554 ]
+  /method_rotate [ 80 0 R /FitBH 628.8 ]
+  /method_rotor [ 80 0 R /FitBH 477 ]
   /method_schedule-on [ 35 0 R /FitBH 182.2 ]
   /method_share [ 59 0 R /FitBH 611.2 ]
-  /method_skip [ 126 0 R /FitBH 787.2 ]
+  /method_skip [ 124 0 R /FitBH 683.8 ]
   /method_sort [ 49 0 R /FitBH 787.2 ]
-  /method_split [ 72 0 R /FitBH 160.2 ]
-  /method_squish [ 106 0 R /FitBH 510 ]
-  /method_stable [ 100 0 R /FitBH 787.2 ]
-  /method_start [ 126 0 R /FitBH 642 ]
+  /method_split [ 80 0 R /FitBH 787.2 ]
+  /method_squish [ 106 0 R /FitBH 457.2 ]
+  /method_stable [ 100 0 R /FitBH 737.92 ]
+  /method_start [ 124 0 R /FitBH 538.6 ]
   /method_tail [ 72 0 R /FitBH 562.8 ]
   /method_tap [ 23 0 R /FitBH 730 ]
-  /method_throttle [ 82 0 R /FitBH 369.2 ]
-  /method_unique [ 106 0 R /FitBH 787.2 ]
+  /method_throttle [ 80 0 R /FitBH 292.2 ]
+  /method_unique [ 106 0 R /FitBH 734.4 ]
   /method_wait [ 45 0 R /FitBH 730 ]
-  /method_words [ 100 0 R /FitBH 237.2 ]
+  /method_words [ 100 0 R /FitBH 187.92 ]
   /method_zip [ 134 0 R /FitBH 626.6 ]
   /method_zip-latest [ 134 0 R /FitBH 457.2 ]
-  /status_message [ 96 0 R /FitBH 730 ]
+  /status_message [ 96 0 R /FitBH 675 ]
   /sub_signal [ 142 0 R /FitBH 730 ]
 >>
 endobj
@@ -798,7 +798,7 @@ endobj
 <<
   /Type /Pages
   /Count 17
-  /Kids [ 4 0 R 23 0 R 35 0 R 45 0 R 49 0 R 59 0 R 68 0 R 72 0 R 82 0 R 90 0 R 96 0 R 100 0 R 106 0 R 126 0 R 130 0 R 134 0 R 142 0 R ]
+  /Kids [ 4 0 R 23 0 R 35 0 R 45 0 R 49 0 R 59 0 R 68 0 R 72 0 R 80 0 R 90 0 R 96 0 R 100 0 R 106 0 R 124 0 R 130 0 R 134 0 R 142 0 R ]
 >>
 endobj
 
@@ -4769,12 +4769,12 @@ endobj
 72 0 obj
 <<
   /Type /Page
-  /Annots [ 73 0 R 75 0 R 77 0 R ]
-  /Contents 79 0 R
+  /Annots [ 73 0 R 75 0 R ]
+  /Contents 77 0 R
   /MediaBox [ 0 0 612 792 ]
   /Parent 22 0 R
   /Resources <<
-    /ExtGState << /GS1 80 0 R /GS2 81 0 R >>
+    /ExtGState << /GS1 78 0 R /GS2 79 0 R >>
     /Font << /F1 31 0 R /F2 34 0 R /F3 32 0 R >>
   >>
   /StructParents 26
@@ -4816,24 +4816,7 @@ endobj
 endobj
 
 77 0 obj
-<<
-  /Type /Annot
-  /Subtype /Link
-  /A 78 0 R
-  /Border [ 0 0 0 ]
-  /Contents (Str.split)
-  /P 72 0 R
-  /Rect [ 552.31 56 587.71 71 ]
-  /StructParent 29
->>
-endobj
-
-78 0 obj
-<< /Type /Action /S /URI /URI (/type/Str#routine_split) >>
-endobj
-
-79 0 obj
-<< /Length 8359 >> stream
+<< /Length 7307 >> stream
 /H2 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
@@ -5331,101 +5314,47 @@ q
   25 155.2 572 54 re
   B
 Q
-/H2 << /MCID 43 >> BDC
-  BT
-    1 0 0 1 20 125 Tm
-    /F1 16 Tf
-    (method split) Tj
-  ET
-EMC
-/Code << /MCID 44 >> BDC
-  BT
-    1 0 0 1 30 89.8 Tm
-    /F3 8 Tf
-    (multi method split\(Supply:D: \\delimiter\)) Tj
-    T*
-    (multi method split\(Supply:D: \\delimiter, \\limit\)) Tj
-  ET
-EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 76 572 27.6 re
-  B
-Q
-/P << /MCID 45 >> BDC
-  BT
-    1 0 0 1 20 59 Tm
-    /F2 10 Tf
-    (This method creates a supply of the values returned by the ) Tj
-  ET
-EMC
-/Code << /MCID 46 >> BDC
-  BT
-    1 0 0 1 20 59 Tm
-    /F3 8 Tf
-    [ -29786 (Str.split) ] TJ
-  ET
-EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  257.29 58 45.2 10.8 re
-  B
-Q
-/P << /MCID 47 >> BDC
-  BT
-    1 0 0 1 20 59 Tm
-    /F2 10 Tf
-    [ -28629 ( method called on the string collected from the invocant. See ) ] TJ
-  ET
-EMC
-q
-  0 0 1 rg
-  /Link << /MCID 48 >> BDC
-    BT
-      1 0 0 1 20 59 Tm
-      [ -53431 (Str.split) ] TJ
-    ET
-  EMC
-Q
-/P << /MCID 49 >> BDC
-  BT
-    1 0 0 1 20 59 Tm
-    [ -56821 ] TJ
-    11 TL
-    T*
-    (for details on the ) Tj
-  ET
-EMC
 endstream
 endobj
 
-80 0 obj
+78 0 obj
 << /Type /ExtGState /ca 0.1 >>
 endobj
 
-81 0 obj
+79 0 obj
 << /Type /ExtGState /CA 0.25 >>
 endobj
 
-82 0 obj
+80 0 obj
 <<
   /Type /Page
-  /Annots [ 83 0 R 85 0 R ]
+  /Annots [ 81 0 R 83 0 R 85 0 R ]
   /Contents 87 0 R
   /MediaBox [ 0 0 612 792 ]
   /Parent 22 0 R
   /Resources <<
     /ExtGState << /GS1 88 0 R /GS2 89 0 R >>
-    /Font << /F1 32 0 R /F2 34 0 R /F3 31 0 R >>
+    /Font << /F1 31 0 R /F2 32 0 R /F3 34 0 R >>
   >>
-  /StructParents 30
+  /StructParents 29
 >>
+endobj
+
+81 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /A 82 0 R
+  /Border [ 0 0 0 ]
+  /Contents (Str.split)
+  /P 80 0 R
+  /Rect [ 552.31 683 587.71 698 ]
+  /StructParent 30
+>>
+endobj
+
+82 0 obj
+<< /Type /Action /S /URI /URI (/type/Str#routine_split) >>
 endobj
 
 83 0 obj
@@ -5435,8 +5364,8 @@ endobj
   /A 84 0 R
   /Border [ 0 0 0 ]
   /Contents (.head)
-  /P 82 0 R
-  /Rect [ 565.96 749 591.34 764 ]
+  /P 80 0 R
+  /Rect [ 78.54 661 103.92 676 ]
   /StructParent 31
 >>
 endobj
@@ -5452,8 +5381,8 @@ endobj
   /A 86 0 R
   /Border [ 0 0 0 ]
   /Contents (List.rotor)
-  /P 82 0 R
-  /Rect [ 242.8 458.6 284.3 473.6 ]
+  /P 80 0 R
+  /Rect [ 242.8 381.6 284.3 396.6 ]
   /StructParent 32
 >>
 endobj
@@ -5463,12 +5392,22 @@ endobj
 endobj
 
 87 0 obj
-<< /Length 5222 >> stream
-/Code << /MCID 0 >> BDC
+<< /Length 5896 >> stream
+/H2 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
-    /F1 8 Tf
-    (\\delimiter) Tj
+    /F1 16 Tf
+    (method split) Tj
+  ET
+EMC
+/Code << /MCID 1 >> BDC
+  BT
+    1 0 0 1 30 716.8 Tm
+    /F2 8 Tf
+    (multi method split\(Supply:D: \\delimiter\)) Tj
+    8.8 TL
+    T*
+    (multi method split\(Supply:D: \\delimiter, \\limit\)) Tj
   ET
 EMC
 q
@@ -5476,21 +5415,21 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  19 751 50 10.8 re
+  25 703 572 27.6 re
   B
 Q
-/P << /MCID 1 >> BDC
+/P << /MCID 2 >> BDC
   BT
-    1 0 0 1 20 752 Tm
-    /F2 10 Tf
-    [ -5280 ( argument as well as available extra named parameters. The created supply can be limited with the ) ] TJ
+    1 0 0 1 20 686 Tm
+    /F3 10 Tf
+    (This method creates a supply of the values returned by the ) Tj
   ET
 EMC
-/Code << /MCID 2 >> BDC
+/Code << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 752 Tm
-    /F1 8 Tf
-    [ -56415 (\\limit) ] TJ
+    1 0 0 1 20 686 Tm
+    /F2 8 Tf
+    [ -29786 (Str.split) ] TJ
   ET
 EMC
 q
@@ -5498,38 +5437,99 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  470.32 751 30.8 10.8 re
+  257.29 685 45.2 10.8 re
   B
 Q
-/P << /MCID 3 >> BDC
+/P << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 752 Tm
-    /F2 10 Tf
-    [ -48492 ( argument, see ) ] TJ
+    1 0 0 1 20 686 Tm
+    /F3 10 Tf
+    [ -28629 ( method called on the string collected from the invocant. See ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 4 >> BDC
+  /Link << /MCID 5 >> BDC
     BT
-      1 0 0 1 20 752 Tm
-      [ -54796 (.head) ] TJ
+      1 0 0 1 20 686 Tm
+      [ -53431 (Str.split) ] TJ
     ET
   EMC
 Q
-/P << /MCID 5 >> BDC
+/P << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 752 Tm
-    [ -57184 ] TJ
+    1 0 0 1 20 686 Tm
+    [ -56821 ] TJ
     11 TL
     T*
-    (.) Tj
+    (for details on the ) Tj
   ET
 EMC
-/Code << /MCID 6 >> BDC
+/Code << /MCID 7 >> BDC
   BT
-    1 0 0 1 30 723.4 Tm
-    /F1 8 Tf
+    1 0 0 1 20 675 Tm
+    /F2 8 Tf
+    [ -9061 (\\delimiter) ] TJ
+  ET
+EMC
+q
+  0 g
+  0 G
+  /GS1 gs
+  /GS2 gs
+  91.49 674 50 10.8 re
+  B
+Q
+/P << /MCID 8 >> BDC
+  BT
+    1 0 0 1 20 675 Tm
+    /F3 10 Tf
+    [ -12529 ( argument as well as available extra named parameters. The created supply can be limited with the ) ] TJ
+  ET
+EMC
+/Code << /MCID 9 >> BDC
+  BT
+    1 0 0 1 20 675 Tm
+    /F2 8 Tf
+    [ -65476 (\\limit) ] TJ
+  ET
+EMC
+q
+  0 g
+  0 G
+  /GS1 gs
+  /GS2 gs
+  542.81 674 30.8 10.8 re
+  B
+Q
+/P << /MCID 10 >> BDC
+  BT
+    1 0 0 1 20 675 Tm
+    /F3 10 Tf
+    [ -55741 ] TJ
+    T*
+    (argument, see ) Tj
+  ET
+EMC
+q
+  0 0 1 rg
+  /Link << /MCID 11 >> BDC
+    BT
+      1 0 0 1 20 664 Tm
+      [ -6054 (.head) ] TJ
+    ET
+  EMC
+Q
+/P << /MCID 12 >> BDC
+  BT
+    1 0 0 1 20 664 Tm
+    [ -8442 (.) ] TJ
+  ET
+EMC
+/Code << /MCID 13 >> BDC
+  BT
+    1 0 0 1 30 646.4 Tm
+    /F2 8 Tf
     (my $words = Supply.from-list\(<Hello World From Raku!>\);) Tj
     8.8 TL
     T*
@@ -5543,20 +5543,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 700.8 572 36.4 re
+  25 623.8 572 36.4 re
   B
 Q
-/H2 << /MCID 7 >> BDC
+/H2 << /MCID 14 >> BDC
   BT
-    1 0 0 1 20 670.6 Tm
-    /F3 16 Tf
+    1 0 0 1 20 593.6 Tm
+    /F1 16 Tf
     (method rotate) Tj
   ET
 EMC
-/Code << /MCID 8 >> BDC
+/Code << /MCID 15 >> BDC
   BT
-    1 0 0 1 30 635.4 Tm
-    /F1 8 Tf
+    1 0 0 1 30 558.4 Tm
+    /F2 8 Tf
     (method rotate\(Supply:D: $rotate = 1\)) Tj
   ET
 EMC
@@ -5565,20 +5565,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 630.4 572 18.8 re
+  25 553.4 572 18.8 re
   B
 Q
-/P << /MCID 9 >> BDC
+/P << /MCID 16 >> BDC
   BT
-    1 0 0 1 20 613.4 Tm
-    /F2 10 Tf
+    1 0 0 1 20 536.4 Tm
+    /F3 10 Tf
     (Creates a supply with elements rotated to the left when ) Tj
   ET
 EMC
-/Code << /MCID 10 >> BDC
+/Code << /MCID 17 >> BDC
   BT
-    1 0 0 1 20 613.4 Tm
-    /F1 8 Tf
+    1 0 0 1 20 536.4 Tm
+    /F2 8 Tf
     [ -28086 ($rotate) ] TJ
   ET
 EMC
@@ -5587,23 +5587,23 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  243.69 612.4 35.6 10.8 re
+  243.69 535.4 35.6 10.8 re
   B
 Q
-/P << /MCID 11 >> BDC
+/P << /MCID 18 >> BDC
   BT
-    1 0 0 1 20 613.4 Tm
-    /F2 10 Tf
+    1 0 0 1 20 536.4 Tm
+    /F3 10 Tf
     [ -26309 ( is positive or to the right otherwise, in which case the invocant is tapped on) ] TJ
     11 TL
     T*
     (before a new supply is returned.) Tj
   ET
 EMC
-/Code << /MCID 12 >> BDC
+/Code << /MCID 19 >> BDC
   BT
-    1 0 0 1 30 584.8 Tm
-    /F1 8 Tf
+    1 0 0 1 30 507.8 Tm
+    /F2 8 Tf
     (my $supply = Supply.from-list\(<a b c d e>\).rotate\(2\);) Tj
     8.8 TL
     T*
@@ -5615,34 +5615,34 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 571 572 27.6 re
+  25 494 572 27.6 re
   B
 Q
-/Span << /MCID 13 >> BDC
+/Span << /MCID 20 >> BDC
   BT
-    1 0 0 1 20 554 Tm
-    /F3 10 Tf
+    1 0 0 1 20 477 Tm
+    /F1 10 Tf
     (Note) Tj
   ET
 EMC
-/P << /MCID 14 >> BDC
+/P << /MCID 21 >> BDC
   BT
-    1 0 0 1 20 554 Tm
-    /F2 10 Tf
+    1 0 0 1 20 477 Tm
+    /F3 10 Tf
     [ -2249 (: Available since Rakudo 2020.06.) ] TJ
   ET
 EMC
-/H2 << /MCID 15 >> BDC
+/H2 << /MCID 22 >> BDC
   BT
-    1 0 0 1 20 518.8 Tm
-    /F3 16 Tf
+    1 0 0 1 20 441.8 Tm
+    /F1 16 Tf
     (method rotor) Tj
   ET
 EMC
-/Code << /MCID 16 >> BDC
+/Code << /MCID 23 >> BDC
   BT
-    1 0 0 1 30 483.6 Tm
-    /F1 8 Tf
+    1 0 0 1 30 406.6 Tm
+    /F2 8 Tf
     (method rotor\(Supply:D: @cycle --> Supply:D\)) Tj
   ET
 EMC
@@ -5651,42 +5651,42 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 478.6 572 18.8 re
+  25 401.6 572 18.8 re
   B
 Q
-/P << /MCID 17 >> BDC
+/P << /MCID 24 >> BDC
   BT
-    1 0 0 1 20 461.6 Tm
-    /F2 10 Tf
+    1 0 0 1 20 384.6 Tm
+    /F3 10 Tf
     (Creates a "rotoring" supply with the same semantics as ) Tj
   ET
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 18 >> BDC
+  /Link << /MCID 25 >> BDC
     BT
-      1 0 0 1 20 461.6 Tm
+      1 0 0 1 20 384.6 Tm
       [ -22480 (List.rotor) ] TJ
     ET
   EMC
 Q
-/P << /MCID 19 >> BDC
+/P << /MCID 26 >> BDC
   BT
-    1 0 0 1 20 461.6 Tm
+    1 0 0 1 20 384.6 Tm
     [ -26480 (.) ] TJ
   ET
 EMC
-/H2 << /MCID 20 >> BDC
+/H2 << /MCID 27 >> BDC
   BT
-    1 0 0 1 20 426.4 Tm
-    /F3 16 Tf
+    1 0 0 1 20 349.4 Tm
+    /F1 16 Tf
     (method delayed) Tj
   ET
 EMC
-/Code << /MCID 21 >> BDC
+/Code << /MCID 28 >> BDC
   BT
-    1 0 0 1 30 391.2 Tm
-    /F1 8 Tf
+    1 0 0 1 30 314.2 Tm
+    /F2 8 Tf
     (method delayed\(Supply:D: $seconds, :$scheduler = $*SCHEDULER --> Supply:D\)) Tj
   ET
 EMC
@@ -5695,34 +5695,34 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 386.2 572 18.8 re
+  25 309.2 572 18.8 re
   B
 Q
-/P << /MCID 22 >> BDC
+/P << /MCID 29 >> BDC
   BT
-    1 0 0 1 20 369.2 Tm
-    /F2 10 Tf
+    1 0 0 1 20 292.2 Tm
+    /F3 10 Tf
     (Creates a new supply in which all values flowing through the given supply are emitted, but with the given delay in seconds.) Tj
   ET
 EMC
-/H2 << /MCID 23 >> BDC
+/H2 << /MCID 30 >> BDC
   BT
-    1 0 0 1 20 334 Tm
-    /F3 16 Tf
+    1 0 0 1 20 257 Tm
+    /F1 16 Tf
     (method throttle) Tj
   ET
 EMC
-/P << /MCID 24 >> BDC
+/P << /MCID 31 >> BDC
   BT
-    1 0 0 1 20 294.4 Tm
-    /F2 10 Tf
+    1 0 0 1 20 217.4 Tm
+    /F3 10 Tf
     (Defined as) Tj
   ET
 EMC
-/Code << /MCID 25 >> BDC
+/Code << /MCID 32 >> BDC
   BT
-    1 0 0 1 30 276.8 Tm
-    /F1 8 Tf
+    1 0 0 1 30 199.8 Tm
+    /F2 8 Tf
     (multi method throttle\(Supply:D:) Tj
     T*
     (      Int\(\)  $elems,) Tj
@@ -5749,12 +5749,12 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 192.6 572 98 re
+  25 115.6 572 98 re
   B
 Q
-/Code << /MCID 26 >> BDC
+/Code << /MCID 33 >> BDC
   BT
-    1 0 0 1 30 180 Tm
+    1 0 0 1 30 103 Tm
     (multi method throttle\(Supply:D:) Tj
     T*
     (      Int\(\)  $elems,) Tj
@@ -5773,7 +5773,6 @@ Q
     T*
     (      :$vent-at,) Tj
     T*
-    (    \)) Tj
   ET
 EMC
 q
@@ -5781,38 +5780,9 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 95.8 572 98 re
+  25 27.6 572 89.2 re
   B
 Q
-/P << /MCID 27 >> BDC
-  BT
-    1 0 0 1 20 78.8 Tm
-    /F2 10 Tf
-    (Arguments to ) Tj
-  ET
-EMC
-/Code << /MCID 28 >> BDC
-  BT
-    1 0 0 1 20 78.8 Tm
-    /F1 8 Tf
-    [ -7465 (.throttle) ] TJ
-  ET
-EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  78.72 77.8 45.2 10.8 re
-  B
-Q
-/P << /MCID 29 >> BDC
-  BT
-    1 0 0 1 20 78.8 Tm
-    /F2 10 Tf
-    [ -10772 ( are defined as follows:) ] TJ
-  ET
-EMC
 endstream
 endobj
 
@@ -5833,7 +5803,7 @@ endobj
   /Parent 22 0 R
   /Resources <<
     /ExtGState << /GS1 94 0 R /GS2 95 0 R >>
-    /Font << /F1 31 0 R /F2 34 0 R /F3 32 0 R >>
+    /Font << /F1 32 0 R /F2 34 0 R /F3 31 0 R >>
   >>
   /StructParents 33
 >>
@@ -5847,7 +5817,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (status message)
   /P 90 0 R
-  /Rect [ 227.97 367 291.13 382 ]
+  /Rect [ 227.97 323 291.13 338 ]
   /StructParent 34
 >>
 endobj
@@ -5857,139 +5827,183 @@ endobj
 endobj
 
 93 0 obj
-<< /Length 10663 >> stream
-/TH << /MCID 0 >> BDC
+<< /Length 10760 >> stream
+/Code << /MCID 0 >> BDC
   BT
-    1 0 0 1 20 752 Tm
-    /F1 10 Tf
+    1 0 0 1 30 752 Tm
+    /F1 6.4 Tf
+    (\)) Tj
+  ET
+EMC
+q
+  0 g
+  0 G
+  /GS1 gs
+  /GS2 gs
+  25 747 572 17.04 re
+  B
+Q
+/P << /MCID 1 >> BDC
+  BT
+    1 0 0 1 20 730 Tm
+    /F2 10 Tf
+    (Arguments to ) Tj
+  ET
+EMC
+/Code << /MCID 2 >> BDC
+  BT
+    1 0 0 1 20 730 Tm
+    /F1 8 Tf
+    [ -7465 (.throttle) ] TJ
+  ET
+EMC
+q
+  0 g
+  0 G
+  /GS1 gs
+  /GS2 gs
+  78.72 729 45.2 10.8 re
+  B
+Q
+/P << /MCID 3 >> BDC
+  BT
+    1 0 0 1 20 730 Tm
+    /F2 10 Tf
+    [ -10772 ( are defined as follows:) ] TJ
+  ET
+EMC
+/TH << /MCID 4 >> BDC
+  BT
+    1 0 0 1 20 708 Tm
+    /F3 10 Tf
     (Argument) Tj
   ET
   q
     1 w
-    20 750 m
-    104.98 750 l
+    20 706 m
+    104.98 706 l
     S
   Q
 EMC
-/TH << /MCID 1 >> BDC
+/TH << /MCID 5 >> BDC
   BT
-    1 0 0 1 114.98 752 Tm
+    1 0 0 1 114.98 708 Tm
     (Meaning) Tj
   ET
   q
     1 w
-    114.98 750 m
-    297.75 750 l
+    114.98 706 m
+    297.75 706 l
     S
   Q
 EMC
-/TD << /MCID 2 >> BDC
+/TD << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 738 Tm
+    1 0 0 1 20 694 Tm
     /F2 10 Tf
     ($limit,) Tj
   ET
 EMC
-/TD << /MCID 3 >> BDC
-  BT
-    1 0 0 1 114.98 738 Tm
-    (values / time or simultaneous processing) Tj
-  ET
-EMC
-/TD << /MCID 4 >> BDC
-  BT
-    1 0 0 1 20 725 Tm
-    ($seconds or $process) Tj
-  ET
-EMC
-/TD << /MCID 5 >> BDC
-  BT
-    1 0 0 1 114.98 725 Tm
-    (time-unit / code to process simultaneously) Tj
-  ET
-EMC
-/TD << /MCID 6 >> BDC
-  BT
-    1 0 0 1 20 712 Tm
-    ($delay = 0,) Tj
-  ET
-EMC
 /TD << /MCID 7 >> BDC
   BT
-    1 0 0 1 114.98 712 Tm
-    (initial delay before starting, in seconds) Tj
+    1 0 0 1 114.98 694 Tm
+    (values / time or simultaneous processing) Tj
   ET
 EMC
 /TD << /MCID 8 >> BDC
   BT
-    1 0 0 1 20 699 Tm
-    (:$control,) Tj
+    1 0 0 1 20 681 Tm
+    ($seconds or $process) Tj
   ET
 EMC
 /TD << /MCID 9 >> BDC
   BT
-    1 0 0 1 114.98 699 Tm
-    (supply to emit control messages on \(optional\)) Tj
+    1 0 0 1 114.98 681 Tm
+    (time-unit / code to process simultaneously) Tj
   ET
 EMC
 /TD << /MCID 10 >> BDC
   BT
-    1 0 0 1 20 686 Tm
-    (:$status,) Tj
+    1 0 0 1 20 668 Tm
+    ($delay = 0,) Tj
   ET
 EMC
 /TD << /MCID 11 >> BDC
   BT
-    1 0 0 1 114.98 686 Tm
-    (supply to tap status messages from \(optional\)) Tj
+    1 0 0 1 114.98 668 Tm
+    (initial delay before starting, in seconds) Tj
   ET
 EMC
 /TD << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 673 Tm
-    (:$bleed,) Tj
+    1 0 0 1 20 655 Tm
+    (:$control,) Tj
   ET
 EMC
 /TD << /MCID 13 >> BDC
   BT
-    1 0 0 1 114.98 673 Tm
-    (supply to bleed messages to \(optional\)) Tj
+    1 0 0 1 114.98 655 Tm
+    (supply to emit control messages on \(optional\)) Tj
   ET
 EMC
 /TD << /MCID 14 >> BDC
   BT
-    1 0 0 1 20 660 Tm
-    (:$vent-at,) Tj
+    1 0 0 1 20 642 Tm
+    (:$status,) Tj
   ET
 EMC
 /TD << /MCID 15 >> BDC
   BT
-    1 0 0 1 114.98 660 Tm
-    (bleed when so many buffered \(optional\)) Tj
+    1 0 0 1 114.98 642 Tm
+    (supply to tap status messages from \(optional\)) Tj
   ET
 EMC
 /TD << /MCID 16 >> BDC
   BT
-    1 0 0 1 20 647 Tm
-    (:$scheduler,) Tj
+    1 0 0 1 20 629 Tm
+    (:$bleed,) Tj
   ET
 EMC
 /TD << /MCID 17 >> BDC
   BT
-    1 0 0 1 114.98 647 Tm
+    1 0 0 1 114.98 629 Tm
+    (supply to bleed messages to \(optional\)) Tj
+  ET
+EMC
+/TD << /MCID 18 >> BDC
+  BT
+    1 0 0 1 20 616 Tm
+    (:$vent-at,) Tj
+  ET
+EMC
+/TD << /MCID 19 >> BDC
+  BT
+    1 0 0 1 114.98 616 Tm
+    (bleed when so many buffered \(optional\)) Tj
+  ET
+EMC
+/TD << /MCID 20 >> BDC
+  BT
+    1 0 0 1 20 603 Tm
+    (:$scheduler,) Tj
+  ET
+EMC
+/TD << /MCID 21 >> BDC
+  BT
+    1 0 0 1 114.98 603 Tm
     (scheduler to use, default $*SCHEDULER) Tj
   ET
 EMC
-/P << /MCID 18 >> BDC
+/P << /MCID 22 >> BDC
   BT
-    1 0 0 1 20 612 Tm
+    1 0 0 1 20 568 Tm
     (This method produces a ) Tj
   ET
 EMC
-/Code << /MCID 19 >> BDC
+/Code << /MCID 23 >> BDC
   BT
-    1 0 0 1 20 612 Tm
-    /F3 8 Tf
+    1 0 0 1 20 568 Tm
+    /F1 8 Tf
     [ -12602 (Supply) ] TJ
   ET
 EMC
@@ -5998,41 +6012,41 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  119.82 611 30.8 10.8 re
+  119.82 567 30.8 10.8 re
   B
 Q
-/P << /MCID 20 >> BDC
+/P << /MCID 24 >> BDC
   BT
-    1 0 0 1 20 612 Tm
+    1 0 0 1 20 568 Tm
     /F2 10 Tf
     [ -13442 ( from a given one, but makes sure the number of messages passed through is limited.) ] TJ
   ET
 EMC
-/P << /MCID 21 >> BDC
+/P << /MCID 25 >> BDC
   BT
-    1 0 0 1 20 590 Tm
+    1 0 0 1 20 546 Tm
     (It has two modes of operation: per time-unit or by maximum number of executions of a block of code: this is determined by the type of the) Tj
     11 TL
     T*
     (second positional parameter.) Tj
   ET
 EMC
-/P << /MCID 22 >> BDC
+/P << /MCID 26 >> BDC
   BT
-    1 0 0 1 20 557 Tm
+    1 0 0 1 20 513 Tm
     (The first positional parameter specifies the limit that should be applied.) Tj
   ET
 EMC
-/P << /MCID 23 >> BDC
+/P << /MCID 27 >> BDC
   BT
-    1 0 0 1 20 535 Tm
+    1 0 0 1 20 491 Tm
     (If the second positional parameter is a ) Tj
   ET
 EMC
-/Code << /MCID 24 >> BDC
+/Code << /MCID 28 >> BDC
   BT
-    1 0 0 1 20 535 Tm
-    /F3 8 Tf
+    1 0 0 1 20 491 Tm
+    /F1 8 Tf
     [ -19649 (Callable) ] TJ
   ET
 EMC
@@ -6041,22 +6055,22 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  176.19 534 40.4 10.8 re
+  176.19 490 40.4 10.8 re
   B
 Q
-/P << /MCID 25 >> BDC
+/P << /MCID 29 >> BDC
   BT
-    1 0 0 1 20 535 Tm
+    1 0 0 1 20 491 Tm
     /F2 10 Tf
     [ -20039 (, then the limit indicates the maximum number of parallel processes executing the Callable,) ] TJ
     T*
     (which is given the value that was received. The emitted values in this case will be the ) Tj
   ET
 EMC
-/Code << /MCID 26 >> BDC
+/Code << /MCID 30 >> BDC
   BT
-    1 0 0 1 20 524 Tm
-    /F3 8 Tf
+    1 0 0 1 20 480 Tm
+    /F1 8 Tf
     [ -43361 (Promise) ] TJ
   ET
 EMC
@@ -6065,20 +6079,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  365.89 523 35.6 10.8 re
+  365.89 479 35.6 10.8 re
   B
 Q
-/P << /MCID 27 >> BDC
+/P << /MCID 31 >> BDC
   BT
-    1 0 0 1 20 524 Tm
+    1 0 0 1 20 480 Tm
     /F2 10 Tf
     [ -38529 (s that were obtained from ) ] TJ
   ET
 EMC
-/Code << /MCID 28 >> BDC
+/Code << /MCID 32 >> BDC
   BT
-    1 0 0 1 20 524 Tm
-    /F3 8 Tf
+    1 0 0 1 20 480 Tm
+    /F1 8 Tf
     [ -61561 (start) ] TJ
   ET
 EMC
@@ -6087,62 +6101,62 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  511.49 523 26 10.8 re
+  511.49 479 26 10.8 re
   B
 Q
-/P << /MCID 29 >> BDC
+/P << /MCID 33 >> BDC
   BT
-    1 0 0 1 20 524 Tm
+    1 0 0 1 20 480 Tm
     /F2 10 Tf
     [ -52129 (ing the) ] TJ
     T*
     (Callable.) Tj
   ET
 EMC
-/P << /MCID 30 >> BDC
+/P << /MCID 34 >> BDC
   BT
-    1 0 0 1 20 491 Tm
+    1 0 0 1 20 447 Tm
     (If the second positional parameter is a real number, it is interpreted as the time-unit \(in seconds\). If you specify ) Tj
   ET
 EMC
-/Span << /MCID 31 >> BDC
+/Span << /MCID 35 >> BDC
   BT
-    1 0 0 1 20 491 Tm
-    /F1 10 Tf
+    1 0 0 1 20 447 Tm
+    /F3 10 Tf
     [ -44964 (.1) ] TJ
   ET
 EMC
-/P << /MCID 32 >> BDC
+/P << /MCID 36 >> BDC
   BT
-    1 0 0 1 20 491 Tm
+    1 0 0 1 20 447 Tm
     /F2 10 Tf
     [ -45964 ( as the value, then it makes) ] TJ
     T*
     (sure you don't exceed the limit for every tenth of a second.) Tj
   ET
 EMC
-/P << /MCID 33 >> BDC
+/P << /MCID 37 >> BDC
   BT
-    1 0 0 1 20 458 Tm
+    1 0 0 1 20 414 Tm
     (If the limit is exceeded, then incoming messages are buffered until there is room to pass on / execute the Callable again.) Tj
   ET
 EMC
-/P << /MCID 34 >> BDC
+/P << /MCID 38 >> BDC
   BT
-    1 0 0 1 20 436 Tm
+    1 0 0 1 20 392 Tm
     (The third positional parameter is optional: it indicates the number of seconds the throttle will wait before passing on any values.) Tj
   ET
 EMC
-/P << /MCID 35 >> BDC
+/P << /MCID 39 >> BDC
   BT
-    1 0 0 1 20 414 Tm
+    1 0 0 1 20 370 Tm
     (The ) Tj
   ET
 EMC
-/Code << /MCID 36 >> BDC
+/Code << /MCID 40 >> BDC
   BT
-    1 0 0 1 20 414 Tm
-    /F3 8 Tf
+    1 0 0 1 20 370 Tm
+    /F1 8 Tf
     [ -2569 (:control) ] TJ
   ET
 EMC
@@ -6151,28 +6165,28 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  39.55 413 40.4 10.8 re
+  39.55 369 40.4 10.8 re
   B
 Q
-/P << /MCID 37 >> BDC
+/P << /MCID 41 >> BDC
   BT
-    1 0 0 1 20 414 Tm
+    1 0 0 1 20 370 Tm
     /F2 10 Tf
     [ -6375 ( named parameter optionally specifies a Supply that you can use to control the throttle while it is in operation. Messages that) ] TJ
     T*
     (can be sent, are strings in the form of "key:value". Please see below for the types of messages that you can send to control the throttle.) Tj
   ET
 EMC
-/P << /MCID 38 >> BDC
+/P << /MCID 42 >> BDC
   BT
-    1 0 0 1 20 381 Tm
+    1 0 0 1 20 337 Tm
     (The ) Tj
   ET
 EMC
-/Code << /MCID 39 >> BDC
+/Code << /MCID 43 >> BDC
   BT
-    1 0 0 1 20 381 Tm
-    /F3 8 Tf
+    1 0 0 1 20 337 Tm
+    /F1 8 Tf
     [ -2569 (:status) ] TJ
   ET
 EMC
@@ -6181,12 +6195,12 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  39.55 380 35.6 10.8 re
+  39.55 336 35.6 10.8 re
   B
 Q
-/P << /MCID 40 >> BDC
+/P << /MCID 44 >> BDC
   BT
-    1 0 0 1 20 381 Tm
+    1 0 0 1 20 337 Tm
     /F2 10 Tf
     [ -5895 ( named parameter optionally specifies a Supply that will receive any status messages. If specified, it will at least send one status) ] TJ
     T*
@@ -6195,29 +6209,29 @@ Q
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 41 >> BDC
+  /Link << /MCID 45 >> BDC
     BT
-      1 0 0 1 20 370 Tm
+      1 0 0 1 20 326 Tm
       [ -20997 (status message) ] TJ
     ET
   EMC
 Q
-/P << /MCID 42 >> BDC
+/P << /MCID 46 >> BDC
   BT
-    1 0 0 1 20 370 Tm
+    1 0 0 1 20 326 Tm
     [ -27163 ( below.) ] TJ
   ET
 EMC
-/P << /MCID 43 >> BDC
+/P << /MCID 47 >> BDC
   BT
-    1 0 0 1 20 348 Tm
+    1 0 0 1 20 304 Tm
     (The ) Tj
   ET
 EMC
-/Code << /MCID 44 >> BDC
+/Code << /MCID 48 >> BDC
   BT
-    1 0 0 1 20 348 Tm
-    /F3 8 Tf
+    1 0 0 1 20 304 Tm
+    /F1 8 Tf
     [ -2569 (:bleed) ] TJ
   ET
 EMC
@@ -6226,56 +6240,56 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  39.55 347 30.8 10.8 re
+  39.55 303 30.8 10.8 re
   B
 Q
-/P << /MCID 45 >> BDC
+/P << /MCID 49 >> BDC
   BT
-    1 0 0 1 20 348 Tm
+    1 0 0 1 20 304 Tm
     /F2 10 Tf
     [ -5415 ( named parameter optionally specifies a Supply that will receive any values that were either explicitly bled \(with the ) ] TJ
   ET
 EMC
-/Span << /MCID 46 >> BDC
+/Span << /MCID 50 >> BDC
   BT
-    1 0 0 1 20 348 Tm
-    /F1 10 Tf
+    1 0 0 1 20 304 Tm
+    /F3 10 Tf
     [ -52407 (bleed) ] TJ
   ET
 EMC
-/P << /MCID 47 >> BDC
+/P << /MCID 51 >> BDC
   BT
-    1 0 0 1 20 348 Tm
+    1 0 0 1 20 304 Tm
     /F2 10 Tf
     [ -54935 ] TJ
     T*
     (control message\), or automatically bled \(if there's a ) Tj
   ET
 EMC
-/Span << /MCID 48 >> BDC
+/Span << /MCID 52 >> BDC
   BT
-    1 0 0 1 20 337 Tm
-    /F1 10 Tf
+    1 0 0 1 20 293 Tm
+    /F3 10 Tf
     [ -21009 (vent-at) ] TJ
   ET
 EMC
-/P << /MCID 49 >> BDC
+/P << /MCID 53 >> BDC
   BT
-    1 0 0 1 20 337 Tm
+    1 0 0 1 20 293 Tm
     /F2 10 Tf
     [ -24258 ( active\).) ] TJ
   ET
 EMC
-/P << /MCID 50 >> BDC
+/P << /MCID 54 >> BDC
   BT
-    1 0 0 1 20 315 Tm
+    1 0 0 1 20 271 Tm
     (The ) Tj
   ET
 EMC
-/Code << /MCID 51 >> BDC
+/Code << /MCID 55 >> BDC
   BT
-    1 0 0 1 20 315 Tm
-    /F3 8 Tf
+    1 0 0 1 20 271 Tm
+    /F1 8 Tf
     [ -2569 (:vent-at) ] TJ
   ET
 EMC
@@ -6284,20 +6298,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  39.55 314 40.4 10.8 re
+  39.55 270 40.4 10.8 re
   B
 Q
-/P << /MCID 52 >> BDC
+/P << /MCID 56 >> BDC
   BT
-    1 0 0 1 20 315 Tm
+    1 0 0 1 20 271 Tm
     /F2 10 Tf
     [ -6375 ( named parameter indicates the number of values that may be buffered before any additional value will be routed to the ) ] TJ
   ET
 EMC
-/Code << /MCID 53 >> BDC
+/Code << /MCID 57 >> BDC
   BT
-    1 0 0 1 20 315 Tm
-    /F3 8 Tf
+    1 0 0 1 20 271 Tm
+    /F1 8 Tf
     [ -68164 ] TJ
     8.8 TL
     T*
@@ -6309,20 +6323,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  19 305.2 30.8 19.6 re
+  19 261.2 30.8 19.6 re
   B
 Q
-/P << /MCID 54 >> BDC
+/P << /MCID 58 >> BDC
   BT
-    1 0 0 1 20 306.2 Tm
+    1 0 0 1 20 262.2 Tm
     /F2 10 Tf
     [ -3360 ( Supply. Defaults to 0 if not specified \(causing no automatic bleeding to happen\). Only makes sense if a ) ] TJ
   ET
 EMC
-/Code << /MCID 55 >> BDC
+/Code << /MCID 59 >> BDC
   BT
-    1 0 0 1 20 306.2 Tm
-    /F3 8 Tf
+    1 0 0 1 20 262.2 Tm
+    /F1 8 Tf
     [ -56762 (:bleed) ] TJ
   ET
 EMC
@@ -6331,12 +6345,12 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  473.1 305.2 30.8 10.8 re
+  473.1 261.2 30.8 10.8 re
   B
 Q
-/P << /MCID 56 >> BDC
+/P << /MCID 60 >> BDC
   BT
-    1 0 0 1 20 306.2 Tm
+    1 0 0 1 20 262.2 Tm
     /F2 10 Tf
     [ -48770 ( Supply has also) ] TJ
     11 TL
@@ -6344,16 +6358,16 @@ Q
     (been specified.) Tj
   ET
 EMC
-/P << /MCID 57 >> BDC
+/P << /MCID 61 >> BDC
   BT
-    1 0 0 1 20 273.2 Tm
+    1 0 0 1 20 229.2 Tm
     (The ) Tj
   ET
 EMC
-/Code << /MCID 58 >> BDC
+/Code << /MCID 62 >> BDC
   BT
-    1 0 0 1 20 273.2 Tm
-    /F3 8 Tf
+    1 0 0 1 20 229.2 Tm
+    /F1 8 Tf
     [ -2569 (:scheduler) ] TJ
   ET
 EMC
@@ -6362,20 +6376,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  39.55 272.2 50 10.8 re
+  39.55 228.2 50 10.8 re
   B
 Q
-/P << /MCID 59 >> BDC
+/P << /MCID 63 >> BDC
   BT
-    1 0 0 1 20 273.2 Tm
+    1 0 0 1 20 229.2 Tm
     /F2 10 Tf
     [ -7335 ( named parameter indicates the scheduler to be used. Defaults to ) ] TJ
   ET
 EMC
-/Code << /MCID 60 >> BDC
+/Code << /MCID 64 >> BDC
   BT
-    1 0 0 1 20 273.2 Tm
-    /F3 8 Tf
+    1 0 0 1 20 229.2 Tm
+    /F1 8 Tf
     [ -41974 ($*SCHEDULER) ] TJ
   ET
 EMC
@@ -6384,34 +6398,34 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  354.79 272.2 54.8 10.8 re
+  354.79 228.2 54.8 10.8 re
   B
 Q
-/P << /MCID 61 >> BDC
+/P << /MCID 65 >> BDC
   BT
-    1 0 0 1 20 273.2 Tm
+    1 0 0 1 20 229.2 Tm
     /F2 10 Tf
     [ -39339 (.) ] TJ
   ET
 EMC
-/H3 << /MCID 62 >> BDC
+/H3 << /MCID 66 >> BDC
   BT
-    1 0 0 1 20 244.6 Tm
-    /F1 13 Tf
+    1 0 0 1 20 200.6 Tm
+    /F3 13 Tf
     (control messages) Tj
   ET
 EMC
-/P << /MCID 63 >> BDC
+/P << /MCID 67 >> BDC
   BT
-    1 0 0 1 20 208.3 Tm
+    1 0 0 1 20 164.3 Tm
     /F2 10 Tf
     (These messages can be sent to the ) Tj
   ET
 EMC
-/Code << /MCID 64 >> BDC
+/Code << /MCID 68 >> BDC
   BT
-    1 0 0 1 20 208.3 Tm
-    /F3 8 Tf
+    1 0 0 1 20 164.3 Tm
+    /F1 8 Tf
     [ -17635 (:control) ] TJ
   ET
 EMC
@@ -6420,56 +6434,56 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  160.08 207.3 40.4 10.8 re
+  160.08 163.3 40.4 10.8 re
   B
 Q
-/P << /MCID 65 >> BDC
+/P << /MCID 69 >> BDC
   BT
-    1 0 0 1 20 208.3 Tm
+    1 0 0 1 20 164.3 Tm
     /F2 10 Tf
     [ -18428 ( Supply. A control message consists of a string of the form "key: value", e.g. "limit: 4".) ] TJ
   ET
 EMC
-/Lbl << /MCID 66 >> BDC
-  BT
-    1 0 0 1 20 186.3 Tm
-    (•) Tj
-  ET
-EMC
-/P << /MCID 67 >> BDC
-  BT
-    1 0 0 1 30 186.3 Tm
-    (limit) Tj
-  ET
-EMC
-/P << /MCID 68 >> BDC
-  BT
-    1 0 0 1 20 164.3 Tm
-    (Change the number of messages \(as initially given in the first positional\) to the value given.) Tj
-  ET
-EMC
-/Lbl << /MCID 69 >> BDC
+/Lbl << /MCID 70 >> BDC
   BT
     1 0 0 1 20 142.3 Tm
     (•) Tj
   ET
 EMC
-/P << /MCID 70 >> BDC
+/P << /MCID 71 >> BDC
   BT
     1 0 0 1 30 142.3 Tm
+    (limit) Tj
+  ET
+EMC
+/P << /MCID 72 >> BDC
+  BT
+    1 0 0 1 20 120.3 Tm
+    (Change the number of messages \(as initially given in the first positional\) to the value given.) Tj
+  ET
+EMC
+/Lbl << /MCID 73 >> BDC
+  BT
+    1 0 0 1 20 98.3 Tm
+    (•) Tj
+  ET
+EMC
+/P << /MCID 74 >> BDC
+  BT
+    1 0 0 1 30 98.3 Tm
     (bleed) Tj
   ET
 EMC
-/P << /MCID 71 >> BDC
+/P << /MCID 75 >> BDC
   BT
-    1 0 0 1 20 120.3 Tm
+    1 0 0 1 20 76.3 Tm
     (Route the given number of buffered messages to the ) Tj
   ET
 EMC
-/Code << /MCID 72 >> BDC
+/Code << /MCID 76 >> BDC
   BT
-    1 0 0 1 20 120.3 Tm
-    /F3 8 Tf
+    1 0 0 1 20 76.3 Tm
+    /F1 8 Tf
     [ -26731 (:bleed) ] TJ
   ET
 EMC
@@ -6478,34 +6492,14 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  232.85 119.3 30.8 10.8 re
+  232.85 75.3 30.8 10.8 re
   B
 Q
-/P << /MCID 73 >> BDC
-  BT
-    1 0 0 1 20 120.3 Tm
-    /F2 10 Tf
-    [ -24745 ( Supply.) ] TJ
-  ET
-EMC
-/Lbl << /MCID 74 >> BDC
-  BT
-    1 0 0 1 20 98.3 Tm
-    (•) Tj
-  ET
-EMC
-/P << /MCID 75 >> BDC
-  BT
-    1 0 0 1 30 98.3 Tm
-    (vent-at) Tj
-  ET
-EMC
-/P << /MCID 76 >> BDC
+/P << /MCID 77 >> BDC
   BT
     1 0 0 1 20 76.3 Tm
-    (Change the maximum number of buffered values before automatic bleeding takes place. If the value is lower than before, will cause) Tj
-    T*
-    (immediate rerouting of buffered values to match the new maximum.) Tj
+    /F2 10 Tf
+    [ -24745 ( Supply.) ] TJ
   ET
 EMC
 endstream
@@ -6534,7 +6528,7 @@ endobj
 endobj
 
 97 0 obj
-<< /Length 5015 >> stream
+<< /Length 5374 >> stream
 /Lbl << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
@@ -6545,18 +6539,39 @@ EMC
 /P << /MCID 1 >> BDC
   BT
     1 0 0 1 30 752 Tm
-    (status) Tj
+    (vent-at) Tj
   ET
 EMC
 /P << /MCID 2 >> BDC
   BT
     1 0 0 1 20 730 Tm
+    (Change the maximum number of buffered values before automatic bleeding takes place. If the value is lower than before, will cause) Tj
+    11 TL
+    T*
+    (immediate rerouting of buffered values to match the new maximum.) Tj
+  ET
+EMC
+/Lbl << /MCID 3 >> BDC
+  BT
+    1 0 0 1 20 697 Tm
+    (•) Tj
+  ET
+EMC
+/P << /MCID 4 >> BDC
+  BT
+    1 0 0 1 30 697 Tm
+    (status) Tj
+  ET
+EMC
+/P << /MCID 5 >> BDC
+  BT
+    1 0 0 1 20 675 Tm
     (Send a status message to the ) Tj
   ET
 EMC
-/Code << /MCID 3 >> BDC
+/Code << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 730 Tm
+    1 0 0 1 20 675 Tm
     /F2 8 Tf
     [ -14825 (:status) ] TJ
   ET
@@ -6566,69 +6581,69 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  137.6 729 35.6 10.8 re
+  137.6 674 35.6 10.8 re
   B
 Q
-/P << /MCID 4 >> BDC
+/P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 730 Tm
+    1 0 0 1 20 675 Tm
     /F1 10 Tf
     [ -15700 ( Supply with the given id.) ] TJ
   ET
 EMC
-/H3 << /MCID 5 >> BDC
+/H3 << /MCID 8 >> BDC
   BT
-    1 0 0 1 20 701.4 Tm
+    1 0 0 1 20 646.4 Tm
     /F3 13 Tf
     (status message) Tj
   ET
 EMC
-/P << /MCID 6 >> BDC
+/P << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 665.1 Tm
+    1 0 0 1 20 610.1 Tm
     /F1 10 Tf
     (The status return message is a hash with the following keys:) Tj
   ET
 EMC
-/Lbl << /MCID 7 >> BDC
-  BT
-    1 0 0 1 20 643.1 Tm
-    (•) Tj
-  ET
-EMC
-/P << /MCID 8 >> BDC
-  BT
-    1 0 0 1 30 643.1 Tm
-    (allowed) Tj
-  ET
-EMC
-/P << /MCID 9 >> BDC
-  BT
-    1 0 0 1 20 621.1 Tm
-    (The current number of messages / callables that is still allowed to be passed / executed.) Tj
-  ET
-EMC
 /Lbl << /MCID 10 >> BDC
   BT
-    1 0 0 1 20 599.1 Tm
+    1 0 0 1 20 588.1 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 11 >> BDC
   BT
-    1 0 0 1 30 599.1 Tm
-    (bled) Tj
+    1 0 0 1 30 588.1 Tm
+    (allowed) Tj
   ET
 EMC
 /P << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 577.1 Tm
+    1 0 0 1 20 566.1 Tm
+    (The current number of messages / callables that is still allowed to be passed / executed.) Tj
+  ET
+EMC
+/Lbl << /MCID 13 >> BDC
+  BT
+    1 0 0 1 20 544.1 Tm
+    (•) Tj
+  ET
+EMC
+/P << /MCID 14 >> BDC
+  BT
+    1 0 0 1 30 544.1 Tm
+    (bled) Tj
+  ET
+EMC
+/P << /MCID 15 >> BDC
+  BT
+    1 0 0 1 20 522.1 Tm
     (The number of messages routed to the ) Tj
   ET
 EMC
-/Code << /MCID 13 >> BDC
+/Code << /MCID 16 >> BDC
   BT
-    1 0 0 1 20 577.1 Tm
+    1 0 0 1 20 522.1 Tm
     /F2 8 Tf
     [ -19719 (:bleed) ] TJ
   ET
@@ -6638,109 +6653,109 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  176.75 576.1 30.8 10.8 re
+  176.75 521.1 30.8 10.8 re
   B
 Q
-/P << /MCID 14 >> BDC
+/P << /MCID 17 >> BDC
   BT
-    1 0 0 1 20 577.1 Tm
+    1 0 0 1 20 522.1 Tm
     /F1 10 Tf
     [ -19135 ( Supply.) ] TJ
   ET
 EMC
-/Lbl << /MCID 15 >> BDC
-  BT
-    1 0 0 1 20 555.1 Tm
-    (•) Tj
-  ET
-EMC
-/P << /MCID 16 >> BDC
-  BT
-    1 0 0 1 30 555.1 Tm
-    (buffered) Tj
-  ET
-EMC
-/P << /MCID 17 >> BDC
-  BT
-    1 0 0 1 20 533.1 Tm
-    (The number of messages currently buffered because of overflow.) Tj
-  ET
-EMC
 /Lbl << /MCID 18 >> BDC
   BT
-    1 0 0 1 20 511.1 Tm
+    1 0 0 1 20 500.1 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 19 >> BDC
   BT
-    1 0 0 1 30 511.1 Tm
-    (emitted) Tj
+    1 0 0 1 30 500.1 Tm
+    (buffered) Tj
   ET
 EMC
 /P << /MCID 20 >> BDC
   BT
-    1 0 0 1 20 489.1 Tm
-    (The number of messages emitted \(passed through\).) Tj
+    1 0 0 1 20 478.1 Tm
+    (The number of messages currently buffered because of overflow.) Tj
   ET
 EMC
 /Lbl << /MCID 21 >> BDC
   BT
-    1 0 0 1 20 467.1 Tm
+    1 0 0 1 20 456.1 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 22 >> BDC
   BT
-    1 0 0 1 30 467.1 Tm
-    (id) Tj
+    1 0 0 1 30 456.1 Tm
+    (emitted) Tj
   ET
 EMC
 /P << /MCID 23 >> BDC
   BT
-    1 0 0 1 20 445.1 Tm
-    (The id of this status message \(a monotonically increasing number\). Handy if you want to log status messages.) Tj
+    1 0 0 1 20 434.1 Tm
+    (The number of messages emitted \(passed through\).) Tj
   ET
 EMC
 /Lbl << /MCID 24 >> BDC
   BT
-    1 0 0 1 20 423.1 Tm
+    1 0 0 1 20 412.1 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 25 >> BDC
   BT
-    1 0 0 1 30 423.1 Tm
-    (limit) Tj
+    1 0 0 1 30 412.1 Tm
+    (id) Tj
   ET
 EMC
 /P << /MCID 26 >> BDC
   BT
-    1 0 0 1 20 401.1 Tm
-    (The current limit that is being applied.) Tj
+    1 0 0 1 20 390.1 Tm
+    (The id of this status message \(a monotonically increasing number\). Handy if you want to log status messages.) Tj
   ET
 EMC
 /Lbl << /MCID 27 >> BDC
   BT
-    1 0 0 1 20 379.1 Tm
+    1 0 0 1 20 368.1 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 28 >> BDC
   BT
-    1 0 0 1 30 379.1 Tm
-    (vent-at) Tj
+    1 0 0 1 30 368.1 Tm
+    (limit) Tj
   ET
 EMC
 /P << /MCID 29 >> BDC
   BT
-    1 0 0 1 20 357.1 Tm
+    1 0 0 1 20 346.1 Tm
+    (The current limit that is being applied.) Tj
+  ET
+EMC
+/Lbl << /MCID 30 >> BDC
+  BT
+    1 0 0 1 20 324.1 Tm
+    (•) Tj
+  ET
+EMC
+/P << /MCID 31 >> BDC
+  BT
+    1 0 0 1 30 324.1 Tm
+    (vent-at) Tj
+  ET
+EMC
+/P << /MCID 32 >> BDC
+  BT
+    1 0 0 1 20 302.1 Tm
     (The maximum number of messages that may be buffered before they're automatically re-routed to the ) Tj
   ET
 EMC
-/Code << /MCID 30 >> BDC
+/Code << /MCID 33 >> BDC
   BT
-    1 0 0 1 20 357.1 Tm
+    1 0 0 1 20 302.1 Tm
     /F2 8 Tf
     [ -51464 (:bleed) ] TJ
   ET
@@ -6750,36 +6765,35 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  430.71 356.1 30.8 10.8 re
+  430.71 301.1 30.8 10.8 re
   B
 Q
-/P << /MCID 31 >> BDC
+/P << /MCID 34 >> BDC
   BT
-    1 0 0 1 20 357.1 Tm
+    1 0 0 1 20 302.1 Tm
     /F1 10 Tf
     [ -44531 ( Supply.) ] TJ
   ET
 EMC
-/H3 << /MCID 32 >> BDC
+/H3 << /MCID 35 >> BDC
   BT
-    1 0 0 1 20 328.5 Tm
+    1 0 0 1 20 273.5 Tm
     /F3 13 Tf
     (Examples) Tj
   ET
 EMC
-/P << /MCID 33 >> BDC
+/P << /MCID 36 >> BDC
   BT
-    1 0 0 1 20 292.2 Tm
+    1 0 0 1 20 237.2 Tm
     /F1 10 Tf
     (Have a simple piece of code announce when it starts running asynchronously, wait a random amount of time, then announce when it is done.) Tj
-    11 TL
     T*
     (Do this 6 times, but don't let more than 3 of them run simultaneously.) Tj
   ET
 EMC
-/Code << /MCID 34 >> BDC
+/Code << /MCID 37 >> BDC
   BT
-    1 0 0 1 30 263.6 Tm
+    1 0 0 1 30 208.6 Tm
     /F2 8 Tf
     (my $s = Supply.from-list\(^6\);   set up supply) Tj
     8.8 TL
@@ -6804,19 +6818,19 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 197 572 80.4 re
+  25 142 572 80.4 re
   B
 Q
-/P << /MCID 35 >> BDC
+/P << /MCID 38 >> BDC
   BT
-    1 0 0 1 20 180 Tm
+    1 0 0 1 20 125 Tm
     /F1 10 Tf
     (and the result of one run will be:) Tj
   ET
 EMC
-/Code << /MCID 36 >> BDC
+/Code << /MCID 39 >> BDC
   BT
-    1 0 0 1 30 162.4 Tm
+    1 0 0 1 30 107.4 Tm
     /F2 8 Tf
     (running 0) Tj
     T*
@@ -6836,11 +6850,6 @@ EMC
     T*
     (running 5) Tj
     T*
-    (done 0) Tj
-    T*
-    (done 3) Tj
-    T*
-    (done 5) Tj
   ET
 EMC
 q
@@ -6848,7 +6857,7 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 60.6 572 115.6 re
+  25 32 572 89.2 re
   B
 Q
 endstream
@@ -6871,7 +6880,7 @@ endobj
   /Parent 22 0 R
   /Resources <<
     /ExtGState << /GS1 104 0 R /GS2 105 0 R >>
-    /Font << /F1 31 0 R /F2 32 0 R /F3 34 0 R >>
+    /Font << /F1 32 0 R /F2 31 0 R /F3 34 0 R >>
   >>
   /StructParents 36
 >>
@@ -6885,7 +6894,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (List.produce)
   /P 100 0 R
-  /Rect [ 251.13 364 305.4 379 ]
+  /Rect [ 251.13 314.72 305.4 329.72 ]
   /StructParent 37
 >>
 endobj
@@ -6895,18 +6904,38 @@ endobj
 endobj
 
 103 0 obj
-<< /Length 8238 >> stream
-/H2 << /MCID 0 >> BDC
+<< /Length 8223 >> stream
+/Code << /MCID 0 >> BDC
   BT
-    1 0 0 1 20 752 Tm
-    /F1 16 Tf
+    1 0 0 1 30 752 Tm
+    /F1 6.4 Tf
+    (done 0) Tj
+    7.04 TL
+    T*
+    (done 3) Tj
+    T*
+    (done 5) Tj
+  ET
+EMC
+q
+  0 g
+  0 G
+  /GS1 gs
+  /GS2 gs
+  25 732.92 572 31.12 re
+  B
+Q
+/H2 << /MCID 1 >> BDC
+  BT
+    1 0 0 1 20 702.72 Tm
+    /F2 16 Tf
     (method stable) Tj
   ET
 EMC
-/Code << /MCID 1 >> BDC
+/Code << /MCID 2 >> BDC
   BT
-    1 0 0 1 30 716.8 Tm
-    /F2 8 Tf
+    1 0 0 1 30 667.52 Tm
+    /F1 8 Tf
     (method stable\(Supply:D: $time, :$scheduler = $*SCHEDULER --> Supply:D\)) Tj
   ET
 EMC
@@ -6915,20 +6944,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 711.8 572 18.8 re
+  25 662.52 572 18.8 re
   B
 Q
-/P << /MCID 2 >> BDC
+/P << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 645.52 Tm
     /F3 10 Tf
     (Creates a new supply that only passes on a value flowing through the given supply if it wasn't superseded by another value in the given ) Tj
   ET
 EMC
-/Code << /MCID 3 >> BDC
+/Code << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
-    /F2 8 Tf
+    1 0 0 1 20 645.52 Tm
+    /F1 8 Tf
     [ -68202 ($time) ] TJ
   ET
 EMC
@@ -6937,12 +6966,12 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  564.62 693.8 26 10.8 re
+  564.62 644.52 26 10.8 re
   B
 Q
-/P << /MCID 4 >> BDC
+/P << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 645.52 Tm
     /F3 10 Tf
     [ -57442 ] TJ
     11 TL
@@ -6950,10 +6979,10 @@ Q
     (\(in seconds\). Optionally uses another scheduler than the default scheduler, using the ) Tj
   ET
 EMC
-/Code << /MCID 5 >> BDC
+/Code << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 683.8 Tm
-    /F2 8 Tf
+    1 0 0 1 20 634.52 Tm
+    /F1 8 Tf
     [ -42666 (:scheduler) ] TJ
   ET
 EMC
@@ -6962,26 +6991,26 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  360.33 682.8 50 10.8 re
+  360.33 633.52 50 10.8 re
   B
 Q
-/P << /MCID 6 >> BDC
+/P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 683.8 Tm
+    1 0 0 1 20 634.52 Tm
     /F3 10 Tf
     [ -39413 ( parameter.) ] TJ
   ET
 EMC
-/P << /MCID 7 >> BDC
+/P << /MCID 8 >> BDC
   BT
-    1 0 0 1 20 661.8 Tm
+    1 0 0 1 20 612.52 Tm
     (To clarify the above, if, during the timeout ) Tj
   ET
 EMC
-/Code << /MCID 8 >> BDC
+/Code << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 661.8 Tm
-    /F2 8 Tf
+    1 0 0 1 20 612.52 Tm
+    /F1 8 Tf
     [ -21976 ($time) ] TJ
   ET
 EMC
@@ -6990,20 +7019,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  194.81 660.8 26 10.8 re
+  194.81 611.52 26 10.8 re
   B
 Q
-/P << /MCID 9 >> BDC
+/P << /MCID 10 >> BDC
   BT
-    1 0 0 1 20 661.8 Tm
+    1 0 0 1 20 612.52 Tm
     /F3 10 Tf
     [ -20461 (, additional values are emitted to the ) ] TJ
   ET
 EMC
-/Code << /MCID 10 >> BDC
+/Code << /MCID 11 >> BDC
   BT
-    1 0 0 1 20 661.8 Tm
-    /F2 8 Tf
+    1 0 0 1 20 612.52 Tm
+    /F1 8 Tf
     [ -44359 (Supplier) ] TJ
   ET
 EMC
@@ -7012,22 +7041,22 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  373.87 660.8 40.4 10.8 re
+  373.87 611.52 40.4 10.8 re
   B
 Q
-/P << /MCID 11 >> BDC
+/P << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 661.8 Tm
+    1 0 0 1 20 612.52 Tm
     /F3 10 Tf
     [ -39807 ( all but the last one will be thrown away.) ] TJ
     T*
     (Each time an additional value is emitted to the ) Tj
   ET
 EMC
-/Code << /MCID 12 >> BDC
+/Code << /MCID 13 >> BDC
   BT
-    1 0 0 1 20 650.8 Tm
-    /F2 8 Tf
+    1 0 0 1 20 601.52 Tm
+    /F1 8 Tf
     [ -23817 (Supplier) ] TJ
   ET
 EMC
@@ -7036,20 +7065,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  209.54 649.8 40.4 10.8 re
+  209.54 600.52 40.4 10.8 re
   B
 Q
-/P << /MCID 13 >> BDC
+/P << /MCID 14 >> BDC
   BT
-    1 0 0 1 20 650.8 Tm
+    1 0 0 1 20 601.52 Tm
     /F3 10 Tf
     [ -23374 (, during the timeout, ) ] TJ
   ET
 EMC
-/Code << /MCID 14 >> BDC
+/Code << /MCID 15 >> BDC
   BT
-    1 0 0 1 20 650.8 Tm
-    /F2 8 Tf
+    1 0 0 1 20 601.52 Tm
+    /F1 8 Tf
     [ -40016 ($time) ] TJ
   ET
 EMC
@@ -7058,28 +7087,28 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  339.13 649.8 26 10.8 re
+  339.13 600.52 26 10.8 re
   B
 Q
-/P << /MCID 15 >> BDC
+/P << /MCID 16 >> BDC
   BT
-    1 0 0 1 20 650.8 Tm
+    1 0 0 1 20 601.52 Tm
     /F3 10 Tf
     [ -34893 ( is reset.) ] TJ
   ET
 EMC
-/P << /MCID 16 >> BDC
+/P << /MCID 17 >> BDC
   BT
-    1 0 0 1 20 628.8 Tm
+    1 0 0 1 20 579.52 Tm
     (This method can be quite useful when handling UI input, where it is not desired to perform an operation until the user has stopped typing for a) Tj
     T*
     (while rather than on every keystroke.) Tj
   ET
 EMC
-/Code << /MCID 17 >> BDC
+/Code << /MCID 18 >> BDC
   BT
-    1 0 0 1 30 600.2 Tm
-    /F2 8 Tf
+    1 0 0 1 30 550.92 Tm
+    /F1 8 Tf
     (my $supplier = Supplier.new;) Tj
     8.8 TL
     T*
@@ -7111,20 +7140,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 498.4 572 115.6 re
+  25 449.12 572 115.6 re
   B
 Q
-/P << /MCID 18 >> BDC
+/P << /MCID 19 >> BDC
   BT
-    1 0 0 1 20 481.4 Tm
+    1 0 0 1 20 432.12 Tm
     /F3 10 Tf
     (As can be seen above, ) Tj
   ET
 EMC
-/Code << /MCID 19 >> BDC
+/Code << /MCID 20 >> BDC
   BT
-    1 0 0 1 20 481.4 Tm
-    /F2 8 Tf
+    1 0 0 1 20 432.12 Tm
+    /F1 8 Tf
     [ -11697 ($supply1) ] TJ
   ET
 EMC
@@ -7133,20 +7162,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  112.58 480.4 40.4 10.8 re
+  112.58 431.12 40.4 10.8 re
   B
 Q
-/P << /MCID 20 >> BDC
+/P << /MCID 21 >> BDC
   BT
-    1 0 0 1 20 481.4 Tm
+    1 0 0 1 20 432.12 Tm
     /F3 10 Tf
     [ -13678 ( received all values emitted to the ) ] TJ
   ET
 EMC
-/Code << /MCID 21 >> BDC
+/Code << /MCID 22 >> BDC
   BT
-    1 0 0 1 20 481.4 Tm
-    /F2 8 Tf
+    1 0 0 1 20 432.12 Tm
+    /F1 8 Tf
     [ -34525 (Supplier) ] TJ
   ET
 EMC
@@ -7155,20 +7184,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  295.2 480.4 40.4 10.8 re
+  295.2 431.12 40.4 10.8 re
   B
 Q
-/P << /MCID 22 >> BDC
+/P << /MCID 23 >> BDC
   BT
-    1 0 0 1 20 481.4 Tm
+    1 0 0 1 20 432.12 Tm
     /F3 10 Tf
     [ -31940 ( while ) ] TJ
   ET
 EMC
-/Code << /MCID 23 >> BDC
+/Code << /MCID 24 >> BDC
   BT
-    1 0 0 1 20 481.4 Tm
-    /F2 8 Tf
+    1 0 0 1 20 432.12 Tm
+    /F1 8 Tf
     [ -43640 ($supply2) ] TJ
   ET
 EMC
@@ -7177,12 +7206,12 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  368.12 480.4 40.4 10.8 re
+  368.12 431.12 40.4 10.8 re
   B
 Q
-/P << /MCID 24 >> BDC
+/P << /MCID 25 >> BDC
   BT
-    1 0 0 1 20 481.4 Tm
+    1 0 0 1 20 432.12 Tm
     /F3 10 Tf
     [ -39232 ( only received one value. The 43 was thrown) ] TJ
     11 TL
@@ -7190,10 +7219,10 @@ Q
     (away because it was followed by another 'last' value 44 which was retained and sent to ) Tj
   ET
 EMC
-/Code << /MCID 25 >> BDC
+/Code << /MCID 26 >> BDC
   BT
-    1 0 0 1 20 470.4 Tm
-    /F2 8 Tf
+    1 0 0 1 20 421.12 Tm
+    /F1 8 Tf
     [ -43947 ($supply2) ] TJ
   ET
 EMC
@@ -7202,22 +7231,22 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  370.58 469.4 40.4 10.8 re
+  370.58 420.12 40.4 10.8 re
   B
 Q
-/P << /MCID 26 >> BDC
+/P << /MCID 27 >> BDC
   BT
-    1 0 0 1 20 470.4 Tm
+    1 0 0 1 20 421.12 Tm
     /F3 10 Tf
     [ -39478 ( after approximately eight seconds, this due) ] TJ
     T*
     (to the fact that the timeout ) Tj
   ET
 EMC
-/Code << /MCID 27 >> BDC
+/Code << /MCID 28 >> BDC
   BT
-    1 0 0 1 20 459.4 Tm
-    /F2 8 Tf
+    1 0 0 1 20 410.12 Tm
+    /F1 8 Tf
     [ -13784 ($time) ] TJ
   ET
 EMC
@@ -7226,27 +7255,27 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  129.27 458.4 26 10.8 re
+  129.27 409.12 26 10.8 re
   B
 Q
-/P << /MCID 28 >> BDC
+/P << /MCID 29 >> BDC
   BT
-    1 0 0 1 20 459.4 Tm
+    1 0 0 1 20 410.12 Tm
     /F3 10 Tf
     [ -13907 ( was reset after three seconds.) ] TJ
   ET
 EMC
-/H2 << /MCID 29 >> BDC
+/H2 << /MCID 30 >> BDC
   BT
-    1 0 0 1 20 424.2 Tm
-    /F1 16 Tf
+    1 0 0 1 20 374.92 Tm
+    /F2 16 Tf
     (method produce) Tj
   ET
 EMC
-/Code << /MCID 30 >> BDC
+/Code << /MCID 31 >> BDC
   BT
-    1 0 0 1 30 389 Tm
-    /F2 8 Tf
+    1 0 0 1 30 339.72 Tm
+    /F1 8 Tf
     (method produce\(Supply:D: &with --> Supply:D\)) Tj
   ET
 EMC
@@ -7255,35 +7284,35 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 384 572 18.8 re
+  25 334.72 572 18.8 re
   B
 Q
-/P << /MCID 31 >> BDC
+/P << /MCID 32 >> BDC
   BT
-    1 0 0 1 20 367 Tm
+    1 0 0 1 20 317.72 Tm
     /F3 10 Tf
     (Creates a "producing" supply with the same semantics as ) Tj
   ET
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 32 >> BDC
+  /Link << /MCID 33 >> BDC
     BT
-      1 0 0 1 20 367 Tm
+      1 0 0 1 20 317.72 Tm
       [ -23313 (List.produce) ] TJ
     ET
   EMC
 Q
-/P << /MCID 33 >> BDC
+/P << /MCID 34 >> BDC
   BT
-    1 0 0 1 20 367 Tm
+    1 0 0 1 20 317.72 Tm
     [ -28590 (.) ] TJ
   ET
 EMC
-/Code << /MCID 34 >> BDC
+/Code << /MCID 35 >> BDC
   BT
-    1 0 0 1 30 349.4 Tm
-    /F2 8 Tf
+    1 0 0 1 30 300.12 Tm
+    /F1 8 Tf
     (my $supply = Supply.from-list\(1..5\).produce\({$^a + $^b}\);) Tj
     8.8 TL
     T*
@@ -7295,20 +7324,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 335.6 572 27.6 re
+  25 286.32 572 27.6 re
   B
 Q
-/H2 << /MCID 35 >> BDC
+/H2 << /MCID 36 >> BDC
   BT
-    1 0 0 1 20 305.4 Tm
-    /F1 16 Tf
+    1 0 0 1 20 256.12 Tm
+    /F2 16 Tf
     (method lines) Tj
   ET
 EMC
-/Code << /MCID 36 >> BDC
+/Code << /MCID 37 >> BDC
   BT
-    1 0 0 1 30 270.2 Tm
-    /F2 8 Tf
+    1 0 0 1 30 220.92 Tm
+    /F1 8 Tf
     (method lines\(Supply:D: :$chomp = True --> Supply:D\)) Tj
   ET
 EMC
@@ -7317,12 +7346,12 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 265.2 572 18.8 re
+  25 215.92 572 18.8 re
   B
 Q
-/P << /MCID 37 >> BDC
+/P << /MCID 38 >> BDC
   BT
-    1 0 0 1 20 248.2 Tm
+    1 0 0 1 20 198.92 Tm
     /F3 10 Tf
     (Creates a supply that will emit the characters coming in line by line from a supply that's usually created by some asynchronous I/O operation.) Tj
     11 TL
@@ -7330,10 +7359,10 @@ Q
     (The optional ) Tj
   ET
 EMC
-/Code << /MCID 38 >> BDC
+/Code << /MCID 39 >> BDC
   BT
-    1 0 0 1 20 237.2 Tm
-    /F2 8 Tf
+    1 0 0 1 20 187.92 Tm
+    /F1 8 Tf
     [ -6979 (:chomp) ] TJ
   ET
 EMC
@@ -7342,20 +7371,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  74.83 236.2 30.8 10.8 re
+  74.83 186.92 30.8 10.8 re
   B
 Q
-/P << /MCID 39 >> BDC
+/P << /MCID 40 >> BDC
   BT
-    1 0 0 1 20 237.2 Tm
+    1 0 0 1 20 187.92 Tm
     /F3 10 Tf
     [ -8943 ( parameter indicates whether to remove line separators: the default is ) ] TJ
   ET
 EMC
-/Code << /MCID 40 >> BDC
+/Code << /MCID 41 >> BDC
   BT
-    1 0 0 1 20 237.2 Tm
-    /F2 8 Tf
+    1 0 0 1 20 187.92 Tm
+    /F1 8 Tf
     [ -46240 (True) ] TJ
   ET
 EMC
@@ -7364,27 +7393,27 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  388.92 236.2 21.2 10.8 re
+  388.92 186.92 21.2 10.8 re
   B
 Q
-/P << /MCID 41 >> BDC
+/P << /MCID 42 >> BDC
   BT
-    1 0 0 1 20 237.2 Tm
+    1 0 0 1 20 187.92 Tm
     /F3 10 Tf
     [ -39392 (.) ] TJ
   ET
 EMC
-/H2 << /MCID 42 >> BDC
+/H2 << /MCID 43 >> BDC
   BT
-    1 0 0 1 20 202 Tm
-    /F1 16 Tf
+    1 0 0 1 20 152.72 Tm
+    /F2 16 Tf
     (method words) Tj
   ET
 EMC
-/Code << /MCID 43 >> BDC
+/Code << /MCID 44 >> BDC
   BT
-    1 0 0 1 30 166.8 Tm
-    /F2 8 Tf
+    1 0 0 1 30 117.52 Tm
+    /F1 8 Tf
     (method words\(Supply:D: --> Supply:D\)) Tj
   ET
 EMC
@@ -7393,38 +7422,18 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 161.8 572 18.8 re
+  25 112.52 572 18.8 re
   B
 Q
-/P << /MCID 44 >> BDC
+/P << /MCID 45 >> BDC
   BT
-    1 0 0 1 20 144.8 Tm
+    1 0 0 1 20 95.52 Tm
     /F3 10 Tf
     (Creates a supply that will emit the characters coming in word for word from a supply that's usually created by some asynchronous I/O) Tj
     T*
     (operation.) Tj
   ET
 EMC
-/Code << /MCID 45 >> BDC
-  BT
-    1 0 0 1 30 116.2 Tm
-    /F2 8 Tf
-    (my $s = Supply.from-list\("Hello Word!".comb\);) Tj
-    8.8 TL
-    T*
-    (my $ws = $s.words;) Tj
-    T*
-    ($ws.tap\(&say\);            OUTPUT: «HelloWord!») Tj
-  ET
-EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 93.6 572 36.4 re
-  B
-Q
 endstream
 endobj
 
@@ -7439,13 +7448,13 @@ endobj
 106 0 obj
 <<
   /Type /Page
-  /Annots [ 107 0 R 109 0 R 111 0 R 113 0 R 115 0 R 117 0 R 119 0 R 121 0 R ]
-  /Contents 123 0 R
+  /Annots [ 107 0 R 109 0 R 111 0 R 113 0 R 115 0 R 117 0 R 119 0 R ]
+  /Contents 121 0 R
   /MediaBox [ 0 0 612 792 ]
   /Parent 22 0 R
   /Resources <<
-    /ExtGState << /GS1 124 0 R /GS2 125 0 R >>
-    /Font << /F1 31 0 R /F2 32 0 R /F3 34 0 R >>
+    /ExtGState << /GS1 122 0 R /GS2 123 0 R >>
+    /Font << /F1 32 0 R /F2 31 0 R /F3 34 0 R >>
   >>
   /StructParents 38
 >>
@@ -7459,7 +7468,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (unique)
   /P 106 0 R
-  /Rect [ 508.71 691.8 539.93 706.8 ]
+  /Rect [ 508.71 639 539.93 654 ]
   /StructParent 39
 >>
 endobj
@@ -7480,7 +7489,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (unique)
   /P 106 0 R
-  /Rect [ 515.36 577.4 546.58 592.4 ]
+  /Rect [ 515.36 524.6 546.58 539.6 ]
   /StructParent 40
 >>
 endobj
@@ -7501,7 +7510,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (repeated)
   /P 106 0 R
-  /Rect [ 37.44 529 75.31 544 ]
+  /Rect [ 37.44 476.2 75.31 491.2 ]
   /StructParent 41
 >>
 endobj
@@ -7522,7 +7531,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (Rakudo)
   /P 106 0 R
-  /Rect [ 162.41 507 197.52 522 ]
+  /Rect [ 162.41 454.2 197.52 469.2 ]
   /StructParent 42
 >>
 endobj
@@ -7539,7 +7548,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (squish)
   /P 106 0 R
-  /Rect [ 508.71 414.6 538.27 429.6 ]
+  /Rect [ 508.71 361.8 538.27 376.8 ]
   /StructParent 43
 >>
 endobj
@@ -7560,7 +7569,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (Any.max)
   /P 106 0 R
-  /Rect [ 213.79 300.2 254.73 315.2 ]
+  /Rect [ 213.79 247.4 254.73 262.4 ]
   /StructParent 44
 >>
 endobj
@@ -7577,7 +7586,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (Any.min)
   /P 106 0 R
-  /Rect [ 213.79 185.8 253.07 200.8 ]
+  /Rect [ 213.79 133 253.07 148 ]
   /StructParent 45
 >>
 endobj
@@ -7587,35 +7596,38 @@ endobj
 endobj
 
 121 0 obj
-<<
-  /Type /Annot
-  /Subtype /Link
-  /A 122 0 R
-  /Border [ 0 0 0 ]
-  /Contents (Any.minmax)
-  /P 106 0 R
-  /Rect [ 171.31 82.4 227.81 97.4 ]
-  /StructParent 46
->>
-endobj
-
-122 0 obj
-<< /Type /Action /S /URI /URI (/type/Any#routine_minmax) >>
-endobj
-
-123 0 obj
-<< /Length 7886 >> stream
-/H2 << /MCID 0 >> BDC
+<< /Length 7374 >> stream
+/Code << /MCID 0 >> BDC
   BT
-    1 0 0 1 20 752 Tm
-    /F1 16 Tf
+    1 0 0 1 30 752 Tm
+    /F1 8 Tf
+    (my $s = Supply.from-list\("Hello Word!".comb\);) Tj
+    8.8 TL
+    T*
+    (my $ws = $s.words;) Tj
+    T*
+    ($ws.tap\(&say\);            OUTPUT: «HelloWord!») Tj
+  ET
+EMC
+q
+  0 g
+  0 G
+  /GS1 gs
+  /GS2 gs
+  25 729.4 572 36.4 re
+  B
+Q
+/H2 << /MCID 1 >> BDC
+  BT
+    1 0 0 1 20 699.2 Tm
+    /F2 16 Tf
     (method unique) Tj
   ET
 EMC
-/Code << /MCID 1 >> BDC
+/Code << /MCID 2 >> BDC
   BT
-    1 0 0 1 30 716.8 Tm
-    /F2 8 Tf
+    1 0 0 1 30 664 Tm
+    /F1 8 Tf
     (method unique\(Supply:D: :$as, :$with, :$expires --> Supply:D\)) Tj
   ET
 EMC
@@ -7624,20 +7636,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 711.8 572 18.8 re
+  25 659 572 18.8 re
   B
 Q
-/P << /MCID 2 >> BDC
+/P << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 642 Tm
     /F3 10 Tf
     (Creates a supply that only provides unique values, as defined by the optional ) Tj
   ET
 EMC
-/Code << /MCID 3 >> BDC
+/Code << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
-    /F2 8 Tf
+    1 0 0 1 20 642 Tm
+    /F1 8 Tf
     [ -38989 (:as) ] TJ
   ET
 EMC
@@ -7646,20 +7658,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  330.91 693.8 16.4 10.8 re
+  330.91 641 16.4 10.8 re
   B
 Q
-/P << /MCID 4 >> BDC
+/P << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 642 Tm
     /F3 10 Tf
     [ -33111 ( and ) ] TJ
   ET
 EMC
-/Code << /MCID 5 >> BDC
+/Code << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
-    /F2 8 Tf
+    1 0 0 1 20 642 Tm
+    /F1 8 Tf
     [ -44131 (:with) ] TJ
   ET
 EMC
@@ -7668,38 +7680,38 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  372.05 693.8 26 10.8 re
+  372.05 641 26 10.8 re
   B
 Q
-/P << /MCID 6 >> BDC
+/P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 642 Tm
     /F3 10 Tf
     [ -38185 ( parameters \(same as with ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 7 >> BDC
+  /Link << /MCID 8 >> BDC
     BT
-      1 0 0 1 20 694.8 Tm
+      1 0 0 1 20 642 Tm
       [ -49071 (unique) ] TJ
     ET
   EMC
 Q
-/P << /MCID 8 >> BDC
+/P << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 642 Tm
     [ -52043 (\). The) ] TJ
     11 TL
     T*
     (optional ) Tj
   ET
 EMC
-/Code << /MCID 9 >> BDC
+/Code << /MCID 10 >> BDC
   BT
-    1 0 0 1 20 683.8 Tm
-    /F2 8 Tf
+    1 0 0 1 20 631 Tm
+    /F1 8 Tf
     [ -4722 (:expires) ] TJ
   ET
 EMC
@@ -7708,29 +7720,29 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  56.78 682.8 40.4 10.8 re
+  56.78 630 40.4 10.8 re
   B
 Q
-/P << /MCID 10 >> BDC
+/P << /MCID 11 >> BDC
   BT
-    1 0 0 1 20 683.8 Tm
+    1 0 0 1 20 631 Tm
     /F3 10 Tf
     [ -8098 ( parameter how long to wait \(in seconds\) before "resetting" and not considering a value to have been seen, even if it's the) ] TJ
     T*
     (same as an old value.) Tj
   ET
 EMC
-/H2 << /MCID 11 >> BDC
+/H2 << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 637.6 Tm
-    /F1 16 Tf
+    1 0 0 1 20 584.8 Tm
+    /F2 16 Tf
     (method repeated) Tj
   ET
 EMC
-/Code << /MCID 12 >> BDC
+/Code << /MCID 13 >> BDC
   BT
-    1 0 0 1 30 602.4 Tm
-    /F2 8 Tf
+    1 0 0 1 30 549.6 Tm
+    /F1 8 Tf
     (method repeated\(Supply:D: :&as, :&with\)) Tj
   ET
 EMC
@@ -7739,20 +7751,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 597.4 572 18.8 re
+  25 544.6 572 18.8 re
   B
 Q
-/P << /MCID 13 >> BDC
+/P << /MCID 14 >> BDC
   BT
-    1 0 0 1 20 580.4 Tm
+    1 0 0 1 20 527.6 Tm
     /F3 10 Tf
     (Creates a supply that only provides repeated values, as defined by the optional ) Tj
   ET
 EMC
-/Code << /MCID 14 >> BDC
+/Code << /MCID 15 >> BDC
   BT
-    1 0 0 1 20 580.4 Tm
-    /F2 8 Tf
+    1 0 0 1 20 527.6 Tm
+    /F1 8 Tf
     [ -39820 (:as) ] TJ
   ET
 EMC
@@ -7761,20 +7773,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  337.56 579.4 16.4 10.8 re
+  337.56 526.6 16.4 10.8 re
   B
 Q
-/P << /MCID 15 >> BDC
+/P << /MCID 16 >> BDC
   BT
-    1 0 0 1 20 580.4 Tm
+    1 0 0 1 20 527.6 Tm
     /F3 10 Tf
     [ -33776 ( and ) ] TJ
   ET
 EMC
-/Code << /MCID 16 >> BDC
+/Code << /MCID 17 >> BDC
   BT
-    1 0 0 1 20 580.4 Tm
-    /F2 8 Tf
+    1 0 0 1 20 527.6 Tm
+    /F1 8 Tf
     [ -44962 (:with) ] TJ
   ET
 EMC
@@ -7783,35 +7795,35 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  378.7 579.4 26 10.8 re
+  378.7 526.6 26 10.8 re
   B
 Q
-/P << /MCID 17 >> BDC
+/P << /MCID 18 >> BDC
   BT
-    1 0 0 1 20 580.4 Tm
+    1 0 0 1 20 527.6 Tm
     /F3 10 Tf
     [ -38850 ( parameters \(same as with ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 18 >> BDC
+  /Link << /MCID 19 >> BDC
     BT
-      1 0 0 1 20 580.4 Tm
+      1 0 0 1 20 527.6 Tm
       [ -49736 (unique) ] TJ
     ET
   EMC
 Q
-/P << /MCID 19 >> BDC
+/P << /MCID 20 >> BDC
   BT
-    1 0 0 1 20 580.4 Tm
+    1 0 0 1 20 527.6 Tm
     [ -52708 (\).) ] TJ
   ET
 EMC
-/Code << /MCID 20 >> BDC
+/Code << /MCID 21 >> BDC
   BT
-    1 0 0 1 30 562.8 Tm
-    /F2 8 Tf
+    1 0 0 1 30 510 Tm
+    /F1 8 Tf
     (my $supply = Supply.from-list\(<a A B b c b C>\).repeated\(:as\(&lc\)\);) Tj
     8.8 TL
     T*
@@ -7823,71 +7835,71 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 549 572 27.6 re
+  25 496.2 572 27.6 re
   B
 Q
-/P << /MCID 21 >> BDC
+/P << /MCID 22 >> BDC
   BT
-    1 0 0 1 20 532 Tm
+    1 0 0 1 20 479.2 Tm
     /F3 10 Tf
     (See ) Tj
   ET
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 22 >> BDC
+  /Link << /MCID 23 >> BDC
     BT
-      1 0 0 1 20 532 Tm
+      1 0 0 1 20 479.2 Tm
       [ -1944 (repeated) ] TJ
     ET
   EMC
 Q
-/P << /MCID 23 >> BDC
+/P << /MCID 24 >> BDC
   BT
-    1 0 0 1 20 532 Tm
+    1 0 0 1 20 479.2 Tm
     [ -5581 ( for more examples that use its sub form.) ] TJ
   ET
 EMC
-/Span << /MCID 24 >> BDC
+/Span << /MCID 25 >> BDC
   BT
-    1 0 0 1 20 510 Tm
-    /F1 10 Tf
+    1 0 0 1 20 457.2 Tm
+    /F2 10 Tf
     (Note) Tj
   ET
 EMC
-/P << /MCID 25 >> BDC
+/P << /MCID 26 >> BDC
   BT
-    1 0 0 1 20 510 Tm
+    1 0 0 1 20 457.2 Tm
     /F3 10 Tf
     [ -2249 (: Available since version 6.e \() ] TJ
   ET
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 26 >> BDC
+  /Link << /MCID 27 >> BDC
     BT
-      1 0 0 1 20 510 Tm
+      1 0 0 1 20 457.2 Tm
       [ -14441 (Rakudo) ] TJ
     ET
   EMC
 Q
-/P << /MCID 27 >> BDC
+/P << /MCID 28 >> BDC
   BT
-    1 0 0 1 20 510 Tm
+    1 0 0 1 20 457.2 Tm
     [ -17802 ( 2020.01 and later\).) ] TJ
   ET
 EMC
-/H2 << /MCID 28 >> BDC
+/H2 << /MCID 29 >> BDC
   BT
-    1 0 0 1 20 474.8 Tm
-    /F1 16 Tf
+    1 0 0 1 20 422 Tm
+    /F2 16 Tf
     (method squish) Tj
   ET
 EMC
-/Code << /MCID 29 >> BDC
+/Code << /MCID 30 >> BDC
   BT
-    1 0 0 1 30 439.6 Tm
-    /F2 8 Tf
+    1 0 0 1 30 386.8 Tm
+    /F1 8 Tf
     (method squish\(Supply:D: :$as, :$with --> Supply:D\)) Tj
   ET
 EMC
@@ -7896,20 +7908,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 434.6 572 18.8 re
+  25 381.8 572 18.8 re
   B
 Q
-/P << /MCID 30 >> BDC
+/P << /MCID 31 >> BDC
   BT
-    1 0 0 1 20 417.6 Tm
+    1 0 0 1 20 364.8 Tm
     /F3 10 Tf
     (Creates a supply that only provides unique values, as defined by the optional ) Tj
   ET
 EMC
-/Code << /MCID 31 >> BDC
+/Code << /MCID 32 >> BDC
   BT
-    1 0 0 1 20 417.6 Tm
-    /F2 8 Tf
+    1 0 0 1 20 364.8 Tm
+    /F1 8 Tf
     [ -38989 (:as) ] TJ
   ET
 EMC
@@ -7918,20 +7930,20 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  330.91 416.6 16.4 10.8 re
+  330.91 363.8 16.4 10.8 re
   B
 Q
-/P << /MCID 32 >> BDC
+/P << /MCID 33 >> BDC
   BT
-    1 0 0 1 20 417.6 Tm
+    1 0 0 1 20 364.8 Tm
     /F3 10 Tf
     [ -33111 ( and ) ] TJ
   ET
 EMC
-/Code << /MCID 33 >> BDC
+/Code << /MCID 34 >> BDC
   BT
-    1 0 0 1 20 417.6 Tm
-    /F2 8 Tf
+    1 0 0 1 20 364.8 Tm
+    /F1 8 Tf
     [ -44131 (:with) ] TJ
   ET
 EMC
@@ -7940,42 +7952,42 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  372.05 416.6 26 10.8 re
+  372.05 363.8 26 10.8 re
   B
 Q
-/P << /MCID 34 >> BDC
+/P << /MCID 35 >> BDC
   BT
-    1 0 0 1 20 417.6 Tm
+    1 0 0 1 20 364.8 Tm
     /F3 10 Tf
     [ -38185 ( parameters \(same as with ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 35 >> BDC
+  /Link << /MCID 36 >> BDC
     BT
-      1 0 0 1 20 417.6 Tm
+      1 0 0 1 20 364.8 Tm
       [ -49071 (squish) ] TJ
     ET
   EMC
 Q
-/P << /MCID 36 >> BDC
+/P << /MCID 37 >> BDC
   BT
-    1 0 0 1 20 417.6 Tm
+    1 0 0 1 20 364.8 Tm
     [ -51877 (\).) ] TJ
   ET
 EMC
-/H2 << /MCID 37 >> BDC
+/H2 << /MCID 38 >> BDC
   BT
-    1 0 0 1 20 382.4 Tm
-    /F1 16 Tf
+    1 0 0 1 20 329.6 Tm
+    /F2 16 Tf
     (method max) Tj
   ET
 EMC
-/Code << /MCID 38 >> BDC
+/Code << /MCID 39 >> BDC
   BT
-    1 0 0 1 30 347.2 Tm
-    /F2 8 Tf
+    1 0 0 1 30 294.4 Tm
+    /F1 8 Tf
     (method max\(Supply:D: &custom-routine-to-use = &infix:<cmp> --> Supply:D\)) Tj
   ET
 EMC
@@ -7984,12 +7996,12 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 342.2 572 18.8 re
+  25 289.4 572 18.8 re
   B
 Q
-/P << /MCID 39 >> BDC
+/P << /MCID 40 >> BDC
   BT
-    1 0 0 1 20 325.2 Tm
+    1 0 0 1 20 272.4 Tm
     /F3 10 Tf
     (Creates a supply that only emits values from the given supply if they are larger than any value seen before. In other words, from a) Tj
     11 TL
@@ -8001,30 +8013,30 @@ Q
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 40 >> BDC
+  /Link << /MCID 41 >> BDC
     BT
-      1 0 0 1 20 303.2 Tm
+      1 0 0 1 20 250.4 Tm
       [ -19579 (Any.max) ] TJ
     ET
   EMC
 Q
-/P << /MCID 41 >> BDC
+/P << /MCID 42 >> BDC
   BT
-    1 0 0 1 20 303.2 Tm
+    1 0 0 1 20 250.4 Tm
     [ -23523 (.) ] TJ
   ET
 EMC
-/H2 << /MCID 42 >> BDC
+/H2 << /MCID 43 >> BDC
   BT
-    1 0 0 1 20 268 Tm
-    /F1 16 Tf
+    1 0 0 1 20 215.2 Tm
+    /F2 16 Tf
     (method min) Tj
   ET
 EMC
-/Code << /MCID 43 >> BDC
+/Code << /MCID 44 >> BDC
   BT
-    1 0 0 1 30 232.8 Tm
-    /F2 8 Tf
+    1 0 0 1 30 180 Tm
+    /F1 8 Tf
     (method min\(Supply:D: &custom-routine-to-use = &infix:<cmp> --> Supply:D\)) Tj
   ET
 EMC
@@ -8033,12 +8045,12 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 227.8 572 18.8 re
+  25 175 572 18.8 re
   B
 Q
-/P << /MCID 44 >> BDC
+/P << /MCID 45 >> BDC
   BT
-    1 0 0 1 20 210.8 Tm
+    1 0 0 1 20 158 Tm
     /F3 10 Tf
     (Creates a supply that only emits values from the given supply if they are smaller than any value seen before. In other words, from a) Tj
     T*
@@ -8049,79 +8061,34 @@ Q
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 45 >> BDC
+  /Link << /MCID 46 >> BDC
     BT
-      1 0 0 1 20 188.8 Tm
+      1 0 0 1 20 136 Tm
       [ -19579 (Any.min) ] TJ
     ET
   EMC
 Q
-/P << /MCID 46 >> BDC
+/P << /MCID 47 >> BDC
   BT
-    1 0 0 1 20 188.8 Tm
+    1 0 0 1 20 136 Tm
     [ -23357 (.) ] TJ
-  ET
-EMC
-/H2 << /MCID 47 >> BDC
-  BT
-    1 0 0 1 20 153.6 Tm
-    /F1 16 Tf
-    (method minmax) Tj
-  ET
-EMC
-/Code << /MCID 48 >> BDC
-  BT
-    1 0 0 1 30 118.4 Tm
-    /F2 8 Tf
-    (method minmax\(Supply:D: &custom-routine-to-use = &infix:<cmp> --> Supply:D\)) Tj
-  ET
-EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 113.4 572 18.8 re
-  B
-Q
-/P << /MCID 49 >> BDC
-  BT
-    1 0 0 1 20 96.4 Tm
-    /F3 10 Tf
-    (Creates a supply that emits a Range every time a new minimum or maximum values is seen from the given supply. The optional parameter) Tj
-    T*
-    (specifies the comparator, just as with ) Tj
-  ET
-EMC
-q
-  0 0 1 rg
-  /Link << /MCID 50 >> BDC
-    BT
-      1 0 0 1 20 85.4 Tm
-      [ -15331 (Any.minmax) ] TJ
-    ET
-  EMC
-Q
-/P << /MCID 51 >> BDC
-  BT
-    1 0 0 1 20 85.4 Tm
-    [ -20831 (.) ] TJ
   ET
 EMC
 endstream
 endobj
 
-124 0 obj
+122 0 obj
 << /Type /ExtGState /ca 0.1 >>
 endobj
 
-125 0 obj
+123 0 obj
 << /Type /ExtGState /CA 0.25 >>
 endobj
 
-126 0 obj
+124 0 obj
 <<
   /Type /Page
+  /Annots [ 125 0 R ]
   /Contents 127 0 R
   /MediaBox [ 0 0 612 792 ]
   /Parent 22 0 R
@@ -8129,24 +8096,41 @@ endobj
     /ExtGState << /GS1 128 0 R /GS2 129 0 R >>
     /Font << /F1 31 0 R /F2 32 0 R /F3 34 0 R >>
   >>
-  /StructParents 47
+  /StructParents 46
 >>
 endobj
 
+125 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /A 126 0 R
+  /Border [ 0 0 0 ]
+  /Contents (Any.minmax)
+  /P 124 0 R
+  /Rect [ 171.31 680.8 227.81 695.8 ]
+  /StructParent 47
+>>
+endobj
+
+126 0 obj
+<< /Type /Action /S /URI /URI (/type/Any#routine_minmax) >>
+endobj
+
 127 0 obj
-<< /Length 7222 >> stream
+<< /Length 7533 >> stream
 /H2 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
     /F1 16 Tf
-    (method skip) Tj
+    (method minmax) Tj
   ET
 EMC
 /Code << /MCID 1 >> BDC
   BT
     1 0 0 1 30 716.8 Tm
     /F2 8 Tf
-    (method skip\(Supply:D: Int\(Cool\) $number = 1 --> Supply:D\)) Tj
+    (method minmax\(Supply:D: &custom-routine-to-use = &infix:<cmp> --> Supply:D\)) Tj
   ET
 EMC
 q
@@ -8161,12 +8145,59 @@ Q
   BT
     1 0 0 1 20 694.8 Tm
     /F3 10 Tf
+    (Creates a supply that emits a Range every time a new minimum or maximum values is seen from the given supply. The optional parameter) Tj
+    11 TL
+    T*
+    (specifies the comparator, just as with ) Tj
+  ET
+EMC
+q
+  0 0 1 rg
+  /Link << /MCID 3 >> BDC
+    BT
+      1 0 0 1 20 683.8 Tm
+      [ -15331 (Any.minmax) ] TJ
+    ET
+  EMC
+Q
+/P << /MCID 4 >> BDC
+  BT
+    1 0 0 1 20 683.8 Tm
+    [ -20831 (.) ] TJ
+  ET
+EMC
+/H2 << /MCID 5 >> BDC
+  BT
+    1 0 0 1 20 648.6 Tm
+    /F1 16 Tf
+    (method skip) Tj
+  ET
+EMC
+/Code << /MCID 6 >> BDC
+  BT
+    1 0 0 1 30 613.4 Tm
+    /F2 8 Tf
+    (method skip\(Supply:D: Int\(Cool\) $number = 1 --> Supply:D\)) Tj
+  ET
+EMC
+q
+  0 g
+  0 G
+  /GS1 gs
+  /GS2 gs
+  25 608.4 572 18.8 re
+  B
+Q
+/P << /MCID 7 >> BDC
+  BT
+    1 0 0 1 20 591.4 Tm
+    /F3 10 Tf
     (Returns a new ) Tj
   ET
 EMC
-/Code << /MCID 3 >> BDC
+/Code << /MCID 8 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 591.4 Tm
     /F2 8 Tf
     [ -7776 (Supply) ] TJ
   ET
@@ -8176,19 +8207,19 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  81.21 693.8 30.8 10.8 re
+  81.21 590.4 30.8 10.8 re
   B
 Q
-/P << /MCID 4 >> BDC
+/P << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 591.4 Tm
     /F3 10 Tf
     [ -9581 ( which will emit all values from the given ) ] TJ
   ET
 EMC
-/Code << /MCID 5 >> BDC
+/Code << /MCID 10 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 591.4 Tm
     /F2 8 Tf
     [ -33502 (Supply) ] TJ
   ET
@@ -8198,19 +8229,19 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  287.02 693.8 30.8 10.8 re
+  287.02 590.4 30.8 10.8 re
   B
 Q
-/P << /MCID 6 >> BDC
+/P << /MCID 11 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 591.4 Tm
     /F3 10 Tf
     [ -30162 ( except for the first ) ] TJ
   ET
 EMC
-/Code << /MCID 7 >> BDC
+/Code << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 591.4 Tm
     /F2 8 Tf
     [ -47839 ($number) ] TJ
   ET
@@ -8220,19 +8251,19 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  401.71 693.8 35.6 10.8 re
+  401.71 590.4 35.6 10.8 re
   B
 Q
-/P << /MCID 8 >> BDC
+/P << /MCID 13 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 591.4 Tm
     /F3 10 Tf
     [ -42111 ( values, which will be thrown away.) ] TJ
   ET
 EMC
-/Code << /MCID 9 >> BDC
+/Code << /MCID 14 >> BDC
   BT
-    1 0 0 1 30 677.2 Tm
+    1 0 0 1 30 573.8 Tm
     /F2 8 Tf
     (my $supplier = Supplier.new;) Tj
     8.8 TL
@@ -8251,19 +8282,19 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 637 572 54 re
+  25 533.6 572 54 re
   B
 Q
-/H2 << /MCID 10 >> BDC
+/H2 << /MCID 15 >> BDC
   BT
-    1 0 0 1 20 606.8 Tm
+    1 0 0 1 20 503.4 Tm
     /F1 16 Tf
     (method start) Tj
   ET
 EMC
-/Code << /MCID 11 >> BDC
+/Code << /MCID 16 >> BDC
   BT
-    1 0 0 1 30 571.6 Tm
+    1 0 0 1 30 468.2 Tm
     /F2 8 Tf
     (method start\(Supply:D: &startee --> Supply:D\)) Tj
   ET
@@ -8273,12 +8304,12 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 566.6 572 18.8 re
+  25 463.2 572 18.8 re
   B
 Q
-/P << /MCID 12 >> BDC
+/P << /MCID 17 >> BDC
   BT
-    1 0 0 1 20 549.6 Tm
+    1 0 0 1 20 446.2 Tm
     /F3 10 Tf
     (Creates a supply of supplies. For each value in the original supply, the code object is scheduled on another thread, and returns a supply either) Tj
     11 TL
@@ -8286,21 +8317,21 @@ Q
     (of a single value \(if the code succeeds\), or one that quits without a value \(if the code fails\).) Tj
   ET
 EMC
-/P << /MCID 13 >> BDC
+/P << /MCID 18 >> BDC
   BT
-    1 0 0 1 20 516.6 Tm
+    1 0 0 1 20 413.2 Tm
     (This is useful for asynchronously starting work that you don't block on.) Tj
   ET
 EMC
-/P << /MCID 14 >> BDC
+/P << /MCID 19 >> BDC
   BT
-    1 0 0 1 20 494.6 Tm
+    1 0 0 1 20 391.2 Tm
     (Use ) Tj
   ET
 EMC
-/Code << /MCID 15 >> BDC
+/Code << /MCID 20 >> BDC
   BT
-    1 0 0 1 20 494.6 Tm
+    1 0 0 1 20 391.2 Tm
     /F2 8 Tf
     [ -2569 (migrate) ] TJ
   ET
@@ -8310,26 +8341,26 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  39.55 493.6 35.6 10.8 re
+  39.55 390.2 35.6 10.8 re
   B
 Q
-/P << /MCID 16 >> BDC
+/P << /MCID 21 >> BDC
   BT
-    1 0 0 1 20 494.6 Tm
+    1 0 0 1 20 391.2 Tm
     /F3 10 Tf
     [ -5895 ( to join the values into a single supply again.) ] TJ
   ET
 EMC
-/H2 << /MCID 17 >> BDC
+/H2 << /MCID 22 >> BDC
   BT
-    1 0 0 1 20 459.4 Tm
+    1 0 0 1 20 356 Tm
     /F1 16 Tf
     (method migrate) Tj
   ET
 EMC
-/Code << /MCID 18 >> BDC
+/Code << /MCID 23 >> BDC
   BT
-    1 0 0 1 30 424.2 Tm
+    1 0 0 1 30 320.8 Tm
     /F2 8 Tf
     (method migrate\(Supply:D: --> Supply:D\)) Tj
   ET
@@ -8339,19 +8370,19 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 419.2 572 18.8 re
+  25 315.8 572 18.8 re
   B
 Q
-/P << /MCID 19 >> BDC
+/P << /MCID 24 >> BDC
   BT
-    1 0 0 1 20 402.2 Tm
+    1 0 0 1 20 298.8 Tm
     /F3 10 Tf
     (Takes a ) Tj
   ET
 EMC
-/Code << /MCID 20 >> BDC
+/Code << /MCID 25 >> BDC
   BT
-    1 0 0 1 20 402.2 Tm
+    1 0 0 1 20 298.8 Tm
     /F2 8 Tf
     [ -4477 (Supply) ] TJ
   ET
@@ -8361,19 +8392,19 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  54.82 401.2 30.8 10.8 re
+  54.82 297.8 30.8 10.8 re
   B
 Q
-/P << /MCID 21 >> BDC
+/P << /MCID 26 >> BDC
   BT
-    1 0 0 1 20 402.2 Tm
+    1 0 0 1 20 298.8 Tm
     /F3 10 Tf
     [ -6942 ( which itself has values that are of type ) ] TJ
   ET
 EMC
-/Code << /MCID 22 >> BDC
+/Code << /MCID 27 >> BDC
   BT
-    1 0 0 1 20 402.2 Tm
+    1 0 0 1 20 298.8 Tm
     /F2 8 Tf
     [ -28812 (Supply) ] TJ
   ET
@@ -8383,19 +8414,19 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  249.5 401.2 30.8 10.8 re
+  249.5 297.8 30.8 10.8 re
   B
 Q
-/P << /MCID 23 >> BDC
+/P << /MCID 28 >> BDC
   BT
-    1 0 0 1 20 402.2 Tm
+    1 0 0 1 20 298.8 Tm
     /F3 10 Tf
     [ -26410 ( as input. Each time the outer ) ] TJ
   ET
 EMC
-/Code << /MCID 24 >> BDC
+/Code << /MCID 29 >> BDC
   BT
-    1 0 0 1 20 402.2 Tm
+    1 0 0 1 20 298.8 Tm
     /F2 8 Tf
     [ -48254 (Supply) ] TJ
   ET
@@ -8405,19 +8436,19 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  405.03 401.2 30.8 10.8 re
+  405.03 297.8 30.8 10.8 re
   B
 Q
-/P << /MCID 25 >> BDC
+/P << /MCID 30 >> BDC
   BT
-    1 0 0 1 20 402.2 Tm
+    1 0 0 1 20 298.8 Tm
     /F3 10 Tf
     [ -41963 ( emits a new ) ] TJ
   ET
 EMC
-/Code << /MCID 26 >> BDC
+/Code << /MCID 31 >> BDC
   BT
-    1 0 0 1 20 402.2 Tm
+    1 0 0 1 20 298.8 Tm
     /F2 8 Tf
     [ -59362 (Supply) ] TJ
   ET
@@ -8427,21 +8458,21 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  493.9 401.2 30.8 10.8 re
+  493.9 297.8 30.8 10.8 re
   B
 Q
-/P << /MCID 27 >> BDC
+/P << /MCID 32 >> BDC
   BT
-    1 0 0 1 20 402.2 Tm
+    1 0 0 1 20 298.8 Tm
     /F3 10 Tf
     [ -50850 (, this will be) ] TJ
     T*
     (tapped and its values emitted. Any previously tapped ) Tj
   ET
 EMC
-/Code << /MCID 28 >> BDC
+/Code << /MCID 33 >> BDC
   BT
-    1 0 0 1 20 391.2 Tm
+    1 0 0 1 20 287.8 Tm
     /F2 8 Tf
     [ -27150 (Supply) ] TJ
   ET
@@ -8451,21 +8482,21 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  236.2 390.2 30.8 10.8 re
+  236.2 286.8 30.8 10.8 re
   B
 Q
-/P << /MCID 29 >> BDC
+/P << /MCID 34 >> BDC
   BT
-    1 0 0 1 20 391.2 Tm
+    1 0 0 1 20 287.8 Tm
     /F3 10 Tf
     [ -25080 ( will be closed. This is useful for migrating between different data sources, and) ] TJ
     T*
     (only paying attention to the latest one.) Tj
   ET
 EMC
-/P << /MCID 30 >> BDC
+/P << /MCID 35 >> BDC
   BT
-    1 0 0 1 20 358.2 Tm
+    1 0 0 1 20 254.8 Tm
     (For example, imagine an application where the user can switch between different stocks. When they switch to a new one, a connection is) Tj
     T*
     (established to a web socket to get the latest values, and any previous connection should be closed. Each stream of values coming over the web) Tj
@@ -8473,9 +8504,9 @@ EMC
     (socket would be represented as a Supply, which themselves are emitted into a Supply of latest data sources to watch. The ) Tj
   ET
 EMC
-/Code << /MCID 31 >> BDC
+/Code << /MCID 36 >> BDC
   BT
-    1 0 0 1 20 336.2 Tm
+    1 0 0 1 20 232.8 Tm
     /F2 8 Tf
     [ -61240 (migrate) ] TJ
   ET
@@ -8485,27 +8516,27 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  508.92 335.2 35.6 10.8 re
+  508.92 231.8 35.6 10.8 re
   B
 Q
-/P << /MCID 32 >> BDC
+/P << /MCID 37 >> BDC
   BT
-    1 0 0 1 20 336.2 Tm
+    1 0 0 1 20 232.8 Tm
     /F3 10 Tf
     [ -52832 ( method) ] TJ
     T*
     (could be used to flatten this supply of supplies into a single Supply of the current values that the user cares about.) Tj
   ET
 EMC
-/P << /MCID 33 >> BDC
+/P << /MCID 38 >> BDC
   BT
-    1 0 0 1 20 303.2 Tm
+    1 0 0 1 20 199.8 Tm
     (Here is a simple simulation of such a program:) Tj
   ET
 EMC
-/Code << /MCID 34 >> BDC
+/Code << /MCID 39 >> BDC
   BT
-    1 0 0 1 30 285.6 Tm
+    1 0 0 1 30 182.2 Tm
     /F2 8 Tf
     (my Supplier $stock-sources .= new;) Tj
     8.8 TL
@@ -8550,43 +8581,7 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 131 572 168.4 re
-  B
-Q
-/P << /MCID 35 >> BDC
-  BT
-    1 0 0 1 20 114 Tm
-    /F3 10 Tf
-    (Which produces output like:) Tj
-  ET
-EMC
-/Code << /MCID 36 >> BDC
-  BT
-    1 0 0 1 30 96.4 Tm
-    /F2 8 Tf
-    (Starting to watch GOOG) Tj
-    T*
-    (GOOG: 111.67) Tj
-    T*
-    (GOOG: 111.20) Tj
-    T*
-    (GOOG: 111.37) Tj
-    T*
-    (Lost interest in GOOG) Tj
-    T*
-    (Starting to watch AAPL) Tj
-    T*
-    (AAPL: 111.55) Tj
-    T*
-    (AAPL: 111.6) Tj
-  ET
-EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 29.8 572 80.4 re
+  25 27.6 572 168.4 re
   B
 Q
 endstream
@@ -8606,17 +8601,44 @@ endobj
   /Contents 131 0 R
   /MediaBox [ 0 0 612 792 ]
   /Parent 22 0 R
-  /Resources << /ExtGState << /GS1 132 0 R /GS2 133 0 R >> /Font << /F1 32 0 R >> >>
+  /Resources <<
+    /ExtGState << /GS1 132 0 R /GS2 133 0 R >>
+    /Font << /F1 34 0 R /F2 32 0 R >>
+  >>
   /StructParents 48
 >>
 endobj
 
 131 0 obj
-<< /Length 157 >> stream
-/Code << /MCID 0 >> BDC
+<< /Length 535 >> stream
+/P << /MCID 0 >> BDC
   BT
-    1 0 0 1 30 752 Tm
-    /F1 6.4 Tf
+    1 0 0 1 20 752 Tm
+    /F1 10 Tf
+    (Which produces output like:) Tj
+  ET
+EMC
+/Code << /MCID 1 >> BDC
+  BT
+    1 0 0 1 30 734.4 Tm
+    /F2 8 Tf
+    (Starting to watch GOOG) Tj
+    8.8 TL
+    T*
+    (GOOG: 111.67) Tj
+    T*
+    (GOOG: 111.20) Tj
+    T*
+    (GOOG: 111.37) Tj
+    T*
+    (Lost interest in GOOG) Tj
+    T*
+    (Starting to watch AAPL) Tj
+    T*
+    (AAPL: 111.55) Tj
+    T*
+    (AAPL: 111.6) Tj
+    T*
     (AAPL: 111.6) Tj
   ET
 EMC
@@ -8625,7 +8647,7 @@ q
   0 G
   /GS1 gs
   /GS2 gs
-  25 747 572 17.04 re
+  25 659 572 89.2 re
   B
 Q
 endstream
@@ -9449,7 +9471,7 @@ endobj
 endobj
 
 154 0 obj
-<< /Count 62 /First 155 0 R /Last 842 0 R >>
+<< /Count 62 /First 155 0 R /Last 837 0 R >>
 endobj
 
 155 0 obj
@@ -9458,7 +9480,7 @@ endobj
   /Dest /class_Supply
   /First 156 0 R
   /Last 156 0 R
-  /Next 785 0 R
+  /Next 780 0 R
   /SE 159 0 R
   /Title (class Supply)
 >>
@@ -9488,8 +9510,8 @@ endobj
 <<
   /Type /StructElem
   /S /Document
-  /K [ 159 0 R 157 0 R 160 0 R 161 0 R 165 0 R 168 0 R 173 0 R 176 0 R 184 0 R 185 0 R 194 0 R 198 0 R 201 0 R 202 0 R 203 0 R 204 0 R 206 0 R 214 0 R 220 0 R 231 0 R 236 0 R 237 0 R 238 0 R 239 0 R 240 0 R 241 0 R 243 0 R 244 0 R 245 0 R 246 0 R 247 0 R 250 0 R 251 0 R 252 0 R 256 0 R 257 0 R 258 0 R 270 0 R 271 0 R 273 0 R 274 0 R 275 0 R 281 0 R 282 0 R 283 0 R 284 0 R 285 0 R 286 0 R 287 0 R 288 0 R 289 0 R 296 0 R 297 0 R 298 0 R 299 0 R 306 0 R 307 0 R 308 0 R 311 0 R 312 0 R 313 0 R 321 0 R 322 0 R 323 0 R 324 0 R 332 0 R 333 0 R 334 0 R 335 0 R 345 0 R 346 0 R 347 0 R 348 0 R 355 0 R 356 0 R 357 0 R 358 0 R 359 0 R 362 0 R 363 0 R 364 0 R 365 0 R 366 0 R 367 0 R 368 0 R 369 0 R 370 0 R 371 0 R 372 0 R 373 0 R 374 0 R 375 0 R 376 0 R 377 0 R 378 0 R 379 0 R 380 0 R 394 0 R 395 0 R 396 0 R 397 0 R 400 0 R 404 0 R 405 0 R 406 0 R 408 0 R 409 0 R 410 0 R 411 0 R 413 0 R 414 0 R 415 0 R 416 0 R 419 0 R 424 0 R 425 0 R 426 0 R 427 0 R 428 0 R 429 0 R 430 0 R 433 0 R 434 0 R 437 0 R 438 0 R 439 0 R 440 0 R 443 0 R 444 0 R 449 0 R 450 0 R 451 0 R 452 0 R 453 0 R 459 0 R 460 0 R 461 0 R 462 0 R 476 0 R 477 0 R 478 0 R 479 0 R 481 0 R 482 0 R 484 0 R 485 0 R 486 0 R 489 0 R 490 0 R 491 0 R 492 0 R 493 0 R 494 0 R 495 0 R 496 0 R 498 0 R 528 0 R 530 0 R 531 0 R 532 0 R 536 0 R 538 0 R 539 0 R 540 0 R 542 0 R 546 0 R 550 0 R 554 0 R 557 0 R 558 0 R 560 0 R 564 0 R 565 0 R 569 0 R 571 0 R 575 0 R 576 0 R 580 0 R 582 0 R 583 0 R 584 0 R 588 0 R 589 0 R 593 0 R 595 0 R 599 0 R 600 0 R 604 0 R 605 0 R 609 0 R 610 0 R 614 0 R 615 0 R 619 0 R 621 0 R 622 0 R 623 0 R 624 0 R 625 0 R 626 0 R 627 0 R 628 0 R 631 0 R 636 0 R 637 0 R 638 0 R 644 0 R 645 0 R 646 0 R 649 0 R 650 0 R 651 0 R 652 0 R 655 0 R 656 0 R 657 0 R 658 0 R 659 0 R 660 0 R 661 0 R 667 0 R 668 0 R 669 0 R 674 0 R 675 0 R 678 0 R 682 0 R 683 0 R 684 0 R 689 0 R 690 0 R 691 0 R 694 0 R 695 0 R 696 0 R 699 0 R 700 0 R 701 0 R 704 0 R 705 0 R 706 0 R 710 0 R 711 0 R 712 0 R 713 0 R 714 0 R 715 0 R 717 0 R 718 0 R 719 0 R 725 0 R 727 0 R 728 0 R 729 0 R 730 0 R 732 0 R 733 0 R 734 0 R 735 0 R 736 0 R 737 0 R 738 0 R 739 0 R 745 0 R 746 0 R 747 0 R 748 0 R 749 0 R 755 0 R 756 0 R 757 0 R 758 0 R 760 0 R 761 0 R 762 0 R 763 0 R 764 0 R 770 0 R 779 0 R 780 0 R 781 0 R 783 0 R ]
-  /P 784 0 R
+  /K [ 159 0 R 157 0 R 160 0 R 161 0 R 165 0 R 168 0 R 173 0 R 176 0 R 184 0 R 185 0 R 194 0 R 198 0 R 201 0 R 202 0 R 203 0 R 204 0 R 206 0 R 214 0 R 220 0 R 231 0 R 236 0 R 237 0 R 238 0 R 239 0 R 240 0 R 241 0 R 243 0 R 244 0 R 245 0 R 246 0 R 247 0 R 250 0 R 251 0 R 252 0 R 256 0 R 257 0 R 258 0 R 270 0 R 271 0 R 273 0 R 274 0 R 275 0 R 281 0 R 282 0 R 283 0 R 284 0 R 285 0 R 286 0 R 287 0 R 288 0 R 289 0 R 296 0 R 297 0 R 298 0 R 299 0 R 306 0 R 307 0 R 308 0 R 311 0 R 312 0 R 313 0 R 321 0 R 322 0 R 323 0 R 324 0 R 332 0 R 333 0 R 334 0 R 335 0 R 345 0 R 346 0 R 347 0 R 348 0 R 355 0 R 356 0 R 357 0 R 358 0 R 359 0 R 362 0 R 363 0 R 364 0 R 365 0 R 366 0 R 367 0 R 368 0 R 369 0 R 370 0 R 371 0 R 372 0 R 373 0 R 374 0 R 375 0 R 376 0 R 377 0 R 378 0 R 379 0 R 380 0 R 394 0 R 395 0 R 396 0 R 397 0 R 400 0 R 404 0 R 405 0 R 406 0 R 408 0 R 409 0 R 410 0 R 411 0 R 413 0 R 414 0 R 415 0 R 416 0 R 419 0 R 424 0 R 425 0 R 426 0 R 427 0 R 428 0 R 429 0 R 430 0 R 433 0 R 434 0 R 437 0 R 438 0 R 439 0 R 440 0 R 443 0 R 444 0 R 449 0 R 450 0 R 451 0 R 452 0 R 453 0 R 459 0 R 460 0 R 461 0 R 462 0 R 470 0 R 471 0 R 472 0 R 473 0 R 475 0 R 476 0 R 478 0 R 479 0 R 480 0 R 483 0 R 484 0 R 485 0 R 486 0 R 487 0 R 488 0 R 489 0 R 491 0 R 493 0 R 523 0 R 525 0 R 526 0 R 527 0 R 531 0 R 533 0 R 534 0 R 535 0 R 537 0 R 541 0 R 545 0 R 549 0 R 552 0 R 553 0 R 555 0 R 559 0 R 560 0 R 564 0 R 566 0 R 570 0 R 571 0 R 575 0 R 577 0 R 578 0 R 579 0 R 583 0 R 584 0 R 588 0 R 590 0 R 594 0 R 595 0 R 599 0 R 600 0 R 604 0 R 605 0 R 609 0 R 610 0 R 614 0 R 616 0 R 617 0 R 618 0 R 619 0 R 620 0 R 622 0 R 623 0 R 624 0 R 627 0 R 632 0 R 633 0 R 634 0 R 640 0 R 641 0 R 642 0 R 645 0 R 646 0 R 647 0 R 648 0 R 651 0 R 652 0 R 653 0 R 654 0 R 655 0 R 656 0 R 657 0 R 663 0 R 664 0 R 665 0 R 670 0 R 671 0 R 674 0 R 678 0 R 679 0 R 680 0 R 685 0 R 686 0 R 687 0 R 690 0 R 691 0 R 692 0 R 695 0 R 696 0 R 697 0 R 700 0 R 701 0 R 702 0 R 706 0 R 707 0 R 708 0 R 709 0 R 710 0 R 711 0 R 713 0 R 714 0 R 715 0 R 721 0 R 723 0 R 724 0 R 725 0 R 726 0 R 727 0 R 728 0 R 729 0 R 730 0 R 731 0 R 732 0 R 733 0 R 734 0 R 740 0 R 741 0 R 742 0 R 743 0 R 744 0 R 750 0 R 751 0 R 752 0 R 753 0 R 755 0 R 756 0 R 757 0 R 758 0 R 759 0 R 765 0 R 774 0 R 775 0 R 776 0 R 778 0 R ]
+  /P 779 0 R
 >>
 endobj
 
@@ -11125,508 +11147,508 @@ endobj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 43 ]
+  /K [ 0 ]
   /P 158 0 R
-  /Pg 72 0 R
+  /Pg 80 0 R
   /T (method split)
 >>
 endobj
 
 461 0 obj
-<< /Type /StructElem /S /Code /K [ 44 ] /P 158 0 R /Pg 72 0 R >>
+<< /Type /StructElem /S /Code /K [ 1 ] /P 158 0 R /Pg 80 0 R >>
 endobj
 
 462 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 45 463 0 R 47 464 0 R 49 466 0 R 468 0 R 469 0 R 471 0 R 472 0 R 475 0 R ]
+  /K [ 2 463 0 R 4 464 0 R 6 466 0 R 8 467 0 R 10 468 0 R 12 ]
   /P 158 0 R
-  /Pg 72 0 R
+  /Pg 80 0 R
 >>
 endobj
 
 463 0 obj
-<< /Type /StructElem /S /Code /K [ 46 ] /P 462 0 R >>
+<< /Type /StructElem /S /Code /K [ 3 ] /P 462 0 R >>
 endobj
 
 464 0 obj
-<< /Type /StructElem /S /Link /K [ 465 0 R 48 ] /P 462 0 R >>
+<< /Type /StructElem /S /Link /K [ 465 0 R 5 ] /P 462 0 R >>
 endobj
 
 465 0 obj
-<< /Type /OBJR /Obj 77 0 R /Pg 72 0 R >>
+<< /Type /OBJR /Obj 81 0 R /Pg 80 0 R >>
 endobj
 
 466 0 obj
-<< /Type /StructElem /S /Code /K [ 467 0 R ] /P 462 0 R >>
+<< /Type /StructElem /S /Code /K [ 7 ] /P 462 0 R >>
 endobj
 
 467 0 obj
-<< /Type /MCR /MCID 0 /Pg 82 0 R >>
+<< /Type /StructElem /S /Code /K [ 9 ] /P 462 0 R >>
 endobj
 
 468 0 obj
-<< /Type /MCR /MCID 1 /Pg 82 0 R >>
+<< /Type /StructElem /S /Link /K [ 469 0 R 11 ] /P 462 0 R >>
 endobj
 
 469 0 obj
-<< /Type /StructElem /S /Code /K [ 470 0 R ] /P 462 0 R >>
+<< /Type /OBJR /Obj 83 0 R /Pg 80 0 R >>
 endobj
 
 470 0 obj
-<< /Type /MCR /MCID 2 /Pg 82 0 R >>
+<< /Type /StructElem /S /Code /K [ 13 ] /P 158 0 R /Pg 80 0 R >>
 endobj
 
 471 0 obj
-<< /Type /MCR /MCID 3 /Pg 82 0 R >>
+<<
+  /Type /StructElem
+  /S /H2
+  /K [ 14 ]
+  /P 158 0 R
+  /Pg 80 0 R
+  /T (method rotate)
+>>
 endobj
 
 472 0 obj
-<< /Type /StructElem /S /Link /K [ 473 0 R 474 0 R ] /P 462 0 R >>
+<< /Type /StructElem /S /Code /K [ 15 ] /P 158 0 R /Pg 80 0 R >>
 endobj
 
 473 0 obj
-<< /Type /OBJR /Obj 83 0 R /Pg 82 0 R >>
+<< /Type /StructElem /S /P /K [ 16 474 0 R 18 ] /P 158 0 R /Pg 80 0 R >>
 endobj
 
 474 0 obj
-<< /Type /MCR /MCID 4 /Pg 82 0 R >>
+<< /Type /StructElem /S /Code /K [ 17 ] /P 473 0 R >>
 endobj
 
 475 0 obj
-<< /Type /MCR /MCID 5 /Pg 82 0 R >>
+<< /Type /StructElem /S /Code /K [ 19 ] /P 158 0 R /Pg 80 0 R >>
 endobj
 
 476 0 obj
-<< /Type /StructElem /S /Code /K [ 6 ] /P 158 0 R /Pg 82 0 R >>
+<< /Type /StructElem /S /P /K [ 477 0 R 21 ] /P 158 0 R /Pg 80 0 R >>
 endobj
 
 477 0 obj
 <<
   /Type /StructElem
-  /S /H2
-  /K [ 7 ]
-  /P 158 0 R
-  /Pg 82 0 R
-  /T (method rotate)
+  /S /Span
+  /A << /FontStyle (bold) >>
+  /K [ 20 ]
+  /P 476 0 R
+  /Pg 80 0 R
 >>
 endobj
 
 478 0 obj
-<< /Type /StructElem /S /Code /K [ 8 ] /P 158 0 R /Pg 82 0 R >>
+<<
+  /Type /StructElem
+  /S /H2
+  /K [ 22 ]
+  /P 158 0 R
+  /Pg 80 0 R
+  /T (method rotor)
+>>
 endobj
 
 479 0 obj
-<< /Type /StructElem /S /P /K [ 9 480 0 R 11 ] /P 158 0 R /Pg 82 0 R >>
+<< /Type /StructElem /S /Code /K [ 23 ] /P 158 0 R /Pg 80 0 R >>
 endobj
 
 480 0 obj
-<< /Type /StructElem /S /Code /K [ 10 ] /P 479 0 R >>
+<< /Type /StructElem /S /P /K [ 24 481 0 R 26 ] /P 158 0 R /Pg 80 0 R >>
 endobj
 
 481 0 obj
-<< /Type /StructElem /S /Code /K [ 12 ] /P 158 0 R /Pg 82 0 R >>
+<< /Type /StructElem /S /Link /K [ 482 0 R 25 ] /P 480 0 R >>
 endobj
 
 482 0 obj
-<< /Type /StructElem /S /P /K [ 483 0 R 14 ] /P 158 0 R /Pg 82 0 R >>
+<< /Type /OBJR /Obj 85 0 R /Pg 80 0 R >>
 endobj
 
 483 0 obj
 <<
   /Type /StructElem
-  /S /Span
-  /A << /FontStyle (bold) >>
-  /K [ 13 ]
-  /P 482 0 R
-  /Pg 82 0 R
->>
-endobj
-
-484 0 obj
-<<
-  /Type /StructElem
   /S /H2
-  /K [ 15 ]
+  /K [ 27 ]
   /P 158 0 R
-  /Pg 82 0 R
-  /T (method rotor)
->>
-endobj
-
-485 0 obj
-<< /Type /StructElem /S /Code /K [ 16 ] /P 158 0 R /Pg 82 0 R >>
-endobj
-
-486 0 obj
-<< /Type /StructElem /S /P /K [ 17 487 0 R 19 ] /P 158 0 R /Pg 82 0 R >>
-endobj
-
-487 0 obj
-<< /Type /StructElem /S /Link /K [ 488 0 R 18 ] /P 486 0 R >>
-endobj
-
-488 0 obj
-<< /Type /OBJR /Obj 85 0 R /Pg 82 0 R >>
-endobj
-
-489 0 obj
-<<
-  /Type /StructElem
-  /S /H2
-  /K [ 20 ]
-  /P 158 0 R
-  /Pg 82 0 R
+  /Pg 80 0 R
   /T (method delayed)
 >>
 endobj
 
-490 0 obj
-<< /Type /StructElem /S /Code /K [ 21 ] /P 158 0 R /Pg 82 0 R >>
+484 0 obj
+<< /Type /StructElem /S /Code /K [ 28 ] /P 158 0 R /Pg 80 0 R >>
 endobj
 
-491 0 obj
-<< /Type /StructElem /S /P /K [ 22 ] /P 158 0 R /Pg 82 0 R >>
+485 0 obj
+<< /Type /StructElem /S /P /K [ 29 ] /P 158 0 R /Pg 80 0 R >>
 endobj
 
-492 0 obj
+486 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 23 ]
+  /K [ 30 ]
   /P 158 0 R
-  /Pg 82 0 R
+  /Pg 80 0 R
   /T (method throttle)
 >>
 endobj
 
+487 0 obj
+<< /Type /StructElem /S /P /K [ 31 ] /P 158 0 R /Pg 80 0 R >>
+endobj
+
+488 0 obj
+<< /Type /StructElem /S /Code /K [ 32 ] /P 158 0 R /Pg 80 0 R >>
+endobj
+
+489 0 obj
+<< /Type /StructElem /S /Code /K [ 33 490 0 R ] /P 158 0 R /Pg 80 0 R >>
+endobj
+
+490 0 obj
+<< /Type /MCR /MCID 0 /Pg 90 0 R >>
+endobj
+
+491 0 obj
+<< /Type /StructElem /S /P /K [ 1 492 0 R 3 ] /P 158 0 R /Pg 90 0 R >>
+endobj
+
+492 0 obj
+<< /Type /StructElem /S /Code /K [ 2 ] /P 491 0 R >>
+endobj
+
 493 0 obj
-<< /Type /StructElem /S /P /K [ 24 ] /P 158 0 R /Pg 82 0 R >>
+<< /Type /StructElem /S /Table /K [ 494 0 R 498 0 R ] /P 158 0 R >>
 endobj
 
 494 0 obj
-<< /Type /StructElem /S /Code /K [ 25 ] /P 158 0 R /Pg 82 0 R >>
+<< /Type /StructElem /S /THead /K [ 495 0 R ] /P 493 0 R >>
 endobj
 
 495 0 obj
-<< /Type /StructElem /S /Code /K [ 26 ] /P 158 0 R /Pg 82 0 R >>
+<< /Type /StructElem /S /TR /K [ 496 0 R 497 0 R ] /P 494 0 R >>
 endobj
 
 496 0 obj
-<< /Type /StructElem /S /P /K [ 27 497 0 R 29 ] /P 158 0 R /Pg 82 0 R >>
+<< /Type /StructElem /S /TH /K [ 4 ] /P 495 0 R /Pg 90 0 R >>
 endobj
 
 497 0 obj
-<< /Type /StructElem /S /Code /K [ 28 ] /P 496 0 R >>
+<< /Type /StructElem /S /TH /K [ 5 ] /P 495 0 R /Pg 90 0 R >>
 endobj
 
 498 0 obj
-<< /Type /StructElem /S /Table /K [ 499 0 R 503 0 R ] /P 158 0 R >>
-endobj
-
-499 0 obj
-<< /Type /StructElem /S /THead /K [ 500 0 R ] /P 498 0 R >>
-endobj
-
-500 0 obj
-<< /Type /StructElem /S /TR /K [ 501 0 R 502 0 R ] /P 499 0 R >>
-endobj
-
-501 0 obj
-<< /Type /StructElem /S /TH /K [ 0 ] /P 500 0 R /Pg 90 0 R >>
-endobj
-
-502 0 obj
-<< /Type /StructElem /S /TH /K [ 1 ] /P 500 0 R /Pg 90 0 R >>
-endobj
-
-503 0 obj
 <<
   /Type /StructElem
   /S /TBody
-  /K [ 504 0 R 507 0 R 510 0 R 513 0 R 516 0 R 519 0 R 522 0 R 525 0 R ]
-  /P 498 0 R
+  /K [ 499 0 R 502 0 R 505 0 R 508 0 R 511 0 R 514 0 R 517 0 R 520 0 R ]
+  /P 493 0 R
 >>
 endobj
 
+499 0 obj
+<< /Type /StructElem /S /TR /K [ 500 0 R 501 0 R ] /P 498 0 R >>
+endobj
+
+500 0 obj
+<< /Type /StructElem /S /TD /K [ 6 ] /P 499 0 R /Pg 90 0 R >>
+endobj
+
+501 0 obj
+<< /Type /StructElem /S /TD /K [ 7 ] /P 499 0 R /Pg 90 0 R >>
+endobj
+
+502 0 obj
+<< /Type /StructElem /S /TR /K [ 503 0 R 504 0 R ] /P 498 0 R >>
+endobj
+
+503 0 obj
+<< /Type /StructElem /S /TD /K [ 8 ] /P 502 0 R /Pg 90 0 R >>
+endobj
+
 504 0 obj
-<< /Type /StructElem /S /TR /K [ 505 0 R 506 0 R ] /P 503 0 R >>
+<< /Type /StructElem /S /TD /K [ 9 ] /P 502 0 R /Pg 90 0 R >>
 endobj
 
 505 0 obj
-<< /Type /StructElem /S /TD /K [ 2 ] /P 504 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TR /K [ 506 0 R 507 0 R ] /P 498 0 R >>
 endobj
 
 506 0 obj
-<< /Type /StructElem /S /TD /K [ 3 ] /P 504 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TD /K [ 10 ] /P 505 0 R /Pg 90 0 R >>
 endobj
 
 507 0 obj
-<< /Type /StructElem /S /TR /K [ 508 0 R 509 0 R ] /P 503 0 R >>
+<< /Type /StructElem /S /TD /K [ 11 ] /P 505 0 R /Pg 90 0 R >>
 endobj
 
 508 0 obj
-<< /Type /StructElem /S /TD /K [ 4 ] /P 507 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TR /K [ 509 0 R 510 0 R ] /P 498 0 R >>
 endobj
 
 509 0 obj
-<< /Type /StructElem /S /TD /K [ 5 ] /P 507 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TD /K [ 12 ] /P 508 0 R /Pg 90 0 R >>
 endobj
 
 510 0 obj
-<< /Type /StructElem /S /TR /K [ 511 0 R 512 0 R ] /P 503 0 R >>
+<< /Type /StructElem /S /TD /K [ 13 ] /P 508 0 R /Pg 90 0 R >>
 endobj
 
 511 0 obj
-<< /Type /StructElem /S /TD /K [ 6 ] /P 510 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TR /K [ 512 0 R 513 0 R ] /P 498 0 R >>
 endobj
 
 512 0 obj
-<< /Type /StructElem /S /TD /K [ 7 ] /P 510 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TD /K [ 14 ] /P 511 0 R /Pg 90 0 R >>
 endobj
 
 513 0 obj
-<< /Type /StructElem /S /TR /K [ 514 0 R 515 0 R ] /P 503 0 R >>
+<< /Type /StructElem /S /TD /K [ 15 ] /P 511 0 R /Pg 90 0 R >>
 endobj
 
 514 0 obj
-<< /Type /StructElem /S /TD /K [ 8 ] /P 513 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TR /K [ 515 0 R 516 0 R ] /P 498 0 R >>
 endobj
 
 515 0 obj
-<< /Type /StructElem /S /TD /K [ 9 ] /P 513 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TD /K [ 16 ] /P 514 0 R /Pg 90 0 R >>
 endobj
 
 516 0 obj
-<< /Type /StructElem /S /TR /K [ 517 0 R 518 0 R ] /P 503 0 R >>
+<< /Type /StructElem /S /TD /K [ 17 ] /P 514 0 R /Pg 90 0 R >>
 endobj
 
 517 0 obj
-<< /Type /StructElem /S /TD /K [ 10 ] /P 516 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TR /K [ 518 0 R 519 0 R ] /P 498 0 R >>
 endobj
 
 518 0 obj
-<< /Type /StructElem /S /TD /K [ 11 ] /P 516 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TD /K [ 18 ] /P 517 0 R /Pg 90 0 R >>
 endobj
 
 519 0 obj
-<< /Type /StructElem /S /TR /K [ 520 0 R 521 0 R ] /P 503 0 R >>
+<< /Type /StructElem /S /TD /K [ 19 ] /P 517 0 R /Pg 90 0 R >>
 endobj
 
 520 0 obj
-<< /Type /StructElem /S /TD /K [ 12 ] /P 519 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TR /K [ 521 0 R 522 0 R ] /P 498 0 R >>
 endobj
 
 521 0 obj
-<< /Type /StructElem /S /TD /K [ 13 ] /P 519 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /TD /K [ 20 ] /P 520 0 R /Pg 90 0 R >>
 endobj
 
 522 0 obj
-<< /Type /StructElem /S /TR /K [ 523 0 R 524 0 R ] /P 503 0 R >>
+<< /Type /StructElem /S /TD /K [ 21 ] /P 520 0 R /Pg 90 0 R >>
 endobj
 
 523 0 obj
-<< /Type /StructElem /S /TD /K [ 14 ] /P 522 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /P /K [ 22 524 0 R 24 ] /P 158 0 R /Pg 90 0 R >>
 endobj
 
 524 0 obj
-<< /Type /StructElem /S /TD /K [ 15 ] /P 522 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /Code /K [ 23 ] /P 523 0 R >>
 endobj
 
 525 0 obj
-<< /Type /StructElem /S /TR /K [ 526 0 R 527 0 R ] /P 503 0 R >>
+<< /Type /StructElem /S /P /K [ 25 ] /P 158 0 R /Pg 90 0 R >>
 endobj
 
 526 0 obj
-<< /Type /StructElem /S /TD /K [ 16 ] /P 525 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /P /K [ 26 ] /P 158 0 R /Pg 90 0 R >>
 endobj
 
 527 0 obj
-<< /Type /StructElem /S /TD /K [ 17 ] /P 525 0 R /Pg 90 0 R >>
+<<
+  /Type /StructElem
+  /S /P
+  /K [ 27 528 0 R 29 529 0 R 31 530 0 R 33 ]
+  /P 158 0 R
+  /Pg 90 0 R
+>>
 endobj
 
 528 0 obj
-<< /Type /StructElem /S /P /K [ 18 529 0 R 20 ] /P 158 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /Code /K [ 28 ] /P 527 0 R >>
 endobj
 
 529 0 obj
-<< /Type /StructElem /S /Code /K [ 19 ] /P 528 0 R >>
+<< /Type /StructElem /S /Code /K [ 30 ] /P 527 0 R >>
 endobj
 
 530 0 obj
-<< /Type /StructElem /S /P /K [ 21 ] /P 158 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /Code /K [ 32 ] /P 527 0 R >>
 endobj
 
 531 0 obj
-<< /Type /StructElem /S /P /K [ 22 ] /P 158 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /P /K [ 34 532 0 R 36 ] /P 158 0 R /Pg 90 0 R >>
 endobj
 
 532 0 obj
 <<
   /Type /StructElem
-  /S /P
-  /K [ 23 533 0 R 25 534 0 R 27 535 0 R 29 ]
-  /P 158 0 R
-  /Pg 90 0 R
+  /S /Span
+  /A << /FontStyle (bold) >>
+  /K [ 35 ]
+  /P 531 0 R
 >>
 endobj
 
 533 0 obj
-<< /Type /StructElem /S /Code /K [ 24 ] /P 532 0 R >>
+<< /Type /StructElem /S /P /K [ 37 ] /P 158 0 R /Pg 90 0 R >>
 endobj
 
 534 0 obj
-<< /Type /StructElem /S /Code /K [ 26 ] /P 532 0 R >>
+<< /Type /StructElem /S /P /K [ 38 ] /P 158 0 R /Pg 90 0 R >>
 endobj
 
 535 0 obj
-<< /Type /StructElem /S /Code /K [ 28 ] /P 532 0 R >>
+<< /Type /StructElem /S /P /K [ 39 536 0 R 41 ] /P 158 0 R /Pg 90 0 R >>
 endobj
 
 536 0 obj
-<< /Type /StructElem /S /P /K [ 30 537 0 R 32 ] /P 158 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /Code /K [ 40 ] /P 535 0 R >>
 endobj
 
 537 0 obj
 <<
   /Type /StructElem
-  /S /Span
-  /A << /FontStyle (bold) >>
-  /K [ 31 ]
-  /P 536 0 R
+  /S /P
+  /K [ 42 538 0 R 44 539 0 R 46 ]
+  /P 158 0 R
+  /Pg 90 0 R
 >>
 endobj
 
 538 0 obj
-<< /Type /StructElem /S /P /K [ 33 ] /P 158 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /Code /K [ 43 ] /P 537 0 R >>
 endobj
 
 539 0 obj
-<< /Type /StructElem /S /P /K [ 34 ] /P 158 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /Link /K [ 540 0 R 45 ] /P 537 0 R >>
 endobj
 
 540 0 obj
-<< /Type /StructElem /S /P /K [ 35 541 0 R 37 ] /P 158 0 R /Pg 90 0 R >>
-endobj
-
-541 0 obj
-<< /Type /StructElem /S /Code /K [ 36 ] /P 540 0 R >>
-endobj
-
-542 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 38 543 0 R 40 544 0 R 42 ]
-  /P 158 0 R
-  /Pg 90 0 R
->>
-endobj
-
-543 0 obj
-<< /Type /StructElem /S /Code /K [ 39 ] /P 542 0 R >>
-endobj
-
-544 0 obj
-<< /Type /StructElem /S /Link /K [ 545 0 R 41 ] /P 542 0 R >>
-endobj
-
-545 0 obj
 << /Type /OBJR /Obj 91 0 R /Pg 90 0 R >>
 endobj
 
-546 0 obj
+541 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 43 547 0 R 45 548 0 R 47 549 0 R 49 ]
+  /K [ 47 542 0 R 49 543 0 R 51 544 0 R 53 ]
   /P 158 0 R
   /Pg 90 0 R
 >>
 endobj
 
-547 0 obj
-<< /Type /StructElem /S /Code /K [ 44 ] /P 546 0 R >>
+542 0 obj
+<< /Type /StructElem /S /Code /K [ 48 ] /P 541 0 R >>
 endobj
 
-548 0 obj
+543 0 obj
 <<
   /Type /StructElem
   /S /Span
   /A << /FontStyle (bold) >>
-  /K [ 46 ]
-  /P 546 0 R
+  /K [ 50 ]
+  /P 541 0 R
 >>
+endobj
+
+544 0 obj
+<<
+  /Type /StructElem
+  /S /Span
+  /A << /FontStyle (bold) >>
+  /K [ 52 ]
+  /P 541 0 R
+>>
+endobj
+
+545 0 obj
+<<
+  /Type /StructElem
+  /S /P
+  /K [ 54 546 0 R 56 547 0 R 58 548 0 R 60 ]
+  /P 158 0 R
+  /Pg 90 0 R
+>>
+endobj
+
+546 0 obj
+<< /Type /StructElem /S /Code /K [ 55 ] /P 545 0 R >>
+endobj
+
+547 0 obj
+<< /Type /StructElem /S /Code /K [ 57 ] /P 545 0 R >>
+endobj
+
+548 0 obj
+<< /Type /StructElem /S /Code /K [ 59 ] /P 545 0 R >>
 endobj
 
 549 0 obj
 <<
   /Type /StructElem
-  /S /Span
-  /A << /FontStyle (bold) >>
-  /K [ 48 ]
-  /P 546 0 R
+  /S /P
+  /K [ 61 550 0 R 63 551 0 R 65 ]
+  /P 158 0 R
+  /Pg 90 0 R
 >>
 endobj
 
 550 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 50 551 0 R 52 552 0 R 54 553 0 R 56 ]
-  /P 158 0 R
-  /Pg 90 0 R
->>
+<< /Type /StructElem /S /Code /K [ 62 ] /P 549 0 R >>
 endobj
 
 551 0 obj
-<< /Type /StructElem /S /Code /K [ 51 ] /P 550 0 R >>
+<< /Type /StructElem /S /Code /K [ 64 ] /P 549 0 R >>
 endobj
 
 552 0 obj
-<< /Type /StructElem /S /Code /K [ 53 ] /P 550 0 R >>
-endobj
-
-553 0 obj
-<< /Type /StructElem /S /Code /K [ 55 ] /P 550 0 R >>
-endobj
-
-554 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 57 555 0 R 59 556 0 R 61 ]
-  /P 158 0 R
-  /Pg 90 0 R
->>
-endobj
-
-555 0 obj
-<< /Type /StructElem /S /Code /K [ 58 ] /P 554 0 R >>
-endobj
-
-556 0 obj
-<< /Type /StructElem /S /Code /K [ 60 ] /P 554 0 R >>
-endobj
-
-557 0 obj
 <<
   /Type /StructElem
   /S /H3
-  /K [ 62 ]
+  /K [ 66 ]
   /P 158 0 R
   /Pg 90 0 R
   /T (control messages)
 >>
 endobj
 
+553 0 obj
+<< /Type /StructElem /S /P /K [ 67 554 0 R 69 ] /P 158 0 R /Pg 90 0 R >>
+endobj
+
+554 0 obj
+<< /Type /StructElem /S /Code /K [ 68 ] /P 553 0 R >>
+endobj
+
+555 0 obj
+<< /Type /StructElem /S /LI /K [ 556 0 R 557 0 R ] /P 158 0 R >>
+endobj
+
+556 0 obj
+<< /Type /StructElem /S /Lbl /K [ 70 ] /P 555 0 R /Pg 90 0 R >>
+endobj
+
+557 0 obj
+<< /Type /StructElem /S /LBody /K [ 558 0 R ] /P 555 0 R >>
+endobj
+
 558 0 obj
-<< /Type /StructElem /S /P /K [ 63 559 0 R 65 ] /P 158 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /P /K [ 71 ] /P 557 0 R /Pg 90 0 R >>
 endobj
 
 559 0 obj
-<< /Type /StructElem /S /Code /K [ 64 ] /P 558 0 R >>
+<< /Type /StructElem /S /P /K [ 72 ] /P 158 0 R /Pg 90 0 R >>
 endobj
 
 560 0 obj
@@ -11634,7 +11656,7 @@ endobj
 endobj
 
 561 0 obj
-<< /Type /StructElem /S /Lbl /K [ 66 ] /P 560 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 73 ] /P 560 0 R /Pg 90 0 R >>
 endobj
 
 562 0 obj
@@ -11642,35 +11664,35 @@ endobj
 endobj
 
 563 0 obj
-<< /Type /StructElem /S /P /K [ 67 ] /P 562 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /P /K [ 74 ] /P 562 0 R /Pg 90 0 R >>
 endobj
 
 564 0 obj
-<< /Type /StructElem /S /P /K [ 68 ] /P 158 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /P /K [ 75 565 0 R 77 ] /P 158 0 R /Pg 90 0 R >>
 endobj
 
 565 0 obj
-<< /Type /StructElem /S /LI /K [ 566 0 R 567 0 R ] /P 158 0 R >>
+<< /Type /StructElem /S /Code /K [ 76 ] /P 564 0 R >>
 endobj
 
 566 0 obj
-<< /Type /StructElem /S /Lbl /K [ 69 ] /P 565 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /LI /K [ 567 0 R 568 0 R ] /P 158 0 R >>
 endobj
 
 567 0 obj
-<< /Type /StructElem /S /LBody /K [ 568 0 R ] /P 565 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 0 ] /P 566 0 R /Pg 96 0 R >>
 endobj
 
 568 0 obj
-<< /Type /StructElem /S /P /K [ 70 ] /P 567 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /LBody /K [ 569 0 R ] /P 566 0 R >>
 endobj
 
 569 0 obj
-<< /Type /StructElem /S /P /K [ 71 570 0 R 73 ] /P 158 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /P /K [ 1 ] /P 568 0 R /Pg 96 0 R >>
 endobj
 
 570 0 obj
-<< /Type /StructElem /S /Code /K [ 72 ] /P 569 0 R >>
+<< /Type /StructElem /S /P /K [ 2 ] /P 158 0 R /Pg 96 0 R >>
 endobj
 
 571 0 obj
@@ -11678,7 +11700,7 @@ endobj
 endobj
 
 572 0 obj
-<< /Type /StructElem /S /Lbl /K [ 74 ] /P 571 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 3 ] /P 571 0 R /Pg 96 0 R >>
 endobj
 
 573 0 obj
@@ -11686,50 +11708,50 @@ endobj
 endobj
 
 574 0 obj
-<< /Type /StructElem /S /P /K [ 75 ] /P 573 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /P /K [ 4 ] /P 573 0 R /Pg 96 0 R >>
 endobj
 
 575 0 obj
-<< /Type /StructElem /S /P /K [ 76 ] /P 158 0 R /Pg 90 0 R >>
+<< /Type /StructElem /S /P /K [ 5 576 0 R 7 ] /P 158 0 R /Pg 96 0 R >>
 endobj
 
 576 0 obj
-<< /Type /StructElem /S /LI /K [ 577 0 R 578 0 R ] /P 158 0 R >>
+<< /Type /StructElem /S /Code /K [ 6 ] /P 575 0 R >>
 endobj
 
 577 0 obj
-<< /Type /StructElem /S /Lbl /K [ 0 ] /P 576 0 R /Pg 96 0 R >>
-endobj
-
-578 0 obj
-<< /Type /StructElem /S /LBody /K [ 579 0 R ] /P 576 0 R >>
-endobj
-
-579 0 obj
-<< /Type /StructElem /S /P /K [ 1 ] /P 578 0 R /Pg 96 0 R >>
-endobj
-
-580 0 obj
-<< /Type /StructElem /S /P /K [ 2 581 0 R 4 ] /P 158 0 R /Pg 96 0 R >>
-endobj
-
-581 0 obj
-<< /Type /StructElem /S /Code /K [ 3 ] /P 580 0 R >>
-endobj
-
-582 0 obj
 <<
   /Type /StructElem
   /S /H3
-  /K [ 5 ]
+  /K [ 8 ]
   /P 158 0 R
   /Pg 96 0 R
   /T (status message)
 >>
 endobj
 
+578 0 obj
+<< /Type /StructElem /S /P /K [ 9 ] /P 158 0 R /Pg 96 0 R >>
+endobj
+
+579 0 obj
+<< /Type /StructElem /S /LI /K [ 580 0 R 581 0 R ] /P 158 0 R >>
+endobj
+
+580 0 obj
+<< /Type /StructElem /S /Lbl /K [ 10 ] /P 579 0 R /Pg 96 0 R >>
+endobj
+
+581 0 obj
+<< /Type /StructElem /S /LBody /K [ 582 0 R ] /P 579 0 R >>
+endobj
+
+582 0 obj
+<< /Type /StructElem /S /P /K [ 11 ] /P 581 0 R /Pg 96 0 R >>
+endobj
+
 583 0 obj
-<< /Type /StructElem /S /P /K [ 6 ] /P 158 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 12 ] /P 158 0 R /Pg 96 0 R >>
 endobj
 
 584 0 obj
@@ -11737,7 +11759,7 @@ endobj
 endobj
 
 585 0 obj
-<< /Type /StructElem /S /Lbl /K [ 7 ] /P 584 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 13 ] /P 584 0 R /Pg 96 0 R >>
 endobj
 
 586 0 obj
@@ -11745,35 +11767,35 @@ endobj
 endobj
 
 587 0 obj
-<< /Type /StructElem /S /P /K [ 8 ] /P 586 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 14 ] /P 586 0 R /Pg 96 0 R >>
 endobj
 
 588 0 obj
-<< /Type /StructElem /S /P /K [ 9 ] /P 158 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 15 589 0 R 17 ] /P 158 0 R /Pg 96 0 R >>
 endobj
 
 589 0 obj
-<< /Type /StructElem /S /LI /K [ 590 0 R 591 0 R ] /P 158 0 R >>
+<< /Type /StructElem /S /Code /K [ 16 ] /P 588 0 R >>
 endobj
 
 590 0 obj
-<< /Type /StructElem /S /Lbl /K [ 10 ] /P 589 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /LI /K [ 591 0 R 592 0 R ] /P 158 0 R >>
 endobj
 
 591 0 obj
-<< /Type /StructElem /S /LBody /K [ 592 0 R ] /P 589 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 18 ] /P 590 0 R /Pg 96 0 R >>
 endobj
 
 592 0 obj
-<< /Type /StructElem /S /P /K [ 11 ] /P 591 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /LBody /K [ 593 0 R ] /P 590 0 R >>
 endobj
 
 593 0 obj
-<< /Type /StructElem /S /P /K [ 12 594 0 R 14 ] /P 158 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 19 ] /P 592 0 R /Pg 96 0 R >>
 endobj
 
 594 0 obj
-<< /Type /StructElem /S /Code /K [ 13 ] /P 593 0 R >>
+<< /Type /StructElem /S /P /K [ 20 ] /P 158 0 R /Pg 96 0 R >>
 endobj
 
 595 0 obj
@@ -11781,7 +11803,7 @@ endobj
 endobj
 
 596 0 obj
-<< /Type /StructElem /S /Lbl /K [ 15 ] /P 595 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 21 ] /P 595 0 R /Pg 96 0 R >>
 endobj
 
 597 0 obj
@@ -11789,11 +11811,11 @@ endobj
 endobj
 
 598 0 obj
-<< /Type /StructElem /S /P /K [ 16 ] /P 597 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 22 ] /P 597 0 R /Pg 96 0 R >>
 endobj
 
 599 0 obj
-<< /Type /StructElem /S /P /K [ 17 ] /P 158 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 23 ] /P 158 0 R /Pg 96 0 R >>
 endobj
 
 600 0 obj
@@ -11801,7 +11823,7 @@ endobj
 endobj
 
 601 0 obj
-<< /Type /StructElem /S /Lbl /K [ 18 ] /P 600 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 24 ] /P 600 0 R /Pg 96 0 R >>
 endobj
 
 602 0 obj
@@ -11809,11 +11831,11 @@ endobj
 endobj
 
 603 0 obj
-<< /Type /StructElem /S /P /K [ 19 ] /P 602 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 25 ] /P 602 0 R /Pg 96 0 R >>
 endobj
 
 604 0 obj
-<< /Type /StructElem /S /P /K [ 20 ] /P 158 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 26 ] /P 158 0 R /Pg 96 0 R >>
 endobj
 
 605 0 obj
@@ -11821,7 +11843,7 @@ endobj
 endobj
 
 606 0 obj
-<< /Type /StructElem /S /Lbl /K [ 21 ] /P 605 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 27 ] /P 605 0 R /Pg 96 0 R >>
 endobj
 
 607 0 obj
@@ -11829,11 +11851,11 @@ endobj
 endobj
 
 608 0 obj
-<< /Type /StructElem /S /P /K [ 22 ] /P 607 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 28 ] /P 607 0 R /Pg 96 0 R >>
 endobj
 
 609 0 obj
-<< /Type /StructElem /S /P /K [ 23 ] /P 158 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 29 ] /P 158 0 R /Pg 96 0 R >>
 endobj
 
 610 0 obj
@@ -11841,7 +11863,7 @@ endobj
 endobj
 
 611 0 obj
-<< /Type /StructElem /S /Lbl /K [ 24 ] /P 610 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 30 ] /P 610 0 R /Pg 96 0 R >>
 endobj
 
 612 0 obj
@@ -11849,647 +11871,627 @@ endobj
 endobj
 
 613 0 obj
-<< /Type /StructElem /S /P /K [ 25 ] /P 612 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 31 ] /P 612 0 R /Pg 96 0 R >>
 endobj
 
 614 0 obj
-<< /Type /StructElem /S /P /K [ 26 ] /P 158 0 R /Pg 96 0 R >>
+<< /Type /StructElem /S /P /K [ 32 615 0 R 34 ] /P 158 0 R /Pg 96 0 R >>
 endobj
 
 615 0 obj
-<< /Type /StructElem /S /LI /K [ 616 0 R 617 0 R ] /P 158 0 R >>
+<< /Type /StructElem /S /Code /K [ 33 ] /P 614 0 R >>
 endobj
 
 616 0 obj
-<< /Type /StructElem /S /Lbl /K [ 27 ] /P 615 0 R /Pg 96 0 R >>
-endobj
-
-617 0 obj
-<< /Type /StructElem /S /LBody /K [ 618 0 R ] /P 615 0 R >>
-endobj
-
-618 0 obj
-<< /Type /StructElem /S /P /K [ 28 ] /P 617 0 R /Pg 96 0 R >>
-endobj
-
-619 0 obj
-<< /Type /StructElem /S /P /K [ 29 620 0 R 31 ] /P 158 0 R /Pg 96 0 R >>
-endobj
-
-620 0 obj
-<< /Type /StructElem /S /Code /K [ 30 ] /P 619 0 R >>
-endobj
-
-621 0 obj
 <<
   /Type /StructElem
   /S /H3
-  /K [ 32 ]
+  /K [ 35 ]
   /P 158 0 R
   /Pg 96 0 R
   /T (Examples)
 >>
 endobj
 
+617 0 obj
+<< /Type /StructElem /S /P /K [ 36 ] /P 158 0 R /Pg 96 0 R >>
+endobj
+
+618 0 obj
+<< /Type /StructElem /S /Code /K [ 37 ] /P 158 0 R /Pg 96 0 R >>
+endobj
+
+619 0 obj
+<< /Type /StructElem /S /P /K [ 38 ] /P 158 0 R /Pg 96 0 R >>
+endobj
+
+620 0 obj
+<< /Type /StructElem /S /Code /K [ 39 621 0 R ] /P 158 0 R /Pg 96 0 R >>
+endobj
+
+621 0 obj
+<< /Type /MCR /MCID 0 /Pg 100 0 R >>
+endobj
+
 622 0 obj
-<< /Type /StructElem /S /P /K [ 33 ] /P 158 0 R /Pg 96 0 R >>
-endobj
-
-623 0 obj
-<< /Type /StructElem /S /Code /K [ 34 ] /P 158 0 R /Pg 96 0 R >>
-endobj
-
-624 0 obj
-<< /Type /StructElem /S /P /K [ 35 ] /P 158 0 R /Pg 96 0 R >>
-endobj
-
-625 0 obj
-<< /Type /StructElem /S /Code /K [ 36 ] /P 158 0 R /Pg 96 0 R >>
-endobj
-
-626 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 0 ]
+  /K [ 1 ]
   /P 158 0 R
   /Pg 100 0 R
   /T (method stable)
 >>
 endobj
 
+623 0 obj
+<< /Type /StructElem /S /Code /K [ 2 ] /P 158 0 R /Pg 100 0 R >>
+endobj
+
+624 0 obj
+<<
+  /Type /StructElem
+  /S /P
+  /K [ 3 625 0 R 5 626 0 R 7 ]
+  /P 158 0 R
+  /Pg 100 0 R
+>>
+endobj
+
+625 0 obj
+<< /Type /StructElem /S /Code /K [ 4 ] /P 624 0 R >>
+endobj
+
+626 0 obj
+<< /Type /StructElem /S /Code /K [ 6 ] /P 624 0 R >>
+endobj
+
 627 0 obj
-<< /Type /StructElem /S /Code /K [ 1 ] /P 158 0 R /Pg 100 0 R >>
+<<
+  /Type /StructElem
+  /S /P
+  /K [ 8 628 0 R 10 629 0 R 12 630 0 R 14 631 0 R 16 ]
+  /P 158 0 R
+  /Pg 100 0 R
+>>
 endobj
 
 628 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 2 629 0 R 4 630 0 R 6 ]
-  /P 158 0 R
-  /Pg 100 0 R
->>
+<< /Type /StructElem /S /Code /K [ 9 ] /P 627 0 R >>
 endobj
 
 629 0 obj
-<< /Type /StructElem /S /Code /K [ 3 ] /P 628 0 R >>
+<< /Type /StructElem /S /Code /K [ 11 ] /P 627 0 R >>
 endobj
 
 630 0 obj
-<< /Type /StructElem /S /Code /K [ 5 ] /P 628 0 R >>
+<< /Type /StructElem /S /Code /K [ 13 ] /P 627 0 R >>
 endobj
 
 631 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 7 632 0 R 9 633 0 R 11 634 0 R 13 635 0 R 15 ]
-  /P 158 0 R
-  /Pg 100 0 R
->>
+<< /Type /StructElem /S /Code /K [ 15 ] /P 627 0 R >>
 endobj
 
 632 0 obj
-<< /Type /StructElem /S /Code /K [ 8 ] /P 631 0 R >>
+<< /Type /StructElem /S /P /K [ 17 ] /P 158 0 R /Pg 100 0 R >>
 endobj
 
 633 0 obj
-<< /Type /StructElem /S /Code /K [ 10 ] /P 631 0 R >>
+<< /Type /StructElem /S /Code /K [ 18 ] /P 158 0 R /Pg 100 0 R >>
 endobj
 
 634 0 obj
-<< /Type /StructElem /S /Code /K [ 12 ] /P 631 0 R >>
-endobj
-
-635 0 obj
-<< /Type /StructElem /S /Code /K [ 14 ] /P 631 0 R >>
-endobj
-
-636 0 obj
-<< /Type /StructElem /S /P /K [ 16 ] /P 158 0 R /Pg 100 0 R >>
-endobj
-
-637 0 obj
-<< /Type /StructElem /S /Code /K [ 17 ] /P 158 0 R /Pg 100 0 R >>
-endobj
-
-638 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 18 639 0 R 20 640 0 R 22 641 0 R 24 642 0 R 26 643 0 R 28 ]
+  /K [ 19 635 0 R 21 636 0 R 23 637 0 R 25 638 0 R 27 639 0 R 29 ]
   /P 158 0 R
   /Pg 100 0 R
 >>
 endobj
 
+635 0 obj
+<< /Type /StructElem /S /Code /K [ 20 ] /P 634 0 R >>
+endobj
+
+636 0 obj
+<< /Type /StructElem /S /Code /K [ 22 ] /P 634 0 R >>
+endobj
+
+637 0 obj
+<< /Type /StructElem /S /Code /K [ 24 ] /P 634 0 R >>
+endobj
+
+638 0 obj
+<< /Type /StructElem /S /Code /K [ 26 ] /P 634 0 R >>
+endobj
+
 639 0 obj
-<< /Type /StructElem /S /Code /K [ 19 ] /P 638 0 R >>
+<< /Type /StructElem /S /Code /K [ 28 ] /P 634 0 R >>
 endobj
 
 640 0 obj
-<< /Type /StructElem /S /Code /K [ 21 ] /P 638 0 R >>
-endobj
-
-641 0 obj
-<< /Type /StructElem /S /Code /K [ 23 ] /P 638 0 R >>
-endobj
-
-642 0 obj
-<< /Type /StructElem /S /Code /K [ 25 ] /P 638 0 R >>
-endobj
-
-643 0 obj
-<< /Type /StructElem /S /Code /K [ 27 ] /P 638 0 R >>
-endobj
-
-644 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 29 ]
+  /K [ 30 ]
   /P 158 0 R
   /Pg 100 0 R
   /T (method produce)
 >>
 endobj
 
-645 0 obj
-<< /Type /StructElem /S /Code /K [ 30 ] /P 158 0 R /Pg 100 0 R >>
+641 0 obj
+<< /Type /StructElem /S /Code /K [ 31 ] /P 158 0 R /Pg 100 0 R >>
 endobj
 
-646 0 obj
-<< /Type /StructElem /S /P /K [ 31 647 0 R 33 ] /P 158 0 R /Pg 100 0 R >>
+642 0 obj
+<< /Type /StructElem /S /P /K [ 32 643 0 R 34 ] /P 158 0 R /Pg 100 0 R >>
 endobj
 
-647 0 obj
-<< /Type /StructElem /S /Link /K [ 648 0 R 32 ] /P 646 0 R >>
+643 0 obj
+<< /Type /StructElem /S /Link /K [ 644 0 R 33 ] /P 642 0 R >>
 endobj
 
-648 0 obj
+644 0 obj
 << /Type /OBJR /Obj 101 0 R /Pg 100 0 R >>
 endobj
 
-649 0 obj
-<< /Type /StructElem /S /Code /K [ 34 ] /P 158 0 R /Pg 100 0 R >>
+645 0 obj
+<< /Type /StructElem /S /Code /K [ 35 ] /P 158 0 R /Pg 100 0 R >>
 endobj
 
-650 0 obj
+646 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 35 ]
+  /K [ 36 ]
   /P 158 0 R
   /Pg 100 0 R
   /T (method lines)
 >>
 endobj
 
-651 0 obj
-<< /Type /StructElem /S /Code /K [ 36 ] /P 158 0 R /Pg 100 0 R >>
+647 0 obj
+<< /Type /StructElem /S /Code /K [ 37 ] /P 158 0 R /Pg 100 0 R >>
 endobj
 
-652 0 obj
+648 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 37 653 0 R 39 654 0 R 41 ]
+  /K [ 38 649 0 R 40 650 0 R 42 ]
   /P 158 0 R
   /Pg 100 0 R
 >>
 endobj
 
-653 0 obj
-<< /Type /StructElem /S /Code /K [ 38 ] /P 652 0 R >>
+649 0 obj
+<< /Type /StructElem /S /Code /K [ 39 ] /P 648 0 R >>
 endobj
 
-654 0 obj
-<< /Type /StructElem /S /Code /K [ 40 ] /P 652 0 R >>
+650 0 obj
+<< /Type /StructElem /S /Code /K [ 41 ] /P 648 0 R >>
 endobj
 
-655 0 obj
+651 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 42 ]
+  /K [ 43 ]
   /P 158 0 R
   /Pg 100 0 R
   /T (method words)
 >>
 endobj
 
-656 0 obj
-<< /Type /StructElem /S /Code /K [ 43 ] /P 158 0 R /Pg 100 0 R >>
+652 0 obj
+<< /Type /StructElem /S /Code /K [ 44 ] /P 158 0 R /Pg 100 0 R >>
 endobj
 
-657 0 obj
-<< /Type /StructElem /S /P /K [ 44 ] /P 158 0 R /Pg 100 0 R >>
+653 0 obj
+<< /Type /StructElem /S /P /K [ 45 ] /P 158 0 R /Pg 100 0 R >>
 endobj
 
-658 0 obj
-<< /Type /StructElem /S /Code /K [ 45 ] /P 158 0 R /Pg 100 0 R >>
+654 0 obj
+<< /Type /StructElem /S /Code /K [ 0 ] /P 158 0 R /Pg 106 0 R >>
 endobj
 
-659 0 obj
+655 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 0 ]
+  /K [ 1 ]
   /P 158 0 R
   /Pg 106 0 R
   /T (method unique)
 >>
 endobj
 
-660 0 obj
-<< /Type /StructElem /S /Code /K [ 1 ] /P 158 0 R /Pg 106 0 R >>
+656 0 obj
+<< /Type /StructElem /S /Code /K [ 2 ] /P 158 0 R /Pg 106 0 R >>
 endobj
 
-661 0 obj
+657 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 2 662 0 R 4 663 0 R 6 664 0 R 8 666 0 R 10 ]
+  /K [ 3 658 0 R 5 659 0 R 7 660 0 R 9 662 0 R 11 ]
   /P 158 0 R
   /Pg 106 0 R
 >>
 endobj
 
-662 0 obj
-<< /Type /StructElem /S /Code /K [ 3 ] /P 661 0 R >>
+658 0 obj
+<< /Type /StructElem /S /Code /K [ 4 ] /P 657 0 R >>
 endobj
 
-663 0 obj
-<< /Type /StructElem /S /Code /K [ 5 ] /P 661 0 R >>
+659 0 obj
+<< /Type /StructElem /S /Code /K [ 6 ] /P 657 0 R >>
 endobj
 
-664 0 obj
-<< /Type /StructElem /S /Link /K [ 665 0 R 7 ] /P 661 0 R >>
+660 0 obj
+<< /Type /StructElem /S /Link /K [ 661 0 R 8 ] /P 657 0 R >>
 endobj
 
-665 0 obj
+661 0 obj
 << /Type /OBJR /Obj 107 0 R /Pg 106 0 R >>
 endobj
 
-666 0 obj
-<< /Type /StructElem /S /Code /K [ 9 ] /P 661 0 R >>
+662 0 obj
+<< /Type /StructElem /S /Code /K [ 10 ] /P 657 0 R >>
 endobj
 
-667 0 obj
+663 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 11 ]
+  /K [ 12 ]
   /P 158 0 R
   /Pg 106 0 R
   /T (method repeated)
 >>
 endobj
 
-668 0 obj
-<< /Type /StructElem /S /Code /K [ 12 ] /P 158 0 R /Pg 106 0 R >>
+664 0 obj
+<< /Type /StructElem /S /Code /K [ 13 ] /P 158 0 R /Pg 106 0 R >>
 endobj
 
-669 0 obj
+665 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 13 670 0 R 15 671 0 R 17 672 0 R 19 ]
+  /K [ 14 666 0 R 16 667 0 R 18 668 0 R 20 ]
   /P 158 0 R
   /Pg 106 0 R
 >>
 endobj
 
-670 0 obj
-<< /Type /StructElem /S /Code /K [ 14 ] /P 669 0 R >>
+666 0 obj
+<< /Type /StructElem /S /Code /K [ 15 ] /P 665 0 R >>
 endobj
 
-671 0 obj
-<< /Type /StructElem /S /Code /K [ 16 ] /P 669 0 R >>
+667 0 obj
+<< /Type /StructElem /S /Code /K [ 17 ] /P 665 0 R >>
 endobj
 
-672 0 obj
-<< /Type /StructElem /S /Link /K [ 673 0 R 18 ] /P 669 0 R >>
+668 0 obj
+<< /Type /StructElem /S /Link /K [ 669 0 R 19 ] /P 665 0 R >>
 endobj
 
-673 0 obj
+669 0 obj
 << /Type /OBJR /Obj 109 0 R /Pg 106 0 R >>
 endobj
 
+670 0 obj
+<< /Type /StructElem /S /Code /K [ 21 ] /P 158 0 R /Pg 106 0 R >>
+endobj
+
+671 0 obj
+<< /Type /StructElem /S /P /K [ 22 672 0 R 24 ] /P 158 0 R /Pg 106 0 R >>
+endobj
+
+672 0 obj
+<< /Type /StructElem /S /Link /K [ 673 0 R 23 ] /P 671 0 R >>
+endobj
+
+673 0 obj
+<< /Type /OBJR /Obj 111 0 R /Pg 106 0 R >>
+endobj
+
 674 0 obj
-<< /Type /StructElem /S /Code /K [ 20 ] /P 158 0 R /Pg 106 0 R >>
+<<
+  /Type /StructElem
+  /S /P
+  /K [ 675 0 R 26 676 0 R 28 ]
+  /P 158 0 R
+  /Pg 106 0 R
+>>
 endobj
 
 675 0 obj
-<< /Type /StructElem /S /P /K [ 21 676 0 R 23 ] /P 158 0 R /Pg 106 0 R >>
+<<
+  /Type /StructElem
+  /S /Span
+  /A << /FontStyle (bold) >>
+  /K [ 25 ]
+  /P 674 0 R
+  /Pg 106 0 R
+>>
 endobj
 
 676 0 obj
-<< /Type /StructElem /S /Link /K [ 677 0 R 22 ] /P 675 0 R >>
+<< /Type /StructElem /S /Link /K [ 677 0 R 27 ] /P 674 0 R >>
 endobj
 
 677 0 obj
-<< /Type /OBJR /Obj 111 0 R /Pg 106 0 R >>
+<< /Type /OBJR /Obj 113 0 R /Pg 106 0 R >>
 endobj
 
 678 0 obj
 <<
   /Type /StructElem
-  /S /P
-  /K [ 679 0 R 25 680 0 R 27 ]
-  /P 158 0 R
-  /Pg 106 0 R
->>
-endobj
-
-679 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /A << /FontStyle (bold) >>
-  /K [ 24 ]
-  /P 678 0 R
-  /Pg 106 0 R
->>
-endobj
-
-680 0 obj
-<< /Type /StructElem /S /Link /K [ 681 0 R 26 ] /P 678 0 R >>
-endobj
-
-681 0 obj
-<< /Type /OBJR /Obj 113 0 R /Pg 106 0 R >>
-endobj
-
-682 0 obj
-<<
-  /Type /StructElem
   /S /H2
-  /K [ 28 ]
+  /K [ 29 ]
   /P 158 0 R
   /Pg 106 0 R
   /T (method squish)
 >>
 endobj
 
-683 0 obj
-<< /Type /StructElem /S /Code /K [ 29 ] /P 158 0 R /Pg 106 0 R >>
+679 0 obj
+<< /Type /StructElem /S /Code /K [ 30 ] /P 158 0 R /Pg 106 0 R >>
 endobj
 
-684 0 obj
+680 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 30 685 0 R 32 686 0 R 34 687 0 R 36 ]
+  /K [ 31 681 0 R 33 682 0 R 35 683 0 R 37 ]
   /P 158 0 R
   /Pg 106 0 R
 >>
 endobj
 
-685 0 obj
-<< /Type /StructElem /S /Code /K [ 31 ] /P 684 0 R >>
+681 0 obj
+<< /Type /StructElem /S /Code /K [ 32 ] /P 680 0 R >>
 endobj
 
-686 0 obj
-<< /Type /StructElem /S /Code /K [ 33 ] /P 684 0 R >>
+682 0 obj
+<< /Type /StructElem /S /Code /K [ 34 ] /P 680 0 R >>
 endobj
 
-687 0 obj
-<< /Type /StructElem /S /Link /K [ 688 0 R 35 ] /P 684 0 R >>
+683 0 obj
+<< /Type /StructElem /S /Link /K [ 684 0 R 36 ] /P 680 0 R >>
 endobj
 
-688 0 obj
+684 0 obj
 << /Type /OBJR /Obj 115 0 R /Pg 106 0 R >>
 endobj
 
-689 0 obj
+685 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 37 ]
+  /K [ 38 ]
   /P 158 0 R
   /Pg 106 0 R
   /T (method max)
 >>
 endobj
 
-690 0 obj
-<< /Type /StructElem /S /Code /K [ 38 ] /P 158 0 R /Pg 106 0 R >>
+686 0 obj
+<< /Type /StructElem /S /Code /K [ 39 ] /P 158 0 R /Pg 106 0 R >>
 endobj
 
-691 0 obj
-<< /Type /StructElem /S /P /K [ 39 692 0 R 41 ] /P 158 0 R /Pg 106 0 R >>
+687 0 obj
+<< /Type /StructElem /S /P /K [ 40 688 0 R 42 ] /P 158 0 R /Pg 106 0 R >>
 endobj
 
-692 0 obj
-<< /Type /StructElem /S /Link /K [ 693 0 R 40 ] /P 691 0 R >>
+688 0 obj
+<< /Type /StructElem /S /Link /K [ 689 0 R 41 ] /P 687 0 R >>
 endobj
 
-693 0 obj
+689 0 obj
 << /Type /OBJR /Obj 117 0 R /Pg 106 0 R >>
 endobj
 
-694 0 obj
+690 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 42 ]
+  /K [ 43 ]
   /P 158 0 R
   /Pg 106 0 R
   /T (method min)
 >>
 endobj
 
-695 0 obj
-<< /Type /StructElem /S /Code /K [ 43 ] /P 158 0 R /Pg 106 0 R >>
+691 0 obj
+<< /Type /StructElem /S /Code /K [ 44 ] /P 158 0 R /Pg 106 0 R >>
 endobj
 
-696 0 obj
-<< /Type /StructElem /S /P /K [ 44 697 0 R 46 ] /P 158 0 R /Pg 106 0 R >>
+692 0 obj
+<< /Type /StructElem /S /P /K [ 45 693 0 R 47 ] /P 158 0 R /Pg 106 0 R >>
 endobj
 
-697 0 obj
-<< /Type /StructElem /S /Link /K [ 698 0 R 45 ] /P 696 0 R >>
+693 0 obj
+<< /Type /StructElem /S /Link /K [ 694 0 R 46 ] /P 692 0 R >>
 endobj
 
-698 0 obj
+694 0 obj
 << /Type /OBJR /Obj 119 0 R /Pg 106 0 R >>
 endobj
 
-699 0 obj
-<<
-  /Type /StructElem
-  /S /H2
-  /K [ 47 ]
-  /P 158 0 R
-  /Pg 106 0 R
-  /T (method minmax)
->>
-endobj
-
-700 0 obj
-<< /Type /StructElem /S /Code /K [ 48 ] /P 158 0 R /Pg 106 0 R >>
-endobj
-
-701 0 obj
-<< /Type /StructElem /S /P /K [ 49 702 0 R 51 ] /P 158 0 R /Pg 106 0 R >>
-endobj
-
-702 0 obj
-<< /Type /StructElem /S /Link /K [ 703 0 R 50 ] /P 701 0 R >>
-endobj
-
-703 0 obj
-<< /Type /OBJR /Obj 121 0 R /Pg 106 0 R >>
-endobj
-
-704 0 obj
+695 0 obj
 <<
   /Type /StructElem
   /S /H2
   /K [ 0 ]
   /P 158 0 R
-  /Pg 126 0 R
+  /Pg 124 0 R
+  /T (method minmax)
+>>
+endobj
+
+696 0 obj
+<< /Type /StructElem /S /Code /K [ 1 ] /P 158 0 R /Pg 124 0 R >>
+endobj
+
+697 0 obj
+<< /Type /StructElem /S /P /K [ 2 698 0 R 4 ] /P 158 0 R /Pg 124 0 R >>
+endobj
+
+698 0 obj
+<< /Type /StructElem /S /Link /K [ 699 0 R 3 ] /P 697 0 R >>
+endobj
+
+699 0 obj
+<< /Type /OBJR /Obj 125 0 R /Pg 124 0 R >>
+endobj
+
+700 0 obj
+<<
+  /Type /StructElem
+  /S /H2
+  /K [ 5 ]
+  /P 158 0 R
+  /Pg 124 0 R
   /T (method skip)
 >>
 endobj
 
-705 0 obj
-<< /Type /StructElem /S /Code /K [ 1 ] /P 158 0 R /Pg 126 0 R >>
+701 0 obj
+<< /Type /StructElem /S /Code /K [ 6 ] /P 158 0 R /Pg 124 0 R >>
 endobj
 
-706 0 obj
+702 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 2 707 0 R 4 708 0 R 6 709 0 R 8 ]
+  /K [ 7 703 0 R 9 704 0 R 11 705 0 R 13 ]
   /P 158 0 R
-  /Pg 126 0 R
+  /Pg 124 0 R
 >>
 endobj
 
+703 0 obj
+<< /Type /StructElem /S /Code /K [ 8 ] /P 702 0 R >>
+endobj
+
+704 0 obj
+<< /Type /StructElem /S /Code /K [ 10 ] /P 702 0 R >>
+endobj
+
+705 0 obj
+<< /Type /StructElem /S /Code /K [ 12 ] /P 702 0 R >>
+endobj
+
+706 0 obj
+<< /Type /StructElem /S /Code /K [ 14 ] /P 158 0 R /Pg 124 0 R >>
+endobj
+
 707 0 obj
-<< /Type /StructElem /S /Code /K [ 3 ] /P 706 0 R >>
-endobj
-
-708 0 obj
-<< /Type /StructElem /S /Code /K [ 5 ] /P 706 0 R >>
-endobj
-
-709 0 obj
-<< /Type /StructElem /S /Code /K [ 7 ] /P 706 0 R >>
-endobj
-
-710 0 obj
-<< /Type /StructElem /S /Code /K [ 9 ] /P 158 0 R /Pg 126 0 R >>
-endobj
-
-711 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 10 ]
+  /K [ 15 ]
   /P 158 0 R
-  /Pg 126 0 R
+  /Pg 124 0 R
   /T (method start)
 >>
 endobj
 
+708 0 obj
+<< /Type /StructElem /S /Code /K [ 16 ] /P 158 0 R /Pg 124 0 R >>
+endobj
+
+709 0 obj
+<< /Type /StructElem /S /P /K [ 17 ] /P 158 0 R /Pg 124 0 R >>
+endobj
+
+710 0 obj
+<< /Type /StructElem /S /P /K [ 18 ] /P 158 0 R /Pg 124 0 R >>
+endobj
+
+711 0 obj
+<< /Type /StructElem /S /P /K [ 19 712 0 R 21 ] /P 158 0 R /Pg 124 0 R >>
+endobj
+
 712 0 obj
-<< /Type /StructElem /S /Code /K [ 11 ] /P 158 0 R /Pg 126 0 R >>
+<< /Type /StructElem /S /Code /K [ 20 ] /P 711 0 R >>
 endobj
 
 713 0 obj
-<< /Type /StructElem /S /P /K [ 12 ] /P 158 0 R /Pg 126 0 R >>
-endobj
-
-714 0 obj
-<< /Type /StructElem /S /P /K [ 13 ] /P 158 0 R /Pg 126 0 R >>
-endobj
-
-715 0 obj
-<< /Type /StructElem /S /P /K [ 14 716 0 R 16 ] /P 158 0 R /Pg 126 0 R >>
-endobj
-
-716 0 obj
-<< /Type /StructElem /S /Code /K [ 15 ] /P 715 0 R >>
-endobj
-
-717 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 17 ]
+  /K [ 22 ]
   /P 158 0 R
-  /Pg 126 0 R
+  /Pg 124 0 R
   /T (method migrate)
 >>
 endobj
 
-718 0 obj
-<< /Type /StructElem /S /Code /K [ 18 ] /P 158 0 R /Pg 126 0 R >>
+714 0 obj
+<< /Type /StructElem /S /Code /K [ 23 ] /P 158 0 R /Pg 124 0 R >>
 endobj
 
-719 0 obj
+715 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 19 720 0 R 21 721 0 R 23 722 0 R 25 723 0 R 27 724 0 R 29 ]
+  /K [ 24 716 0 R 26 717 0 R 28 718 0 R 30 719 0 R 32 720 0 R 34 ]
   /P 158 0 R
-  /Pg 126 0 R
+  /Pg 124 0 R
 >>
 endobj
 
+716 0 obj
+<< /Type /StructElem /S /Code /K [ 25 ] /P 715 0 R >>
+endobj
+
+717 0 obj
+<< /Type /StructElem /S /Code /K [ 27 ] /P 715 0 R >>
+endobj
+
+718 0 obj
+<< /Type /StructElem /S /Code /K [ 29 ] /P 715 0 R >>
+endobj
+
+719 0 obj
+<< /Type /StructElem /S /Code /K [ 31 ] /P 715 0 R >>
+endobj
+
 720 0 obj
-<< /Type /StructElem /S /Code /K [ 20 ] /P 719 0 R >>
+<< /Type /StructElem /S /Code /K [ 33 ] /P 715 0 R >>
 endobj
 
 721 0 obj
-<< /Type /StructElem /S /Code /K [ 22 ] /P 719 0 R >>
+<< /Type /StructElem /S /P /K [ 35 722 0 R 37 ] /P 158 0 R /Pg 124 0 R >>
 endobj
 
 722 0 obj
-<< /Type /StructElem /S /Code /K [ 24 ] /P 719 0 R >>
+<< /Type /StructElem /S /Code /K [ 36 ] /P 721 0 R >>
 endobj
 
 723 0 obj
-<< /Type /StructElem /S /Code /K [ 26 ] /P 719 0 R >>
+<< /Type /StructElem /S /P /K [ 38 ] /P 158 0 R /Pg 124 0 R >>
 endobj
 
 724 0 obj
-<< /Type /StructElem /S /Code /K [ 28 ] /P 719 0 R >>
+<< /Type /StructElem /S /Code /K [ 39 ] /P 158 0 R /Pg 124 0 R >>
 endobj
 
 725 0 obj
-<< /Type /StructElem /S /P /K [ 30 726 0 R 32 ] /P 158 0 R /Pg 126 0 R >>
+<< /Type /StructElem /S /P /K [ 0 ] /P 158 0 R /Pg 130 0 R >>
 endobj
 
 726 0 obj
-<< /Type /StructElem /S /Code /K [ 31 ] /P 725 0 R >>
+<< /Type /StructElem /S /Code /K [ 1 ] /P 158 0 R /Pg 130 0 R >>
 endobj
 
 727 0 obj
-<< /Type /StructElem /S /P /K [ 33 ] /P 158 0 R /Pg 126 0 R >>
-endobj
-
-728 0 obj
-<< /Type /StructElem /S /Code /K [ 34 ] /P 158 0 R /Pg 126 0 R >>
-endobj
-
-729 0 obj
-<< /Type /StructElem /S /P /K [ 35 ] /P 158 0 R /Pg 126 0 R >>
-endobj
-
-730 0 obj
-<< /Type /StructElem /S /Code /K [ 36 731 0 R ] /P 158 0 R /Pg 126 0 R >>
-endobj
-
-731 0 obj
-<< /Type /MCR /MCID 0 /Pg 130 0 R >>
-endobj
-
-732 0 obj
 <<
   /Type /StructElem
   /S /H1
@@ -12500,7 +12502,7 @@ endobj
 >>
 endobj
 
-733 0 obj
+728 0 obj
 <<
   /Type /StructElem
   /S /H2
@@ -12511,15 +12513,15 @@ endobj
 >>
 endobj
 
-734 0 obj
+729 0 obj
 << /Type /StructElem /S /Code /K [ 2 ] /P 158 0 R /Pg 134 0 R >>
 endobj
 
-735 0 obj
+730 0 obj
 << /Type /StructElem /S /P /K [ 3 ] /P 158 0 R /Pg 134 0 R >>
 endobj
 
-736 0 obj
+731 0 obj
 <<
   /Type /StructElem
   /S /H2
@@ -12530,61 +12532,61 @@ endobj
 >>
 endobj
 
-737 0 obj
+732 0 obj
 << /Type /StructElem /S /P /K [ 5 ] /P 158 0 R /Pg 134 0 R >>
 endobj
 
-738 0 obj
+733 0 obj
 << /Type /StructElem /S /Code /K [ 6 ] /P 158 0 R /Pg 134 0 R >>
 endobj
 
-739 0 obj
+734 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 7 740 0 R 9 741 0 R 11 743 0 R 13 744 0 R 15 ]
+  /K [ 7 735 0 R 9 736 0 R 11 738 0 R 13 739 0 R 15 ]
   /P 158 0 R
   /Pg 134 0 R
 >>
 endobj
 
-740 0 obj
+735 0 obj
 <<
   /Type /StructElem
   /S /Span
   /A << /FontStyle (bold) >>
   /K [ 8 ]
-  /P 739 0 R
+  /P 734 0 R
 >>
 endobj
 
-741 0 obj
-<< /Type /StructElem /S /Link /K [ 742 0 R 10 ] /P 739 0 R >>
+736 0 obj
+<< /Type /StructElem /S /Link /K [ 737 0 R 10 ] /P 734 0 R >>
 endobj
 
-742 0 obj
+737 0 obj
 << /Type /OBJR /Obj 135 0 R /Pg 134 0 R >>
 endobj
 
-743 0 obj
-<< /Type /StructElem /S /Code /K [ 12 ] /P 739 0 R >>
+738 0 obj
+<< /Type /StructElem /S /Code /K [ 12 ] /P 734 0 R >>
 endobj
 
-744 0 obj
+739 0 obj
 <<
   /Type /StructElem
   /S /Span
   /A << /FontStyle (bold) >>
   /K [ 14 ]
-  /P 739 0 R
+  /P 734 0 R
 >>
 endobj
 
-745 0 obj
+740 0 obj
 << /Type /StructElem /S /P /K [ 16 ] /P 158 0 R /Pg 134 0 R >>
 endobj
 
-746 0 obj
+741 0 obj
 <<
   /Type /StructElem
   /S /H2
@@ -12595,57 +12597,57 @@ endobj
 >>
 endobj
 
-747 0 obj
+742 0 obj
 << /Type /StructElem /S /P /K [ 18 ] /P 158 0 R /Pg 134 0 R >>
 endobj
 
-748 0 obj
+743 0 obj
 << /Type /StructElem /S /Code /K [ 19 ] /P 158 0 R /Pg 134 0 R >>
 endobj
 
-749 0 obj
+744 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 20 750 0 R 22 751 0 R 24 753 0 R 26 754 0 R 28 ]
+  /K [ 20 745 0 R 22 746 0 R 24 748 0 R 26 749 0 R 28 ]
   /P 158 0 R
   /Pg 134 0 R
 >>
 endobj
 
-750 0 obj
+745 0 obj
 <<
   /Type /StructElem
   /S /Span
   /A << /FontStyle (bold) >>
   /K [ 21 ]
-  /P 749 0 R
+  /P 744 0 R
 >>
 endobj
 
-751 0 obj
-<< /Type /StructElem /S /Link /K [ 752 0 R 23 ] /P 749 0 R >>
+746 0 obj
+<< /Type /StructElem /S /Link /K [ 747 0 R 23 ] /P 744 0 R >>
 endobj
 
-752 0 obj
+747 0 obj
 << /Type /OBJR /Obj 137 0 R /Pg 134 0 R >>
 endobj
 
-753 0 obj
-<< /Type /StructElem /S /Code /K [ 25 ] /P 749 0 R >>
+748 0 obj
+<< /Type /StructElem /S /Code /K [ 25 ] /P 744 0 R >>
 endobj
 
-754 0 obj
+749 0 obj
 <<
   /Type /StructElem
   /S /Span
   /A << /FontStyle (bold) >>
   /K [ 27 ]
-  /P 749 0 R
+  /P 744 0 R
 >>
 endobj
 
-755 0 obj
+750 0 obj
 <<
   /Type /StructElem
   /S /H1
@@ -12656,7 +12658,7 @@ endobj
 >>
 endobj
 
-756 0 obj
+751 0 obj
 <<
   /Type /StructElem
   /S /H2
@@ -12667,114 +12669,114 @@ endobj
 >>
 endobj
 
-757 0 obj
+752 0 obj
 << /Type /StructElem /S /Code /K [ 2 ] /P 158 0 R /Pg 142 0 R >>
 endobj
 
-758 0 obj
-<< /Type /StructElem /S /P /K [ 3 759 0 R 5 ] /P 158 0 R /Pg 142 0 R >>
+753 0 obj
+<< /Type /StructElem /S /P /K [ 3 754 0 R 5 ] /P 158 0 R /Pg 142 0 R >>
 endobj
 
-759 0 obj
-<< /Type /StructElem /S /Code /K [ 4 ] /P 758 0 R >>
+754 0 obj
+<< /Type /StructElem /S /Code /K [ 4 ] /P 753 0 R >>
 endobj
 
-760 0 obj
+755 0 obj
 << /Type /StructElem /S /Code /K [ 6 ] /P 158 0 R /Pg 142 0 R >>
 endobj
 
-761 0 obj
+756 0 obj
 << /Type /StructElem /S /P /K [ 7 ] /P 158 0 R /Pg 142 0 R >>
 endobj
 
-762 0 obj
+757 0 obj
 << /Type /StructElem /S /P /K [ 8 9 10 ] /P 158 0 R /Pg 142 0 R >>
 endobj
 
-763 0 obj
+758 0 obj
 << /Type /StructElem /S /Code /K [ 11 ] /P 158 0 R /Pg 142 0 R >>
 endobj
 
-764 0 obj
+759 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 12 765 0 R 14 766 0 R 768 0 R 16 ]
+  /K [ 12 760 0 R 14 761 0 R 763 0 R 16 ]
   /P 158 0 R
   /Pg 142 0 R
 >>
 endobj
 
-765 0 obj
-<< /Type /StructElem /S /Code /K [ 13 ] /P 764 0 R >>
+760 0 obj
+<< /Type /StructElem /S /Code /K [ 13 ] /P 759 0 R >>
 endobj
 
-766 0 obj
-<< /Type /StructElem /S /Link /K [ 767 0 R ] /P 764 0 R >>
+761 0 obj
+<< /Type /StructElem /S /Link /K [ 762 0 R ] /P 759 0 R >>
 endobj
 
-767 0 obj
+762 0 obj
 << /Type /OBJR /Obj 143 0 R /Pg 142 0 R >>
 endobj
 
-768 0 obj
-<< /Type /StructElem /S /Link /K [ 769 0 R 15 ] /P 764 0 R >>
+763 0 obj
+<< /Type /StructElem /S /Link /K [ 764 0 R 15 ] /P 759 0 R >>
 endobj
 
-769 0 obj
+764 0 obj
 << /Type /OBJR /Obj 145 0 R /Pg 142 0 R >>
 endobj
 
-770 0 obj
+765 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 771 0 R 18 772 0 R 20 774 0 R 22 775 0 R 24 776 0 R 26 777 0 R 28 778 0 R 30 ]
+  /K [ 766 0 R 18 767 0 R 20 769 0 R 22 770 0 R 24 771 0 R 26 772 0 R 28 773 0 R 30 ]
   /P 158 0 R
   /Pg 142 0 R
 >>
 endobj
 
-771 0 obj
+766 0 obj
 <<
   /Type /StructElem
   /S /Span
   /A << /FontStyle (bold) >>
   /K [ 17 ]
-  /P 770 0 R
+  /P 765 0 R
   /Pg 142 0 R
 >>
 endobj
 
-772 0 obj
-<< /Type /StructElem /S /Link /K [ 773 0 R 19 ] /P 770 0 R >>
+767 0 obj
+<< /Type /StructElem /S /Link /K [ 768 0 R 19 ] /P 765 0 R >>
 endobj
 
-773 0 obj
+768 0 obj
 << /Type /OBJR /Obj 146 0 R /Pg 142 0 R >>
 endobj
 
+769 0 obj
+<< /Type /StructElem /S /Code /K [ 21 ] /P 765 0 R >>
+endobj
+
+770 0 obj
+<< /Type /StructElem /S /Code /K [ 23 ] /P 765 0 R >>
+endobj
+
+771 0 obj
+<< /Type /StructElem /S /Code /K [ 25 ] /P 765 0 R >>
+endobj
+
+772 0 obj
+<< /Type /StructElem /S /Code /K [ 27 ] /P 765 0 R >>
+endobj
+
+773 0 obj
+<< /Type /StructElem /S /Code /K [ 29 ] /P 765 0 R >>
+endobj
+
 774 0 obj
-<< /Type /StructElem /S /Code /K [ 21 ] /P 770 0 R >>
-endobj
-
-775 0 obj
-<< /Type /StructElem /S /Code /K [ 23 ] /P 770 0 R >>
-endobj
-
-776 0 obj
-<< /Type /StructElem /S /Code /K [ 25 ] /P 770 0 R >>
-endobj
-
-777 0 obj
-<< /Type /StructElem /S /Code /K [ 27 ] /P 770 0 R >>
-endobj
-
-778 0 obj
-<< /Type /StructElem /S /Code /K [ 29 ] /P 770 0 R >>
-endobj
-
-779 0 obj
 <<
   /Type /StructElem
   /S /H2
@@ -12785,1472 +12787,1467 @@ endobj
 >>
 endobj
 
-780 0 obj
+775 0 obj
 << /Type /StructElem /S /Code /K [ 32 ] /P 158 0 R /Pg 142 0 R >>
 endobj
 
-781 0 obj
-<< /Type /StructElem /S /P /K [ 33 782 0 R 35 ] /P 158 0 R /Pg 142 0 R >>
+776 0 obj
+<< /Type /StructElem /S /P /K [ 33 777 0 R 35 ] /P 158 0 R /Pg 142 0 R >>
 endobj
 
-782 0 obj
-<< /Type /StructElem /S /Code /K [ 34 ] /P 781 0 R >>
+777 0 obj
+<< /Type /StructElem /S /Code /K [ 34 ] /P 776 0 R >>
 endobj
 
-783 0 obj
+778 0 obj
 << /Type /StructElem /S /Code /K [ 36 ] /P 158 0 R /Pg 142 0 R >>
 endobj
 
-784 0 obj
+779 0 obj
 <<
   /Type /StructTreeRoot
   /K [ 158 0 R ]
   /ParentTree <<
-    /Nums [ 0 [ 159 0 R 157 0 R 160 0 R 161 0 R 162 0 R 161 0 R 164 0 R 161 0 R 165 0 R 166 0 R 165 0 R 168 0 R 169 0 R 168 0 R 170 0 R 168 0 R 171 0 R 168 0 R 172 0 R 168 0 R 173 0 R 174 0 R 173 0 R 175 0 R 173 0 R 176 0 R 177 0 R 176 0 R 178 0 R 176 0 R 179 0 R 176 0 R 181 0 R 176 0 R 182 0 R 176 0 R 183 0 R 176 0 R 184 0 R 185 0 R 186 0 R 185 0 R 188 0 R 185 0 R 189 0 R 185 0 R 191 0 R 185 0 R 193 0 R 185 0 R 194 0 R 195 0 R 194 0 R 196 0 R 194 0 R 198 0 R 199 0 R 198 0 R ] 1 162 0 R 2 166 0 R 3 179 0 R 4 186 0 R 5 189 0 R 6 191 0 R 7 196 0 R 8 199 0 R 9 [ 201 0 R 202 0 R 203 0 R 204 0 R 205 0 R 204 0 R 206 0 R 207 0 R 206 0 R 208 0 R 206 0 R 209 0 R 206 0 R 210 0 R 206 0 R 211 0 R 206 0 R 212 0 R 206 0 R 213 0 R 206 0 R 214 0 R 215 0 R 214 0 R 216 0 R 214 0 R 217 0 R 214 0 R 218 0 R 214 0 R 219 0 R 214 0 R 220 0 R 221 0 R 220 0 R 222 0 R 220 0 R 224 0 R 220 0 R 225 0 R 220 0 R 226 0 R 220 0 R 227 0 R 220 0 R 228 0 R 220 0 R 229 0 R 220 0 R 230 0 R 220 0 R 231 0 R 232 0 R 231 0 R 233 0 R 231 0 R 235 0 R 231 0 R 236 0 R 237 0 R 238 0 R 239 0 R 240 0 R 241 0 R 242 0 R 241 0 R ] 10 222 0 R 11 233 0 R 12 [ 243 0 R 244 0 R 245 0 R 246 0 R 247 0 R 248 0 R 247 0 R 250 0 R 251 0 R 252 0 R 253 0 R 252 0 R 255 0 R 252 0 R 256 0 R 257 0 R 258 0 R 259 0 R 258 0 R 261 0 R 258 0 R 262 0 R 258 0 R 263 0 R 258 0 R 264 0 R 258 0 R 265 0 R 258 0 R 266 0 R 258 0 R 267 0 R 258 0 R 268 0 R 258 0 R 269 0 R 258 0 R 270 0 R 271 0 R 272 0 R 271 0 R 273 0 R 274 0 R 275 0 R 276 0 R 275 0 R 277 0 R 275 0 R 278 0 R 275 0 R 279 0 R 275 0 R 280 0 R 275 0 R 281 0 R 282 0 R 283 0 R 284 0 R 285 0 R ] 13 248 0 R 14 253 0 R 15 259 0 R 16 [ 286 0 R 287 0 R 288 0 R 289 0 R 290 0 R 289 0 R 291 0 R 289 0 R 292 0 R 289 0 R 293 0 R 289 0 R 294 0 R 289 0 R 295 0 R 289 0 R 296 0 R 297 0 R 298 0 R 299 0 R 300 0 R 299 0 R 301 0 R 299 0 R 302 0 R 299 0 R 303 0 R 299 0 R 304 0 R 299 0 R 305 0 R 299 0 R 306 0 R 307 0 R 308 0 R 309 0 R 308 0 R 310 0 R 308 0 R 311 0 R 312 0 R 313 0 R 314 0 R 313 0 R 315 0 R 313 0 R 316 0 R 313 0 R 317 0 R 313 0 R 318 0 R 313 0 R 319 0 R 313 0 R 320 0 R 313 0 R 321 0 R 322 0 R 323 0 R 324 0 R 325 0 R 324 0 R 326 0 R 324 0 R 327 0 R 324 0 R 328 0 R 324 0 R 329 0 R 324 0 R 330 0 R 324 0 R 331 0 R 324 0 R 332 0 R ] 17 [ 333 0 R 334 0 R 335 0 R 336 0 R 335 0 R 337 0 R 335 0 R 338 0 R 335 0 R 339 0 R 335 0 R 340 0 R 335 0 R 342 0 R 335 0 R 343 0 R 335 0 R 344 0 R 335 0 R 345 0 R 346 0 R 347 0 R 348 0 R 349 0 R 348 0 R 350 0 R 348 0 R 351 0 R 348 0 R 352 0 R 348 0 R 353 0 R 348 0 R 355 0 R 356 0 R 357 0 R 358 0 R 359 0 R 360 0 R 359 0 R 362 0 R ] 18 340 0 R 19 353 0 R 20 360 0 R 21 [ 363 0 R 364 0 R 365 0 R 366 0 R 367 0 R 368 0 R 369 0 R 370 0 R 371 0 R 372 0 R 373 0 R 374 0 R 375 0 R 376 0 R 377 0 R 378 0 R 379 0 R 380 0 R 381 0 R 380 0 R 382 0 R 380 0 R 383 0 R 380 0 R 385 0 R 380 0 R 386 0 R 380 0 R 387 0 R 380 0 R 388 0 R 380 0 R 389 0 R 380 0 R 392 0 R 380 0 R 394 0 R ] 22 383 0 R 23 390 0 R 24 392 0 R 25 [ 395 0 R 396 0 R 397 0 R 398 0 R 397 0 R 399 0 R 397 0 R 400 0 R 401 0 R 400 0 R 402 0 R 400 0 R 403 0 R 400 0 R 404 0 R 405 0 R 406 0 R 407 0 R 406 0 R 408 0 R 409 0 R 410 0 R 411 0 R 412 0 R 411 0 R 413 0 R 414 0 R 415 0 R 416 0 R 417 0 R 416 0 R 418 0 R 416 0 R 420 0 R 419 0 R 421 0 R 419 0 R 422 0 R 419 0 R 423 0 R 419 0 R 424 0 R 425 0 R 426 0 R ] 26 [ 427 0 R 428 0 R 429 0 R 430 0 R 431 0 R 430 0 R 433 0 R 434 0 R 435 0 R 434 0 R 436 0 R 437 0 R 438 0 R 439 0 R 440 0 R 441 0 R 440 0 R 443 0 R 444 0 R 445 0 R 444 0 R 446 0 R 444 0 R 447 0 R 444 0 R 448 0 R 444 0 R 449 0 R 450 0 R 451 0 R 452 0 R 453 0 R 454 0 R 453 0 R 455 0 R 453 0 R 456 0 R 453 0 R 457 0 R 453 0 R 458 0 R 453 0 R 459 0 R 460 0 R 461 0 R 462 0 R 463 0 R 462 0 R 464 0 R 462 0 R ] 27 431 0 R 28 441 0 R 29 464 0 R 30 [ 466 0 R 462 0 R 469 0 R 462 0 R 472 0 R 462 0 R 476 0 R 477 0 R 478 0 R 479 0 R 480 0 R 479 0 R 481 0 R 483 0 R 482 0 R 484 0 R 485 0 R 486 0 R 487 0 R 486 0 R 489 0 R 490 0 R 491 0 R 492 0 R 493 0 R 494 0 R 495 0 R 496 0 R 497 0 R 496 0 R ] 31 472 0 R 32 487 0 R 33 [ 501 0 R 502 0 R 505 0 R 506 0 R 508 0 R 509 0 R 511 0 R 512 0 R 514 0 R 515 0 R 517 0 R 518 0 R 520 0 R 521 0 R 523 0 R 524 0 R 526 0 R 527 0 R 528 0 R 529 0 R 528 0 R 530 0 R 531 0 R 532 0 R 533 0 R 532 0 R 534 0 R 532 0 R 535 0 R 532 0 R 536 0 R 537 0 R 536 0 R 538 0 R 539 0 R 540 0 R 541 0 R 540 0 R 542 0 R 543 0 R 542 0 R 544 0 R 542 0 R 546 0 R 547 0 R 546 0 R 548 0 R 546 0 R 549 0 R 546 0 R 550 0 R 551 0 R 550 0 R 552 0 R 550 0 R 553 0 R 550 0 R 554 0 R 555 0 R 554 0 R 556 0 R 554 0 R 557 0 R 558 0 R 559 0 R 558 0 R 561 0 R 563 0 R 564 0 R 566 0 R 568 0 R 569 0 R 570 0 R 569 0 R 572 0 R 574 0 R 575 0 R ] 34 544 0 R 35 [ 577 0 R 579 0 R 580 0 R 581 0 R 580 0 R 582 0 R 583 0 R 585 0 R 587 0 R 588 0 R 590 0 R 592 0 R 593 0 R 594 0 R 593 0 R 596 0 R 598 0 R 599 0 R 601 0 R 603 0 R 604 0 R 606 0 R 608 0 R 609 0 R 611 0 R 613 0 R 614 0 R 616 0 R 618 0 R 619 0 R 620 0 R 619 0 R 621 0 R 622 0 R 623 0 R 624 0 R 625 0 R ] 36 [ 626 0 R 627 0 R 628 0 R 629 0 R 628 0 R 630 0 R 628 0 R 631 0 R 632 0 R 631 0 R 633 0 R 631 0 R 634 0 R 631 0 R 635 0 R 631 0 R 636 0 R 637 0 R 638 0 R 639 0 R 638 0 R 640 0 R 638 0 R 641 0 R 638 0 R 642 0 R 638 0 R 643 0 R 638 0 R 644 0 R 645 0 R 646 0 R 647 0 R 646 0 R 649 0 R 650 0 R 651 0 R 652 0 R 653 0 R 652 0 R 654 0 R 652 0 R 655 0 R 656 0 R 657 0 R 658 0 R ] 37 647 0 R 38 [ 659 0 R 660 0 R 661 0 R 662 0 R 661 0 R 663 0 R 661 0 R 664 0 R 661 0 R 666 0 R 661 0 R 667 0 R 668 0 R 669 0 R 670 0 R 669 0 R 671 0 R 669 0 R 672 0 R 669 0 R 674 0 R 675 0 R 676 0 R 675 0 R 679 0 R 678 0 R 680 0 R 678 0 R 682 0 R 683 0 R 684 0 R 685 0 R 684 0 R 686 0 R 684 0 R 687 0 R 684 0 R 689 0 R 690 0 R 691 0 R 692 0 R 691 0 R 694 0 R 695 0 R 696 0 R 697 0 R 696 0 R 699 0 R 700 0 R 701 0 R 702 0 R 701 0 R ] 39 664 0 R 40 672 0 R 41 676 0 R 42 680 0 R 43 687 0 R 44 692 0 R 45 697 0 R 46 702 0 R 47 [ 704 0 R 705 0 R 706 0 R 707 0 R 706 0 R 708 0 R 706 0 R 709 0 R 706 0 R 710 0 R 711 0 R 712 0 R 713 0 R 714 0 R 715 0 R 716 0 R 715 0 R 717 0 R 718 0 R 719 0 R 720 0 R 719 0 R 721 0 R 719 0 R 722 0 R 719 0 R 723 0 R 719 0 R 724 0 R 719 0 R 725 0 R 726 0 R 725 0 R 727 0 R 728 0 R 729 0 R 730 0 R ] 48 [ 730 0 R ] 49 [ 732 0 R 733 0 R 734 0 R 735 0 R 736 0 R 737 0 R 738 0 R 739 0 R 740 0 R 739 0 R 741 0 R 739 0 R 743 0 R 739 0 R 744 0 R 739 0 R 745 0 R 746 0 R 747 0 R 748 0 R 749 0 R 750 0 R 749 0 R 751 0 R 749 0 R 753 0 R 749 0 R 754 0 R 749 0 R ] 50 741 0 R 51 751 0 R 52 [ 755 0 R 756 0 R 757 0 R 758 0 R 759 0 R 758 0 R 760 0 R 761 0 R 762 0 R 762 0 R 762 0 R 763 0 R 764 0 R 765 0 R 764 0 R 768 0 R 764 0 R 771 0 R 770 0 R 772 0 R 770 0 R 774 0 R 770 0 R 775 0 R 770 0 R 776 0 R 770 0 R 777 0 R 770 0 R 778 0 R 770 0 R 779 0 R 780 0 R 781 0 R 782 0 R 781 0 R 783 0 R ] 53 766 0 R 54 768 0 R 55 772 0 R ]
+    /Nums [ 0 [ 159 0 R 157 0 R 160 0 R 161 0 R 162 0 R 161 0 R 164 0 R 161 0 R 165 0 R 166 0 R 165 0 R 168 0 R 169 0 R 168 0 R 170 0 R 168 0 R 171 0 R 168 0 R 172 0 R 168 0 R 173 0 R 174 0 R 173 0 R 175 0 R 173 0 R 176 0 R 177 0 R 176 0 R 178 0 R 176 0 R 179 0 R 176 0 R 181 0 R 176 0 R 182 0 R 176 0 R 183 0 R 176 0 R 184 0 R 185 0 R 186 0 R 185 0 R 188 0 R 185 0 R 189 0 R 185 0 R 191 0 R 185 0 R 193 0 R 185 0 R 194 0 R 195 0 R 194 0 R 196 0 R 194 0 R 198 0 R 199 0 R 198 0 R ] 1 162 0 R 2 166 0 R 3 179 0 R 4 186 0 R 5 189 0 R 6 191 0 R 7 196 0 R 8 199 0 R 9 [ 201 0 R 202 0 R 203 0 R 204 0 R 205 0 R 204 0 R 206 0 R 207 0 R 206 0 R 208 0 R 206 0 R 209 0 R 206 0 R 210 0 R 206 0 R 211 0 R 206 0 R 212 0 R 206 0 R 213 0 R 206 0 R 214 0 R 215 0 R 214 0 R 216 0 R 214 0 R 217 0 R 214 0 R 218 0 R 214 0 R 219 0 R 214 0 R 220 0 R 221 0 R 220 0 R 222 0 R 220 0 R 224 0 R 220 0 R 225 0 R 220 0 R 226 0 R 220 0 R 227 0 R 220 0 R 228 0 R 220 0 R 229 0 R 220 0 R 230 0 R 220 0 R 231 0 R 232 0 R 231 0 R 233 0 R 231 0 R 235 0 R 231 0 R 236 0 R 237 0 R 238 0 R 239 0 R 240 0 R 241 0 R 242 0 R 241 0 R ] 10 222 0 R 11 233 0 R 12 [ 243 0 R 244 0 R 245 0 R 246 0 R 247 0 R 248 0 R 247 0 R 250 0 R 251 0 R 252 0 R 253 0 R 252 0 R 255 0 R 252 0 R 256 0 R 257 0 R 258 0 R 259 0 R 258 0 R 261 0 R 258 0 R 262 0 R 258 0 R 263 0 R 258 0 R 264 0 R 258 0 R 265 0 R 258 0 R 266 0 R 258 0 R 267 0 R 258 0 R 268 0 R 258 0 R 269 0 R 258 0 R 270 0 R 271 0 R 272 0 R 271 0 R 273 0 R 274 0 R 275 0 R 276 0 R 275 0 R 277 0 R 275 0 R 278 0 R 275 0 R 279 0 R 275 0 R 280 0 R 275 0 R 281 0 R 282 0 R 283 0 R 284 0 R 285 0 R ] 13 248 0 R 14 253 0 R 15 259 0 R 16 [ 286 0 R 287 0 R 288 0 R 289 0 R 290 0 R 289 0 R 291 0 R 289 0 R 292 0 R 289 0 R 293 0 R 289 0 R 294 0 R 289 0 R 295 0 R 289 0 R 296 0 R 297 0 R 298 0 R 299 0 R 300 0 R 299 0 R 301 0 R 299 0 R 302 0 R 299 0 R 303 0 R 299 0 R 304 0 R 299 0 R 305 0 R 299 0 R 306 0 R 307 0 R 308 0 R 309 0 R 308 0 R 310 0 R 308 0 R 311 0 R 312 0 R 313 0 R 314 0 R 313 0 R 315 0 R 313 0 R 316 0 R 313 0 R 317 0 R 313 0 R 318 0 R 313 0 R 319 0 R 313 0 R 320 0 R 313 0 R 321 0 R 322 0 R 323 0 R 324 0 R 325 0 R 324 0 R 326 0 R 324 0 R 327 0 R 324 0 R 328 0 R 324 0 R 329 0 R 324 0 R 330 0 R 324 0 R 331 0 R 324 0 R 332 0 R ] 17 [ 333 0 R 334 0 R 335 0 R 336 0 R 335 0 R 337 0 R 335 0 R 338 0 R 335 0 R 339 0 R 335 0 R 340 0 R 335 0 R 342 0 R 335 0 R 343 0 R 335 0 R 344 0 R 335 0 R 345 0 R 346 0 R 347 0 R 348 0 R 349 0 R 348 0 R 350 0 R 348 0 R 351 0 R 348 0 R 352 0 R 348 0 R 353 0 R 348 0 R 355 0 R 356 0 R 357 0 R 358 0 R 359 0 R 360 0 R 359 0 R 362 0 R ] 18 340 0 R 19 353 0 R 20 360 0 R 21 [ 363 0 R 364 0 R 365 0 R 366 0 R 367 0 R 368 0 R 369 0 R 370 0 R 371 0 R 372 0 R 373 0 R 374 0 R 375 0 R 376 0 R 377 0 R 378 0 R 379 0 R 380 0 R 381 0 R 380 0 R 382 0 R 380 0 R 383 0 R 380 0 R 385 0 R 380 0 R 386 0 R 380 0 R 387 0 R 380 0 R 388 0 R 380 0 R 389 0 R 380 0 R 392 0 R 380 0 R 394 0 R ] 22 383 0 R 23 390 0 R 24 392 0 R 25 [ 395 0 R 396 0 R 397 0 R 398 0 R 397 0 R 399 0 R 397 0 R 400 0 R 401 0 R 400 0 R 402 0 R 400 0 R 403 0 R 400 0 R 404 0 R 405 0 R 406 0 R 407 0 R 406 0 R 408 0 R 409 0 R 410 0 R 411 0 R 412 0 R 411 0 R 413 0 R 414 0 R 415 0 R 416 0 R 417 0 R 416 0 R 418 0 R 416 0 R 420 0 R 419 0 R 421 0 R 419 0 R 422 0 R 419 0 R 423 0 R 419 0 R 424 0 R 425 0 R 426 0 R ] 26 [ 427 0 R 428 0 R 429 0 R 430 0 R 431 0 R 430 0 R 433 0 R 434 0 R 435 0 R 434 0 R 436 0 R 437 0 R 438 0 R 439 0 R 440 0 R 441 0 R 440 0 R 443 0 R 444 0 R 445 0 R 444 0 R 446 0 R 444 0 R 447 0 R 444 0 R 448 0 R 444 0 R 449 0 R 450 0 R 451 0 R 452 0 R 453 0 R 454 0 R 453 0 R 455 0 R 453 0 R 456 0 R 453 0 R 457 0 R 453 0 R 458 0 R 453 0 R 459 0 R ] 27 431 0 R 28 441 0 R 29 [ 460 0 R 461 0 R 462 0 R 463 0 R 462 0 R 464 0 R 462 0 R 466 0 R 462 0 R 467 0 R 462 0 R 468 0 R 462 0 R 470 0 R 471 0 R 472 0 R 473 0 R 474 0 R 473 0 R 475 0 R 477 0 R 476 0 R 478 0 R 479 0 R 480 0 R 481 0 R 480 0 R 483 0 R 484 0 R 485 0 R 486 0 R 487 0 R 488 0 R 489 0 R ] 30 464 0 R 31 468 0 R 32 481 0 R 33 [ 489 0 R 491 0 R 492 0 R 491 0 R 496 0 R 497 0 R 500 0 R 501 0 R 503 0 R 504 0 R 506 0 R 507 0 R 509 0 R 510 0 R 512 0 R 513 0 R 515 0 R 516 0 R 518 0 R 519 0 R 521 0 R 522 0 R 523 0 R 524 0 R 523 0 R 525 0 R 526 0 R 527 0 R 528 0 R 527 0 R 529 0 R 527 0 R 530 0 R 527 0 R 531 0 R 532 0 R 531 0 R 533 0 R 534 0 R 535 0 R 536 0 R 535 0 R 537 0 R 538 0 R 537 0 R 539 0 R 537 0 R 541 0 R 542 0 R 541 0 R 543 0 R 541 0 R 544 0 R 541 0 R 545 0 R 546 0 R 545 0 R 547 0 R 545 0 R 548 0 R 545 0 R 549 0 R 550 0 R 549 0 R 551 0 R 549 0 R 552 0 R 553 0 R 554 0 R 553 0 R 556 0 R 558 0 R 559 0 R 561 0 R 563 0 R 564 0 R 565 0 R 564 0 R ] 34 539 0 R 35 [ 567 0 R 569 0 R 570 0 R 572 0 R 574 0 R 575 0 R 576 0 R 575 0 R 577 0 R 578 0 R 580 0 R 582 0 R 583 0 R 585 0 R 587 0 R 588 0 R 589 0 R 588 0 R 591 0 R 593 0 R 594 0 R 596 0 R 598 0 R 599 0 R 601 0 R 603 0 R 604 0 R 606 0 R 608 0 R 609 0 R 611 0 R 613 0 R 614 0 R 615 0 R 614 0 R 616 0 R 617 0 R 618 0 R 619 0 R 620 0 R ] 36 [ 620 0 R 622 0 R 623 0 R 624 0 R 625 0 R 624 0 R 626 0 R 624 0 R 627 0 R 628 0 R 627 0 R 629 0 R 627 0 R 630 0 R 627 0 R 631 0 R 627 0 R 632 0 R 633 0 R 634 0 R 635 0 R 634 0 R 636 0 R 634 0 R 637 0 R 634 0 R 638 0 R 634 0 R 639 0 R 634 0 R 640 0 R 641 0 R 642 0 R 643 0 R 642 0 R 645 0 R 646 0 R 647 0 R 648 0 R 649 0 R 648 0 R 650 0 R 648 0 R 651 0 R 652 0 R 653 0 R ] 37 643 0 R 38 [ 654 0 R 655 0 R 656 0 R 657 0 R 658 0 R 657 0 R 659 0 R 657 0 R 660 0 R 657 0 R 662 0 R 657 0 R 663 0 R 664 0 R 665 0 R 666 0 R 665 0 R 667 0 R 665 0 R 668 0 R 665 0 R 670 0 R 671 0 R 672 0 R 671 0 R 675 0 R 674 0 R 676 0 R 674 0 R 678 0 R 679 0 R 680 0 R 681 0 R 680 0 R 682 0 R 680 0 R 683 0 R 680 0 R 685 0 R 686 0 R 687 0 R 688 0 R 687 0 R 690 0 R 691 0 R 692 0 R 693 0 R 692 0 R ] 39 660 0 R 40 668 0 R 41 672 0 R 42 676 0 R 43 683 0 R 44 688 0 R 45 693 0 R 46 [ 695 0 R 696 0 R 697 0 R 698 0 R 697 0 R 700 0 R 701 0 R 702 0 R 703 0 R 702 0 R 704 0 R 702 0 R 705 0 R 702 0 R 706 0 R 707 0 R 708 0 R 709 0 R 710 0 R 711 0 R 712 0 R 711 0 R 713 0 R 714 0 R 715 0 R 716 0 R 715 0 R 717 0 R 715 0 R 718 0 R 715 0 R 719 0 R 715 0 R 720 0 R 715 0 R 721 0 R 722 0 R 721 0 R 723 0 R 724 0 R ] 47 698 0 R 48 [ 725 0 R 726 0 R ] 49 [ 727 0 R 728 0 R 729 0 R 730 0 R 731 0 R 732 0 R 733 0 R 734 0 R 735 0 R 734 0 R 736 0 R 734 0 R 738 0 R 734 0 R 739 0 R 734 0 R 740 0 R 741 0 R 742 0 R 743 0 R 744 0 R 745 0 R 744 0 R 746 0 R 744 0 R 748 0 R 744 0 R 749 0 R 744 0 R ] 50 736 0 R 51 746 0 R 52 [ 750 0 R 751 0 R 752 0 R 753 0 R 754 0 R 753 0 R 755 0 R 756 0 R 757 0 R 757 0 R 757 0 R 758 0 R 759 0 R 760 0 R 759 0 R 763 0 R 759 0 R 766 0 R 765 0 R 767 0 R 765 0 R 769 0 R 765 0 R 770 0 R 765 0 R 771 0 R 765 0 R 772 0 R 765 0 R 773 0 R 765 0 R 774 0 R 775 0 R 776 0 R 777 0 R 776 0 R 778 0 R ] 53 761 0 R 54 763 0 R 55 767 0 R ]
   >>
 >>
 endobj
 
-785 0 obj
+780 0 obj
 <<
   /Count 3
   /Dest /Methods_that_return_Taps
-  /First 786 0 R
-  /Last 787 0 R
-  /Next 788 0 R
+  /First 781 0 R
+  /Last 782 0 R
+  /Next 783 0 R
   /Prev 155 0 R
   /SE 201 0 R
   /Title (Methods that return Taps)
 >>
 endobj
 
-786 0 obj
+781 0 obj
 <<
   /Count 1
   /Dest /method_tap
-  /Next 787 0 R
+  /Next 782 0 R
   /SE 202 0 R
   /Title (method tap)
+>>
+endobj
+
+782 0 obj
+<<
+  /Count 1
+  /Dest /method_act
+  /Prev 781 0 R
+  /SE 239 0 R
+  /Title (method act)
+>>
+endobj
+
+783 0 obj
+<<
+  /Count 6
+  /Dest /Utility_methods
+  /First 784 0 R
+  /Last 788 0 R
+  /Next 789 0 R
+  /Prev 780 0 R
+  /SE 243 0 R
+  /Title (Utility methods)
+>>
+endobj
+
+784 0 obj
+<<
+  /Count 1
+  /Dest /method_Capture
+  /Next 785 0 R
+  /SE 244 0 R
+  /Title (method Capture)
+>>
+endobj
+
+785 0 obj
+<<
+  /Count 1
+  /Dest /method_Channel
+  /Next 786 0 R
+  /Prev 784 0 R
+  /SE 250 0 R
+  /Title (method Channel)
+>>
+endobj
+
+786 0 obj
+<<
+  /Count 1
+  /Dest /method_Promise
+  /Next 787 0 R
+  /Prev 785 0 R
+  /SE 256 0 R
+  /Title (method Promise)
 >>
 endobj
 
 787 0 obj
 <<
   /Count 1
-  /Dest /method_act
+  /Dest /method_live
+  /Next 788 0 R
   /Prev 786 0 R
-  /SE 239 0 R
-  /Title (method act)
+  /SE 273 0 R
+  /Title (method live)
 >>
 endobj
 
 788 0 obj
 <<
-  /Count 6
-  /Dest /Utility_methods
-  /First 789 0 R
-  /Last 793 0 R
-  /Next 794 0 R
-  /Prev 785 0 R
-  /SE 243 0 R
-  /Title (Utility methods)
+  /Count 1
+  /Dest /method_schedule-on
+  /Prev 787 0 R
+  /SE 282 0 R
+  /Title (method schedule-on)
 >>
 endobj
 
 789 0 obj
 <<
-  /Count 1
-  /Dest /method_Capture
-  /Next 790 0 R
-  /SE 244 0 R
-  /Title (method Capture)
+  /Count 9
+  /Dest /Methods_that_wait_until_the_supply_is_done
+  /First 790 0 R
+  /Last 797 0 R
+  /Next 798 0 R
+  /Prev 783 0 R
+  /SE 286 0 R
+  /Title (Methods that wait until the supply is done)
 >>
 endobj
 
 790 0 obj
 <<
   /Count 1
-  /Dest /method_Channel
+  /Dest /method_wait
   /Next 791 0 R
-  /Prev 789 0 R
-  /SE 250 0 R
-  /Title (method Channel)
+  /SE 287 0 R
+  /Title (method wait)
 >>
 endobj
 
 791 0 obj
 <<
   /Count 1
-  /Dest /method_Promise
+  /Dest /method_list
   /Next 792 0 R
   /Prev 790 0 R
-  /SE 256 0 R
-  /Title (method Promise)
+  /SE 297 0 R
+  /Title (method list)
 >>
 endobj
 
 792 0 obj
 <<
   /Count 1
-  /Dest /method_live
+  /Dest /method_Seq
   /Next 793 0 R
   /Prev 791 0 R
-  /SE 273 0 R
-  /Title (method live)
+  /SE 306 0 R
+  /Title (method Seq)
 >>
 endobj
 
 793 0 obj
 <<
   /Count 1
-  /Dest /method_schedule-on
+  /Dest /method_grab
+  /Next 794 0 R
   /Prev 792 0 R
-  /SE 282 0 R
-  /Title (method schedule-on)
+  /SE 311 0 R
+  /Title (method grab)
 >>
 endobj
 
 794 0 obj
 <<
-  /Count 9
-  /Dest /Methods_that_wait_until_the_supply_is_done
-  /First 795 0 R
-  /Last 802 0 R
-  /Next 803 0 R
-  /Prev 788 0 R
-  /SE 286 0 R
-  /Title (Methods that wait until the supply is done)
+  /Count 1
+  /Dest /method_reverse
+  /Next 795 0 R
+  /Prev 793 0 R
+  /SE 322 0 R
+  /Title (method reverse)
 >>
 endobj
 
 795 0 obj
 <<
   /Count 1
-  /Dest /method_wait
+  /Dest /method_sort
   /Next 796 0 R
-  /SE 287 0 R
-  /Title (method wait)
+  /Prev 794 0 R
+  /SE 333 0 R
+  /Title (method sort)
 >>
 endobj
 
 796 0 obj
 <<
   /Count 1
-  /Dest /method_list
+  /Dest /method_collate
   /Next 797 0 R
   /Prev 795 0 R
-  /SE 297 0 R
-  /Title (method list)
+  /SE 346 0 R
+  /Title (method collate)
 >>
 endobj
 
 797 0 obj
 <<
   /Count 1
-  /Dest /method_Seq
-  /Next 798 0 R
+  /Dest /method_reduce
   /Prev 796 0 R
-  /SE 306 0 R
-  /Title (method Seq)
+  /SE 356 0 R
+  /Title (method reduce)
 >>
 endobj
 
 798 0 obj
 <<
-  /Count 1
-  /Dest /method_grab
-  /Next 799 0 R
-  /Prev 797 0 R
-  /SE 311 0 R
-  /Title (method grab)
+  /Count 35
+  /Dest /Methods_that_return_another_Supply
+  /First 799 0 R
+  /Last 832 0 R
+  /Next 833 0 R
+  /Prev 789 0 R
+  /SE 363 0 R
+  /Title (Methods that return another Supply)
 >>
 endobj
 
 799 0 obj
 <<
   /Count 1
-  /Dest /method_reverse
+  /Dest /method_from-list
   /Next 800 0 R
-  /Prev 798 0 R
-  /SE 322 0 R
-  /Title (method reverse)
+  /SE 364 0 R
+  /Title (method from-list)
 >>
 endobj
 
 800 0 obj
 <<
   /Count 1
-  /Dest /method_sort
+  /Dest /method_share
   /Next 801 0 R
   /Prev 799 0 R
-  /SE 333 0 R
-  /Title (method sort)
+  /SE 368 0 R
+  /Title (method share)
 >>
 endobj
 
 801 0 obj
 <<
   /Count 1
-  /Dest /method_collate
+  /Dest /method_flat
   /Next 802 0 R
   /Prev 800 0 R
-  /SE 346 0 R
-  /Title (method collate)
+  /SE 372 0 R
+  /Title (method flat)
 >>
 endobj
 
 802 0 obj
 <<
   /Count 1
-  /Dest /method_reduce
+  /Dest /method_do
+  /Next 803 0 R
   /Prev 801 0 R
-  /SE 356 0 R
-  /Title (method reduce)
+  /SE 375 0 R
+  /Title (method do)
 >>
 endobj
 
 803 0 obj
 <<
-  /Count 35
-  /Dest /Methods_that_return_another_Supply
-  /First 804 0 R
-  /Last 837 0 R
-  /Next 838 0 R
-  /Prev 794 0 R
-  /SE 363 0 R
-  /Title (Methods that return another Supply)
+  /Count 1
+  /Dest /method_on-close
+  /Next 804 0 R
+  /Prev 802 0 R
+  /SE 378 0 R
+  /Title (method on-close)
 >>
 endobj
 
 804 0 obj
 <<
   /Count 1
-  /Dest /method_from-list
+  /Dest /method_interval
   /Next 805 0 R
-  /SE 364 0 R
-  /Title (method from-list)
+  /Prev 803 0 R
+  /SE 395 0 R
+  /Title (method interval)
 >>
 endobj
 
 805 0 obj
 <<
   /Count 1
-  /Dest /method_share
+  /Dest /method_grep
   /Next 806 0 R
   /Prev 804 0 R
-  /SE 368 0 R
-  /Title (method share)
+  /SE 404 0 R
+  /Title (method grep)
 >>
 endobj
 
 806 0 obj
 <<
   /Count 1
-  /Dest /method_flat
+  /Dest /method_map
   /Next 807 0 R
   /Prev 805 0 R
-  /SE 372 0 R
-  /Title (method flat)
+  /SE 409 0 R
+  /Title (method map)
 >>
 endobj
 
 807 0 obj
 <<
   /Count 1
-  /Dest /method_do
+  /Dest /method_batch
   /Next 808 0 R
   /Prev 806 0 R
-  /SE 375 0 R
-  /Title (method do)
+  /SE 414 0 R
+  /Title (method batch)
 >>
 endobj
 
 808 0 obj
 <<
   /Count 1
-  /Dest /method_on-close
+  /Dest /method_elems
   /Next 809 0 R
   /Prev 807 0 R
-  /SE 378 0 R
-  /Title (method on-close)
+  /SE 424 0 R
+  /Title (method elems)
 >>
 endobj
 
 809 0 obj
 <<
   /Count 1
-  /Dest /method_interval
+  /Dest /method_head
   /Next 810 0 R
   /Prev 808 0 R
-  /SE 395 0 R
-  /Title (method interval)
+  /SE 427 0 R
+  /Title (method head)
 >>
 endobj
 
 810 0 obj
 <<
   /Count 1
-  /Dest /method_grep
+  /Dest /method_tail
   /Next 811 0 R
   /Prev 809 0 R
-  /SE 404 0 R
-  /Title (method grep)
+  /SE 438 0 R
+  /Title (method tail)
 >>
 endobj
 
 811 0 obj
 <<
   /Count 1
-  /Dest /method_map
+  /Dest /method_first
   /Next 812 0 R
   /Prev 810 0 R
-  /SE 409 0 R
-  /Title (method map)
+  /SE 451 0 R
+  /Title (method first)
 >>
 endobj
 
 812 0 obj
 <<
   /Count 1
-  /Dest /method_batch
+  /Dest /method_split
   /Next 813 0 R
   /Prev 811 0 R
-  /SE 414 0 R
-  /Title (method batch)
+  /SE 460 0 R
+  /Title (method split)
 >>
 endobj
 
 813 0 obj
 <<
   /Count 1
-  /Dest /method_elems
+  /Dest /method_rotate
   /Next 814 0 R
   /Prev 812 0 R
-  /SE 424 0 R
-  /Title (method elems)
+  /SE 471 0 R
+  /Title (method rotate)
 >>
 endobj
 
 814 0 obj
 <<
   /Count 1
-  /Dest /method_head
+  /Dest /method_rotor
   /Next 815 0 R
   /Prev 813 0 R
-  /SE 427 0 R
-  /Title (method head)
+  /SE 478 0 R
+  /Title (method rotor)
 >>
 endobj
 
 815 0 obj
 <<
   /Count 1
-  /Dest /method_tail
+  /Dest /method_delayed
   /Next 816 0 R
   /Prev 814 0 R
-  /SE 438 0 R
-  /Title (method tail)
+  /SE 483 0 R
+  /Title (method delayed)
 >>
 endobj
 
 816 0 obj
 <<
-  /Count 1
-  /Dest /method_first
-  /Next 817 0 R
+  /Count 4
+  /Dest /method_throttle
+  /First 817 0 R
+  /Last 819 0 R
+  /Next 820 0 R
   /Prev 815 0 R
-  /SE 451 0 R
-  /Title (method first)
+  /SE 486 0 R
+  /Title (method throttle)
 >>
 endobj
 
 817 0 obj
 <<
   /Count 1
-  /Dest /method_split
+  /Dest /control_messages
   /Next 818 0 R
-  /Prev 816 0 R
-  /SE 460 0 R
-  /Title (method split)
+  /SE 552 0 R
+  /Title (control messages)
 >>
 endobj
 
 818 0 obj
 <<
   /Count 1
-  /Dest /method_rotate
+  /Dest /status_message
   /Next 819 0 R
   /Prev 817 0 R
-  /SE 477 0 R
-  /Title (method rotate)
+  /SE 577 0 R
+  /Title (status message)
 >>
 endobj
 
 819 0 obj
-<<
-  /Count 1
-  /Dest /method_rotor
-  /Next 820 0 R
-  /Prev 818 0 R
-  /SE 484 0 R
-  /Title (method rotor)
->>
+<< /Count 1 /Dest /Examples /Prev 818 0 R /SE 616 0 R /Title (Examples) >>
 endobj
 
 820 0 obj
 <<
   /Count 1
-  /Dest /method_delayed
+  /Dest /method_stable
   /Next 821 0 R
-  /Prev 819 0 R
-  /SE 489 0 R
-  /Title (method delayed)
+  /Prev 816 0 R
+  /SE 622 0 R
+  /Title (method stable)
 >>
 endobj
 
 821 0 obj
 <<
-  /Count 4
-  /Dest /method_throttle
-  /First 822 0 R
-  /Last 824 0 R
-  /Next 825 0 R
+  /Count 1
+  /Dest /method_produce
+  /Next 822 0 R
   /Prev 820 0 R
-  /SE 492 0 R
-  /Title (method throttle)
+  /SE 640 0 R
+  /Title (method produce)
 >>
 endobj
 
 822 0 obj
 <<
   /Count 1
-  /Dest /control_messages
+  /Dest /method_lines
   /Next 823 0 R
-  /SE 557 0 R
-  /Title (control messages)
+  /Prev 821 0 R
+  /SE 646 0 R
+  /Title (method lines)
 >>
 endobj
 
 823 0 obj
 <<
   /Count 1
-  /Dest /status_message
+  /Dest /method_words
   /Next 824 0 R
   /Prev 822 0 R
-  /SE 582 0 R
-  /Title (status message)
+  /SE 651 0 R
+  /Title (method words)
 >>
 endobj
 
 824 0 obj
-<< /Count 1 /Dest /Examples /Prev 823 0 R /SE 621 0 R /Title (Examples) >>
+<<
+  /Count 1
+  /Dest /method_unique
+  /Next 825 0 R
+  /Prev 823 0 R
+  /SE 655 0 R
+  /Title (method unique)
+>>
 endobj
 
 825 0 obj
 <<
   /Count 1
-  /Dest /method_stable
+  /Dest /method_repeated
   /Next 826 0 R
-  /Prev 821 0 R
-  /SE 626 0 R
-  /Title (method stable)
+  /Prev 824 0 R
+  /SE 663 0 R
+  /Title (method repeated)
 >>
 endobj
 
 826 0 obj
 <<
   /Count 1
-  /Dest /method_produce
+  /Dest /method_squish
   /Next 827 0 R
   /Prev 825 0 R
-  /SE 644 0 R
-  /Title (method produce)
+  /SE 678 0 R
+  /Title (method squish)
 >>
 endobj
 
 827 0 obj
 <<
   /Count 1
-  /Dest /method_lines
+  /Dest /method_max
   /Next 828 0 R
   /Prev 826 0 R
-  /SE 650 0 R
-  /Title (method lines)
+  /SE 685 0 R
+  /Title (method max)
 >>
 endobj
 
 828 0 obj
 <<
   /Count 1
-  /Dest /method_words
+  /Dest /method_min
   /Next 829 0 R
   /Prev 827 0 R
-  /SE 655 0 R
-  /Title (method words)
+  /SE 690 0 R
+  /Title (method min)
 >>
 endobj
 
 829 0 obj
 <<
   /Count 1
-  /Dest /method_unique
+  /Dest /method_minmax
   /Next 830 0 R
   /Prev 828 0 R
-  /SE 659 0 R
-  /Title (method unique)
+  /SE 695 0 R
+  /Title (method minmax)
 >>
 endobj
 
 830 0 obj
 <<
   /Count 1
-  /Dest /method_repeated
+  /Dest /method_skip
   /Next 831 0 R
   /Prev 829 0 R
-  /SE 667 0 R
-  /Title (method repeated)
+  /SE 700 0 R
+  /Title (method skip)
 >>
 endobj
 
 831 0 obj
 <<
   /Count 1
-  /Dest /method_squish
+  /Dest /method_start
   /Next 832 0 R
   /Prev 830 0 R
-  /SE 682 0 R
-  /Title (method squish)
+  /SE 707 0 R
+  /Title (method start)
 >>
 endobj
 
 832 0 obj
 <<
   /Count 1
-  /Dest /method_max
-  /Next 833 0 R
+  /Dest /method_migrate
   /Prev 831 0 R
-  /SE 689 0 R
-  /Title (method max)
+  /SE 713 0 R
+  /Title (method migrate)
 >>
 endobj
 
 833 0 obj
 <<
-  /Count 1
-  /Dest /method_min
-  /Next 834 0 R
-  /Prev 832 0 R
-  /SE 694 0 R
-  /Title (method min)
+  /Count 4
+  /Dest /Methods_that_combine_supplies
+  /First 834 0 R
+  /Last 836 0 R
+  /Next 837 0 R
+  /Prev 798 0 R
+  /SE 727 0 R
+  /Title (Methods that combine supplies)
 >>
 endobj
 
 834 0 obj
 <<
   /Count 1
-  /Dest /method_minmax
+  /Dest /method_merge
   /Next 835 0 R
-  /Prev 833 0 R
-  /SE 699 0 R
-  /Title (method minmax)
+  /SE 728 0 R
+  /Title (method merge)
 >>
 endobj
 
 835 0 obj
 <<
   /Count 1
-  /Dest /method_skip
+  /Dest /method_zip
   /Next 836 0 R
   /Prev 834 0 R
-  /SE 704 0 R
-  /Title (method skip)
+  /SE 731 0 R
+  /Title (method zip)
 >>
 endobj
 
 836 0 obj
 <<
   /Count 1
-  /Dest /method_start
-  /Next 837 0 R
+  /Dest /method_zip-latest
   /Prev 835 0 R
-  /SE 711 0 R
-  /Title (method start)
+  /SE 741 0 R
+  /Title (method zip-latest)
 >>
 endobj
 
 837 0 obj
 <<
-  /Count 1
-  /Dest /method_migrate
-  /Prev 836 0 R
-  /SE 717 0 R
-  /Title (method migrate)
+  /Count 3
+  /Dest /I#2fO_features_exposed_as_supplies
+  /First 838 0 R
+  /Last 839 0 R
+  /Prev 833 0 R
+  /SE 750 0 R
+  /Title (I/O features exposed as supplies)
 >>
 endobj
 
 838 0 obj
 <<
-  /Count 4
-  /Dest /Methods_that_combine_supplies
-  /First 839 0 R
-  /Last 841 0 R
-  /Next 842 0 R
-  /Prev 803 0 R
-  /SE 732 0 R
-  /Title (Methods that combine supplies)
+  /Count 1
+  /Dest /sub_signal
+  /Next 839 0 R
+  /SE 751 0 R
+  /Title (sub signal)
 >>
 endobj
 
 839 0 obj
 <<
   /Count 1
-  /Dest /method_merge
-  /Next 840 0 R
-  /SE 733 0 R
-  /Title (method merge)
->>
-endobj
-
-840 0 obj
-<<
-  /Count 1
-  /Dest /method_zip
-  /Next 841 0 R
-  /Prev 839 0 R
-  /SE 736 0 R
-  /Title (method zip)
->>
-endobj
-
-841 0 obj
-<<
-  /Count 1
-  /Dest /method_zip-latest
-  /Prev 840 0 R
-  /SE 746 0 R
-  /Title (method zip-latest)
->>
-endobj
-
-842 0 obj
-<<
-  /Count 3
-  /Dest /I#2fO_features_exposed_as_supplies
-  /First 843 0 R
-  /Last 844 0 R
-  /Prev 838 0 R
-  /SE 755 0 R
-  /Title (I/O features exposed as supplies)
->>
-endobj
-
-843 0 obj
-<<
-  /Count 1
-  /Dest /sub_signal
-  /Next 844 0 R
-  /SE 756 0 R
-  /Title (sub signal)
->>
-endobj
-
-844 0 obj
-<<
-  /Count 1
   /Dest /method_IO::Notification.watch-path
-  /Prev 843 0 R
-  /SE 779 0 R
+  /Prev 838 0 R
+  /SE 774 0 R
   /Title (method IO::Notification.watch-path)
 >>
 endobj
 
 xref
-0 845
+0 840
 0000000000 65535 f 
 0000000015 00000 n 
 0000000251 00000 n 
 0000000411 00000 n 
-0000003079 00000 n 
-0000003394 00000 n 
-0000003567 00000 n 
-0000003632 00000 n 
-0000003815 00000 n 
-0000003919 00000 n 
-0000004095 00000 n 
-0000004162 00000 n 
-0000004340 00000 n 
-0000004402 00000 n 
-0000004578 00000 n 
-0000004644 00000 n 
-0000004822 00000 n 
-0000004889 00000 n 
-0000005078 00000 n 
-0000005157 00000 n 
-0000005342 00000 n 
-0000005425 00000 n 
-0000013605 00000 n 
-0000013791 00000 n 
-0000014054 00000 n 
-0000014228 00000 n 
-0000014290 00000 n 
-0000014464 00000 n 
-0000014526 00000 n 
-0000025069 00000 n 
-0000025117 00000 n 
-0000025166 00000 n 
-0000025274 00000 n 
-0000025361 00000 n 
-0000025478 00000 n 
-0000025587 00000 n 
-0000025858 00000 n 
-0000026042 00000 n 
-0000026120 00000 n 
-0000026296 00000 n 
-0000026362 00000 n 
-0000026538 00000 n 
-0000026604 00000 n 
-0000035471 00000 n 
-0000035519 00000 n 
-0000035568 00000 n 
-0000035804 00000 n 
-0000047296 00000 n 
-0000047344 00000 n 
-0000047393 00000 n 
-0000047664 00000 n 
-0000047840 00000 n 
-0000047904 00000 n 
-0000048086 00000 n 
-0000048163 00000 n 
-0000048345 00000 n 
-0000048423 00000 n 
-0000054732 00000 n 
-0000054780 00000 n 
-0000054829 00000 n 
-0000055100 00000 n 
-0000055269 00000 n 
-0000055331 00000 n 
-0000055503 00000 n 
-0000055579 00000 n 
-0000055746 00000 n 
-0000062181 00000 n 
-0000062229 00000 n 
-0000062278 00000 n 
-0000062514 00000 n 
-0000070018 00000 n 
-0000070066 00000 n 
-0000070115 00000 n 
-0000070386 00000 n 
-0000070565 00000 n 
-0000070640 00000 n 
-0000070819 00000 n 
-0000070894 00000 n 
-0000071068 00000 n 
-0000071144 00000 n 
-0000079557 00000 n 
-0000079605 00000 n 
-0000079654 00000 n 
-0000079918 00000 n 
-0000080090 00000 n 
-0000080152 00000 n 
-0000080331 00000 n 
-0000080407 00000 n 
-0000085683 00000 n 
-0000085731 00000 n 
-0000085780 00000 n 
-0000086037 00000 n 
-0000086218 00000 n 
-0000086283 00000 n 
-0000097001 00000 n 
-0000097049 00000 n 
-0000097098 00000 n 
-0000097334 00000 n 
-0000102403 00000 n 
-0000102451 00000 n 
-0000102500 00000 n 
-0000102762 00000 n 
-0000102943 00000 n 
-0000103023 00000 n 
-0000111316 00000 n 
-0000111365 00000 n 
-0000111415 00000 n 
-0000111733 00000 n 
-0000111913 00000 n 
-0000112018 00000 n 
-0000112198 00000 n 
-0000112303 00000 n 
-0000112479 00000 n 
-0000112586 00000 n 
-0000112762 00000 n 
-0000112841 00000 n 
-0000113021 00000 n 
-0000113126 00000 n 
-0000113307 00000 n 
-0000113382 00000 n 
-0000113563 00000 n 
-0000113638 00000 n 
-0000113820 00000 n 
-0000113898 00000 n 
-0000121839 00000 n 
-0000121888 00000 n 
-0000121938 00000 n 
-0000122178 00000 n 
-0000129455 00000 n 
-0000129504 00000 n 
-0000129554 00000 n 
-0000129762 00000 n 
-0000129973 00000 n 
-0000130022 00000 n 
-0000130072 00000 n 
-0000130342 00000 n 
-0000130521 00000 n 
-0000130585 00000 n 
-0000130764 00000 n 
-0000130828 00000 n 
-0000135470 00000 n 
-0000135519 00000 n 
-0000135569 00000 n 
-0000135847 00000 n 
-0000136025 00000 n 
-0000136104 00000 n 
-0000136277 00000 n 
-0000136455 00000 n 
-0000136534 00000 n 
-0000142522 00000 n 
-0000142571 00000 n 
-0000142621 00000 n 
-0000142670 00000 n 
-0000142720 00000 n 
-0000142831 00000 n 
-0000142894 00000 n 
-0000143038 00000 n 
-0000143209 00000 n 
-0000143356 00000 n 
-0000145693 00000 n 
-0000145802 00000 n 
-0000145883 00000 n 
-0000145991 00000 n 
-0000146070 00000 n 
-0000146127 00000 n 
-0000146238 00000 n 
-0000146327 00000 n 
-0000146406 00000 n 
-0000146463 00000 n 
-0000146596 00000 n 
-0000146668 00000 n 
-0000146740 00000 n 
-0000146812 00000 n 
-0000146921 00000 n 
-0000147032 00000 n 
-0000147104 00000 n 
-0000147176 00000 n 
-0000147331 00000 n 
-0000147403 00000 n 
-0000147475 00000 n 
-0000147555 00000 n 
-0000147612 00000 n 
-0000147684 00000 n 
-0000147756 00000 n 
-0000147828 00000 n 
-0000147910 00000 n 
-0000148054 00000 n 
-0000148134 00000 n 
-0000148192 00000 n 
-0000148264 00000 n 
+0000003085 00000 n 
+0000003400 00000 n 
+0000003573 00000 n 
+0000003638 00000 n 
+0000003821 00000 n 
+0000003925 00000 n 
+0000004101 00000 n 
+0000004168 00000 n 
+0000004346 00000 n 
+0000004408 00000 n 
+0000004584 00000 n 
+0000004650 00000 n 
+0000004828 00000 n 
+0000004895 00000 n 
+0000005084 00000 n 
+0000005163 00000 n 
+0000005348 00000 n 
+0000005431 00000 n 
+0000013611 00000 n 
+0000013797 00000 n 
+0000014060 00000 n 
+0000014234 00000 n 
+0000014296 00000 n 
+0000014470 00000 n 
+0000014532 00000 n 
+0000025075 00000 n 
+0000025123 00000 n 
+0000025172 00000 n 
+0000025280 00000 n 
+0000025367 00000 n 
+0000025484 00000 n 
+0000025593 00000 n 
+0000025864 00000 n 
+0000026048 00000 n 
+0000026126 00000 n 
+0000026302 00000 n 
+0000026368 00000 n 
+0000026544 00000 n 
+0000026610 00000 n 
+0000035477 00000 n 
+0000035525 00000 n 
+0000035574 00000 n 
+0000035810 00000 n 
+0000047302 00000 n 
+0000047350 00000 n 
+0000047399 00000 n 
+0000047670 00000 n 
+0000047846 00000 n 
+0000047910 00000 n 
+0000048092 00000 n 
+0000048169 00000 n 
+0000048351 00000 n 
+0000048429 00000 n 
+0000054738 00000 n 
+0000054786 00000 n 
+0000054835 00000 n 
+0000055106 00000 n 
+0000055275 00000 n 
+0000055337 00000 n 
+0000055509 00000 n 
+0000055585 00000 n 
+0000055752 00000 n 
+0000062187 00000 n 
+0000062235 00000 n 
+0000062284 00000 n 
+0000062520 00000 n 
+0000070024 00000 n 
+0000070072 00000 n 
+0000070121 00000 n 
+0000070385 00000 n 
+0000070564 00000 n 
+0000070639 00000 n 
+0000070818 00000 n 
+0000070893 00000 n 
+0000078254 00000 n 
+0000078302 00000 n 
+0000078351 00000 n 
+0000078622 00000 n 
+0000078798 00000 n 
+0000078874 00000 n 
+0000079045 00000 n 
+0000079107 00000 n 
+0000079286 00000 n 
+0000079362 00000 n 
+0000085312 00000 n 
+0000085360 00000 n 
+0000085409 00000 n 
+0000085666 00000 n 
+0000085847 00000 n 
+0000085912 00000 n 
+0000096727 00000 n 
+0000096775 00000 n 
+0000096824 00000 n 
+0000097060 00000 n 
+0000102488 00000 n 
+0000102536 00000 n 
+0000102585 00000 n 
+0000102847 00000 n 
+0000103034 00000 n 
+0000103114 00000 n 
+0000111392 00000 n 
+0000111441 00000 n 
+0000111491 00000 n 
+0000111801 00000 n 
+0000111977 00000 n 
+0000112082 00000 n 
+0000112262 00000 n 
+0000112367 00000 n 
+0000112547 00000 n 
+0000112654 00000 n 
+0000112834 00000 n 
+0000112913 00000 n 
+0000113093 00000 n 
+0000113198 00000 n 
+0000113379 00000 n 
+0000113454 00000 n 
+0000113631 00000 n 
+0000113706 00000 n 
+0000121135 00000 n 
+0000121184 00000 n 
+0000121234 00000 n 
+0000121496 00000 n 
+0000121680 00000 n 
+0000121758 00000 n 
+0000129346 00000 n 
+0000129395 00000 n 
+0000129445 00000 n 
+0000129674 00000 n 
+0000130263 00000 n 
+0000130312 00000 n 
+0000130362 00000 n 
+0000130632 00000 n 
+0000130811 00000 n 
+0000130875 00000 n 
+0000131054 00000 n 
+0000131118 00000 n 
+0000135760 00000 n 
+0000135809 00000 n 
+0000135859 00000 n 
+0000136137 00000 n 
+0000136315 00000 n 
+0000136394 00000 n 
+0000136567 00000 n 
+0000136745 00000 n 
+0000136824 00000 n 
+0000142812 00000 n 
+0000142861 00000 n 
+0000142911 00000 n 
+0000142960 00000 n 
+0000143010 00000 n 
+0000143121 00000 n 
+0000143184 00000 n 
+0000143328 00000 n 
+0000143499 00000 n 
+0000143646 00000 n 
+0000145983 00000 n 
+0000146092 00000 n 
+0000146173 00000 n 
+0000146281 00000 n 
+0000146360 00000 n 
+0000146417 00000 n 
+0000146528 00000 n 
+0000146617 00000 n 
+0000146696 00000 n 
+0000146753 00000 n 
+0000146886 00000 n 
+0000146958 00000 n 
+0000147030 00000 n 
+0000147102 00000 n 
+0000147211 00000 n 
+0000147322 00000 n 
+0000147394 00000 n 
+0000147466 00000 n 
+0000147621 00000 n 
+0000147693 00000 n 
+0000147765 00000 n 
+0000147845 00000 n 
+0000147902 00000 n 
+0000147974 00000 n 
+0000148046 00000 n 
+0000148118 00000 n 
+0000148200 00000 n 
 0000148344 00000 n 
-0000148402 00000 n 
+0000148424 00000 n 
 0000148482 00000 n 
-0000148540 00000 n 
-0000148652 00000 n 
-0000148763 00000 n 
-0000148835 00000 n 
-0000148915 00000 n 
-0000148973 00000 n 
-0000149063 00000 n 
-0000149143 00000 n 
-0000149201 00000 n 
-0000149323 00000 n 
-0000149431 00000 n 
-0000149513 00000 n 
-0000149602 00000 n 
-0000149673 00000 n 
-0000149838 00000 n 
-0000149909 00000 n 
-0000149980 00000 n 
-0000150052 00000 n 
-0000150124 00000 n 
-0000150196 00000 n 
-0000150268 00000 n 
-0000150340 00000 n 
-0000150485 00000 n 
-0000150557 00000 n 
-0000150629 00000 n 
-0000150701 00000 n 
-0000150773 00000 n 
-0000150845 00000 n 
-0000151034 00000 n 
-0000151106 00000 n 
-0000151186 00000 n 
-0000151245 00000 n 
-0000151317 00000 n 
-0000151389 00000 n 
-0000151461 00000 n 
-0000151533 00000 n 
-0000151605 00000 n 
-0000151677 00000 n 
-0000151749 00000 n 
-0000151872 00000 n 
-0000151944 00000 n 
-0000152024 00000 n 
-0000152083 00000 n 
-0000152155 00000 n 
-0000152238 00000 n 
-0000152318 00000 n 
-0000152401 00000 n 
-0000152510 00000 n 
-0000152593 00000 n 
-0000152684 00000 n 
-0000152756 00000 n 
-0000152869 00000 n 
-0000152981 00000 n 
-0000153060 00000 n 
-0000153142 00000 n 
-0000153231 00000 n 
-0000153310 00000 n 
-0000153369 00000 n 
-0000153481 00000 n 
-0000153563 00000 n 
-0000153674 00000 n 
-0000153754 00000 n 
-0000153813 00000 n 
-0000153885 00000 n 
-0000153998 00000 n 
-0000154081 00000 n 
-0000154281 00000 n 
-0000154361 00000 n 
-0000154420 00000 n 
-0000154492 00000 n 
-0000154564 00000 n 
-0000154636 00000 n 
-0000154708 00000 n 
-0000154780 00000 n 
-0000154852 00000 n 
-0000154924 00000 n 
-0000154996 00000 n 
-0000155068 00000 n 
-0000155151 00000 n 
-0000155242 00000 n 
-0000155314 00000 n 
-0000155424 00000 n 
-0000155507 00000 n 
-0000155652 00000 n 
-0000155724 00000 n 
-0000155796 00000 n 
-0000155868 00000 n 
-0000155940 00000 n 
-0000156012 00000 n 
-0000156095 00000 n 
-0000156212 00000 n 
-0000156295 00000 n 
-0000156375 00000 n 
-0000156455 00000 n 
-0000156595 00000 n 
-0000156704 00000 n 
-0000156786 00000 n 
-0000156938 00000 n 
-0000157009 00000 n 
-0000157080 00000 n 
-0000157151 00000 n 
-0000157223 00000 n 
-0000157295 00000 n 
-0000157367 00000 n 
-0000157450 00000 n 
-0000157560 00000 n 
-0000157643 00000 n 
-0000157799 00000 n 
-0000157871 00000 n 
-0000157943 00000 n 
-0000158015 00000 n 
-0000158087 00000 n 
-0000158159 00000 n 
-0000158231 00000 n 
-0000158340 00000 n 
-0000158423 00000 n 
-0000158535 00000 n 
-0000158607 00000 n 
-0000158679 00000 n 
-0000158789 00000 n 
-0000158872 00000 n 
-0000159039 00000 n 
-0000159111 00000 n 
-0000159183 00000 n 
-0000159255 00000 n 
-0000159327 00000 n 
-0000159399 00000 n 
-0000159471 00000 n 
-0000159543 00000 n 
-0000159626 00000 n 
-0000159739 00000 n 
-0000159822 00000 n 
-0000159989 00000 n 
-0000160061 00000 n 
-0000160133 00000 n 
-0000160205 00000 n 
-0000160277 00000 n 
-0000160349 00000 n 
-0000160421 00000 n 
-0000160493 00000 n 
-0000160576 00000 n 
-0000160685 00000 n 
-0000160767 00000 n 
-0000160941 00000 n 
-0000161012 00000 n 
-0000161083 00000 n 
-0000161154 00000 n 
-0000161225 00000 n 
-0000161305 00000 n 
-0000161364 00000 n 
-0000161436 00000 n 
-0000161508 00000 n 
-0000161580 00000 n 
-0000161663 00000 n 
-0000161776 00000 n 
-0000161859 00000 n 
-0000162004 00000 n 
-0000162076 00000 n 
-0000162148 00000 n 
-0000162220 00000 n 
-0000162292 00000 n 
-0000162372 00000 n 
-0000162431 00000 n 
-0000162514 00000 n 
-0000162626 00000 n 
-0000162706 00000 n 
-0000162789 00000 n 
-0000162880 00000 n 
-0000162960 00000 n 
-0000163019 00000 n 
-0000163102 00000 n 
-0000163234 00000 n 
-0000163348 00000 n 
-0000163430 00000 n 
-0000163509 00000 n 
-0000163591 00000 n 
-0000163701 00000 n 
-0000163783 00000 n 
-0000163862 00000 n 
-0000163944 00000 n 
-0000164053 00000 n 
-0000164136 00000 n 
-0000164216 00000 n 
-0000164324 00000 n 
-0000164407 00000 n 
-0000164487 00000 n 
-0000164601 00000 n 
-0000164684 00000 n 
-0000164881 00000 n 
-0000164953 00000 n 
-0000165025 00000 n 
-0000165105 00000 n 
-0000165164 00000 n 
-0000165236 00000 n 
-0000165308 00000 n 
-0000165380 00000 n 
-0000165452 00000 n 
-0000165524 00000 n 
-0000165601 00000 n 
-0000165660 00000 n 
-0000165740 00000 n 
-0000165799 00000 n 
-0000165882 00000 n 
-0000165995 00000 n 
-0000166077 00000 n 
-0000166186 00000 n 
-0000166257 00000 n 
-0000166328 00000 n 
-0000166449 00000 n 
-0000166520 00000 n 
-0000166592 00000 n 
-0000166664 00000 n 
-0000166774 00000 n 
-0000166857 00000 n 
-0000166948 00000 n 
-0000167020 00000 n 
-0000167103 00000 n 
-0000167212 00000 n 
-0000167295 00000 n 
-0000167386 00000 n 
-0000167458 00000 n 
-0000167541 00000 n 
-0000167652 00000 n 
-0000167735 00000 n 
-0000167847 00000 n 
-0000167919 00000 n 
-0000167991 00000 n 
-0000168122 00000 n 
-0000168244 00000 n 
-0000168316 00000 n 
-0000168388 00000 n 
-0000168460 00000 n 
-0000168571 00000 n 
-0000168654 00000 n 
-0000168734 00000 n 
-0000168843 00000 n 
-0000168922 00000 n 
-0000169004 00000 n 
-0000169093 00000 n 
-0000169172 00000 n 
-0000169231 00000 n 
-0000169313 00000 n 
-0000169420 00000 n 
-0000169491 00000 n 
-0000169563 00000 n 
-0000169646 00000 n 
-0000169756 00000 n 
-0000169839 00000 n 
-0000169930 00000 n 
-0000170010 00000 n 
-0000170069 00000 n 
-0000170152 00000 n 
-0000170286 00000 n 
-0000170358 00000 n 
-0000170430 00000 n 
-0000170502 00000 n 
-0000170574 00000 n 
-0000170657 00000 n 
-0000170737 00000 n 
-0000170848 00000 n 
-0000170931 00000 n 
-0000171076 00000 n 
-0000171148 00000 n 
-0000171220 00000 n 
-0000171292 00000 n 
-0000171364 00000 n 
-0000171436 00000 n 
-0000171519 00000 n 
-0000171630 00000 n 
-0000171713 00000 n 
-0000171873 00000 n 
-0000171945 00000 n 
-0000172025 00000 n 
-0000172084 00000 n 
-0000172161 00000 n 
-0000172215 00000 n 
-0000172269 00000 n 
-0000172346 00000 n 
-0000172400 00000 n 
-0000172454 00000 n 
-0000172539 00000 n 
-0000172598 00000 n 
-0000172652 00000 n 
-0000172706 00000 n 
-0000172788 00000 n 
-0000172899 00000 n 
-0000172981 00000 n 
-0000173071 00000 n 
-0000173143 00000 n 
-0000173226 00000 n 
-0000173314 00000 n 
-0000173436 00000 n 
-0000173547 00000 n 
-0000173630 00000 n 
-0000173721 00000 n 
-0000173801 00000 n 
-0000173860 00000 n 
-0000173973 00000 n 
-0000174056 00000 n 
-0000174136 00000 n 
-0000174250 00000 n 
-0000174330 00000 n 
-0000174413 00000 n 
-0000174496 00000 n 
-0000174587 00000 n 
-0000174659 00000 n 
-0000174745 00000 n 
-0000174823 00000 n 
-0000174906 00000 n 
-0000174986 00000 n 
-0000175066 00000 n 
-0000175208 00000 n 
-0000175291 00000 n 
-0000175371 00000 n 
-0000175451 00000 n 
-0000175534 00000 n 
-0000175614 00000 n 
-0000175694 00000 n 
-0000175777 00000 n 
-0000175857 00000 n 
-0000175937 00000 n 
-0000176020 00000 n 
-0000176100 00000 n 
-0000176180 00000 n 
-0000176263 00000 n 
-0000176344 00000 n 
-0000176425 00000 n 
-0000176508 00000 n 
-0000176589 00000 n 
-0000176670 00000 n 
-0000176753 00000 n 
-0000176834 00000 n 
-0000176915 00000 n 
-0000176998 00000 n 
-0000177079 00000 n 
-0000177160 00000 n 
-0000177251 00000 n 
-0000177323 00000 n 
-0000177403 00000 n 
-0000177483 00000 n 
-0000177606 00000 n 
-0000177678 00000 n 
-0000177750 00000 n 
-0000177822 00000 n 
-0000177913 00000 n 
-0000178022 00000 n 
-0000178102 00000 n 
-0000178182 00000 n 
-0000178273 00000 n 
-0000178345 00000 n 
-0000178457 00000 n 
-0000178529 00000 n 
-0000178609 00000 n 
-0000178668 00000 n 
-0000178791 00000 n 
-0000178863 00000 n 
-0000178972 00000 n 
-0000179081 00000 n 
-0000179204 00000 n 
-0000179276 00000 n 
-0000179348 00000 n 
-0000179420 00000 n 
-0000179532 00000 n 
-0000179604 00000 n 
-0000179676 00000 n 
-0000179791 00000 n 
-0000179882 00000 n 
-0000179954 00000 n 
-0000180037 00000 n 
-0000180119 00000 n 
-0000180197 00000 n 
-0000180277 00000 n 
-0000180357 00000 n 
-0000180440 00000 n 
-0000180522 00000 n 
-0000180600 00000 n 
-0000180680 00000 n 
-0000180771 00000 n 
-0000180843 00000 n 
-0000180926 00000 n 
-0000181008 00000 n 
-0000181086 00000 n 
-0000181166 00000 n 
-0000181246 00000 n 
-0000181329 00000 n 
-0000181410 00000 n 
-0000181488 00000 n 
-0000181567 00000 n 
-0000181656 00000 n 
-0000181727 00000 n 
-0000181839 00000 n 
-0000181918 00000 n 
-0000182001 00000 n 
-0000182082 00000 n 
-0000182160 00000 n 
-0000182239 00000 n 
-0000182318 00000 n 
-0000182401 00000 n 
-0000182483 00000 n 
-0000182561 00000 n 
-0000182641 00000 n 
-0000182732 00000 n 
-0000182804 00000 n 
-0000182887 00000 n 
-0000182969 00000 n 
-0000183047 00000 n 
-0000183127 00000 n 
-0000183207 00000 n 
-0000183290 00000 n 
-0000183372 00000 n 
-0000183450 00000 n 
-0000183530 00000 n 
-0000183610 00000 n 
-0000183693 00000 n 
-0000183775 00000 n 
-0000183853 00000 n 
-0000183933 00000 n 
-0000184013 00000 n 
-0000184096 00000 n 
-0000184178 00000 n 
-0000184256 00000 n 
-0000184336 00000 n 
-0000184416 00000 n 
-0000184499 00000 n 
-0000184581 00000 n 
-0000184659 00000 n 
-0000184739 00000 n 
-0000184830 00000 n 
-0000184902 00000 n 
-0000185009 00000 n 
-0000185089 00000 n 
-0000185172 00000 n 
-0000185252 00000 n 
-0000185335 00000 n 
-0000185447 00000 n 
-0000185530 00000 n 
-0000185640 00000 n 
-0000185711 00000 n 
-0000185782 00000 n 
-0000185915 00000 n 
-0000185986 00000 n 
-0000186058 00000 n 
-0000186130 00000 n 
-0000186202 00000 n 
-0000186283 00000 n 
-0000186367 00000 n 
-0000186513 00000 n 
-0000186585 00000 n 
-0000186657 00000 n 
-0000186729 00000 n 
-0000186801 00000 n 
-0000186873 00000 n 
-0000186987 00000 n 
-0000187071 00000 n 
-0000187163 00000 n 
-0000187243 00000 n 
-0000187304 00000 n 
-0000187388 00000 n 
-0000187500 00000 n 
-0000187584 00000 n 
-0000187697 00000 n 
-0000187769 00000 n 
-0000187841 00000 n 
-0000187953 00000 n 
-0000188037 00000 n 
-0000188118 00000 n 
-0000188202 00000 n 
-0000188314 00000 n 
-0000188397 00000 n 
-0000188528 00000 n 
-0000188599 00000 n 
-0000188670 00000 n 
-0000188749 00000 n 
-0000188810 00000 n 
-0000188881 00000 n 
-0000188996 00000 n 
-0000189080 00000 n 
-0000189204 00000 n 
-0000189276 00000 n 
-0000189348 00000 n 
-0000189428 00000 n 
-0000189489 00000 n 
-0000189573 00000 n 
-0000189665 00000 n 
-0000189745 00000 n 
-0000189806 00000 n 
-0000189916 00000 n 
-0000190039 00000 n 
-0000190119 00000 n 
-0000190180 00000 n 
-0000190293 00000 n 
-0000190377 00000 n 
-0000190501 00000 n 
-0000190573 00000 n 
-0000190645 00000 n 
-0000190725 00000 n 
-0000190786 00000 n 
-0000190896 00000 n 
-0000190980 00000 n 
-0000191072 00000 n 
-0000191152 00000 n 
-0000191213 00000 n 
-0000191323 00000 n 
-0000191407 00000 n 
-0000191499 00000 n 
-0000191579 00000 n 
-0000191640 00000 n 
-0000191753 00000 n 
-0000191837 00000 n 
-0000191929 00000 n 
-0000192009 00000 n 
-0000192070 00000 n 
-0000192180 00000 n 
-0000192263 00000 n 
-0000192383 00000 n 
-0000192454 00000 n 
-0000192525 00000 n 
-0000192596 00000 n 
-0000192679 00000 n 
-0000192791 00000 n 
-0000192875 00000 n 
-0000192956 00000 n 
-0000193037 00000 n 
-0000193129 00000 n 
-0000193201 00000 n 
-0000193315 00000 n 
-0000193399 00000 n 
-0000193545 00000 n 
-0000193617 00000 n 
-0000193689 00000 n 
-0000193761 00000 n 
-0000193833 00000 n 
-0000193905 00000 n 
-0000193997 00000 n 
-0000194069 00000 n 
-0000194150 00000 n 
-0000194234 00000 n 
-0000194315 00000 n 
-0000194407 00000 n 
-0000194462 00000 n 
-0000194590 00000 n 
-0000194701 00000 n 
-0000194784 00000 n 
-0000194864 00000 n 
-0000194973 00000 n 
-0000195053 00000 n 
-0000195136 00000 n 
-0000195269 00000 n 
-0000195377 00000 n 
-0000195457 00000 n 
-0000195518 00000 n 
-0000195590 00000 n 
-0000195699 00000 n 
-0000195780 00000 n 
-0000195897 00000 n 
-0000195978 00000 n 
-0000196062 00000 n 
-0000196197 00000 n 
-0000196306 00000 n 
-0000196386 00000 n 
-0000196447 00000 n 
-0000196519 00000 n 
-0000196628 00000 n 
-0000196759 00000 n 
-0000196868 00000 n 
-0000196951 00000 n 
-0000197041 00000 n 
-0000197112 00000 n 
-0000197195 00000 n 
-0000197275 00000 n 
-0000197360 00000 n 
-0000197444 00000 n 
-0000197565 00000 n 
-0000197637 00000 n 
-0000197714 00000 n 
-0000197775 00000 n 
-0000197855 00000 n 
-0000197916 00000 n 
-0000198081 00000 n 
-0000198204 00000 n 
-0000198284 00000 n 
-0000198345 00000 n 
-0000198417 00000 n 
-0000198489 00000 n 
-0000198561 00000 n 
-0000198633 00000 n 
-0000198705 00000 n 
-0000198839 00000 n 
-0000198923 00000 n 
-0000199015 00000 n 
-0000199087 00000 n 
-0000199171 00000 n 
+0000148554 00000 n 
+0000148634 00000 n 
+0000148692 00000 n 
+0000148772 00000 n 
+0000148830 00000 n 
+0000148942 00000 n 
+0000149053 00000 n 
+0000149125 00000 n 
+0000149205 00000 n 
+0000149263 00000 n 
+0000149353 00000 n 
+0000149433 00000 n 
+0000149491 00000 n 
+0000149613 00000 n 
+0000149721 00000 n 
+0000149803 00000 n 
+0000149892 00000 n 
+0000149963 00000 n 
+0000150128 00000 n 
+0000150199 00000 n 
+0000150270 00000 n 
+0000150342 00000 n 
+0000150414 00000 n 
+0000150486 00000 n 
+0000150558 00000 n 
+0000150630 00000 n 
+0000150775 00000 n 
+0000150847 00000 n 
+0000150919 00000 n 
+0000150991 00000 n 
+0000151063 00000 n 
+0000151135 00000 n 
+0000151324 00000 n 
+0000151396 00000 n 
+0000151476 00000 n 
+0000151535 00000 n 
+0000151607 00000 n 
+0000151679 00000 n 
+0000151751 00000 n 
+0000151823 00000 n 
+0000151895 00000 n 
+0000151967 00000 n 
+0000152039 00000 n 
+0000152162 00000 n 
+0000152234 00000 n 
+0000152314 00000 n 
+0000152373 00000 n 
+0000152445 00000 n 
+0000152528 00000 n 
+0000152608 00000 n 
+0000152691 00000 n 
+0000152800 00000 n 
+0000152883 00000 n 
+0000152974 00000 n 
+0000153046 00000 n 
+0000153159 00000 n 
+0000153271 00000 n 
+0000153350 00000 n 
+0000153432 00000 n 
+0000153521 00000 n 
+0000153600 00000 n 
+0000153659 00000 n 
+0000153771 00000 n 
+0000153853 00000 n 
+0000153964 00000 n 
+0000154044 00000 n 
+0000154103 00000 n 
+0000154175 00000 n 
+0000154288 00000 n 
+0000154371 00000 n 
+0000154571 00000 n 
+0000154651 00000 n 
+0000154710 00000 n 
+0000154782 00000 n 
+0000154854 00000 n 
+0000154926 00000 n 
+0000154998 00000 n 
+0000155070 00000 n 
+0000155142 00000 n 
+0000155214 00000 n 
+0000155286 00000 n 
+0000155358 00000 n 
+0000155441 00000 n 
+0000155532 00000 n 
+0000155604 00000 n 
+0000155714 00000 n 
+0000155797 00000 n 
+0000155942 00000 n 
+0000156014 00000 n 
+0000156086 00000 n 
+0000156158 00000 n 
+0000156230 00000 n 
+0000156302 00000 n 
+0000156385 00000 n 
+0000156502 00000 n 
+0000156585 00000 n 
+0000156665 00000 n 
+0000156745 00000 n 
+0000156885 00000 n 
+0000156994 00000 n 
+0000157076 00000 n 
+0000157228 00000 n 
+0000157299 00000 n 
+0000157370 00000 n 
+0000157441 00000 n 
+0000157513 00000 n 
+0000157585 00000 n 
+0000157657 00000 n 
+0000157740 00000 n 
+0000157850 00000 n 
+0000157933 00000 n 
+0000158089 00000 n 
+0000158161 00000 n 
+0000158233 00000 n 
+0000158305 00000 n 
+0000158377 00000 n 
+0000158449 00000 n 
+0000158521 00000 n 
+0000158630 00000 n 
+0000158713 00000 n 
+0000158825 00000 n 
+0000158897 00000 n 
+0000158969 00000 n 
+0000159079 00000 n 
+0000159162 00000 n 
+0000159329 00000 n 
+0000159401 00000 n 
+0000159473 00000 n 
+0000159545 00000 n 
+0000159617 00000 n 
+0000159689 00000 n 
+0000159761 00000 n 
+0000159833 00000 n 
+0000159916 00000 n 
+0000160029 00000 n 
+0000160112 00000 n 
+0000160279 00000 n 
+0000160351 00000 n 
+0000160423 00000 n 
+0000160495 00000 n 
+0000160567 00000 n 
+0000160639 00000 n 
+0000160711 00000 n 
+0000160783 00000 n 
+0000160866 00000 n 
+0000160975 00000 n 
+0000161057 00000 n 
+0000161231 00000 n 
+0000161302 00000 n 
+0000161373 00000 n 
+0000161444 00000 n 
+0000161515 00000 n 
+0000161595 00000 n 
+0000161654 00000 n 
+0000161726 00000 n 
+0000161798 00000 n 
+0000161870 00000 n 
+0000161953 00000 n 
+0000162066 00000 n 
+0000162149 00000 n 
+0000162294 00000 n 
+0000162366 00000 n 
+0000162438 00000 n 
+0000162510 00000 n 
+0000162582 00000 n 
+0000162662 00000 n 
+0000162721 00000 n 
+0000162804 00000 n 
+0000162916 00000 n 
+0000162996 00000 n 
+0000163079 00000 n 
+0000163170 00000 n 
+0000163250 00000 n 
+0000163309 00000 n 
+0000163392 00000 n 
+0000163524 00000 n 
+0000163638 00000 n 
+0000163720 00000 n 
+0000163799 00000 n 
+0000163881 00000 n 
+0000163991 00000 n 
+0000164073 00000 n 
+0000164152 00000 n 
+0000164234 00000 n 
+0000164343 00000 n 
+0000164426 00000 n 
+0000164506 00000 n 
+0000164614 00000 n 
+0000164697 00000 n 
+0000164777 00000 n 
+0000164891 00000 n 
+0000164974 00000 n 
+0000165171 00000 n 
+0000165243 00000 n 
+0000165315 00000 n 
+0000165395 00000 n 
+0000165454 00000 n 
+0000165526 00000 n 
+0000165598 00000 n 
+0000165670 00000 n 
+0000165742 00000 n 
+0000165814 00000 n 
+0000165891 00000 n 
+0000165950 00000 n 
+0000166030 00000 n 
+0000166089 00000 n 
+0000166172 00000 n 
+0000166285 00000 n 
+0000166367 00000 n 
+0000166476 00000 n 
+0000166547 00000 n 
+0000166618 00000 n 
+0000166739 00000 n 
+0000166810 00000 n 
+0000166882 00000 n 
+0000166954 00000 n 
+0000167064 00000 n 
+0000167147 00000 n 
+0000167238 00000 n 
+0000167310 00000 n 
+0000167393 00000 n 
+0000167502 00000 n 
+0000167585 00000 n 
+0000167676 00000 n 
+0000167748 00000 n 
+0000167831 00000 n 
+0000167942 00000 n 
+0000168025 00000 n 
+0000168137 00000 n 
+0000168209 00000 n 
+0000168281 00000 n 
+0000168412 00000 n 
+0000168534 00000 n 
+0000168606 00000 n 
+0000168678 00000 n 
+0000168750 00000 n 
+0000168861 00000 n 
+0000168944 00000 n 
+0000169024 00000 n 
+0000169133 00000 n 
+0000169212 00000 n 
+0000169294 00000 n 
+0000169383 00000 n 
+0000169462 00000 n 
+0000169521 00000 n 
+0000169603 00000 n 
+0000169710 00000 n 
+0000169781 00000 n 
+0000169853 00000 n 
+0000169936 00000 n 
+0000170046 00000 n 
+0000170129 00000 n 
+0000170220 00000 n 
+0000170300 00000 n 
+0000170359 00000 n 
+0000170442 00000 n 
+0000170576 00000 n 
+0000170648 00000 n 
+0000170720 00000 n 
+0000170792 00000 n 
+0000170864 00000 n 
+0000170947 00000 n 
+0000171027 00000 n 
+0000171138 00000 n 
+0000171221 00000 n 
+0000171366 00000 n 
+0000171438 00000 n 
+0000171510 00000 n 
+0000171582 00000 n 
+0000171654 00000 n 
+0000171726 00000 n 
+0000171809 00000 n 
+0000171919 00000 n 
+0000172001 00000 n 
+0000172142 00000 n 
+0000172213 00000 n 
+0000172292 00000 n 
+0000172351 00000 n 
+0000172422 00000 n 
+0000172493 00000 n 
+0000172573 00000 n 
+0000172632 00000 n 
+0000172715 00000 n 
+0000172827 00000 n 
+0000172910 00000 n 
+0000173001 00000 n 
+0000173073 00000 n 
+0000173156 00000 n 
+0000173244 00000 n 
+0000173366 00000 n 
+0000173477 00000 n 
+0000173560 00000 n 
+0000173651 00000 n 
+0000173731 00000 n 
+0000173790 00000 n 
+0000173903 00000 n 
+0000173986 00000 n 
+0000174066 00000 n 
+0000174180 00000 n 
+0000174260 00000 n 
+0000174343 00000 n 
+0000174434 00000 n 
+0000174488 00000 n 
+0000174577 00000 n 
+0000174648 00000 n 
+0000174734 00000 n 
+0000174812 00000 n 
+0000174895 00000 n 
+0000174975 00000 n 
+0000175055 00000 n 
+0000175197 00000 n 
+0000175280 00000 n 
+0000175360 00000 n 
+0000175440 00000 n 
+0000175523 00000 n 
+0000175603 00000 n 
+0000175683 00000 n 
+0000175766 00000 n 
+0000175847 00000 n 
+0000175928 00000 n 
+0000176011 00000 n 
+0000176092 00000 n 
+0000176173 00000 n 
+0000176256 00000 n 
+0000176337 00000 n 
+0000176418 00000 n 
+0000176501 00000 n 
+0000176582 00000 n 
+0000176663 00000 n 
+0000176746 00000 n 
+0000176827 00000 n 
+0000176908 00000 n 
+0000176991 00000 n 
+0000177072 00000 n 
+0000177153 00000 n 
+0000177244 00000 n 
+0000177316 00000 n 
+0000177396 00000 n 
+0000177476 00000 n 
+0000177599 00000 n 
+0000177671 00000 n 
+0000177743 00000 n 
+0000177815 00000 n 
+0000177906 00000 n 
+0000178015 00000 n 
+0000178095 00000 n 
+0000178175 00000 n 
+0000178266 00000 n 
+0000178338 00000 n 
+0000178450 00000 n 
+0000178522 00000 n 
+0000178602 00000 n 
+0000178661 00000 n 
+0000178784 00000 n 
+0000178856 00000 n 
+0000178965 00000 n 
+0000179074 00000 n 
+0000179197 00000 n 
+0000179269 00000 n 
+0000179341 00000 n 
+0000179413 00000 n 
+0000179525 00000 n 
+0000179597 00000 n 
+0000179669 00000 n 
+0000179784 00000 n 
+0000179875 00000 n 
+0000179947 00000 n 
+0000180030 00000 n 
+0000180112 00000 n 
+0000180190 00000 n 
+0000180270 00000 n 
+0000180350 00000 n 
+0000180433 00000 n 
+0000180515 00000 n 
+0000180593 00000 n 
+0000180673 00000 n 
+0000180764 00000 n 
+0000180836 00000 n 
+0000180919 00000 n 
+0000181000 00000 n 
+0000181078 00000 n 
+0000181157 00000 n 
+0000181236 00000 n 
+0000181319 00000 n 
+0000181400 00000 n 
+0000181478 00000 n 
+0000181557 00000 n 
+0000181646 00000 n 
+0000181717 00000 n 
+0000181829 00000 n 
+0000181908 00000 n 
+0000181991 00000 n 
+0000182073 00000 n 
+0000182151 00000 n 
+0000182231 00000 n 
+0000182311 00000 n 
+0000182394 00000 n 
+0000182476 00000 n 
+0000182554 00000 n 
+0000182634 00000 n 
+0000182725 00000 n 
+0000182797 00000 n 
+0000182880 00000 n 
+0000182962 00000 n 
+0000183040 00000 n 
+0000183120 00000 n 
+0000183200 00000 n 
+0000183283 00000 n 
+0000183365 00000 n 
+0000183443 00000 n 
+0000183523 00000 n 
+0000183603 00000 n 
+0000183686 00000 n 
+0000183768 00000 n 
+0000183846 00000 n 
+0000183926 00000 n 
+0000184006 00000 n 
+0000184089 00000 n 
+0000184171 00000 n 
+0000184249 00000 n 
+0000184329 00000 n 
+0000184409 00000 n 
+0000184492 00000 n 
+0000184574 00000 n 
+0000184652 00000 n 
+0000184732 00000 n 
+0000184823 00000 n 
+0000184895 00000 n 
+0000185002 00000 n 
+0000185082 00000 n 
+0000185165 00000 n 
+0000185245 00000 n 
+0000185336 00000 n 
+0000185391 00000 n 
+0000185503 00000 n 
+0000185586 00000 n 
+0000185696 00000 n 
+0000185767 00000 n 
+0000185838 00000 n 
+0000185972 00000 n 
+0000186043 00000 n 
+0000186115 00000 n 
+0000186187 00000 n 
+0000186259 00000 n 
+0000186340 00000 n 
+0000186424 00000 n 
+0000186570 00000 n 
+0000186642 00000 n 
+0000186714 00000 n 
+0000186786 00000 n 
+0000186858 00000 n 
+0000186930 00000 n 
+0000187044 00000 n 
+0000187128 00000 n 
+0000187220 00000 n 
+0000187300 00000 n 
+0000187361 00000 n 
+0000187445 00000 n 
+0000187557 00000 n 
+0000187641 00000 n 
+0000187754 00000 n 
+0000187826 00000 n 
+0000187898 00000 n 
+0000188010 00000 n 
+0000188094 00000 n 
+0000188175 00000 n 
+0000188258 00000 n 
+0000188370 00000 n 
+0000188453 00000 n 
+0000188584 00000 n 
+0000188655 00000 n 
+0000188726 00000 n 
+0000188805 00000 n 
+0000188866 00000 n 
+0000188938 00000 n 
+0000189053 00000 n 
+0000189137 00000 n 
+0000189261 00000 n 
+0000189333 00000 n 
+0000189405 00000 n 
+0000189485 00000 n 
+0000189546 00000 n 
+0000189630 00000 n 
+0000189722 00000 n 
+0000189802 00000 n 
+0000189863 00000 n 
+0000189973 00000 n 
+0000190096 00000 n 
+0000190176 00000 n 
+0000190237 00000 n 
+0000190350 00000 n 
+0000190434 00000 n 
+0000190558 00000 n 
+0000190630 00000 n 
+0000190702 00000 n 
+0000190782 00000 n 
+0000190843 00000 n 
+0000190953 00000 n 
+0000191037 00000 n 
+0000191129 00000 n 
+0000191209 00000 n 
+0000191270 00000 n 
+0000191380 00000 n 
+0000191464 00000 n 
+0000191556 00000 n 
+0000191636 00000 n 
+0000191697 00000 n 
+0000191809 00000 n 
+0000191892 00000 n 
+0000191982 00000 n 
+0000192061 00000 n 
+0000192122 00000 n 
+0000192232 00000 n 
+0000192315 00000 n 
+0000192437 00000 n 
+0000192508 00000 n 
+0000192580 00000 n 
+0000192652 00000 n 
+0000192736 00000 n 
+0000192848 00000 n 
+0000192932 00000 n 
+0000193013 00000 n 
+0000193094 00000 n 
+0000193186 00000 n 
+0000193258 00000 n 
+0000193372 00000 n 
+0000193456 00000 n 
+0000193602 00000 n 
+0000193674 00000 n 
+0000193746 00000 n 
+0000193818 00000 n 
+0000193890 00000 n 
+0000193962 00000 n 
+0000194054 00000 n 
+0000194126 00000 n 
+0000194207 00000 n 
+0000194291 00000 n 
+0000194371 00000 n 
+0000194454 00000 n 
+0000194582 00000 n 
+0000194693 00000 n 
+0000194776 00000 n 
+0000194856 00000 n 
+0000194965 00000 n 
+0000195045 00000 n 
+0000195128 00000 n 
+0000195261 00000 n 
+0000195369 00000 n 
+0000195449 00000 n 
+0000195510 00000 n 
+0000195582 00000 n 
+0000195691 00000 n 
+0000195772 00000 n 
+0000195889 00000 n 
+0000195970 00000 n 
+0000196054 00000 n 
+0000196189 00000 n 
+0000196298 00000 n 
+0000196378 00000 n 
+0000196439 00000 n 
+0000196511 00000 n 
+0000196620 00000 n 
+0000196751 00000 n 
+0000196860 00000 n 
+0000196943 00000 n 
+0000197033 00000 n 
+0000197104 00000 n 
+0000197187 00000 n 
+0000197267 00000 n 
+0000197352 00000 n 
+0000197436 00000 n 
+0000197557 00000 n 
+0000197629 00000 n 
+0000197706 00000 n 
+0000197767 00000 n 
+0000197847 00000 n 
+0000197908 00000 n 
+0000198073 00000 n 
+0000198196 00000 n 
+0000198276 00000 n 
+0000198337 00000 n 
+0000198409 00000 n 
+0000198481 00000 n 
+0000198553 00000 n 
+0000198625 00000 n 
+0000198697 00000 n 
+0000198831 00000 n 
+0000198915 00000 n 
+0000199007 00000 n 
+0000199079 00000 n 
+0000199163 00000 n 
 0000206018 00000 n 
 0000206202 00000 n 
 0000206309 00000 n 
@@ -14313,10 +14310,10 @@ xref
 0000213763 00000 n 
 trailer
 <<
-  /ID [ <5e87cb0519e5eca3fcba03b2b8d49bd7> <5e87cb0519e5eca3fcba03b2b8d49bd7> ]
+  /ID [ <128a6592ec1ad595afc5a975f8cc5369> <128a6592ec1ad595afc5a975f8cc5369> ]
   /Info 1 0 R
   /Root 2 0 R
-  /Size 845
+  /Size 840
 >>
 startxref
 213918

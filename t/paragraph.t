@@ -39,7 +39,7 @@ my $xml = q{<Document>
      footnotes.
   </P>
   <P>
-    Paragraph with <Span FontStyle="bold">formatting</Span>, <Code>code</Code> and <Link>links</Link>.
+    Paragraph with <Span FontStyle="bold">formatting</Span>, <Code>code</Code> and <Link href="#blah">links</Link>.
   </P>
   <Note>
     <Lbl>

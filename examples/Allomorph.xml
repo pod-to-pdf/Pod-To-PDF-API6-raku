@@ -9,19 +9,19 @@
   </H2>
   <Code>class Allomorph is Str { }</Code>
   <P>
-    The <Code>Allomorph</Code> class is a common parent class for Raku's dual value types: <Link>ComplexStr</Link>, <Link>IntStr</Link>, <Link>NumStr</Link>, <Link>RatStr</Link>.
+    The <Code>Allomorph</Code> class is a common parent class for Raku's dual value types: <Link href="/type/ComplexStr">ComplexStr</Link>, <Link href="/type/IntStr">IntStr</Link>, <Link href="/type/NumStr">NumStr</Link>, <Link href="/type/RatStr">RatStr</Link>.
   </P>
   <P>
-    The dual value types (often referred to as <Link>allomorphs</Link>) allow for the representation of a value as both a string and a numeric type. Typically
-they will be created for you when the context is "stringy" but they can be determined to be numbers, such as in some <Link>quoting constructs</Link>:
+    The dual value types (often referred to as <Link href="/language/glossary#Allomorph">allomorphs</Link>) allow for the representation of a value as both a string and a numeric type. Typically
+    they will be created for you when the context is "stringy" but they can be determined to be numbers, such as in some <Link href="/language/quoting">quoting constructs</Link>:
   </P>
   <Code>my $c = &lt;42+0i&gt;;  say $c.^name; # OUTPUT: «ComplexStr»
 my $i = &lt;42&gt;;     say $i.^name; # OUTPUT: «IntStr»
 my $n = &lt;42.1e0&gt;; say $n.^name; # OUTPUT: «NumStr»
 my $r = &lt;42.1&gt;;   say $r.^name; # OUTPUT: «RatStr»</Code>
   <P>
-    As a subclass of both a <Link>Numeric</Link> class and <Link>Str</Link>, via the <Code>Allomorph</Code> class, an allomorph will be accepted where either is expected. However,
-an allomorph does not share object identity with its <Code>Numeric</Code> parent class- or <Code>Str</Code>-only variants:
+    As a subclass of both a <Link href="/type/Numeric">Numeric</Link> class and <Link href="/type/Str">Str</Link>, via the <Code>Allomorph</Code> class, an allomorph will be accepted where either is expected. However,
+    an allomorph does not share object identity with its <Code>Numeric</Code> parent class- or <Code>Str</Code>-only variants:
   </P>
   <Code>my ($complex-str, $int-str, $num-str, $rat-str)
            = &lt; 42+0i 42 42e10 42.1 &gt;;
@@ -38,7 +38,7 @@ say 42     &lt; 42+0i 42 42e10 42.1 &gt;;  # OUTPUT: «False»
 say 42e10  &lt; 42+0i 42 42e10 42.1 &gt;;  # OUTPUT: «False»
 say 42.1   &lt; 42+0i 42 42e10 42.1 &gt;;  # OUTPUT: «False»</Code>
   <P>
-    Please see <Link>the Numerics page</Link> for a more complete description on how to work with these allomorphs.
+    Please see <Link href="/language/numerics#Allomorphs">the Numerics page</Link> for a more complete description on how to work with these allomorphs.
   </P>
   <H1>
     Methods
@@ -48,9 +48,9 @@ say 42.1   &lt; 42+0i 42 42e10 42.1 &gt;;  # OUTPUT: «False»</Code>
   </H2>
   <Code>multi method ACCEPTS(Allomorph:D: Any:D \a)</Code>
   <P>
-    If the <Code>a</Code> parameter is <Link>Numeric</Link> (including another <Link>allomorph</Link>), checks if invocant's <Link>Numeric</Link> value <Link>ACCEPTS</Link> <Code>a</Code>. If the <Code>a</Code> parameter is <Link></Link><Link>
-Str</Link>, checks if invocant's <Link>Str</Link> value <Link>ACCEPTS</Link> <Code>a</Code>. If the <Code>a</Code> parameter is anything else, checks if both <Link>Numeric</Link> and <Link>Str</Link> values of the
-invocant <Code>ACCEPTS</Code> <Code>a</Code>.
+    If the <Code>a</Code> parameter is <Link href="/type/Numeric">Numeric</Link> (including another <Link href="/language/glossary#index-entry-Allomorph">allomorph</Link>), checks if invocant's <Link href="/type/Numeric">Numeric</Link> value <Link href="/type/Numeric#method_ACCEPTS">ACCEPTS</Link> <Code>a</Code>. If the <Code>a</Code> parameter is <Link href="/type/Str"></Link><Link href="/type/Str">
+Str</Link>, checks if invocant's <Link href="/type/Str">Str</Link> value <Link href="/type/Str#method_ACCEPTS">ACCEPTS</Link> <Code>a</Code>. If the <Code>a</Code> parameter is anything else, checks if both <Link href="/type/Numeric">Numeric</Link> and <Link href="/type/Str">Str</Link> values of the
+    invocant <Code>ACCEPTS</Code> <Code>a</Code>.
   </P>
   <Code>say "5.0" ~~ &lt;5&gt;; # OUTPUT: «False»
 say 5.0   ~~ &lt;5&gt;; # OUTPUT: «True»
@@ -63,84 +63,84 @@ say &lt;5.0&gt; ~~ &lt;5&gt;; # OUTPUT: «True»</Code>
     Returns <Code>False</Code> if the invocant is numerically <Code>0</Code>, otherwise returns <Code>True</Code>. The <Code>Str</Code> value of the invocant is not considered.
   </P>
   <P>
-    <Span FontStyle="bold">Note</Span>: For the <Code>Allomorph</Code> subclass <Link>RatStr</Link> also see <Link>Rational.Bool</Link>.
+    <Span FontStyle="bold">Note</Span>: For the <Code>Allomorph</Code> subclass <Link href="/type/RatStr">RatStr</Link> also see <Link href="/type/Rational#method_Bool">Rational.Bool</Link>.
   </P>
   <H2>
     method chomp
   </H2>
   <Code>method chomp(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Str.chomp</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#routine_chomp">Str.chomp</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method chop
   </H2>
   <Code>method chop(Allomorph:D: |c)</Code>
   <P>
-    Calls <Link>Str.chop</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#routine_chop">Str.chop</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method comb
   </H2>
   <Code>method comb(Allomorph:D: |c)</Code>
   <P>
-    Calls <Link>Str.comb</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#routine_comb">Str.comb</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method fc
   </H2>
   <Code>method fc(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Str.fc</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#routine_fc">Str.fc</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method flip
   </H2>
   <Code>method flip(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Str.flip</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#routine_flip">Str.flip</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method lc
   </H2>
   <Code>method lc(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Str.lc</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#routine_lc">Str.lc</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method pred
   </H2>
   <Code>method pred(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Numeric.pred</Link> on the invocant's numeric value.
+    Calls <Link href="/type/Numeric#method_pred">Numeric.pred</Link> on the invocant's numeric value.
   </P>
   <H2>
     method raku
   </H2>
   <Code>multi method raku(Allomorph:D:)</Code>
   <P>
-    Return a representation of the object that can be used via <Link>EVAL</Link> to reconstruct the value of the object.
+    Return a representation of the object that can be used via <Link href="/routine/EVAL">EVAL</Link> to reconstruct the value of the object.
   </P>
   <H2>
     method samecase
   </H2>
   <Code>method samecase(Allomorph:D: |c)</Code>
   <P>
-    Calls <Link>Str.samecase</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#method_samecase">Str.samecase</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method samemark
   </H2>
   <Code>method samemark(Allomorph:D: |c)</Code>
   <P>
-    Calls <Link>Str.samemark</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#routine_samemark">Str.samemark</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method split
   </H2>
   <Code>method split(Allomorph:D: |c)</Code>
   <P>
-    Calls <Link>Str.split</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#routine_split">Str.split</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method Str
@@ -154,84 +154,84 @@ say &lt;5.0&gt; ~~ &lt;5&gt;; # OUTPUT: «True»</Code>
   </H2>
   <Code>method subst(Allomorph:D: |c)</Code>
   <P>
-    Calls <Link>Str.subst</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#method_subst">Str.subst</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method subst-mutate
   </H2>
   <Code>method subst-mutate(Allomorph:D \SELF: |c)</Code>
   <P>
-    Calls <Link>Str.subst-mutate</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#method_subst-mutate">Str.subst-mutate</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method substr
   </H2>
   <Code>method substr(Allomorph:D: |c)</Code>
   <P>
-    Calls <Link>Str.substr</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#method_substr">Str.substr</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method substr-rw
   </H2>
   <Code>method substr-rw(Allomorph:D \SELF: $start = 0, $want = Whatever)</Code>
   <P>
-    Calls <Link>Str.substr-rw</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#method_substr-rw">Str.substr-rw</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method succ
   </H2>
   <Code>method succ(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Numeric.succ</Link> on the invocant's numeric value.
+    Calls <Link href="/type/Numeric#method_succ">Numeric.succ</Link> on the invocant's numeric value.
   </P>
   <H2>
     method tc
   </H2>
   <Code>method tc(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Str.tc</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#routine_tc">Str.tc</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method tclc
   </H2>
   <Code>method tclc(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Str.tclc</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#routine_tclc">Str.tclc</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method trim
   </H2>
   <Code>method trim(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Str.trim</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#method_trim">Str.trim</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method trim-leading
   </H2>
   <Code>method trim-leading(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Str.trim-leading</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#method_trim-leading">Str.trim-leading</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method trim-trailing
   </H2>
   <Code>method trim-trailing(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Str.trim-trailing</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#method_trim-trailing">Str.trim-trailing</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method uc
   </H2>
   <Code>method uc(Allomorph:D:)</Code>
   <P>
-    Calls <Link>Str.uc</Link> on the invocant's <Code>Str</Code> value.
+    Calls <Link href="/type/Str#routine_uc">Str.uc</Link> on the invocant's <Code>Str</Code> value.
   </P>
   <H2>
     method WHICH
   </H2>
   <Code>multi method WHICH(Allomorph:D:)</Code>
   <P>
-    Returns an object of type <Link>ValueObjAt</Link> which uniquely identifies the object.
+    Returns an object of type <Link href="/type/ValueObjAt">ValueObjAt</Link> which uniquely identifies the object.
   </P>
   <Code>my $f = &lt;42.1e0&gt;;
 say $f.WHICH;     # OUTPUT: «NumStr|Num|42.1|Str|42.1e0»</Code>
@@ -244,7 +244,7 @@ say $f.WHICH;     # OUTPUT: «NumStr|Num|42.1|Str|42.1e0»</Code>
   <Code>multi sub infix:&lt;cmp&gt;(Allomorph:D $a, Allomorph:D $b)</Code>
   <P>
     Compare two <Code>Allomorph</Code> objects. The comparison is done on the <Code>Numeric</Code> value first and then on the <Code>Str</Code> value. If you want to compare
-in a different order then you would coerce to an <Code>Numeric</Code> or <Code>Str</Code> value first:
+    in a different order then you would coerce to an <Code>Numeric</Code> or <Code>Str</Code> value first:
   </P>
   <Code>my $f = IntStr.new(42, "smaller");
 my $g = IntStr.new(43, "larger");
@@ -255,7 +255,7 @@ say $f.Str cmp $g.Str;  # OUTPUT: «More»</Code>
   </H2>
   <Code>multi sub infix:&lt;eqv&gt;(Allomorph:D $a, Allomorph:D $b --&gt; Bool:D)</Code>
   <P>
-    Returns <Code>True</Code> if the two <Code>Allomorph</Code> <Code>$a</Code> and <Code>$b</Code> are of the same type, their <Code>Numeric</Code> values are <Link>equivalent</Link> and their <Code>Str</Code> values are
-also <Link>equivalent</Link>. Returns <Code>False</Code> otherwise.
+    Returns <Code>True</Code> if the two <Code>Allomorph</Code> <Code>$a</Code> and <Code>$b</Code> are of the same type, their <Code>Numeric</Code> values are <Link href="/routine/eqv">equivalent</Link> and their <Code>Str</Code> values are
+    also <Link href="/routine/eqv">equivalent</Link>. Returns <Code>False</Code> otherwise.
   </P>
 </Document>

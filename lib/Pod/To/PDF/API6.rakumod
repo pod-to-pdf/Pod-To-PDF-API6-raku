@@ -304,13 +304,13 @@ class Pod::To::PDF::API6:ver<0.0.1> {
                 }
             }
             when 'N' {
-                @!footnotes-back.push: self!dest;
                 $!gutter-link //= self!dest: :left(0), :top($!margin + $!gutter * $.line-height);
                 my $ind = '[' ~ @!footnotes+1 ~ ']';
                 my PDF::Action $link = $!pdf.action: :destination($!gutter-link);
                 self!style: :tag(Label), :$link, {  $.pod2pdf($ind); }
                 my @contents = $ind, $pod.contents.Slip;
                 @!footnotes.push: @contents;
+                @!footnotes-back.push: self!dest;
                 $!gutter += self!text-box(pod2text(@contents)).lines;
             }
             when 'U' {
@@ -489,6 +489,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         $.say for ^$!pad;
         $!pad = 0;
     }
+
     method print(Str $text, Bool :$nl, :$reflow = True, |c) {
         self!pad-here;
         my PDF::Content::Text::Box $tb = self!text-box: $text, |c;
@@ -618,7 +619,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         :$fit = FitXYZoom,
         :$page = $!page,
         :$left is copy = $!tx + $!margin - hpad,
-        :$top is copy  = $!ty + $.line-height,
+        :$top  is copy  = $!ty + $.line-height + vpad,
         |c,
     ) {
         ($left, $top) = $!gfx.base-coords: $left, $top;
