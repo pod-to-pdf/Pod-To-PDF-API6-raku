@@ -26,13 +26,13 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     has PDF::Content $!gfx;
     has UInt $!indent = 0;
     has Pod::To::PDF::API6::Style $.style handles<font font-size leading line-height bold italic mono underline lines-before link> .= new;
-    has $!tx = 0; # text-flow x
-    has $!ty = 0; # text-flow y
     has $.margin = 20;
+    has $!gutter = Gutter;
+    has $!tx = $!margin; # text-flow x
+    has $!ty = self!top; # text-flow y
     has UInt $!pad = 0;
     has Bool $.contents = True;
     has @.toc; # table of contents
-    has $!gutter = Gutter;
     has @!footnotes;
     has DestRef $!gutter-link;    # forward link to footnote area
     has DestRef @!footnotes-back; # per-footnote return links
@@ -116,7 +116,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
             my @overflow;
             # simple fixed column widths, for now
             self!gfx;
-            my $tab = $!margin + self!indent;
+            my $tab = self!indent;
             my $row-height = 0;
             my $height = $!ty - $!margin;
             my $name = $header ?? TableHeader !! TableData;
@@ -167,7 +167,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     }
 
     method !build-table($pod, @table) {
-        my $x0 = $!margin + self!indent;
+        my $x0 = self!indent;
         my \total-width = self!gfx.canvas.width - $x0 - $!margin;
         @table = ();
  
@@ -223,39 +223,40 @@ class Pod::To::PDF::API6:ver<0.0.1> {
 
     multi method pod2pdf(Pod::Block::Named $pod) {
         $.pad: {
-        given $pod.name {
-            when 'pod'  { $.pod2pdf($pod.contents)     }
-            when 'para' {
-                $.pod2pdf: $pod.contents;
-            }
-            when 'config' { }
-            when 'nested' {
-                self!style: :indent, {
+            given $pod.name {
+                when 'pod'  { $.pod2pdf($pod.contents)     }
+                when 'para' {
                     $.pod2pdf: $pod.contents;
                 }
-            }
-            default     {
-                given $pod.name {
-                    when 'TITLE' {
-                        my Str $title = pod2text($pod.contents);
-                        self.title //= $title;
-                        $.pad: {
-                            self!heading: $title, :level(1);
-                        }
+                when 'config' { }
+                when 'nested' {
+                    self!style: :indent, {
+                        $.pod2pdf: $pod.contents;
                     }
-                    when 'SUBTITLE' {
-                        $.pad: {
-                            self!heading: pod2text($pod.contents), :level(2);
+                }
+                default     {
+                    given $pod.name {
+                        when 'TITLE' {
+                            my Str $title = pod2text($pod.contents);
+                            self.title //= $title;
+                            $.pad: {
+                                self!heading: $title, :level(1);
+                            }
                         }
-                    }
-                    default {
-                        warn "unrecognised POD named block: $_";
-                        $.say($_);
-                        $.pod2pdf($pod.contents);
+                        when 'SUBTITLE' {
+                            $.pad: {
+                                self!heading: pod2text($pod.contents), :level(2);
+                            }
+                        }
+                        default {
+                            warn "unrecognised POD named block: $_";
+                            $.say($_);
+                            $.pod2pdf($pod.contents);
+                        }
                     }
                 }
             }
-        } }
+        }
     }
 
     multi method pod2pdf(Pod::Block::Code $pod) {
@@ -282,7 +283,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     multi method pod2pdf(Pod::FormattingCode $pod) {
         given $pod.type {
             when 'B' {
-                self!style: :tag<Span>, :bold, {
+                self!style: :bold, {
                     $.pod2pdf($pod.contents);
                 }
             }
@@ -299,18 +300,18 @@ class Pod::To::PDF::API6:ver<0.0.1> {
                 $.pod2pdf($pod.contents);
             }
             when 'I' {
-                self!style: :tag<Span>, :italic, {
+                self!style: :italic, {
                     $.pod2pdf($pod.contents);
                 }
             }
             when 'N' {
-                $!gutter-link //= self!dest: :left(0), :top($!margin + $!gutter * $.line-height);
+                $!gutter-link //= self!make-dest: :left(0), :top($!margin + $!gutter * $.line-height);
                 my $ind = '[' ~ @!footnotes+1 ~ ']';
                 my PDF::Action $link = $!pdf.action: :destination($!gutter-link);
                 self!style: :tag(Label), :$link, {  $.pod2pdf($ind); }
                 my @contents = $ind, $pod.contents.Slip;
                 @!footnotes.push: @contents;
-                @!footnotes-back.push: self!dest;
+                @!footnotes-back.push: self!make-dest;
                 $!gutter += self!text-box(pod2text(@contents)).lines;
             }
             when 'U' {
@@ -449,7 +450,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         $result;
     }
     sub param2text($p) {
-        $p.raku ~ ',' ~ ( $p.WHY ?? ' # ' ~ $p.WHY !! ' ')
+        $p.raku ~ ',' ~ ( $p.WHY ?? ' # ' ~ $p.WHY !! '')
     }
 
     multi method pod2pdf(Array $pod) {
@@ -468,7 +469,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     }
 
     multi method say {
-        $!tx = 0;
+        $!tx = $!margin;
         $!ty -= $.line-height;
     }
     multi method say(Str $text, |c) {
@@ -477,12 +478,13 @@ class Pod::To::PDF::API6:ver<0.0.1> {
 
     multi method pad(&codez) { $.pad; &codez(); $.pad}
     multi method pad($!pad = 2) { }
+
     method !text-box(
         Str $text,
-        :$width = self!gfx.canvas.width - self!indent - 2*$!margin,
+        :$width = self!gfx.canvas.width - self!indent - $!margin,
         :$height = $!ty - $!margin,
         |c) {
-        PDF::Content::Text::Box.new: :$text, :indent($!tx), :$.leading, :$.font, :$.font-size, :$width, :$height, |c;
+        PDF::Content::Text::Box.new: :$text, :indent($!tx - $!margin), :$.leading, :$.font, :$.font-size, :$width, :$height, |c;
     }
 
     method !pad-here {
@@ -519,10 +521,10 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         my $x0 = $pos.value[0];
         if $nl {
             # advance to next line
-            $!tx = 0;
+            $!tx = $!margin;
         }
         else {
-            $!tx = 0 if $tb.lines > 1;
+            $!tx = $!margin if $tb.lines > 1;
             $x0 += $!tx;
             # continue this line
                 with $tb.lines.pop {
@@ -541,7 +543,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
     }
 
     method !text-position {
-        :position[$!margin + self!indent, $!ty]
+        :position[self!indent, $!ty]
     }
 
     method !mark(&action, |c) {
@@ -556,16 +558,12 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         }
     }
 
-    method !style(&codez, Bool :$indent, Str :tag($name), Bool :$pad, |c) {
+    method !style(&codez, Bool :$indent, Str :tag($name) is copy, Bool :$pad, |c) {
         temp $!style .= clone: |c;
         temp $!indent;
         temp $*tag;
         if $name.defined {
             $*tag .= add-kid: :$name;
-            given $*tag.cos {
-                .<A><FontStyle> = 'bold' if c<bold>;
-                .<A><FontWeight> = 'italic' if c<italic>;
-            }
         }
         $!indent += 1 if $indent;
         $pad ?? $.pad(&codez) !! &codez();
@@ -577,7 +575,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         }
         else {
             # descend
-            @kids.push({}) unless @kids;
+            @kids.push: {} unless @kids;
             @kids.tail<kids> //= [];
             self!add-toc-entry($entry, $level, :cur($cur+1), @kids.tail<kids>);
         }
@@ -608,17 +606,17 @@ class Pod::To::PDF::API6:ver<0.0.1> {
             if $!contents {
                 # Register in table of contents
                 my $name = dest-name($Title);
-                my DestRef $dest = self!dest: :$name, :fit(FitBoxHoriz), :top(y+h + $.line-height);
+                my DestRef $dest = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h + $.line-height);
                 my PDF::StructElem $SE = $*tag.cos;
                 self!add-toc-entry: { :$Title, :$dest, :$SE  }, $level;
             }
         }
     }
 
-    method !dest(
+    method !make-dest(
         :$fit = FitXYZoom,
         :$page = $!page,
-        :$left is copy = $!tx + $!margin - hpad,
+        :$left is copy = $!tx - hpad,
         :$top  is copy  = $!ty + $.line-height + vpad,
         |c,
     ) {
@@ -626,26 +624,29 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         $!pdf.destination: :$page, :$fit, :$left, :$top, |c;
     }
 
-    method !code(Str $raw is copy, :$inline) {
-        $raw .= chomp;
+    method !code(Str $code is copy, :$inline) {
+        $code .= chomp;
         self!style: :mono, :indent(!$inline), :tag(CODE), {
-            while $raw {
-                $.lines-before = min(+$raw.lines, 3)
+            while $code {
+                $.lines-before = min(+$code.lines, 3)
                     unless $inline;
                 $.font-size *= .8;
-                my (\x, \y, \w, \h, \overflow) = @.print: $raw, :verbatim, :!reflow;
-                $raw = overflow;
+                my (\x, \y, \w, \h, \overflow) = @.print: $code, :verbatim, :!reflow;
+                $code = overflow;
 
-                my $pad = $inline ?? 1 !! 5;
-                my $x0 = $inline ?? x !! self!indent + $!margin;
-                my $width = $inline ?? w !! $!gfx.canvas.width - $!margin - $x0;
-                $!gfx.graphics: {
-                    .FillColor = color 0;
-                    .StrokeColor = color 0;
-                    .FillAlpha = 0.1;
-                    .StrokeAlpha = 0.25;
-                    .Rectangle: $x0 - $pad, y - $pad, $width + 2 * $pad, h + 2 * $pad;
-                    .paint: :fill, :stroke;
+                unless $inline {
+                    # draw code-block background
+                    my constant pad = 5;
+                    my $x0 = self!indent;
+                    my $width = $!gfx.canvas.width - $!margin - $x0;
+                    $!gfx.graphics: {
+                        .FillColor = color 0;
+                        .StrokeColor = color 0;
+                        .FillAlpha = 0.1;
+                        .StrokeAlpha = 0.25;
+                        .Rectangle: $x0 - pad, y - pad, $width + pad*2, h + pad*2;
+                        .paint: :fill, :stroke;
+                    }
                 }
             }
         }
@@ -662,7 +663,7 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         }
     }
 
-    method !underline(PDF::Content::Text::Box $tb, :$tab = $!margin + self!indent, ) {
+    method !underline(PDF::Content::Text::Box $tb, :$tab = self!indent, ) {
         my $y = $!ty + $tb.underline-position;
         my $linewidth = $tb.underline-thickness;
         for $tb.lines {
@@ -702,17 +703,19 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         if !$!page.defined || $y <= $!margin {
             self!new-page;
         }
-        elsif $!tx > 0 && $!tx > $!gfx.canvas.width - self!indent - $!margin {
+        elsif $!tx > $!margin && $!tx > $!gfx.canvas.width - self!indent {
             self.say;
         }
         $!gfx;
     }
 
+    method !top { $!margin + ($!gutter-2) * $.line-height; }
+
     method !finish-page {
         if @!footnotes {
             temp $!style .= new: :lines-before(0); # avoid current styling
-            $!tx = 0;
-            $!ty = $!margin + ($!gutter-2) * $.line-height;
+            $!tx = $!margin;
+            $!ty = self!top;
             $!gutter = 0;
             self!draw-line($!margin, $!ty, $!gfx.canvas.width - 2*$!margin, $!ty);
             while @!footnotes {
@@ -735,14 +738,14 @@ class Pod::To::PDF::API6:ver<0.0.1> {
         $!gutter = Gutter;
         $!page = $!pdf.add-page;
         $!gfx = $!page.gfx;
-        $!tx = 0;
+        $!tx = $!margin;
         $!ty = $!page.height - 2 * $!margin;
         # suppress whitespace before significant content
         $!pad = 0;
     }
 
     method !indent {
-        10 * $!indent;
+        $!margin  +  10 * $!indent;
     }
 
     multi sub node2text(Pod::Block $_) { node2text(.contents) }

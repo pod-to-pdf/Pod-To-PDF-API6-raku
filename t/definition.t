@@ -21,8 +21,8 @@ my $xml = q{<Document>
       Sub asdf
     </H3>
     <Code>sub asdf(
-    Str $asdf1, 
-    Str :$asdf2 = "asdf", 
+    Str $asdf1,
+    Str :$asdf2 = "asdf",
 ) returns Str</Code>
     <P>
       This is a sub
@@ -51,7 +51,7 @@ my $xml = q{<Document>
       Method asdf
     </H3>
     <Code>method asdf(
-    Str :$asdf = "asdf", 
+    Str :$asdf = "asdf",
 ) returns Str</Code>
     <P>
       This is a method
