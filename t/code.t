@@ -2,7 +2,6 @@ use v6;
 
 use Test;
 use Pod::To::PDF::API6;
-use PDF::Tags;
 use PDF::API6;
 
 plan 1;
