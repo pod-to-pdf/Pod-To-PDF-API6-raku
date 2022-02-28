@@ -14,7 +14,7 @@ is $pod.metadata('subtitle'), 'Subtitle from POD';
 is $pod.metadata('version'), '1.2.3';
 
 $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
-lives-ok {$pdf.save-as: "t/metadata.pdf"}
+lives-ok {$pdf.save-as: "t/metadata.pdf", :!info}
 
 subtest 'Metadata verification', {
     plan 2;

@@ -283,13 +283,14 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             self!code: pod2text($pod), :inline;
         }
         when 'T' {
-            temp $.mono = True;
-            $.pod2pdf($pod.contents);
+            self!style: :mono, {
+                $.pod2pdf($pod.contents);
+            }
         }
         when 'K' {
-            temp $.italic = True;
-            temp $.mono = True;
-            $.pod2pdf($pod.contents);
+            self!style: :italic, :mono, {
+                $.pod2pdf($pod.contents);
+            }
         }
         when 'I' {
             self!style: :italic, {
@@ -297,14 +298,21 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'N' {
-            $!gutter-link //= self!make-dest: :left(0), :top($!margin + $!gutter * $.line-height);
+            $!gutter-link //= self!make-dest: :left(0), :top($!margin + (Gutter + 2) * $.line-height);
             my $ind = '[' ~ @!footnotes+1 ~ ']';
             my PDF::Action $link = $!pdf.action: :destination($!gutter-link);
             self!style: :tag(Label), :$link, {  $.pod2pdf($ind); }
             my @contents = $ind, $pod.contents.Slip;
             @!footnotes.push: @contents;
             @!footnotes-back.push: self!make-dest;
-            $!gutter += self!text-box(pod2text(@contents)).lines;
+            do {
+                # pre-compute footnote size
+                temp $!style .= new;
+                temp $!tx = $!margin;
+                temp $!ty = $!page.height;
+                my $draft-footnote = $ind ~ pod2text-inline($pod.contents);
+                $!gutter += self!text-box($draft-footnote).lines;
+            }
         }
         when 'U' {
             temp $.underline = True;
@@ -331,6 +339,14 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             $.pod2pdf($pod.contents);
         }
     }
+}
+
+multi method pod2pdf(Pod::Defn $pod) {
+    $.pad;
+    self!style: :bold, {
+        $.pod2pdf($pod.term);
+    }
+    $.pod2pdf($pod.contents);
 }
 
 multi method pod2pdf(Pod::Item $pod) {
@@ -471,10 +487,14 @@ multi method say(Str $text, |c) {
 multi method pad(&codez) { $.pad; &codez(); $.pad}
 multi method pad($!pad = 2) { }
 
+method !height-remaining {
+    $!ty - $!margin - $!gutter * $.line-height;
+}
+
 method !text-box(
     Str $text,
     :$width = self!gfx.canvas.width - self!indent - $!margin,
-    :$height = $!ty - $!margin,
+    :$height = self!height-remaining,
     |c) {
     PDF::Content::Text::Box.new: :$text, :indent($!tx - $!margin), :$.leading, :$.font, :$.font-size, :$width, :$height, |c;
 }
@@ -597,11 +617,22 @@ method !heading(Str:D $Title, Level :$level = 2, :$underline = $level == 1) {
 
         if $!contents {
             # Register in table of contents
-            my $name = dest-name($Title);
+            my $name = self!gen-dest-name($Title);
             my DestRef $dest = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h + $.line-height);
             my PDF::StructElem $SE = $*tag.cos;
             self!add-toc-entry: { :$Title, :$dest, :$SE  }, $level;
         }
+    }
+}
+
+has UInt %!dest-collision;
+method !gen-dest-name($title, $seq = '') {
+    my $name = dest-name($title ~ $seq);
+    if %!dest-collision{$name}++ {
+        self!gen-dest-name($title, ($seq||0) + 1);
+    }
+    else {
+        $name;
     }
 }
 
@@ -691,8 +722,7 @@ method !link(PDF::Content::Text::Box $tb, :$tab = $!margin, ) {
 }
 
 method !gfx {
-    my $y = $!ty - ($.lines-before + $!gutter) * $.line-height;
-    if !$!page.defined || $y <= $!margin {
+    if self!height-remaining <  $.lines-before * $.line-height {
         self!new-page;
     }
     elsif $!tx > $!margin && $!tx > $!gfx.canvas.width - self!indent {
