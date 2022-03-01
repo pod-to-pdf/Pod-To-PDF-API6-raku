@@ -36,25 +36,25 @@ endobj
 EMC
 /Lbl << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 730 Tm
+    1 0 0 1 30 730 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 2 >> BDC
   BT
-    1 0 0 1 30 730 Tm
+    1 0 0 1 40 730 Tm
     (Abbreviated 1) Tj
   ET
 EMC
 /Lbl << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 708 Tm
+    1 0 0 1 30 708 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 4 >> BDC
   BT
-    1 0 0 1 30 708 Tm
+    1 0 0 1 40 708 Tm
     (Abbreviated 2) Tj
   ET
 EMC
@@ -66,13 +66,13 @@ EMC
 EMC
 /Lbl << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 664 Tm
+    1 0 0 1 30 664 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 7 >> BDC
   BT
-    1 0 0 1 30 664 Tm
+    1 0 0 1 40 664 Tm
     (Paragraph item) Tj
   ET
 EMC
@@ -84,13 +84,13 @@ EMC
 EMC
 /Lbl << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 620 Tm
+    1 0 0 1 30 620 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 10 >> BDC
   BT
-    1 0 0 1 30 620 Tm
+    1 0 0 1 40 620 Tm
     (Block item) Tj
   ET
 EMC
@@ -102,49 +102,49 @@ EMC
 EMC
 /Lbl << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 576 Tm
+    1 0 0 1 30 576 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 13 >> BDC
   BT
-    1 0 0 1 30 576 Tm
+    1 0 0 1 40 576 Tm
     (Abbreviated) Tj
   ET
 EMC
 /Lbl << /MCID 14 >> BDC
   BT
-    1 0 0 1 20 554 Tm
+    1 0 0 1 30 554 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 15 >> BDC
   BT
-    1 0 0 1 30 554 Tm
+    1 0 0 1 40 554 Tm
     (Paragraph item) Tj
   ET
 EMC
 /Lbl << /MCID 16 >> BDC
   BT
-    1 0 0 1 20 532 Tm
+    1 0 0 1 30 532 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 17 >> BDC
   BT
-    1 0 0 1 30 532 Tm
+    1 0 0 1 40 532 Tm
     (Block item) Tj
   ET
 EMC
 /P << /MCID 18 >> BDC
   BT
-    1 0 0 1 30 510 Tm
+    1 0 0 1 40 510 Tm
     (with multiple) Tj
   ET
 EMC
 /P << /MCID 19 >> BDC
   BT
-    1 0 0 1 30 488 Tm
+    1 0 0 1 40 488 Tm
     (paragraphs) Tj
   ET
 EMC

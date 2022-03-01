@@ -30,7 +30,7 @@ has Pod::To::PDF::API6::Style $.style handles<font font-size leading line-height
 has $.margin = 20;
 has $!gutter = Gutter;
 has $!tx = $!margin; # text-flow x
-has $!ty = self!top; # text-flow y
+has $!ty; # text-flow y
 has UInt $!pad = 0;
 has Bool $.contents = True;
 has @.toc; # table of contents
@@ -164,7 +164,7 @@ method !table-row(@row, @widths, Bool :$header) {
 }
 
 method !table-cell($pod) {
-    my $text = pod2text($pod);
+    my $text = pod2text-inline($pod);
     self!text-box: $text, :width(0), :height(0), :indent(0);
 }
 
@@ -195,9 +195,9 @@ multi method pod2pdf(Pod::Block::Table $pod) {
     self!style: :lines-before(3), :pad, {
         temp $*tag .= Table;
         if $pod.caption -> $caption {
-            temp $*tag .= Caption;
-            temp $.italic = True;
-            $.say: $caption;
+            self!style: :tag(Caption), :italic, {
+                $.say: $caption;
+            }
         }
         self!pad-here;
         my PDF::Content::Text::Box @header = @table.shift.List;
@@ -236,9 +236,10 @@ multi method pod2pdf(Pod::Block::Named $pod) {
             default     {
                 given $pod.name {
                     when 'TITLE'|'VERSION'|'SUBTITLE'|'NAME'|'AUTHOR'|'VERSION' {
-                        self!heading( node2text($pod.contents), :level(1))
+                        my $text = pod2text-inline($pod.contents);
+                        self!heading($text, :level(1))
                             if $_ ~~ 'TITLE';
-                        self.metadata(.lc) ||= pod2text-inline($pod.contents);
+                        self.metadata(.lc) ||= $text;
                     }
                     default {
                         warn "unrecognised POD named block: $_";
@@ -253,14 +254,14 @@ multi method pod2pdf(Pod::Block::Named $pod) {
 
 multi method pod2pdf(Pod::Block::Code $pod) {
     $.pad: {
-        self!code: $pod.contents.join;
+        self!code: pod2text-code($pod);
     }
 }
 
 multi method pod2pdf(Pod::Heading $pod) {
     $.pad: {
         my Level $level = min($pod.level, 6);
-        self!heading( node2text($pod.contents), :$level);
+        self!heading( pod2text-inline($pod.contents), :$level);
     }
 }
 
@@ -315,8 +316,9 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'U' {
-            temp $.underline = True;
-            $.pod2pdf($pod.contents);
+            self!style: :underline, {
+                $.pod2pdf($pod.contents);
+            }
         }
         when 'Z' {
             # invisable
@@ -326,12 +328,14 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             $.pod2pdf($pod.contents);
         }
         when 'L' {
-            my $text = pod2text($pod.contents);
+            my $text = pod2text-inline($pod.contents);
             given $pod.meta.head // $text -> $uri {
-                temp $.link = $uri.starts-with('#')
+                my $link = $uri.starts-with('#')
                     ?? $!pdf.action: :destination(dest-name($uri))
                     !! $!pdf.action: :$uri;
-                $.print: $text;
+                self!style: :$link, {
+                    $.print: $text;
+                }
             }
         }
         default {
@@ -351,12 +355,12 @@ multi method pod2pdf(Pod::Defn $pod) {
 
 multi method pod2pdf(Pod::Item $pod) {
     $.pad: {
-        self!style: :tag(ListItem), {
+        my Level $list-level = min($pod.level // 1, 3);
+        self!style: :tag(ListItem), :indent($list-level), {
             {
                 my constant BulletPoints = ("\c[BULLET]",
-                                            "\c[WHITE BULLET]",
+                                            "\c[MIDDLE DOT]",
                                             '-');
-                my Level $list-level = min($pod.level // 1, 3);
                 my $bp = BulletPoints[$list-level - 1];
                 temp $*tag .= Label;
                 $.print: $bp;
@@ -487,10 +491,6 @@ multi method say(Str $text, |c) {
 multi method pad(&codez) { $.pad; &codez(); $.pad}
 multi method pad($!pad = 2) { }
 
-method !height-remaining {
-    $!ty - $!margin - $!gutter * $.line-height;
-}
-
 method !text-box(
     Str $text,
     :$width = self!gfx.canvas.width - self!indent - $!margin,
@@ -570,14 +570,14 @@ method !mark(&action, |c) {
     }
 }
 
-method !style(&codez, Bool :$indent, Str :tag($name) is copy, Bool :$pad, |c) {
+method !style(&codez, Int :$indent, Str :tag($name) is copy, Bool :$pad, |c) {
     temp $!style .= clone: |c;
     temp $!indent;
     temp $*tag;
     if $name.defined {
         $*tag .= add-kid: :$name;
     }
-    $!indent += 1 if $indent;
+    $!indent += $indent if $indent;
     $pad ?? $.pad(&codez) !! &codez();
 }
 
@@ -593,26 +593,26 @@ method !add-toc-entry(Hash $entry, Level $level, @kids = @!toc, Level :$cur = 1,
     }
 }
 
-method !heading(Str:D $Title, Level :$level = 2, :$underline = $level == 1) {
-    self!style: :tag('H' ~ $level), :$underline, {
-        my constant HeadingSizes = 20, 16, 13, 11.5, 10, 10;
-        $.font-size = HeadingSizes[$level - 1];
-        if $level == 1 {
-            self!new-page;
-        }
-        elsif $level == 2 {
-            $.lines-before = 3;
-        }
+method !heading(Str:D $title, Level :$level = 2, :$underline = $level == 1) {
+    my constant HeadingSizes = 20, 16, 13, 11.5, 10, 10;
+    my $font-size = HeadingSizes[$level - 1];
+    my Bool $bold   = $level <= 4;
+    my Bool $italic;
+    my $lines-before = $.lines-before;
 
-        if $level < 5 {
-            $.bold = True;
-        }
-        else {
-            $.italic = True;
-        }
+    given $level {
+        when 1 { self!new-page; }
+        when 2 { $lines-before = 3; }
+        when 3 { $lines-before = 2; }
+        when 5 { $italic = True; }
+    }
 
+    self!style: :tag('H' ~ $level), :$font-size, :$bold, :$italic, :$underline, :$lines-before, {
+
+        my Str $Title = $title.subst(/\s+/, ' ', :g); # Tidy a little
         $*tag.cos.title = $Title;
-        my (\x, \y, \w, \h) = @.print: $Title;
+
+        my (\x, \y, \w, \h) = @.print: $title;
         $.say();
 
         if $!contents {
@@ -625,10 +625,10 @@ method !heading(Str:D $Title, Level :$level = 2, :$underline = $level == 1) {
     }
 }
 
-has UInt %!dest-collision;
+has UInt %!dest-used;
 method !gen-dest-name($title, $seq = '') {
     my $name = dest-name($title ~ $seq);
-    if %!dest-collision{$name}++ {
+    if %!dest-used{$name}++ {
         self!gen-dest-name($title, ($seq||0) + 1);
     }
     else {
@@ -648,12 +648,14 @@ method !make-dest(
 }
 
 method !code(Str $code is copy, :$inline) {
-    $code .= chomp;
-    self!style: :mono, :indent(!$inline), :tag(CODE), {
+    my $font-size = 8;
+    my $lines-before = $.lines-before;
+    $lines-before = min(+$code.lines, 3)
+        unless $inline;
+
+    self!style: :mono, :indent(!$inline), :tag(CODE), :$font-size, :$lines-before, {
+        $code .= chomp;
         while $code {
-            $.lines-before = min(+$code.lines, 3)
-                unless $inline;
-            $.font-size *= .8;
             my (\x, \y, \w, \h, \overflow) = @.print: $code, :verbatim, :!reflow;
             $code = overflow;
 
@@ -731,13 +733,16 @@ method !gfx {
     $!gfx;
 }
 
-method !top { $!margin + ($!gutter-2) * $.line-height; }
+method !bottom { $!margin + ($!gutter-2) * $.line-height; }
+method !height-remaining {
+    $!ty - $!margin - $!gutter * $.line-height;
+}
 
 method !finish-page {
     if @!footnotes {
         temp $!style .= new: :lines-before(0); # avoid current styling
         $!tx = $!margin;
-        $!ty = self!top;
+        $!ty = self!bottom;
         $!gutter = 0;
         self!draw-line($!margin, $!ty, $!gfx.canvas.width - 2*$!margin, $!ty);
         while @!footnotes {
@@ -769,10 +774,6 @@ method !new-page {
 method !indent {
     $!margin  +  10 * $!indent;
 }
-
-multi sub node2text(Pod::Block $_) { node2text(.contents) }
-multi sub node2text(@pod) { @pod.map(&node2text).join: ' ' }
-multi sub node2text(Str() $_) { $_ }
 
 method lang is rw { $!pdf.catalog.Lang; }
 
@@ -814,6 +815,12 @@ multi method metadata(PodMetaType $t) is rw {
         }
     )
 }
+
+# we're currently throwing code formatting away
+multi sub pod2text-code(Pod::Block $pod) {
+    $pod.contents.map(&pod2text-code).join;
+}
+multi sub pod2text-code(Str $pod) { $pod }
 
 sub pod2text-inline($pod) {
     pod2text($pod).subst(/\s+/, ' ', :g);

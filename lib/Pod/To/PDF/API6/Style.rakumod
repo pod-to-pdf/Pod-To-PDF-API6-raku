@@ -1,7 +1,8 @@
 #| Basic core-font styler
-unit class Pod::To::PDF::API6::Style is rw;
+unit class Pod::To::PDF::API6::Style;
 
 use PDF::Content::Font::CoreFont;
+use PDF::Content::FontObj;
 use PDF::Action;
 
 has Bool $.bold;
@@ -11,6 +12,7 @@ has Bool $.mono;
 has Numeric $.font-size = 10;
 has UInt $.lines-before = 1;
 has PDF::Action $.link;
+has PDF::Content::FontObj $.font;
 
 method leading { 1.1 }
 method line-height {
@@ -24,7 +26,6 @@ constant %CoreFont = %(
     :B-I-n<times-boldoitalic>, :B-I-M<courier-boldoblique>
 );
 my subset FontKey of Str where %CoreFont{$_}:exists;
-has %.fonts;
 method !font-key {
     join(
         '-', 
@@ -34,11 +35,12 @@ method !font-key {
     );
 }
 
+method clone { nextwith :font(PDF::Content::FontObj), |%_; }
+
 method font {
-    given self!font-key -> FontKey $key {
-        %!fonts{$key} //= do {
-            my Str:D $font-name = %CoreFont{$key};
-            PDF::Content::Font::CoreFont.load-font($font-name);
-        }
+    $!font //= do {
+        my FontKey:D $key = self!font-key;
+        my Str:D $font-name = %CoreFont{$key};
+        PDF::Content::Font::CoreFont.load-font($font-name);
     }
 }
