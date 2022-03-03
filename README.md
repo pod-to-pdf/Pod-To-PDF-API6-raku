@@ -1,32 +1,78 @@
-# Pod::To::PDF::API6 (Raku)
+TITLE
+=====
 
-Render Pod as PDF via PDF::API6. (Experimental)
+Pod::To::PDF::API6 - Render Pod as PDF (Experimental)
 
-## Installation
+Pod::To::PDF::API6 - Render Pod as PDF (Experimental)
+=====================================================
 
-Using zef:
-```
-$ zef install Pod::To::PDF::API6
-```
-
-## Usage:
+Synopsis
+========
 
 From command line:
 
-    $ raku --doc=PDF::API6 lib/class.rakumod | xargs xpdf
+$ raku --doc=PDF lib/to/class.rakumod | raku -e'"class.pdf".IO.spurt: $*IN.slurp.encode("latin-1")' > to-class.pdf
 
 From Raku:
 
+```raku
+use Pod::To::PDF::API6;
+
+=NAME foobar.pl
+=Name foobar.pl
+
+=Synopsis
+    foobar.pl <options> files ...
+
+pod2pdf($=pod).save-as: "foobar.pdf";
 ```
+
+Exports
+=======
+
+class Pod::To::PDF::API6; sub pod2pdf; # See below
+
+Description
+===========
+
+This is an experimental module for rendering POD to PDF.
+
+From command line:
+
+```shell
+$  raku --doc=PDF lib/class.rakumod | xargs xpdf
+```
+
+From Raku code, the `pod2pdf` function returns a PDF::API6 object which can be further manipulated, or saved to a PDF file.
+
+```raku
 use Pod::To::PDF::API6;
 use PDF::API6;
 
-=NAME
-foobar.raku
+=NAME foobar.raku
+=Name foobar.raku
 
-=SYNOPSIS
+=Synopsis
     foobarraku <options> files ...
 
 my PDF::API6 $pdf = pod2pdf($=pod);
-$pdf.save-as: "class.pdf";
+$pdf.save-as: "class.pdf"
 ```
+
+Limitations
+===========
+
+**core fonts only.**
+
+
+
+PDF::Font::Loader is also experimental and hasn't been integrated yet.
+
+**performance**
+
+
+
+This module is several times slower than Pod::To::PDF::Lite; mostly due to the handling and serialization of a large number of small StructElem tags for PDF tagging.
+
+Possibly, PDF (and PDF::Class) need to implement faster serialization methods, which will most likely use PDF 1.5 Object Streams.
+

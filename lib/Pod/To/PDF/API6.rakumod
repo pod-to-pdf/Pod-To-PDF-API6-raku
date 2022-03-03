@@ -38,6 +38,7 @@ has @!footnotes;
 has DestRef $!gutter-link;    # forward link to footnote area
 has DestRef @!footnotes-back; # per-footnote return links
 has Str %!metadata;
+has UInt:D $!level = 1;
 
 method read($pod, :$*tag is copy = self.root) {
     self.pod2pdf($pod);
@@ -233,19 +234,16 @@ multi method pod2pdf(Pod::Block::Named $pod) {
                     $.pod2pdf: $pod.contents;
                 }
             }
-            default     {
-                given $pod.name {
-                    when 'TITLE'|'VERSION'|'SUBTITLE'|'NAME'|'AUTHOR'|'VERSION' {
-                        my $text = pod2text-inline($pod.contents);
-                        self!heading($text, :level(1))
-                            if $_ ~~ 'TITLE';
-                        self.metadata(.lc) ||= $text;
-                    }
-                    default {
-                        warn "unrecognised POD named block: $_";
-                        $.say($_);
-                        $.pod2pdf($pod.contents);
-                    }
+            when 'TITLE'|'VERSION'|'SUBTITLE'|'NAME'|'AUTHOR'|'VERSION' {
+                self.metadata(.lc) ||= pod2text-inline($pod.contents);
+            }
+            default {
+                warn "unrecognised POD named block: $_"
+                    if $_ eq .uc|.lc;
+                self!style: :tag(Section), {
+                    temp $!level += 1;
+                    self!heading($_, :$!level);
+                    $.pod2pdf($pod.contents);
                 }
             }
         }
@@ -607,7 +605,8 @@ method !heading(Str:D $title, Level :$level = 2, :$underline = $level == 1) {
         when 5 { $italic = True; }
     }
 
-    self!style: :tag('H' ~ $level), :$font-size, :$bold, :$italic, :$underline, :$lines-before, {
+    my $tag = $level == $!level ?? 'H' !! 'H' ~ $level;
+    self!style: :$tag, :$font-size, :$bold, :$italic, :$underline, :$lines-before, {
 
         my Str $Title = $title.subst(/\s+/, ' ', :g); # Tidy a little
         $*tag.cos.title = $Title;
@@ -826,10 +825,10 @@ sub pod2text-inline($pod) {
     pod2text($pod).subst(/\s+/, ' ', :g);
 }
 
-=NAME
-Pod::To::PDF::API6 - Render Pod as PDF
+=TITLE Pod::To::PDF::API6 - Render Pod as PDF (Experimental)
+=head1 Pod::To::PDF::API6 - Render Pod as PDF (Experimental)
 
-=begin SYNOPSIS
+=begin Synopsis
 From command line:
 
     $ raku --doc=PDF lib/to/class.rakumod | raku -e'"class.pdf".IO.spurt: $*IN.slurp.encode("latin-1")' > to-class.pdf
@@ -838,22 +837,22 @@ From Raku:
     =begin code :lang<raku>
     use Pod::To::PDF::API6;
 
-    =NAME
-    foobar.pl
+    =NAME foobar.pl
+    =Name foobar.pl
 
-    =SYNOPSIS
+    =Synopsis
         foobar.pl <options> files ...
 
     pod2pdf($=pod).save-as: "foobar.pdf";
     =end code
-=end SYNOPSIS
+=end Synopsis
 
-=begin EXPORTS
+=begin Exports
     class Pod::To::PDF::API6;
     sub pod2pdf; # See below
-=end EXPORTS
+=end Exports
 
-=begin DESCRIPTION
+=begin Description
 This is an experimental module for rendering POD to PDF.
 
 From command line:
@@ -867,14 +866,25 @@ be further manipulated, or saved to a PDF file.
     use Pod::To::PDF::API6;
     use PDF::API6;
  
-    =NAME
-    foobar.raku
+    =NAME foobar.raku
+    =Name foobar.raku
 
-    =SYNOPSIS
+    =Synopsis
         foobarraku <options> files ...
 
     my PDF::API6 $pdf = pod2pdf($=pod);
     $pdf.save-as: "class.pdf"
     =end code
 
-=end DESCRIPTION
+=end Description
+
+=begin Limitations
+
+=defn core fonts only. 
+=para PDF::Font::Loader is also experimental and hasn't been integrated yet.
+
+=defn performance
+=para This module is several times slower than Pod::To::PDF::Lite; mostly due to the handling and serialization of a large number of small StructElem tags for PDF tagging.
+
+=para Possibly, PDF (and PDF::Class) need to implement faster serialization methods, which will most likely use PDF 1.5 Object Streams.
+=end Limitations

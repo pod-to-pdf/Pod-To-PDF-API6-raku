@@ -1,0 +1,213 @@
+%PDF-1.3
+%¥±ë¼
+1 0 obj
+<<
+  /Type /Catalog
+  /Dests 2 0 R
+  /Lang (en)
+  /MarkInfo << /Marked true >>
+  /Outlines 8 0 R
+  /Pages 5 0 R
+  /StructTreeRoot 23 0 R
+>>
+endobj
+
+2 0 obj
+<<
+  /Inner1 [ 3 0 R /FitBH 712.4 ]
+  /Inner2 [ 3 0 R /FitBH 647.5 ]
+  /Outer [ 3 0 R /FitBH 787.2 ]
+>>
+endobj
+
+3 0 obj
+<<
+  /Type /Page
+  /Contents 4 0 R
+  /MediaBox [ 0 0 612 792 ]
+  /Parent 5 0 R
+  /Resources << /Font << /F1 6 0 R /F2 7 0 R >> >>
+  /StructParents 0
+>>
+endobj
+
+4 0 obj
+<< /Length 605 >> stream
+/H << /MCID 0 >> BDC
+  BT
+    1 0 0 1 20 752 Tm
+    /F1 16 Tf
+    (Outer) Tj
+  ET
+EMC
+/P << /MCID 1 >> BDC
+  BT
+    1 0 0 1 20 712.4 Tm
+    /F2 10 Tf
+    (This is an outer paragraph) Tj
+  ET
+EMC
+/H << /MCID 2 >> BDC
+  BT
+    1 0 0 1 20 683.8 Tm
+    /F1 13 Tf
+    (Inner1) Tj
+  ET
+EMC
+/P << /MCID 3 >> BDC
+  BT
+    1 0 0 1 20 647.5 Tm
+    /F2 10 Tf
+    (This is the first inner paragraph) Tj
+  ET
+EMC
+/H << /MCID 4 >> BDC
+  BT
+    1 0 0 1 20 618.9 Tm
+    /F1 13 Tf
+    (Inner2) Tj
+  ET
+EMC
+/P << /MCID 5 >> BDC
+  BT
+    1 0 0 1 20 582.6 Tm
+    /F2 10 Tf
+    (This is the second inner paragraph) Tj
+  ET
+EMC
+endstream
+endobj
+
+5 0 obj
+<< /Type /Pages /Count 1 /Kids [ 3 0 R ] >>
+endobj
+
+6 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Times-Bold
+  /Encoding /WinAnsiEncoding
+>>
+endobj
+
+7 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Times-Roman
+  /Encoding /WinAnsiEncoding
+>>
+endobj
+
+8 0 obj
+<< /Count 4 /First 9 0 R /Last 9 0 R >>
+endobj
+
+9 0 obj
+<< /Count 4 /First 10 0 R /Last 10 0 R >>
+endobj
+
+10 0 obj
+<<
+  /Count 3
+  /Dest /Outer
+  /First 11 0 R
+  /Last 12 0 R
+  /SE 17 0 R
+  /Title (Outer)
+>>
+endobj
+
+11 0 obj
+<< /Count 1 /Dest /Inner1 /Next 12 0 R /SE 20 0 R /Title (Inner1) >>
+endobj
+
+12 0 obj
+<< /Count 1 /Dest /Inner2 /Prev 11 0 R /SE 13 0 R /Title (Inner2) >>
+endobj
+
+13 0 obj
+<< /Type /StructElem /S /H /K [ 4 ] /P 14 0 R /Pg 3 0 R /T (Inner2) >>
+endobj
+
+14 0 obj
+<< /Type /StructElem /S /Sect /K [ 13 0 R 15 0 R ] /P 16 0 R >>
+endobj
+
+15 0 obj
+<< /Type /StructElem /S /P /K [ 5 ] /P 14 0 R /Pg 3 0 R >>
+endobj
+
+16 0 obj
+<<
+  /Type /StructElem
+  /S /Sect
+  /K [ 17 0 R 18 0 R 19 0 R 14 0 R ]
+  /P 22 0 R
+>>
+endobj
+
+17 0 obj
+<< /Type /StructElem /S /H /K [ 0 ] /P 16 0 R /Pg 3 0 R /T (Outer) >>
+endobj
+
+18 0 obj
+<< /Type /StructElem /S /P /K [ 1 ] /P 16 0 R /Pg 3 0 R >>
+endobj
+
+19 0 obj
+<< /Type /StructElem /S /Sect /K [ 20 0 R 21 0 R ] /P 16 0 R >>
+endobj
+
+20 0 obj
+<< /Type /StructElem /S /H /K [ 2 ] /P 19 0 R /Pg 3 0 R /T (Inner1) >>
+endobj
+
+21 0 obj
+<< /Type /StructElem /S /P /K [ 3 ] /P 19 0 R /Pg 3 0 R >>
+endobj
+
+22 0 obj
+<< /Type /StructElem /S /Document /K [ 16 0 R ] /P 23 0 R >>
+endobj
+
+23 0 obj
+<<
+  /Type /StructTreeRoot
+  /K [ 22 0 R ]
+  /ParentTree << /Nums [ 0 [ 17 0 R 18 0 R 20 0 R 21 0 R 13 0 R 15 0 R ] ] >>
+>>
+endobj
+
+xref
+0 24
+0000000000 65535 f 
+0000000015 00000 n 
+0000000171 00000 n 
+0000000291 00000 n 
+0000000459 00000 n 
+0000001116 00000 n 
+0000001176 00000 n 
+0000001283 00000 n 
+0000001391 00000 n 
+0000001447 00000 n 
+0000001505 00000 n 
+0000001615 00000 n 
+0000001701 00000 n 
+0000001787 00000 n 
+0000001875 00000 n 
+0000001956 00000 n 
+0000002032 00000 n 
+0000002135 00000 n 
+0000002222 00000 n 
+0000002298 00000 n 
+0000002379 00000 n 
+0000002467 00000 n 
+0000002543 00000 n 
+0000002621 00000 n 
+trailer
+<< /ID [ (t/subsections.t ) (t/subsections.t ) ] /Root 1 0 R /Size 24 >>
+startxref
+2762
+%%EOF
