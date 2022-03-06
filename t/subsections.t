@@ -4,8 +4,7 @@ use Test;
 use Pod::To::PDF::API6;
 use PDF::API6;
 
-
-plan 2;
+plan 1;
 
 my $xml = q{<Document>
   <Sect>

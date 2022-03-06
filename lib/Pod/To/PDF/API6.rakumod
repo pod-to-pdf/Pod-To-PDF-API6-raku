@@ -251,7 +251,7 @@ multi method pod2pdf(Pod::Block::Named $pod) {
 }
 
 multi method pod2pdf(Pod::Block::Code $pod) {
-    $.pad: {
+    self!style: :pad, :tag(Paragraph), {
         self!code: pod2text-code($pod);
     }
 }
@@ -356,10 +356,10 @@ multi method pod2pdf(Pod::Item $pod) {
         my Level $list-level = min($pod.level // 1, 3);
         self!style: :tag(ListItem), :indent($list-level), {
             {
-                my constant BulletPoints = ("\c[BULLET]",
-                                            "\c[MIDDLE DOT]",
-                                            '-');
-                my $bp = BulletPoints[$list-level - 1];
+                my constant BulletPoints = (
+                   "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
+                );
+                my Str $bp = BulletPoints[$list-level - 1];
                 temp $*tag .= Label;
                 $.print: $bp;
             }
@@ -426,17 +426,25 @@ multi method pod2pdf(Pod::Block::Declarator $pod) {
     $decl //= $type;
 
     self!style: :tag(Section), :lines-before(3), :pad, {
+        temp $!level += 1;
         self!heading($type.tclc ~ ' ' ~ $name, :$level);
 
+        if $pod.leading -> $pre-pod {
+            self!style: :pad, :tag(Paragraph), {
+                $.pad;
+                $.pod2pdf($pre-pod);
+            }
+        }
+
         if $code {
-            $.pad(1);
+            $.pad;
             self!code($decl ~ ' ' ~ $code);
         }
 
-        if $pod.contents {
+        if $pod.trailing -> $post-pod {
             $.pad;
-            self!style: :tag(Paragraph), {
-                $.pod2pdf($pod.contents);
+            self!style: :pad, :tag(Paragraph), {
+                $.pod2pdf($post-pod);
             }
         }
     }
@@ -491,7 +499,7 @@ multi method pad($!pad = 2) { }
 
 method !text-box(
     Str $text,
-    :$width = self!gfx.canvas.width - self!indent - $!margin,
+    :$width  = self!gfx.canvas.width - self!indent - $!margin,
     :$height = self!height-remaining,
     |c) {
     PDF::Content::Text::Box.new: :$text, :indent($!tx - $!margin), :$.leading, :$.font, :$.font-size, :$width, :$height, |c;

@@ -8,54 +8,54 @@ plan 1;
 
 my $xml = q{<Document>
   <Sect>
-    <H2>
+    <H>
       Module Asdf1
-    </H2>
-    <Code>module Asdf1</Code>
+    </H>
     <P>
       This is a module
     </P>
+    <Code>module Asdf1</Code>
   </Sect>
   <Sect>
     <H3>
       Sub asdf
     </H3>
+    <P>
+      This is a sub
+    </P>
     <Code>sub asdf(
     Str $asdf1,
     Str :$asdf2 = "asdf",
 ) returns Str</Code>
-    <P>
-      This is a sub
-    </P>
   </Sect>
   <Sect>
-    <H2>
+    <H>
       Class Asdf2
-    </H2>
-    <Code>class Asdf2</Code>
+    </H>
     <P>
       This is a class
     </P>
+    <Code>class Asdf2</Code>
   </Sect>
   <Sect>
     <H3>
       Attribute t
     </H3>
-    <Code>has Str $.t</Code>
     <P>
       This is an attribute
     </P>
+    <Code>has Str $.t</Code>
   </Sect>
   <Sect>
     <H3>
       Method asdf
     </H3>
-    <Code>method asdf(
-    Str :$asdf = "asdf",
-) returns Str</Code>
     <P>
       This is a method
     </P>
+    <Code>method asdf(
+    Str :$asdf = "asdf",
+) returns Str</Code>
   </Sect>
 </Document>
 };

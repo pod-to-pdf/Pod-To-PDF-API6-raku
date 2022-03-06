@@ -90,4 +90,6 @@ paragraph
 
 =para Paragraph with B<formatting>, C<code> and L<links|#blah>.
 
+=comment a single word that exceeds the line width
+
 =para aaaaabbbbbcccccdddddeeeeefffffggggghhhhhiiiiijjjjjkkkkklllllmmmmmnnnnnooooopppppqqqqqrrrrrssssstttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz

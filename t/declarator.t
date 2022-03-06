@@ -9,24 +9,26 @@ plan 1;
 
 my $xml = q{<Document>
   <Sect>
-    <H2>
+    <H>
       Class Magician
-    </H2>
-    <Code>class Magician</Code>
+    </H>
     <P>
       Base class for magicians
     </P>
+    <Code>class Magician</Code>
   </Sect>
   <Sect>
     <H3>
       Sub duel
     </H3>
+    <P>
+      Fight mechanics
+    </P>
     <Code>sub duel(
     Magician $a,
     Magician $b,
 )</Code>
     <P>
-      Fight mechanics
       Magicians only, no mortals.
     </P>
   </Sect>
