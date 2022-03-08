@@ -11,13 +11,15 @@ $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
 lives-ok {$pdf.save-as: "t/defn.pdf", :!info}
 
 my $xml = q{<Document>
-  <H2>
-    pod2pdf() Options
-  </H2>
-  PDF::API6 :$pdf
-  <P>
-    A PDF object to render to.
-  </P>
+  <Sect>
+    <H>
+      pod2pdf() Options
+    </H>
+    PDF::API6 :$pdf
+    <P>
+      A PDF object to render to.
+    </P>
+  </Sect>
 </Document>
 };
 

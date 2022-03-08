@@ -15,19 +15,23 @@ my $xml = q{<Document>
     <P>
       Base class for magicians
     </P>
-    <Code>class Magician</Code>
+    <P>
+      <Code>class Magician</Code>
+    </P>
   </Sect>
   <Sect>
-    <H3>
+    <H>
       Sub duel
-    </H3>
+    </H>
     <P>
       Fight mechanics
     </P>
-    <Code>sub duel(
+    <P>
+      <Code>sub duel(
     Magician $a,
     Magician $b,
 )</Code>
+    </P>
     <P>
       Magicians only, no mortals.
     </P>
@@ -44,7 +48,7 @@ my PDF::Tags $tags = $doc.tags;
 is $tags[0].Str, $xml,
    'Declarators convert correctly.';
 
-## Example taken from docs.raku.org/language/pod#Declarator_blocks
+=comment Example taken from docs.raku.org/language/pod#Declarator_blocks
 
 #| Base class for magicians 
 class Magician {

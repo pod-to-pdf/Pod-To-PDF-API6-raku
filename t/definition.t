@@ -14,49 +14,53 @@ my $xml = q{<Document>
     <P>
       This is a module
     </P>
-    <Code>module Asdf1</Code>
-  </Sect>
-  <Sect>
-    <H3>
-      Sub asdf
-    </H3>
     <P>
-      This is a sub
+      <Code>module Asdf1</Code>
     </P>
-    <Code>sub asdf(
-    Str $asdf1,
-    Str :$asdf2 = "asdf",
-) returns Str</Code>
   </Sect>
   <Sect>
     <H>
-      Class Asdf2
+      Sub asdf
     </H>
     <P>
-      This is a class
+      This is a sub
     </P>
+    <P>
+      <Code>sub asdf(
+    Str $asdf1,
+    Str :$asdf2 = "asdf",
+) returns Str</Code>
+    </P>
+  </Sect>
+  <H2>
+    Class Asdf2
+  </H2>
+  <P>
+    This is a class
+  </P>
+  <P>
     <Code>class Asdf2</Code>
-  </Sect>
-  <Sect>
-    <H3>
-      Attribute t
-    </H3>
-    <P>
-      This is an attribute
-    </P>
+  </P>
+  <H>
+    Attribute t
+  </H>
+  <P>
+    This is an attribute
+  </P>
+  <P>
     <Code>has Str $.t</Code>
-  </Sect>
-  <Sect>
-    <H3>
-      Method asdf
-    </H3>
-    <P>
-      This is a method
-    </P>
+  </P>
+  <H>
+    Method asdf
+  </H>
+  <P>
+    This is a method
+  </P>
+  <P>
     <Code>method asdf(
     Str :$asdf = "asdf",
 ) returns Str</Code>
-  </Sect>
+  </P>
 </Document>
 };
 

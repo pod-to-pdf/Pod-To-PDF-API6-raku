@@ -39,10 +39,39 @@ has DestRef $!gutter-link;    # forward link to footnote area
 has DestRef @!footnotes-back; # per-footnote return links
 has Str %!metadata;
 has UInt:D $!level = 1;
+has PDF::Tags::Elem @!tags;
+
+method !tag-begin($name) {
+    $*tag .= add-kid: :$name;
+    @!tags.push: $*tag;
+}
+
+method !tag-end {
+    @!tags.pop;
+    $*tag = @!tags.tail // self.root;
+}
+
+method !tag($tag, &codez) {
+    self!tag-begin($tag);
+    &codez();
+    self!tag-end;
+}
+
+method !want-level($level) {
+    while $!level < $level {
+        self!tag-begin(Section);
+        $!level++;
+    }
+    while $!level > $level && $*tag.name eq Section {
+        self!tag-end;
+        $!level--;
+    }
+}
 
 method read($pod, :$*tag is copy = self.root) {
     self.pod2pdf($pod);
     self!finish-page;
+    self!want-level(1);
 }
 
 method pdf {
@@ -234,17 +263,30 @@ multi method pod2pdf(Pod::Block::Named $pod) {
                     $.pod2pdf: $pod.contents;
                 }
             }
-            when 'TITLE'|'VERSION'|'SUBTITLE'|'NAME'|'AUTHOR'|'VERSION' {
-                self.metadata(.lc) ||= pod2text-inline($pod.contents);
+            when 'TITLE'|'SUBTITLE' {
+                $.pad(0);
+                my $toc = $_ eq 'TITLE';
+                my  $level = $_ eq 'TITLE' ?? 1 !! 2;
+                my $title = pod2text-inline($pod.contents);
+                self.metadata(.lc) ||= $title;
+                self!heading($title, :$toc, :$level);
             }
             default {
-                warn "unrecognised POD named block: $_"
-                    if $_ eq .uc|.lc;
-                self!style: :tag(Section), {
-                    temp $!level += 1;
-                    self!heading($_, :$!level);
-                    $.pod2pdf($pod.contents);
+                my $name = $_;
+                my $level = $!level + 1;
+                given $name {
+                    when .uc {
+                        when 'VERSION'|'NAME'|'AUTHOR' {
+                            self.metadata(.lc) ||= pod2text-inline($pod.contents);
+                        }
+                        $level = 2;
+                        $_ = .tclc;
+                    }
                 }
+
+                self!heading($name, :$level);
+                $.pod2pdf($pod.contents);
+                self!want-level($level - 1);
             }
         }
     }
@@ -425,24 +467,22 @@ multi method pod2pdf(Pod::Block::Declarator $pod) {
     $name //= $w.?name // '';
     $decl //= $type;
 
-    self!style: :tag(Section), :lines-before(3), :pad, {
-        temp $!level += 1;
+    self!style: :lines-before(3), :pad, {
         self!heading($type.tclc ~ ' ' ~ $name, :$level);
 
         if $pod.leading -> $pre-pod {
             self!style: :pad, :tag(Paragraph), {
-                $.pad;
                 $.pod2pdf($pre-pod);
             }
         }
 
         if $code {
-            $.pad;
-            self!code($decl ~ ' ' ~ $code);
+            self!style: :pad, :tag(Paragraph), {
+                self!code($decl ~ ' ' ~ $code);
+            }
         }
 
         if $pod.trailing -> $post-pod {
-            $.pad;
             self!style: :pad, :tag(Paragraph), {
                 $.pod2pdf($post-pod);
             }
@@ -593,13 +633,13 @@ method !add-toc-entry(Hash $entry, Level $level, @kids = @!toc, Level :$cur = 1,
     }
     else {
         # descend
-        @kids.push: {} unless @kids;
+        @kids.push: { :Title(' '), } unless @kids;
         @kids.tail<kids> //= [];
         self!add-toc-entry($entry, $level, :cur($cur+1), @kids.tail<kids>);
     }
 }
 
-method !heading(Str:D $title, Level :$level = 2, :$underline = $level == 1) {
+method !heading(Str:D $title, Level:D :$level!, :$underline = $level == 1, Bool :$toc = True) {
     my constant HeadingSizes = 20, 16, 13, 11.5, 10, 10;
     my $font-size = HeadingSizes[$level - 1];
     my Bool $bold   = $level <= 4;
@@ -613,6 +653,7 @@ method !heading(Str:D $title, Level :$level = 2, :$underline = $level == 1) {
         when 5 { $italic = True; }
     }
 
+    self!want-level($level);
     my $tag = $level == $!level ?? 'H' !! 'H' ~ $level;
     self!style: :$tag, :$font-size, :$bold, :$italic, :$underline, :$lines-before, {
 
@@ -621,8 +662,7 @@ method !heading(Str:D $title, Level :$level = 2, :$underline = $level == 1) {
 
         my (\x, \y, \w, \h) = @.print: $title;
         $.say();
-
-        if $!contents {
+        if $!contents && $toc {
             # Register in table of contents
             my $name = self!gen-dest-name($Title);
             my DestRef $dest = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h + $.line-height);
@@ -731,7 +771,7 @@ method !link(PDF::Content::Text::Box $tb, :$tab = $!margin, ) {
 }
 
 method !gfx {
-    if self!height-remaining <  $.lines-before * $.line-height {
+    if !$!gfx.defined || self!height-remaining <  $.lines-before * $.line-height {
         self!new-page;
     }
     elsif $!tx > $!margin && $!tx > $!gfx.canvas.width - self!indent {
@@ -833,13 +873,13 @@ sub pod2text-inline($pod) {
     pod2text($pod).subst(/\s+/, ' ', :g);
 }
 
-=TITLE Pod::To::PDF::API6 - Render Pod as PDF (Experimental)
-=head1 Pod::To::PDF::API6 - Render Pod as PDF (Experimental)
+=TITLE Pod::To::PDF::API6
+=SUBTITLE Render Pod as PDF (Experimental)
 
 =begin Synopsis
 From command line:
 
-    $ raku --doc=PDF lib/to/class.rakumod | raku -e'"class.pdf".IO.spurt: $*IN.slurp.encode("latin-1")' > to-class.pdf
+    $ raku --doc=PDF lib/to/class.rakumod | xargs evince
 
 From Raku:
     =begin code :lang<raku>
@@ -865,7 +905,7 @@ This is an experimental module for rendering POD to PDF.
 
 From command line:
     =begin code :lang<shell>
-    $  raku --doc=PDF lib/class.rakumod | xargs xpdf
+    $  raku --doc=PDF lib/class.rakumod | xargs evince
     =end code
 From Raku code, the C<pod2pdf> function returns a PDF::API6 object which can
 be further manipulated, or saved to a PDF file.
