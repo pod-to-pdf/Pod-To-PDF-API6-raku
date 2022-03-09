@@ -10,6 +10,7 @@ use PDF::Content::Text::Box;
 use Pod::To::PDF::API6::Style;
 use Pod::To::Text;
 use File::Temp;
+use IETF::RFC_Grammar::URI;
 # PDF::Class
 use PDF::Action;
 use PDF::Annot::Link;
@@ -35,8 +36,9 @@ has UInt $!pad = 0;
 has Bool $.contents = True;
 has @.toc; # table of contents
 has @!footnotes;
-has DestRef $!gutter-link;    # forward link to footnote area
 has DestRef @!footnotes-back; # per-footnote return links
+has PDF::Tags::Elem @!footnotes-tag;
+has DestRef $!gutter-link;    # forward link to footnote area
 has Str %!metadata;
 has UInt:D $!level = 1;
 has PDF::Tags::Elem @!tags;
@@ -342,10 +344,15 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             $!gutter-link //= self!make-dest: :left(0), :top($!margin + (Gutter + 2) * $.line-height);
             my $ind = '[' ~ @!footnotes+1 ~ ']';
             my PDF::Action $link = $!pdf.action: :destination($!gutter-link);
-            self!style: :tag(Label), :$link, {  $.pod2pdf($ind); }
+
+            temp $*tag .= Span;
+            self!style: :tag(Reference), {
+                self!style: :tag(Label), :$link, {  $.pod2pdf($ind); }
+            }
             my @contents = $ind, $pod.contents.Slip;
             @!footnotes.push: @contents;
             @!footnotes-back.push: self!make-dest;
+            @!footnotes-tag.push: $*tag;
             do {
                 # pre-compute footnote size
                 temp $!style .= new;
@@ -369,13 +376,18 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
         }
         when 'L' {
             my $text = pod2text-inline($pod.contents);
+            my %style;
             given $pod.meta.head // $text -> $uri {
-                my $link = $uri.starts-with('#')
-                    ?? $!pdf.action: :destination(dest-name($uri))
-                    !! $!pdf.action: :$uri;
-                self!style: :$link, {
-                    $.print: $text;
+                when .starts-with('#') {
+                    %style<link> = $!pdf.action: :destination(dest-name($uri));
+                    %style<tag> = Reference;
                 }
+                when IETF::RFC_Grammar::URI.parse($_) {
+                    %style<link> = $!pdf.action: :$uri;
+                }
+            }
+            self!style: |%style, {
+                $.print: $text;
             }
         }
         default {
@@ -796,11 +808,13 @@ method !finish-page {
             $.pad(1);
             my $footnote = @!footnotes.shift;
             my $destination = @!footnotes-back.shift;
+            temp $*tag = @!footnotes-tag.shift;
             self!style: :tag(Note), {
                 my PDF::Action $link = $!pdf.action: :$destination;
                 self!style: :tag(Label), :$link, {
                     $.print($footnote.shift);
                 } # [n]
+                $*tag .= Paragraph;
                 $.pod2pdf($footnote);
             }
         }

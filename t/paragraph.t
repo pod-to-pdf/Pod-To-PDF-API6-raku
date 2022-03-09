@@ -32,11 +32,18 @@ my $xml = q{<Document>
     spaces and tabs are ignored
   </P>
   <P>
-    sanity test of 
-    <Lbl>
-      <Link>[1]</Link>
-    </Lbl>
-     footnotes.
+    sanity test of <Span><Reference>
+        <Lbl>
+          <Link>[1]</Link>
+        </Lbl>
+      </Reference><Note>
+        <Lbl>
+          <Link>[1]</Link>
+        </Lbl>
+        <P>
+          if you click, here, you should got back to the paragraph
+        </P>
+      </Note></Span> footnotes.
   </P>
   <P>
     Paragraph with formatting, <Code>code</Code> and <Link href="#blah">links</Link>.
@@ -44,11 +51,6 @@ my $xml = q{<Document>
   <P>
     aaaaabbbbbcccccdddddeeeeefffffggggghhhhhiiiiijjjjjkkkkklllllmmmmmnnnnnooooopppppqqqqqrrrrrssssstttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz
   </P>
-  <Note>
-    <Lbl>
-      <Link>[1]</Link>
-    </Lbl>
-    if you click, here, you should got back to the paragraph</Note>
 </Document>
 };
 
