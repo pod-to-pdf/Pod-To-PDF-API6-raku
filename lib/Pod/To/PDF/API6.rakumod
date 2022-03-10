@@ -377,13 +377,13 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
         when 'L' {
             my $text = pod2text-inline($pod.contents);
             my %style;
-            given $pod.meta.head // $text -> $uri {
+            given $pod.meta.head // $text {
                 when .starts-with('#') {
-                    %style<link> = $!pdf.action: :destination(dest-name($uri));
+                    %style<link> = $!pdf.action: :destination(dest-name($_));
                     %style<tag> = Reference;
                 }
                 when IETF::RFC_Grammar::URI.parse($_) {
-                    %style<link> = $!pdf.action: :$uri;
+                    %style<link> = $!pdf.action: :uri($_);
                 }
             }
             self!style: |%style, {

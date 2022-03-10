@@ -32,21 +32,7 @@ my $xml = q{<Document>
     spaces and tabs are ignored
   </P>
   <P>
-    sanity test of <Span><Reference>
-        <Lbl>
-          <Link>[1]</Link>
-        </Lbl>
-      </Reference><Note>
-        <Lbl>
-          <Link>[1]</Link>
-        </Lbl>
-        <P>
-          if you click, here, you should got back to the paragraph
-        </P>
-      </Note></Span> footnotes.
-  </P>
-  <P>
-    Paragraph with formatting, <Code>code</Code> and <Link href="#blah">links</Link>.
+    Paragraph with formatting, <Code>code</Code> and <Reference><Link href="#blah">links</Link></Reference>.
   </P>
   <P>
     aaaaabbbbbcccccdddddeeeeefffffggggghhhhhiiiiijjjjjkkkkklllllmmmmmnnnnnooooopppppqqqqqrrrrrssssstttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz
@@ -87,8 +73,6 @@ paragraph
 =end para
 
 =para spaces  and	tabs are ignored
-
-=para sanity test of N<if you click, here, you should got back to the paragraph> footnotes.
 
 =para Paragraph with B<formatting>, C<code> and L<links|#blah>.
 

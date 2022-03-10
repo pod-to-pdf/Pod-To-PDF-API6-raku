@@ -1,0 +1,207 @@
+%PDF-1.3
+%¥±ë¼
+1 0 obj
+<<
+  /Type /Catalog
+  /Lang (en)
+  /MarkInfo << /Marked true >>
+  /Pages 2 0 R
+  /StructTreeRoot 10 0 R
+>>
+endobj
+
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [ 3 0 R ] >>
+endobj
+
+3 0 obj
+<<
+  /Type /Page
+  /Annots [ 4 0 R 6 0 R ]
+  /Contents 8 0 R
+  /MediaBox [ 0 0 612 792 ]
+  /Parent 2 0 R
+  /Resources << /Font << /F1 9 0 R >> >>
+  /StructParents 0
+>>
+endobj
+
+4 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /A 5 0 R
+  /Border [ 0 0 0 ]
+  /Contents ([1])
+  /P 3 0 R
+  /Rect [ 74.11 749 89.77 764 ]
+  /StructParent 1
+>>
+endobj
+
+5 0 obj
+<< /Type /Action /S /GoTo /D [ 3 0 R /XYZ 0 75 null ] >>
+endobj
+
+6 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /A 7 0 R
+  /Border [ 0 0 0 ]
+  /Contents ([1])
+  /P 3 0 R
+  /Rect [ 18 28 33.66 43 ]
+  /StructParent 2
+>>
+endobj
+
+7 0 obj
+<< /Type /Action /S /GoTo /D [ 3 0 R /XYZ 80.27 765 null ] >>
+endobj
+
+8 0 obj
+<< /Length 559 >> stream
+/P << /MCID 0 >> BDC
+  BT
+    1 0 0 1 20 752 Tm
+    /F1 10 Tf
+    (sanity test of ) Tj
+  ET
+EMC
+q
+  0 0 1 rg
+  /Link << /MCID 1 >> BDC
+    BT
+      1 0 0 1 20 752 Tm
+      [ -5611 ([1]) ] TJ
+    ET
+  EMC
+Q
+/P << /MCID 2 >> BDC
+  BT
+    1 0 0 1 20 752 Tm
+    [ -7027 ( footnotes.) ] TJ
+  ET
+EMC
+q
+  1 w
+  20 42 m
+  572 42 l
+  S
+Q
+q
+  0 0 1 rg
+  /Link << /MCID 3 >> BDC
+    BT
+      1 0 0 1 20 31 Tm
+      ([1]) Tj
+    ET
+  EMC
+Q
+/P << /MCID 4 >> BDC
+  BT
+    1 0 0 1 20 31 Tm
+    [ -1416 (if you click, here, you should got back to the paragraph) ] TJ
+  ET
+EMC
+endstream
+endobj
+
+9 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Times-Roman
+  /Encoding /WinAnsiEncoding
+>>
+endobj
+
+10 0 obj
+<<
+  /Type /StructTreeRoot
+  /K [ 11 0 R ]
+  /ParentTree <<
+    /Nums [ 0 [ 12 0 R 16 0 R 12 0 R 20 0 R 22 0 R ] 1 16 0 R 2 20 0 R ]
+  >>
+>>
+endobj
+
+11 0 obj
+<< /Type /StructElem /S /Document /K [ 12 0 R ] /P 10 0 R >>
+endobj
+
+12 0 obj
+<< /Type /StructElem /S /P /K [ 0 13 0 R 2 ] /P 11 0 R /Pg 3 0 R >>
+endobj
+
+13 0 obj
+<< /Type /StructElem /S /Span /K [ 14 0 R 18 0 R ] /P 12 0 R >>
+endobj
+
+14 0 obj
+<< /Type /StructElem /S /Reference /K [ 15 0 R ] /P 13 0 R >>
+endobj
+
+15 0 obj
+<< /Type /StructElem /S /Lbl /K [ 16 0 R ] /P 14 0 R >>
+endobj
+
+16 0 obj
+<< /Type /StructElem /S /Link /K [ 17 0 R 1 ] /P 15 0 R >>
+endobj
+
+17 0 obj
+<< /Type /OBJR /Obj 4 0 R /Pg 3 0 R >>
+endobj
+
+18 0 obj
+<< /Type /StructElem /S /Note /K [ 19 0 R 22 0 R ] /P 13 0 R >>
+endobj
+
+19 0 obj
+<< /Type /StructElem /S /Lbl /K [ 20 0 R ] /P 18 0 R >>
+endobj
+
+20 0 obj
+<< /Type /StructElem /S /Link /K [ 21 0 R 3 ] /P 19 0 R >>
+endobj
+
+21 0 obj
+<< /Type /OBJR /Obj 6 0 R /Pg 3 0 R >>
+endobj
+
+22 0 obj
+<< /Type /StructElem /S /P /K [ 4 ] /P 18 0 R >>
+endobj
+
+xref
+0 23
+0000000000 65535 f 
+0000000015 00000 n 
+0000000138 00000 n 
+0000000198 00000 n 
+0000000382 00000 n 
+0000000546 00000 n 
+0000000619 00000 n 
+0000000778 00000 n 
+0000000856 00000 n 
+0000001467 00000 n 
+0000001575 00000 n 
+0000001733 00000 n 
+0000001811 00000 n 
+0000001896 00000 n 
+0000001977 00000 n 
+0000002056 00000 n 
+0000002129 00000 n 
+0000002205 00000 n 
+0000002261 00000 n 
+0000002342 00000 n 
+0000002415 00000 n 
+0000002491 00000 n 
+0000002547 00000 n 
+trailer
+<< /ID [ (t/footnotes.t   ) (t/footnotes.t   ) ] /Root 1 0 R /Size 23 >>
+startxref
+2613
+%%EOF

@@ -1,17 +1,19 @@
 TITLE
 =====
 
-Pod::To::PDF::API6 - Render Pod as PDF (Experimental)
+Pod::To::PDF::API6
 
-Pod::To::PDF::API6 - Render Pod as PDF (Experimental)
-=====================================================
+SUBTITLE
+========
+
+Render Pod as PDF (Experimental)
 
 Synopsis
 ========
 
 From command line:
 
-$ raku --doc=PDF lib/to/class.rakumod | raku -e'"class.pdf".IO.spurt: $*IN.slurp.encode("latin-1")' > to-class.pdf
+$ raku --doc=PDF lib/to/class.rakumod | xargs evince
 
 From Raku:
 
@@ -40,7 +42,7 @@ This is an experimental module for rendering POD to PDF.
 From command line:
 
 ```shell
-$  raku --doc=PDF lib/class.rakumod | xargs xpdf
+$  raku --doc=PDF lib/class.rakumod | xargs evince
 ```
 
 From Raku code, the `pod2pdf` function returns a PDF::API6 object which can be further manipulated, or saved to a PDF file.
