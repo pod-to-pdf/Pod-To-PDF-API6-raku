@@ -10,6 +10,7 @@ use PDF::Content::Text::Box;
 use Pod::To::PDF::API6::Style;
 use Pod::To::Text;
 use File::Temp;
+use URI;
 use IETF::RFC_Grammar::URI;
 # PDF::Class
 use PDF::Action;
@@ -18,7 +19,7 @@ use PDF::Destination :Fit, :DestRef;
 use PDF::Page;
 use PDF::StructElem;
 
-subset Level of Int:D where 1..6;
+subset Level of Int:D where 0..6;
 my constant Gutter = 3;
 
 has PDF::API6 $.pdf .= new;
@@ -43,6 +44,23 @@ has Str %!metadata;
 has UInt:D $!level = 1;
 has PDF::Tags::Elem @!tags;
 
+class DefaultLinker {
+    method extension { 'pdf' }
+    method resolve-link(Str $link) {
+        if IETF::RFC_Grammar::URI.parse($link) {
+            my URI() $uri = $link;
+            if $uri.is-relative && $uri.path.segments.tail && ! $uri.path.segments.tail.contains('.') {
+                $uri.path($uri.path ~ '.' ~ $.extension);
+            }
+            $uri.Str;
+        }
+        else {
+            Str
+        }
+    }
+}
+has $.linker = DefaultLinker;
+
 method !tag-begin($name) {
     $*tag .= add-kid: :$name;
     @!tags.push: $*tag;
@@ -59,21 +77,9 @@ method !tag($tag, &codez) {
     self!tag-end;
 }
 
-method !want-level($level) {
-    while $!level < $level {
-        self!tag-begin(Section);
-        $!level++;
-    }
-    while $!level > $level && $*tag.name eq Section {
-        self!tag-end;
-        $!level--;
-    }
-}
-
 method read($pod, :$*tag is copy = self.root) {
     self.pod2pdf($pod);
     self!finish-page;
-    self!want-level(1);
 }
 
 method pdf {
@@ -268,27 +274,22 @@ multi method pod2pdf(Pod::Block::Named $pod) {
             when 'TITLE'|'SUBTITLE' {
                 $.pad(0);
                 my $toc = $_ eq 'TITLE';
-                my  $level = $_ eq 'TITLE' ?? 1 !! 2;
-                my $title = pod2text-inline($pod.contents);
-                self.metadata(.lc) ||= $title;
-                self!heading($title, :$toc, :$level);
+                $!level = $_ eq 'TITLE' ?? 0 !! 2;
+                self.metadata(.lc) ||= pod2text-inline($pod.contents);
+                self!heading($pod.contents, :$toc);
             }
             default {
                 my $name = $_;
-                my $level = $!level + 1;
-                given $name {
-                    when .uc {
-                        when 'VERSION'|'NAME'|'AUTHOR' {
-                            self.metadata(.lc) ||= pod2text-inline($pod.contents);
-                        }
-                        $level = 2;
-                        $_ = .tclc;
+                temp $!level += 1;
+                if $name eq $name.uc {
+                    if $name ~~ 'VERSION'|'NAME'|'AUTHOR' {
+                        self.metadata(.lc) ||= pod2text-inline($pod.contents);
                     }
+                    $!level = 2;
+                    $name = .tclc;
                 }
-
-                self!heading($name, :$level);
+                self!heading($name);
                 $.pod2pdf($pod.contents);
-                self!want-level($level - 1);
             }
         }
     }
@@ -302,8 +303,8 @@ multi method pod2pdf(Pod::Block::Code $pod) {
 
 multi method pod2pdf(Pod::Heading $pod) {
     $.pad: {
-        my Level $level = min($pod.level, 6);
-        self!heading( pod2text-inline($pod.contents), :$level);
+        $!level = min($pod.level, 6);
+        self!heading: $pod.contents;
     }
 }
 
@@ -378,12 +379,14 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             my $text = pod2text-inline($pod.contents);
             my %style;
             given $pod.meta.head // $text {
-                when .starts-with('#') {
+                if .starts-with('#') {
                     %style<link> = $!pdf.action: :destination(dest-name($_));
                     %style<tag> = Reference;
                 }
-                when IETF::RFC_Grammar::URI.parse($_) {
-                    %style<link> = $!pdf.action: :uri($_);
+                else {
+                    with $!linker.resolve-link($_) -> $uri {
+                        %style<link> = $!pdf.action: :$uri;
+                    }
                 }
             }
             self!style: |%style, {
@@ -399,7 +402,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
 
 multi method pod2pdf(Pod::Defn $pod) {
     $.pad;
-    self!style: :bold, {
+    self!style: :bold, :tag(Label), {
         $.pod2pdf($pod.term);
     }
     $.pod2pdf($pod.contents);
@@ -534,8 +537,14 @@ multi method pod2pdf(Str $pod) {
 }
 
 multi method pod2pdf($pod) {
-    warn "fallback render of {$pod.WHAT.raku}";
-    $.say: pod2text($pod);
+    if $pod.WHAT.raku ~~ 'List'|'Array' {
+        ## Huh?
+        $.pod2pdf($_) for $pod.list;
+    }
+    else {
+        warn "fallback render of {$pod.WHAT.raku}";
+        $.say: pod2text($pod);
+    }
 }
 
 multi method say {
@@ -562,6 +571,7 @@ method !pad-here {
     $!pad = 0;
 }
 
+has $!last-chunk-height = 0;
 method print(Str $text, Bool :$nl, :$reflow = True, |c) {
     self!pad-here;
     my PDF::Content::Text::Box $tb = self!text-box: $text, |c;
@@ -609,6 +619,7 @@ method print(Str $text, Bool :$nl, :$reflow = True, |c) {
         @.print: $overflow, :$nl, |c;
         $overflow = Nil;
     }
+    $!last-chunk-height = $h;
     ($x0, $!ty, $w, $h, $overflow);
 }
 
@@ -639,7 +650,7 @@ method !style(&codez, Int :$indent, Str :tag($name) is copy, Bool :$pad, |c) {
     $pad ?? $.pad(&codez) !! &codez();
 }
 
-method !add-toc-entry(Hash $entry, Level $level, @kids = @!toc, Level :$cur = 1, ) {
+method !add-toc-entry(Hash $entry, @kids = @!toc, Level :$level!, Level :$cur = 1, ) {
     if $cur >= $level {
         @kids.push: $entry;
     }
@@ -647,42 +658,56 @@ method !add-toc-entry(Hash $entry, Level $level, @kids = @!toc, Level :$cur = 1,
         # descend
         @kids.push: { :Title(' '), } unless @kids;
         @kids.tail<kids> //= [];
-        self!add-toc-entry($entry, $level, :cur($cur+1), @kids.tail<kids>);
+        self!add-toc-entry($entry, :$level, :cur($cur+1), @kids.tail<kids>);
     }
 }
 
-method !heading(Str:D $title, Level:D :$level!, :$underline = $level == 1, Bool :$toc = True) {
-    my constant HeadingSizes = 20, 16, 13, 11.5, 10, 10;
-    my $font-size = HeadingSizes[$level - 1];
+method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True) {
+    my constant HeadingSizes = 24, 20, 16, 13, 11.5, 10, 10;
+    my $font-size = HeadingSizes[$level];
     my Bool $bold   = $level <= 4;
     my Bool $italic;
     my $lines-before = $.lines-before;
 
     given $level {
-        when 1 { self!new-page; }
-        when 2 { $lines-before = 3; }
-        when 3 { $lines-before = 2; }
-        when 5 { $italic = True; }
+        when 1   { self!new-page; }
+        when 2   { $lines-before = 3; }
+        when 3   { $lines-before = 2; }
+        when 5   { $italic = True; }
     }
 
-    self!want-level($level);
-    my $tag = $level == $!level ?? 'H' !! 'H' ~ $level;
+    $pod .= &strip-para;
+
+    my $tag = 'H' ~ ($level||1);
     self!style: :$tag, :$font-size, :$bold, :$italic, :$underline, :$lines-before, {
 
-        my Str $Title = $title.subst(/\s+/, ' ', :g); # Tidy a little
+        my Str $Title = pod2text-inline($pod);
         $*tag.cos.title = $Title;
 
-        my (\x, \y, \w, \h) = @.print: $title;
-        $.say();
+        my \x = self!indent;
+        my $y0 := $!ty;
+        $.pod2pdf($pod);
+        my \y = $!ty;
+        my \h = max(y - $y0, $!last-chunk-height);
+
         if $!contents && $toc {
             # Register in table of contents
             my $name = self!gen-dest-name($Title);
             my DestRef $dest = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h + $.line-height);
             my PDF::StructElem $SE = $*tag.cos;
-            self!add-toc-entry: { :$Title, :$dest, :$SE  }, $level;
+            self!add-toc-entry: { :$Title, :$dest, :$SE  }, :$level;
         }
     }
 }
+
+# to reduce the common case <Hn><P>Xxxx<P></Hn> -> <Hn>Xxxx</Hn>
+multi sub strip-para(Array $_ where +$_ == 1) {
+    .map(&strip-para).List;
+}
+multi sub strip-para(Pod::Block::Para $_) {
+    .contents;
+}
+multi sub strip-para($_) { $_ }
 
 has UInt %!dest-used;
 method !gen-dest-name($title, $seq = '') {

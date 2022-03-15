@@ -16,7 +16,7 @@ endobj
 endobj
 
 3 0 obj
-<< /VERSION [ 4 0 R /FitBH 734.4 ] >>
+<< /Head2 [ 4 0 R /FitBH 694.8 ] /Version [ 4 0 R /FitBH 752 ] >>
 endobj
 
 4 0 obj
@@ -31,31 +31,38 @@ endobj
 endobj
 
 5 0 obj
-<< /Length 356 >> stream
-/H << /MCID 0 >> BDC
+<< /Length 447 >> stream
+/H2 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
     /F1 16 Tf
     (Subtitle from POD) Tj
   ET
 EMC
-/H << /MCID 1 >> BDC
+/H2 << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 705.8 Tm
-    /F1 13 Tf
-    (VERSION) Tj
+    1 0 0 1 20 716.8 Tm
+    (Version) Tj
   ET
 EMC
 /P << /MCID 2 >> BDC
   BT
-    1 0 0 1 20 669.5 Tm
+    1 0 0 1 20 694.8 Tm
     /F2 10 Tf
     (1.2.3) Tj
   ET
 EMC
-/P << /MCID 3 >> BDC
+/H2 << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 647.5 Tm
+    1 0 0 1 20 659.6 Tm
+    /F1 16 Tf
+    (Head2) Tj
+  ET
+EMC
+/P << /MCID 4 >> BDC
+  BT
+    1 0 0 1 20 637.6 Tm
+    /F2 10 Tf
     (a paragraph.) Tj
   ET
 EMC
@@ -88,71 +95,71 @@ endobj
 <<
   /Type /StructTreeRoot
   /K [ 10 0 R ]
-  /ParentTree << /Nums [ 0 [ 12 0 R 14 0 R 15 0 R 16 0 R ] ] >>
+  /ParentTree << /Nums [ 0 [ 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R ] ] >>
 >>
 endobj
 
 10 0 obj
-<< /Type /StructElem /S /Document /K [ 11 0 R ] /P 9 0 R >>
+<<
+  /Type /StructElem
+  /S /Document
+  /K [ 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R ]
+  /P 9 0 R
+>>
 endobj
 
 11 0 obj
-<< /Type /StructElem /S /Sect /K [ 12 0 R 13 0 R 16 0 R ] /P 10 0 R >>
-endobj
-
-12 0 obj
 <<
   /Type /StructElem
-  /S /H
+  /S /H2
   /K [ 0 ]
-  /P 11 0 R
+  /P 10 0 R
   /Pg 4 0 R
   /T (Subtitle from POD)
 >>
 endobj
 
+12 0 obj
+<< /Type /StructElem /S /H2 /K [ 1 ] /P 10 0 R /Pg 4 0 R /T (Version) >>
+endobj
+
 13 0 obj
-<< /Type /StructElem /S /Sect /K [ 14 0 R 15 0 R ] /P 11 0 R >>
+<< /Type /StructElem /S /P /K [ 2 ] /P 10 0 R /Pg 4 0 R >>
 endobj
 
 14 0 obj
-<< /Type /StructElem /S /H /K [ 1 ] /P 13 0 R /Pg 4 0 R /T (VERSION) >>
+<< /Type /StructElem /S /H2 /K [ 3 ] /P 10 0 R /Pg 4 0 R /T (Head2) >>
 endobj
 
 15 0 obj
-<< /Type /StructElem /S /P /K [ 2 ] /P 13 0 R /Pg 4 0 R >>
-endobj
-
-16 0 obj
-<< /Type /StructElem /S /P /K [ 3 ] /P 11 0 R /Pg 4 0 R >>
+<< /Type /StructElem /S /P /K [ 4 ] /P 10 0 R /Pg 4 0 R >>
 endobj
 
 xref
-0 17
+0 16
 0000000000 65535 f 
 0000000015 00000 n 
 0000000098 00000 n 
 0000000235 00000 n 
-0000000289 00000 n 
-0000000457 00000 n 
-0000000865 00000 n 
-0000000925 00000 n 
-0000001032 00000 n 
-0000001140 00000 n 
-0000001266 00000 n 
-0000001343 00000 n 
-0000001431 00000 n 
-0000001542 00000 n 
-0000001623 00000 n 
-0000001712 00000 n 
-0000001788 00000 n 
+0000000317 00000 n 
+0000000485 00000 n 
+0000000984 00000 n 
+0000001044 00000 n 
+0000001151 00000 n 
+0000001259 00000 n 
+0000001392 00000 n 
+0000001505 00000 n 
+0000001617 00000 n 
+0000001707 00000 n 
+0000001783 00000 n 
+0000001871 00000 n 
 trailer
 <<
   /ID [ (t/metadata.t    ) (t/metadata.t    ) ]
   /Info 1 0 R
   /Root 2 0 R
-  /Size 17
+  /Size 16
 >>
 startxref
-1864
+1947
 %%EOF

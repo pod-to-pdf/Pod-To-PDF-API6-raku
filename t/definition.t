@@ -7,31 +7,27 @@ use PDF::API6;
 plan 1;
 
 my $xml = q{<Document>
-  <Sect>
-    <H>
-      Module Asdf1
-    </H>
-    <P>
-      This is a module
-    </P>
-    <P>
-      <Code>module Asdf1</Code>
-    </P>
-  </Sect>
-  <Sect>
-    <H>
-      Sub asdf
-    </H>
-    <P>
-      This is a sub
-    </P>
-    <P>
-      <Code>sub asdf(
+  <H2>
+    Module Asdf1
+  </H2>
+  <P>
+    This is a module
+  </P>
+  <P>
+    <Code>module Asdf1</Code>
+  </P>
+  <H3>
+    Sub asdf
+  </H3>
+  <P>
+    This is a sub
+  </P>
+  <P>
+    <Code>sub asdf(
     Str $asdf1,
     Str :$asdf2 = "asdf",
 ) returns Str</Code>
-    </P>
-  </Sect>
+  </P>
   <H2>
     Class Asdf2
   </H2>
@@ -41,18 +37,18 @@ my $xml = q{<Document>
   <P>
     <Code>class Asdf2</Code>
   </P>
-  <H>
+  <H3>
     Attribute t
-  </H>
+  </H3>
   <P>
     This is an attribute
   </P>
   <P>
     <Code>has Str $.t</Code>
   </P>
-  <H>
+  <H3>
     Method asdf
-  </H>
+  </H3>
   <P>
     This is a method
   </P>

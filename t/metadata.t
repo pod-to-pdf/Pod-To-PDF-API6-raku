@@ -28,6 +28,8 @@ subtest 'Metadata verification', {
 =SUBTITLE Subtitle from POD
 =VERSION 1.2.3
 
+=head2 Head2
+
 a paragraph.
 =end pod
 

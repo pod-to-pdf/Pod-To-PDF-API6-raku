@@ -9,7 +9,8 @@
     "PDF::Class:ver<0.4.18+>",
     "PDF::Tags:ver<0.0.13+>",
     "Pod::Load",
-    "File::Temp"
+    "File::Temp",
+    "URI"
   ],
   "description": "Render Pod as PDF via PDF::API6 (experimental)",
   "license": "Artistic-2.0",

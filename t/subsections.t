@@ -7,30 +7,24 @@ use PDF::API6;
 plan 1;
 
 my $xml = q{<Document>
-  <Sect>
-    <H>
-      Outer
-    </H>
-    <P>
-      This is an outer paragraph
-    </P>
-    <Sect>
-      <H>
-        Inner1
-      </H>
-      <P>
-        This is the first inner paragraph
-      </P>
-    </Sect>
-    <Sect>
-      <H>
-        Inner2
-      </H>
-      <P>
-        This is the second inner paragraph
-      </P>
-    </Sect>
-  </Sect>
+  <H2>
+    Outer
+  </H2>
+  <P>
+    This is an outer paragraph
+  </P>
+  <H3>
+    Inner1
+  </H3>
+  <P>
+    This is the first inner paragraph
+  </P>
+  <H3>
+    Inner2
+  </H3>
+  <P>
+    This is the second inner paragraph
+  </P>
 </Document>
 };
 
