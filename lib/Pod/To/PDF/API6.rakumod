@@ -43,6 +43,7 @@ has DestRef $!gutter-link;    # forward link to footnote area
 has Str %!metadata;
 has UInt:D $!level = 1;
 has PDF::Tags::Elem @!tags;
+has %.index;
 
 class DefaultLinker {
     method extension { 'pdf' }
@@ -96,11 +97,13 @@ submethod TWEAK(Str :$lang = 'en', :$pod, :%metadata) {
     self.read($_) with $pod;
 }
 
-method render($class: $pod, |c) {
+method render($class: $pod,  Bool :$index = True, |c) {
     state %cache{Any};
     %cache{$pod} //= do {
         # render method may be called more than once: Rakudo #2588
         my $renderer = $class.new(|c, :$pod);
+        $renderer!build-index
+            if $index && $renderer.index;
         my PDF::API6 $pdf = $renderer.pdf;
         # save to a temporary file, since PDF is a binary format
         my (Str $file-name, IO::Handle $fh) = tempfile("pod2pdf-api6-****.pdf", :!unlink);
@@ -109,8 +112,11 @@ method render($class: $pod, |c) {
     }
 }
 
-our sub pod2pdf($pod, :$class = $?CLASS, |c) is export {
-    $class.new(|c, :$pod).pdf;
+our sub pod2pdf($pod, :$class = $?CLASS, Bool :$index = True, |c) is export {
+    my $renderer = $class.new(|c, :$pod);
+    $renderer!build-index
+        if $index && $renderer.index;
+    $renderer.pdf;
 }
 
 my constant vpad = 2;
@@ -372,8 +378,25 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             # invisable
         }
         when 'X' {
-            warn "indexing (X) not yet handled";
-            $.pod2pdf($pod.contents);
+            my $term = pod2text-inline($pod.contents);
+            my Str $name = self!gen-dest-name('index-' ~ $term)
+                if $term;
+
+            my DestRef $dest = self!pod2dest($pod.contents, :$name);
+            my PDF::StructElem $SE = $*tag.cos;
+            my %ref = %{ :$dest, :$SE  };
+
+            if $pod.meta -> $meta {
+                for $meta.List {
+                    my $idx = %!index{.head} //= %();
+                    $idx = $idx{$_} //= %() for .skip;
+                    $idx<#refs>.push: %ref;
+                }
+            }
+            elsif $term {
+                %!index{$term}<#refs>.push: %ref;
+            }
+            # otherwise X<|> ?
         }
         when 'L' {
             my $text = pod2text-inline($pod.contents);
@@ -662,6 +685,18 @@ method !add-toc-entry(Hash $entry, @kids = @!toc, Level :$level!, Level :$cur = 
     }
 }
 
+method !pod2dest($pod, Str :$name) {
+    my \x = self!indent;
+    my $y0 := $!ty;
+
+    $.pod2pdf($pod);
+
+    my \y = $!ty;
+    my \h = max(y - $y0, $!last-chunk-height);
+    my DestRef $ = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h + $.line-height);
+
+}
+
 method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True) {
     my constant HeadingSizes = 24, 20, 16, 13, 11.5, 10, 10;
     my $font-size = HeadingSizes[$level];
@@ -684,20 +719,52 @@ method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <=
         my Str $Title = pod2text-inline($pod);
         $*tag.cos.title = $Title;
 
-        my \x = self!indent;
-        my $y0 := $!ty;
-        $.pod2pdf($pod);
-        my \y = $!ty;
-        my \h = max(y - $y0, $!last-chunk-height);
-
         if $!contents && $toc {
             # Register in table of contents
             my $name = self!gen-dest-name($Title);
-            my DestRef $dest = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h + $.line-height);
+            my DestRef $dest = self!pod2dest($pod, :$name);
             my PDF::StructElem $SE = $*tag.cos;
             self!add-toc-entry: { :$Title, :$dest, :$SE  }, :$level;
         }
+        else {
+            $.pod2pdf($pod);
+        }
     }
+}
+
+sub categorize-alphabetically(%index) {
+    my %alpha-index;
+    for %index.sort(*.key.uc) {
+        %alpha-index{.key.substr(0,1).uc}{.key} = .value;
+    }
+    %alpha-index;
+}
+
+method !add-terms(%index, :$level is copy = 1) {
+    $level++;
+
+    for %index.sort(*.key.uc) {
+        my $term = .key;
+        my %kids = .value;
+        my Hash @refs = .List with %kids<#refs>:delete;
+        @refs[0] //= %( );
+        for @refs {
+            my %toci = %$_;
+            %toci<Title> = $term;
+            self!add-toc-entry: %toci, :$level;
+            $term = ' ';
+        }
+
+        self!add-terms(%kids, :$level) if %kids;
+    }
+}
+
+method !build-index {
+    self!add-toc-entry(%( :Title('Index')), :level(1));
+    my %idx := %!index;
+    %idx .= &categorize-alphabetically
+        if %idx > 64;
+    self!add-terms(%idx);
 }
 
 # to reduce the common case <Hn><P>Xxxx<P></Hn> -> <Hn>Xxxx</Hn>
