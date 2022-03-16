@@ -14,9 +14,9 @@ my $xml = q{<Document>
   <H2>
     pod2pdf() Options
   </H2>
-  <Lbl>
-    PDF::API6 :$pdf
-  </Lbl>
+  <P>
+    <Quote>PDF::API6 :$pdf</Quote>
+  </P>
   <P>
     A PDF object to render to.
   </P>

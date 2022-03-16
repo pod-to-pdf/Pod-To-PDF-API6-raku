@@ -374,6 +374,9 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
                 $.pod2pdf($pod.contents);
             }
         }
+        when 'E' {
+            $.pod2pdf($pod.contents);
+        }
         when 'Z' {
             # invisable
         }
@@ -424,9 +427,10 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
 }
 
 multi method pod2pdf(Pod::Defn $pod) {
-    $.pad;
-    self!style: :bold, :tag(Label), {
-        $.pod2pdf($pod.term);
+    self!tag: Paragraph, {
+        self!style: :bold, :tag(Quotation), {
+            $.pod2pdf($pod.term);
+        }
     }
     $.pod2pdf($pod.contents);
 }
