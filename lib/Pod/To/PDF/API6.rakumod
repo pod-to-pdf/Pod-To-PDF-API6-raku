@@ -322,6 +322,22 @@ multi method pod2pdf(Pod::Block::Para $pod) {
     }
 }
 
+method !resolve-link(Str $url) {
+    my %style;
+    with $url {
+        if .starts-with('#') {
+            %style<link> = $!pdf.action: :destination(dest-name($_));
+            %style<tag> = Reference;
+        }
+        else {
+            with $!linker.resolve-link($_) -> $uri {
+                %style<link> = $!pdf.action: :$uri;
+            }
+        }
+    }
+    %style;
+}
+
 multi method pod2pdf(Pod::FormattingCode $pod) {
     given $pod.type {
         when 'B' {
@@ -403,20 +419,20 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
         }
         when 'L' {
             my $text = pod2text-inline($pod.contents);
-            my %style;
-            given $pod.meta.head // $text {
-                if .starts-with('#') {
-                    %style<link> = $!pdf.action: :destination(dest-name($_));
-                    %style<tag> = Reference;
-                }
-                else {
-                    with $!linker.resolve-link($_) -> $uri {
-                        %style<link> = $!pdf.action: :$uri;
-                    }
-                }
-            }
+            my %style = self!resolve-link: $pod.meta.head // $text;
             self!style: |%style, {
                 $.print: $text;
+            }
+        }
+        when 'P' {
+            # todo insertion of placed text
+            if pod2text-inline($pod.contents) -> $url {
+                my %style = self!resolve-link: $url;
+                $.pod2pdf('(see: ');
+                self!style: |%style, {
+                    $.print: $url;
+                }
+                $.pod2pdf(')');
             }
         }
         default {
@@ -994,6 +1010,7 @@ From command line:
 From Raku:
     =begin code :lang<raku>
     use Pod::To::PDF::API6;
+    use PDF::API6;
 
     =NAME foobar.pl
     =Name foobar.pl
@@ -1001,7 +1018,8 @@ From Raku:
     =Synopsis
         foobar.pl <options> files ...
 
-    pod2pdf($=pod).save-as: "foobar.pdf";
+    my PDF::API6 $pdf = pod2pdf($=pod);
+    $pdf.save-as: "foobar.pdf";
     =end code
 =end Synopsis
 
@@ -1015,23 +1033,7 @@ This is an experimental module for rendering POD to PDF.
 
 From command line:
     =begin code :lang<shell>
-    $  raku --doc=PDF lib/class.rakumod | xargs evince
-    =end code
-From Raku code, the C<pod2pdf> function returns a PDF::API6 object which can
-be further manipulated, or saved to a PDF file.
-
-    =begin code :lang<raku>
-    use Pod::To::PDF::API6;
-    use PDF::API6;
- 
-    =NAME foobar.raku
-    =Name foobar.raku
-
-    =Synopsis
-        foobarraku <options> files ...
-
-    my PDF::API6 $pdf = pod2pdf($=pod);
-    $pdf.save-as: "class.pdf"
+    $ raku --doc=PDF::API6 lib/class.rakumod | xargs evince
     =end code
 
 =end Description
