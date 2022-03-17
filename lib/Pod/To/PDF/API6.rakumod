@@ -43,6 +43,7 @@ has DestRef $!gutter-link;    # forward link to footnote area
 has Str %!metadata;
 has UInt:D $!level = 1;
 has PDF::Tags::Elem @!tags;
+has %.replace;
 has %.index;
 
 class DefaultLinker {
@@ -278,11 +279,10 @@ multi method pod2pdf(Pod::Block::Named $pod) {
                 }
             }
             when 'TITLE'|'SUBTITLE' {
-                $.pad(0);
                 my $toc = $_ eq 'TITLE';
                 $!level = $_ eq 'TITLE' ?? 0 !! 2;
                 self.metadata(.lc) ||= pod2text-inline($pod.contents);
-                self!heading($pod.contents, :$toc);
+                self!heading($pod.contents, :$toc, :pad(1));
             }
             default {
                 my $name = $_;
@@ -338,6 +338,7 @@ method !resolve-link(Str $url) {
     %style;
 }
 
+has %!replacing;
 multi method pod2pdf(Pod::FormattingCode $pod) {
     given $pod.type {
         when 'B' {
@@ -435,8 +436,22 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
                 $.pod2pdf(')');
             }
         }
+        when 'R' {
+            if pod2text-inline($pod.contents) -> $place-holder {
+                if %!replace{$place-holder} -> $pod {
+                    if (temp %!replacing{$place-holder})++ {
+                        die "unable to recursively replace R\<$place-holder\>"
+                    }
+                    $.pod2pdf($pod);
+                }
+                else {
+                    note "replacement not specified for R\<$place-holder\>";
+                    $.pod2pdf($pod.contents);
+                }
+            }
+        }
         default {
-            warn "todo: POD formatting code: $_";
+            warn "unhandled: POD formatting code: $_\<\>";
             $.pod2pdf($pod.contents);
         }
     }
@@ -706,18 +721,17 @@ method !add-toc-entry(Hash $entry, @kids = @!toc, Level :$level!, Level :$cur = 
 }
 
 method !pod2dest($pod, Str :$name) {
-    my \x = self!indent;
     my $y0 := $!ty;
 
     $.pod2pdf($pod);
 
     my \y = $!ty;
     my \h = max(y - $y0, $!last-chunk-height);
-    my DestRef $ = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h + $.line-height);
+    my DestRef $ = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h);
 
 }
 
-method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True) {
+method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True, :$!pad=2) {
     my constant HeadingSizes = 24, 20, 16, 13, 11.5, 10, 10;
     my $font-size = HeadingSizes[$level];
     my Bool $bold   = $level <= 4;
@@ -738,6 +752,7 @@ method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <=
 
         my Str $Title = pod2text-inline($pod);
         $*tag.cos.title = $Title;
+        self!pad-here;
 
         if $!contents && $toc {
             # Register in table of contents
