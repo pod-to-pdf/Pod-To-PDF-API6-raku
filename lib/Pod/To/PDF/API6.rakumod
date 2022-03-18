@@ -8,7 +8,6 @@ use PDF::Content::Color :&color;
 use PDF::Content::Tag :Tags;
 use PDF::Content::Text::Box;
 use Pod::To::PDF::API6::Style;
-use Pod::To::Text;
 use File::Temp;
 use URI;
 use IETF::RFC_Grammar::URI;
@@ -209,7 +208,7 @@ method !table-row(@row, @widths, Bool :$header) {
 }
 
 method !table-cell($pod) {
-    my $text = pod2text-inline($pod);
+    my $text = $.pod2text-inline($pod);
     self!text-box: $text, :width(0), :height(0), :indent(0);
 }
 
@@ -281,7 +280,7 @@ multi method pod2pdf(Pod::Block::Named $pod) {
             when 'TITLE'|'SUBTITLE' {
                 my $toc = $_ eq 'TITLE';
                 $!level = $_ eq 'TITLE' ?? 0 !! 2;
-                self.metadata(.lc) ||= pod2text-inline($pod.contents);
+                self.metadata(.lc) ||= $.pod2text-inline($pod.contents);
                 self!heading($pod.contents, :$toc, :pad(1));
             }
             default {
@@ -289,7 +288,7 @@ multi method pod2pdf(Pod::Block::Named $pod) {
                 temp $!level += 1;
                 if $name eq $name.uc {
                     if $name ~~ 'VERSION'|'NAME'|'AUTHOR' {
-                        self.metadata(.lc) ||= pod2text-inline($pod.contents);
+                        self.metadata(.lc) ||= $.pod2text-inline($pod.contents);
                     }
                     $!level = 2;
                     $name = .tclc;
@@ -303,7 +302,7 @@ multi method pod2pdf(Pod::Block::Named $pod) {
 
 multi method pod2pdf(Pod::Block::Code $pod) {
     self!style: :pad, :tag(Paragraph), {
-        self!code: pod2text-code($pod);
+        self!code: $.pod2text($pod);
     }
 }
 
@@ -339,6 +338,24 @@ method !resolve-link(Str $url) {
 }
 
 has %!replacing;
+method !replace(Pod::FormattingCode $pod where .type eq 'R', &continue) {
+    my $place-holder = $.pod2text($pod.contents);
+
+    die "unable to recursively replace R\<$place-holder\>"
+         if %!replacing{$place-holder}++;
+
+    my $new-pod = %!replace{$place-holder};
+    without $new-pod {
+        note "replacement not specified for R\<$place-holder\>";
+        $_ = $pod.contents;
+    }
+
+    my $rv := &continue($new-pod);
+
+    %!replacing{$place-holder}:delete;;
+    $rv;
+}
+
 multi method pod2pdf(Pod::FormattingCode $pod) {
     given $pod.type {
         when 'B' {
@@ -347,7 +364,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'C' {
-            self!code: pod2text($pod), :inline;
+            self!code: $.pod2text($pod), :inline;
         }
         when 'T' {
             self!style: :mono, {
@@ -382,7 +399,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
                 temp $!style .= new;
                 temp $!tx = $!margin;
                 temp $!ty = $!page.height;
-                my $draft-footnote = $ind ~ pod2text-inline($pod.contents);
+                my $draft-footnote = $ind ~ $.pod2text-inline($pod.contents);
                 $!gutter += self!text-box($draft-footnote).lines;
             }
         }
@@ -398,7 +415,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             # invisable
         }
         when 'X' {
-            my $term = pod2text-inline($pod.contents);
+            my $term = $.pod2text-inline($pod.contents);
             my Str $name = self!gen-dest-name('index-' ~ $term)
                 if $term;
 
@@ -419,7 +436,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             # otherwise X<|> ?
         }
         when 'L' {
-            my $text = pod2text-inline($pod.contents);
+            my $text = $.pod2text-inline($pod.contents);
             my %style = self!resolve-link: $pod.meta.head // $text;
             self!style: |%style, {
                 $.print: $text;
@@ -427,7 +444,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
         }
         when 'P' {
             # todo insertion of placed text
-            if pod2text-inline($pod.contents) -> $url {
+            if $.pod2text-inline($pod.contents) -> $url {
                 my %style = self!resolve-link: $url;
                 $.pod2pdf('(see: ');
                 self!style: |%style, {
@@ -437,18 +454,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'R' {
-            if pod2text-inline($pod.contents) -> $place-holder {
-                if %!replace{$place-holder} -> $pod {
-                    if (temp %!replacing{$place-holder})++ {
-                        die "unable to recursively replace R\<$place-holder\>"
-                    }
-                    $.pod2pdf($pod);
-                }
-                else {
-                    note "replacement not specified for R\<$place-holder\>";
-                    $.pod2pdf($pod.contents);
-                }
-            }
+            self!replace: $pod, {$.pod2pdf($_)};
         }
         default {
             warn "unhandled: POD formatting code: $_\<\>";
@@ -601,7 +607,7 @@ multi method pod2pdf($pod) {
     }
     else {
         warn "fallback render of {$pod.WHAT.raku}";
-        $.say: pod2text($pod);
+        $.say: $.pod2text($pod);
     }
 }
 
@@ -750,7 +756,7 @@ method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <=
     my $tag = 'H' ~ ($level||1);
     self!style: :$tag, :$font-size, :$bold, :$italic, :$underline, :$lines-before, {
 
-        my Str $Title = pod2text-inline($pod);
+        my Str $Title = $.pod2text-inline($pod);
         $*tag.cos.title = $Title;
         self!pad-here;
 
@@ -1004,15 +1010,23 @@ multi method metadata(PodMetaType $t) is rw {
     )
 }
 
-# we're currently throwing code formatting away
-multi sub pod2text-code(Pod::Block $pod) {
-    $pod.contents.map(&pod2text-code).join;
+method pod2text-inline($pod) {
+    $.pod2text($pod).subst(/\s+/, ' ', :g);
 }
-multi sub pod2text-code(Str $pod) { $pod }
 
-sub pod2text-inline($pod) {
-    pod2text($pod).subst(/\s+/, ' ', :g);
+multi method pod2text(Pod::FormattingCode $pod) {
+    given $pod.type {
+        when 'N'|'Z' { '' }
+        when 'R' { self!replace: $pod, { $.pod2text($_) } }
+        default  { $.pod2text: $pod.contents }
+    }
 }
+
+multi method pod2text(Pod::Block $pod) {
+    $pod.contents.map({$.pod2text($_)}).join;
+}
+multi method pod2text(Str $pod) { $pod }
+multi method pod2text($pod) { $pod.map({$.pod2text($_)}).join }
 
 =TITLE Pod::To::PDF::API6
 =SUBTITLE Render Pod as PDF (Experimental)

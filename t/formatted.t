@@ -21,7 +21,7 @@ my $xml = q{<Document>
     This text is verbatim C<with> B<disarmed> Z<formatting>.
   </P>
   <P>
-    This text is to be replaced.
+    This text is replaced.
   </P>
   <P>
     This text is invisible.
@@ -38,7 +38,7 @@ my $xml = q{<Document>
 </Document>
 };
 
-my Pod::To::PDF::API6 $doc .= new: :$=pod;
+my Pod::To::PDF::API6 $doc .= new: :$=pod, :replace{'to be replaced' => 'replaced'};
 my PDF::API6 $pdf = $doc.pdf;
 $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
 $pdf.save-as: "t/formatted.pdf", :!info;

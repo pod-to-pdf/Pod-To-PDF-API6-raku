@@ -7,7 +7,8 @@ use PDF::API6;
 plan 5;
 
 my PDF::API6 $pdf .= new;
-my Pod::To::PDF::API6 $pod .= new(:$=pod, :$pdf, :metadata{ :title<Title as option> });
+my %replace = :where<POD>;
+my Pod::To::PDF::API6 $pod .= new(:$=pod, :$pdf, :metadata{ :title<Title as option> }, :%replace);
 
 is $pod.metadata('title'), 'Title as option';
 is $pod.metadata('subtitle'), 'Subtitle from POD';
@@ -25,10 +26,10 @@ subtest 'Metadata verification', {
 }
 
 =begin pod
-=SUBTITLE Subtitle from POD
+=SUBTITLE Subtitle from R<where>
 =VERSION 1.2.3
 
-=head2 Head2
+=head2 Head2 from R<where>
 
 a paragraph.
 =end pod
