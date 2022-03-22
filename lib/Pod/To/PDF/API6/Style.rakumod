@@ -9,6 +9,7 @@ has Bool $.bold;
 has Bool $.italic;
 has Bool $.underline;
 has Bool $.mono;
+has Bool $.verbatim;
 has Numeric $.font-size = 10;
 has UInt $.lines-before = 1;
 has PDF::Action $.link;

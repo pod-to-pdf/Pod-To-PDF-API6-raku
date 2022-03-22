@@ -27,7 +27,7 @@ has PDF::Tags::Elem $.root = $!tags.Document;
 has PDF::Page $!page;
 has PDF::Content $!gfx;
 has UInt $!indent = 0;
-has Pod::To::PDF::API6::Style $.style handles<font font-size leading line-height bold italic mono underline lines-before link> .= new;
+has Pod::To::PDF::API6::Style $.style handles<font font-size leading line-height bold italic mono underline lines-before link verbatim> .= new;
 has $.margin = 20;
 has $!gutter = Gutter;
 has $!tx = $!margin; # text-flow x
@@ -44,6 +44,7 @@ has UInt:D $!level = 1;
 has PDF::Tags::Elem @!tags;
 has %.replace;
 has %.index;
+has Bool $.tag = True;
 
 class DefaultLinker {
     method extension { 'pdf' }
@@ -63,13 +64,17 @@ class DefaultLinker {
 has $.linker = DefaultLinker;
 
 method !tag-begin($name) {
-    $*tag .= add-kid: :$name;
-    @!tags.push: $*tag;
+    if $!tag {
+        $*tag .= add-kid: :$name;
+        @!tags.push: $*tag;
+    }
 }
 
 method !tag-end {
-    @!tags.pop;
-    $*tag = @!tags.tail // self.root;
+    if $!tag {
+        @!tags.pop;
+        $*tag = @!tags.tail // self.root;
+    }
 }
 
 method !tag($tag, &codez) {
@@ -302,7 +307,7 @@ multi method pod2pdf(Pod::Block::Named $pod) {
 
 multi method pod2pdf(Pod::Block::Code $pod) {
     self!style: :pad, :tag(Paragraph), {
-        self!code: $.pod2text($pod);
+        self!code: $pod.contents;
     }
 }
 
@@ -364,7 +369,10 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'C' {
-            self!code: $.pod2text($pod), :inline;
+            my $font-size = $.font-size * .85;
+            self!style: :tag(CODE), :mono, :$font-size, {
+                $.print: $.pod2text($pod);
+            }
         }
         when 'T' {
             self!style: :mono, {
@@ -557,7 +565,7 @@ multi method pod2pdf(Pod::Block::Declarator $pod) {
 
         if $code {
             self!style: :pad, :tag(Paragraph), {
-                self!code($decl ~ ' ' ~ $code);
+                self!code([$decl ~ ' ' ~ $code]);
             }
         }
 
@@ -627,7 +635,7 @@ method !text-box(
     :$width  = self!gfx.canvas.width - self!indent - $!margin,
     :$height = self!height-remaining,
     |c) {
-    PDF::Content::Text::Box.new: :$text, :indent($!tx - $!margin), :$.leading, :$.font, :$.font-size, :$width, :$height, |c;
+    PDF::Content::Text::Box.new: :$text, :indent($!tx - $!margin), :$.leading, :$.font, :$.font-size, :$width, :$height, :$.verbatim, |c;
 }
 
 method !pad-here {
@@ -660,31 +668,20 @@ method print(Str $text, Bool :$nl, :$reflow = True, |c) {
 
     $gfx.Restore if $.link;
 
-    # calculate text bounding box and advance x, y
-    my $lines = +$tb.lines;
-    my $x0 = $pos.value[0];
     if $nl {
         # advance to next line
         $!tx = $!margin;
     }
     else {
         $!tx = $!margin if $tb.lines > 1;
-        $x0 += $!tx;
         # continue this line
-            with $tb.lines.pop {
-                $w = .content-width - .indent;
-                $!tx += $w + $tb.space-width;
-            }
+        with $tb.lines.pop {
+            $w = .content-width - .indent;
+            $!tx += $w;
+        }
     }
     $!ty -= $tb.content-height;
-    my Str $overflow = $tb.overflow.join;
-    if $overflow && $reflow {
-        $.say() unless $nl;
-        @.print: $overflow, :$nl, |c;
-        $overflow = Nil;
-    }
     $!last-chunk-height = $h;
-    ($x0, $!ty, $w, $h, $overflow);
 }
 
 method !text-position {
@@ -693,7 +690,10 @@ method !text-position {
 
 method !mark(&action, |c) {
     given $!gfx {
-        if .open-tags.first(*.mcid.defined) {
+        if !$!tag {
+            &action();
+        }
+        elsif .open-tags.first(*.mcid.defined) {
             # caller is already marking
             .tag: $*tag.name, &action, |$*tag.attributes;
         }
@@ -745,7 +745,7 @@ method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <=
     my $lines-before = $.lines-before;
 
     given $level {
-        when 1   { self!new-page; }
+        when 0|1 { self!new-page; }
         when 2   { $lines-before = 3; }
         when 3   { $lines-before = 2; }
         when 5   { $italic = True; }
@@ -839,30 +839,54 @@ method !make-dest(
     $!pdf.destination: :$page, :$fit, :$left, :$top, |c;
 }
 
-method !code(Str $code is copy, :$inline) {
-    my $font-size = 8;
-    my $lines-before = $.lines-before;
-    $lines-before = min(+$code.lines, 3)
-        unless $inline;
+method !code(@contents is copy) {
+    @contents.pop if @contents.tail ~~ "\n";
+    my $font-size = $.font-size * .85;
 
-    self!style: :mono, :indent(!$inline), :tag(CODE), :$font-size, :$lines-before, {
-        $code .= chomp;
-        while $code {
-            my (\x, \y, \w, \h, \overflow) = @.print: $code, :verbatim, :!reflow;
-            $code = overflow;
+    self!new-page unless self!lines-remaining >= $.lines-before;
 
-            unless $inline {
-                # draw code-block background
-                my constant pad = 5;
-                my $x0 = self!indent;
-                my $width = $!gfx.canvas.width - $!margin - $x0;
-                $!gfx.graphics: {
-                    .FillColor = color 0;
-                    .StrokeColor = color 0;
-                    .FillAlpha = 0.1;
-                    .StrokeAlpha = 0.25;
-                    .Rectangle: $x0 - pad, y - pad, $width + pad*2, h + pad*2;
-                    .paint: :fill, :stroke;
+    self!style: :mono, :indent, :tag(CODE), :$font-size, :lines-before(0), :pad, :verbatim, {
+        my $x0 = self!indent;
+        my $width = self!gfx.canvas.width - $!margin - $x0;
+        self!pad-here;
+        my $y0 = $!ty;
+        my constant pad = 5;
+        my @plain-text;
+
+        self!mark: {
+            temp $!tag = False; # turn off sub-tagging
+            for 0 ..^ @contents -> $i {
+                given @contents[$i] {
+                    when Str {
+                        @plain-text.push: $_;
+                        my $at-end = $i == @contents-1;
+                        my $page-feed = !$at-end && $_ eq "\n" && self!lines-remaining <= 0;
+                        if $at-end || $page-feed {
+                            $.print: @plain-text.join;
+                            @plain-text = ();
+                            $!gfx.BeginMarkedContent(Artifact);
+                            $!gfx.graphics: {
+                                .FillColor = color 0;
+                                .StrokeColor = color 0;
+                                .FillAlpha = 0.1;
+                                .StrokeAlpha = 0.25;
+                                .Rectangle: $x0 - pad, $!ty - pad, $width + pad*2, $y0 - $!ty + pad*3;
+                                .paint: :fill, :stroke;
+                            }
+                            $!gfx.EndMarkedContent;
+
+                            $y0 = $!ty;
+                            self!new-page if $page-feed;
+                        }
+                    }
+                    default {
+                        # presumably formatted
+                        if @plain-text {
+                            $.print: @plain-text.join;
+                            @plain-text = ();
+                        }
+                        $.pod2pdf($_);
+                    }
                 }
             }
         }
@@ -898,7 +922,7 @@ method !link(PDF::Content::Text::Box $tb, :$tab = $!margin, ) {
         my $x0 = $tab + .indent;
         my $x1 = $tab + .content-width;
         my @rect = $!gfx.base-coords: $x0, $y, $x1, $y + $.line-height;
-        @rect Z+= [-pad, -pad, pad, pad];
+        @rect Z+= [-pad, -pad, pad, 0];
         my @Border = 0, 0, 0;
         my Str $content = $tb.text;
 
@@ -928,6 +952,10 @@ method !gfx {
 method !bottom { $!margin + ($!gutter-2) * $.line-height; }
 method !height-remaining {
     $!ty - $!margin - $!gutter * $.line-height;
+}
+
+method !lines-remaining {
+    (self!height-remaining / $.line-height + 0.01).Int;
 }
 
 method !finish-page {
@@ -1069,7 +1097,7 @@ From command line:
 
 =begin Limitations
 
-=defn core fonts only. 
+=defn core fonts only.
 =para PDF::Font::Loader is also experimental and hasn't been integrated yet.
 
 =defn performance
