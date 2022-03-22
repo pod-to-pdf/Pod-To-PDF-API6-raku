@@ -45,6 +45,7 @@ has PDF::Tags::Elem @!tags;
 has %.replace;
 has %.index;
 has Bool $.tag = True;
+has Numeric $!code-start-y;
 
 class DefaultLinker {
     method extension { 'pdf' }
@@ -682,6 +683,13 @@ method print(Str $text, Bool :$nl, :$reflow = True, |c) {
     }
     $!ty -= $tb.content-height;
     $!last-chunk-height = $h;
+
+    if $tb.overflow {
+        my $in-code-block = $!code-start-y.defined;
+        self!new-page;
+        $!code-start-y = $!ty if $in-code-block;
+        self.print($tb.overflow.join, :$nl);
+    }
 }
 
 method !text-position {
@@ -839,6 +847,25 @@ method !make-dest(
     $!pdf.destination: :$page, :$fit, :$left, :$top, |c;
 }
 
+method !finish-code {
+    my constant pad = 5;
+    with $!code-start-y -> $y0 {
+        my $x0 = self!indent;
+        my $width = self!gfx.canvas.width - $!margin - $x0;
+        $!gfx.BeginMarkedContent(Artifact);
+        $!gfx.graphics: {
+            .FillColor = color 0;
+            .StrokeColor = color 0;
+            .FillAlpha =\ 0.1;
+            .StrokeAlpha = 0.25;
+            .Rectangle: $x0 - pad, $!ty - pad, $width + pad*2, $y0 - $!ty + pad*3;
+            .paint: :fill, :stroke;
+        }
+        $!gfx.EndMarkedContent;
+        $!code-start-y = Nil;
+    }
+}
+
 method !code(@contents is copy) {
     @contents.pop if @contents.tail ~~ "\n";
     my $font-size = $.font-size * .85;
@@ -846,49 +873,33 @@ method !code(@contents is copy) {
     self!gfx;
 
     self!style: :mono, :indent, :tag(CODE), :$font-size, :lines-before(0), :pad, :verbatim, {
-        my $x0 = self!indent;
-        my $width = self!gfx.canvas.width - $!margin - $x0;
+
         self!pad-here;
-        my $y0 = $!ty;
-        my constant pad = 5;
-        my @plain-text;
 
         self!mark: {
+            my @plain-text;
             temp $!tag = False; # turn off sub-tagging
             for 0 ..^ @contents -> $i {
+                $!code-start-y //= $!ty;
                 given @contents[$i] {
                     when Str {
                         @plain-text.push: $_;
-                        my $at-end = $i == @contents-1;
-                        my $page-feed = !$at-end && $_ eq "\n" && self!lines-remaining <= 0;
-                        if $at-end || $page-feed {
-                            $.print: @plain-text.join;
-                            @plain-text = ();
-                            $!gfx.BeginMarkedContent(Artifact);
-                            $!gfx.graphics: {
-                                .FillColor = color 0;
-                                .StrokeColor = color 0;
-                                .FillAlpha = 0.1;
-                                .StrokeAlpha = 0.25;
-                                .Rectangle: $x0 - pad, $!ty - pad, $width + pad*2, $y0 - $!ty + pad*3;
-                                .paint: :fill, :stroke;
-                            }
-                            $!gfx.EndMarkedContent;
-
-                            self!new-page if $page-feed;
-                            $y0 = $!ty;
-                        }
                     }
-                    default {
+                    default  {
                         # presumably formatted
                         if @plain-text {
                             $.print: @plain-text.join;
                             @plain-text = ();
                         }
+
                         $.pod2pdf($_);
                     }
                 }
             }
+            if @plain-text {
+                $.print: @plain-text.join;
+            }
+            self!finish-code;
         }
     }
 }
@@ -959,6 +970,8 @@ method !lines-remaining {
 }
 
 method !finish-page {
+    self!finish-code
+        if $!code-start-y;
     if @!footnotes {
         temp $!style .= new: :lines-before(0); # avoid current styling
         $!tx = $!margin;
