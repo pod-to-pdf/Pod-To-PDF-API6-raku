@@ -14,11 +14,11 @@ endobj
 
 2 0 obj
 <<
-  /Attribute_t [ 3 0 R /FitBH 528.7 ]
-  /Class_Asdf2 [ 3 0 R /FitBH 600.2 ]
-  /Method_asdf [ 3 0 R /FitBH 460.5 ]
+  /Attribute_t [ 3 0 R /FitBH 523.75 ]
+  /Class_Asdf2 [ 3 0 R /FitBH 596.35 ]
+  /Method_asdf [ 3 0 R /FitBH 454.45 ]
   /Module_Asdf1 [ 3 0 R /FitBH 769.6 ]
-  /Sub_asdf [ 3 0 R /FitBH 698.1 ]
+  /Sub_asdf [ 3 0 R /FitBH 697 ]
 >>
 endobj
 
@@ -37,7 +37,7 @@ endobj
 endobj
 
 4 0 obj
-<< /Length 1947 >> stream
+<< /Length 2240 >> stream
 /H2 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
@@ -54,39 +54,41 @@ EMC
 EMC
 /Code << /MCID 2 >> BDC
   BT
-    1 0 0 1 30 712.4 Tm
-    /F3 8 Tf
+    1 0 0 1 30 711.3 Tm
+    /F3 8.5 Tf
     (module Asdf1) Tj
   ET
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 706.3 572 15 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 707.4 572 18.8 re
-  B
-Q
 /H3 << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 683.8 Tm
+    1 0 0 1 20 682.7 Tm
     /F1 13 Tf
     (Sub asdf) Tj
   ET
 EMC
 /P << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 661.8 Tm
+    1 0 0 1 20 660.7 Tm
     /F2 10 Tf
     (This is a sub) Tj
   ET
 EMC
 /Code << /MCID 5 >> BDC
   BT
-    1 0 0 1 30 644.2 Tm
-    /F3 8 Tf
+    1 0 0 1 30 642 Tm
+    /F3 8.5 Tf
     (sub asdf\() Tj
-    8.8 TL
+    9.35 TL
     T*
     (    Str $asdf1,) Tj
     T*
@@ -94,106 +96,114 @@ EMC
     T*
     (\) returns Str) Tj
   ET
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 608.95 572 43.05 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 612.8 572 45.2 re
-  B
-Q
 /H2 << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 582.6 Tm
+    1 0 0 1 20 578.75 Tm
     /F1 16 Tf
     (Class Asdf2) Tj
   ET
 EMC
 /P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 560.6 Tm
+    1 0 0 1 20 556.75 Tm
     /F2 10 Tf
     (This is a class) Tj
   ET
 EMC
 /Code << /MCID 8 >> BDC
   BT
-    1 0 0 1 30 543 Tm
-    /F3 8 Tf
+    1 0 0 1 30 538.05 Tm
+    /F3 8.5 Tf
     (class Asdf2) Tj
   ET
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 533.05 572 15 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 538 572 18.8 re
-  B
-Q
 /H3 << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 514.4 Tm
+    1 0 0 1 20 509.45 Tm
     /F1 13 Tf
     (Attribute t) Tj
   ET
 EMC
 /P << /MCID 10 >> BDC
   BT
-    1 0 0 1 20 492.4 Tm
+    1 0 0 1 20 487.45 Tm
     /F2 10 Tf
     (This is an attribute) Tj
   ET
 EMC
 /Code << /MCID 11 >> BDC
   BT
-    1 0 0 1 30 474.8 Tm
-    /F3 8 Tf
+    1 0 0 1 30 468.75 Tm
+    /F3 8.5 Tf
     (has Str $.t) Tj
   ET
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 463.75 572 15 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 469.8 572 18.8 re
-  B
-Q
 /H3 << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 446.2 Tm
+    1 0 0 1 20 440.15 Tm
     /F1 13 Tf
     (Method asdf) Tj
   ET
 EMC
 /P << /MCID 13 >> BDC
   BT
-    1 0 0 1 20 424.2 Tm
+    1 0 0 1 20 418.15 Tm
     /F2 10 Tf
     (This is a method) Tj
   ET
 EMC
 /Code << /MCID 14 >> BDC
   BT
-    1 0 0 1 30 406.6 Tm
-    /F3 8 Tf
+    1 0 0 1 30 399.45 Tm
+    /F3 8.5 Tf
     (method asdf\() Tj
     T*
     (    Str :$asdf = "asdf",) Tj
     T*
     (\) returns Str) Tj
   ET
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 375.75 572 33.7 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 384 572 36.4 re
-  B
-Q
 endstream
 endobj
 
@@ -424,45 +434,45 @@ xref
 0000000000 65535 f 
 0000000015 00000 n 
 0000000172 00000 n 
-0000000382 00000 n 
-0000000610 00000 n 
-0000002610 00000 n 
-0000002670 00000 n 
-0000002717 00000 n 
-0000002765 00000 n 
-0000002872 00000 n 
-0000002980 00000 n 
-0000003085 00000 n 
-0000003144 00000 n 
-0000003214 00000 n 
-0000003353 00000 n 
-0000003430 00000 n 
-0000003521 00000 n 
-0000003705 00000 n 
-0000003812 00000 n 
-0000003888 00000 n 
-0000003959 00000 n 
-0000004038 00000 n 
-0000004114 00000 n 
-0000004185 00000 n 
-0000004264 00000 n 
-0000004370 00000 n 
-0000004446 00000 n 
-0000004517 00000 n 
-0000004596 00000 n 
-0000004702 00000 n 
-0000004779 00000 n 
-0000004850 00000 n 
-0000004930 00000 n 
-0000005037 00000 n 
-0000005114 00000 n 
-0000005185 00000 n 
-0000005265 00000 n 
-0000005475 00000 n 
-0000005612 00000 n 
-0000005718 00000 n 
+0000000383 00000 n 
+0000000611 00000 n 
+0000002904 00000 n 
+0000002964 00000 n 
+0000003011 00000 n 
+0000003059 00000 n 
+0000003166 00000 n 
+0000003274 00000 n 
+0000003379 00000 n 
+0000003438 00000 n 
+0000003508 00000 n 
+0000003647 00000 n 
+0000003724 00000 n 
+0000003815 00000 n 
+0000003999 00000 n 
+0000004106 00000 n 
+0000004182 00000 n 
+0000004253 00000 n 
+0000004332 00000 n 
+0000004408 00000 n 
+0000004479 00000 n 
+0000004558 00000 n 
+0000004664 00000 n 
+0000004740 00000 n 
+0000004811 00000 n 
+0000004890 00000 n 
+0000004996 00000 n 
+0000005073 00000 n 
+0000005144 00000 n 
+0000005224 00000 n 
+0000005331 00000 n 
+0000005408 00000 n 
+0000005479 00000 n 
+0000005559 00000 n 
+0000005769 00000 n 
+0000005906 00000 n 
+0000006012 00000 n 
 trailer
 << /ID [ (t/definition.t  ) (t/definition.t  ) ] /Root 1 0 R /Size 40 >>
 startxref
-5824
+6118
 %%EOF

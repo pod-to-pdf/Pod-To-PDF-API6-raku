@@ -306,7 +306,7 @@ multi method pod2pdf(Pod::Block::Named $pod) {
 }
 
 multi method pod2pdf(Pod::Block::Code $pod) {
-    self!style: :pad, :tag(Paragraph), {
+    self!style: :pad, :tag(Paragraph), :lines-before(3), {
         self!code: $pod.contents;
     }
 }
@@ -843,7 +843,7 @@ method !code(@contents is copy) {
     @contents.pop if @contents.tail ~~ "\n";
     my $font-size = $.font-size * .85;
 
-    self!new-page unless self!lines-remaining >= $.lines-before;
+    self!gfx;
 
     self!style: :mono, :indent, :tag(CODE), :$font-size, :lines-before(0), :pad, :verbatim, {
         my $x0 = self!indent;
@@ -875,8 +875,8 @@ method !code(@contents is copy) {
                             }
                             $!gfx.EndMarkedContent;
 
-                            $y0 = $!ty;
                             self!new-page if $page-feed;
+                            $y0 = $!ty;
                         }
                     }
                     default {
@@ -940,7 +940,7 @@ method !link(PDF::Content::Text::Box $tb, :$tab = $!margin, ) {
 }
 
 method !gfx {
-    if !$!gfx.defined || self!height-remaining <  $.lines-before * $.line-height {
+    if !$!gfx.defined || self!height-remaining < $.lines-before * $.line-height {
         self!new-page;
     }
     elsif $!tx > $!margin && $!tx > $!gfx.canvas.width - self!indent {
