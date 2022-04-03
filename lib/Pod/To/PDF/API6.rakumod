@@ -21,31 +21,35 @@ use PDF::StructElem;
 subset Level of Int:D where 0..6;
 my constant Gutter = 3;
 
+### Persistant Attributes ###
 has PDF::API6 $.pdf .= new;
 has PDF::Tags $.tags .= create: :$!pdf;
 has PDF::Tags::Elem $.root = $!tags.Document;
 has PDF::Page $!page;
 has PDF::Content $!gfx;
-has UInt $!indent = 0;
-has Pod::To::PDF::API6::Style $.style handles<font font-size leading line-height bold italic mono underline lines-before link verbatim> .= new;
 has $.margin = 20;
-has $!gutter = Gutter;
-has $!tx = $!margin; # text-flow x
-has $!ty; # text-flow y
-has UInt $!pad = 0;
 has Bool $.contents = True;
 has @.toc; # table of contents
-has @!footnotes;
-has DestRef @!footnotes-back; # per-footnote return links
-has PDF::Tags::Elem @!footnotes-tag;
 has DestRef $!gutter-link;    # forward link to footnote area
 has Str %!metadata;
-has UInt:D $!level = 1;
-has PDF::Tags::Elem @!tags;
 has %.replace;
 has %.index;
 has Bool $.tag = True;
+has PDF::Content::FontObj %.font-map;
+
+### Rendering State ###
+has Pod::To::PDF::API6::Style $.style handles<font-size leading line-height bold italic mono underline lines-before link verbatim> .= new;
+has $!tx = $!margin; # text-flow x
+has $!ty; # text-flow y
+has UInt $!indent = 0;
+has UInt $!pad = 0;
 has Numeric $!code-start-y;
+has UInt:D $!level = 1;
+has @!footnotes;
+has DestRef @!footnotes-back; # per-footnote return links
+has PDF::Tags::Elem @!footnotes-tag;
+has PDF::Tags::Elem @!tags;
+has $!gutter = Gutter;
 
 class DefaultLinker {
     method extension { 'pdf' }
@@ -96,14 +100,37 @@ method pdf {
     $!pdf;
 }
 
-submethod TWEAK(Str :$lang = 'en', :$pod, :%metadata) {
+method !preload-fonts(@fonts) {
+    my $loader = (require ::('PDF::Font::Loader'));
+    for @fonts -> % ( Str :$file!, Bool :$bold, Bool :$italic, Bool :$mono ) {
+        # font preload
+        my Pod::To::PDF::API6::Style $style .= new: :$bold, :$italic, :$mono;
+        if $file.IO.e {
+            %!font-map{$style.font-key} = $loader.load-font: :$file;
+        }
+        else {
+            warn "no such font file: $file";
+        }
+    }
+}
+
+submethod TWEAK(Str :$lang = 'en', :$pod, :%metadata, :@fonts) {
     self.lang = $_ with $lang;
+    self!preload-fonts(@fonts)
+        if @fonts;
     $!pdf.creator.push: "{self.^name}-{self.^ver}";
     self.metadata(.key.lc) = .value for %metadata.pairs;
     self.read($_) with $pod;
 }
 
-method render($class: $pod,  Bool :$index = True, |c) {
+method render(
+    $class: $pod,
+    IO() :$pdf-file = tempfile("pod2pdf-api6-****.pdf", :!unlink)[1],
+    UInt:D :$width  = 612,
+    UInt:D :$height = 792,
+    Bool :$index = True,
+    |c,
+) {
     state %cache{Any};
     %cache{$pod} //= do {
         # render method may be called more than once: Rakudo #2588
@@ -111,10 +138,10 @@ method render($class: $pod,  Bool :$index = True, |c) {
         $renderer!build-index
             if $index && $renderer.index;
         my PDF::API6 $pdf = $renderer.pdf;
-        # save to a temporary file, since PDF is a binary format
-        my (Str $file-name, IO::Handle $fh) = tempfile("pod2pdf-api6-****.pdf", :!unlink);
-        $pdf.save-as: $fh;
-        $file-name;
+        $pdf.media-box = 0, 0, $width, $height;
+        # save to a file, since PDF is a binary format
+        $pdf.save-as: $pdf-file;
+        $pdf-file.path;
     }
 }
 
@@ -628,6 +655,8 @@ multi method say(Str $text, |c) {
     @.print($text, :nl, |c);
 }
 
+method font { $!style.font: :%!font-map }
+
 multi method pad(&codez) { $.pad; &codez(); $.pad}
 multi method pad($!pad = 2) { }
 
@@ -1069,10 +1098,16 @@ multi method pod2text(Pod::Block $pod) {
 multi method pod2text(Str $pod) { $pod }
 multi method pod2text($pod) { $pod.map({$.pod2text($_)}).join }
 
+=begin pod
 =TITLE Pod::To::PDF::API6
 =SUBTITLE Render Pod as PDF (Experimental)
 
-=begin Synopsis
+=head2 Description
+
+Renders Pod to PDF draft documents via PDF::Lite.
+
+=head2 Usage
+
 From command line:
 
     $ raku --doc=PDF lib/to/class.rakumod | xargs evince
@@ -1091,30 +1126,69 @@ From Raku:
     my PDF::API6 $pdf = pod2pdf($=pod);
     $pdf.save-as: "foobar.pdf";
     =end code
-=end Synopsis
 
-=begin Exports
+=head2 Exports
+
     class Pod::To::PDF::API6;
     sub pod2pdf; # See below
-=end Exports
-
-=begin Description
-This is an experimental module for rendering POD to PDF.
 
 From command line:
     =begin code :lang<shell>
     $ raku --doc=PDF::API6 lib/class.rakumod | xargs evince
     =end code
 
-=end Description
+=head2 Subroutines
 
-=begin Limitations
+### sub pod2pdf()
 
-=defn core fonts only.
-=para PDF::Font::Loader is also experimental and hasn't been integrated yet.
+```raku
+sub pod2pdf(
+    Pod::Block $pod
+) returns PDF::API6;
+```
 
-=defn performance
-=para This module is several times slower than Pod::To::PDF::Lite; mostly due to the handling and serialization of a large number of small StructElem tags for PDF tagging.
+Renders the specified Pod to a PDF::API6 object, which can then be
+further manipulated or saved.
+
+=defn `PDF::API6 :$pdf`
+An existing PDF::API6 object to add pages to.
+
+=defn `UInt:D :$width, UInt:D :$height`
+The page size in points (there are 72 points per inch).
+
+=defn `UInt:D :$margin`
+The page margin in points (default 20).
+
+=defn `Hash :@fonts
+By default, Pod::To::PDF::API6 uses core fonts. This option can be used to preload selected fonts.
+
+Note: L<PDF::Font::Loader> must be installed, to use this option.
+
+=begin code :lang<raku>
+use PDF::API6;
+use Pod::To::PDF::API6;
+need PDF::Font::Loader; # needed to enable this option
+
+my @fonts = (
+    %(:file<fonts/Raku.ttf>),
+    %(:file<fonts/Raku-Bold.ttf>, :bold),
+    %(:file<fonts/Raku-Italic.ttf>, :italic),
+    %(:file<fonts/Raku-BoldItalic.ttf>, :bold, :italic),
+    %(:file<fonts/Raku-Mono.ttf>, :mono),
+);
+
+PDF::API6 $pdf = pod2pdf($=pod, :@fonts);
+$pdf.save-as: "pod.pdf";
+=end code
+
+=head2 Restrictions
+
+=para This module is slower than Pod::To::PDF::Lite; mostly due to the handling and serialization of a large number of small StructElem tags for PDF tagging.
 
 =para Possibly, PDF (and PDF::Class) need to implement faster serialization methods, which will most likely use PDF 1.5 Object Streams.
-=end Limitations
+
+=head2 See Also
+
+=item L<Pod::To::PDF> - PDF rendering via L<Cairo>
+
+=end pod
