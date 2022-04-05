@@ -7,18 +7,20 @@
   <H2>
     Asynchronous data stream with multiple subscribers
   </H2>
-  <Code>    class Supply does Awaitable {}</Code>
   <P>
-    A supply is a thread-safe, asynchronous data stream like a <Link href="/type/Channel">Channel</Link>, but it can have multiple subscribers (<Span FontWeight="italic">taps</Span>) that all get the same values
+    <Code>    class Supply does Awaitable {}</Code>
+  </P>
+  <P>
+    A supply is a thread-safe, asynchronous data stream like a <Link href="/type/Channel.pdf">Channel</Link>, but it can have multiple subscribers (taps) that all get the same values
     flowing through the supply.
   </P>
   <P>
     It is a thread-safe implementation of the <Link href="https://en.wikipedia.org/wiki/Observer_pattern">Observer Pattern</Link>, and central to supporting reactive programming in Raku.
   </P>
   <P>
-    There are two types of Supplies: <Code>live</Code> and <Code>on demand</Code>. When tapping into a <Code>live</Code> supply, the tap will only see values that are flowing
-    through the supply <Span FontStyle="bold">after</Span> the tap has been created. Such supplies are normally infinite in nature, such as mouse movements. Closing such a
-    tap does not stop mouse events from occurring, it just means that the values will go by unseen. All tappers see the same flow of values.
+    There are two types of Supplies: <Code>live</Code> and <Code>on demand</Code>. When tapping into a <Code>live</Code> supply, the tap will only see values that are flowing through
+    the supply after the tap has been created. Such supplies are normally infinite in nature, such as mouse movements. Closing such a tap does not
+    stop mouse events from occurring, it just means that the values will go by unseen. All tappers see the same flow of values.
   </P>
   <P>
     A tap on an <Code>on demand</Code> supply will initiate the production of values, and tapping the supply again may result in a new set of values. For
@@ -26,21 +28,22 @@
     stops emitting values to that tap.
   </P>
   <P>
-    A <Code>live</Code> <Code>Supply</Code> is obtained from the <Link href="/type/Supplier">Supplier</Link> factory method <Code>Supply</Code>. New values are emitted by calling <Code>emit</Code> on the <Code>Supplier</Code>
-    object.
+    A <Code>live</Code> <Code>Supply</Code> is obtained from the <Link href="/type/Supplier.pdf">Supplier</Link> factory method <Code>Supply</Code>. New values are emitted by calling <Code>emit</Code> on the <Code>Supplier</Code> object.
   </P>
-  <Code>my $supplier = Supplier.new;
+  <P>
+    <Code>my $supplier = Supplier.new;
 my $supply = $supplier.Supply;
 $supply.tap(-&gt; $v { say "$v" });
 $supplier.emit(42); # Will cause the tap to output "42"</Code>
-  <P>
-    The <Link href="#method_live">live method</Link> returns <Code>True</Code> on live supplies. Factory methods such as <Link href="#method_interval">interval</Link>, <Link href="#method_from-list">from-list</Link> will return <Span FontWeight="italic">on demand</Span> supplies.
   </P>
   <P>
-    A live <Code>Supply</Code> that keeps values until tapped the first time can be created with <Link href="/type/Supplier::Preserving">Supplier::Preserving</Link>.
+    The <Reference><Link href="#method_live">live method</Link></Reference> returns <Code>True</Code> on live supplies. Factory methods such as <Reference><Link href="#method_interval">interval</Link></Reference>, <Reference><Link href="#method_from-list">from-list</Link></Reference> will return on demand supplies.
   </P>
   <P>
-    Further examples can be found in the <Link href="/language/concurrency#Supplies">concurrency page</Link>.
+    A live <Code>Supply</Code> that keeps values until tapped the first time can be created with <Link href="/type/Supplier::Preserving.pdf">Supplier::Preserving</Link>.
+  </P>
+  <P>
+    Further examples can be found in the <Link href="/language/concurrency.pdf#supplies">concurrency page</Link>.
   </P>
   <H1>
     Methods that return Taps
@@ -48,19 +51,21 @@ $supplier.emit(42); # Will cause the tap to output "42"</Code>
   <H2>
     method tap
   </H2>
-  <Code>method tap(Supply:D: &amp;emit = -&gt; $ { },
+  <P>
+    <Code>method tap(Supply:D: &amp;emit = -&gt; $ { },
         :&amp;done = -&gt; {},
         :&amp;quit = -&gt; $ex { $ex.throw },
         :&amp;tap = -&gt; $ {} )</Code>
+  </P>
   <P>
     Creates a new tap (a kind of subscription if you will), in addition to all existing taps. The first positional argument is a piece of code that will
     be called when a new value becomes available through the <Code>emit</Code> call.
   </P>
   <P>
-    The <Code>&amp;done</Code> callback can be called in a number of cases: if a supply block is being tapped, when a <Code>done</Code> routine is reached; if a supply block
-    is being tapped, it will be automatically triggered if the supply block reaches the end; if the <Code>done</Code> method is called on the parent <Code>Supplier</Code>
-    (in the case of a supply block, if there are multiple Suppliers referenced by <Code>whenever</Code>, they must all have their <Code>done</Code> method invoked for
-    this to trigger the <Code>&amp;done</Code> callback of the tap as the block will then reach its end).
+    The <Code>&amp;done</Code> callback can be called in a number of cases: if a supply block is being tapped, when a <Code>done</Code> routine is reached; if a supply block is
+    being tapped, it will be automatically triggered if the supply block reaches the end; if the <Code>done</Code> method is called on the parent <Code>Supplier</Code> (in
+    the case of a supply block, if there are multiple Suppliers referenced by <Code>whenever</Code>, they must all have their <Code>done</Code> method invoked for this to
+    trigger the <Code>&amp;done</Code> callback of the tap as the block will then reach its end).
   </P>
   <P>
     The <Code>&amp;quit</Code> callback is called if the tap is on a supply block which exits with an error. It is also called if the <Code>quit</Code> method is invoked on the
@@ -68,33 +73,38 @@ $supplier.emit(42); # Will cause the tap to output "42"</Code>
     block will exit with an error). The error is passed as a parameter to the callback.
   </P>
   <P>
-    The <Code>&amp;tap</Code> callback is called once the <Link href="/type/Tap">Tap</Link> object is created, which is passed as a parameter to the callback. The callback is called ahead of <Code>
-emit</Code>/<Code>done</Code>/<Code>quit</Code>, providing a reliable way to get the <Code>Tap</Code> object. One case where this is useful is when the <Code>Supply</Code> begins emitting
-    values synchronously, since the call to <Code>.tap</Code> won't return the <Code>Tap</Code> object until it is done emitting, preventing it from being stopped if
-    needed.
+    The <Code>&amp;tap</Code> callback is called once the <Link href="/type/Tap.pdf">Tap</Link> object is created, which is passed as a parameter to the callback. The callback is called ahead of <Code>emit</Code>
+    /<Code>done</Code>/<Code>quit</Code>, providing a reliable way to get the <Code>Tap</Code> object. One case where this is useful is when the <Code>Supply</Code> begins emitting values
+    synchronously, since the call to <Code>.tap</Code> won't return the <Code>Tap</Code> object until it is done emitting, preventing it from being stopped if needed.
   </P>
   <P>
-    Method <Code>tap</Code> returns an object of type <Link href="/type/Tap">Tap</Link>, on which you can call the <Code>close</Code> method to cancel the subscription.
+    Method <Code>tap</Code> returns an object of type <Link href="/type/Tap.pdf">Tap</Link>, on which you can call the <Code>close</Code> method to cancel the subscription.
   </P>
-  <Code>my $s = Supply.from-list(0 .. 5);
+  <P>
+    <Code>my $s = Supply.from-list(0 .. 5);
 my $t = $s.tap(-&gt; $v { say $v }, done =&gt; { say "no more ticks" });</Code>
+  </P>
   <P>
     Produces:
   </P>
-  <Code>0
+  <P>
+    <Code>0
 1
 2
 3
 4
 5
 no more ticks</Code>
+  </P>
   <H2>
     method act
   </H2>
-  <Code>method act(Supply:D: &amp;actor, *%others)</Code>
   <P>
-    Creates a tap on the given supply with the given code. Differently from <Code>tap</Code>, the given code is guaranteed to be executed by only one thread
-    at a time.
+    <Code>method act(Supply:D: &amp;actor, *%others)</Code>
+  </P>
+  <P>
+    Creates a tap on the given supply with the given code. Differently from <Code>tap</Code>, the given code is guaranteed to be executed by only one thread at
+    a time.
   </P>
   <H1>
     Utility methods
@@ -105,33 +115,41 @@ no more ticks</Code>
   <P>
     Defined as:
   </P>
-  <Code>method Capture(Supply:D: --&gt; Capture:D)</Code>
   <P>
-    Equivalent to calling <Link href="/type/List#method_Capture">.List.Capture</Link> on the invocant.
+    <Code>method Capture(Supply:D: --&gt; Capture:D)</Code>
+  </P>
+  <P>
+    Equivalent to calling <Link href="/type/List.pdf#method_capture">.List.Capture</Link> on the invocant.
   </P>
   <H2>
     method Channel
   </H2>
-  <Code>method Channel(Supply:D: --&gt; Channel:D)</Code>
   <P>
-    Returns a <Link href="/type/Channel">Channel</Link> object that will receive all future values from the supply, and will be <Code>close</Code>d when the Supply is done, and quit (shut
-    down with error) when the supply is quit.
+    <Code>method Channel(Supply:D: --&gt; Channel:D)</Code>
+  </P>
+  <P>
+    Returns a <Link href="/type/Channel.pdf">Channel</Link> object that will receive all future values from the supply, and will be <Code>close</Code>d when the Supply is done, and quit (shut down
+    with error) when the supply is quit.
   </P>
   <H2>
     method Promise
   </H2>
-  <Code>method Promise(Supply:D: --&gt; Promise:D)</Code>
   <P>
-    Returns a <Link href="/type/Promise">Promise</Link> that will be kept when the <Code>Supply</Code> is <Code>done</Code>. If the <Code>Supply</Code> also emits any values, then the <Code>Promise</Code> will be kept with
-    the final value. Otherwise, it will be kept with <Code>Nil</Code>. If the <Code>Supply</Code> ends with a <Code>quit</Code> instead of a <Code>done</Code>, then the <Code>Promise</Code> will be broken
-    with that exception.
+    <Code>method Promise(Supply:D: --&gt; Promise:D)</Code>
   </P>
-  <Code>my $supplier = Supplier.new;
+  <P>
+    Returns a <Link href="/type/Promise.pdf">Promise</Link> that will be kept when the <Code>Supply</Code> is <Code>done</Code>. If the <Code>Supply</Code> also emits any values, then the <Code>Promise</Code> will be kept with the
+    final value. Otherwise, it will be kept with <Code>Nil</Code>. If the <Code>Supply</Code> ends with a <Code>quit</Code> instead of a <Code>done</Code>, then the <Code>Promise</Code> will be broken with that
+    exception.
+  </P>
+  <P>
+    <Code>my $supplier = Supplier.new;
 my $s = $supplier.Supply;
 my $p = $s.Promise;
 $p.then(-&gt; $v { say "got $v.result()" });
 $supplier.emit('cha');         # not output yet
 $supplier.done();              # got cha</Code>
+  </P>
   <P>
     The <Code>Promise</Code> method is most useful when dealing with supplies that will tend to produce just one value, when only the final value is of
     interest, or when only completion (successful or not) is relevant.
@@ -139,16 +157,22 @@ $supplier.done();              # got cha</Code>
   <H2>
     method live
   </H2>
-  <Code>method live(Supply:D: --&gt; Bool:D)</Code>
   <P>
-    Returns <Code>True</Code> if the supply is "live", that is, values are emitted to taps as soon as they arrive. Always returns <Code>True</Code> in the default <Code>Supply</Code>
-    (but for example on the supply returned from <Code>Supply.from-list</Code> it's <Code>False</Code>).
+    <Code>method live(Supply:D: --&gt; Bool:D)</Code>
   </P>
-  <Code>say Supplier.new.Supply.live;    # OUTPUT: «True»</Code>
+  <P>
+    Returns <Code>True</Code> if the supply is "live", that is, values are emitted to taps as soon as they arrive. Always returns <Code>True</Code> in the default <Code>Supply</Code> (but
+    for example on the supply returned from <Code>Supply.from-list</Code> it's <Code>False</Code>).
+  </P>
+  <P>
+    <Code>say Supplier.new.Supply.live;    # OUTPUT: «True»</Code>
+  </P>
   <H2>
     method schedule-on
   </H2>
-  <Code>method schedule-on(Supply:D: Scheduler $scheduler)</Code>
+  <P>
+    <Code>method schedule-on(Supply:D: Scheduler $scheduler)</Code>
+  </P>
   <P>
     Runs the emit, done and quit callbacks on the specified scheduler.
   </P>
@@ -161,12 +185,15 @@ $supplier.done();              # got cha</Code>
   <H2>
     method wait
   </H2>
-  <Code>method wait(Supply:D:)</Code>
   <P>
-    Taps the <Code>Supply</Code> it is called on, and blocks execution until the either the supply is <Code>done</Code> (in which case it evaluates to the final value that
-    was emitted on the <Code>Supply</Code>, or <Code>Nil</Code> if not value was emitted) or <Code>quit</Code> (in which case it will throw the exception that was passed to <Code>quit</Code>).
+    <Code>method wait(Supply:D:)</Code>
   </P>
-  <Code>my $s = Supplier.new;
+  <P>
+    Taps the <Code>Supply</Code> it is called on, and blocks execution until the either the supply is <Code>done</Code> (in which case it evaluates to the final value that was
+    emitted on the <Code>Supply</Code>, or <Code>Nil</Code> if not value was emitted) or <Code>quit</Code> (in which case it will throw the exception that was passed to <Code>quit</Code>).
+  </P>
+  <P>
+    <Code>my $s = Supplier.new;
 start {
   sleep 1;
   say "One second: running.";
@@ -176,10 +203,13 @@ start {
 }
 $s.Supply.wait;
 say "Two seconds: done";</Code>
+  </P>
   <H2>
     method list
   </H2>
-  <Code>multi method list(Supply:D:)</Code>
+  <P>
+    <Code>multi method list(Supply:D:)</Code>
+  </P>
   <P>
     Taps the <Code>Supply</Code> it is called on, and returns a lazy list that will be reified as the <Code>Supply</Code> emits values. The list will be terminated once the <Code>
 Supply</Code> is <Code>done</Code>. If the <Code>Supply</Code> <Code>quit</Code>s, then an exception will be thrown once that point in the lazy list is reached.
@@ -187,104 +217,138 @@ Supply</Code> is <Code>done</Code>. If the <Code>Supply</Code> <Code>quit</Code>
   <H2>
     method Seq
   </H2>
-  <Code>method Seq(Supply:D:)</Code>
+  <P>
+    <Code>method Seq(Supply:D:)</Code>
+  </P>
   <P>
     Returns a <Code>Seq</Code> with an iterator containing the values that the <Code>Supply</Code> contains.
   </P>
   <H2>
     method grab
   </H2>
-  <Code>method grab(Supply:D: &amp;when-done --&gt; Supply:D)</Code>
   <P>
-    Taps the <Code>Supply</Code> it is called on. When it is <Code>done</Code>, calls <Code>&amp;when-done</Code> and then emits the list of values that it returns on the result <Code>Supply</Code>.
-    If the original <Code>Supply</Code> <Code>quit</Code>s, then the exception is immediately conveyed on the return <Code>Supply</Code>.
+    <Code>method grab(Supply:D: &amp;when-done --&gt; Supply:D)</Code>
   </P>
-  <Code>my $s = Supply.from-list(4, 10, 3, 2);
+  <P>
+    Taps the <Code>Supply</Code> it is called on. When it is <Code>done</Code>, calls <Code>&amp;when-done</Code> and then emits the list of values that it returns on the result <Code>Supply</Code>. If the
+    original <Code>Supply</Code> <Code>quit</Code>s, then the exception is immediately conveyed on the return <Code>Supply</Code>.
+  </P>
+  <P>
+    <Code>my $s = Supply.from-list(4, 10, 3, 2);
 my $t = $s.grab(&amp;sum);
 $t.tap(&amp;say);           # OUTPUT: «19»</Code>
+  </P>
   <H2>
     method reverse
   </H2>
-  <Code>method reverse(Supply:D: --&gt; Supply:D)</Code>
   <P>
-    Taps the <Code>Supply</Code> it is called on. Once that <Code>Supply</Code> emits <Code>done</Code>, all of the values it emitted will be emitted on the returned <Code>Supply</Code> in
-    reverse order. If the original <Code>Supply</Code> <Code>quit</Code>s, then the exception is immediately conveyed on the return <Code>Supply</Code>.
+    <Code>method reverse(Supply:D: --&gt; Supply:D)</Code>
   </P>
-  <Code>my $s = Supply.from-list(1, 2, 3);
+  <P>
+    Taps the <Code>Supply</Code> it is called on. Once that <Code>Supply</Code> emits <Code>done</Code>, all of the values it emitted will be emitted on the returned <Code>Supply</Code> in reverse
+    order. If the original <Code>Supply</Code> <Code>quit</Code>s, then the exception is immediately conveyed on the return <Code>Supply</Code>.
+  </P>
+  <P>
+    <Code>my $s = Supply.from-list(1, 2, 3);
 my $t = $s.reverse;
 $t.tap(&amp;say);           # OUTPUT: «321»</Code>
+  </P>
   <H2>
     method sort
   </H2>
-  <Code>method sort(Supply:D: &amp;custom-routine-to-use? --&gt; Supply:D)</Code>
+  <P>
+    <Code>method sort(Supply:D: &amp;custom-routine-to-use? --&gt; Supply:D)</Code>
+  </P>
   <P>
     Taps the <Code>Supply</Code> it is called on. Once that <Code>Supply</Code> emits <Code>done</Code>, all of the values that it emitted will be sorted, and the results emitted on the
-    returned <Code>Supply</Code> in the sorted order. Optionally accepts a comparator <Link href="/type/Block">Block</Link>. If the original <Code>Supply</Code> <Code>quit</Code>s, then the exception is
-    immediately conveyed on the return <Code>Supply</Code>.
+    returned <Code>Supply</Code> in the sorted order. Optionally accepts a comparator <Link href="/type/Block.pdf">Block</Link>. If the original <Code>Supply</Code> <Code>quit</Code>s, then the exception is immediately
+    conveyed on the return <Code>Supply</Code>.
   </P>
-  <Code>my $s = Supply.from-list(4, 10, 3, 2);
+  <P>
+    <Code>my $s = Supply.from-list(4, 10, 3, 2);
 my $t = $s.sort();
 $t.tap(&amp;say);           # OUTPUT: «23410»</Code>
+  </P>
   <H2>
     method collate
   </H2>
-  <Code>method collate(Supply:D:)</Code>
+  <P>
+    <Code>method collate(Supply:D:)</Code>
+  </P>
   <P>
     Taps the <Code>Supply</Code> it is called on. Once that <Code>Supply</Code> emits <Code>done</Code>, all of the values that it emitted will be sorted taking into account Unicode
-    grapheme characteristics. A new <Code>Supply</Code> is returned with the sorted values emitted. See <Link href="/type/Any#method_collate">Any.collate</Link> for more details on the collated sort.
+    grapheme characteristics. A new <Code>Supply</Code> is returned with the sorted values emitted. See <Link href="/type/Any.pdf#method_collate">Any.collate</Link> for more details on the collated sort.
   </P>
-  <Code>my $s = Supply.from-list(&lt;ä a o ö&gt;);
+  <P>
+    <Code>my $s = Supply.from-list(&lt;ä a o ö&gt;);
 my $t = $s.collate();
 $t.tap(&amp;say);           # OUTPUT: «aäoö»</Code>
+  </P>
   <H2>
     method reduce
   </H2>
   <P>
     Defined as:
   </P>
-  <Code>method reduce(Supply:D: &amp;with --&gt; Supply:D)</Code>
   <P>
-    Creates a "reducing" supply, which will emit a single value with the same semantics as <Link href="/type/List#routine_reduce">List.reduce</Link>.
+    <Code>method reduce(Supply:D: &amp;with --&gt; Supply:D)</Code>
   </P>
-  <Code>my $supply = Supply.from-list(1..5).reduce({$^a + $^b});
+  <P>
+    Creates a "reducing" supply, which will emit a single value with the same semantics as <Link href="/type/List.pdf#routine_reduce">List.reduce</Link>.
+  </P>
+  <P>
+    <Code>my $supply = Supply.from-list(1..5).reduce({$^a + $^b});
 $supply.tap(-&gt; $v { say "$v" }); # OUTPUT: «15»</Code>
+  </P>
   <H1>
     Methods that return another Supply
   </H1>
   <H2>
     method from-list
   </H2>
-  <Code>method from-list(Supply:U: +@values --&gt; Supply:D)</Code>
+  <P>
+    <Code>method from-list(Supply:U: +@values --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates an on-demand supply from the values passed to this method.
   </P>
-  <Code>my $s = Supply.from-list(1, 2, 3);
+  <P>
+    <Code>my $s = Supply.from-list(1, 2, 3);
 $s.tap(&amp;say);           # OUTPUT: «123»</Code>
+  </P>
   <H2>
     method share
   </H2>
-  <Code>method share(Supply:D: --&gt; Supply:D)</Code>
+  <P>
+    <Code>method share(Supply:D: --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a live supply from an on-demand supply, thus making it possible to share the values of the on-demand supply on multiple taps, instead
     of each tap seeing its own copy of all values from the on-demand supply.
   </P>
-  <Code># this says in turn: "first 1" "first 2" "second 2" "first 3" "second 3"
+  <P>
+    <Code># this says in turn: "first 1" "first 2" "second 2" "first 3" "second 3"
 my $s = Supply.interval(1).share;
 $s.tap: { "first $_".say };
 sleep 1.1;
 $s.tap: { "second $_".say };
 sleep 2</Code>
+  </P>
   <H2>
     method flat
   </H2>
-  <Code>method flat(Supply:D: --&gt; Supply:D)</Code>
+  <P>
+    <Code>method flat(Supply:D: --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a supply on which all of the values seen in the given supply are flattened before being emitted again.
   </P>
   <H2>
     method do
   </H2>
-  <Code>method do(Supply:D: &amp;do --&gt; Supply:D)</Code>
+  <P>
+    <Code>method do(Supply:D: &amp;do --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a supply to which all values seen in the given supply, are emitted again. The given code, executed for its side-effects only, is
     guaranteed to be only executed by one thread at a time.
@@ -292,13 +356,16 @@ sleep 2</Code>
   <H2>
     method on-close
   </H2>
-  <Code>method on-close(Supply:D: &amp;on-close --&gt; Supply:D)</Code>
   <P>
-    Returns a new <Code>Supply</Code> which will run <Code>&amp;on-close</Code> whenever a <Link href="/type/Tap">Tap</Link> of that <Code>Supply</Code> is closed. This includes if further operations are
-    chained on to the <Code>Supply</Code>. (for example, <Code>$supply.on-close(&amp;on-close).map(*.uc)</Code>). When using a <Code>react</Code> or <Code>supply</Code> block, using the <Link href="/language/phasers#CLOSE"></Link><Link href="/language/phasers#CLOSE">
-CLOSE</Link> phaser is usually a better choice.
+    <Code>method on-close(Supply:D: &amp;on-close --&gt; Supply:D)</Code>
   </P>
-  <Code>my $s = Supplier.new;
+  <P>
+    Returns a new <Code>Supply</Code> which will run <Code>&amp;on-close</Code> whenever a <Link href="/type/Tap.pdf">Tap</Link> of that <Code>Supply</Code> is closed. This includes if further operations are chained on
+    to the <Code>Supply</Code>. (for example, <Code>$supply.on-close(&amp;on-close).map(*.uc)</Code>). When using a <Code>react</Code> or <Code>supply</Code> block, using the <Link href="/language/phasers.pdf#close">CLOSE</Link> phaser
+    is usually a better choice.
+  </P>
+  <P>
+    <Code>my $s = Supplier.new;
 my $tap = $s.Supply.on-close({ say "Tap closed" }).tap(
     -&gt; $v { say "the value is $v" },
     done    =&gt; { say "Supply is done" },
@@ -307,13 +374,16 @@ my $tap = $s.Supply.on-close({ say "Tap closed" }).tap(
 
 $s.emit('Raku');
 $tap.close;        # OUTPUT: «Tap closed»</Code>
+  </P>
   <H2>
     method interval
   </H2>
-  <Code>method interval(Supply:U: $interval, $delay = 0, :$scheduler = $*SCHEDULER --&gt; Supply:D)</Code>
   <P>
-    Creates a supply that emits a value every <Code>$interval</Code> seconds, starting <Code>$delay</Code> seconds from the call. The emitted value is an integer,
-    starting from 0, and is incremented by one for each value emitted.
+    <Code>method interval(Supply:U: $interval, $delay = 0, :$scheduler = $*SCHEDULER --&gt; Supply:D)</Code>
+  </P>
+  <P>
+    Creates a supply that emits a value every <Code>$interval</Code> seconds, starting <Code>$delay</Code> seconds from the call. The emitted value is an integer, starting
+    from 0, and is incremented by one for each value emitted.
   </P>
   <P>
     Implementations may treat too-small and negative values as lowest resolution they support, possibly warning in such situations; e.g. treating <Code>
@@ -322,43 +392,55 @@ $tap.close;        # OUTPUT: «Tap closed»</Code>
   <H2>
     method grep
   </H2>
-  <Code>method grep(Supply:D: Mu $test --&gt; Supply:D)</Code>
+  <P>
+    <Code>method grep(Supply:D: Mu $test --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a new supply that only emits those values from the original supply that smartmatch against <Code>$test</Code>.
   </P>
-  <Code>my $supplier = Supplier.new;
+  <P>
+    <Code>my $supplier = Supplier.new;
 my $all      = $supplier.Supply;
 my $ints     = $all.grep(Int);
 $ints.tap(&amp;say);
 $supplier.emit($_) for 1, 'a string', 3.14159;   # prints only 1</Code>
+  </P>
   <H2>
     method map
   </H2>
-  <Code>method map(Supply:D: &amp;mapper --&gt; Supply:D)</Code>
+  <P>
+    <Code>method map(Supply:D: &amp;mapper --&gt; Supply:D)</Code>
+  </P>
   <P>
     Returns a new supply that maps each value of the given supply through <Code>&amp;mapper</Code> and emits it to the new supply.
   </P>
-  <Code>my $supplier = Supplier.new;
+  <P>
+    <Code>my $supplier = Supplier.new;
 my $all      = $supplier.Supply;
 my $double   = $all.map(-&gt; $value { $value * 2 });
 $double.tap(&amp;say);
 $supplier.emit(4);           # OUTPUT: «8»</Code>
+  </P>
   <H2>
     method batch
   </H2>
-  <Code>method batch(Supply:D: :$elems, :$seconds --&gt; Supply:D)</Code>
+  <P>
+    <Code>method batch(Supply:D: :$elems, :$seconds --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a new supply that batches the values of the given supply by either the number of elements in the batch (using <Code>:elems</Code>) or a duration
     (using <Code>:seconds</Code>) or both. Any remaining values are emitted in a final batch when the supply is done.
   </P>
   <P>
-    <Span FontStyle="bold">Note</Span>: Since Rakudo version 2020.12, the <Code>:seconds</Code> parameter has a millisecond granularity: for example a 1 millisecond duration could be
+    Note: Since Rakudo version 2020.12, the <Code>:seconds</Code> parameter has a millisecond granularity: for example a 1 millisecond duration could be
     specified as <Code>:seconds(0.001)</Code>. Before Rakudo version 2020.12, the <Code>:seconds</Code> parameter had a second granularity.
   </P>
   <H2>
     method elems
   </H2>
-  <Code>method elems(Supply:D: $seconds? --&gt; Supply:D)</Code>
+  <P>
+    <Code>method elems(Supply:D: $seconds? --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a new supply in which changes to the number of values seen are emitted. It optionally also takes an interval (in seconds) if you only
     want to be updated every so many seconds.
@@ -369,94 +451,122 @@ $supplier.emit(4);           # OUTPUT: «8»</Code>
   <P>
     Defined as:
   </P>
-  <Code>multi method head(Supply:D:)
+  <P>
+    <Code>multi method head(Supply:D:)
 multi method head(Supply:D: Callable:D $limit)
 multi method head(Supply:D: \limit)</Code>
-  <P>
-    Creates a "head" supply with the same semantics as <Link href="/type/List#method_head">List.head</Link>.
   </P>
-  <Code>my $s = Supply.from-list(4, 10, 3, 2);
+  <P>
+    Creates a "head" supply with the same semantics as <Link href="/type/List.pdf#method_head">List.head</Link>.
+  </P>
+  <P>
+    <Code>my $s = Supply.from-list(4, 10, 3, 2);
 my $hs = $s.head(2);
 $hs.tap(&amp;say);           # OUTPUT: «410»</Code>
+  </P>
   <P>
     Since release 2020.07, A <Code>WhateverCode</Code> can be used also, again with the same semantics as <Code>List.head</Code>
   </P>
-  <Code>my $s = Supply.from-list(4, 10, 3, 2, 1);
+  <P>
+    <Code>my $s = Supply.from-list(4, 10, 3, 2, 1);
 my $hs = $s.head( * - 2);
 $hs.tap(&amp;say);           # OUTPUT: «4103»</Code>
+  </P>
   <H2>
     method tail
   </H2>
-  <Code>multi method tail(Supply:D:)
+  <P>
+    <Code>multi method tail(Supply:D:)
 multi method tail(Supply:D: Callable:D $limit)
 multi method tail(Supply:D: \limit)</Code>
-  <P>
-    Creates a "tail" supply with the same semantics as <Link href="/type/List#method_tail">List.tail</Link>.
   </P>
-  <Code>my $s = Supply.from-list(4, 10, 3, 2);
+  <P>
+    Creates a "tail" supply with the same semantics as <Link href="/type/List.pdf#method_tail">List.tail</Link>.
+  </P>
+  <P>
+    <Code>my $s = Supply.from-list(4, 10, 3, 2);
 my $ts = $s.tail(2);
 $ts.tap(&amp;say);           # OUTPUT: «32»</Code>
-  <P>
-    You can call <Code>.tail</Code> with <Code>Whatever</Code> or <Code>Inf</Code>; which will return a new supply equivalent to the initial one. Calling it with a <Code>WhateverCode</Code>
-    will be equivalent to skipping until that number.
   </P>
-  <Code>my $s = Supply.from-list(4, 10, 3, 2);
+  <P>
+    You can call <Code>.tail</Code> with <Code>Whatever</Code> or <Code>Inf</Code>; which will return a new supply equivalent to the initial one. Calling it with a <Code>WhateverCode</Code> will
+    be equivalent to skipping until that number.
+  </P>
+  <P>
+    <Code>my $s = Supply.from-list(4, 10, 3, 2);
 my $ts = $s.tail( * - 2 );
 $ts.tap(&amp;say);           # OUTPUT: «32»</Code>
+  </P>
   <P>
     This feature is only available from the 2020.07 release of Raku.
   </P>
   <H2>
     method first
   </H2>
-  <Code>method first(Supply:D: :$end, |c)</Code>
   <P>
-    This method creates a supply of the first element, or the last element if the optional named parameter <Code>:end</Code> is truthy, from a supply created
-    by calling the <Code>grep</Code> method on the invocant, with any remaining arguments as parameters. If there is no remaining argument, this method is
+    <Code>method first(Supply:D: :$end, |c)</Code>
+  </P>
+  <P>
+    This method creates a supply of the first element, or the last element if the optional named parameter <Code>:end</Code> is truthy, from a supply created by
+    calling the <Code>grep</Code> method on the invocant, with any remaining arguments as parameters. If there is no remaining argument, this method is
     equivalent to calling on the invocant, without parameter, the <Code>head</Code> or the <Code>tail</Code> method, according to named parameter <Code>:end</Code>.
   </P>
-  <Code>my $rand = supply { emit (rand × 100).floor for ^∞ };
+  <P>
+    <Code>my $rand = supply { emit (rand × 100).floor for ^∞ };
 my $first-prime = $rand.first: &amp;is-prime;
 # output the first prime from the endless random number supply $rand,
 # then the $first-prime supply reaches its end
 $first-prime.tap: &amp;say;</Code>
+  </P>
   <H2>
     method split
   </H2>
-  <Code>multi method split(Supply:D: \delimiter)
-multi method split(Supply:D: \delimiter, \limit)</Code>
   <P>
-    This method creates a supply of the values returned by the <Code>Str.split</Code> method called on the string collected from the invocant. See <Link href="/type/Str#routine_split">Str.split</Link>
-    for details on the <Code>\delimiter</Code> argument as well as available extra named parameters. The created supply can be limited with the <Code>\limit</Code>
-    argument, see <Link href="#method_head">.head</Link>.
+    <Code>multi method split(Supply:D: \delimiter)
+multi method split(Supply:D: \delimiter, \limit)</Code>
   </P>
-  <Code>my $words = Supply.from-list(&lt;Hello World From Raku!&gt;);
+  <P>
+    This method creates a supply of the values returned by the <Code>Str.split</Code> method called on the string collected from the invocant. See <Link href="/type/Str.pdf#routine_split">Str.split</Link>
+    for details on the <Code>\delimiter</Code> argument as well as available extra named parameters. The created supply can be limited with the <Code>\limit</Code>
+    argument, see <Reference><Link href="#method_head">.head</Link></Reference>.
+  </P>
+  <P>
+    <Code>my $words = Supply.from-list(&lt;Hello World From Raku!&gt;);
 my $s = $words.split(/ &lt;?upper&gt; /, 2, :skip-empty);
 $s.tap(&amp;say); # OUTPUT: «HelloWorld»</Code>
+  </P>
   <H2>
     method rotate
   </H2>
-  <Code>method rotate(Supply:D: $rotate = 1)</Code>
+  <P>
+    <Code>method rotate(Supply:D: $rotate = 1)</Code>
+  </P>
   <P>
     Creates a supply with elements rotated to the left when <Code>$rotate</Code> is positive or to the right otherwise, in which case the invocant is tapped on
     before a new supply is returned.
   </P>
-  <Code>my $supply = Supply.from-list(&lt;a b c d e&gt;).rotate(2);
-$supply.tap(&amp;say); # OUTPUT: «cdeab»</Code>
   <P>
-    <Span FontStyle="bold">Note</Span>: Available since Rakudo 2020.06.
+    <Code>my $supply = Supply.from-list(&lt;a b c d e&gt;).rotate(2);
+$supply.tap(&amp;say); # OUTPUT: «cdeab»</Code>
+  </P>
+  <P>
+    Note: Available since Rakudo 2020.06.
   </P>
   <H2>
     method rotor
   </H2>
-  <Code>method rotor(Supply:D: @cycle --&gt; Supply:D)</Code>
   <P>
-    Creates a "rotoring" supply with the same semantics as <Link href="/type/List#method_rotor">List.rotor</Link>.
+    <Code>method rotor(Supply:D: @cycle --&gt; Supply:D)</Code>
+  </P>
+  <P>
+    Creates a "rotoring" supply with the same semantics as <Link href="/type/List.pdf#method_rotor">List.rotor</Link>.
   </P>
   <H2>
     method delayed
   </H2>
-  <Code>method delayed(Supply:D: $seconds, :$scheduler = $*SCHEDULER --&gt; Supply:D)</Code>
+  <P>
+    <Code>method delayed(Supply:D: $seconds, :$scheduler = $*SCHEDULER --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a new supply in which all values flowing through the given supply are emitted, but with the given delay in seconds.
   </P>
@@ -466,7 +576,8 @@ $supply.tap(&amp;say); # OUTPUT: «cdeab»</Code>
   <P>
     Defined as
   </P>
-  <Code>multi method throttle(Supply:D:
+  <P>
+    <Code>multi method throttle(Supply:D:
       Int()  $elems,
       Real() $seconds,
       Real() $delay  = 0,
@@ -475,7 +586,10 @@ $supply.tap(&amp;say); # OUTPUT: «cdeab»</Code>
       :$status,
       :$bleed,
       :$vent-at,
-    )</Code><Code>multi method throttle(Supply:D:
+    )</Code>
+  </P>
+  <P>
+    <Code>multi method throttle(Supply:D:
       Int()  $elems,
       Callable:D $process,
       Real() $delay = 0,
@@ -484,7 +598,8 @@ $supply.tap(&amp;say); # OUTPUT: «cdeab»</Code>
       :$status,
       :$bleed,
       :$vent-at,
-)</Code>
+    )</Code>
+  </P>
   <P>
     Arguments to <Code>.throttle</Code> are defined as follows:
   </P>
@@ -582,7 +697,7 @@ $supply.tap(&amp;say); # OUTPUT: «cdeab»</Code>
     Callable.
   </P>
   <P>
-    If the second positional parameter is a real number, it is interpreted as the time-unit (in seconds). If you specify <Span FontStyle="bold">.1</Span> as the value, then it makes
+    If the second positional parameter is a real number, it is interpreted as the time-unit (in seconds). If you specify .1 as the value, then it makes
     sure you don't exceed the limit for every tenth of a second.
   </P>
   <P>
@@ -597,16 +712,16 @@ $supply.tap(&amp;say); # OUTPUT: «cdeab»</Code>
   </P>
   <P>
     The <Code>:status</Code> named parameter optionally specifies a Supply that will receive any status messages. If specified, it will at least send one status
-    message after the original Supply is exhausted. See <Link href="#status_message">status message</Link> below.
+    message after the original Supply is exhausted. See <Reference><Link href="#status_message">status message</Link></Reference> below.
   </P>
   <P>
-    The <Code>:bleed</Code> named parameter optionally specifies a Supply that will receive any values that were either explicitly bled (with the <Span FontStyle="bold">bleed</Span>
-    control message), or automatically bled (if there's a <Span FontStyle="bold">vent-at</Span> active).
+    The <Code>:bleed</Code> named parameter optionally specifies a Supply that will receive any values that were either explicitly bled (with the bleed control
+    message), or automatically bled (if there's a vent-at active).
   </P>
   <P>
-    The <Code>:vent-at</Code> named parameter indicates the number of values that may be buffered before any additional value will be routed to the <Code>
-:bleed</Code> Supply. Defaults to 0 if not specified (causing no automatic bleeding to happen). Only makes sense if a <Code>:bleed</Code> Supply has also
-    been specified.
+    The <Code>:vent-at</Code> named parameter indicates the number of values that may be buffered before any additional value will be routed to the <Code>:bleed</Code>
+    Supply. Defaults to 0 if not specified (causing no automatic bleeding to happen). Only makes sense if a <Code>:bleed</Code> Supply has also been
+    specified.
   </P>
   <P>
     The <Code>:scheduler</Code> named parameter indicates the scheduler to be used. Defaults to <Code>$*SCHEDULER</Code>.
@@ -774,7 +889,8 @@ $supply.tap(&amp;say); # OUTPUT: «cdeab»</Code>
     Have a simple piece of code announce when it starts running asynchronously, wait a random amount of time, then announce when it is done.
     Do this 6 times, but don't let more than 3 of them run simultaneously.
   </P>
-  <Code>my $s = Supply.from-list(^6);  # set up supply
+  <P>
+    <Code>my $s = Supply.from-list(^6);  # set up supply
 my $t = $s.throttle: 3,        # only allow 3 at a time
 {                              # code block to run
     say "running $_";          # announce we've started
@@ -782,10 +898,12 @@ my $t = $s.throttle: 3,        # only allow 3 at a time
     say "done $_"              # announce we're done
 }                              # don't need ; because } at end of line
 $t.wait;                       # wait for the supply to be done</Code>
+  </P>
   <P>
     and the result of one run will be:
   </P>
-  <Code>running 0
+  <P>
+    <Code>running 0
 running 1
 running 2
 done 2
@@ -797,10 +915,13 @@ running 5
 done 0
 done 3
 done 5</Code>
+  </P>
   <H2>
     method stable
   </H2>
-  <Code>method stable(Supply:D: $time, :$scheduler = $*SCHEDULER --&gt; Supply:D)</Code>
+  <P>
+    <Code>method stable(Supply:D: $time, :$scheduler = $*SCHEDULER --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a new supply that only passes on a value flowing through the given supply if it wasn't superseded by another value in the given <Code>$time</Code>
     (in seconds). Optionally uses another scheduler than the default scheduler, using the <Code>:scheduler</Code> parameter.
@@ -813,7 +934,8 @@ done 5</Code>
     This method can be quite useful when handling UI input, where it is not desired to perform an operation until the user has stopped typing for a
     while rather than on every keystroke.
   </P>
-  <Code>my $supplier = Supplier.new;
+  <P>
+    <Code>my $supplier = Supplier.new;
 my $supply1 = $supplier.Supply;
 $supply1.tap(-&gt; $v { say "Supply1 got: $v" });
 $supplier.emit(42);
@@ -825,6 +947,7 @@ $supplier.emit(43);  # will not be seen by $supply2 but will reset $time
 $supplier.emit(44);
 sleep(10);
 # OUTPUT: «Supply1 got: 42Supply1 got: 43Supply1 got: 44Supply2 got: 44»</Code>
+  </P>
   <P>
     As can be seen above, <Code>$supply1</Code> received all values emitted to the <Code>Supplier</Code> while <Code>$supply2</Code> only received one value. The 43 was thrown
     away because it was followed by another 'last' value 44 which was retained and sent to <Code>$supply2</Code> after approximately eight seconds, this due
@@ -833,16 +956,22 @@ sleep(10);
   <H2>
     method produce
   </H2>
-  <Code>method produce(Supply:D: &amp;with --&gt; Supply:D)</Code>
   <P>
-    Creates a "producing" supply with the same semantics as <Link href="/type/List#routine_produce">List.produce</Link>.
+    <Code>method produce(Supply:D: &amp;with --&gt; Supply:D)</Code>
   </P>
-  <Code>my $supply = Supply.from-list(1..5).produce({$^a + $^b});
+  <P>
+    Creates a "producing" supply with the same semantics as <Link href="/type/List.pdf#routine_produce">List.produce</Link>.
+  </P>
+  <P>
+    <Code>my $supply = Supply.from-list(1..5).produce({$^a + $^b});
 $supply.tap(-&gt; $v { say "$v" }); # OUTPUT: «1361015»</Code>
+  </P>
   <H2>
     method lines
   </H2>
-  <Code>method lines(Supply:D: :$chomp = True --&gt; Supply:D)</Code>
+  <P>
+    <Code>method lines(Supply:D: :$chomp = True --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a supply that will emit the characters coming in line by line from a supply that's usually created by some asynchronous I/O operation.
     The optional <Code>:chomp</Code> parameter indicates whether to remove line separators: the default is <Code>True</Code>.
@@ -850,87 +979,111 @@ $supply.tap(-&gt; $v { say "$v" }); # OUTPUT: «1361015»</Code>
   <H2>
     method words
   </H2>
-  <Code>method words(Supply:D: --&gt; Supply:D)</Code>
+  <P>
+    <Code>method words(Supply:D: --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a supply that will emit the characters coming in word for word from a supply that's usually created by some asynchronous I/O
     operation.
   </P>
-  <Code>my $s = Supply.from-list("Hello Word!".comb);
+  <P>
+    <Code>my $s = Supply.from-list("Hello Word!".comb);
 my $ws = $s.words;
 $ws.tap(&amp;say);           # OUTPUT: «HelloWord!»</Code>
+  </P>
   <H2>
     method unique
   </H2>
-  <Code>method unique(Supply:D: :$as, :$with, :$expires --&gt; Supply:D)</Code>
   <P>
-    Creates a supply that only provides unique values, as defined by the optional <Code>:as</Code> and <Code>:with</Code> parameters (same as with <Link href="/language/independent-routines#routine_unique">unique</Link>). The
-    optional <Code>:expires</Code> parameter how long to wait (in seconds) before "resetting" and not considering a value to have been seen, even if it's the
-    same as an old value.
+    <Code>method unique(Supply:D: :$as, :$with, :$expires --&gt; Supply:D)</Code>
+  </P>
+  <P>
+    Creates a supply that only provides unique values, as defined by the optional <Code>:as</Code> and <Code>:with</Code> parameters (same as with <Link href="/language/independent-routines.pdf#routine_unique">unique</Link>). The optional <Code>
+:expires</Code> parameter how long to wait (in seconds) before "resetting" and not considering a value to have been seen, even if it's the same as an
+    old value.
   </P>
   <H2>
     method repeated
   </H2>
-  <Code>method repeated(Supply:D: :&amp;as, :&amp;with)</Code>
   <P>
-    Creates a supply that only provides repeated values, as defined by the optional <Code>:as</Code> and <Code>:with</Code> parameters (same as with <Link href="/language/independent-routines#routine_unique">unique</Link>).
+    <Code>method repeated(Supply:D: :&amp;as, :&amp;with)</Code>
   </P>
-  <Code>my $supply = Supply.from-list(&lt;a A B b c b C&gt;).repeated(:as(&amp;lc));
+  <P>
+    Creates a supply that only provides repeated values, as defined by the optional <Code>:as</Code> and <Code>:with</Code> parameters (same as with <Link href="/language/independent-routines.pdf#routine_unique">unique</Link>).
+  </P>
+  <P>
+    <Code>my $supply = Supply.from-list(&lt;a A B b c b C&gt;).repeated(:as(&amp;lc));
 $supply.tap(&amp;say);           # OUTPUT: «AbbC»</Code>
-  <P>
-    See <Link href="/language/independent-routines#routine_repeated">repeated</Link> for more examples that use its sub form.
   </P>
   <P>
-    <Span FontStyle="bold">Note</Span>: Available since version 6.e (<Link href="/language/glossary#Rakudo">Rakudo</Link> 2020.01 and later).
+    See <Link href="/language/independent-routines.pdf#routine_repeated">repeated</Link> for more examples that use its sub form.
+  </P>
+  <P>
+    Note: Available since version 6.e (<Link href="/language/glossary.pdf#rakudo">Rakudo</Link> 2020.01 and later).
   </P>
   <H2>
     method squish
   </H2>
-  <Code>method squish(Supply:D: :$as, :$with --&gt; Supply:D)</Code>
   <P>
-    Creates a supply that only provides unique values, as defined by the optional <Code>:as</Code> and <Code>:with</Code> parameters (same as with <Link href="/language/independent-routines#routine_squish">squish</Link>).
+    <Code>method squish(Supply:D: :$as, :$with --&gt; Supply:D)</Code>
+  </P>
+  <P>
+    Creates a supply that only provides unique values, as defined by the optional <Code>:as</Code> and <Code>:with</Code> parameters (same as with <Link href="/language/independent-routines.pdf#routine_squish">squish</Link>).
   </P>
   <H2>
     method max
   </H2>
-  <Code>method max(Supply:D: &amp;custom-routine-to-use = &amp;infix:&lt;cmp&gt; --&gt; Supply:D)</Code>
+  <P>
+    <Code>method max(Supply:D: &amp;custom-routine-to-use = &amp;infix:&lt;cmp&gt; --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a supply that only emits values from the given supply if they are larger than any value seen before. In other words, from a
     continuously ascending supply it will emit all the values. From a continuously descending supply it will only emit the first value. The optional
-    parameter specifies the comparator, just as with <Link href="/type/Any#routine_max">Any.max</Link>.
+    parameter specifies the comparator, just as with <Link href="/type/Any.pdf#routine_max">Any.max</Link>.
   </P>
   <H2>
     method min
   </H2>
-  <Code>method min(Supply:D: &amp;custom-routine-to-use = &amp;infix:&lt;cmp&gt; --&gt; Supply:D)</Code>
+  <P>
+    <Code>method min(Supply:D: &amp;custom-routine-to-use = &amp;infix:&lt;cmp&gt; --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a supply that only emits values from the given supply if they are smaller than any value seen before. In other words, from a
     continuously descending supply it will emit all the values. From a continuously ascending supply it will only emit the first value. The optional
-    parameter specifies the comparator, just as with <Link href="/type/Any#routine_min">Any.min</Link>.
+    parameter specifies the comparator, just as with <Link href="/type/Any.pdf#routine_min">Any.min</Link>.
   </P>
   <H2>
     method minmax
   </H2>
-  <Code>method minmax(Supply:D: &amp;custom-routine-to-use = &amp;infix:&lt;cmp&gt; --&gt; Supply:D)</Code>
+  <P>
+    <Code>method minmax(Supply:D: &amp;custom-routine-to-use = &amp;infix:&lt;cmp&gt; --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a supply that emits a Range every time a new minimum or maximum values is seen from the given supply. The optional parameter
-    specifies the comparator, just as with <Link href="/type/Any#routine_minmax">Any.minmax</Link>.
+    specifies the comparator, just as with <Link href="/type/Any.pdf#routine_minmax">Any.minmax</Link>.
   </P>
   <H2>
     method skip
   </H2>
-  <Code>method skip(Supply:D: Int(Cool) $number = 1 --&gt; Supply:D)</Code>
+  <P>
+    <Code>method skip(Supply:D: Int(Cool) $number = 1 --&gt; Supply:D)</Code>
+  </P>
   <P>
     Returns a new <Code>Supply</Code> which will emit all values from the given <Code>Supply</Code> except for the first <Code>$number</Code> values, which will be thrown away.
   </P>
-  <Code>my $supplier = Supplier.new;
+  <P>
+    <Code>my $supplier = Supplier.new;
 my $supply = $supplier.Supply;
 $supply = $supply.skip(3);
 $supply.tap({ say $_ });
 $supplier.emit($_) for 1..10; # OUTPUT: «45678910»</Code>
+  </P>
   <H2>
     method start
   </H2>
-  <Code>method start(Supply:D: &amp;startee --&gt; Supply:D)</Code>
+  <P>
+    <Code>method start(Supply:D: &amp;startee --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a supply of supplies. For each value in the original supply, the code object is scheduled on another thread, and returns a supply either
     of a single value (if the code succeeds), or one that quits without a value (if the code fails).
@@ -944,11 +1097,13 @@ $supplier.emit($_) for 1..10; # OUTPUT: «45678910»</Code>
   <H2>
     method migrate
   </H2>
-  <Code>method migrate(Supply:D: --&gt; Supply:D)</Code>
   <P>
-    Takes a <Code>Supply</Code> which itself has values that are of type <Code>Supply</Code> as input. Each time the outer <Code>Supply</Code> emits a new <Code>Supply</Code>, this will be
-    tapped and its values emitted. Any previously tapped <Code>Supply</Code> will be closed. This is useful for migrating between different data sources, and
-    only paying attention to the latest one.
+    <Code>method migrate(Supply:D: --&gt; Supply:D)</Code>
+  </P>
+  <P>
+    Takes a <Code>Supply</Code> which itself has values that are of type <Code>Supply</Code> as input. Each time the outer <Code>Supply</Code> emits a new <Code>Supply</Code>, this will be tapped
+    and its values emitted. Any previously tapped <Code>Supply</Code> will be closed. This is useful for migrating between different data sources, and only
+    paying attention to the latest one.
   </P>
   <P>
     For example, imagine an application where the user can switch between different stocks. When they switch to a new one, a connection is
@@ -959,7 +1114,8 @@ $supplier.emit($_) for 1..10; # OUTPUT: «45678910»</Code>
   <P>
     Here is a simple simulation of such a program:
   </P>
-  <Code>my Supplier $stock-sources .= new;
+  <P>
+    <Code>my Supplier $stock-sources .= new;
 
 sub watch-stock($symbol) {
     $stock-sources.emit: supply {
@@ -977,10 +1133,12 @@ watch-stock('GOOG');
 sleep 3;
 watch-stock('AAPL');
 sleep 3;</Code>
+  </P>
   <P>
     Which produces output like:
   </P>
-  <Code>Starting to watch GOOG
+  <P>
+    <Code>Starting to watch GOOG
 GOOG: 111.67
 GOOG: 111.20
 GOOG: 111.37
@@ -989,13 +1147,16 @@ Starting to watch AAPL
 AAPL: 111.55
 AAPL: 111.6
 AAPL: 111.6</Code>
+  </P>
   <H1>
     Methods that combine supplies
   </H1>
   <H2>
     method merge
   </H2>
-  <Code>method merge(Supply @*supplies --&gt; Supply:D)</Code>
+  <P>
+    <Code>method merge(Supply @*supplies --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a supply to which any value seen from the given supplies, is emitted. The resulting supply is done only when all given supplies are
     done. Can also be called as a class method.
@@ -1006,11 +1167,13 @@ AAPL: 111.6</Code>
   <P>
     Defined as:
   </P>
-  <Code>method zip(**@s, :&amp;with)</Code>
   <P>
-    Creates a supply that emits combined values as soon as there is a new value seen on <Span FontStyle="bold">all</Span> of the supplies. By default, <Link href="/type/List">Lists</Link> are created, but this
-    can be changed by specifying your own combiner with the <Code>:with</Code> parameter. The resulting supply is done as soon as <Span FontStyle="bold">any</Span> of the given
-    supplies are done. Can also be called as a class method.
+    <Code>method zip(**@s, :&amp;with)</Code>
+  </P>
+  <P>
+    Creates a supply that emits combined values as soon as there is a new value seen on all of the supplies. By default, <Link href="/type/List.pdf">Lists</Link> are created, but this
+    can be changed by specifying your own combiner with the <Code>:with</Code> parameter. The resulting supply is done as soon as any of the given supplies
+    are done. Can also be called as a class method.
   </P>
   <P>
     This can also be used as a class method; in case it's used as an object method the corresponding supply will be one of the supplies combined
@@ -1022,12 +1185,14 @@ AAPL: 111.6</Code>
   <P>
     Defined as:
   </P>
-  <Code>method zip-latest(**@s, :&amp;with, :$initial )</Code>
   <P>
-    Creates a supply that emits combined values as soon as there is a new value seen on <Span FontStyle="bold">any</Span> of the supplies. By default, <Link href="/type/List">Lists</Link> are created, but
-    this can be changed by specifying your own combiner with the <Code>:with</Code> parameter. The optional :initial parameter can be used to indicate the
-    initial state of the combined values. By default, all supplies have to have at least one value emitted on them before the first combined values is
-    emitted on the resulting supply. The resulting supply is done as soon as <Span FontStyle="bold">any</Span> of the given supplies are done. Can also be called as a class
+    <Code>method zip-latest(**@s, :&amp;with, :$initial )</Code>
+  </P>
+  <P>
+    Creates a supply that emits combined values as soon as there is a new value seen on any of the supplies. By default, <Link href="/type/List.pdf">Lists</Link> are created, but this
+    can be changed by specifying your own combiner with the <Code>:with</Code> parameter. The optional :initial parameter can be used to indicate the initial
+    state of the combined values. By default, all supplies have to have at least one value emitted on them before the first combined values is
+    emitted on the resulting supply. The resulting supply is done as soon as any of the given supplies are done. Can also be called as a class
     method.
   </P>
   <H1>
@@ -1036,25 +1201,31 @@ AAPL: 111.6</Code>
   <H2>
     sub signal
   </H2>
-  <Code>sub signal(*@signals, :$scheduler = $*SCHEDULER)</Code>
+  <P>
+    <Code>sub signal(*@signals, :$scheduler = $*SCHEDULER)</Code>
+  </P>
   <P>
     Creates a supply for the Signal enums (such as SIGINT) specified, and an optional <Code>:scheduler</Code> parameter. Any signals received, will be
     emitted on the supply. For example:
   </P>
-  <Code>signal(SIGINT).tap( { say "Thank you for your attention"; exit 0 } );</Code>
+  <P>
+    <Code>signal(SIGINT).tap( { say "Thank you for your attention"; exit 0 } );</Code>
+  </P>
   <P>
     would catch Control-C, thank you, and then exit.
   </P>
   <P>
     To go from a signal number to a Signal, you can do something like this:
   </P>
-  <Code>signal(Signal(2)).tap( -&gt; $sig { say "Received signal: $sig" } );</Code>
   <P>
-    The list of supported signals can be found by checking <Code>Signal::.keys</Code> (as you would any enum). For more details on how enums work see <Link href="/language/typesystem#enum"></Link><Link href="/language/typesystem#enum">
+    <Code>signal(Signal(2)).tap( -&gt; $sig { say "Received signal: $sig" } );</Code>
+  </P>
+  <P>
+    The list of supported signals can be found by checking <Code>Signal::.keys</Code> (as you would any enum). For more details on how enums work see <Link href="/language/typesystem.pdf#enum"></Link><Link href="/language/typesystem.pdf#enum">
 enum</Link>.
   </P>
   <P>
-    <Span FontStyle="bold">Note:</Span> <Link href="/language/glossary#Rakudo">Rakudo</Link> versions up to 2018.05 had a bug due to which numeric values of signals were incorrect on some systems. For example, <Code>
+    Note: <Link href="/language/glossary.pdf#rakudo">Rakudo</Link> versions up to 2018.05 had a bug due to which numeric values of signals were incorrect on some systems. For example, <Code>
 Signal(10)</Code> was returning <Code>SIGBUS</Code> even if it was actually <Code>SIGUSR1</Code> on a particular system. That being said, using <Code>signal(SIGUSR1)</Code> was
     working as expected on all Rakudo versions except 2018.04, 2018.04.1 and 2018.05, where the intended behavior can be achieved by using <Code>
 signal(SIGBUS)</Code> instead. These issues are resolved in Rakudo releases after 2018.05.
@@ -1062,11 +1233,15 @@ signal(SIGBUS)</Code> instead. These issues are resolved in Rakudo releases afte
   <H2>
     method IO::Notification.watch-path
   </H2>
-  <Code>method watch-path($path --&gt; Supply:D)</Code>
+  <P>
+    <Code>method watch-path($path --&gt; Supply:D)</Code>
+  </P>
   <P>
     Creates a supply to which the OS will emit values to indicate changes on the filesystem for the given path. Also has a shortcut with the <Code>watch</Code>
     method on an IO object, like this:
   </P>
-  <Code>IO::Notification.watch-path(".").act( { say "$^file changed" } );
+  <P>
+    <Code>IO::Notification.watch-path(".").act( { say "$^file changed" } );
 ".".IO.watch.act(                     { say "$^file changed" } );   # same</Code>
+  </P>
 </Document>

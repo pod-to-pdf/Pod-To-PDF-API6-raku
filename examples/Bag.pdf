@@ -2,9 +2,10 @@
 %¥±ë¼
 1 0 obj
 <<
-  /CreationDate (D:20220107090217+13'00')
-  /Creator (PDF::Class-0.4.18; PDF::Content-0.5.16; PDF-0.4.18; Raku-6.d; PDF::Tags-0.0.13; Pod::To::PDF::API6-0.0.1)
-  /Producer (PDF::API6-0.2.4)
+  /CreationDate (D:20220405132525+12'00')
+  /Creator (PDF::Class-0.5.0; PDF::Content-0.5.17; PDF-0.4.25; Raku-6.d; PDF::Tags-0.1.1; Pod::To::PDF::API6-0.0.1)
+  /Producer (PDF::API6-0.2.5)
+  /Subject (Immutable collection of distinct objects with integer weights)
   /Title (class Bag)
 >>
 endobj
@@ -15,22 +16,21 @@ endobj
   /Dests 3 0 R
   /Lang (en)
   /MarkInfo << /Marked true >>
-  /Outlines 57 0 R
+  /Outlines 53 0 R
   /Pages 10 0 R
-  /StructTreeRoot 144 0 R
+  /StructTreeRoot 153 0 R
 >>
 endobj
 
 3 0 obj
 <<
-  /Creating_Bag_objects [ 4 0 R /FitBH 796 ]
-  /Immutable_collection_of_distinct_objects_with_integer_weights [ 11 0 R /FitBH 730 ]
-  /Note_on_reverse_and_ordering [ 45 0 R /FitBH 796 ]
-  /Operators [ 35 0 R /FitBH 796 ]
-  /See_also [ 51 0 R /FitBH 796 ]
-  /Subroutines [ 41 0 R /FitBH 796 ]
-  /class_Bag [ 11 0 R /FitBH 796 ]
-  /sub_bag [ 41 0 R /FitBH 730 ]
+  /Creating_Bag_objects [ 4 0 R /FitBH 774 ]
+  /Note_on_reverse_and_ordering [ 42 0 R /FitBH 774 ]
+  /Operators [ 32 0 R /FitBH 774 ]
+  /See_also [ 47 0 R /FitBH 774 ]
+  /Subroutines [ 38 0 R /FitBH 774 ]
+  /class_Bag [ 11 0 R /FitBH 778.4 ]
+  /sub_bag [ 38 0 R /FitBH 734.4 ]
 >>
 endobj
 
@@ -39,13 +39,12 @@ endobj
   /Type /Page
   /Annots [ 5 0 R 7 0 R ]
   /Contents 9 0 R
-  /MediaBox [ 0 0 612 792 ]
   /Parent 10 0 R
   /Resources <<
-    /ExtGState << /GS1 55 0 R /GS2 56 0 R >>
-    /Font << /F1 30 0 R /F2 31 0 R /F3 33 0 R >>
+    /ExtGState << /GS1 51 0 R /GS2 52 0 R >>
+    /Font << /F1 27 0 R /F2 46 0 R /F3 28 0 R /F4 30 0 R >>
   >>
-  /StructParents 9
+  /StructParents 7
 >>
 endobj
 
@@ -57,8 +56,8 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (bag)
   /P 4 0 R
-  /Rect [ 156.35 709.4 174.79 724.4 ]
-  /StructParent 10
+  /Rect [ 149.95 730.3 168.39 743.3 ]
+  /StructParent 8
 >>
 endobj
 
@@ -74,507 +73,473 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (List)
   /P 4 0 R
-  /Rect [ 453.51 533.4 473.07 548.4 ]
-  /StructParent 11
+  /Rect [ 444.61 548.8 464.17 561.8 ]
+  /StructParent 9
 >>
 endobj
 
 8 0 obj
-<< /Type /Action /S /URI /URI (/type/List) >>
+<< /Type /Action /S /URI /URI (/type/List.pdf) >>
 endobj
 
 9 0 obj
-<< /Length 7862 >> stream
+<< /Length 8145 >> stream
 /H1 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
     /F1 20 Tf
-    (Creating  Bag  objects) Tj
+    (Creating ) Tj
   ET
   q
     1 w
     20 750 m
-    208.86 750 l
+    100.54 750 l
     S
   Q
 EMC
 /Code << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 712.4 Tm
-    /F2 8 Tf
+    1 0 0 1 20 752 Tm
+    /F2 17 Tf
+    [ -4738 (Bag) ] TJ
+  ET
+  q
+    0.85 w
+    100.54 750.3 m
+    131.14 750.3 l
+    S
+  Q
+EMC
+/H1 << /MCID 2 >> BDC
+  BT
+    1 0 0 1 20 752 Tm
+    /F1 20 Tf
+    [ -5557 ( objects) ] TJ
+  ET
+  q
+    1 w
+    131.14 750 m
+    196.12 750 l
+    S
+  Q
+EMC
+/Code << /MCID 3 >> BDC
+  BT
+    1 0 0 1 20 733.3 Tm
+    /F3 8.5 Tf
     (Bag) Tj
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  19 711.4 16.4 10.8 re
-  B
-Q
-/P << /MCID 2 >> BDC
+/P << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 712.4 Tm
-    /F3 10 Tf
-    [ -1920 (s can be composed using the ) ] TJ
+    1 0 0 1 20 733.3 Tm
+    /F4 10 Tf
+    [ -1530 (s can be composed using the ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 3 >> BDC
+  /Link << /MCID 5 >> BDC
     BT
-      1 0 0 1 20 712.4 Tm
-      [ -13835 (bag) ] TJ
+      1 0 0 1 20 733.3 Tm
+      [ -13195 (bag) ] TJ
     ET
   EMC
 Q
-/P << /MCID 4 >> BDC
-  BT
-    1 0 0 1 20 712.4 Tm
-    [ -15529 ( subroutine \(or ) ] TJ
-  ET
-EMC
-/Code << /MCID 5 >> BDC
-  BT
-    1 0 0 1 20 712.4 Tm
-    /F2 8 Tf
-    [ -27396 (Bag.new) ] TJ
-  ET
-EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  238.17 711.4 35.6 10.8 re
-  B
-Q
 /P << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 712.4 Tm
-    /F3 10 Tf
-    [ -25757 (, for which it is a shorthand\). Any positional parameters, regardless of their) ] TJ
-    11 TL
-    T*
-    (type, become elements of the bag:) Tj
+    1 0 0 1 20 733.3 Tm
+    [ -14639 ( subroutine \(or ) ] TJ
   ET
 EMC
 /Code << /MCID 7 >> BDC
   BT
-    1 0 0 1 30 683.8 Tm
-    /F2 8 Tf
-    (my $n = bag "a" => 0, "b" => 1, "c" => 2, "c" => 2;) Tj
-    8.8 TL
-    T*
-    (say $n.keys.raku;         OUTPUT: «\(:c\(2\), :b\(1\), :a\(0\)\).Seq») Tj
-    T*
-    (say $n.keys.map\(&WHAT\);   OUTPUT: «\(\(Pair\) \(Pair\) \(Pair\)\)») Tj
-    T*
-    (say $n.values.raku;       OUTPUT: «\(2, 1, 1\).Seq») Tj
+    1 0 0 1 20 733.3 Tm
+    /F3 8.5 Tf
+    [ -24444 (Bag.new) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 652.4 572 45.2 re
-  B
-Q
 /P << /MCID 8 >> BDC
   BT
-    1 0 0 1 20 635.4 Tm
-    /F3 10 Tf
-    (Alternatively, the ) Tj
+    1 0 0 1 20 733.3 Tm
+    /F4 10 Tf
+    [ -24347 (, for which it is a shorthand\). Any positional parameters, regardless of their type,) ] TJ
+    11 TL
+    T*
+    (become elements of the bag:) Tj
   ET
 EMC
 /Code << /MCID 9 >> BDC
-  BT
-    1 0 0 1 20 635.4 Tm
-    /F2 8 Tf
-    [ -9374 (.Bag) ] TJ
-  ET
+  /Code BMC
+    BT
+      1 0 0 1 30 703.6 Tm
+      /F3 8.5 Tf
+      (my $n = bag "a" => 0, "b" => 1, "c" => 2, "c" => 2;) Tj
+      9.35 TL
+      T*
+      (say $n.keys.raku;         OUTPUT: «\(:c\(2\), :b\(1\), :a\(0\)\).Seq») Tj
+      T*
+      (say $n.keys.map\(&WHAT\);   OUTPUT: «\(\(Pair\) \(Pair\) \(Pair\)\)») Tj
+      T*
+      (say $n.values.raku;       OUTPUT: «\(2, 1, 1\).Seq») Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 670.55 572 43.05 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  93.99 634.4 21.2 10.8 re
-  B
-Q
 /P << /MCID 10 >> BDC
   BT
-    1 0 0 1 20 635.4 Tm
-    /F3 10 Tf
-    [ -9899 ( coercer \(or its functional form, ) ] TJ
+    1 0 0 1 20 653.55 Tm
+    /F4 10 Tf
+    (Alternatively, the ) Tj
   ET
 EMC
 /Code << /MCID 11 >> BDC
   BT
-    1 0 0 1 20 635.4 Tm
-    /F2 8 Tf
-    [ -28689 (Bag\(\)) ] TJ
+    1 0 0 1 20 653.55 Tm
+    /F3 8.5 Tf
+    [ -8528 (.Bag) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  248.51 634.4 26 10.8 re
-  B
-Q
 /P << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 635.4 Tm
-    /F3 10 Tf
-    [ -25831 (\) can be called on an existing object to coerce it to a ) ] TJ
+    1 0 0 1 20 653.55 Tm
+    /F4 10 Tf
+    [ -9289 ( coercer \(or its functional form, ) ] TJ
   ET
 EMC
 /Code << /MCID 13 >> BDC
   BT
-    1 0 0 1 20 635.4 Tm
-    /F2 8 Tf
-    [ -58880 (Bag) ] TJ
+    1 0 0 1 20 653.55 Tm
+    /F3 8.5 Tf
+    [ -25989 (Bag\(\)) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  490.04 634.4 16.4 10.8 re
-  B
-Q
 /P << /MCID 14 >> BDC
   BT
-    1 0 0 1 20 635.4 Tm
-    /F3 10 Tf
-    [ -49024 (. Its semantics) ] TJ
-    11 TL
-    T*
-    (depend on the type and contents of the object. In general it evaluates the object in list context and creates a bag with the resulting items as) Tj
-    T*
-    (elements, although for Hash-like objects or Pair items, only the keys become elements of the bag, and the \(cumulative\) values become the) Tj
-    T*
-    (associated integer weights:) Tj
+    1 0 0 1 20 653.55 Tm
+    /F4 10 Tf
+    [ -24641 (\) can be called on an existing object to coerce it to a ) ] TJ
   ET
 EMC
 /Code << /MCID 15 >> BDC
   BT
-    1 0 0 1 30 584.8 Tm
-    /F2 8 Tf
-    (my $n = \("a" => 0, "b" => 1, "c" => 2, "c" => 2\).Bag;) Tj
-    8.8 TL
-    T*
-    (say $n.keys.raku;         OUTPUT: «\("b", "c"\).Seq») Tj
-    T*
-    (say $n.keys.map\(&WHAT\);   OUTPUT: «\(\(Str\) \(Str\)\)») Tj
-    T*
-    (say $n.values.raku;       OUTPUT: «\(1, 4\).Seq») Tj
+    1 0 0 1 20 653.55 Tm
+    /F3 8.5 Tf
+    [ -53722 (Bag) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 553.4 572 45.2 re
-  B
-Q
 /P << /MCID 16 >> BDC
   BT
-    1 0 0 1 20 536.4 Tm
-    /F3 10 Tf
-    (Furthermore, you can get a ) Tj
+    1 0 0 1 20 653.55 Tm
+    /F4 10 Tf
+    [ -47194 (. Its semantics depend) ] TJ
+    11 TL
+    T*
+    (on the type and contents of the object. In general it evaluates the object in list context and creates a bag with the resulting items as elements,) Tj
+    T*
+    (although for Hash-like objects or Pair items, only the keys become elements of the bag, and the \(cumulative\) values become the associated) Tj
+    T*
+    (integer weights:) Tj
   ET
 EMC
 /Code << /MCID 17 >> BDC
-  BT
-    1 0 0 1 20 536.4 Tm
-    /F2 8 Tf
-    [ -14129 (Bag) ] TJ
-  ET
+  /Code BMC
+    BT
+      1 0 0 1 30 601.85 Tm
+      /F3 8.5 Tf
+      (my $n = \("a" => 0, "b" => 1, "c" => 2, "c" => 2\).Bag;) Tj
+      9.35 TL
+      T*
+      (say $n.keys.raku;         OUTPUT: «\("b", "c"\).Seq») Tj
+      T*
+      (say $n.keys.map\(&WHAT\);   OUTPUT: «\(\(Str\) \(Str\)\)») Tj
+      T*
+      (say $n.values.raku;       OUTPUT: «\(1, 4\).Seq») Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 568.8 572 43.05 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  132.03 535.4 16.4 10.8 re
-  B
-Q
 /P << /MCID 18 >> BDC
   BT
-    1 0 0 1 20 536.4 Tm
-    /F3 10 Tf
-    [ -13223 ( by using bag operators \(see next section\) on objects of other types such as ) ] TJ
+    1 0 0 1 20 551.8 Tm
+    /F4 10 Tf
+    (Furthermore, you can get a ) Tj
+  ET
+EMC
+/Code << /MCID 19 >> BDC
+  BT
+    1 0 0 1 20 551.8 Tm
+    /F3 8.5 Tf
+    [ -13004 (Bag) ] TJ
+  ET
+EMC
+/P << /MCID 20 >> BDC
+  BT
+    1 0 0 1 20 551.8 Tm
+    /F4 10 Tf
+    [ -12583 ( by using bag operators \(see next section\) on objects of other types such as ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 19 >> BDC
+  /Link << /MCID 21 >> BDC
     BT
-      1 0 0 1 20 536.4 Tm
-      [ -43551 (List) ] TJ
+      1 0 0 1 20 551.8 Tm
+      [ -42661 (List) ] TJ
     ET
   EMC
 Q
-/P << /MCID 20 >> BDC
+/P << /MCID 22 >> BDC
   BT
-    1 0 0 1 20 536.4 Tm
-    [ -45357 (, which will act like they) ] TJ
+    1 0 0 1 20 551.8 Tm
+    [ -44217 (, which will act like they) ] TJ
     11 TL
     T*
     (internally call ) Tj
   ET
 EMC
-/Code << /MCID 21 >> BDC
+/Code << /MCID 23 >> BDC
   BT
-    1 0 0 1 20 525.4 Tm
-    /F2 8 Tf
-    [ -7534 (.Bag) ] TJ
+    1 0 0 1 20 540.8 Tm
+    /F3 8.5 Tf
+    [ -6796 (.Bag) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  79.27 524.4 21.2 10.8 re
-  B
-Q
-/P << /MCID 22 >> BDC
+/P << /MCID 24 >> BDC
   BT
-    1 0 0 1 20 525.4 Tm
-    /F3 10 Tf
-    [ -8427 ( on them before performing the operation. Be aware of the tight precedence of those operators though, which may require) ] TJ
+    1 0 0 1 20 540.8 Tm
+    /F4 10 Tf
+    [ -7817 ( on them before performing the operation. Be aware of the tight precedence of those operators though, which may require) ] TJ
     T*
     (you to use parentheses around arguments:) Tj
   ET
 EMC
-/Code << /MCID 23 >> BDC
-  BT
-    1 0 0 1 30 496.8 Tm
-    /F2 8 Tf
-    (say \(1..5\) \(+\) 4;   OUTPUT: «Bag\(1 2 3 4\(2\) 5\)») Tj
-  ET
-EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 491.8 572 18.8 re
-  B
-Q
-/P << /MCID 24 >> BDC
-  BT
-    1 0 0 1 20 474.8 Tm
-    /F3 10 Tf
-    (Of course, you can also create a ) Tj
-  ET
-EMC
 /Code << /MCID 25 >> BDC
-  BT
-    1 0 0 1 20 474.8 Tm
-    /F2 8 Tf
-    [ -16556 (Bag) ] TJ
-  ET
+  /Code BMC
+    BT
+      1 0 0 1 30 511.1 Tm
+      /F3 8.5 Tf
+      (say \(1..5\) \(+\) 4;   OUTPUT: «Bag\(1 2 3 4\(2\) 5\)») Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 506.1 572 15 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  151.45 473.8 16.4 10.8 re
-  B
-Q
 /P << /MCID 26 >> BDC
   BT
-    1 0 0 1 20 474.8 Tm
-    /F3 10 Tf
-    [ -15165 ( with the ) ] TJ
+    1 0 0 1 20 489.1 Tm
+    /F4 10 Tf
+    (Of course, you can also create a ) Tj
   ET
 EMC
 /Code << /MCID 27 >> BDC
   BT
-    1 0 0 1 20 474.8 Tm
-    /F2 8 Tf
-    [ -23956 (.new) ] TJ
+    1 0 0 1 20 489.1 Tm
+    /F3 8.5 Tf
+    [ -15288 (Bag) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  210.65 473.8 21.2 10.8 re
-  B
-Q
 /P << /MCID 28 >> BDC
   BT
-    1 0 0 1 20 474.8 Tm
-    /F3 10 Tf
-    [ -21565 ( method.) ] TJ
+    1 0 0 1 20 489.1 Tm
+    /F4 10 Tf
+    [ -14525 ( with the ) ] TJ
   ET
 EMC
 /Code << /MCID 29 >> BDC
   BT
-    1 0 0 1 30 457.2 Tm
-    /F2 8 Tf
-    (my $breakfast = Bag.new\( <spam eggs spam spam bacon spam> \);) Tj
+    1 0 0 1 20 489.1 Tm
+    /F3 8.5 Tf
+    [ -21500 (.new) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 452.2 572 18.8 re
-  B
-Q
 /P << /MCID 30 >> BDC
   BT
-    1 0 0 1 20 435.2 Tm
-    /F3 10 Tf
-    (Since 6.d \(2019.03 and later\) you can also use this syntax for parameterization of the ) Tj
+    1 0 0 1 20 489.1 Tm
+    /F4 10 Tf
+    [ -20315 ( method.) ] TJ
   ET
 EMC
 /Code << /MCID 31 >> BDC
-  BT
-    1 0 0 1 20 435.2 Tm
-    /F2 8 Tf
-    [ -43047 (Bag) ] TJ
-  ET
+  /Code BMC
+    BT
+      1 0 0 1 30 470.4 Tm
+      /F3 8.5 Tf
+      (my $breakfast = Bag.new\( <spam eggs spam spam bacon spam> \);) Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 465.4 572 15 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  363.38 434.2 16.4 10.8 re
-  B
-Q
 /P << /MCID 32 >> BDC
   BT
-    1 0 0 1 20 435.2 Tm
-    /F3 10 Tf
-    [ -36358 (, to specify which type of values are acceptable:) ] TJ
+    1 0 0 1 20 448.4 Tm
+    /F4 10 Tf
+    (Since 6.d \(2019.03 and later\) you can also use this syntax for parameterization of the ) Tj
   ET
 EMC
 /Code << /MCID 33 >> BDC
   BT
-    1 0 0 1 30 417.6 Tm
-    /F2 8 Tf
-    ( only allow strings \(Str\) in the Bag) Tj
-    8.8 TL
-    T*
-    (my $breakfast = Bag[Str].new\( <spam eggs spam spam bacon spam> \);) Tj
-    T*
-    [  ] TJ
-    T*
-    ( only allow whole numbers \(Int\) in the Bag) Tj
-    T*
-    (my $breakfast = Bag[Int].new\( <spam eggs spam spam bacon spam> \);) Tj
-    T*
-    ( Type check failed in binding; expected Int but got Str \("spam"\)) Tj
+    1 0 0 1 20 448.4 Tm
+    /F3 8.5 Tf
+    [ -40221 (Bag) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 368.6 572 62.8 re
-  B
-Q
 /P << /MCID 34 >> BDC
   BT
-    1 0 0 1 20 351.6 Tm
-    /F3 10 Tf
-    (Finally, you can create Bag masquerading as a hash by using the ) Tj
+    1 0 0 1 20 448.4 Tm
+    /F4 10 Tf
+    [ -35718 (, to specify which type of values are acceptable:) ] TJ
   ET
 EMC
 /Code << /MCID 35 >> BDC
-  BT
-    1 0 0 1 20 351.6 Tm
-    /F2 8 Tf
-    [ -32911 (is) ] TJ
-  ET
+  /Code BMC
+    BT
+      1 0 0 1 30 429.7 Tm
+      /F3 8.5 Tf
+      ( only allow strings \(Str\) in the Bag) Tj
+      9.35 TL
+      T*
+      (my $breakfast = Bag[Str].new\( <spam eggs spam spam bacon spam> \);) Tj
+      T*
+      [  ] TJ
+      T*
+      ( only allow whole numbers \(Int\) in the Bag) Tj
+      T*
+      (my $breakfast = Bag[Int].new\( <spam eggs spam spam bacon spam> \);) Tj
+      T*
+      ( Type check failed in binding; expected Int but got Str \("spam"\)) Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 377.95 572 61.75 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  282.29 350.6 11.6 10.8 re
-  B
-Q
 /P << /MCID 36 >> BDC
   BT
-    1 0 0 1 20 351.6 Tm
-    /F3 10 Tf
-    [ -27769 ( trait:) ] TJ
+    1 0 0 1 20 360.95 Tm
+    /F4 10 Tf
+    (Finally, you can create Bag masquerading as a hash by using the ) Tj
   ET
 EMC
 /Code << /MCID 37 >> BDC
   BT
-    1 0 0 1 30 334 Tm
-    /F2 8 Tf
-    (my %b is Bag = <a b c>;) Tj
-    T*
-    (say %b<a>;   True) Tj
-    T*
-    (say %b<d>;   False) Tj
+    1 0 0 1 20 360.95 Tm
+    /F3 8.5 Tf
+    [ -30681 (is) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 311.4 572 36.4 re
-  B
-Q
 /P << /MCID 38 >> BDC
   BT
-    1 0 0 1 20 294.4 Tm
-    /F3 10 Tf
-    (Since 6.d \(2019.03 and later\), this syntax also allows you to specify the type of values you would like to allow:) Tj
+    1 0 0 1 20 360.95 Tm
+    /F4 10 Tf
+    [ -27099 ( trait:) ] TJ
   ET
 EMC
 /Code << /MCID 39 >> BDC
+  /Code BMC
+    BT
+      1 0 0 1 30 342.25 Tm
+      /F3 8.5 Tf
+      (my %b is Bag = <a b c>;) Tj
+      T*
+      (say %b<a>;   True) Tj
+      T*
+      (say %b<d>;   False) Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 318.55 572 33.7 re
+      B
+    Q
+  EMC
+EMC
+/P << /MCID 40 >> BDC
   BT
-    1 0 0 1 30 276.8 Tm
-    /F2 8 Tf
-    ( limit to strings) Tj
-    T*
-    (my %b is Bag[Str] = <a b c>;) Tj
-    T*
-    (say %b<a>;   True) Tj
-    T*
-    (say %b<d>;   False) Tj
-    T*
-    [  ] TJ
-    T*
-    ( limit to whole numbers) Tj
-    T*
-    (my %b is Bag[Int] = <a b c>;) Tj
-    T*
-    ( Type check failed in binding; expected Int but got Str \("a"\)) Tj
+    1 0 0 1 20 301.55 Tm
+    /F4 10 Tf
+    (Since 6.d \(2019.03 and later\), this syntax also allows you to specify the type of values you would like to allow:) Tj
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 210.2 572 80.4 re
-  B
-Q
+/Code << /MCID 41 >> BDC
+  /Code BMC
+    BT
+      1 0 0 1 30 282.85 Tm
+      /F3 8.5 Tf
+      ( limit to strings) Tj
+      T*
+      (my %b is Bag[Str] = <a b c>;) Tj
+      T*
+      (say %b<a>;   True) Tj
+      T*
+      (say %b<d>;   False) Tj
+      T*
+      [  ] TJ
+      T*
+      ( limit to whole numbers) Tj
+      T*
+      (my %b is Bag[Int] = <a b c>;) Tj
+      T*
+      ( Type check failed in binding; expected Int but got Str \("a"\)) Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 212.4 572 80.45 re
+      B
+    Q
+  EMC
+EMC
 endstream
 endobj
 
@@ -582,20 +547,20 @@ endobj
 <<
   /Type /Pages
   /Count 6
-  /Kids [ 11 0 R 4 0 R 35 0 R 41 0 R 45 0 R 51 0 R ]
+  /Kids [ 11 0 R 4 0 R 32 0 R 38 0 R 42 0 R 47 0 R ]
+  /MediaBox [ 0 0 612 792 ]
 >>
 endobj
 
 11 0 obj
 <<
   /Type /Page
-  /Annots [ 12 0 R 14 0 R 16 0 R 17 0 R 19 0 R 21 0 R 23 0 R 25 0 R ]
-  /Contents 27 0 R
-  /MediaBox [ 0 0 612 792 ]
+  /Annots [ 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R 22 0 R ]
+  /Contents 24 0 R
   /Parent 10 0 R
   /Resources <<
-    /ExtGState << /GS1 28 0 R /GS2 29 0 R >>
-    /Font << /F1 30 0 R /F2 31 0 R /F3 33 0 R /F4 34 0 R >>
+    /ExtGState << /GS1 25 0 R /GS2 26 0 R >>
+    /Font << /F1 27 0 R /F2 28 0 R /F3 30 0 R /F4 31 0 R >>
   >>
   /StructParents 0
 >>
@@ -609,13 +574,13 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (Associative)
   /P 11 0 R
-  /Rect [ 230.82 634.6 281.48 649.6 ]
+  /Rect [ 221.92 690.7 272.58 703.7 ]
   /StructParent 1
 >>
 endobj
 
 13 0 obj
-<< /Type /Action /S /URI /URI (/type/Associative) >>
+<< /Type /Action /S /URI /URI (/type/Associative.pdf) >>
 endobj
 
 14 0 obj
@@ -626,321 +591,275 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (BagHash)
   /P 11 0 R
-  /Rect [ 572.74 623.6 576.74 638.6 ]
+  /Rect [ 543.86 679.7 584.52 692.7 ]
   /StructParent 2
 >>
 endobj
 
 15 0 obj
-<< /Type /Action /S /URI /URI (/type/BagHash) >>
+<< /Type /Action /S /URI /URI (/type/BagHash.pdf) >>
 endobj
 
 16 0 obj
 <<
   /Type /Annot
   /Subtype /Link
-  /A 15 0 R
+  /A 17 0 R
   /Border [ 0 0 0 ]
-  /Contents (BagHash)
+  /Contents (.pick)
   /P 11 0 R
-  /Rect [ 18 612.6 58.66 627.6 ]
+  /Rect [ 295.18 650 318.9 663 ]
   /StructParent 3
 >>
 endobj
 
 17 0 obj
+<< /Type /Action /S /URI /URI (/routine/pick.pdf) >>
+endobj
+
+18 0 obj
 <<
   /Type /Annot
   /Subtype /Link
-  /A 18 0 R
+  /A 19 0 R
   /Border [ 0 0 0 ]
-  /Contents (.pick)
+  /Contents (.roll)
   /P 11 0 R
-  /Rect [ 301.58 595 325.3 610 ]
+  /Rect [ 334.34 650 354.73 663 ]
   /StructParent 4
 >>
 endobj
 
-18 0 obj
-<< /Type /Action /S /URI /URI (/routine/pick) >>
+19 0 obj
+<< /Type /Action /S /URI /URI (/routine/roll.pdf) >>
 endobj
 
-19 0 obj
+20 0 obj
 <<
   /Type /Annot
   /Subtype /Link
-  /A 20 0 R
+  /A 21 0 R
   /Border [ 0 0 0 ]
-  /Contents (.roll)
+  /Contents (===)
   /P 11 0 R
-  /Rect [ 345.74 595 366.13 610 ]
+  /Rect [ 484.63 628 505.55 641 ]
   /StructParent 5
 >>
 endobj
 
-20 0 obj
-<< /Type /Action /S /URI /URI (/routine/roll) >>
+21 0 obj
+<< /Type /Action /S /URI /URI (/routine/===.pdf) >>
 endobj
 
-21 0 obj
+22 0 obj
 <<
   /Type /Annot
   /Subtype /Link
-  /A 22 0 R
+  /A 23 0 R
   /Border [ 0 0 0 ]
-  /Contents (===)
+  /Contents (< > postcircumfix operator)
   /P 11 0 R
-  /Rect [ 493.53 573 514.45 588 ]
+  /Rect [ 340.06 512.5 451.71 525.5 ]
   /StructParent 6
 >>
 endobj
 
-22 0 obj
-<< /Type /Action /S /URI /URI (/routine/===) >>
-endobj
-
 23 0 obj
 <<
-  /Type /Annot
-  /Subtype /Link
-  /A 24 0 R
-  /Border [ 0 0 0 ]
-  /Contents ({ }\n\n postcircumfix operator)
-  /P 11 0 R
-  /Rect [ 209.94 463 324.91 478 ]
-  /StructParent 7
+  /Type /Action
+  /S /URI
+  /URI (/language/operators.pdf#postcircumfix_<_)
 >>
 endobj
 
 24 0 obj
-<< /Type /Action /S /URI /URI (/language/operators#postcircumfix_{_}) >>
-endobj
-
-25 0 obj
-<<
-  /Type /Annot
-  /Subtype /Link
-  /A 26 0 R
-  /Border [ 0 0 0 ]
-  /Contents (< > \n\n postcircumfix operator)
-  /P 11 0 R
-  /Rect [ 356.46 463 475.61 478 ]
-  /StructParent 8
->>
-endobj
-
-26 0 obj
-<< /Type /Action /S /URI /URI (/language/operators#postcircumfix_<_>) >>
-endobj
-
-27 0 obj
-<< /Length 5281 >> stream
+<< /Length 5245 >> stream
 /H1 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
-    /F1 20 Tf
+    /F1 24 Tf
     (class Bag) Tj
   ET
   q
-    1 w
-    20 750 m
-    98.34 750 l
+    1.2 w
+    20 749.6 m
+    114.008 749.6 l
     S
   Q
 EMC
 /H2 << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 734.4 Tm
     /F1 16 Tf
     (Immutable collection of distinct objects with integer weights) Tj
   ET
 EMC
 /Code << /MCID 2 >> BDC
-  BT
-    1 0 0 1 30 659.6 Tm
-    /F2 8 Tf
-    (class Bag does Baggy { }) Tj
-  ET
+  /Code BMC
+    BT
+      1 0 0 1 30 715.7 Tm
+      /F2 8.5 Tf
+      (class Bag does Baggy { }) Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 710.7 572 15 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 654.6 572 18.8 re
-  B
-Q
 /P << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 637.6 Tm
+    1 0 0 1 20 693.7 Tm
     /F3 10 Tf
     (A ) Tj
   ET
 EMC
 /Code << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 637.6 Tm
-    /F2 8 Tf
-    [ -1527 (Bag) ] TJ
+    1 0 0 1 20 693.7 Tm
+    /F2 8.5 Tf
+    [ -1144 (Bag) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  31.22 636.6 16.4 10.8 re
-  B
-Q
 /P << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 637.6 Tm
+    1 0 0 1 20 693.7 Tm
     /F3 10 Tf
-    [ -3142 ( is an immutable bag/multiset implementing ) ] TJ
+    [ -2502 ( is an immutable bag/multiset implementing ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
   /Link << /MCID 6 >> BDC
     BT
-      1 0 0 1 20 637.6 Tm
-      [ -21282 (Associative) ] TJ
+      1 0 0 1 20 693.7 Tm
+      [ -20392 (Associative) ] TJ
     ET
   EMC
 Q
 /P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 637.6 Tm
-    [ -26198 (, meaning a collection of distinct elements in no particular order that each) ] TJ
+    1 0 0 1 20 693.7 Tm
+    [ -25058 (, meaning a collection of distinct elements in no particular order that each have) ] TJ
     11 TL
     T*
-    (have an integer weight assigned to them signifying how many copies of that element are considered "in the bag". \(For ) Tj
+    (an integer weight assigned to them signifying how many copies of that element are considered "in the bag". \(For ) Tj
   ET
 EMC
-/Span << /MCID 8 >> BDC
+/P << /MCID 8 >> BDC
   BT
-    1 0 0 1 20 626.6 Tm
+    1 0 0 1 20 682.7 Tm
     /F4 10 Tf
-    [ -47642 (mutable) ] TJ
+    [ -45254 (mutable) ] TJ
   ET
 EMC
 /P << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 626.6 Tm
+    1 0 0 1 20 682.7 Tm
     /F3 10 Tf
-    [ -51114 ( bags, see ) ] TJ
+    [ -48476 ( bags, see ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
   /Link << /MCID 10 >> BDC
     BT
-      1 0 0 1 20 626.6 Tm
-      [ -55474 ] TJ
-      T*
-      (BagHash) Tj
+      1 0 0 1 20 682.7 Tm
+      [ -52586 (BagHash) ] TJ
     ET
   EMC
 Q
 /P << /MCID 11 >> BDC
   BT
-    1 0 0 1 20 615.6 Tm
-    [ -3916 ( instead.\)) ] TJ
+    1 0 0 1 20 682.7 Tm
+    [ -56252 ] TJ
+    T*
+    (instead.\)) Tj
   ET
 EMC
 /Code << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 598 Tm
-    /F2 8 Tf
+    1 0 0 1 20 653 Tm
+    /F2 8.5 Tf
     (Bag) Tj
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  19 597 16.4 10.8 re
-  B
-Q
 /P << /MCID 13 >> BDC
   BT
-    1 0 0 1 20 598 Tm
+    1 0 0 1 20 653 Tm
     /F3 10 Tf
-    [ -1920 (s are often used for performing weighted random selections - see ) ] TJ
+    [ -1530 (s are often used for performing weighted random selections - see ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
   /Link << /MCID 14 >> BDC
     BT
-      1 0 0 1 20 598 Tm
-      [ -28358 (.pick) ] TJ
+      1 0 0 1 20 653 Tm
+      [ -27718 (.pick) ] TJ
     ET
   EMC
 Q
 /P << /MCID 15 >> BDC
   BT
-    1 0 0 1 20 598 Tm
-    [ -30580 ( and ) ] TJ
+    1 0 0 1 20 653 Tm
+    [ -29690 ( and ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
   /Link << /MCID 16 >> BDC
     BT
-      1 0 0 1 20 598 Tm
-      [ -32774 (.roll) ] TJ
+      1 0 0 1 20 653 Tm
+      [ -31634 (.roll) ] TJ
     ET
   EMC
 Q
 /P << /MCID 17 >> BDC
   BT
-    1 0 0 1 20 598 Tm
-    [ -34663 (.) ] TJ
+    1 0 0 1 20 653 Tm
+    [ -33273 (.) ] TJ
   ET
 EMC
 /P << /MCID 18 >> BDC
   BT
-    1 0 0 1 20 576 Tm
+    1 0 0 1 20 631 Tm
     (Objects/values of any type are allowed as bag elements. Within a ) Tj
   ET
 EMC
 /Code << /MCID 19 >> BDC
   BT
-    1 0 0 1 20 576 Tm
-    /F2 8 Tf
-    [ -33222 (Bag) ] TJ
+    1 0 0 1 20 631 Tm
+    /F2 8.5 Tf
+    [ -30974 (Bag) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  284.78 575 16.4 10.8 re
-  B
-Q
 /P << /MCID 20 >> BDC
   BT
-    1 0 0 1 20 576 Tm
+    1 0 0 1 20 631 Tm
     /F3 10 Tf
-    [ -28498 (, items that would compare positively with the ) ] TJ
+    [ -27858 (, items that would compare positively with the ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
   /Link << /MCID 21 >> BDC
     BT
-      1 0 0 1 20 576 Tm
-      [ -47553 (===) ] TJ
+      1 0 0 1 20 631 Tm
+      [ -46663 (===) ] TJ
     ET
   EMC
 Q
 /P << /MCID 22 >> BDC
   BT
-    1 0 0 1 20 576 Tm
-    [ -49495 ( operator are) ] TJ
+    1 0 0 1 20 631 Tm
+    [ -48355 ( operator are) ] TJ
     T*
     (considered the same element, with the number of how many there are as its weight. But of course you can also easily get back the expanded) Tj
     T*
@@ -948,82 +867,75 @@ Q
   ET
 EMC
 /Code << /MCID 23 >> BDC
-  BT
-    1 0 0 1 30 536.4 Tm
-    /F2 8 Tf
-    (my $breakfast = bag <spam eggs spam spam bacon spam>;) Tj
-    8.8 TL
-    T*
-    [  ] TJ
-    T*
-    (say $breakfast.elems;       OUTPUT: «3») Tj
-    T*
-    (say $breakfast.keys.sort;   OUTPUT: «bacon eggs spam») Tj
-    T*
-    [  ] TJ
-    T*
-    (say $breakfast.total;       OUTPUT: «6») Tj
-    T*
-    (say $breakfast.kxxv.sort;   OUTPUT: «bacon eggs spam spam spam spam») Tj
-  ET
+  /Code BMC
+    BT
+      1 0 0 1 30 590.3 Tm
+      /F2 8.5 Tf
+      (my $breakfast = bag <spam eggs spam spam bacon spam>;) Tj
+      9.35 TL
+      T*
+      [  ] TJ
+      T*
+      (say $breakfast.elems;       OUTPUT: «3») Tj
+      T*
+      (say $breakfast.keys.sort;   OUTPUT: «bacon eggs spam») Tj
+      T*
+      [  ] TJ
+      T*
+      (say $breakfast.total;       OUTPUT: «6») Tj
+      T*
+      (say $breakfast.kxxv.sort;   OUTPUT: «bacon eggs spam spam spam spam») Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 529.2 572 71.1 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 478.6 572 71.6 re
-  B
-Q
 /Code << /MCID 24 >> BDC
   BT
-    1 0 0 1 20 466 Tm
+    1 0 0 1 20 515.5 Tm
     (Bag) Tj
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  19 465 16.4 10.8 re
-  B
-Q
 /P << /MCID 25 >> BDC
   BT
-    1 0 0 1 20 466 Tm
+    1 0 0 1 20 515.5 Tm
     /F3 10 Tf
-    [ -1920 (s can be treated as object hashes using the ) ] TJ
+    [ -1530 (s can be treated as object hashes using the ) ] TJ
   ET
 EMC
-q
-  0 0 1 rg
-  /Link << /MCID 26 >> BDC
-    BT
-      1 0 0 1 20 466 Tm
-      [ -19194 ({ }   postcircumfix operator) ] TJ
-    ET
-  EMC
-Q
+/P << /MCID 26 >> BDC
+  BT
+    1 0 0 1 20 515.5 Tm
+    [ -18554 ({ } postcircumfix operator) ] TJ
+  ET
+EMC
 /P << /MCID 27 >> BDC
   BT
-    1 0 0 1 20 466 Tm
-    [ -30541 (, or the ) ] TJ
+    1 0 0 1 20 515.5 Tm
+    [ -29151 (, or the ) ] TJ
   ET
 EMC
 q
   0 0 1 rg
   /Link << /MCID 28 >> BDC
     BT
-      1 0 0 1 20 466 Tm
-      [ -33846 (< >    postcircumfix operator) ] TJ
+      1 0 0 1 20 515.5 Tm
+      [ -32206 (< > postcircumfix operator) ] TJ
     ET
   EMC
 Q
 /P << /MCID 29 >> BDC
   BT
-    1 0 0 1 20 466 Tm
-    [ -45611 ( for literal string keys, which) ] TJ
+    1 0 0 1 20 515.5 Tm
+    [ -42971 ( for literal string keys, which) ] TJ
     11 TL
     T*
     (returns the corresponding integer weight for keys that are elements of the bag, and ) Tj
@@ -1031,60 +943,56 @@ Q
 EMC
 /Code << /MCID 30 >> BDC
   BT
-    1 0 0 1 20 455 Tm
-    /F2 8 Tf
-    [ -41796 (0) ] TJ
+    1 0 0 1 20 504.5 Tm
+    /F2 8.5 Tf
+    [ -39044 (0) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  353.37 454 6.8 10.8 re
-  B
-Q
 /P << /MCID 31 >> BDC
   BT
-    1 0 0 1 20 455 Tm
+    1 0 0 1 20 504.5 Tm
     /F3 10 Tf
-    [ -34397 ( for keys that aren't:) ] TJ
+    [ -33697 ( for keys that aren't:) ] TJ
   ET
 EMC
 /Code << /MCID 32 >> BDC
-  BT
-    1 0 0 1 30 437.4 Tm
-    /F2 8 Tf
-    (my $breakfast = bag <spam eggs spam spam bacon spam>;) Tj
-    8.8 TL
-    T*
-    (say $breakfast<bacon>;     OUTPUT: «1») Tj
-    T*
-    (say $breakfast<spam>;      OUTPUT: «4») Tj
-    T*
-    (say $breakfast<sausage>;   OUTPUT: «0») Tj
-  ET
+  /Code BMC
+    BT
+      1 0 0 1 30 485.8 Tm
+      /F2 8.5 Tf
+      (my $breakfast = bag <spam eggs spam spam bacon spam>;) Tj
+      9.35 TL
+      T*
+      (say $breakfast<bacon>;     OUTPUT: «1») Tj
+      T*
+      (say $breakfast<spam>;      OUTPUT: «4») Tj
+      T*
+      (say $breakfast<sausage>;   OUTPUT: «0») Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 452.75 572 43.05 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 406 572 45.2 re
-  B
-Q
 endstream
 endobj
 
-28 0 obj
+25 0 obj
 << /Type /ExtGState /ca 0.1 >>
 endobj
 
-29 0 obj
+26 0 obj
 << /Type /ExtGState /CA 0.25 >>
 endobj
 
-30 0 obj
+27 0 obj
 <<
   /Type /Font
   /Subtype /Type1
@@ -1093,11 +1001,11 @@ endobj
 >>
 endobj
 
-31 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding 32 0 R >>
+28 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding 29 0 R >>
 endobj
 
-32 0 obj
+29 0 obj
 <<
   /Type /Encoding
   /BaseEncoding /WinAnsiEncoding
@@ -1105,7 +1013,7 @@ endobj
 >>
 endobj
 
-33 0 obj
+30 0 obj
 <<
   /Type /Font
   /Subtype /Type1
@@ -1114,7 +1022,7 @@ endobj
 >>
 endobj
 
-34 0 obj
+31 0 obj
 <<
   /Type /Font
   /Subtype /Type1
@@ -1123,44 +1031,43 @@ endobj
 >>
 endobj
 
-35 0 obj
+32 0 obj
 <<
   /Type /Page
-  /Annots [ 36 0 R ]
-  /Contents 38 0 R
-  /MediaBox [ 0 0 612 792 ]
+  /Annots [ 33 0 R ]
+  /Contents 35 0 R
   /Parent 10 0 R
   /Resources <<
-    /ExtGState << /GS1 39 0 R /GS2 40 0 R >>
-    /Font << /F1 30 0 R /F2 33 0 R /F3 31 0 R >>
+    /ExtGState << /GS1 36 0 R /GS2 37 0 R >>
+    /Font << /F1 27 0 R /F2 30 0 R /F3 28 0 R >>
   >>
-  /StructParents 12
+  /StructParents 10
 >>
 endobj
 
-36 0 obj
+33 0 obj
 <<
   /Type /Annot
   /Subtype /Link
-  /A 37 0 R
+  /A 34 0 R
   /Border [ 0 0 0 ]
   /Contents (Operators with set semantics)
-  /P 35 0 R
-  /Rect [ 37.44 705 156.7 720 ]
-  /StructParent 13
+  /P 32 0 R
+  /Rect [ 34.94 727 154.2 740 ]
+  /StructParent 11
 >>
 endobj
 
-37 0 obj
+34 0 obj
 <<
   /Type /Action
   /S /URI
-  /URI (/language/setbagmix#Operators_with_set_semantics)
+  /URI (/language/setbagmix.pdf#operators_with_set_semantics)
 >>
 endobj
 
-38 0 obj
-<< /Length 1596 >> stream
+35 0 obj
+<< /Length 1665 >> stream
 /H1 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
@@ -1176,7 +1083,7 @@ endobj
 EMC
 /P << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 708 Tm
+    1 0 0 1 20 730 Tm
     /F2 10 Tf
     (See ) Tj
   ET
@@ -1185,110 +1092,105 @@ q
   0 0 1 rg
   /Link << /MCID 2 >> BDC
     BT
-      1 0 0 1 20 708 Tm
-      [ -1944 (Operators with set semantics) ] TJ
+      1 0 0 1 20 730 Tm
+      [ -1694 (Operators with set semantics) ] TJ
     ET
   EMC
 Q
 /P << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 708 Tm
-    [ -13720 ( for a complete list of "set operators" applicable to, among other types, ) ] TJ
+    1 0 0 1 20 730 Tm
+    [ -13220 ( for a complete list of "set operators" applicable to, among other types, ) ] TJ
   ET
 EMC
 /Code << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 708 Tm
-    /F3 8 Tf
-    [ -53095 (Bag) ] TJ
+    1 0 0 1 20 730 Tm
+    /F3 8.5 Tf
+    [ -49089 (Bag) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  443.76 707 16.4 10.8 re
-  B
-Q
 /P << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 708 Tm
+    1 0 0 1 20 730 Tm
     /F2 10 Tf
-    [ -44396 (.) ] TJ
+    [ -43256 (.) ] TJ
   ET
 EMC
 /P << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 686 Tm
+    1 0 0 1 20 708 Tm
     (Examples:) Tj
   ET
 EMC
 /Code << /MCID 7 >> BDC
-  BT
-    1 0 0 1 30 668.4 Tm
-    /F3 8 Tf
-    (my \($a, $b\) = bag\(2, 2, 4\), bag\(2, 3, 3, 4\);) Tj
-    8.8 TL
-    T*
-    [  ] TJ
-    T*
-    (say $a \(<\) $b;    OUTPUT: «False») Tj
-    T*
-    (say $a \(<=\) $b;   OUTPUT: «False») Tj
-    T*
-    (say $a \(^\) $b;    OUTPUT: «Bag\(3\(2\) 2\)») Tj
-    T*
-    (say $a \(+\) $b;    OUTPUT: «Bag\(2\(3\) 4\(2\) 3\(2\)\)») Tj
-    T*
-    [  ] TJ
-    T*
-    ( Unicode versions:) Tj
-    T*
-    (say $a  $b;   OUTPUT: «False») Tj
-    T*
-    (say $a  $b;   OUTPUT: «False») Tj
-    T*
-    (say $a  $b;   OUTPUT: «Bag\(3\(2\) 2\)») Tj
-    T*
-    (say $a  $b;   OUTPUT: «Bag\(2\(3\) 4\(2\) 3\(2\)\)») Tj
-  ET
+  /Code BMC
+    BT
+      1 0 0 1 30 689.3 Tm
+      /F3 8.5 Tf
+      (my \($a, $b\) = bag\(2, 2, 4\), bag\(2, 3, 3, 4\);) Tj
+      9.35 TL
+      T*
+      [  ] TJ
+      T*
+      (say $a \(<\) $b;    OUTPUT: «False») Tj
+      T*
+      (say $a \(<=\) $b;   OUTPUT: «False») Tj
+      T*
+      (say $a \(^\) $b;    OUTPUT: «Bag\(3\(2\) 2\)») Tj
+      T*
+      (say $a \(+\) $b;    OUTPUT: «Bag\(2\(3\) 4\(2\) 3\(2\)\)») Tj
+      T*
+      [  ] TJ
+      T*
+      ( Unicode versions:) Tj
+      T*
+      (say $a  $b;   OUTPUT: «False») Tj
+      T*
+      (say $a  $b;   OUTPUT: «False») Tj
+      T*
+      (say $a  $b;   OUTPUT: «Bag\(3\(2\) 2\)») Tj
+      T*
+      (say $a  $b;   OUTPUT: «Bag\(2\(3\) 4\(2\) 3\(2\)\)») Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 581.45 572 117.85 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 566.6 572 115.6 re
-  B
-Q
 endstream
 endobj
 
-39 0 obj
+36 0 obj
 << /Type /ExtGState /ca 0.1 >>
 endobj
 
-40 0 obj
+37 0 obj
 << /Type /ExtGState /CA 0.25 >>
 endobj
 
-41 0 obj
+38 0 obj
 <<
   /Type /Page
-  /Contents 42 0 R
-  /MediaBox [ 0 0 612 792 ]
+  /Contents 39 0 R
   /Parent 10 0 R
   /Resources <<
-    /ExtGState << /GS1 43 0 R /GS2 44 0 R >>
-    /Font << /F1 30 0 R /F2 31 0 R /F3 33 0 R >>
+    /ExtGState << /GS1 40 0 R /GS2 41 0 R >>
+    /Font << /F1 27 0 R /F2 28 0 R /F3 30 0 R >>
   >>
-  /StructParents 14
+  /StructParents 12
 >>
 endobj
 
-42 0 obj
-<< /Length 1031 >> stream
+39 0 obj
+<< /Length 984 >> stream
 /H1 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
@@ -1304,220 +1206,222 @@ endobj
 EMC
 /H2 << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 694.8 Tm
+    1 0 0 1 20 716.8 Tm
     /F1 16 Tf
     (sub bag) Tj
   ET
 EMC
 /Code << /MCID 2 >> BDC
-  BT
-    1 0 0 1 30 659.6 Tm
-    /F2 8 Tf
-    (sub bag\(*@args --> Bag\)) Tj
-  ET
+  /Code BMC
+    BT
+      1 0 0 1 30 698.1 Tm
+      /F2 8.5 Tf
+      (sub bag\(*@args --> Bag\)) Tj
+    ET
+  EMC
+  /Artifact BMC
+    q
+      0 g
+      0 G
+      /GS1 gs
+      /GS2 gs
+      25 693.1 572 15 re
+      B
+    Q
+  EMC
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  25 654.6 572 18.8 re
-  B
-Q
 /P << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 637.6 Tm
+    1 0 0 1 20 676.1 Tm
     /F3 10 Tf
     (Creates a new ) Tj
   ET
 EMC
 /Code << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 637.6 Tm
-    /F2 8 Tf
-    [ -7636 (Bag) ] TJ
+    1 0 0 1 20 676.1 Tm
+    /F2 8.5 Tf
+    [ -6893 (Bag) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  80.09 636.6 16.4 10.8 re
-  B
-Q
 /P << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 637.6 Tm
+    1 0 0 1 20 676.1 Tm
     /F3 10 Tf
-    [ -8029 ( from ) ] TJ
+    [ -7389 ( from ) ] TJ
   ET
 EMC
 /Code << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 637.6 Tm
-    /F2 8 Tf
-    [ -13404 (@args) ] TJ
+    1 0 0 1 20 676.1 Tm
+    /F2 8.5 Tf
+    [ -11568 (@args) ] TJ
   ET
 EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  126.23 636.6 26 10.8 re
-  B
-Q
 /P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 637.6 Tm
+    1 0 0 1 20 676.1 Tm
     /F3 10 Tf
-    [ -13603 (.) ] TJ
+    [ -12383 (.) ] TJ
   ET
 EMC
 endstream
 endobj
 
-43 0 obj
+40 0 obj
 << /Type /ExtGState /ca 0.1 >>
 endobj
 
-44 0 obj
+41 0 obj
 << /Type /ExtGState /CA 0.25 >>
 endobj
 
-45 0 obj
+42 0 obj
 <<
   /Type /Page
-  /Annots [ 46 0 R ]
-  /Contents 48 0 R
-  /MediaBox [ 0 0 612 792 ]
+  /Annots [ 43 0 R ]
+  /Contents 45 0 R
   /Parent 10 0 R
-  /Resources <<
-    /ExtGState << /GS1 49 0 R /GS2 50 0 R >>
-    /Font << /F1 30 0 R /F2 33 0 R /F3 31 0 R >>
-  >>
-  /StructParents 15
+  /Resources << /Font << /F1 27 0 R /F2 46 0 R /F3 30 0 R /F4 28 0 R >> >>
+  /StructParents 13
 >>
 endobj
 
-46 0 obj
+43 0 obj
 <<
   /Type /Annot
   /Subtype /Link
-  /A 47 0 R
+  /A 44 0 R
   /Border [ 0 0 0 ]
   /Contents (Any)
-  /P 45 0 R
-  /Rect [ 142.44 705 163.66 720 ]
-  /StructParent 16
+  /P 42 0 R
+  /Rect [ 139.94 727 161.16 740 ]
+  /StructParent 14
 >>
 endobj
 
-47 0 obj
-<< /Type /Action /S /URI /URI (/type/Any#routine_reverse) >>
+44 0 obj
+<< /Type /Action /S /URI /URI (/type/Any.pdf#routine_reverse) >>
 endobj
 
-48 0 obj
-<< /Length 820 >> stream
+45 0 obj
+<< /Length 1053 >> stream
 /H1 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752 Tm
     /F1 20 Tf
-    (Note on  reverse  and ordering) Tj
+    (Note on ) Tj
   ET
   q
     1 w
     20 750 m
-    279.96 750 l
+    91.1 750 l
     S
   Q
 EMC
-/P << /MCID 1 >> BDC
+/Code << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 708 Tm
-    /F2 10 Tf
+    1 0 0 1 20 752 Tm
+    /F2 17 Tf
+    [ -4182 (reverse) ] TJ
+  ET
+  q
+    0.85 w
+    91.1 750.3 m
+    162.5 750.3 l
+    S
+  Q
+EMC
+/H1 << /MCID 2 >> BDC
+  BT
+    1 0 0 1 20 752 Tm
+    /F1 20 Tf
+    [ -7125 ( and ordering) ] TJ
+  ET
+  q
+    1 w
+    162.5 750 m
+    279.18 750 l
+    S
+  Q
+EMC
+/P << /MCID 3 >> BDC
+  BT
+    1 0 0 1 20 730 Tm
+    /F3 10 Tf
     (This method is inherited from ) Tj
   ET
 EMC
 q
   0 0 1 rg
-  /Link << /MCID 2 >> BDC
+  /Link << /MCID 4 >> BDC
     BT
-      1 0 0 1 20 708 Tm
-      [ -12444 (Any) ] TJ
+      1 0 0 1 20 730 Tm
+      [ -12194 (Any) ] TJ
     ET
   EMC
 Q
-/P << /MCID 3 >> BDC
-  BT
-    1 0 0 1 20 708 Tm
-    [ -14416 (, however, ) ] TJ
-  ET
-EMC
-/Code << /MCID 4 >> BDC
-  BT
-    1 0 0 1 20 708 Tm
-    /F3 8 Tf
-    [ -23886 (Mix) ] TJ
-  ET
-EMC
-q
-  0 g
-  0 G
-  /GS1 gs
-  /GS2 gs
-  210.09 707 16.4 10.8 re
-  B
-Q
 /P << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 708 Tm
-    /F2 10 Tf
-    [ -21029 (es do not have an inherent order and you should not trust it returning a consistent output.) ] TJ
+    1 0 0 1 20 730 Tm
+    [ -13916 (, however, ) ] TJ
+  ET
+EMC
+/Code << /MCID 6 >> BDC
+  BT
+    1 0 0 1 20 730 Tm
+    /F4 8.5 Tf
+    [ -21599 (Mix) ] TJ
+  ET
+EMC
+/P << /MCID 7 >> BDC
+  BT
+    1 0 0 1 20 730 Tm
+    /F3 10 Tf
+    [ -19889 (es do not have an inherent order and you should not trust it returning a consistent output.) ] TJ
   ET
 EMC
 endstream
 endobj
 
-49 0 obj
-<< /Type /ExtGState /ca 0.1 >>
-endobj
-
-50 0 obj
-<< /Type /ExtGState /CA 0.25 >>
-endobj
-
-51 0 obj
+46 0 obj
 <<
-  /Type /Page
-  /Annots [ 52 0 R ]
-  /Contents 54 0 R
-  /MediaBox [ 0 0 612 792 ]
-  /Parent 10 0 R
-  /Resources << /Font << /F1 30 0 R /F2 33 0 R >> >>
-  /StructParents 17
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Courier-Bold
+  /Encoding /WinAnsiEncoding
 >>
 endobj
 
-52 0 obj
+47 0 obj
+<<
+  /Type /Page
+  /Annots [ 48 0 R ]
+  /Contents 50 0 R
+  /Parent 10 0 R
+  /Resources << /Font << /F1 27 0 R /F2 30 0 R >> >>
+  /StructParents 15
+>>
+endobj
+
+48 0 obj
 <<
   /Type /Annot
   /Subtype /Link
-  /A 53 0 R
+  /A 49 0 R
   /Border [ 0 0 0 ]
   /Contents (Sets, Bags, and Mixes)
-  /P 51 0 R
-  /Rect [ 18 705 110.61 720 ]
-  /StructParent 18
+  /P 47 0 R
+  /Rect [ 18 727 110.61 740 ]
+  /StructParent 16
 >>
 endobj
 
-53 0 obj
-<< /Type /Action /S /URI /URI (/language/setbagmix) >>
+49 0 obj
+<< /Type /Action /S /URI /URI (/language/setbagmix.pdf) >>
 endobj
 
-54 0 obj
+50 0 obj
 << /Length 274 >> stream
 /H1 << /MCID 0 >> BDC
   BT
@@ -1536,7 +1440,7 @@ q
   0 0 1 rg
   /Link << /MCID 1 >> BDC
     BT
-      1 0 0 1 20 708 Tm
+      1 0 0 1 20 730 Tm
       /F2 10 Tf
       (Sets, Bags, and Mixes) Tj
     ET
@@ -1545,101 +1449,121 @@ Q
 endstream
 endobj
 
-55 0 obj
+51 0 obj
 << /Type /ExtGState /ca 0.1 >>
 endobj
 
-56 0 obj
+52 0 obj
 << /Type /ExtGState /CA 0.25 >>
 endobj
 
+53 0 obj
+<< /Count 7 /First 54 0 R /Last 155 0 R >>
+endobj
+
+54 0 obj
+<< /Count 1 /Dest /class_Bag /Next 55 0 R /SE 61 0 R /Title (class Bag) >>
+endobj
+
+55 0 obj
+<<
+  /Count 1
+  /Dest /Creating_Bag_objects
+  /Next 56 0 R
+  /Prev 54 0 R
+  /SE 90 0 R
+  /Title (Creating Bag objects)
+>>
+endobj
+
+56 0 obj
+<<
+  /Count 1
+  /Dest /Operators
+  /Next 57 0 R
+  /Prev 55 0 R
+  /SE 129 0 R
+  /Title (Operators)
+>>
+endobj
+
 57 0 obj
-<< /Count 8 /First 58 0 R /Last 150 0 R >>
+<<
+  /Count 2
+  /Dest /Subroutines
+  /First 58 0 R
+  /Last 58 0 R
+  /Next 154 0 R
+  /Prev 56 0 R
+  /SE 137 0 R
+  /Title (Subroutines)
+>>
 endobj
 
 58 0 obj
-<<
-  /Count 2
-  /Dest /class_Bag
-  /First 59 0 R
-  /Last 59 0 R
-  /Next 145 0 R
-  /SE 62 0 R
-  /Title (class Bag)
->>
+<< /Count 1 /Dest /sub_bag /SE 59 0 R /Title (sub bag) >>
 endobj
 
 59 0 obj
-<<
-  /Count 1
-  /Dest /Immutable_collection_of_distinct_objects_with_integer_weights
-  /SE 60 0 R
-  /Title (Immutable collection of distinct objects with integer weights)
->>
+<< /Type /StructElem /S /H2 /K [ 1 ] /P 60 0 R /Pg 38 0 R /T (sub bag) >>
 endobj
 
 60 0 obj
 <<
   /Type /StructElem
+  /S /Document
+  /K [ 61 0 R 62 0 R 63 0 R 65 0 R 71 0 R 77 0 R 81 0 R 83 0 R 88 0 R 90 0 R 92 0 R 98 0 R 100 0 R 104 0 R 106 0 R 111 0 R 113 0 R 116 0 R 118 0 R 120 0 R 122 0 R 124 0 R 126 0 R 127 0 R 129 0 R 130 0 R 134 0 R 135 0 R 137 0 R 59 0 R 138 0 R 140 0 R 143 0 R 145 0 R 149 0 R 150 0 R ]
+  /P 153 0 R
+>>
+endobj
+
+61 0 obj
+<< /Type /StructElem /S /H1 /K [ 0 ] /P 60 0 R /Pg 11 0 R /T (class Bag) >>
+endobj
+
+62 0 obj
+<<
+  /Type /StructElem
   /S /H2
   /K [ 1 ]
-  /P 61 0 R
+  /P 60 0 R
   /Pg 11 0 R
   /T (Immutable collection of distinct objects with integer weights)
 >>
 endobj
 
-61 0 obj
-<<
-  /Type /StructElem
-  /S /Document
-  /K [ 62 0 R 60 0 R 63 0 R 64 0 R 73 0 R 79 0 R 83 0 R 84 0 R 91 0 R 92 0 R 93 0 R 98 0 R 99 0 R 103 0 R 104 0 R 109 0 R 110 0 R 113 0 R 114 0 R 116 0 R 117 0 R 119 0 R 120 0 R 121 0 R 122 0 R 123 0 R 127 0 R 128 0 R 129 0 R 130 0 R 131 0 R 132 0 R 135 0 R 136 0 R 140 0 R 141 0 R ]
-  /P 144 0 R
->>
-endobj
-
-62 0 obj
-<< /Type /StructElem /S /H1 /K [ 0 ] /P 61 0 R /Pg 11 0 R /T (class Bag) >>
-endobj
-
 63 0 obj
-<< /Type /StructElem /S /Code /K [ 2 ] /P 61 0 R /Pg 11 0 R >>
+<< /Type /StructElem /S /P /K [ 64 0 R ] /P 60 0 R >>
 endobj
 
 64 0 obj
+<< /Type /StructElem /S /Code /K [ 2 ] /P 63 0 R /Pg 11 0 R >>
+endobj
+
+65 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 3 65 0 R 5 66 0 R 7 68 0 R 9 69 0 R 71 0 R 11 ]
-  /P 61 0 R
+  /K [ 3 66 0 R 5 67 0 R 7 8 9 69 0 R 11 ]
+  /P 60 0 R
   /Pg 11 0 R
 >>
 endobj
 
-65 0 obj
-<< /Type /StructElem /S /Code /K [ 4 ] /P 64 0 R >>
-endobj
-
 66 0 obj
-<< /Type /StructElem /S /Link /K [ 67 0 R 6 ] /P 64 0 R >>
+<< /Type /StructElem /S /Code /K [ 4 ] /P 65 0 R >>
 endobj
 
 67 0 obj
-<< /Type /OBJR /Obj 12 0 R /Pg 11 0 R >>
+<< /Type /StructElem /S /Link /K [ 68 0 R 6 ] /P 65 0 R >>
 endobj
 
 68 0 obj
-<<
-  /Type /StructElem
-  /S /Span
-  /A << /FontWeight (italic) >>
-  /K [ 8 ]
-  /P 64 0 R
->>
+<< /Type /OBJR /Obj 12 0 R /Pg 11 0 R >>
 endobj
 
 69 0 obj
-<< /Type /StructElem /S /Link /K [ 70 0 R ] /P 64 0 R >>
+<< /Type /StructElem /S /Link /K [ 70 0 R 10 ] /P 65 0 R >>
 endobj
 
 70 0 obj
@@ -1647,134 +1571,134 @@ endobj
 endobj
 
 71 0 obj
-<< /Type /StructElem /S /Link /K [ 72 0 R 10 ] /P 64 0 R >>
+<<
+  /Type /StructElem
+  /S /P
+  /K [ 72 0 R 13 73 0 R 15 75 0 R 17 ]
+  /P 60 0 R
+  /Pg 11 0 R
+>>
 endobj
 
 72 0 obj
-<< /Type /OBJR /Obj 16 0 R /Pg 11 0 R >>
+<< /Type /StructElem /S /Code /K [ 12 ] /P 71 0 R /Pg 11 0 R >>
 endobj
 
 73 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 74 0 R 13 75 0 R 15 77 0 R 17 ]
-  /P 61 0 R
-  /Pg 11 0 R
->>
+<< /Type /StructElem /S /Link /K [ 74 0 R 14 ] /P 71 0 R >>
 endobj
 
 74 0 obj
-<< /Type /StructElem /S /Code /K [ 12 ] /P 73 0 R /Pg 11 0 R >>
+<< /Type /OBJR /Obj 16 0 R /Pg 11 0 R >>
 endobj
 
 75 0 obj
-<< /Type /StructElem /S /Link /K [ 76 0 R 14 ] /P 73 0 R >>
+<< /Type /StructElem /S /Link /K [ 76 0 R 16 ] /P 71 0 R >>
 endobj
 
 76 0 obj
-<< /Type /OBJR /Obj 17 0 R /Pg 11 0 R >>
+<< /Type /OBJR /Obj 18 0 R /Pg 11 0 R >>
 endobj
 
 77 0 obj
-<< /Type /StructElem /S /Link /K [ 78 0 R 16 ] /P 73 0 R >>
+<<
+  /Type /StructElem
+  /S /P
+  /K [ 18 78 0 R 20 79 0 R 22 ]
+  /P 60 0 R
+  /Pg 11 0 R
+>>
 endobj
 
 78 0 obj
-<< /Type /OBJR /Obj 19 0 R /Pg 11 0 R >>
+<< /Type /StructElem /S /Code /K [ 19 ] /P 77 0 R >>
 endobj
 
 79 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 18 80 0 R 20 81 0 R 22 ]
-  /P 61 0 R
-  /Pg 11 0 R
->>
+<< /Type /StructElem /S /Link /K [ 80 0 R 21 ] /P 77 0 R >>
 endobj
 
 80 0 obj
-<< /Type /StructElem /S /Code /K [ 19 ] /P 79 0 R >>
+<< /Type /OBJR /Obj 20 0 R /Pg 11 0 R >>
 endobj
 
 81 0 obj
-<< /Type /StructElem /S /Link /K [ 82 0 R 21 ] /P 79 0 R >>
+<< /Type /StructElem /S /P /K [ 82 0 R ] /P 60 0 R >>
 endobj
 
 82 0 obj
-<< /Type /OBJR /Obj 21 0 R /Pg 11 0 R >>
+<< /Type /StructElem /S /Code /K [ 23 ] /P 81 0 R /Pg 11 0 R >>
 endobj
 
 83 0 obj
-<< /Type /StructElem /S /Code /K [ 23 ] /P 61 0 R /Pg 11 0 R >>
-endobj
-
-84 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 85 0 R 25 86 0 R 27 88 0 R 29 90 0 R 31 ]
-  /P 61 0 R
+  /K [ 84 0 R 25 26 27 85 0 R 29 87 0 R 31 ]
+  /P 60 0 R
   /Pg 11 0 R
 >>
 endobj
 
+84 0 obj
+<< /Type /StructElem /S /Code /K [ 24 ] /P 83 0 R /Pg 11 0 R >>
+endobj
+
 85 0 obj
-<< /Type /StructElem /S /Code /K [ 24 ] /P 84 0 R /Pg 11 0 R >>
+<< /Type /StructElem /S /Link /K [ 86 0 R 28 ] /P 83 0 R >>
 endobj
 
 86 0 obj
-<< /Type /StructElem /S /Link /K [ 87 0 R 26 ] /P 84 0 R >>
+<< /Type /OBJR /Obj 22 0 R /Pg 11 0 R >>
 endobj
 
 87 0 obj
-<< /Type /OBJR /Obj 23 0 R /Pg 11 0 R >>
+<< /Type /StructElem /S /Code /K [ 30 ] /P 83 0 R >>
 endobj
 
 88 0 obj
-<< /Type /StructElem /S /Link /K [ 89 0 R 28 ] /P 84 0 R >>
+<< /Type /StructElem /S /P /K [ 89 0 R ] /P 60 0 R >>
 endobj
 
 89 0 obj
-<< /Type /OBJR /Obj 25 0 R /Pg 11 0 R >>
+<< /Type /StructElem /S /Code /K [ 32 ] /P 88 0 R /Pg 11 0 R >>
 endobj
 
 90 0 obj
-<< /Type /StructElem /S /Code /K [ 30 ] /P 84 0 R >>
+<<
+  /Type /StructElem
+  /S /H1
+  /K [ 0 91 0 R 2 ]
+  /P 60 0 R
+  /Pg 4 0 R
+  /T (Creating Bag objects)
+>>
 endobj
 
 91 0 obj
-<< /Type /StructElem /S /Code /K [ 32 ] /P 61 0 R /Pg 11 0 R >>
+<< /Type /StructElem /S /Code /K [ 1 ] /P 90 0 R >>
 endobj
 
 92 0 obj
 <<
   /Type /StructElem
-  /S /H1
-  /K [ 0 ]
-  /P 61 0 R
+  /S /P
+  /K [ 93 0 R 4 94 0 R 6 97 0 R 8 ]
+  /P 60 0 R
   /Pg 4 0 R
-  /T (Creating  Bag  objects)
 >>
 endobj
 
 93 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 94 0 R 2 95 0 R 4 97 0 R 6 ]
-  /P 61 0 R
-  /Pg 4 0 R
->>
+<< /Type /StructElem /S /Code /K [ 3 ] /P 92 0 R /Pg 4 0 R >>
 endobj
 
 94 0 obj
-<< /Type /StructElem /S /Code /K [ 1 ] /P 93 0 R /Pg 4 0 R >>
+<< /Type /StructElem /S /Reference /K [ 95 0 R ] /P 92 0 R >>
 endobj
 
 95 0 obj
-<< /Type /StructElem /S /Link /K [ 96 0 R 3 ] /P 93 0 R >>
+<< /Type /StructElem /S /Link /K [ 96 0 R 5 ] /P 94 0 R >>
 endobj
 
 96 0 obj
@@ -1782,467 +1706,469 @@ endobj
 endobj
 
 97 0 obj
-<< /Type /StructElem /S /Code /K [ 5 ] /P 93 0 R >>
+<< /Type /StructElem /S /Code /K [ 7 ] /P 92 0 R >>
 endobj
 
 98 0 obj
-<< /Type /StructElem /S /Code /K [ 7 ] /P 61 0 R /Pg 4 0 R >>
+<< /Type /StructElem /S /P /K [ 99 0 R ] /P 60 0 R >>
 endobj
 
 99 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 8 100 0 R 10 101 0 R 12 102 0 R 14 ]
-  /P 61 0 R
-  /Pg 4 0 R
->>
+<< /Type /StructElem /S /Code /K [ 9 ] /P 98 0 R /Pg 4 0 R >>
 endobj
 
 100 0 obj
-<< /Type /StructElem /S /Code /K [ 9 ] /P 99 0 R >>
+<<
+  /Type /StructElem
+  /S /P
+  /K [ 10 101 0 R 12 102 0 R 14 103 0 R 16 ]
+  /P 60 0 R
+  /Pg 4 0 R
+>>
 endobj
 
 101 0 obj
-<< /Type /StructElem /S /Code /K [ 11 ] /P 99 0 R >>
+<< /Type /StructElem /S /Code /K [ 11 ] /P 100 0 R >>
 endobj
 
 102 0 obj
-<< /Type /StructElem /S /Code /K [ 13 ] /P 99 0 R >>
+<< /Type /StructElem /S /Code /K [ 13 ] /P 100 0 R >>
 endobj
 
 103 0 obj
-<< /Type /StructElem /S /Code /K [ 15 ] /P 61 0 R /Pg 4 0 R >>
+<< /Type /StructElem /S /Code /K [ 15 ] /P 100 0 R >>
 endobj
 
 104 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 16 105 0 R 18 106 0 R 20 108 0 R 22 ]
-  /P 61 0 R
-  /Pg 4 0 R
->>
+<< /Type /StructElem /S /P /K [ 105 0 R ] /P 60 0 R >>
 endobj
 
 105 0 obj
-<< /Type /StructElem /S /Code /K [ 17 ] /P 104 0 R >>
+<< /Type /StructElem /S /Code /K [ 17 ] /P 104 0 R /Pg 4 0 R >>
 endobj
 
 106 0 obj
-<< /Type /StructElem /S /Link /K [ 107 0 R 19 ] /P 104 0 R >>
-endobj
-
-107 0 obj
-<< /Type /OBJR /Obj 7 0 R /Pg 4 0 R >>
-endobj
-
-108 0 obj
-<< /Type /StructElem /S /Code /K [ 21 ] /P 104 0 R >>
-endobj
-
-109 0 obj
-<< /Type /StructElem /S /Code /K [ 23 ] /P 61 0 R /Pg 4 0 R >>
-endobj
-
-110 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 24 111 0 R 26 112 0 R 28 ]
-  /P 61 0 R
+  /K [ 18 107 0 R 20 108 0 R 22 110 0 R 24 ]
+  /P 60 0 R
   /Pg 4 0 R
 >>
 endobj
 
+107 0 obj
+<< /Type /StructElem /S /Code /K [ 19 ] /P 106 0 R >>
+endobj
+
+108 0 obj
+<< /Type /StructElem /S /Link /K [ 109 0 R 21 ] /P 106 0 R >>
+endobj
+
+109 0 obj
+<< /Type /OBJR /Obj 7 0 R /Pg 4 0 R >>
+endobj
+
+110 0 obj
+<< /Type /StructElem /S /Code /K [ 23 ] /P 106 0 R >>
+endobj
+
 111 0 obj
-<< /Type /StructElem /S /Code /K [ 25 ] /P 110 0 R >>
+<< /Type /StructElem /S /P /K [ 112 0 R ] /P 60 0 R >>
 endobj
 
 112 0 obj
-<< /Type /StructElem /S /Code /K [ 27 ] /P 110 0 R >>
+<< /Type /StructElem /S /Code /K [ 25 ] /P 111 0 R /Pg 4 0 R >>
 endobj
 
 113 0 obj
-<< /Type /StructElem /S /Code /K [ 29 ] /P 61 0 R /Pg 4 0 R >>
-endobj
-
-114 0 obj
-<< /Type /StructElem /S /P /K [ 30 115 0 R 32 ] /P 61 0 R /Pg 4 0 R >>
-endobj
-
-115 0 obj
-<< /Type /StructElem /S /Code /K [ 31 ] /P 114 0 R >>
-endobj
-
-116 0 obj
-<< /Type /StructElem /S /Code /K [ 33 ] /P 61 0 R /Pg 4 0 R >>
-endobj
-
-117 0 obj
-<< /Type /StructElem /S /P /K [ 34 118 0 R 36 ] /P 61 0 R /Pg 4 0 R >>
-endobj
-
-118 0 obj
-<< /Type /StructElem /S /Code /K [ 35 ] /P 117 0 R >>
-endobj
-
-119 0 obj
-<< /Type /StructElem /S /Code /K [ 37 ] /P 61 0 R /Pg 4 0 R >>
-endobj
-
-120 0 obj
-<< /Type /StructElem /S /P /K [ 38 ] /P 61 0 R /Pg 4 0 R >>
-endobj
-
-121 0 obj
-<< /Type /StructElem /S /Code /K [ 39 ] /P 61 0 R /Pg 4 0 R >>
-endobj
-
-122 0 obj
-<< /Type /StructElem /S /H1 /K [ 0 ] /P 61 0 R /Pg 35 0 R /T (Operators) >>
-endobj
-
-123 0 obj
 <<
   /Type /StructElem
   /S /P
-  /K [ 1 124 0 R 3 126 0 R 5 ]
-  /P 61 0 R
-  /Pg 35 0 R
+  /K [ 26 114 0 R 28 115 0 R 30 ]
+  /P 60 0 R
+  /Pg 4 0 R
 >>
 endobj
 
+114 0 obj
+<< /Type /StructElem /S /Code /K [ 27 ] /P 113 0 R >>
+endobj
+
+115 0 obj
+<< /Type /StructElem /S /Code /K [ 29 ] /P 113 0 R >>
+endobj
+
+116 0 obj
+<< /Type /StructElem /S /P /K [ 117 0 R ] /P 60 0 R >>
+endobj
+
+117 0 obj
+<< /Type /StructElem /S /Code /K [ 31 ] /P 116 0 R /Pg 4 0 R >>
+endobj
+
+118 0 obj
+<< /Type /StructElem /S /P /K [ 32 119 0 R 34 ] /P 60 0 R /Pg 4 0 R >>
+endobj
+
+119 0 obj
+<< /Type /StructElem /S /Code /K [ 33 ] /P 118 0 R >>
+endobj
+
+120 0 obj
+<< /Type /StructElem /S /P /K [ 121 0 R ] /P 60 0 R >>
+endobj
+
+121 0 obj
+<< /Type /StructElem /S /Code /K [ 35 ] /P 120 0 R /Pg 4 0 R >>
+endobj
+
+122 0 obj
+<< /Type /StructElem /S /P /K [ 36 123 0 R 38 ] /P 60 0 R /Pg 4 0 R >>
+endobj
+
+123 0 obj
+<< /Type /StructElem /S /Code /K [ 37 ] /P 122 0 R >>
+endobj
+
 124 0 obj
-<< /Type /StructElem /S /Link /K [ 125 0 R 2 ] /P 123 0 R >>
+<< /Type /StructElem /S /P /K [ 125 0 R ] /P 60 0 R >>
 endobj
 
 125 0 obj
-<< /Type /OBJR /Obj 36 0 R /Pg 35 0 R >>
+<< /Type /StructElem /S /Code /K [ 39 ] /P 124 0 R /Pg 4 0 R >>
 endobj
 
 126 0 obj
-<< /Type /StructElem /S /Code /K [ 4 ] /P 123 0 R >>
+<< /Type /StructElem /S /P /K [ 40 ] /P 60 0 R /Pg 4 0 R >>
 endobj
 
 127 0 obj
-<< /Type /StructElem /S /P /K [ 6 ] /P 61 0 R /Pg 35 0 R >>
+<< /Type /StructElem /S /P /K [ 128 0 R ] /P 60 0 R >>
 endobj
 
 128 0 obj
-<< /Type /StructElem /S /Code /K [ 7 ] /P 61 0 R /Pg 35 0 R >>
+<< /Type /StructElem /S /Code /K [ 41 ] /P 127 0 R /Pg 4 0 R >>
 endobj
 
 129 0 obj
+<< /Type /StructElem /S /H1 /K [ 0 ] /P 60 0 R /Pg 32 0 R /T (Operators) >>
+endobj
+
+130 0 obj
+<<
+  /Type /StructElem
+  /S /P
+  /K [ 1 131 0 R 3 133 0 R 5 ]
+  /P 60 0 R
+  /Pg 32 0 R
+>>
+endobj
+
+131 0 obj
+<< /Type /StructElem /S /Link /K [ 132 0 R 2 ] /P 130 0 R >>
+endobj
+
+132 0 obj
+<< /Type /OBJR /Obj 33 0 R /Pg 32 0 R >>
+endobj
+
+133 0 obj
+<< /Type /StructElem /S /Code /K [ 4 ] /P 130 0 R >>
+endobj
+
+134 0 obj
+<< /Type /StructElem /S /P /K [ 6 ] /P 60 0 R /Pg 32 0 R >>
+endobj
+
+135 0 obj
+<< /Type /StructElem /S /P /K [ 136 0 R ] /P 60 0 R >>
+endobj
+
+136 0 obj
+<< /Type /StructElem /S /Code /K [ 7 ] /P 135 0 R /Pg 32 0 R >>
+endobj
+
+137 0 obj
 <<
   /Type /StructElem
   /S /H1
   /K [ 0 ]
-  /P 61 0 R
-  /Pg 41 0 R
+  /P 60 0 R
+  /Pg 38 0 R
   /T (Subroutines)
 >>
 endobj
 
-130 0 obj
-<< /Type /StructElem /S /H2 /K [ 1 ] /P 61 0 R /Pg 41 0 R /T (sub bag) >>
-endobj
-
-131 0 obj
-<< /Type /StructElem /S /Code /K [ 2 ] /P 61 0 R /Pg 41 0 R >>
-endobj
-
-132 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 3 133 0 R 5 134 0 R 7 ]
-  /P 61 0 R
-  /Pg 41 0 R
->>
-endobj
-
-133 0 obj
-<< /Type /StructElem /S /Code /K [ 4 ] /P 132 0 R >>
-endobj
-
-134 0 obj
-<< /Type /StructElem /S /Code /K [ 6 ] /P 132 0 R >>
-endobj
-
-135 0 obj
-<<
-  /Type /StructElem
-  /S /H1
-  /K [ 0 ]
-  /P 61 0 R
-  /Pg 45 0 R
-  /T (Note on  reverse  and ordering)
->>
-endobj
-
-136 0 obj
-<<
-  /Type /StructElem
-  /S /P
-  /K [ 1 137 0 R 3 139 0 R 5 ]
-  /P 61 0 R
-  /Pg 45 0 R
->>
-endobj
-
-137 0 obj
-<< /Type /StructElem /S /Link /K [ 138 0 R 2 ] /P 136 0 R >>
-endobj
-
 138 0 obj
-<< /Type /OBJR /Obj 46 0 R /Pg 45 0 R >>
+<< /Type /StructElem /S /P /K [ 139 0 R ] /P 60 0 R >>
 endobj
 
 139 0 obj
-<< /Type /StructElem /S /Code /K [ 4 ] /P 136 0 R >>
+<< /Type /StructElem /S /Code /K [ 2 ] /P 138 0 R /Pg 38 0 R >>
 endobj
 
 140 0 obj
-<< /Type /StructElem /S /H1 /K [ 0 ] /P 61 0 R /Pg 51 0 R /T (See also) >>
+<<
+  /Type /StructElem
+  /S /P
+  /K [ 3 141 0 R 5 142 0 R 7 ]
+  /P 60 0 R
+  /Pg 38 0 R
+>>
 endobj
 
 141 0 obj
-<< /Type /StructElem /S /P /K [ 142 0 R ] /P 61 0 R >>
+<< /Type /StructElem /S /Code /K [ 4 ] /P 140 0 R >>
 endobj
 
 142 0 obj
-<< /Type /StructElem /S /Link /K [ 143 0 R 1 ] /P 141 0 R /Pg 51 0 R >>
+<< /Type /StructElem /S /Code /K [ 6 ] /P 140 0 R >>
 endobj
 
 143 0 obj
-<< /Type /OBJR /Obj 52 0 R /Pg 51 0 R >>
+<<
+  /Type /StructElem
+  /S /H1
+  /K [ 0 144 0 R 2 ]
+  /P 60 0 R
+  /Pg 42 0 R
+  /T (Note on reverse and ordering)
+>>
 endobj
 
 144 0 obj
-<<
-  /Type /StructTreeRoot
-  /K [ 61 0 R ]
-  /ParentTree <<
-    /Nums [ 0 [ 62 0 R 60 0 R 63 0 R 64 0 R 65 0 R 64 0 R 66 0 R 64 0 R 68 0 R 64 0 R 71 0 R 64 0 R 74 0 R 73 0 R 75 0 R 73 0 R 77 0 R 73 0 R 79 0 R 80 0 R 79 0 R 81 0 R 79 0 R 83 0 R 85 0 R 84 0 R 86 0 R 84 0 R 88 0 R 84 0 R 90 0 R 84 0 R 91 0 R ] 1 66 0 R 2 69 0 R 3 71 0 R 4 75 0 R 5 77 0 R 6 81 0 R 7 86 0 R 8 88 0 R 9 [ 92 0 R 94 0 R 93 0 R 95 0 R 93 0 R 97 0 R 93 0 R 98 0 R 99 0 R 100 0 R 99 0 R 101 0 R 99 0 R 102 0 R 99 0 R 103 0 R 104 0 R 105 0 R 104 0 R 106 0 R 104 0 R 108 0 R 104 0 R 109 0 R 110 0 R 111 0 R 110 0 R 112 0 R 110 0 R 113 0 R 114 0 R 115 0 R 114 0 R 116 0 R 117 0 R 118 0 R 117 0 R 119 0 R 120 0 R 121 0 R ] 10 95 0 R 11 106 0 R 12 [ 122 0 R 123 0 R 124 0 R 123 0 R 126 0 R 123 0 R 127 0 R 128 0 R ] 13 124 0 R 14 [ 129 0 R 130 0 R 131 0 R 132 0 R 133 0 R 132 0 R 134 0 R 132 0 R ] 15 [ 135 0 R 136 0 R 137 0 R 136 0 R 139 0 R 136 0 R ] 16 137 0 R 17 [ 140 0 R 142 0 R ] 18 142 0 R ]
-  >>
->>
+<< /Type /StructElem /S /Code /K [ 1 ] /P 143 0 R >>
 endobj
 
 145 0 obj
 <<
-  /Count 1
-  /Dest /Creating_Bag_objects
-  /Next 146 0 R
-  /Prev 58 0 R
-  /SE 92 0 R
-  /Title (Creating  Bag  objects)
+  /Type /StructElem
+  /S /P
+  /K [ 3 146 0 R 5 148 0 R 7 ]
+  /P 60 0 R
+  /Pg 42 0 R
 >>
 endobj
 
 146 0 obj
-<<
-  /Count 1
-  /Dest /Operators
-  /Next 147 0 R
-  /Prev 145 0 R
-  /SE 122 0 R
-  /Title (Operators)
->>
+<< /Type /StructElem /S /Link /K [ 147 0 R 4 ] /P 145 0 R >>
 endobj
 
 147 0 obj
-<<
-  /Count 2
-  /Dest /Subroutines
-  /First 148 0 R
-  /Last 148 0 R
-  /Next 149 0 R
-  /Prev 146 0 R
-  /SE 129 0 R
-  /Title (Subroutines)
->>
+<< /Type /OBJR /Obj 43 0 R /Pg 42 0 R >>
 endobj
 
 148 0 obj
-<< /Count 1 /Dest /sub_bag /SE 130 0 R /Title (sub bag) >>
+<< /Type /StructElem /S /Code /K [ 6 ] /P 145 0 R >>
 endobj
 
 149 0 obj
-<<
-  /Count 1
-  /Dest /Note_on_reverse_and_ordering
-  /Next 150 0 R
-  /Prev 147 0 R
-  /SE 135 0 R
-  /Title (Note on  reverse  and ordering)
->>
+<< /Type /StructElem /S /H1 /K [ 0 ] /P 60 0 R /Pg 47 0 R /T (See also) >>
 endobj
 
 150 0 obj
-<< /Count 1 /Dest /See_also /Prev 149 0 R /SE 140 0 R /Title (See also) >>
+<< /Type /StructElem /S /P /K [ 151 0 R ] /P 60 0 R >>
+endobj
+
+151 0 obj
+<< /Type /StructElem /S /Link /K [ 152 0 R 1 ] /P 150 0 R /Pg 47 0 R >>
+endobj
+
+152 0 obj
+<< /Type /OBJR /Obj 48 0 R /Pg 47 0 R >>
+endobj
+
+153 0 obj
+<<
+  /Type /StructTreeRoot
+  /K [ 60 0 R ]
+  /ParentTree <<
+    /Nums [ 0 [ 61 0 R 62 0 R 64 0 R 65 0 R 66 0 R 65 0 R 67 0 R 65 0 R 65 0 R 65 0 R 69 0 R 65 0 R 72 0 R 71 0 R 73 0 R 71 0 R 75 0 R 71 0 R 77 0 R 78 0 R 77 0 R 79 0 R 77 0 R 82 0 R 84 0 R 83 0 R 83 0 R 83 0 R 85 0 R 83 0 R 87 0 R 83 0 R 89 0 R ] 1 67 0 R 2 69 0 R 3 73 0 R 4 75 0 R 5 79 0 R 6 85 0 R 7 [ 90 0 R 91 0 R 90 0 R 93 0 R 92 0 R 95 0 R 92 0 R 97 0 R 92 0 R 99 0 R 100 0 R 101 0 R 100 0 R 102 0 R 100 0 R 103 0 R 100 0 R 105 0 R 106 0 R 107 0 R 106 0 R 108 0 R 106 0 R 110 0 R 106 0 R 112 0 R 113 0 R 114 0 R 113 0 R 115 0 R 113 0 R 117 0 R 118 0 R 119 0 R 118 0 R 121 0 R 122 0 R 123 0 R 122 0 R 125 0 R 126 0 R 128 0 R ] 8 95 0 R 9 108 0 R 10 [ 129 0 R 130 0 R 131 0 R 130 0 R 133 0 R 130 0 R 134 0 R 136 0 R ] 11 131 0 R 12 [ 137 0 R 59 0 R 139 0 R 140 0 R 141 0 R 140 0 R 142 0 R 140 0 R ] 13 [ 143 0 R 144 0 R 143 0 R 145 0 R 146 0 R 145 0 R 148 0 R 145 0 R ] 14 146 0 R 15 [ 149 0 R 151 0 R ] 16 151 0 R ]
+  >>
+>>
+endobj
+
+154 0 obj
+<<
+  /Count 1
+  /Dest /Note_on_reverse_and_ordering
+  /Next 155 0 R
+  /Prev 57 0 R
+  /SE 143 0 R
+  /Title (Note on reverse and ordering)
+>>
+endobj
+
+155 0 obj
+<< /Count 1 /Dest /See_also /Prev 154 0 R /SE 149 0 R /Title (See also) >>
 endobj
 
 xref
-0 151
+0 156
 0000000000 65535 f 
 0000000015 00000 n 
-0000000248 00000 n 
-0000000407 00000 n 
-0000000789 00000 n 
-0000001048 00000 n 
-0000001219 00000 n 
-0000001276 00000 n 
-0000001448 00000 n 
-0000001510 00000 n 
-0000009425 00000 n 
-0000009527 00000 n 
-0000009843 00000 n 
-0000010024 00000 n 
-0000010094 00000 n 
-0000010271 00000 n 
-0000010337 00000 n 
-0000010509 00000 n 
-0000010679 00000 n 
-0000010745 00000 n 
-0000010916 00000 n 
-0000010982 00000 n 
-0000011151 00000 n 
-0000011216 00000 n 
-0000011412 00000 n 
-0000011502 00000 n 
-0000011699 00000 n 
-0000011789 00000 n 
-0000017124 00000 n 
-0000017172 00000 n 
-0000017221 00000 n 
+0000000321 00000 n 
+0000000480 00000 n 
+0000000779 00000 n 
+0000001021 00000 n 
+0000001191 00000 n 
+0000001248 00000 n 
+0000001419 00000 n 
+0000001485 00000 n 
+0000009683 00000 n 
+0000009813 00000 n 
+0000010087 00000 n 
+0000010268 00000 n 
+0000010342 00000 n 
+0000010519 00000 n 
+0000010589 00000 n 
+0000010759 00000 n 
+0000010829 00000 n 
+0000011000 00000 n 
+0000011070 00000 n 
+0000011239 00000 n 
+0000011308 00000 n 
+0000011504 00000 n 
+0000011603 00000 n 
+0000016902 00000 n 
+0000016950 00000 n 
+0000016999 00000 n 
+0000017107 00000 n 
+0000017194 00000 n 
 0000017329 00000 n 
-0000017416 00000 n 
-0000017551 00000 n 
-0000017660 00000 n 
-0000017770 00000 n 
-0000018027 00000 n 
-0000018220 00000 n 
-0000018327 00000 n 
-0000019977 00000 n 
-0000020025 00000 n 
-0000020074 00000 n 
-0000020310 00000 n 
-0000021395 00000 n 
-0000021443 00000 n 
-0000021492 00000 n 
-0000021749 00000 n 
-0000021919 00000 n 
-0000021997 00000 n 
-0000022870 00000 n 
-0000022918 00000 n 
-0000022967 00000 n 
-0000023162 00000 n 
-0000023346 00000 n 
-0000023418 00000 n 
-0000023745 00000 n 
-0000023793 00000 n 
-0000023842 00000 n 
-0000023902 00000 n 
-0000024036 00000 n 
-0000024227 00000 n 
-0000024384 00000 n 
-0000024739 00000 n 
+0000017438 00000 n 
+0000017548 00000 n 
+0000017777 00000 n 
+0000017970 00000 n 
+0000018081 00000 n 
+0000019800 00000 n 
+0000019848 00000 n 
+0000019897 00000 n 
+0000020105 00000 n 
+0000021142 00000 n 
+0000021190 00000 n 
+0000021239 00000 n 
+0000021428 00000 n 
+0000021598 00000 n 
+0000021680 00000 n 
+0000022787 00000 n 
+0000022897 00000 n 
+0000023064 00000 n 
+0000023248 00000 n 
+0000023324 00000 n 
+0000023651 00000 n 
+0000023699 00000 n 
+0000023748 00000 n 
+0000023808 00000 n 
+0000023900 00000 n 
+0000024039 00000 n 
+0000024157 00000 n 
+0000024311 00000 n 
+0000024386 00000 n 
+0000024477 00000 n 
 0000024832 00000 n 
-0000024912 00000 n 
-0000025043 00000 n 
-0000025112 00000 n 
-0000025188 00000 n 
-0000025246 00000 n 
-0000025355 00000 n 
-0000025429 00000 n 
-0000025487 00000 n 
-0000025564 00000 n 
-0000025622 00000 n 
-0000025737 00000 n 
-0000025818 00000 n 
-0000025895 00000 n 
-0000025953 00000 n 
-0000026030 00000 n 
-0000026088 00000 n 
-0000026196 00000 n 
-0000026266 00000 n 
-0000026343 00000 n 
-0000026401 00000 n 
-0000026482 00000 n 
-0000026607 00000 n 
-0000026688 00000 n 
-0000026765 00000 n 
+0000024925 00000 n 
+0000025082 00000 n 
+0000025153 00000 n 
+0000025233 00000 n 
+0000025352 00000 n 
+0000025421 00000 n 
+0000025497 00000 n 
+0000025555 00000 n 
+0000025632 00000 n 
+0000025690 00000 n 
+0000025805 00000 n 
+0000025886 00000 n 
+0000025963 00000 n 
+0000026021 00000 n 
+0000026098 00000 n 
+0000026156 00000 n 
+0000026264 00000 n 
+0000026334 00000 n 
+0000026411 00000 n 
+0000026469 00000 n 
+0000026540 00000 n 
+0000026621 00000 n 
+0000026742 00000 n 
 0000026823 00000 n 
 0000026900 00000 n 
 0000026958 00000 n 
 0000027028 00000 n 
-0000027109 00000 n 
-0000027226 00000 n 
-0000027337 00000 n 
-0000027416 00000 n 
-0000027492 00000 n 
-0000027548 00000 n 
-0000027617 00000 n 
-0000027696 00000 n 
-0000027815 00000 n 
-0000027885 00000 n 
-0000027956 00000 n 
-0000028027 00000 n 
-0000028108 00000 n 
-0000028229 00000 n 
-0000028301 00000 n 
-0000028381 00000 n 
-0000028438 00000 n 
-0000028510 00000 n 
-0000028591 00000 n 
-0000028701 00000 n 
-0000028773 00000 n 
-0000028845 00000 n 
-0000028926 00000 n 
-0000029015 00000 n 
-0000029087 00000 n 
-0000029168 00000 n 
-0000029257 00000 n 
-0000029329 00000 n 
-0000029410 00000 n 
-0000029488 00000 n 
-0000029569 00000 n 
-0000029663 00000 n 
-0000029771 00000 n 
-0000029850 00000 n 
-0000029909 00000 n 
-0000029980 00000 n 
-0000030058 00000 n 
-0000030139 00000 n 
-0000030247 00000 n 
-0000030339 00000 n 
-0000030420 00000 n 
-0000030528 00000 n 
-0000030599 00000 n 
-0000030670 00000 n 
-0000030797 00000 n 
-0000030905 00000 n 
-0000030984 00000 n 
-0000031043 00000 n 
-0000031114 00000 n 
-0000031207 00000 n 
-0000031280 00000 n 
-0000031370 00000 n 
-0000031429 00000 n 
-0000032426 00000 n 
-0000032569 00000 n 
-0000032690 00000 n 
-0000032848 00000 n 
-0000032925 00000 n 
-0000033086 00000 n 
+0000027099 00000 n 
+0000027180 00000 n 
+0000027304 00000 n 
+0000027373 00000 n 
+0000027484 00000 n 
+0000027563 00000 n 
+0000027642 00000 n 
+0000027718 00000 n 
+0000027774 00000 n 
+0000027843 00000 n 
+0000027914 00000 n 
+0000027993 00000 n 
+0000028114 00000 n 
+0000028186 00000 n 
+0000028258 00000 n 
+0000028330 00000 n 
+0000028403 00000 n 
+0000028485 00000 n 
+0000028606 00000 n 
+0000028678 00000 n 
+0000028758 00000 n 
+0000028815 00000 n 
+0000028887 00000 n 
+0000028960 00000 n 
+0000029042 00000 n 
+0000029152 00000 n 
+0000029224 00000 n 
+0000029296 00000 n 
+0000029369 00000 n 
+0000029451 00000 n 
+0000029540 00000 n 
+0000029612 00000 n 
+0000029685 00000 n 
+0000029767 00000 n 
+0000029856 00000 n 
+0000029928 00000 n 
+0000030001 00000 n 
+0000030083 00000 n 
+0000030161 00000 n 
+0000030234 00000 n 
+0000030316 00000 n 
+0000030410 00000 n 
+0000030518 00000 n 
+0000030597 00000 n 
+0000030656 00000 n 
+0000030727 00000 n 
+0000030805 00000 n 
+0000030878 00000 n 
+0000030960 00000 n 
+0000031068 00000 n 
+0000031141 00000 n 
+0000031223 00000 n 
+0000031331 00000 n 
+0000031402 00000 n 
+0000031473 00000 n 
+0000031608 00000 n 
+0000031679 00000 n 
+0000031787 00000 n 
+0000031866 00000 n 
+0000031925 00000 n 
+0000031996 00000 n 
+0000032089 00000 n 
+0000032162 00000 n 
+0000032252 00000 n 
+0000032311 00000 n 
+0000033321 00000 n 
+0000033479 00000 n 
 trailer
 <<
-  /ID [ <c730e9a4d0da349c8ee2168a51569361> <c730e9a4d0da349c8ee2168a51569361> ]
+  /ID [ <e9f9f3fd90f61e51a5f00f52e1321c67> <e9f9f3fd90f61e51a5f00f52e1321c67> ]
   /Info 1 0 R
   /Root 2 0 R
-  /Size 151
+  /Size 156
 >>
 startxref
-33179
+33572
 %%EOF
