@@ -21,21 +21,26 @@ use PDF::StructElem;
 subset Level of Int:D where 0..6;
 my constant Gutter = 3;
 
-### Persistant Attributes ###
+### Attributes ###
 has PDF::API6 $.pdf .= new;
 has PDF::Tags $.tags .= create: :$!pdf;
 has PDF::Tags::Elem $.root = $!tags.Document;
-has PDF::Page $!page;
-has PDF::Content $!gfx;
 has $.margin = 20;
 has Bool $.contents = True;
 has @.toc; # table of contents
-has DestRef $!gutter-link;    # forward link to footnote area
 has Str %!metadata;
 has %.replace;
 has %.index;
 has Bool $.tag = True;
 has PDF::Content::FontObj %.font-map;
+
+### Paging/Footnotes ###
+has PDF::Page $!page;
+has PDF::Content $!gfx;
+has DestRef $!gutter-link;    # forward link to footnote area
+has @!footnotes;
+has DestRef @!footnotes-back; # per-footnote return links
+has PDF::Tags::Elem @!footnotes-tag;
 
 ### Rendering State ###
 has Pod::To::PDF::API6::Style $.style handles<font-size leading line-height bold italic mono underline lines-before link verbatim> .= new;
@@ -45,9 +50,6 @@ has UInt $!indent = 0;
 has UInt $!pad = 0;
 has Numeric $!code-start-y;
 has UInt:D $!level = 1;
-has @!footnotes;
-has DestRef @!footnotes-back; # per-footnote return links
-has PDF::Tags::Elem @!footnotes-tag;
 has PDF::Tags::Elem @!tags;
 has $!gutter = Gutter;
 
@@ -681,6 +683,7 @@ method print(Str $text, Bool :$nl, :$reflow = True, |c) {
     my $h = $tb.content-height;
     my Pair $pos = self!text-position();
     my $gfx = self!gfx;
+    my $orig-tag = $*tag;
     temp $*tag;
     if $.link {
         use PDF::Content::Color :ColorName;
@@ -717,6 +720,7 @@ method print(Str $text, Bool :$nl, :$reflow = True, |c) {
         my $in-code-block = $!code-start-y.defined;
         self!new-page;
         $!code-start-y = $!ty if $in-code-block;
+        $*tag = $orig-tag;
         self.print($tb.overflow.join, :$nl);
     }
 }
@@ -907,7 +911,6 @@ method !code(@contents is copy) {
 
         self!mark: {
             my @plain-text;
-            temp $!tag = False; # turn off sub-tagging
             for 0 ..^ @contents -> $i {
                 $!code-start-y //= $!ty;
                 given @contents[$i] {
