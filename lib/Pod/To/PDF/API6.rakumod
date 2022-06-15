@@ -47,7 +47,7 @@ has Pod::To::PDF::API6::Style $.style handles<font-size leading line-height bold
 has $!tx = $!margin; # text-flow x
 has $!ty; # text-flow y
 has UInt $!indent = 0;
-has UInt $!pad = 0;
+has UInt $!padding = 0;
 has Numeric $!code-start-y;
 has UInt:D $!level = 1;
 has PDF::Tags::Elem @!tags;
@@ -316,7 +316,7 @@ multi method pod2pdf(Pod::Block::Named $pod) {
                 my $toc = $_ eq 'TITLE';
                 $!level = $_ eq 'TITLE' ?? 0 !! 2;
                 self.metadata(.lc) ||= $.pod2text-inline($pod.contents);
-                self!heading($pod.contents, :$toc, :pad(1));
+                self!heading($pod.contents, :$toc, :padding(1));
             }
             default {
                 my $name = $_;
@@ -365,7 +365,7 @@ method !resolve-link(Str $url) {
         }
         else {
             with $!linker.resolve-link($_) -> $uri {
-                %style<link> = $!pdf.action: :$uri;
+                %style<link> = PDF::API6.action: :$uri;
             }
         }
     }
@@ -422,7 +422,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
         when 'N' {
             $!gutter-link //= self!make-dest: :left(0), :top($!margin + (Gutter + 2) * $.line-height);
             my $ind = '[' ~ @!footnotes+1 ~ ']';
-            my PDF::Action $link = $!pdf.action: :destination($!gutter-link);
+            my PDF::Action $link = PDF::API6.action: :destination($!gutter-link);
 
             temp $*tag .= Span;
             self!style: :tag(Reference), {
@@ -659,8 +659,8 @@ multi method say(Str $text, |c) {
 
 method font { $!style.font: :%!font-map }
 
+multi method pad { $!padding=2 }
 multi method pad(&codez) { $.pad; &codez(); $.pad}
-multi method pad($!pad = 2) { }
 
 method !text-box(
     Str $text,
@@ -671,8 +671,8 @@ method !text-box(
 }
 
 method !pad-here {
-    $.say for ^$!pad;
-    $!pad = 0;
+    $.say for ^$!padding;
+    $!padding = 0;
 }
 
 has $!last-chunk-height = 0;
@@ -778,7 +778,7 @@ method !pod2dest($pod, Str :$name) {
 
 }
 
-method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True, :$!pad=2) {
+method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True, :$!padding=2) {
     my constant HeadingSizes = 24, 20, 16, 13, 11.5, 10, 10;
     my $font-size = HeadingSizes[$level];
     my Bool $bold   = $level <= 4;
@@ -909,30 +909,28 @@ method !code(@contents is copy) {
 
         self!pad-here;
 
-        self!mark: {
-            my @plain-text;
-            for 0 ..^ @contents -> $i {
-                $!code-start-y //= $!ty;
-                given @contents[$i] {
-                    when Str {
-                        @plain-text.push: $_;
+        my @plain-text;
+        for 0 ..^ @contents -> $i {
+            $!code-start-y //= $!ty;
+            given @contents[$i] {
+                when Str {
+                    @plain-text.push: $_;
+                }
+                default  {
+                    # presumably formatted
+                    if @plain-text {
+                        $.print: @plain-text.join;
+                        @plain-text = ();
                     }
-                    default  {
-                        # presumably formatted
-                        if @plain-text {
-                            $.print: @plain-text.join;
-                            @plain-text = ();
-                        }
 
-                        $.pod2pdf($_);
-                    }
+                    $.pod2pdf($_);
                 }
             }
-            if @plain-text {
-                $.print: @plain-text.join;
-            }
-            self!finish-code;
         }
+        if @plain-text {
+            $.print: @plain-text.join;
+        }
+        self!finish-code;
     }
 }
 
@@ -969,7 +967,7 @@ method !link(PDF::Content::Text::Box $tb, :$tab = $!margin, ) {
         my @Border = 0, 0, 0;
         my Str $content = $tb.text;
 
-        my PDF::Annot::Link $link = $!pdf.annotation(
+        my PDF::Annot::Link $link = PDF::API6.annotation(
             :$!page,
             :action($.link),
             :@rect,
@@ -1011,7 +1009,7 @@ method !finish-page {
         $!gutter = 0;
         self!draw-line($!margin, $!ty, $!gfx.canvas.width - 2*$!margin, $!ty);
         while @!footnotes {
-            $.pad(1);
+            $!padding = 1;
             my $footnote = @!footnotes.shift;
             my $destination = @!footnotes-back.shift;
             temp $*tag = @!footnotes-tag.shift;
@@ -1035,7 +1033,7 @@ method !new-page {
     $!tx = $!margin;
     $!ty = $!page.height - 2 * $!margin;
     # suppress whitespace before significant content
-    $!pad = 0;
+    $!padding = 0;
 }
 
 method !indent {
