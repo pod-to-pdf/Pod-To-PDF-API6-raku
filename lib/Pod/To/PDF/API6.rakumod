@@ -184,6 +184,7 @@ sub fit-widths($width is copy, @widths) {
                   for @widths;
         }
     }
+    @widths;
 }
 
 sub dest-name(Str:D $_) {
@@ -265,7 +266,6 @@ method !build-table($pod, @table) {
     my $cols = @table.max: *.Int;
     my @widths = (^$cols).map: -> $col { @table.map({.[$col].?width // 0}).max };
    fit-widths(total-width - hpad * (@widths-1), @widths);
-   @widths;
 }
 
 multi method pod2pdf(Pod::Block::Table $pod) {
@@ -279,11 +279,11 @@ multi method pod2pdf(Pod::Block::Table $pod) {
             }
         }
         self!pad-here;
-        my PDF::Content::Text::Box @header = @table.shift.List;
-        if @header {
+        my PDF::Content::Text::Box @headers = @table.shift.List;
+        if @headers {
             temp $*tag .= TableHead;
             $*tag .= TableRow;
-            self!table-row: @header, @widths, :header;
+            self!table-row: @headers, @widths, :header;
         }
 
         if @table {
@@ -360,7 +360,9 @@ method !resolve-link(Str $url) {
     my %style;
     with $url {
         if .starts-with('#') {
-            %style<link> = $!pdf.action: :destination(dest-name($_));
+            # internal link
+            my $destination = dest-name($_);
+            %style<link> = $!pdf.action: :$destination;
             %style<tag> = Reference;
         }
         else {
@@ -885,16 +887,17 @@ method !finish-code {
     with $!code-start-y -> $y0 {
         my $x0 = self!indent;
         my $width = self!gfx.canvas.width - $!margin - $x0;
-        $!gfx.BeginMarkedContent(Artifact);
-        $!gfx.graphics: {
-            .FillColor = color 0;
-            .StrokeColor = color 0;
-            .FillAlpha =\ 0.1;
-            .StrokeAlpha = 0.25;
-            .Rectangle: $x0 - pad, $!ty - pad, $width + pad*2, $y0 - $!ty + pad*3;
-            .paint: :fill, :stroke;
+        $!gfx.tag: Artifact, {
+            .graphics: {
+                my constant Black = 0;
+                .FillColor = color Black;
+                .StrokeColor = color Black;
+                .FillAlpha = 0.1;
+                .StrokeAlpha = 0.25;
+                .Rectangle: $x0 - pad, $!ty - pad, $width + pad*2, $y0 - $!ty + pad*3;
+                .paint: :fill, :stroke;
+            }
         }
-        $!gfx.EndMarkedContent;
         $!code-start-y = Nil;
     }
 }
@@ -948,11 +951,13 @@ method !draw-line($x0, $y0, $x1, $y1 = $y0, :$linewidth = 1) {
 method !underline(PDF::Content::Text::Box $tb, :$tab = self!indent, ) {
     my $y = $!ty + $tb.underline-position;
     my $linewidth = $tb.underline-thickness;
-    for $tb.lines {
-        my $x0 = $tab + .indent;
-        my $x1 = $tab + .content-width;
-        self!draw-line($x0, $y, $x1, :$linewidth);
-        $y -= .height * $tb.leading;
+    $!gfx.tag: Artifact, {
+        for $tb.lines {
+            my $x0 = $tab + .indent;
+            my $x1 = $tab + .content-width;
+            self!draw-line($x0, $y, $x1, :$linewidth);
+            $y -= .height * $tb.leading;
+        }
     }
 }
 
@@ -1018,6 +1023,7 @@ method !finish-page {
                 self!style: :tag(Label), :$link, {
                     $.print($footnote.shift);
                 } # [n]
+                $!tx += 2;
                 $*tag .= Paragraph;
                 $.pod2pdf($footnote);
             }
@@ -1184,7 +1190,7 @@ $pdf.save-as: "pod.pdf";
 
 =head2 Restrictions
 
-=para This module is slower than Pod::To::PDF::Lite; mostly due to the handling and serialization of a large number of small StructElem tags for PDF tagging.
+=para This module's rendering is slower than Pod::To::PDF::Lite; mostly due to the handling and serialization of a large number of small StructElem tags for PDF tagging.
 
 =para Possibly, PDF (and PDF::Class) need to implement faster serialization methods, which will most likely use PDF 1.5 Object Streams.
 
