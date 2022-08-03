@@ -11,14 +11,14 @@ Render Pod as PDF (Experimental)
 Description
 -----------
 
-Renders Pod to PDF draft documents via PDF::Lite.
+Renders Pod to PDF draft documents via PDF::API6.
 
 Usage
 -----
 
 From command line:
 
-    $ raku --doc=PDF lib/to/class.rakumod | xargs evince
+    $ raku --doc=PDF::API6 lib/to/class.rakumod | xargs evince
 
 From Raku:
 
@@ -92,15 +92,14 @@ PDF::API6 $pdf = pod2pdf($=pod, :@fonts);
 $pdf.save-as: "pod.pdf";
 ```
 
-Restrictions
-------------
-
-This module is slower than Pod::To::PDF::Lite; mostly due to the handling and serialization of a large number of small StructElem tags for PDF tagging.
-
-Possibly, PDF (and PDF::Class) need to implement faster serialization methods, which will most likely use PDF 1.5 Object Streams.
-
 See Also
 --------
 
-  * [Pod::To::PDF](Pod::To::PDF) - PDF rendering via [Cairo](Cairo)
+  * [Pod::To::PDF](https://github.com/pod-to-pdf/Pod-To-PDF-raku) - PDF rendering via [Cairo](https://github.com/timo/cairo-p6)
+
+  * [Pod::To::PDF::Lite](https://github.com/pod-to-pdf/Pod-To-PDF-Lite-raku) - PDF draft rendering via [PDF::Lite](https://github.com/pod-to-pdf/PDF-Lite-raku)
+
+Both of the above modules currently render faster than this module (by about 2x).
+
+[Pod::To::PDF](https://github.com/pod-to-pdf/Pod-To-PDF-raku) is the most capable. Like this module, it is able to handle internal and external links, table-of-contents, footnotes and indexing.
 
