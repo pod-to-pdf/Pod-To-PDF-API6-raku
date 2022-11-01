@@ -1106,6 +1106,7 @@ multi method pod2text(Str $pod) { $pod }
 multi method pod2text($pod) { $pod.map({$.pod2text($_)}).join }
 
 =begin pod
+
 =TITLE Pod::To::PDF::API6
 =SUBTITLE Render Pod as PDF (Experimental)
 
@@ -1193,8 +1194,20 @@ $pdf.save-as: "pod.pdf";
 =item L<Pod::To::PDF|https://github.com/pod-to-pdf/Pod-To-PDF-raku> - PDF rendering via L<Cairo|https://github.com/timo/cairo-p6>
 =item L<Pod::To::PDF::Lite|https://github.com/pod-to-pdf/Pod-To-PDF-Lite-raku> - PDF draft rendering via L<PDF::Lite|https://github.com/pod-to-pdf/PDF-Lite-raku>
 
-Both of the above modules currently render faster than this module (by about 2x).
+=head3 Status
 
-L<Pod::To::PDF|https://github.com/pod-to-pdf/Pod-To-PDF-raku> is the most capable. Like this module, it is able to handle internal and external links, table-of-contents, footnotes and indexing.
+C<Pod::To::PDF::API6> is on a near equal footing to L<Pod::To::PDF|https://github.com/pod-to-pdf/Pod-To-PDF-raku>, with regard to general rendering, handling of internal and external links, table-of-contents, footnotes and indexing.
+
+It out-performs it content tagging, with better handling  foot-notes and artifacts.
+
+However
+
+=item Both C<Pod::To::PDF> and C<Pod::To::PDF::Lite> modules currently render faster than this module (by about 2x).
+
+=item This module doesn't yet incorporate the experimental C<HarfBuzz::Subset> module, resulting in large PDF sizes due to full font embedding.
+
+=item L<PDF::Lite|https://github.com/pod-to-pdf/PDF-Lite-raku>, also includes the somewhat experimental C<PDF::Lite::Async>, which has the ability to render large multi-page documents in parallel.
+
+For these reasons L<Pod::To::PDF|https://github.com/pod-to-pdf/Pod-To-PDF-raku> is the currently recommended module for Pod to PDF rendering.
 
 =end pod

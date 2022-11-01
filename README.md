@@ -99,7 +99,19 @@ See Also
 
   * [Pod::To::PDF::Lite](https://github.com/pod-to-pdf/Pod-To-PDF-Lite-raku) - PDF draft rendering via [PDF::Lite](https://github.com/pod-to-pdf/PDF-Lite-raku)
 
-Both of the above modules currently render faster than this module (by about 2x).
+### Status
 
-[Pod::To::PDF](https://github.com/pod-to-pdf/Pod-To-PDF-raku) is the most capable. Like this module, it is able to handle internal and external links, table-of-contents, footnotes and indexing.
+`Pod::To::PDF::API6` is on a near equal footing to [Pod::To::PDF](https://github.com/pod-to-pdf/Pod-To-PDF-raku), with regard to general rendering, handling of internal and external links, table-of-contents, footnotes and indexing.
+
+It out-performs it content tagging, with better handling foot-notes and artifacts.
+
+However
+
+  * Both `Pod::To::PDF` and `Pod::To::PDF::Lite` modules currently render faster than this module (by about 2x).
+
+  * This module doesn't yet incorporate the experimental `HarfBuzz::Subset` module, resulting in large PDF sizes due to full font embedding.
+
+  * [PDF::Lite](https://github.com/pod-to-pdf/PDF-Lite-raku), also includes the somewhat experimental `PDF::Lite::Async`, which has the ability to render large multi-page documents in parallel.
+
+For these reasons [Pod::To::PDF](https://github.com/pod-to-pdf/Pod-To-PDF-raku) is the currently recommended module for Pod to PDF rendering.
 
