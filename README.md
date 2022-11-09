@@ -11,7 +11,7 @@ Render Pod as PDF (Experimental)
 Description
 -----------
 
-Renders Pod to PDF draft documents via PDF::API6.
+Renders Pod to PDF documents via PDF::API6.
 
 Usage
 -----

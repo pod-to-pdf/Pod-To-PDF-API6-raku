@@ -13,14 +13,13 @@
 endobj
 
 2 0 obj
-<< /pod2pdf#28#29_Options [ 3 0 R /FitBH 769.6 ] >>
+<< /pod2pdf#28#29_Options [ 3 0 R /FitBH 773.6 ] >>
 endobj
 
 3 0 obj
 <<
   /Type /Page
   /Contents 4 0 R
-  /MediaBox [ 0 0 612 792 ]
   /Parent 5 0 R
   /Resources << /Font << /F1 6 0 R /F2 7 0 R >> >>
   /StructParents 0
@@ -31,21 +30,21 @@ endobj
 << /Length 307 >> stream
 /H2 << /MCID 0 >> BDC
   BT
-    1 0 0 1 20 752 Tm
+    1 0 0 1 20 756 Tm
     /F1 16 Tf
     (pod2pdf\(\) Options) Tj
   ET
 EMC
 /Quote << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 730 Tm
+    1 0 0 1 20 734 Tm
     /F1 10 Tf
     (PDF::API6 :$pdf) Tj
   ET
 EMC
 /P << /MCID 2 >> BDC
   BT
-    1 0 0 1 20 708 Tm
+    1 0 0 1 20 712 Tm
     /F2 10 Tf
     (A PDF object to render to.) Tj
   ET
@@ -54,7 +53,7 @@ endstream
 endobj
 
 5 0 obj
-<< /Type /Pages /Count 1 /Kids [ 3 0 R ] >>
+<< /Type /Pages /Count 1 /Kids [ 3 0 R ] /MediaBox [ 0 0 612 792 ] >>
 endobj
 
 6 0 obj
@@ -138,21 +137,21 @@ xref
 0000000015 00000 n 
 0000000171 00000 n 
 0000000239 00000 n 
-0000000407 00000 n 
-0000000766 00000 n 
-0000000826 00000 n 
-0000000933 00000 n 
-0000001041 00000 n 
-0000001097 00000 n 
-0000001166 00000 n 
-0000001275 00000 n 
-0000001389 00000 n 
-0000001489 00000 n 
-0000001560 00000 n 
-0000001640 00000 n 
-0000001716 00000 n 
+0000000379 00000 n 
+0000000738 00000 n 
+0000000824 00000 n 
+0000000931 00000 n 
+0000001039 00000 n 
+0000001095 00000 n 
+0000001164 00000 n 
+0000001273 00000 n 
+0000001387 00000 n 
+0000001487 00000 n 
+0000001558 00000 n 
+0000001638 00000 n 
+0000001714 00000 n 
 trailer
 << /ID [ (t/defn.t        ) (t/defn.t        ) ] /Root 1 0 R /Size 17 >>
 startxref
-1836
+1834
 %%EOF

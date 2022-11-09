@@ -103,7 +103,9 @@ method !paginate($pdf) {
         my PDF::Content $gfx = $page.gfx;
         my @position = $gfx.width - $!margin, $!margin - $font-size;
         my $text = "Page {++$page-num} of $page-count";
-        $gfx.print: $text, :@position, :$font, :$font-size, :$align;
+        $gfx.tag: Artifact, {
+            .print: $text, :@position, :$font, :$font-size, :$align;
+        }
         $page.finish;
     }
 }
@@ -1148,7 +1150,7 @@ multi method pod2text($pod) { $pod.map({$.pod2text($_)}).join }
 
 =head2 Description
 
-Renders Pod to PDF draft documents via PDF::API6.
+Renders Pod to PDF documents via PDF::API6.
 
 =head2 Usage
 

@@ -11,7 +11,7 @@
 endobj
 
 2 0 obj
-<< /Type /Pages /Count 1 /Kids [ 3 0 R ] >>
+<< /Type /Pages /Count 1 /Kids [ 3 0 R ] /MediaBox [ 0 0 612 792 ] >>
 endobj
 
 3 0 obj
@@ -19,7 +19,6 @@ endobj
   /Type /Page
   /Annots [ 4 0 R 6 0 R ]
   /Contents 8 0 R
-  /MediaBox [ 0 0 612 792 ]
   /Parent 2 0 R
   /Resources << /Font << /F1 9 0 R /F2 10 0 R /F3 11 0 R >> >>
   /StructParents 0
@@ -34,7 +33,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (links)
   /P 3 0 R
-  /Rect [ 172.26 573 195.71 586 ]
+  /Rect [ 172.26 577 195.71 590 ]
   /StructParent 1
 >>
 endobj
@@ -51,7 +50,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (file:included.pod)
   /P 3 0 R
-  /Rect [ 102.7 551 174.75 564 ]
+  /Rect [ 102.7 555 174.75 568 ]
   /StructParent 2
 >>
 endobj
@@ -64,83 +63,83 @@ endobj
 << /Length 2041 >> stream
 /P << /MCID 0 >> BDC
   BT
-    1 0 0 1 20 752 Tm
+    1 0 0 1 20 756 Tm
     /F1 10 Tf
     (This is all a paragraph.) Tj
   ET
 EMC
 /P << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 730 Tm
+    1 0 0 1 20 734 Tm
     (This is the next paragraph.) Tj
   ET
 EMC
 /P << /MCID 2 >> BDC
   BT
-    1 0 0 1 20 708 Tm
+    1 0 0 1 20 712 Tm
     (This is the third paragraph.) Tj
   ET
 EMC
 /P << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 686 Tm
+    1 0 0 1 20 690 Tm
     (Abbreviated paragraph) Tj
   ET
 EMC
 /P << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 664 Tm
+    1 0 0 1 20 668 Tm
     (Paragraph paragraph) Tj
   ET
 EMC
 /P << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 642 Tm
+    1 0 0 1 20 646 Tm
     (Block) Tj
   ET
 EMC
 /P << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 620 Tm
+    1 0 0 1 20 624 Tm
     (paragraph) Tj
   ET
 EMC
 /P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 598 Tm
+    1 0 0 1 20 602 Tm
     (spaces and tabs are ignored) Tj
   ET
 EMC
 /P << /MCID 8 >> BDC
   BT
-    1 0 0 1 20 576 Tm
+    1 0 0 1 20 580 Tm
     (Paragraph with ) Tj
   ET
 EMC
 /P << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 576 Tm
+    1 0 0 1 20 580 Tm
     /F2 10 Tf
     [ -6332 (formatting) ] TJ
   ET
 EMC
 /P << /MCID 10 >> BDC
   BT
-    1 0 0 1 20 576 Tm
+    1 0 0 1 20 580 Tm
     /F1 10 Tf
     [ -10942 (, ) ] TJ
   ET
 EMC
 /Code << /MCID 11 >> BDC
   BT
-    1 0 0 1 20 576 Tm
+    1 0 0 1 20 580 Tm
     /F3 8.5 Tf
     [ -13461 (code) ] TJ
   ET
 EMC
 /P << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 576 Tm
+    1 0 0 1 20 580 Tm
     /F1 10 Tf
     [ -13482 ( and ) ] TJ
   ET
@@ -149,26 +148,26 @@ q
   0 0 1 rg
   /Link << /MCID 13 >> BDC
     BT
-      1 0 0 1 20 576 Tm
+      1 0 0 1 20 580 Tm
       [ -15426 (links) ] TJ
     ET
   EMC
 Q
 /P << /MCID 14 >> BDC
   BT
-    1 0 0 1 20 576 Tm
+    1 0 0 1 20 580 Tm
     [ -17371 (.) ] TJ
   ET
 EMC
 /P << /MCID 15 >> BDC
   BT
-    1 0 0 1 20 554 Tm
+    1 0 0 1 20 558 Tm
     (Paragraph with ) Tj
   ET
 EMC
 /P << /MCID 16 >> BDC
   BT
-    1 0 0 1 20 554 Tm
+    1 0 0 1 20 558 Tm
     [ -6332 (\(see: ) ] TJ
   ET
 EMC
@@ -176,26 +175,26 @@ q
   0 0 1 rg
   /Link << /MCID 17 >> BDC
     BT
-      1 0 0 1 20 554 Tm
+      1 0 0 1 20 558 Tm
       [ -8470 (file:included.pod) ] TJ
     ET
   EMC
 Q
 /P << /MCID 18 >> BDC
   BT
-    1 0 0 1 20 554 Tm
+    1 0 0 1 20 558 Tm
     [ -15275 (\)) ] TJ
   ET
 EMC
 /P << /MCID 19 >> BDC
   BT
-    1 0 0 1 20 554 Tm
+    1 0 0 1 20 558 Tm
     [ -15608 ( placement) ] TJ
   ET
 EMC
 /P << /MCID 20 >> BDC
   BT
-    1 0 0 1 20 532 Tm
+    1 0 0 1 20 536 Tm
     (aaaaabbbbbcccccdddddeeeeefffffggggghhhhhiiiiijjjjjkkkkklllllmmmmmnnnnnooooopppppqqqqqrrrrrssssstttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz) Tj
   ET
 EMC
@@ -333,36 +332,36 @@ xref
 0000000000 65535 f 
 0000000015 00000 n 
 0000000138 00000 n 
-0000000198 00000 n 
-0000000404 00000 n 
-0000000572 00000 n 
-0000000626 00000 n 
-0000000805 00000 n 
-0000000874 00000 n 
-0000002968 00000 n 
-0000003076 00000 n 
-0000003184 00000 n 
-0000003289 00000 n 
-0000003559 00000 n 
-0000003715 00000 n 
-0000003791 00000 n 
-0000003867 00000 n 
-0000003943 00000 n 
-0000004019 00000 n 
-0000004095 00000 n 
-0000004171 00000 n 
-0000004247 00000 n 
-0000004323 00000 n 
-0000004434 00000 n 
-0000004504 00000 n 
-0000004583 00000 n 
-0000004660 00000 n 
-0000004716 00000 n 
-0000004819 00000 n 
-0000004896 00000 n 
-0000004952 00000 n 
+0000000224 00000 n 
+0000000402 00000 n 
+0000000570 00000 n 
+0000000624 00000 n 
+0000000803 00000 n 
+0000000872 00000 n 
+0000002966 00000 n 
+0000003074 00000 n 
+0000003182 00000 n 
+0000003287 00000 n 
+0000003557 00000 n 
+0000003713 00000 n 
+0000003789 00000 n 
+0000003865 00000 n 
+0000003941 00000 n 
+0000004017 00000 n 
+0000004093 00000 n 
+0000004169 00000 n 
+0000004245 00000 n 
+0000004321 00000 n 
+0000004432 00000 n 
+0000004502 00000 n 
+0000004581 00000 n 
+0000004658 00000 n 
+0000004714 00000 n 
+0000004817 00000 n 
+0000004894 00000 n 
+0000004950 00000 n 
 trailer
 << /ID [ (t/paragraph.t   ) (t/paragraph.t   ) ] /Root 1 0 R /Size 31 >>
 startxref
-5029
+5027
 %%EOF

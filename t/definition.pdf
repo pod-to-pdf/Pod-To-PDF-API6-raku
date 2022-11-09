@@ -14,11 +14,11 @@ endobj
 
 2 0 obj
 <<
-  /Attribute_t [ 3 0 R /FitBH 523.75 ]
-  /Class_Asdf2 [ 3 0 R /FitBH 596.35 ]
-  /Method_asdf [ 3 0 R /FitBH 454.45 ]
-  /Module_Asdf1 [ 3 0 R /FitBH 769.6 ]
-  /Sub_asdf [ 3 0 R /FitBH 697 ]
+  /Attribute_t [ 3 0 R /FitBH 527.75 ]
+  /Class_Asdf2 [ 3 0 R /FitBH 600.35 ]
+  /Method_asdf [ 3 0 R /FitBH 458.45 ]
+  /Module_Asdf1 [ 3 0 R /FitBH 773.6 ]
+  /Sub_asdf [ 3 0 R /FitBH 701 ]
 >>
 endobj
 
@@ -26,7 +26,6 @@ endobj
 <<
   /Type /Page
   /Contents 4 0 R
-  /MediaBox [ 0 0 612 792 ]
   /Parent 5 0 R
   /Resources <<
     /ExtGState << /GS1 6 0 R /GS2 7 0 R >>
@@ -40,21 +39,21 @@ endobj
 << /Length 2140 >> stream
 /H2 << /MCID 0 >> BDC
   BT
-    1 0 0 1 20 752 Tm
+    1 0 0 1 20 756 Tm
     /F1 16 Tf
     (Module Asdf1) Tj
   ET
 EMC
 /P << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 730 Tm
+    1 0 0 1 20 734 Tm
     /F2 10 Tf
     (This is a module) Tj
   ET
 EMC
 /Code << /MCID 2 >> BDC
   BT
-    1 0 0 1 30 711.3 Tm
+    1 0 0 1 30 715.3 Tm
     /F3 8.5 Tf
     (module Asdf1) Tj
   ET
@@ -65,27 +64,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 706.3 572 15 re
+    25 710.3 572 15 re
     B
   Q
 EMC
 /H3 << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 682.7 Tm
+    1 0 0 1 20 686.7 Tm
     /F1 13 Tf
     (Sub asdf) Tj
   ET
 EMC
 /P << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 660.7 Tm
+    1 0 0 1 20 664.7 Tm
     /F2 10 Tf
     (This is a sub) Tj
   ET
 EMC
 /Code << /MCID 5 >> BDC
   BT
-    1 0 0 1 30 642 Tm
+    1 0 0 1 30 646 Tm
     /F3 8.5 Tf
     (sub asdf\() Tj
     9.35 TL
@@ -103,27 +102,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 608.95 572 43.05 re
+    25 612.95 572 43.05 re
     B
   Q
 EMC
 /H2 << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 578.75 Tm
+    1 0 0 1 20 582.75 Tm
     /F1 16 Tf
     (Class Asdf2) Tj
   ET
 EMC
 /P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 556.75 Tm
+    1 0 0 1 20 560.75 Tm
     /F2 10 Tf
     (This is a class) Tj
   ET
 EMC
 /Code << /MCID 8 >> BDC
   BT
-    1 0 0 1 30 538.05 Tm
+    1 0 0 1 30 542.05 Tm
     /F3 8.5 Tf
     (class Asdf2) Tj
   ET
@@ -134,27 +133,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 533.05 572 15 re
+    25 537.05 572 15 re
     B
   Q
 EMC
 /H3 << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 509.45 Tm
+    1 0 0 1 20 513.45 Tm
     /F1 13 Tf
     (Attribute t) Tj
   ET
 EMC
 /P << /MCID 10 >> BDC
   BT
-    1 0 0 1 20 487.45 Tm
+    1 0 0 1 20 491.45 Tm
     /F2 10 Tf
     (This is an attribute) Tj
   ET
 EMC
 /Code << /MCID 11 >> BDC
   BT
-    1 0 0 1 30 468.75 Tm
+    1 0 0 1 30 472.75 Tm
     /F3 8.5 Tf
     (has Str $.t) Tj
   ET
@@ -165,27 +164,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 463.75 572 15 re
+    25 467.75 572 15 re
     B
   Q
 EMC
 /H3 << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 440.15 Tm
+    1 0 0 1 20 444.15 Tm
     /F1 13 Tf
     (Method asdf) Tj
   ET
 EMC
 /P << /MCID 13 >> BDC
   BT
-    1 0 0 1 20 418.15 Tm
+    1 0 0 1 20 422.15 Tm
     /F2 10 Tf
     (This is a method) Tj
   ET
 EMC
 /Code << /MCID 14 >> BDC
   BT
-    1 0 0 1 30 399.45 Tm
+    1 0 0 1 30 403.45 Tm
     /F3 8.5 Tf
     (method asdf\() Tj
     T*
@@ -200,7 +199,7 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 375.75 572 33.7 re
+    25 379.75 572 33.7 re
     B
   Q
 EMC
@@ -208,7 +207,7 @@ endstream
 endobj
 
 5 0 obj
-<< /Type /Pages /Count 1 /Kids [ 3 0 R ] >>
+<< /Type /Pages /Count 1 /Kids [ 3 0 R ] /MediaBox [ 0 0 612 792 ] >>
 endobj
 
 6 0 obj
@@ -435,44 +434,44 @@ xref
 0000000015 00000 n 
 0000000172 00000 n 
 0000000383 00000 n 
-0000000611 00000 n 
-0000002804 00000 n 
-0000002864 00000 n 
-0000002911 00000 n 
-0000002959 00000 n 
-0000003066 00000 n 
-0000003174 00000 n 
-0000003279 00000 n 
-0000003338 00000 n 
-0000003408 00000 n 
-0000003547 00000 n 
-0000003624 00000 n 
-0000003715 00000 n 
-0000003899 00000 n 
-0000004006 00000 n 
-0000004082 00000 n 
-0000004153 00000 n 
-0000004232 00000 n 
-0000004308 00000 n 
-0000004379 00000 n 
-0000004458 00000 n 
-0000004564 00000 n 
-0000004640 00000 n 
-0000004711 00000 n 
-0000004790 00000 n 
-0000004896 00000 n 
-0000004973 00000 n 
-0000005044 00000 n 
-0000005124 00000 n 
-0000005231 00000 n 
-0000005308 00000 n 
-0000005379 00000 n 
-0000005459 00000 n 
-0000005669 00000 n 
-0000005806 00000 n 
-0000005912 00000 n 
+0000000583 00000 n 
+0000002776 00000 n 
+0000002862 00000 n 
+0000002909 00000 n 
+0000002957 00000 n 
+0000003064 00000 n 
+0000003172 00000 n 
+0000003277 00000 n 
+0000003336 00000 n 
+0000003406 00000 n 
+0000003545 00000 n 
+0000003622 00000 n 
+0000003713 00000 n 
+0000003897 00000 n 
+0000004004 00000 n 
+0000004080 00000 n 
+0000004151 00000 n 
+0000004230 00000 n 
+0000004306 00000 n 
+0000004377 00000 n 
+0000004456 00000 n 
+0000004562 00000 n 
+0000004638 00000 n 
+0000004709 00000 n 
+0000004788 00000 n 
+0000004894 00000 n 
+0000004971 00000 n 
+0000005042 00000 n 
+0000005122 00000 n 
+0000005229 00000 n 
+0000005306 00000 n 
+0000005377 00000 n 
+0000005457 00000 n 
+0000005667 00000 n 
+0000005804 00000 n 
+0000005910 00000 n 
 trailer
 << /ID [ (t/definition.t  ) (t/definition.t  ) ] /Root 1 0 R /Size 40 >>
 startxref
-6018
+6016
 %%EOF
