@@ -25,6 +25,8 @@ my constant Gutter = 3;
 has PDF::API6 $.pdf .= new;
 has PDF::Tags $.tags .= create: :$!pdf;
 has PDF::Tags::Elem $.root = $!tags.Document;
+has Numeric $.width  = 612;
+has Numeric $.height = 792;
 has $.margin = 20;
 has Bool $.contents = True;
 has @.toc; # table of contents
@@ -33,6 +35,7 @@ has %.replace;
 has %.index;
 has Bool $.tag = True;
 has PDF::Content::FontObj %.font-map;
+has Bool $.page-numbers;
 
 ### Paging/Footnotes ###
 has PDF::Page $!page;
@@ -90,9 +93,26 @@ method !tag($tag, &codez) {
     self!tag-end;
 }
 
+method !paginate($pdf) {
+    my $page-count = $pdf.Pages.page-count;
+    my $font = $pdf.core-font: "Helvetica";
+    my $font-size := 8;
+    my $align := 'right';
+    my $page-num;
+    for $pdf.Pages.iterate-pages -> $page {
+        my PDF::Content $gfx = $page.gfx;
+        my @position = $gfx.width - $!margin, $!margin - $font-size;
+        my $text = "Page {++$page-num} of $page-count";
+        $gfx.print: $text, :@position, :$font, :$font-size, :$align;
+        $page.finish;
+    }
+}
+
 method read($pod, :$*tag is copy = self.root) {
     self.pod2pdf($pod);
     self!finish-page;
+    self!paginate($!pdf)
+        if $!page-numbers;
 }
 
 method pdf {
@@ -117,6 +137,7 @@ method !preload-fonts(@fonts) {
 }
 
 submethod TWEAK(Str :$lang = 'en', :$pod, :%metadata, :@fonts) {
+    $!pdf.media-box = 0, 0, $!width, $!height;
     self.lang = $_ with $lang;
     self!preload-fonts(@fonts)
         if @fonts;
@@ -127,23 +148,36 @@ submethod TWEAK(Str :$lang = 'en', :$pod, :%metadata, :@fonts) {
 
 method render(
     $class: $pod,
-    IO() :$pdf-file = tempfile("pod2pdf-api6-****.pdf", :!unlink)[1],
-    UInt:D :$width  = 612,
-    UInt:D :$height = 792,
-    Bool :$index = True,
+    IO() :$save-as is copy = tempfile("pod2pdf-api6-****.pdf", :!unlink)[1],
+    UInt:D :$width  is copy = 612,
+    UInt:D :$height is copy = 792,
+    UInt:D :$margin is copy = 20,
+    Bool :$index    is copy = True,
+    Bool :$contents is copy = True,
+    Bool :$page-numbers is copy,
     |c,
 ) {
     state %cache{Any};
     %cache{$pod} //= do {
+        for @*ARGS {
+            when /^'--page-numbers'$/  { $page-numbers = True }
+            when /^'--/index'$/        { $index  = False }
+            when /^'--/'[toc|['table-of-']?contents]$/ { $contents  = False }
+            when /^'--width='(\d+)$/   { $width  = $0.Int }
+            when /^'--height='(\d+)$/  { $height = $0.Int }
+            when /^'--margin='(\d+)$/  { $margin = $0.Int }
+            when /^'--save-as='(.+)$/  { $save-as = $0.Str }
+            default { note "ignoring $_ argument" }
+        }
         # render method may be called more than once: Rakudo #2588
-        my $renderer = $class.new(|c, :$pod);
+        my $renderer = $class.new: |c, :$width, :$height, :$pod, :$margin, :$contents, :$page-numbers;
         $renderer!build-index
             if $index && $renderer.index;
         my PDF::API6 $pdf = $renderer.pdf;
         $pdf.media-box = 0, 0, $width, $height;
         # save to a file, since PDF is a binary format
-        $pdf.save-as: $pdf-file;
-        $pdf-file.path;
+        $pdf.save-as: $save-as;
+        $save-as.path;
     }
 }
 
@@ -439,6 +473,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
                 temp $!style .= new;
                 temp $!tx = $!margin;
                 temp $!ty = $!page.height;
+                temp $!indent = 0;
                 my $draft-footnote = $ind ~ $.pod2text-inline($pod.contents);
                 $!gutter += self!text-box($draft-footnote).lines;
             }
@@ -1009,10 +1044,11 @@ method !finish-page {
         if $!code-start-y;
     if @!footnotes {
         temp $!style .= new: :lines-before(0); # avoid current styling
+        temp $!indent = 0;
         $!tx = $!margin;
         $!ty = self!bottom;
         $!gutter = 0;
-        self!draw-line($!margin, $!ty, $!gfx.canvas.width - 2*$!margin, $!ty);
+        self!draw-line($!margin, $!ty, $!gfx.canvas.width - $!margin, $!ty);
         while @!footnotes {
             $!padding = 1;
             my $footnote = @!footnotes.shift;
@@ -1037,7 +1073,7 @@ method !new-page {
     $!page = $!pdf.add-page;
     $!gfx = $!page.gfx;
     $!tx = $!margin;
-    $!ty = $!page.height - 2 * $!margin;
+    $!ty = $!page.height - $!margin - 16;
     # suppress whitespace before significant content
     $!padding = 0;
 }
@@ -1118,7 +1154,7 @@ Renders Pod to PDF draft documents via PDF::API6.
 
 From command line:
 
-    $ raku --doc=PDF::API6 lib/to/class.rakumod | xargs evince
+    $ raku --doc=PDF::API6 lib/to/class.rakumod --save-as=class.pdf
 
 From Raku:
     =begin code :lang<raku>
@@ -1142,7 +1178,7 @@ From Raku:
 
 From command line:
     =begin code :lang<shell>
-    $ raku --doc=PDF::API6 lib/class.rakumod | xargs evince
+    $ raku --doc=PDF::API6 lib/class.rakumod --save-as=class.pdf
     =end code
 
 =head2 Subroutines

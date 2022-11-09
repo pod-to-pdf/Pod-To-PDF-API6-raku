@@ -18,7 +18,7 @@ Usage
 
 From command line:
 
-    $ raku --doc=PDF::API6 lib/to/class.rakumod | xargs evince
+    $ raku --doc=PDF::API6 lib/to/class.rakumod --save-as=class.pdf
 
 From Raku:
 
@@ -45,7 +45,7 @@ Exports
 From command line:
 
 ```shell
-$ raku --doc=PDF::API6 lib/class.rakumod | xargs evince
+$ raku --doc=PDF::API6 lib/class.rakumod --save-as=class.pdf
 ```
 
 Subroutines
