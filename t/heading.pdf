@@ -18,15 +18,15 @@ endobj
 
 3 0 obj
 <<
-  /Abbreviated_heading1 [ 4 0 R /FitBH 778 ]
-  /Head2 [ 15 0 R /FitBH 599.8 ]
-  /Head3 [ 15 0 R /FitBH 545.9 ]
-  /Head4 [ 15 0 R /FitBH 496.95 ]
-  /Heading3 [ 15 0 R /FitBH 653.7 ]
-  /Heading_tests [ 7 0 R /FitBH 782.4 ]
-  /Paragraph_heading1 [ 12 0 R /FitBH 778 ]
-  /Structuredheading1 [ 15 0 R /FitBH 690 ]
-  /Subheading2 [ 12 0 R /FitBH 716.4 ]
+  /Abbreviated_heading1 [ 4 0 R /FitBH 782.4 ]
+  /Head2 [ 15 0 R /FitBH 566.8 ]
+  /Head3 [ 15 0 R /FitBH 500.8 ]
+  /Head4 [ 15 0 R /FitBH 441.4 ]
+  /Heading3 [ 15 0 R /FitBH 632.8 ]
+  /Heading_tests [ 7 0 R /FitBH 786.8 ]
+  /Paragraph_heading1 [ 12 0 R /FitBH 782.4 ]
+  /Structuredheading1 [ 15 0 R /FitBH 676.8 ]
+  /Subheading2 [ 12 0 R /FitBH 707.6 ]
 >>
 endobj
 
@@ -41,26 +41,26 @@ endobj
 endobj
 
 5 0 obj
-<< /Length 272 >> stream
+<< /Length 281 >> stream
 /H1 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 756 Tm
-    /F1 20 Tf
+    /F1 24 Tf
     (Abbreviated heading1) Tj
   ET
   /Artifact BMC
     q
-      1 w
-      20 754 m
-      209.46 754 l
+      1.2 w
+      20 753.6 m
+      247.352 753.6 l
       S
     Q
   EMC
 EMC
 /P << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 734 Tm
-    /F2 10 Tf
+    1 0 0 1 20 729.6 Tm
+    /F2 12 Tf
     (asdf) Tj
   ET
 EMC
@@ -95,7 +95,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents (Pod::To::PDF)
   /P 7 0 R
-  /Rect [ 42.432 734.8 144.192 754.4 ]
+  /Rect [ 48.54 730 174.74 754 ]
   /StructParent 1
 >>
 endobj
@@ -105,26 +105,26 @@ endobj
 endobj
 
 10 0 obj
-<< /Length 392 >> stream
+<< /Length 388 >> stream
 /H1 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 756 Tm
-    /F1 24 Tf
+    /F1 28 Tf
     (Heading tests) Tj
   ET
   /Artifact BMC
     q
-      1.2 w
-      20 753.6 m
-      158 753.6 l
+      1.4 w
+      20 753.2 m
+      181 753.2 l
       S
     Q
   EMC
 EMC
 /H2 << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 738.4 Tm
-    /F1 16 Tf
+    1 0 0 1 20 734 Tm
+    /F1 20 Tf
     (for ) Tj
   ET
 EMC
@@ -132,7 +132,7 @@ q
   0 0 1 rg
   /Link << /MCID 2 >> BDC
     BT
-      1 0 0 1 20 738.4 Tm
+      1 0 0 1 20 734 Tm
       [ -1527 (Pod::To::PDF) ] TJ
     ET
   EMC
@@ -160,33 +160,33 @@ endobj
 endobj
 
 13 0 obj
-<< /Length 365 >> stream
+<< /Length 374 >> stream
 /H1 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 756 Tm
-    /F1 20 Tf
+    /F1 24 Tf
     (Paragraph heading1) Tj
   ET
   /Artifact BMC
     q
-      1 w
-      20 754 m
-      195.02 754 l
+      1.2 w
+      20 753.6 m
+      230.024 753.6 l
       S
     Q
   EMC
 EMC
 /P << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 734 Tm
-    /F2 10 Tf
+    1 0 0 1 20 729.6 Tm
+    /F2 12 Tf
     (asdf) Tj
   ET
 EMC
 /H2 << /MCID 2 >> BDC
   BT
-    1 0 0 1 20 698.8 Tm
-    /F1 16 Tf
+    1 0 0 1 20 685.6 Tm
+    /F1 20 Tf
     (Subheading2) Tj
   ET
 EMC
@@ -213,89 +213,89 @@ endobj
 endobj
 
 16 0 obj
-<< /Length 1044 >> stream
+<< /Length 1055 >> stream
 /P << /MCID 0 >> BDC
   BT
-    1 0 0 1 20 712 Tm
-    /F1 20 Tf
+    1 0 0 1 20 703.2 Tm
+    /F1 24 Tf
     (Structured) Tj
   ET
   /Artifact BMC
     q
-      1 w
-      20 710 m
-      113.32 710 l
+      1.2 w
+      20 700.8 m
+      131.984 700.8 l
       S
     Q
   EMC
 EMC
 /P << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 668 Tm
+    1 0 0 1 20 650.4 Tm
     (heading1) Tj
   ET
   /Artifact BMC
     q
-      1 w
-      20 666 m
-      97.8 666 l
+      1.2 w
+      20 648 m
+      113.36 648 l
       S
     Q
   EMC
 EMC
 /H3 << /MCID 2 >> BDC
   BT
-    1 0 0 1 20 639.4 Tm
-    /F1 13 Tf
+    1 0 0 1 20 615.2 Tm
+    /F1 16 Tf
     (Heading3) Tj
   ET
 EMC
 /P << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 617.4 Tm
-    /F2 10 Tf
+    1 0 0 1 20 588.8 Tm
+    /F2 12 Tf
     (asdf) Tj
   ET
 EMC
 /H2 << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 582.2 Tm
-    /F1 16 Tf
+    1 0 0 1 20 544.8 Tm
+    /F1 20 Tf
     (Head2) Tj
   ET
 EMC
 /P << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 560.2 Tm
-    /F2 10 Tf
+    1 0 0 1 20 518.4 Tm
+    /F2 12 Tf
     (asdf) Tj
   ET
 EMC
 /H3 << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 531.6 Tm
-    /F1 13 Tf
+    1 0 0 1 20 483.2 Tm
+    /F1 16 Tf
     (Head3) Tj
   ET
 EMC
 /P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 509.6 Tm
-    /F2 10 Tf
+    1 0 0 1 20 456.8 Tm
+    /F2 12 Tf
     (asdf) Tj
   ET
 EMC
 /H4 << /MCID 8 >> BDC
   BT
-    1 0 0 1 20 484.3 Tm
-    /F1 11.5 Tf
+    1 0 0 1 20 426 Tm
+    /F1 14 Tf
     (Head4) Tj
   ET
 EMC
 /P << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 462.3 Tm
-    /F2 10 Tf
+    1 0 0 1 20 399.6 Tm
+    /F2 12 Tf
     (asdf) Tj
   ET
 EMC
@@ -537,52 +537,52 @@ xref
 0000000015 00000 n 
 0000000088 00000 n 
 0000000245 00000 n 
-0000000615 00000 n 
-0000000757 00000 n 
-0000001081 00000 n 
-0000001195 00000 n 
-0000001347 00000 n 
-0000001527 00000 n 
-0000001591 00000 n 
-0000002036 00000 n 
-0000002144 00000 n 
-0000002288 00000 n 
-0000002706 00000 n 
-0000002815 00000 n 
-0000002959 00000 n 
-0000004057 00000 n 
-0000004117 00000 n 
-0000004227 00000 n 
-0000004366 00000 n 
-0000004532 00000 n 
-0000004615 00000 n 
-0000004722 00000 n 
-0000004913 00000 n 
-0000005021 00000 n 
-0000005139 00000 n 
-0000005215 00000 n 
-0000005271 00000 n 
-0000005386 00000 n 
-0000005462 00000 n 
-0000005576 00000 n 
-0000005653 00000 n 
-0000005766 00000 n 
-0000005843 00000 n 
-0000005920 00000 n 
-0000006012 00000 n 
-0000006089 00000 n 
-0000006178 00000 n 
-0000006255 00000 n 
-0000006344 00000 n 
-0000006421 00000 n 
-0000006510 00000 n 
-0000006587 00000 n 
-0000006845 00000 n 
-0000006996 00000 n 
-0000007079 00000 n 
-0000007156 00000 n 
-0000007281 00000 n 
-0000007391 00000 n 
+0000000620 00000 n 
+0000000762 00000 n 
+0000001095 00000 n 
+0000001209 00000 n 
+0000001361 00000 n 
+0000001535 00000 n 
+0000001599 00000 n 
+0000002040 00000 n 
+0000002148 00000 n 
+0000002292 00000 n 
+0000002719 00000 n 
+0000002828 00000 n 
+0000002972 00000 n 
+0000004081 00000 n 
+0000004141 00000 n 
+0000004251 00000 n 
+0000004390 00000 n 
+0000004556 00000 n 
+0000004639 00000 n 
+0000004746 00000 n 
+0000004937 00000 n 
+0000005045 00000 n 
+0000005163 00000 n 
+0000005239 00000 n 
+0000005295 00000 n 
+0000005410 00000 n 
+0000005486 00000 n 
+0000005600 00000 n 
+0000005677 00000 n 
+0000005790 00000 n 
+0000005867 00000 n 
+0000005944 00000 n 
+0000006036 00000 n 
+0000006113 00000 n 
+0000006202 00000 n 
+0000006279 00000 n 
+0000006368 00000 n 
+0000006445 00000 n 
+0000006534 00000 n 
+0000006611 00000 n 
+0000006869 00000 n 
+0000007020 00000 n 
+0000007103 00000 n 
+0000007180 00000 n 
+0000007305 00000 n 
+0000007415 00000 n 
 trailer
 <<
   /ID [ (t/heading.t     ) (t/heading.t     ) ]
@@ -591,5 +591,5 @@ trailer
   /Size 50
 >>
 startxref
-7462
+7486
 %%EOF

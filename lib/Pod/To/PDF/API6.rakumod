@@ -96,7 +96,7 @@ method !tag($tag, &codez) {
 method !paginate($pdf) {
     my $page-count = $pdf.Pages.page-count;
     my $font = $pdf.core-font: "Helvetica";
-    my $font-size := 8;
+    my $font-size := 9;
     my $align := 'right';
     my $page-num;
     for $pdf.Pages.iterate-pages -> $page {
@@ -722,44 +722,45 @@ method print(Str $text, Bool :$nl, :$reflow = True, |c) {
     my $h = $tb.content-height;
     my Pair $pos = self!text-position();
     my $gfx = self!gfx;
-    my $orig-tag = $*tag;
-    temp $*tag;
-    if $.link {
-        use PDF::Content::Color :ColorName;
-        $gfx.Save;
-        $gfx.FillColor = color Blue;
-        self!link: $tb;
-        $*tag = $_ with $*tag.kids.tail;
-    }
 
-    self!mark: {
-        $gfx.print: $tb, |$pos, :$nl, |c;
-        self!underline: $tb
-            if $.underline;
-    }
-
-    $gfx.Restore if $.link;
-
-    if $nl {
-        # advance to next line
-        $!tx = $!margin;
-    }
-    else {
-        $!tx = $!margin if $tb.lines > 1;
-        # continue this line
-        with $tb.lines.pop {
-            $w = .content-width - .indent;
-            $!tx += $w;
+    {
+        temp $*tag;
+        if $.link {
+            use PDF::Content::Color :ColorName;
+            $gfx.Save;
+            $gfx.FillColor = color Blue;
+            self!link: $tb;
+            $*tag = $_ with $*tag.kids.tail;
         }
+
+        self!mark: {
+            $gfx.print: $tb, |$pos, :$nl, |c;
+            self!underline: $tb
+                if $.underline;
+        }
+
+        $gfx.Restore if $.link;
+
+        if $nl {
+            # advance to next line
+            $!tx = $!margin;
+        }
+        else {
+            $!tx = $!margin if $tb.lines > 1;
+            # continue this line
+            with $tb.lines.pop {
+                $w = .content-width - .indent;
+                $!tx += $w;
+            }
+        }
+        $!ty -= $tb.content-height;
+        $!last-chunk-height = $h;
     }
-    $!ty -= $tb.content-height;
-    $!last-chunk-height = $h;
 
     if $tb.overflow {
         my $in-code-block = $!code-start-y.defined;
         self!new-page;
         $!code-start-y = $!ty if $in-code-block;
-        $*tag = $orig-tag;
         self.print($tb.overflow.join, :$nl);
     }
 }
@@ -818,7 +819,7 @@ method !pod2dest($pod, Str :$name) {
 }
 
 method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True, :$!padding=2) {
-    my constant HeadingSizes = 24, 20, 16, 13, 11.5, 10, 10;
+    my constant HeadingSizes = 28, 24, 20, 16, 14, 12, 12;
     my $font-size = HeadingSizes[$level];
     my Bool $bold   = $level <= 4;
     my Bool $italic;
