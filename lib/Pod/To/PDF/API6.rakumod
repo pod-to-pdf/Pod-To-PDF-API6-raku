@@ -706,7 +706,8 @@ method !text-box(
     :$width  = self!gfx.canvas.width - self!indent - $!margin,
     :$height = self!height-remaining,
     |c) {
-    PDF::Content::Text::Box.new: :$text, :indent($!tx - $!margin), :$.leading, :$.font, :$.font-size, :$width, :$height, :$.verbatim, |c;
+    my Bool $kern = !$.mono;
+    PDF::Content::Text::Box.new: :$text, :indent($!tx - $!margin), :$.leading, :$.font, :$.font-size, :$width, :$height, :$.verbatim, :$kern, |c;
 }
 
 method !pad-here {
@@ -821,7 +822,7 @@ method !pod2dest($pod, Str :$name) {
 method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True, :$!padding=2) {
     my constant HeadingSizes = 28, 24, 20, 16, 14, 12, 12;
     my $font-size = HeadingSizes[$level];
-    my Bool $bold   = $level <= 4;
+    my Bool $bold = $level <= 4;
     my Bool $italic;
     my $lines-before = $.lines-before;
 
@@ -1242,6 +1243,8 @@ It out-performs it content tagging, with better handling  foot-notes and artifac
 However
 
 =item Both C<Pod::To::PDF> and C<Pod::To::PDF::Lite> modules currently render faster than this module (by about 2x).
+
+=item `Pod::To::PDF` uses HarfBuzz for modern font shaping and placement. This module can only do basic horizontal kerning.
 
 =item This module doesn't yet incorporate the experimental C<HarfBuzz::Subset> module, resulting in large PDF sizes due to full font embedding.
 

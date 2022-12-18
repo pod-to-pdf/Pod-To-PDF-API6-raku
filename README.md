@@ -109,6 +109,8 @@ However
 
   * Both `Pod::To::PDF` and `Pod::To::PDF::Lite` modules currently render faster than this module (by about 2x).
 
+  * `Pod::To::PDF` uses HarfBuzz for modern font shaping and placement. This module can only do basic horizontal kerning.
+
   * This module doesn't yet incorporate the experimental `HarfBuzz::Subset` module, resulting in large PDF sizes due to full font embedding.
 
   * [PDF::Lite](https://github.com/pod-to-pdf/PDF-Lite-raku), also includes the somewhat experimental `PDF::Lite::Async`, which has the ability to render large multi-page documents in parallel.
