@@ -735,25 +735,17 @@ method print(Str $text, Bool :$nl, :$reflow = True, |c) {
         }
 
         self!mark: {
-            $gfx.print: $tb, |$pos, :$nl, |c;
+            $gfx.text: {
+                .print: $tb, |$pos, :$nl, |c;
+                $!tx = $nl ?? $!margin !! .text-position[0] - 10 * $!indent;
+            }
             self!underline: $tb
                 if $.underline;
         }
 
         $gfx.Restore if $.link;
 
-        if $nl {
-            # advance to next line
-            $!tx = $!margin;
-        }
-        else {
-            $!tx = $!margin if $tb.lines > 1;
-            # continue this line
-            with $tb.lines.pop {
-                $w = .content-width - .indent;
-                $!tx += $w;
-            }
-        }
+        $tb.lines.pop unless $nl;
         $!ty -= $tb.content-height;
         $!last-chunk-height = $h;
     }
