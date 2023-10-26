@@ -737,7 +737,10 @@ method print(Str $text, Bool :$nl, :$reflow = True, |c) {
         self!mark: {
             $gfx.text: {
                 .print: $tb, |$pos, :$nl, |c;
-                $!tx = $nl ?? $!margin !! .text-position[0] - 10 * $!indent;
+                $!tx = $!margin;
+                $!tx += .text-position[0] - self!indent
+                    unless $nl;
+
             }
             self!underline: $tb
                 if $.underline;
@@ -827,7 +830,7 @@ method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <=
 
     $pod .= &strip-para;
 
-    my $tag = 'H' ~ ($level||1);
+    my $tag = $level ?? 'H' ~ $level !! 'Title';
     self!style: :$tag, :$font-size, :$bold, :$italic, :$underline, :$lines-before, {
 
         my Str $Title = $.pod2text-inline($pod);
