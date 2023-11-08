@@ -6,7 +6,7 @@ use PDF::API6;
 use PDF::Tags;
 plan 1;
 
-my $xml = q{<Document>
+my $xml = q{<Document Lang="en">
   <P>
     asdf
   </P>
@@ -163,8 +163,7 @@ my $xml = q{<Document>
         <TD>
           C C
         </TD>
-        <TD>
-        </TD>
+        <TD></TD>
       </TR>
       <TR>
         <TD>

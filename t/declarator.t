@@ -7,7 +7,7 @@ use PDF::API6;
 
 plan 1;
 
-my $xml = q{<Document>
+my $xml = q{<Document Lang="en">
   <H2>
     Class Magician
   </H2>

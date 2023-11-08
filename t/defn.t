@@ -10,7 +10,7 @@ my PDF::API6 $pdf = pod2pdf($=pod);
 $pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
 lives-ok {$pdf.save-as: "t/defn.pdf", :!info}
 
-my $xml = q{<Document>
+my $xml = q{<Document Lang="en">
   <H2>
     pod2pdf() Options
   </H2>
@@ -35,7 +35,7 @@ subtest 'document structure', {
     # PDF::Class is an indirect dependency of PDF::Tags::Reader
     require ::('PDF::Class');
     my $pdf  = ::('PDF::Class').open: "t/defn.pdf";
-    my $tags = ::('PDF::Tags::Reader').read: :$pdf;
+    my $tags = ::('PDF::Tags::Reader').read: :$pdf, :quiet;
     is $tags[0].Str, $xml, 'PDF Structure is correct';
 }
 

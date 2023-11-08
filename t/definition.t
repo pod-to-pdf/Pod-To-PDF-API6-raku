@@ -6,7 +6,7 @@ use PDF::API6;
 
 plan 1;
 
-my $xml = q{<Document>
+my $xml = q{<Document Lang="en">
   <H2>
     Module Asdf1
   </H2>
