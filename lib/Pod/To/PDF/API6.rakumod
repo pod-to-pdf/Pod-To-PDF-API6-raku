@@ -115,6 +115,7 @@ method read($pod, :$*tag is copy = self.root) {
     self!finish-page;
     self!paginate($!pdf)
         if $!page-numbers;
+    .Lang = self.lang with $!root;
 }
 
 method pdf {
