@@ -737,7 +737,7 @@ method print(Str $text, Bool :$nl, :$reflow = True, |c) {
 
         self!mark: {
             $gfx.text: {
-                .print: $tb, |$pos, :$nl, |c;
+                .print: $tb, |$pos, :$nl, :shape, |c;
                 $!tx = $!margin;
                 $!tx += .text-position[0] - self!indent
                     unless $nl;
@@ -1052,7 +1052,7 @@ method !finish-page {
         while @!footnotes {
             $!padding = 1;
             my $footnote = @!footnotes.shift;
-            my $destination = @!footnotes-back.shift;
+            my DestRef $destination = @!footnotes-back.shift;
             temp $*tag = @!footnotes-tag.shift;
             self!style: :tag(Note), {
                 my PDF::Action $link = $!pdf.action: :$destination;
