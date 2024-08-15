@@ -73,12 +73,12 @@ The page margin in points (default 20).
 
 By default, Pod::To::PDF::API6 uses core fonts. This option can be used to preload selected fonts.
 
-Note: [PDF::Font::Loader](PDF::Font::Loader) must be installed, to use this option.
+Note: [PDF::Font::Loader::HarfBuzz](https://pdf-raku.github.io/PDF-Font-Loader-HarfBuzz-raku/) must be installed, to use this option.
 
 ```raku
 use PDF::API6;
 use Pod::To::PDF::API6;
-need PDF::Font::Loader; # needed to enable this option
+need PDF::Font::Loader::HarfBuzz; # needed to enable this option
 
 my @fonts = (
     %(:file<fonts/Raku.ttf>),
