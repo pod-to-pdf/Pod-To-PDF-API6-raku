@@ -36,6 +36,16 @@ my PDF::API6 $pdf = pod2pdf($=pod);
 $pdf.save-as: "foobar.pdf";
 ```
 
+Async Mode
+---------
+
+Even more experimental is Async mode, for faster parallel processing of larger documents:
+
+    $ raku --doc=PDF::API6::Async lib/to/class.rakumod --save-as=class.pdf
+
+To see a useful speed-up, he document needs to contain multiple sections, each starting with level-1 headers,
+on a new page. 
+
 Exports
 -------
 
