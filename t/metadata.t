@@ -8,7 +8,7 @@ plan 5;
 
 my PDF::API6 $pdf .= new;
 my %replace = :where<POD>;
-my Pod::To::PDF::API6 $pod .= new(:$=pod, :$pdf, :metadata{ :title<Title as option> }, :%replace);
+my Pod::To::PDF::API6 $pod .= new(:$=pod, :$pdf, :metadata{ :title("Title as option") }, :%replace);
 
 is $pod.metadata('title'), 'Title as option';
 is $pod.metadata('subtitle'), 'Subtitle from POD';
