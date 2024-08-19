@@ -12,7 +12,7 @@ level-1 header (`=head1`), which begins a new page.
 
 =end pod
 
-has $.complexity = 8000; # typically gives us chunks of around 10-15 pages
+has $.complexity = 5000; # typically gives us chunks of around 10-15 pages
 has $!idx = 0;
 has Iterator $.pod is required;
 has Pod::Heading $!next;

@@ -49,12 +49,12 @@ method !paginate($pdf) {
 method read-batch($pod, PDF::Content::PageTree:D $pages, $frag, |c) is hidden-from-backtrace {
     $pages.media-box = 0, 0, $!width, $!height;
     my $finish = ! $!page-numbers;
-    my @toc;
     my @index;
     my Pod::To::PDF::API6::Writer $writer .= new: :%!font-map, :$pages, :$finish, :$!tag, :$!pdf, :%!replace, |c;
     $writer.write($pod, $frag);
     my Hash:D $meta = $writer.metadata;
     my Hash:D $index = $writer.index;
+    my @toc = $writer.toc;
 
     %( :@toc, :$index, :$frag, :$meta);
 }

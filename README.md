@@ -52,12 +52,6 @@ Exports
     class Pod::To::PDF::API6;
     sub pod2pdf; # See below
 
-From command line:
-
-```shell
-$ raku --doc=PDF::API6 lib/class.rakumod --save-as=class.pdf
-```
-
 Subroutines
 -----------
 
@@ -113,17 +107,9 @@ See Also
 
 `Pod::To::PDF::API6` is on a near equal footing to [Pod::To::PDF](https://github.com/pod-to-pdf/Pod-To-PDF-raku), with regard to general rendering, handling of internal and external links, table-of-contents, footnotes and indexing.
 
-It out-performs it content tagging, with better handling foot-notes and artifacts.
+The experimental Pod::To::PDF::API6::Async will render faster for larger documents, at the expense of using more CPU cores
+and memory.
 
-However
-
-  * Both `Pod::To::PDF` and `Pod::To::PDF::Lite` modules currently render faster than this module (by about 2x).
-
-  * `Pod::To::PDF` uses HarfBuzz for modern font shaping and placement. This module can only do basic horizontal kerning.
-
-  * This module doesn't yet incorporate the experimental `HarfBuzz::Subset` module, resulting in large PDF sizes due to full font embedding.
-
-  * [PDF::Lite](https://github.com/pod-to-pdf/PDF-Lite-raku), also includes the somewhat experimental `PDF::Lite::Async`, which has the ability to render large multi-page documents in parallel.
-
-For these reasons [Pod::To::PDF](https://github.com/pod-to-pdf/Pod-To-PDF-raku) is the currently recommended module for Pod to PDF rendering.
+The `Pod::To::PDF::Lite` module currently renders faster than this module (by about 2x). However it isn't doing links,
+table of contents, or accessibility tagging.
 
