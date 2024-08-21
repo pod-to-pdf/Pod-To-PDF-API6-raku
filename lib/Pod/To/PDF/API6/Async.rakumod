@@ -14,14 +14,16 @@ method read(@pod, |c) {
         ($pod, PDF::Content::PageTree.pages-fragment, $.tags.fragment);
     }
     my @results;
+    my Lock $lock .= new;
 
     if +@batches == 1 {
         # avoid creating sub-trees
          @results[0] = self.read-batch: @pod, $.pdf.Pages, |c;
     }
     else {
-        @results = @batches.hyper(:batch(1)).map: {
-            self.read-batch: |$_, |c;
+        @batches.pairs.race(:batch(1)).map: {
+            my $result = self.read-batch: |.value, |c;
+            $lock.protect: { @results[.key] = $result };
         }
         $.pdf.add-pages(.[1]) for @batches;
     }
