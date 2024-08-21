@@ -401,23 +401,23 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             # invisable
         }
         when 'X' {
-            my $term = $.pod2text-inline($pod.contents);
-            my Str $name = self!gen-dest-name('index-' ~ $term)
-                if $term;
+            if $.pod2text-inline($pod.contents) -> $term {
+                my Str $name = dest-name($term);
 
-            my DestRef $dest = self!pod2dest($pod.contents, :$name);
-            my PDF::StructElem $SE = $*tag.cos;
-            my %ref = %{ :$dest, :$SE  };
+                my DestRef $dest = self!pod2dest($pod.contents, :$name);
+                my PDF::StructElem $SE = $*tag.cos;
+                my %ref = %{ :$dest, :$SE  };
 
-            if $pod.meta -> $meta {
-                for $meta.List {
-                    my $idx = %!index{.head} //= %();
-                    $idx = $idx{$_} //= %() for .skip;
-                    $idx<#refs>.push: %ref;
+                if $pod.meta -> $meta {
+                    for $meta.List {
+                        my $idx = %!index{.head} //= %();
+                        $idx = $idx{$_} //= %() for .skip;
+                        $idx<#refs>.push: %ref;
+                    }
                 }
-            }
-            elsif $term {
-                %!index{$term}<#refs>.push: %ref;
+                else {
+                    %!index{$term}<#refs>.push: %ref;
+                }
             }
             # otherwise X<|> ?
         }
@@ -736,7 +736,7 @@ method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <=
 
         if $!contents && $toc {
             # Register in table of contents
-            my $name = self!gen-dest-name($Title);
+            my $name = dest-name($Title);
             my DestRef $dest = self!pod2dest($pod, :$name);
             my PDF::StructElem $SE = $*tag.cos;
             self.add-toc-entry: { :$Title, :$dest, :$SE  }, :$level;
@@ -756,26 +756,14 @@ multi sub strip-para(Pod::Block::Para $_) {
 }
 multi sub strip-para($_) { $_ }
 
-has UInt %!dest-used;
-method !gen-dest-name($title, $seq = '') {
-    my $name = dest-name($title ~ $seq);
-    if %!dest-used{$name}++ {
-        self!gen-dest-name($title, ($seq||0) + 1);
-    }
-    else {
-        $name;
-    }
-}
-
 method !make-dest(
     :$fit = FitXYZoom,
-    :$page = $!page,
     :$left is copy = $!tx - hpad,
     :$top  is copy  = $!ty + $.line-height + vpad,
     |c,
 ) {
     ($left, $top) = $!gfx.base-coords: $left, $top;
-    $!pdf.destination: :$page, :$fit, :$left, :$top, |c;
+    $!pdf.destination: :$!page, :$fit, :$left, :$top, |c;
 }
 
 method !finish-code {
