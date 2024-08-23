@@ -3,7 +3,6 @@ unit role Pod::To::PDF::API6::Podish;
 my subset Level is export(:Level) of Int:D  where 0..6;
 my subset PodMetaType of Str where 'title'|'subtitle'|'author'|'name'|'version';
 
-
 has @.toc; # table of contents
 has Str %!metadata;
 

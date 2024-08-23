@@ -50,7 +50,7 @@ method read-batch($pod, PDF::Content::PageTree:D $pages, $frag, |c) is hidden-fr
     $pages.media-box = 0, 0, $!width, $!height;
     my $finish = ! $!page-numbers;
     my @index;
-    my Pod::To::PDF::API6::Writer $writer .= new: :%!font-map, :$pages, :$finish, :$!tag, :$!pdf, :%!replace, |c;
+    my Pod::To::PDF::API6::Writer $writer .= new: :%!font-map, :$pages, :$finish, :$!tag, :$!pdf, :$!margin, :%!replace, :$!contents, |c;
     $writer.write($pod, $frag);
     my Hash:D $meta = $writer.metadata;
     my Hash:D $index = $writer.index;

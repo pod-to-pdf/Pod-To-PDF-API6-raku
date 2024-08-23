@@ -24,14 +24,13 @@ use IETF::RFC_Grammar::URI;
 my constant Gutter = 3;
 
 has PDF::API6:D $.pdf is required;
-has Numeric $.width  = 612;
-has Numeric $.height = 792;
-has Numeric $.margin = 20;
-has Bool $.contents = True;
-has %.index;
+has Numeric $.margin  is required;
+has Bool $.contents   is required;
+has %.replace is required;
+has PDF::Content::FontObj %.font-map is required;
+has PDF::Content::PageTree:D $.pages is required;
 
-has %.replace;
-has PDF::Content::FontObj %.font-map;
+has %.index;
 
 ### Accessibilty
 has Bool $.tag;
@@ -39,7 +38,6 @@ has PDF::Tags::Elem @!tags;
 has PDF::Tags::Elem @!footnotes-tag;
 
 ### Paging/Footnotes ###
-has PDF::Content::PageTree:D $.pages is required;
 has PDF::Page $!page;
 has PDF::Content $!gfx;
 has DestRef $!gutter-link;    # forward link to footnote area
@@ -258,8 +256,8 @@ multi method pod2pdf(Pod::Block::Named $pod) {
                 }
             }
             when 'TITLE'|'SUBTITLE' {
-                my $toc = $_ eq 'TITLE';
-                $!level = $_ eq 'TITLE' ?? 0 !! 2;
+                my Bool $toc = $_ eq 'TITLE';
+                $!level = $toc ?? 0 !! 2;
                 self.metadata(.lc) ||= $.pod2text-inline($pod.contents);
                 self!heading($pod.contents, :$toc, :padding(1));
             }
@@ -615,8 +613,9 @@ method !text-box(
     :$width  = self!gfx.canvas.width - self!indent - $!margin,
     :$height = self!height-remaining,
     |c) {
+    my $indent = $!tx - $!margin;
     my Bool $kern = !$.mono;
-    PDF::Content::Text::Box.new: :$text, :indent($!tx - $!margin), :$.leading, :$.font, :$.font-size, :$width, :$height, :$.verbatim, :$kern, |c;
+    PDF::Content::Text::Box.new: :$text, :$indent, :$.leading, :$.font, :$.font-size, :$width, :$height, :$.verbatim, :$kern, |c;
 }
 
 method !pad-here {
