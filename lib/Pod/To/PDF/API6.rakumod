@@ -10,6 +10,7 @@ use PDF::Tags::Node;
 use PDF::Content;
 use Pod::To::PDF::API6::Style;
 use Pod::To::PDF::API6::Writer;
+use CSS::TagSet::TaggedPDF;
 use File::Temp;
 # PDF::Class
 use PDF::Action;
@@ -17,7 +18,8 @@ use PDF::StructElem;
 
 ### Attributes ###
 has PDF::API6 $.pdf .= new;
-has PDF::Tags $.tags .= create: :$!pdf;
+has CSS::TagSet::TaggedPDF $.styler .= new;
+has PDF::Tags $.tags .= create: :$!pdf, :$!styler;
 has PDF::Tags::Elem $.root = $!tags.Document;
 has PDF::Content::FontObj %.font-map;
 has Numeric $.width  = 612;

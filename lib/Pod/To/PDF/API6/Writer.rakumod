@@ -17,6 +17,8 @@ use PDF::Annot::Link;
 use PDF::Destination :Fit, :DestRef;
 use PDF::Tags::Elem;
 use PDF::Tags::Node;
+use CSS::Properties;
+use CSS::TagSet::TaggedPDF;
 
 use URI;
 use IETF::RFC_Grammar::URI;
@@ -45,7 +47,7 @@ has @!footnotes;
 has DestRef @!footnotes-back; # per-footnote return links
 
 ### Rendering State ###
-has Pod::To::PDF::API6::Style $.style handles<font-size leading line-height bold italic mono underline lines-before link verbatim> .= new;
+has Pod::To::PDF::API6::Style $.styler handles<font-size leading line-height bold italic mono underline lines-before link verbatim>;
 has $!tx = $!margin; # text-flow x
 has $!ty; # text-flow y
 has UInt $!indent = 0;
@@ -73,6 +75,8 @@ has $.linker = DefaultLinker;
 
 method write($pod, $*root) {
     my $*tag = $*root;
+    my $style = $*tag.style;
+    $!styler .= new: :$style;
     self.pod2pdf($pod);
     self!finish-page;
 }
@@ -144,14 +148,14 @@ method !table-row(@row, @widths, Bool :$header) {
         my $tab = self!indent;
         my $row-height = 0;
         my $height = $!ty - $!margin;
-        my $name = $header ?? TableHeader !! TableData;
         my $head-space = $.line-height - $.font-size;
 
         for ^cols {
-            my $width = @widths[$_];
-            temp $*tag = $*tag[$_] // $*tag.add-kid: :$name;
+            my Numeric $width = @widths[$_];
+            my Pair $row = @row[$_];
 
-            if @row[$_] -> $tb is rw {
+            if $row.value -> $tb is copy {
+                my $*tag = $row.key;
                 if $tb.width > $width || $tb.height > $height {
                     $tb .= clone: :$width, :$height;
                 }
@@ -196,45 +200,58 @@ method !build-table($pod, @table) {
     my \total-width = self!gfx.canvas.width - $x0 - $!margin;
     @table = ();
 
-    self!style: :bold, :lines-before(3), {
-        my @row = $pod.headers.map: { self!table-cell($_) }
-        @table.push: @row;
+    if $pod.headers {
+        self!style: :bold, :lines-before(3), {
+            temp $*tag .= TableHead;
+            $*tag .= TableRow;
+            my @row = $pod.headers.map: {
+                temp $*tag .= add-kid: :name(TableHeader);
+                $*tag => self!table-cell($_)
+            }
+            @table.push: @row;
+        }
     }
+
+    temp $*tag .= TableBody;
 
     $pod.contents.map: {
-        my @row = .map: { self!table-cell($_) }
+        temp $*tag .= TableRow;
+        my @row = .map: {
+            temp $*tag .= add-kid: :name(TableData);
+            $*tag => self!table-cell($_);
+        }
         @table.push: @row;
     }
 
-    my $cols = @table.max: *.Int;
-    my @widths = (^$cols).map: -> $col { @table.map({.[$col].?width // 0}).max };
-   fit-widths(total-width - hpad * (@widths-1), @widths);
+    my $cols = @table.max: *.elems;
+    my Numeric @widths = (^$cols).map: -> $col {
+        @table.map({
+            do with .[$col] { with .value { .width }  } // 0
+        }).max
+    };
+    fit-widths(total-width - hpad * (@widths-1), @widths);
 }
 
 multi method pod2pdf(Pod::Block::Table $pod) {
-    my @widths = self!build-table: $pod, my @table;
 
     self!style: :lines-before(3), :pad, {
         temp $*tag .= Table;
         if $pod.caption -> $caption {
-            self!style: :tag(Caption), :italic, {
+            self!style: :tag(Caption), {
                 $.say: $caption;
             }
         }
+        my @widths = self!build-table: $pod, my @table;
         self!pad-here;
-        my PDF::Content::Text::Box @headers = @table.shift.List;
+        my Pair @headers = @table.shift.List;
         if @headers {
-            temp $*tag .= TableHead;
-            $*tag .= TableRow;
             self!table-row: @headers, @widths, :header;
         }
 
         if @table {
-            temp $*tag .= TableBody;
             for @table {
                 my @row = .List;
                 if @row {
-                    temp $*tag .= TableRow;
                     self!table-row: @row, @widths;
                 }
             }
@@ -379,7 +396,8 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             @!footnotes-tag.push: $*tag;
             do {
                 # pre-compute footnote size
-                temp $!style .= new;
+                my $style = $*tag.style;
+                temp $!styler .= new: :$style;
                 temp $!tx = $!margin;
                 temp $!ty = $!page.height;
                 temp $!indent = 0;
@@ -603,7 +621,7 @@ multi method say(Str $text, |c) {
     @.print($text, :nl, |c);
 }
 
-method font { $!style.font: :%!font-map }
+method font { $!styler.font: :%!font-map }
 
 multi method pad { $!padding=2 }
 multi method pad(&codez) { $.pad; &codez(); $.pad}
@@ -689,12 +707,13 @@ method !mark(&action, |c) {
 }
 
 method !style(&codez, Int :$indent, Str :tag($name) is copy, Bool :$pad, |c) {
-    temp $!style .= clone: |c;
     temp $!indent;
     temp $*tag;
     if $name.defined {
         $*tag .= add-kid: :$name;
     }
+    my $style = $*tag.style;
+    temp $!styler .= new: :$style, |c;
     $!indent += $indent if $indent;
     $pad ?? $.pad(&codez) !! &codez();
 }
@@ -891,7 +910,7 @@ method !finish-page {
     self!finish-code
         if $!code-start-y;
     if @!footnotes {
-        temp $!style .= new: :lines-before(0); # avoid current styling
+        temp $!styler .= new: :lines-before(0); # avoid current styling
         temp $!indent = 0;
         $!tx = $!margin;
         $!ty = self!bottom;

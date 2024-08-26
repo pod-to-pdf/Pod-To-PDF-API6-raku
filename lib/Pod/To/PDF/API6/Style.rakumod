@@ -4,17 +4,21 @@ unit class Pod::To::PDF::API6::Style;
 use PDF::Content::Font::CoreFont;
 use PDF::Content::FontObj;
 use PDF::Action;
+use CSS::Properties;
 
-has Bool $.bold;
-has Bool $.italic;
-has Bool $.underline;
-has Bool $.mono;
-has Bool $.verbatim;
-has Numeric $.font-size = 12;
+has CSS::Properties $.style .= new;
+has Numeric $.font-size = $!style.measure(:font-size);
+has Bool $.bold      = $!style.measure(:font-weight) >= 600;
+has Bool $.italic    = $!style.font-style eq 'italic';
+has Bool $.underline = $!style.text-decoration eq 'underline';
+has Bool $.mono      = $!style.font-family ~~ 'monospace';
+has Bool $.verbatim  = $!style.white-space eq 'pre';
 has UInt $.lines-before = 1;
 has PDF::Action $.link;
 has PDF::Content::FontObj $.font;
 
+submethod TWEAK {
+}
 method leading { 1.1 }
 method line-height {
     $.leading * $!font-size;
@@ -36,7 +40,7 @@ method font-key {
     );
 }
 
-method clone { nextwith :font(PDF::Content::FontObj), |%_; }
+method clone { warn %_.raku; nextwith :font(PDF::Content::FontObj), |%_; }
 
 method font(:%font-map) {
     $!font //= do {
