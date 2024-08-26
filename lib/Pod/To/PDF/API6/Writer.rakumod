@@ -201,7 +201,7 @@ method !build-table($pod, @table) {
     @table = ();
 
     if $pod.headers {
-        self!style: :bold, :lines-before(3), {
+        self!style: :lines-before(3), {
             temp $*tag .= TableHead;
             $*tag .= TableRow;
             my @row = $pod.headers.map: {
@@ -210,6 +210,9 @@ method !build-table($pod, @table) {
             }
             @table.push: @row;
         }
+    }
+    else {
+        @table.push: [];
     }
 
     temp $*tag .= TableBody;
@@ -356,13 +359,12 @@ method !replace(Pod::FormattingCode $pod where .type eq 'R', &continue) {
 multi method pod2pdf(Pod::FormattingCode $pod) {
     given $pod.type {
         when 'B' {
-            self!style: :bold, {
+            self!style: :tag(Strong), {
                 $.pod2pdf($pod.contents);
             }
         }
         when 'C' {
-            my $font-size = $.font-size * .85;
-            self!style: :tag(CODE), :mono, :$font-size, {
+            self!style: :tag(CODE), {
                 $.print: $.pod2text($pod);
             }
         }
@@ -377,7 +379,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'I' {
-            self!style: :italic, {
+            self!style: :tag(Emphasis), {
                 $.pod2pdf($pod.contents);
             }
         }
@@ -467,7 +469,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
 
 multi method pod2pdf(Pod::Defn $pod) {
     self!tag: Paragraph, {
-        self!style: :bold, :tag(Quotation), {
+        self!style: :tag(Quotation), {
             $.pod2pdf($pod.term);
         }
     }
@@ -730,23 +732,18 @@ method !pod2dest($pod, Str :$name) {
 }
 
 method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True, :$!padding=2) {
-    my constant HeadingSizes = 28, 24, 20, 16, 14, 12, 12;
-    my $font-size = HeadingSizes[$level];
-    my Bool $bold = $level <= 4;
-    my Bool $italic;
     my $lines-before = $.lines-before;
 
     given $level {
         when 0|1 { self!new-page; }
         when 2   { $lines-before = 3; }
         when 3   { $lines-before = 2; }
-        when 5   { $italic = True; }
     }
 
     $pod .= &strip-para;
 
     my $tag = $level ?? 'H' ~ $level !! 'Title';
-    self!style: :$tag, :$font-size, :$bold, :$italic, :$underline, :$lines-before, {
+    self!style: :$tag, :$underline, :$lines-before, {
 
         my Str $Title = $.pod2text-inline($pod);
         $*tag.cos.title = $Title;
@@ -806,11 +803,10 @@ method !finish-code {
 
 method !code(@contents is copy) {
     @contents.pop if @contents.tail ~~ "\n";
-    my $font-size = $.font-size * .85;
 
     self!gfx;
 
-    self!style: :mono, :indent, :tag(CODE), :$font-size, :lines-before(0), :pad, :verbatim, {
+    self!style: :indent, :tag(CODE), :lines-before(0), :pad, {
 
         self!pad-here;
 

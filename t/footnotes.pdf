@@ -6,7 +6,7 @@
   /Lang (en)
   /MarkInfo << /Marked true >>
   /Pages 2 0 R
-  /StructTreeRoot 10 0 R
+  /StructTreeRoot 11 0 R
 >>
 endobj
 
@@ -20,7 +20,7 @@ endobj
   /Annots [ 4 0 R 6 0 R ]
   /Contents 8 0 R
   /Parent 2 0 R
-  /Resources << /Font << /F1 9 0 R >> >>
+  /Resources << /Font << /F1 9 0 R /F2 10 0 R >> >>
   /StructParents 0
 >>
 endobj
@@ -33,7 +33,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents ([1])
   /P 3 0 R
-  /Rect [ 82.332 752.8 100.324 768 ]
+  /Rect [ 82.332 752.8 101.668 768 ]
   /StructParent 1
 >>
 endobj
@@ -50,17 +50,17 @@ endobj
   /Border [ 0 0 0 ]
   /Contents ([1])
   /P 3 0 R
-  /Rect [ 18 30 35.992 45.2 ]
+  /Rect [ 18 30 37.336 45.2 ]
   /StructParent 2
 >>
 endobj
 
 7 0 obj
-<< /Type /Action /S /GoTo /D [ 3 0 R /XYZ 88.324 771.2 null ] >>
+<< /Type /Action /S /GoTo /D [ 3 0 R /XYZ 89.668 771.2 null ] >>
 endobj
 
 8 0 obj
-<< /Length 567 >> stream
+<< /Length 599 >> stream
 /P << /MCID 0 >> BDC
   BT
     1 0 0 1 20 756 Tm
@@ -73,6 +73,7 @@ q
   /Link << /MCID 1 >> BDC
     BT
       1 0 0 1 20 756 Tm
+      /F2 12 Tf
       [ -5361 ([1]) ] TJ
     ET
   EMC
@@ -80,7 +81,7 @@ Q
 /P << /MCID 2 >> BDC
   BT
     1 0 0 1 20 756 Tm
-    [ -6527 ( footnotes.) ] TJ
+    [ -6639 ( footnotes.) ] TJ
   ET
 EMC
 q
@@ -94,6 +95,7 @@ q
   /Link << /MCID 3 >> BDC
     BT
       1 0 0 1 20 33.2 Tm
+      /F2 12 Tf
       ([1]) Tj
     ET
   EMC
@@ -101,7 +103,7 @@ Q
 /P << /MCID 4 >> BDC
   BT
     1 0 0 1 20 33.2 Tm
-    [ -1333 (if you click, here, you should got back to the paragraph) ] TJ
+    [ -1445 (if you click, here, you should got back to the paragraph) ] TJ
   ET
 EMC
 endstream
@@ -118,89 +120,99 @@ endobj
 
 10 0 obj
 <<
-  /Type /StructTreeRoot
-  /K [ 11 0 R ]
-  /ParentTree <<
-    /Nums [ 0 [ 12 0 R 16 0 R 12 0 R 20 0 R 22 0 R ] 1 16 0 R 2 20 0 R ]
-  >>
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Times-Italic
+  /Encoding /WinAnsiEncoding
 >>
 endobj
 
 11 0 obj
-<< /Type /StructElem /S /Document /K [ 12 0 R ] /Lang (en) /P 10 0 R >>
+<<
+  /Type /StructTreeRoot
+  /K [ 12 0 R ]
+  /ParentTree <<
+    /Nums [ 0 [ 13 0 R 17 0 R 13 0 R 21 0 R 23 0 R ] 1 17 0 R 2 21 0 R ]
+  >>
+>>
 endobj
 
 12 0 obj
-<< /Type /StructElem /S /P /K [ 0 13 0 R 2 ] /P 11 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /Document /K [ 13 0 R ] /Lang (en) /P 11 0 R >>
 endobj
 
 13 0 obj
-<< /Type /StructElem /S /Span /K [ 14 0 R 18 0 R ] /P 12 0 R >>
+<< /Type /StructElem /S /P /K [ 0 14 0 R 2 ] /P 12 0 R /Pg 3 0 R >>
 endobj
 
 14 0 obj
-<< /Type /StructElem /S /Reference /K [ 15 0 R ] /P 13 0 R >>
+<< /Type /StructElem /S /Span /K [ 15 0 R 19 0 R ] /P 13 0 R >>
 endobj
 
 15 0 obj
-<< /Type /StructElem /S /Lbl /K [ 16 0 R ] /P 14 0 R >>
+<< /Type /StructElem /S /Reference /K [ 16 0 R ] /P 14 0 R >>
 endobj
 
 16 0 obj
-<< /Type /StructElem /S /Link /K [ 17 0 R 1 ] /P 15 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 17 0 R ] /P 15 0 R >>
 endobj
 
 17 0 obj
-<< /Type /OBJR /Obj 4 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /Link /K [ 18 0 R 1 ] /P 16 0 R >>
 endobj
 
 18 0 obj
-<< /Type /StructElem /S /Note /K [ 19 0 R 22 0 R ] /P 13 0 R >>
+<< /Type /OBJR /Obj 4 0 R /Pg 3 0 R >>
 endobj
 
 19 0 obj
-<< /Type /StructElem /S /Lbl /K [ 20 0 R ] /P 18 0 R >>
+<< /Type /StructElem /S /Note /K [ 20 0 R 23 0 R ] /P 14 0 R >>
 endobj
 
 20 0 obj
-<< /Type /StructElem /S /Link /K [ 21 0 R 3 ] /P 19 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 21 0 R ] /P 19 0 R >>
 endobj
 
 21 0 obj
-<< /Type /OBJR /Obj 6 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /Link /K [ 22 0 R 3 ] /P 20 0 R >>
 endobj
 
 22 0 obj
-<< /Type /StructElem /S /P /K [ 4 ] /P 18 0 R >>
+<< /Type /OBJR /Obj 6 0 R /Pg 3 0 R >>
+endobj
+
+23 0 obj
+<< /Type /StructElem /S /P /K [ 4 ] /P 19 0 R >>
 endobj
 
 xref
-0 23
+0 24
 0000000000 65535 f 
 0000000015 00000 n 
 0000000138 00000 n 
 0000000224 00000 n 
-0000000380 00000 n 
-0000000549 00000 n 
-0000000622 00000 n 
-0000000784 00000 n 
-0000000865 00000 n 
-0000001484 00000 n 
-0000001592 00000 n 
-0000001750 00000 n 
-0000001839 00000 n 
-0000001924 00000 n 
-0000002005 00000 n 
-0000002084 00000 n 
-0000002157 00000 n 
-0000002233 00000 n 
-0000002289 00000 n 
-0000002370 00000 n 
-0000002443 00000 n 
-0000002519 00000 n 
-0000002575 00000 n 
+0000000391 00000 n 
+0000000560 00000 n 
+0000000633 00000 n 
+0000000795 00000 n 
+0000000876 00000 n 
+0000001527 00000 n 
+0000001635 00000 n 
+0000001745 00000 n 
+0000001903 00000 n 
+0000001992 00000 n 
+0000002077 00000 n 
+0000002158 00000 n 
+0000002237 00000 n 
+0000002310 00000 n 
+0000002386 00000 n 
+0000002442 00000 n 
+0000002523 00000 n 
+0000002596 00000 n 
+0000002672 00000 n 
+0000002728 00000 n 
 trailer
-<< /ID [ (t/footnotes.t   ) (t/footnotes.t   ) ] /Root 1 0 R /Size 23 >>
+<< /ID [ (t/footnotes.t   ) (t/footnotes.t   ) ] /Root 1 0 R /Size 24 >>
 startxref
-2641
+2794
 %%EOF

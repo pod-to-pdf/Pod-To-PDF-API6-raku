@@ -58,7 +58,7 @@ code</Code>
     asdf
   </P>
   <P>
-    <Code>Formatted
+    <Code><Strong>Formatted</Strong>
 code</Code>
   </P>
 </Document>

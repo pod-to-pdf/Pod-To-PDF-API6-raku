@@ -17,8 +17,8 @@ endobj
 
 3 0 obj
 <<
-  /Head2_from_POD [ 4 0 R /FitBH 663.6 ]
-  /Version [ 4 0 R /FitBH 734 ]
+  /Head2_from_POD [ 4 0 R /FitBH 670.2 ]
+  /Version [ 4 0 R /FitBH 736.2 ]
 >>
 endobj
 
@@ -33,11 +33,11 @@ endobj
 endobj
 
 5 0 obj
-<< /Length 643 >> stream
+<< /Length 641 >> stream
 /H2 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 756 Tm
-    /F1 20 Tf
+    /F1 18 Tf
     [ (Subtitle fr) 18 (om ) ] TJ
   ET
 EMC
@@ -49,33 +49,33 @@ EMC
 EMC
 /H2 << /MCID 2 >> BDC
   BT
-    1 0 0 1 20 712 Tm
+    1 0 0 1 20 716.4 Tm
     [ (V) 100 (ersion) ] TJ
   ET
 EMC
 /P << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 685.6 Tm
+    1 0 0 1 20 690 Tm
     /F2 12 Tf
     (1.2.3) Tj
   ET
 EMC
 /H2 << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 641.6 Tm
-    /F1 20 Tf
+    1 0 0 1 20 650.4 Tm
+    /F1 18 Tf
     [ (Head2 fr) 18 (om ) ] TJ
   ET
 EMC
 /H2 << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 641.6 Tm
+    1 0 0 1 20 650.4 Tm
     [ -5370 (POD) ] TJ
   ET
 EMC
 /P << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 615.2 Tm
+    1 0 0 1 20 624 Tm
     /F2 12 Tf
     (a paragraph.) Tj
   ET
@@ -163,8 +163,8 @@ xref
 0000000015 00000 n 
 0000000098 00000 n 
 0000000235 00000 n 
-0000000330 00000 n 
-0000000470 00000 n 
+0000000332 00000 n 
+0000000472 00000 n 
 0000001165 00000 n 
 0000001251 00000 n 
 0000001358 00000 n 
