@@ -237,7 +237,7 @@ method !build-table($pod, @table) {
 
 multi method pod2pdf(Pod::Block::Table $pod) {
 
-    self!style: :lines-before(3), :pad, {
+    self!style: :lines-before(3), :block, {
         temp $*tag .= Table;
         if $pod.caption -> $caption {
             self!style: :tag(Caption), {
@@ -263,7 +263,7 @@ multi method pod2pdf(Pod::Block::Table $pod) {
 }
 
 multi method pod2pdf(Pod::Block::Named $pod) {
-    $.pad: {
+    $.block: {
         given $pod.name {
             when 'pod'  { $.pod2pdf($pod.contents)     }
             when 'para' {
@@ -299,28 +299,26 @@ multi method pod2pdf(Pod::Block::Named $pod) {
 }
 
 multi method pod2pdf(Pod::Block::Code $pod) {
-    self!style: :pad, :tag(Paragraph), :lines-before(3), {
+    self!style: :block, :tag(Paragraph), :lines-before(3), {
         self!code: $pod.contents;
     }
 }
 
 multi method pod2pdf(Pod::Heading $pod) {
-    $.pad: {
+    $.block: {
         $!level = min($pod.level, 6);
         self!heading: $pod.contents;
     }
 }
 
 multi method pod2pdf(Pod::Block::Para $pod) {
-    $.pad: {
-        self!style: :tag(Paragraph), {
-            $.pod2pdf($pod.contents);
-        }
+    self!style: :tag(Paragraph), {
+        $.pod2pdf($pod.contents);
     }
 }
 
 method !resolve-link(Str $url) {
-    my %style;
+    my %style = :!block;
     with $url {
         if .starts-with('#') {
             # internal link
@@ -369,12 +367,12 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'T' {
-            self!style: :mono, {
+            self!style: :mono, :!block, {
                 $.pod2pdf($pod.contents);
             }
         }
         when 'K' {
-            self!style: :italic, :mono, {
+            self!style: :italic, :mono, :!block, {
                 $.pod2pdf($pod.contents);
             }
         }
@@ -408,11 +406,11 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'U' {
-            self!style: :underline, {
+            self!style: :underline, :!block, {
                 $.pod2pdf($pod.contents);
             }
         }
-        when 'E' {
+        when 'E' { # Unicode; already converted.
             $.pod2pdf($pod.contents);
         }
         when 'Z' {
@@ -477,7 +475,7 @@ multi method pod2pdf(Pod::Defn $pod) {
 }
 
 multi method pod2pdf(Pod::Item $pod) {
-    $.pad: {
+    $.block: {
         my Level $list-level = min($pod.level // 1, 3);
         self!style: :tag(ListItem), :indent($list-level), {
             {
@@ -550,23 +548,23 @@ multi method pod2pdf(Pod::Block::Declarator $pod) {
     $name //= $w.?name // '';
     $decl //= $type;
 
-    self!style: :lines-before(3), :pad, {
+    self!style: :lines-before(3), :block, {
         self!heading($type.tclc ~ ' ' ~ $name, :$level);
 
         if $pod.leading -> $pre-pod {
-            self!style: :pad, :tag(Paragraph), {
+            self!style: :tag(Paragraph), {
                 $.pod2pdf($pre-pod);
             }
         }
 
         if $code {
-            self!style: :pad, :tag(Paragraph), {
+            self!style: :tag(Paragraph), {
                 self!code([$decl ~ ' ' ~ $code]);
             }
         }
 
         if $pod.trailing -> $post-pod {
-            self!style: :pad, :tag(Paragraph), {
+            self!style: :tag(Paragraph), {
                 $.pod2pdf($post-pod);
             }
         }
@@ -625,8 +623,8 @@ multi method say(Str $text, |c) {
 
 method font { $!styler.font: :%!font-map }
 
-multi method pad { $!padding=2 }
-multi method pad(&codez) { $.pad; &codez(); $.pad}
+method pad { $!padding=2 }
+method block(&codez) { $.pad; &codez(); $.pad}
 
 method !text-box(
     Str $text,
@@ -708,16 +706,17 @@ method !mark(&action, |c) {
     }
 }
 
-method !style(&codez, Int :$indent, Str :tag($name) is copy, Bool :$pad, |c) {
+method !style(&codez, Int :$indent, Str :tag($name) is copy, Bool :$block is copy, |c) {
     temp $!indent;
     temp $*tag;
     if $name.defined {
         $*tag .= add-kid: :$name;
     }
     my $style = $*tag.style;
+    $block //= $style.display ~~ 'block';
     temp $!styler .= new: :$style, |c;
     $!indent += $indent if $indent;
-    $pad ?? $.pad(&codez) !! &codez();
+    $block ?? $.block(&codez) !! &codez();
 }
 
 method !pod2dest($pod, Str :$name) {
@@ -743,7 +742,7 @@ method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <=
     $pod .= &strip-para;
 
     my $tag = $level ?? 'H' ~ $level !! 'Title';
-    self!style: :$tag, :$underline, :$lines-before, {
+    self!style: :$tag, :$underline, :$lines-before, :!block, {
 
         my Str $Title = $.pod2text-inline($pod);
         $*tag.cos.title = $Title;
