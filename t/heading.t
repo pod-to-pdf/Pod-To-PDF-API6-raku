@@ -7,9 +7,9 @@ use PDF::API6;
 plan 1;
 
 my $xml = q{<Document Lang="en">
-  <Title>
+  <H1>
     Heading tests
-  </Title>
+  </H1>
   <H2>
     for <Link href="pod::To::PDF">Pod::To::PDF</Link>
   </H2>

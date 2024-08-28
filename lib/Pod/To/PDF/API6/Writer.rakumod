@@ -201,7 +201,7 @@ method !build-table($pod, @table) {
     @table = ();
 
     if $pod.headers {
-        self!style: :lines-before(3), {
+        self!style: :lines-before(3), :bold, {
             temp $*tag .= TableHead;
             $*tag .= TableRow;
             my @row = $pod.headers.map: {
@@ -277,9 +277,9 @@ multi method pod2pdf(Pod::Block::Named $pod) {
             }
             when 'TITLE'|'SUBTITLE' {
                 my Bool $toc = $_ eq 'TITLE';
-                $!level = $toc ?? 0 !! 2;
+                my $level = $toc ?? 0 !! 2;
                 self.metadata(.lc) ||= $.pod2text-inline($pod.contents);
-                self!heading($pod.contents, :$toc, :padding(1));
+                self!heading($pod.contents, :$toc, :padding(1), :$level);
             }
             default {
                 my $name = $_;
@@ -305,10 +305,8 @@ multi method pod2pdf(Pod::Block::Code $pod) {
 }
 
 multi method pod2pdf(Pod::Heading $pod) {
-    $.block: {
-        $!level = min($pod.level, 6);
-        self!heading: $pod.contents;
-    }
+    $!level = min($pod.level, 6);
+    self!heading: $pod.contents;
 }
 
 multi method pod2pdf(Pod::Block::Para $pod) {
@@ -467,7 +465,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
 
 multi method pod2pdf(Pod::Defn $pod) {
     self!tag: Paragraph, {
-        self!style: :tag(Quotation), {
+        self!style: :tag(Quotation), :block, {
             $.pod2pdf($pod.term);
         }
     }
@@ -741,7 +739,7 @@ method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <=
 
     $pod .= &strip-para;
 
-    my $tag = $level ?? 'H' ~ $level !! 'Title';
+    my $tag =  'H' ~ ($level || 1);
     self!style: :$tag, :$underline, :$lines-before, :!block, {
 
         my Str $Title = $.pod2text-inline($pod);
@@ -805,26 +803,24 @@ method !code(@contents is copy) {
 
     self!gfx;
 
-    self!style: :indent, :tag(CODE), :lines-before(0), :pad, {
+    self!style: :indent, :tag(CODE), :lines-before(0), :block, {
 
         self!pad-here;
 
         my @plain-text;
-        for ^@contents -> $i {
+        for @contents {
             $!code-start-y //= $!ty;
-            given @contents[$i] {
-                when Str {
-                    @plain-text.push: $_;
+            when Str {
+                @plain-text.push: $_;
+            }
+            default  {
+                # presumably formatted
+                if @plain-text {
+                    $.print: @plain-text.join;
+                    @plain-text = ();
                 }
-                default  {
-                    # presumably formatted
-                    if @plain-text {
-                        $.print: @plain-text.join;
-                        @plain-text = ();
-                    }
 
-                    $.pod2pdf($_);
-                }
+                $.pod2pdf($_);
             }
         }
         if @plain-text {
