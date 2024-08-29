@@ -16,10 +16,7 @@ my $xml = q{<Document Lang="en">
         <Lbl>
           <Link>[1]</Link>
         </Lbl>
-        <P>
-          if you click, here, you should got back to the paragraph
-        </P>
-      </Note></Span> footnotes.
+        if you click, here, you should got back to the paragraph</Note></Span> footnotes.
   </P>
 </Document>
 };

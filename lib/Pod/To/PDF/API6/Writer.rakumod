@@ -237,7 +237,7 @@ method !build-table($pod, @table) {
 
 multi method pod2pdf(Pod::Block::Table $pod) {
 
-    self!style: :lines-before(3), :block, {
+    self!style: :lines-before(3), {
         temp $*tag .= Table;
         if $pod.caption -> $caption {
             self!style: :tag(Caption), {
@@ -299,7 +299,7 @@ multi method pod2pdf(Pod::Block::Named $pod) {
 }
 
 multi method pod2pdf(Pod::Block::Code $pod) {
-    self!style: :block, :tag(Paragraph), :lines-before(3), {
+    self!style: :tag(Paragraph), :lines-before(3), {
         self!code: $pod.contents;
     }
 }
@@ -386,7 +386,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
 
             temp $*tag .= Span;
             self!style: :tag(Reference), {
-                self!style: :tag(Label), :$link, {  $.pod2pdf($ind); }
+                self!style: :tag(Label), :!block, :$link, {  $.pod2pdf($ind); }
             }
             my @contents = $ind, $pod.contents.Slip;
             @!footnotes.push: @contents;
@@ -464,12 +464,14 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
 }
 
 multi method pod2pdf(Pod::Defn $pod) {
-    self!tag: Paragraph, {
-        self!style: :tag(Quotation), :block, {
+    self!tag: ListItem, {
+        self!style: :tag(Label), :italic, {
             $.pod2pdf($pod.term);
         }
+        self!style: :tag(ListBody), {
+            $.pod2pdf($pod.contents);
+        }
     }
-    $.pod2pdf($pod.contents);
 }
 
 multi method pod2pdf(Pod::Item $pod) {
@@ -739,7 +741,7 @@ method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <=
 
     $pod .= &strip-para;
 
-    my $tag =  'H' ~ ($level || 1);
+    my $tag =  $level ?? 'H' ~ $level !! Title;
     self!style: :$tag, :$underline, :$lines-before, :!block, {
 
         my Str $Title = $.pod2text-inline($pod);
@@ -914,11 +916,12 @@ method !finish-page {
             temp $*tag = @!footnotes-tag.shift;
             self!style: :tag(Note), {
                 my PDF::Action $link = $!pdf.action: :$destination;
-                self!style: :tag(Label), :$link, {
+                self!style: :tag(Label), :$link, :!block, {
                     $.print($footnote.shift);
                 } # [n]
+
                 $!tx += 2;
-                $*tag .= Paragraph;
+
                 $.pod2pdf($footnote);
             }
         }

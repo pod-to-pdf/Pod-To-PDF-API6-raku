@@ -60,7 +60,7 @@ endobj
 endobj
 
 8 0 obj
-<< /Length 3112 >> stream
+<< /Length 3115 >> stream
 /P << /MCID 0 >> BDC
   BT
     1 0 0 1 20 756 Tm
@@ -215,34 +215,34 @@ EMC
 /Code << /MCID 22 >> BDC
   BT
     1 0 0 1 20 544.8 Tm
-    /F4 12 Tf
-    [ -4888 (on demand) ] TJ
+    /F4 10.2 Tf
+    [ -5751 (on demand) ] TJ
   ET
 EMC
 /P << /MCID 23 >> BDC
   BT
     1 0 0 1 20 544.8 Tm
     /F1 12 Tf
-    [ -10288 ( supply will initiate the production of v) 25 (alues, and tapping the supply ag) 5 (ain may result in a) ] TJ
+    [ -9478 ( supply will initiate the production of v) 25 (alues, and tapping the supply ag) 5 (ain may result in a ne) 25 (w) ] TJ
     13.2 TL
     T*
-    [ (ne) 25 (w set of v) 25 (alues. F) 15 (or e) 15 (xample, ) ] TJ
+    [ (set of v) 25 (alues. F) 15 (or e) 15 (xample, ) ] TJ
   ET
 EMC
 /Code << /MCID 24 >> BDC
   BT
     1 0 0 1 20 531.6 Tm
-    /F4 12 Tf
-    [ -12862 (Supply.interval) ] TJ
+    /F4 10.2 Tf
+    [ -12907 (Supply.interval) ] TJ
   ET
 EMC
 /P << /MCID 25 >> BDC
   BT
     1 0 0 1 20 531.6 Tm
     /F1 12 Tf
-    [ -21862 ( produces a fresh timer with the appropriate interv) 25 (al each time it) ] TJ
+    [ -18621 ( produces a fresh timer with the appropriate interv) 25 (al each time it is) ] TJ
     T*
-    [ (is tapped. If the tap is closed, the timer simply stops emitting v) 25 (alues to that tap.) ] TJ
+    [ (tapped. If the tap is closed, the timer simply stops emitting v) 25 (alues to that tap.) ] TJ
   ET
 EMC
 endstream
@@ -389,31 +389,31 @@ xref
 0000000678 00000 n 
 0000000851 00000 n 
 0000000925 00000 n 
-0000004090 00000 n 
-0000004198 00000 n 
-0000004308 00000 n 
-0000004416 00000 n 
-0000004521 00000 n 
-0000004826 00000 n 
-0000004981 00000 n 
-0000005061 00000 n 
-0000005146 00000 n 
-0000005213 00000 n 
-0000005298 00000 n 
-0000005369 00000 n 
-0000005445 00000 n 
-0000005528 00000 n 
-0000005608 00000 n 
-0000005695 00000 n 
-0000005772 00000 n 
-0000005828 00000 n 
-0000005915 00000 n 
-0000005992 00000 n 
-0000006048 00000 n 
-0000006155 00000 n 
-0000006225 00000 n 
+0000004093 00000 n 
+0000004201 00000 n 
+0000004311 00000 n 
+0000004419 00000 n 
+0000004524 00000 n 
+0000004829 00000 n 
+0000004984 00000 n 
+0000005064 00000 n 
+0000005149 00000 n 
+0000005216 00000 n 
+0000005301 00000 n 
+0000005372 00000 n 
+0000005448 00000 n 
+0000005531 00000 n 
+0000005611 00000 n 
+0000005698 00000 n 
+0000005775 00000 n 
+0000005831 00000 n 
+0000005918 00000 n 
+0000005995 00000 n 
+0000006051 00000 n 
+0000006158 00000 n 
+0000006228 00000 n 
 trailer
 << /ID [ (t/formatted.t   ) (t/formatted.t   ) ] /Root 1 0 R /Size 32 >>
 startxref
-6295
+6298
 %%EOF
