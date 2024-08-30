@@ -478,14 +478,15 @@ multi method pod2pdf(Pod::Defn $pod) {
 
 multi method pod2pdf(Pod::Item $pod) {
     $.block: :padding($.line-height/2), {
-        my Level $list-level = min($pod.level // 1, 3);
-        my $indent = $list-level - $!indent;
+        my Level $level = min($pod.level // 1, 3);
+        my $indent = $level - $!indent;
+        $!padding = $.line-height;
         self!style: :tag(ListItem), :$indent, {
             {
                 my constant BulletPoints = (
                    "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
                 );
-                my Str $bp = BulletPoints[$list-level - 1];
+                my Str $bp = BulletPoints[$level - 1];
                 temp $*tag .= Label;
                 $.print: $bp;
             }
