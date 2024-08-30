@@ -25,7 +25,7 @@ endobj
 endobj
 
 4 0 obj
-<< /Length 1664 >> stream
+<< /Length 2236 >> stream
 /P << /MCID 0 >> BDC
   BT
     1 0 0 1 20 756 Tm
@@ -35,121 +35,157 @@ endobj
 EMC
 /Lbl << /MCID 1 >> BDC
   BT
-    1 0 0 1 30 729.6 Tm
+    1 0 0 1 30 735.96 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 2 >> BDC
   BT
-    1 0 0 1 40 729.6 Tm
-    [ (Abbre) 25 (viated 1) ] TJ
+    1 0 0 1 40 735.96 Tm
+    [ -350 (Abbre) 25 (viated 1) ] TJ
   ET
 EMC
 /Lbl << /MCID 3 >> BDC
   BT
-    1 0 0 1 30 703.2 Tm
+    1 0 0 1 30 722.76 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 4 >> BDC
   BT
-    1 0 0 1 40 703.2 Tm
-    [ (Abbre) 25 (viated 2) ] TJ
+    1 0 0 1 40 722.76 Tm
+    [ -350 (Abbre) 25 (viated 2) ] TJ
   ET
 EMC
 /P << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 676.8 Tm
+    1 0 0 1 20 702.72 Tm
     (asdf) Tj
   ET
 EMC
 /Lbl << /MCID 6 >> BDC
   BT
-    1 0 0 1 30 650.4 Tm
+    1 0 0 1 30 682.68 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 7 >> BDC
   BT
-    1 0 0 1 40 650.4 Tm
-    [ (P) 15 (aragraph item) ] TJ
+    1 0 0 1 40 682.68 Tm
+    [ -350 (T) 80 (op Item) ] TJ
   ET
 EMC
-/P << /MCID 8 >> BDC
+/Lbl << /MCID 8 >> BDC
   BT
-    1 0 0 1 20 624 Tm
-    (asdf) Tj
+    1 0 0 1 40 662.64 Tm
+    (·) Tj
   ET
 EMC
-/Lbl << /MCID 9 >> BDC
+/P << /MCID 9 >> BDC
   BT
-    1 0 0 1 30 597.6 Tm
-    (•) Tj
+    1 0 0 1 50 662.64 Tm
+    [ -250 (First sub-item) ] TJ
   ET
 EMC
-/P << /MCID 10 >> BDC
+/Lbl << /MCID 10 >> BDC
   BT
-    1 0 0 1 40 597.6 Tm
-    (Block item) Tj
+    1 0 0 1 40 649.44 Tm
+    (·) Tj
   ET
 EMC
 /P << /MCID 11 >> BDC
   BT
-    1 0 0 1 20 571.2 Tm
-    (asdf) Tj
+    1 0 0 1 50 649.44 Tm
+    [ -250 (Second sub-item) ] TJ
   ET
 EMC
 /Lbl << /MCID 12 >> BDC
   BT
-    1 0 0 1 30 544.8 Tm
+    1 0 0 1 30 636.24 Tm
     (•) Tj
   ET
 EMC
 /P << /MCID 13 >> BDC
   BT
-    1 0 0 1 40 544.8 Tm
-    [ (Abbre) 25 (viated) ] TJ
+    1 0 0 1 40 636.24 Tm
+    [ -350 (P) 15 (aragraph item) ] TJ
   ET
 EMC
-/Lbl << /MCID 14 >> BDC
+/P << /MCID 14 >> BDC
   BT
-    1 0 0 1 30 518.4 Tm
+    1 0 0 1 20 616.2 Tm
+    (asdf) Tj
+  ET
+EMC
+/Lbl << /MCID 15 >> BDC
+  BT
+    1 0 0 1 30 596.16 Tm
     (•) Tj
   ET
 EMC
-/P << /MCID 15 >> BDC
+/P << /MCID 16 >> BDC
   BT
-    1 0 0 1 40 518.4 Tm
-    [ (P) 15 (aragraph item) ] TJ
-  ET
-EMC
-/Lbl << /MCID 16 >> BDC
-  BT
-    1 0 0 1 30 492 Tm
-    (•) Tj
+    1 0 0 1 40 596.16 Tm
+    [ -350 (Block item) ] TJ
   ET
 EMC
 /P << /MCID 17 >> BDC
   BT
-    1 0 0 1 40 492 Tm
-    (Block item) Tj
+    1 0 0 1 20 576.12 Tm
+    (asdf) Tj
   ET
 EMC
-/P << /MCID 18 >> BDC
+/Lbl << /MCID 18 >> BDC
   BT
-    1 0 0 1 40 465.6 Tm
-    (with multiple) Tj
+    1 0 0 1 30 556.08 Tm
+    (•) Tj
   ET
 EMC
 /P << /MCID 19 >> BDC
   BT
-    1 0 0 1 40 439.2 Tm
+    1 0 0 1 40 556.08 Tm
+    [ -350 (Abbre) 25 (viated) ] TJ
+  ET
+EMC
+/Lbl << /MCID 20 >> BDC
+  BT
+    1 0 0 1 30 542.88 Tm
+    (•) Tj
+  ET
+EMC
+/P << /MCID 21 >> BDC
+  BT
+    1 0 0 1 40 542.88 Tm
+    [ -350 (P) 15 (aragraph item) ] TJ
+  ET
+EMC
+/Lbl << /MCID 22 >> BDC
+  BT
+    1 0 0 1 30 529.68 Tm
+    (•) Tj
+  ET
+EMC
+/P << /MCID 23 >> BDC
+  BT
+    1 0 0 1 40 529.68 Tm
+    [ -350 (Block item) ] TJ
+  ET
+EMC
+/P << /MCID 24 >> BDC
+  BT
+    1 0 0 1 40 502.8 Tm
+    (with multiple) Tj
+  ET
+EMC
+/P << /MCID 25 >> BDC
+  BT
+    1 0 0 1 40 475.92 Tm
     (paragraphs) Tj
   ET
 EMC
-/P << /MCID 20 >> BDC
+/P << /MCID 26 >> BDC
   BT
-    1 0 0 1 20 412.8 Tm
+    1 0 0 1 20 455.88 Tm
     (asdf) Tj
   ET
 EMC
@@ -170,7 +206,7 @@ endobj
   /Type /StructTreeRoot
   /K [ 7 0 R ]
   /ParentTree <<
-    /Nums [ 0 [ 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 17 0 R 19 0 R 21 0 R 22 0 R 24 0 R 26 0 R 27 0 R 29 0 R 31 0 R 33 0 R 35 0 R 37 0 R 39 0 R 40 0 R 41 0 R 42 0 R ] ]
+    /Nums [ 0 [ 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 17 0 R 19 0 R 21 0 R 23 0 R 25 0 R 27 0 R 29 0 R 31 0 R 33 0 R 34 0 R 36 0 R 38 0 R 39 0 R 41 0 R 43 0 R 45 0 R 47 0 R 49 0 R 51 0 R 52 0 R 53 0 R 54 0 R ] ]
   >>
 >>
 endobj
@@ -179,7 +215,7 @@ endobj
 <<
   /Type /StructElem
   /S /Document
-  /K [ 8 0 R 9 0 R 13 0 R 17 0 R 18 0 R 22 0 R 23 0 R 27 0 R 28 0 R 32 0 R 36 0 R 42 0 R ]
+  /K [ 8 0 R 9 0 R 13 0 R 17 0 R 18 0 R 30 0 R 34 0 R 35 0 R 39 0 R 40 0 R 44 0 R 48 0 R 54 0 R ]
   /Lang (en)
   /P 6 0 R
 >>
@@ -234,7 +270,7 @@ endobj
 endobj
 
 20 0 obj
-<< /Type /StructElem /S /LBody /K [ 21 0 R ] /P 18 0 R >>
+<< /Type /StructElem /S /LBody /K [ 21 0 R 22 0 R 26 0 R ] /P 18 0 R >>
 endobj
 
 21 0 obj
@@ -242,136 +278,196 @@ endobj
 endobj
 
 22 0 obj
-<< /Type /StructElem /S /P /K [ 8 ] /P 7 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /LI /K [ 23 0 R 24 0 R ] /P 20 0 R >>
 endobj
 
 23 0 obj
-<< /Type /StructElem /S /LI /K [ 24 0 R 25 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 8 ] /P 22 0 R /Pg 3 0 R >>
 endobj
 
 24 0 obj
-<< /Type /StructElem /S /Lbl /K [ 9 ] /P 23 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /LBody /K [ 25 0 R ] /P 22 0 R >>
 endobj
 
 25 0 obj
-<< /Type /StructElem /S /LBody /K [ 26 0 R ] /P 23 0 R >>
+<< /Type /StructElem /S /P /K [ 9 ] /P 24 0 R /Pg 3 0 R >>
 endobj
 
 26 0 obj
-<< /Type /StructElem /S /P /K [ 10 ] /P 25 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /LI /K [ 27 0 R 28 0 R ] /P 20 0 R >>
 endobj
 
 27 0 obj
-<< /Type /StructElem /S /P /K [ 11 ] /P 7 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 10 ] /P 26 0 R /Pg 3 0 R >>
 endobj
 
 28 0 obj
-<< /Type /StructElem /S /LI /K [ 29 0 R 30 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /LBody /K [ 29 0 R ] /P 26 0 R >>
 endobj
 
 29 0 obj
-<< /Type /StructElem /S /Lbl /K [ 12 ] /P 28 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /P /K [ 11 ] /P 28 0 R /Pg 3 0 R >>
 endobj
 
 30 0 obj
-<< /Type /StructElem /S /LBody /K [ 31 0 R ] /P 28 0 R >>
+<< /Type /StructElem /S /LI /K [ 31 0 R 32 0 R ] /P 7 0 R >>
 endobj
 
 31 0 obj
-<< /Type /StructElem /S /P /K [ 13 ] /P 30 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 12 ] /P 30 0 R /Pg 3 0 R >>
 endobj
 
 32 0 obj
-<< /Type /StructElem /S /LI /K [ 33 0 R 34 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /LBody /K [ 33 0 R ] /P 30 0 R >>
 endobj
 
 33 0 obj
-<< /Type /StructElem /S /Lbl /K [ 14 ] /P 32 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /P /K [ 13 ] /P 32 0 R /Pg 3 0 R >>
 endobj
 
 34 0 obj
-<< /Type /StructElem /S /LBody /K [ 35 0 R ] /P 32 0 R >>
+<< /Type /StructElem /S /P /K [ 14 ] /P 7 0 R /Pg 3 0 R >>
 endobj
 
 35 0 obj
-<< /Type /StructElem /S /P /K [ 15 ] /P 34 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /LI /K [ 36 0 R 37 0 R ] /P 7 0 R >>
 endobj
 
 36 0 obj
-<< /Type /StructElem /S /LI /K [ 37 0 R 38 0 R ] /P 7 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 15 ] /P 35 0 R /Pg 3 0 R >>
 endobj
 
 37 0 obj
-<< /Type /StructElem /S /Lbl /K [ 16 ] /P 36 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /LBody /K [ 38 0 R ] /P 35 0 R >>
 endobj
 
 38 0 obj
-<< /Type /StructElem /S /LBody /K [ 39 0 R 40 0 R 41 0 R ] /P 36 0 R >>
+<< /Type /StructElem /S /P /K [ 16 ] /P 37 0 R /Pg 3 0 R >>
 endobj
 
 39 0 obj
-<< /Type /StructElem /S /P /K [ 17 ] /P 38 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /P /K [ 17 ] /P 7 0 R /Pg 3 0 R >>
 endobj
 
 40 0 obj
-<< /Type /StructElem /S /P /K [ 18 ] /P 38 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /LI /K [ 41 0 R 42 0 R ] /P 7 0 R >>
 endobj
 
 41 0 obj
-<< /Type /StructElem /S /P /K [ 19 ] /P 38 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 18 ] /P 40 0 R /Pg 3 0 R >>
 endobj
 
 42 0 obj
-<< /Type /StructElem /S /P /K [ 20 ] /P 7 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /LBody /K [ 43 0 R ] /P 40 0 R >>
+endobj
+
+43 0 obj
+<< /Type /StructElem /S /P /K [ 19 ] /P 42 0 R /Pg 3 0 R >>
+endobj
+
+44 0 obj
+<< /Type /StructElem /S /LI /K [ 45 0 R 46 0 R ] /P 7 0 R >>
+endobj
+
+45 0 obj
+<< /Type /StructElem /S /Lbl /K [ 20 ] /P 44 0 R /Pg 3 0 R >>
+endobj
+
+46 0 obj
+<< /Type /StructElem /S /LBody /K [ 47 0 R ] /P 44 0 R >>
+endobj
+
+47 0 obj
+<< /Type /StructElem /S /P /K [ 21 ] /P 46 0 R /Pg 3 0 R >>
+endobj
+
+48 0 obj
+<< /Type /StructElem /S /LI /K [ 49 0 R 50 0 R ] /P 7 0 R >>
+endobj
+
+49 0 obj
+<< /Type /StructElem /S /Lbl /K [ 22 ] /P 48 0 R /Pg 3 0 R >>
+endobj
+
+50 0 obj
+<< /Type /StructElem /S /LBody /K [ 51 0 R 52 0 R 53 0 R ] /P 48 0 R >>
+endobj
+
+51 0 obj
+<< /Type /StructElem /S /P /K [ 23 ] /P 50 0 R /Pg 3 0 R >>
+endobj
+
+52 0 obj
+<< /Type /StructElem /S /P /K [ 24 ] /P 50 0 R /Pg 3 0 R >>
+endobj
+
+53 0 obj
+<< /Type /StructElem /S /P /K [ 25 ] /P 50 0 R /Pg 3 0 R >>
+endobj
+
+54 0 obj
+<< /Type /StructElem /S /P /K [ 26 ] /P 7 0 R /Pg 3 0 R >>
 endobj
 
 xref
-0 43
+0 55
 0000000000 65535 f 
 0000000015 00000 n 
 0000000137 00000 n 
 0000000223 00000 n 
 0000000353 00000 n 
-0000002070 00000 n 
-0000002178 00000 n 
-0000002427 00000 n 
-0000002599 00000 n 
-0000002673 00000 n 
+0000002642 00000 n 
 0000002750 00000 n 
-0000002827 00000 n 
-0000002901 00000 n 
-0000002977 00000 n 
-0000003055 00000 n 
-0000003133 00000 n 
-0000003208 00000 n 
-0000003284 00000 n 
-0000003359 00000 n 
-0000003437 00000 n 
-0000003515 00000 n 
-0000003590 00000 n 
-0000003666 00000 n 
-0000003741 00000 n 
-0000003819 00000 n 
-0000003897 00000 n 
-0000003972 00000 n 
-0000004049 00000 n 
-0000004125 00000 n 
-0000004203 00000 n 
-0000004282 00000 n 
-0000004357 00000 n 
-0000004434 00000 n 
-0000004512 00000 n 
-0000004591 00000 n 
-0000004666 00000 n 
-0000004743 00000 n 
-0000004821 00000 n 
-0000004900 00000 n 
-0000004989 00000 n 
-0000005066 00000 n 
-0000005143 00000 n 
-0000005220 00000 n 
+0000003041 00000 n 
+0000003220 00000 n 
+0000003294 00000 n 
+0000003371 00000 n 
+0000003448 00000 n 
+0000003522 00000 n 
+0000003598 00000 n 
+0000003676 00000 n 
+0000003754 00000 n 
+0000003829 00000 n 
+0000003905 00000 n 
+0000003980 00000 n 
+0000004058 00000 n 
+0000004136 00000 n 
+0000004225 00000 n 
+0000004301 00000 n 
+0000004380 00000 n 
+0000004458 00000 n 
+0000004533 00000 n 
+0000004609 00000 n 
+0000004688 00000 n 
+0000004767 00000 n 
+0000004842 00000 n 
+0000004919 00000 n 
+0000004997 00000 n 
+0000005076 00000 n 
+0000005151 00000 n 
+0000005228 00000 n 
+0000005304 00000 n 
+0000005382 00000 n 
+0000005461 00000 n 
+0000005536 00000 n 
+0000005613 00000 n 
+0000005689 00000 n 
+0000005767 00000 n 
+0000005846 00000 n 
+0000005921 00000 n 
+0000005998 00000 n 
+0000006076 00000 n 
+0000006155 00000 n 
+0000006230 00000 n 
+0000006307 00000 n 
+0000006385 00000 n 
+0000006464 00000 n 
+0000006553 00000 n 
+0000006630 00000 n 
+0000006707 00000 n 
+0000006784 00000 n 
 trailer
-<< /ID [ (t/item.t        ) (t/item.t        ) ] /Root 1 0 R /Size 43 >>
+<< /ID [ (t/item.t        ) (t/item.t        ) ] /Root 1 0 R /Size 55 >>
 startxref
-5296
+6860
 %%EOF

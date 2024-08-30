@@ -6,9 +6,9 @@
   /Dests 2 0 R
   /Lang (en)
   /MarkInfo << /Marked true >>
-  /Outlines 9 0 R
+  /Outlines 8 0 R
   /Pages 5 0 R
-  /StructTreeRoot 18 0 R
+  /StructTreeRoot 17 0 R
 >>
 endobj
 
@@ -21,13 +21,13 @@ endobj
   /Type /Page
   /Contents 4 0 R
   /Parent 5 0 R
-  /Resources << /Font << /F1 6 0 R /F2 7 0 R /F3 8 0 R >> >>
+  /Resources << /Font << /F1 6 0 R /F2 7 0 R >> >>
   /StructParents 0
 >>
 endobj
 
 4 0 obj
-<< /Length 309 >> stream
+<< /Length 310 >> stream
 /H2 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 756 Tm
@@ -37,15 +37,15 @@ endobj
 EMC
 /Lbl << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 729.6 Tm
-    /F2 12 Tf
+    1 0 0 1 20 729.3 Tm
+    /F1 12 Tf
     (PDF::API6 :$pdf) Tj
   ET
 EMC
 /P << /MCID 2 >> BDC
   BT
-    1 0 0 1 20 703.2 Tm
-    /F3 12 Tf
+    1 0 0 1 20 715.86 Tm
+    /F2 12 Tf
     (A PDF object to render to.) Tj
   ET
 EMC
@@ -69,105 +69,95 @@ endobj
 <<
   /Type /Font
   /Subtype /Type1
-  /BaseFont /Times-Italic
-  /Encoding /WinAnsiEncoding
->>
-endobj
-
-8 0 obj
-<<
-  /Type /Font
-  /Subtype /Type1
   /BaseFont /Times-Roman
   /Encoding /WinAnsiEncoding
 >>
 endobj
 
+8 0 obj
+<< /Count 2 /First 9 0 R /Last 9 0 R >>
+endobj
+
 9 0 obj
-<< /Count 2 /First 10 0 R /Last 10 0 R >>
+<< /Count 1 /First 10 0 R /Last 10 0 R /Parent 8 0 R /Title ( ) >>
 endobj
 
 10 0 obj
-<< /Count 1 /First 11 0 R /Last 11 0 R /Parent 9 0 R /Title ( ) >>
+<<
+  /Dest /pod2pdf#28#29_Options
+  /Parent 9 0 R
+  /SE 11 0 R
+  /Title (pod2pdf\(\) Options)
+>>
 endobj
 
 11 0 obj
 <<
-  /Dest /pod2pdf#28#29_Options
-  /Parent 10 0 R
-  /SE 12 0 R
-  /Title (pod2pdf\(\) Options)
+  /Type /StructElem
+  /S /H2
+  /K [ 0 ]
+  /P 12 0 R
+  /Pg 3 0 R
+  /T (pod2pdf\(\) Options)
 >>
 endobj
 
 12 0 obj
 <<
   /Type /StructElem
-  /S /H2
-  /K [ 0 ]
-  /P 13 0 R
-  /Pg 3 0 R
-  /T (pod2pdf\(\) Options)
+  /S /Document
+  /K [ 11 0 R 13 0 R ]
+  /Lang (en)
+  /P 17 0 R
 >>
 endobj
 
 13 0 obj
-<<
-  /Type /StructElem
-  /S /Document
-  /K [ 12 0 R 14 0 R ]
-  /Lang (en)
-  /P 18 0 R
->>
+<< /Type /StructElem /S /LI /K [ 14 0 R 15 0 R ] /P 12 0 R >>
 endobj
 
 14 0 obj
-<< /Type /StructElem /S /LI /K [ 15 0 R 16 0 R ] /P 13 0 R >>
+<< /Type /StructElem /S /Lbl /K [ 1 ] /P 13 0 R /Pg 3 0 R >>
 endobj
 
 15 0 obj
-<< /Type /StructElem /S /Lbl /K [ 1 ] /P 14 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /LBody /K [ 16 0 R ] /P 13 0 R >>
 endobj
 
 16 0 obj
-<< /Type /StructElem /S /LBody /K [ 17 0 R ] /P 14 0 R >>
+<< /Type /StructElem /S /P /K [ 2 ] /P 15 0 R /Pg 3 0 R >>
 endobj
 
 17 0 obj
-<< /Type /StructElem /S /P /K [ 2 ] /P 16 0 R /Pg 3 0 R >>
-endobj
-
-18 0 obj
 <<
   /Type /StructTreeRoot
-  /K [ 13 0 R ]
-  /ParentTree << /Nums [ 0 [ 12 0 R 15 0 R 17 0 R ] ] >>
+  /K [ 12 0 R ]
+  /ParentTree << /Nums [ 0 [ 11 0 R 14 0 R 16 0 R ] ] >>
 >>
 endobj
 
 xref
-0 19
+0 18
 0000000000 65535 f 
 0000000015 00000 n 
 0000000171 00000 n 
 0000000239 00000 n 
-0000000389 00000 n 
-0000000750 00000 n 
-0000000836 00000 n 
-0000000943 00000 n 
-0000001052 00000 n 
-0000001160 00000 n 
-0000001218 00000 n 
-0000001302 00000 n 
-0000001417 00000 n 
-0000001531 00000 n 
-0000001637 00000 n 
-0000001716 00000 n 
-0000001794 00000 n 
-0000001869 00000 n 
-0000001945 00000 n 
+0000000379 00000 n 
+0000000741 00000 n 
+0000000827 00000 n 
+0000000934 00000 n 
+0000001042 00000 n 
+0000001098 00000 n 
+0000001181 00000 n 
+0000001295 00000 n 
+0000001409 00000 n 
+0000001515 00000 n 
+0000001594 00000 n 
+0000001672 00000 n 
+0000001747 00000 n 
+0000001823 00000 n 
 trailer
-<< /ID [ (t/defn.t        ) (t/defn.t        ) ] /Root 1 0 R /Size 19 >>
+<< /ID [ (t/defn.t        ) (t/defn.t        ) ] /Root 1 0 R /Size 18 >>
 startxref
-2065
+1943
 %%EOF

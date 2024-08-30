@@ -39,6 +39,36 @@ my $xml = q{<Document Lang="en">
     </Lbl>
     <LBody>
       <P>
+        Top Item
+      </P>
+      <LI>
+        <Lbl>
+          ·
+        </Lbl>
+        <LBody>
+          <P>
+            First sub-item
+          </P>
+        </LBody>
+      </LI>
+      <LI>
+        <Lbl>
+          ·
+        </Lbl>
+        <LBody>
+          <P>
+            Second sub-item
+          </P>
+        </LBody>
+      </LI>
+    </LBody>
+  </LI>
+  <LI>
+    <Lbl>
+      •
+    </Lbl>
+    <LBody>
+      <P>
         Paragraph item
       </P>
     </LBody>
@@ -118,6 +148,12 @@ asdf
 =item Abbreviated 2
 
 asdf
+
+=begin item1
+Top Item
+=item2     First sub-item
+=item2     Second sub-item
+=end item1
 
 =for item
 Paragraph

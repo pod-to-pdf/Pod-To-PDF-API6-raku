@@ -51,10 +51,11 @@ has Pod::To::PDF::API6::Style $.styler handles<font-size leading line-height bol
 has $!tx = $!margin; # text-flow x
 has $!ty; # text-flow y
 has UInt $!indent = 0;
-has UInt $!padding = 0;
+has Numeric $!padding = 0.0;
 has Numeric $!code-start-y;
 has UInt:D $!level = 1;
 has $!gutter = Gutter;
+has Bool $!float;
 
 class DefaultLinker {
     method extension { 'pdf' }
@@ -237,8 +238,9 @@ method !build-table($pod, @table) {
 
 multi method pod2pdf(Pod::Block::Table $pod) {
 
-    self!style: :lines-before(3), {
-        temp $*tag .= Table;
+    temp $*tag .= Table;
+
+    self!style: :lines-before(3), :block, :padding($.line-height), {
         if $pod.caption -> $caption {
             self!style: :tag(Caption), {
                 $.say: $caption;
@@ -263,37 +265,35 @@ multi method pod2pdf(Pod::Block::Table $pod) {
 }
 
 multi method pod2pdf(Pod::Block::Named $pod) {
-    $.block: {
-        given $pod.name {
-            when 'pod'  { $.pod2pdf($pod.contents)     }
-            when 'para' {
+    given $pod.name {
+        when 'pod'  { $.pod2pdf($pod.contents)     }
+        when 'para' {
+            $.pod2pdf: $pod.contents;
+        }
+        when 'config' { }
+        when 'nested' {
+            self!style: :indent, {
                 $.pod2pdf: $pod.contents;
             }
-            when 'config' { }
-            when 'nested' {
-                self!style: :indent, {
-                    $.pod2pdf: $pod.contents;
+        }
+        when 'TITLE'|'SUBTITLE' {
+            my Bool $toc = $_ eq 'TITLE';
+            my $level = $toc ?? 0 !! 2;
+            self.metadata(.lc) ||= $.pod2text-inline($pod.contents);
+            self!heading($pod.contents, :$toc, :$level);
+        }
+        default {
+            my $name = $_;
+            temp $!level += 1;
+            if $name eq $name.uc {
+                if $name ~~ 'VERSION'|'NAME'|'AUTHOR' {
+                    self.metadata(.lc) ||= $.pod2text-inline($pod.contents);
                 }
+                $!level = 2;
+                $name = .tclc;
             }
-            when 'TITLE'|'SUBTITLE' {
-                my Bool $toc = $_ eq 'TITLE';
-                my $level = $toc ?? 0 !! 2;
-                self.metadata(.lc) ||= $.pod2text-inline($pod.contents);
-                self!heading($pod.contents, :$toc, :padding(1), :$level);
-            }
-            default {
-                my $name = $_;
-                temp $!level += 1;
-                if $name eq $name.uc {
-                    if $name ~~ 'VERSION'|'NAME'|'AUTHOR' {
-                        self.metadata(.lc) ||= $.pod2text-inline($pod.contents);
-                    }
-                    $!level = 2;
-                    $name = .tclc;
-                }
-                self!heading($name);
-                $.pod2pdf($pod.contents);
-            }
+            self!heading($name);
+            $.pod2pdf($pod.contents);
         }
     }
 }
@@ -465,19 +465,22 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
 
 multi method pod2pdf(Pod::Defn $pod) {
     self!tag: ListItem, {
-        self!style: :tag(Label), :italic, {
-            $.pod2pdf($pod.term);
-        }
-        self!style: :tag(ListBody), {
-            $.pod2pdf($pod.contents);
+        self.block: :padding($.line-height), {
+            self!style: :tag(Label), :bold, {
+                $.pod2pdf($pod.term);
+            }
+            self!style: :tag(ListBody), :!block, {
+                $.pod2pdf($pod.contents);
+            }
         }
     }
 }
 
 multi method pod2pdf(Pod::Item $pod) {
-    $.block: {
+    $.block: :padding($.line-height/2), {
         my Level $list-level = min($pod.level // 1, 3);
-        self!style: :tag(ListItem), :indent($list-level), {
+        my $indent = $list-level - $!indent;
+        self!style: :tag(ListItem), :$indent, {
             {
                 my constant BulletPoints = (
                    "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
@@ -487,12 +490,12 @@ multi method pod2pdf(Pod::Item $pod) {
                 $.print: $bp;
             }
 
-            # slightly iffy $!ty fixup
-            $!ty += 2 * $.line-height;
+            # omit any leading vertical padding in the list-body
+            $!float = True;
 
-            self!style: :tag(ListBody), :indent, {
-                $.pod2pdf($pod.contents);
-            }
+           self!style: :tag(ListBody), :indent, {
+               $.pod2pdf($pod.contents);
+           }
         }
     }
 }
@@ -548,24 +551,28 @@ multi method pod2pdf(Pod::Block::Declarator $pod) {
     $name //= $w.?name // '';
     $decl //= $type;
 
-    self!style: :lines-before(3), :block, {
-        self!heading($type.tclc ~ ' ' ~ $name, :$level);
-
-        if $pod.leading -> $pre-pod {
-            self!style: :tag(Paragraph), {
-                $.pod2pdf($pre-pod);
+    if $pod.leading || $code || $pod.trailing {
+        $.block: :padding($.line-height), {
+            self!style: :lines-before(3), {
+                self!heading($type.tclc ~ ' ' ~ $name, :$level);
             }
-        }
 
-        if $code {
-            self!style: :tag(Paragraph), {
-                self!code([$decl ~ ' ' ~ $code]);
+            if $pod.leading -> $pre-pod {
+                self!style: :tag(Paragraph), {
+                    $.pod2pdf($pre-pod);
+                }
             }
-        }
 
-        if $pod.trailing -> $post-pod {
-            self!style: :tag(Paragraph), {
-                $.pod2pdf($post-pod);
+            if $code {
+                self!style: :tag(Paragraph), {
+                    self!code([$decl ~ ' ' ~ $code]);
+                }
+            }
+
+            if $pod.trailing -> $post-pod {
+                self!style: :tag(Paragraph), {
+                    $.pod2pdf($post-pod);
+                }
             }
         }
     }
@@ -623,8 +630,13 @@ multi method say(Str $text, |c) {
 
 method font { $!styler.font: :%!font-map }
 
-method pad { $!padding=2 }
-method block(&codez) { $.pad; &codez(); $.pad}
+method block(&codez, Numeric :$padding) {
+       $!padding += $padding // $!styler.style.measure(:margin-top);
+
+       &codez();
+
+       $!padding = $padding // $!styler.style.measure(:margin-bottom);
+}
 
 method !text-box(
     Str $text,
@@ -637,7 +649,11 @@ method !text-box(
 }
 
 method !pad-here {
-    $.say for ^$!padding;
+    if $!padding && !$!float {
+        $!tx  = $!margin;
+        $!ty -= $!padding;
+    }
+    $!float = False;
     $!padding = 0;
 }
 
@@ -727,10 +743,9 @@ method !pod2dest($pod, Str :$name) {
     my \y = $!ty;
     my \h = max(y - $y0, $!last-chunk-height);
     my DestRef $ = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h);
-
 }
 
-method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True, :$!padding=2) {
+method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True) {
     my $lines-before = $.lines-before;
 
     given $level {
@@ -742,11 +757,10 @@ method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <=
     $pod .= &strip-para;
 
     my $tag =  $level ?? 'H' ~ $level !! Title;
-    self!style: :$tag, :$underline, :$lines-before, :!block, {
+    self!style: :$tag, :$underline, :$lines-before, {
 
         my Str $Title = $.pod2text-inline($pod);
         $*tag.cos.title = $Title;
-        self!pad-here;
 
         if $!contents && $toc {
             # Register in table of contents
@@ -910,7 +924,7 @@ method !finish-page {
         $!gutter = 0;
         self!draw-line($!margin, $!ty, $!gfx.canvas.width - $!margin, $!ty);
         while @!footnotes {
-            $!padding = 1;
+            $!padding = $.line-height;
             my $footnote = @!footnotes.shift;
             my DestRef $destination = @!footnotes-back.shift;
             temp $*tag = @!footnotes-tag.shift;
