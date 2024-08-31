@@ -133,9 +133,6 @@ my $xml = q{<Document Lang="en">
     asdf
   </P>
   <Table>
-    <Caption>
-      Table 4
-    </Caption>
     <THead>
       <TR>
         <TH>
@@ -237,7 +234,7 @@ asdf
 =end table
 asdf
 
-=begin table :caption('Table 4')
+=begin table
 H 1 | H 2 | H 3 | H 4
 ====|=====|=====|====
 Hello, I'm kinda long, I think | B B | C C

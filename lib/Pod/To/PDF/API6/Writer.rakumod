@@ -238,16 +238,15 @@ method !build-table($pod, @table) {
 
 multi method pod2pdf(Pod::Block::Table $pod) {
 
-    temp $*tag .= Table;
-
-    self!style: :lines-before(3), :block, :padding($.line-height), {
+    self!style: :tag(Table), :lines-before(3), :block, {
+        self!pad-here;
         if $pod.caption -> $caption {
             self!style: :tag(Caption), {
                 $.say: $caption;
             }
         }
+
         my @widths = self!build-table: $pod, my @table;
-        self!pad-here;
         my Pair @headers = @table.shift.List;
         if @headers {
             self!table-row: @headers, @widths, :header;
@@ -477,28 +476,29 @@ multi method pod2pdf(Pod::Defn $pod) {
 }
 
 multi method pod2pdf(Pod::Item $pod) {
-    $.block: :padding($.line-height/2), {
         my Level $level = min($pod.level // 1, 3);
         my $indent = $level - $!indent;
-        $!padding = $.line-height;
-        self!style: :tag(ListItem), :$indent, {
-            {
-                my constant BulletPoints = (
-                   "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
+        $.block: {
+            $!padding = $.line-height;
+            self!pad-here;
+            self!style: :tag(ListItem), :$indent, :bold, {
+                {
+                    my constant BulletPoints = (
+                    "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
                 );
-                my Str $bp = BulletPoints[$level - 1];
-                temp $*tag .= Label;
-                $.print: $bp;
+                    my Str $bp = BulletPoints[$level - 1];
+                    temp $*tag .= Label;
+                    $.print: $bp;
+                }
+
+                # omit any leading vertical padding in the list-body
+                $!float = True;
+
+                self!style: :tag(ListBody), :indent, {
+                    $.pod2pdf($pod.contents);
+                }
             }
-
-            # omit any leading vertical padding in the list-body
-            $!float = True;
-
-           self!style: :tag(ListBody), :indent, {
-               $.pod2pdf($pod.contents);
-           }
         }
-    }
 }
 
 multi method pod2pdf(Pod::Block::Declarator $pod) {
