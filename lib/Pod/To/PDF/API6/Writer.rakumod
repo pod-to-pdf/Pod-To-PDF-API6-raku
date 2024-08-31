@@ -629,9 +629,8 @@ multi method say(Str $text, |c) {
 method font { $!styler.font: :%!font-map }
 
 method block(&codez, Numeric :$padding) {
-       if $!styler.style.page-break-before eq 'always' {
+       if $!styler.style.page-break-before eq 'always' || ($!ty.defined && self!height-remaining < $.lines-before * $.line-height) {
            self!new-page;
-           $!padding = 0;
        } else {
            $!padding += $padding // $!styler.style.measure(:margin-top);
       }
@@ -890,7 +889,7 @@ method !link(PDF::Content::Text::Box $tb, :$tab = $!margin, ) {
 }
 
 method !gfx {
-    if !$!gfx.defined || self!height-remaining < $.lines-before * $.line-height {
+    if !$!gfx.defined {
         self!new-page;
     }
     elsif $!tx > $!margin && $!tx > $!gfx.canvas.width - self!indent {
