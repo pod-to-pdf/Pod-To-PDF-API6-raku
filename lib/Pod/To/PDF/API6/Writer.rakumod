@@ -202,8 +202,7 @@ method !build-table($pod, @table) {
     @table = ();
 
     if $pod.headers {
-        self!style: :lines-before(3), :bold, {
-            temp $*tag .= TableHead;
+        self!style: :tag(TableHead), :bold, {
             $*tag .= TableRow;
             my @row = $pod.headers.map: {
                 temp $*tag .= add-kid: :name(TableHeader);
@@ -238,7 +237,7 @@ method !build-table($pod, @table) {
 
 multi method pod2pdf(Pod::Block::Table $pod) {
 
-    self!style: :tag(Table), :lines-before(3), :block, {
+    self!style: :tag(Table), :block, {
         self!pad-here;
         if $pod.caption -> $caption {
             self!style: :tag(Caption), {
@@ -298,7 +297,7 @@ multi method pod2pdf(Pod::Block::Named $pod) {
 }
 
 multi method pod2pdf(Pod::Block::Code $pod) {
-    self!style: :tag(Paragraph), :lines-before(3), {
+    self!style: :tag(Paragraph), {
         self!code: $pod.contents;
     }
 }
@@ -554,9 +553,7 @@ multi method pod2pdf(Pod::Block::Declarator $pod) {
 
     if $pod.leading || $code || $pod.trailing {
         $.block: :padding($.line-height), {
-            self!style: :lines-before(3), {
-                self!heading($type.tclc ~ ' ' ~ $name, :$level);
-            }
+            self!heading($type.tclc ~ ' ' ~ $name, :$level);
 
             if $pod.leading -> $pre-pod {
                 self!style: :tag(Paragraph), {
@@ -632,7 +629,12 @@ multi method say(Str $text, |c) {
 method font { $!styler.font: :%!font-map }
 
 method block(&codez, Numeric :$padding) {
-       $!padding += $padding // $!styler.style.measure(:margin-top);
+       if $!styler.style.page-break-before eq 'always' {
+           self!new-page;
+           $!padding = 0;
+       } else {
+           $!padding += $padding // $!styler.style.measure(:margin-top);
+      }
 
        &codez();
 
@@ -746,19 +748,11 @@ method !pod2dest($pod, Str :$name) {
     my DestRef $ = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h);
 }
 
-method !heading($pod is copy, Level:D :$level = $!level, :$underline = $level <= 1, Bool :$toc = True) {
-    my $lines-before = $.lines-before;
-
-    given $level {
-        when 0|1 { self!new-page; }
-        when 2   { $lines-before = 3; }
-        when 3   { $lines-before = 2; }
-    }
-
+method !heading($pod is copy, Level:D :$level = $!level, Bool :$toc = True) {
     $pod .= &strip-para;
 
     my $tag =  $level ?? 'H' ~ $level !! Title;
-    self!style: :$tag, :$underline, :$lines-before, {
+    self!style: :$tag, {
 
         my Str $Title = $.pod2text-inline($pod);
         $*tag.cos.title = $Title;

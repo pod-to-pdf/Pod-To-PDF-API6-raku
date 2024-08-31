@@ -13,7 +13,7 @@ has Bool $.italic    = $!style.font-style eq 'italic';
 has Bool $.underline = $!style.text-decoration eq 'underline';
 has Bool $.mono      = $!style.font-family ~~ 'monospace';
 has Bool $.verbatim  = $!style.white-space eq 'pre';
-has UInt $.lines-before = 1;
+has UInt $.lines-before = $!style.page-break-after eq 'avoid' ?? 3 !! 1;
 has PDF::Action $.link;
 has PDF::Content::FontObj $.font;
 
