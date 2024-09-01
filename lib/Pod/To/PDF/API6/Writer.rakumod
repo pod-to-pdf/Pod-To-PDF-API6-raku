@@ -47,7 +47,7 @@ has @!footnotes;
 has DestRef @!footnotes-back; # per-footnote return links
 
 ### Rendering State ###
-has Pod::To::PDF::API6::Style $.styler handles<font-size leading line-height bold italic mono underline lines-before link verbatim>;
+has Pod::To::PDF::API6::Style $.styler handles<style font-size leading line-height bold italic mono underline lines-before link verbatim>;
 has $!tx = $!margin; # text-flow x
 has $!ty; # text-flow y
 has UInt $!indent = 0;
@@ -205,7 +205,7 @@ method !build-table($pod, @table) {
         self!style: :tag(TableHead), :bold, {
             $*tag .= TableRow;
             my @row = $pod.headers.map: {
-                temp $*tag .= add-kid: :name(TableHeader);
+                temp $*tag .= TableHeader;
                 $*tag => self!table-cell($_)
             }
             @table.push: @row;
@@ -220,7 +220,7 @@ method !build-table($pod, @table) {
     $pod.contents.map: {
         temp $*tag .= TableRow;
         my @row = .map: {
-            temp $*tag .= add-kid: :name(TableData);
+            temp $*tag .= TableData;
             $*tag => self!table-cell($_);
         }
         @table.push: @row;
@@ -384,8 +384,9 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
 
             temp $*tag .= Span;
             self!style: :tag(Reference), {
-                self!style: :tag(Label), :!block, :$link, {  $.pod2pdf($ind); }
+                self!style: :tag(Label), :$link, {  $.pod2pdf($ind); }
             }
+
             my @contents = $ind, $pod.contents.Slip;
             @!footnotes.push: @contents;
             @!footnotes-back.push: self!make-dest;
@@ -477,8 +478,9 @@ multi method pod2pdf(Pod::Defn $pod) {
 multi method pod2pdf(Pod::Item $pod) {
         my Level $level = min($pod.level // 1, 3);
         my $indent = $level - $!indent;
+
         $.block: {
-            $!padding = $.line-height;
+            $!padding = $.line-height * 2;
             self!pad-here;
             self!style: :tag(ListItem), :$indent, :bold, {
                 {
@@ -629,15 +631,15 @@ multi method say(Str $text, |c) {
 method font { $!styler.font: :%!font-map }
 
 method block(&codez, Numeric :$padding) {
-       if $!styler.style.page-break-before eq 'always' || ($!ty.defined && self!height-remaining < $.lines-before * $.line-height) {
+       if $.style.page-break-before ne 'auto' || ($!ty.defined && self!height-remaining < $.lines-before * $.line-height) {
            self!new-page;
        } else {
-           $!padding += $padding // $!styler.style.measure(:margin-top);
+           $!padding += $padding // $.style.measure(:margin-top);
       }
 
        &codez();
 
-       $!padding = $padding // $!styler.style.measure(:margin-bottom);
+       $!padding = $padding // $.style.measure(:margin-bottom);
 }
 
 method !text-box(
@@ -814,7 +816,6 @@ method !code(@contents is copy) {
     self!gfx;
 
     self!style: :indent, :tag(CODE), :lines-before(0), :block, {
-
         self!pad-here;
 
         my @plain-text;
@@ -924,7 +925,7 @@ method !finish-page {
             temp $*tag = @!footnotes-tag.shift;
             self!style: :tag(Note), {
                 my PDF::Action $link = $!pdf.action: :$destination;
-                self!style: :tag(Label), :$link, :!block, {
+                self!style: :tag(Label), :$link, :italic, {
                     $.print($footnote.shift);
                 } # [n]
 

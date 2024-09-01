@@ -13,7 +13,7 @@ has Bool $.italic    = $!style.font-style eq 'italic';
 has Bool $.underline = $!style.text-decoration eq 'underline';
 has Bool $.mono      = $!style.font-family ~~ 'monospace';
 has Bool $.verbatim  = $!style.white-space eq 'pre';
-has UInt $.lines-before = $!style.page-break-after eq 'avoid' ?? 3 !! 1;
+has UInt $.lines-before = $!style.page-break-after eq 'auto' ?? 1 !! 3;
 has PDF::Action $.link;
 has PDF::Content::FontObj $.font;
 
@@ -24,23 +24,20 @@ method line-height {
     $.leading * $!font-size;
 }
 constant %CoreFont = %(
-    # Normal Fonts              # Mono Fonts
-    :n-n-n<times>,             :n-n-M<courier>,  
-    :B-n-n<times-bold>,        :B-n-M<courier-bold>,
-    :n-I-n<times-italic>,      :n-I-M<courier-oblique>,
-    :B-I-n<times-bolditalic>,  :B-I-M<courier-boldoblique>
+    # Normal Fonts           # Mono Fonts
+    :___<times>,             :__M<courier>,
+    :B__<times-bold>,        :B_M<courier-bold>,
+    :_I_<times-italic>,      :_IM<courier-oblique>,
+    :BI_<times-bolditalic>,  :BIM<courier-boldoblique>
 );
 my subset FontKey of Str where %CoreFont{$_}:exists;
 method font-key {
-    join(
-        '-', 
-        ($!bold ?? 'B' !! 'n'),
-        ($!italic ?? 'I' !! 'n'),
-        ($!mono ?? 'M' !! 'n'),
-    );
+    (
+        ($!bold ?? 'B' !! '_'),
+        ($!italic ?? 'I' !! '_'),
+        ($!mono ?? 'M' !! '_'),
+    ).join;
 }
-
-method clone { warn %_.raku; nextwith :font(PDF::Content::FontObj), |%_; }
 
 method font(:%font-map) {
     $!font //= do {
