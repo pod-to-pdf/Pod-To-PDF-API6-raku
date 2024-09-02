@@ -12,7 +12,7 @@ my $xml = q{<Document Lang="en">
         <Lbl>
           <Link>[1]</Link>
         </Lbl>
-      </Reference><Note>
+      </Reference><Note role="FootNote">
         <Lbl>
           <Link>[1]</Link>
         </Lbl>

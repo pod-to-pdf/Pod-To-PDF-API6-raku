@@ -234,6 +234,7 @@ endobj
   /Type /StructTreeRoot
   /K [ 16 0 R ]
   /ParentTree << /Nums [ 0 [ 17 0 R 18 0 R 20 0 R 15 0 R 21 0 R 23 0 R 24 0 R ] ] >>
+  /RoleMap << /FootNote /Note >>
 >>
 endobj
 
@@ -268,5 +269,5 @@ xref
 trailer
 << /ID [ (t/declarator.t  ) (t/declarator.t  ) ] /Root 1 0 R /Size 26 >>
 startxref
-3440
+3473
 %%EOF

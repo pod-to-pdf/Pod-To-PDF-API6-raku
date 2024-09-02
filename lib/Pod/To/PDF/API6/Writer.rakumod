@@ -1,6 +1,6 @@
 unit class Pod::To::PDF::API6::Writer;
 
-use Pod::To::PDF::API6::Podish :Level;
+use Pod::To::PDF::API6::Podish :Level, :Roles;
 also does Pod::To::PDF::API6::Podish;
 
 use PDF::API6;
@@ -313,7 +313,7 @@ multi method pod2pdf(Pod::Block::Para $pod) {
     }
 }
 
-method !resolve-link(Str $url) {
+method !external-link(Str $url) {
     my %style = :!block;
     with $url {
         if .starts-with('#') {
@@ -436,7 +436,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
         }
         when 'L' {
             my $text = $.pod2text-inline($pod.contents);
-            my %style = self!resolve-link: $pod.meta.head // $text;
+            my %style = self!external-link: $pod.meta.head // $text;
             self!style: |%style, {
                 $.print: $text;
             }
@@ -444,7 +444,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
         when 'P' {
             # todo insertion of placed text
             if $.pod2text-inline($pod.contents) -> $url {
-                my %style = self!resolve-link: $url;
+                my %style = self!external-link: $url;
                 $.pod2pdf('(see: ');
                 self!style: |%style, {
                     $.print: $url;
@@ -730,6 +730,7 @@ method !style(&codez, Int :$indent, Str :tag($name) is copy, Bool :$block is cop
     temp $!indent;
     temp $*tag;
     if $name.defined {
+        $name .= key if $name ~~ Enumeration && $name ~~ Roles;
         $*tag .= add-kid: :$name;
     }
     my $style = $*tag.style;
@@ -923,7 +924,7 @@ method !finish-page {
             my $footnote = @!footnotes.shift;
             my DestRef $destination = @!footnotes-back.shift;
             temp $*tag = @!footnotes-tag.shift;
-            self!style: :tag(Note), {
+            self!style: :tag(FootNote), {
                 my PDF::Action $link = $!pdf.action: :$destination;
                 self!style: :tag(Label), :$link, :italic, {
                     $.print($footnote.shift);

@@ -1,7 +1,9 @@
 unit class Pod::To::PDF::API6:ver<0.0.1>;
 
-use Pod::To::PDF::API6::Podish :Level;
+use Pod::To::PDF::API6::Podish :Level, :Roles;
 also does Pod::To::PDF::API6::Podish;
+
+my constant %role-map = Roles.enums.Hash;
 
 use PDF::API6;
 use PDF::Tags;
@@ -19,7 +21,7 @@ use PDF::StructElem;
 ### Attributes ###
 has PDF::API6 $.pdf .= new;
 has CSS::TagSet::TaggedPDF $.styler .= new;
-has PDF::Tags $.tags .= create: :$!pdf, :$!styler;
+has PDF::Tags $.tags .= create: :$!pdf, :$!styler, :%role-map;
 has PDF::Tags::Elem $.root = $!tags.Document;
 has PDF::Content::FontObj %.font-map;
 has Numeric $.width  = 612;
