@@ -111,7 +111,7 @@ method !init-pdf(Str :$lang) {
     self.lang = $_ with $lang;
 }
 
-submethod TWEAK(Str:D :$lang = 'en', :$pod, :%metadata, :@fonts) {
+submethod TWEAK(Str:D :$lang = 'en', :$pod, :%metadata, :@fonts, :$stylesheet) {
     self!init-pdf(:$lang);
     self!preload-fonts(@fonts)
         if @fonts;
@@ -123,18 +123,20 @@ submethod TWEAK(Str:D :$lang = 'en', :$pod, :%metadata, :@fonts) {
             $info{.key} = .value;
         }
     }
+    $!styler.load-stylesheet($_) with $stylesheet;
     self.read($_) with $pod;
 }
 
 method render(
     $class: $pod,
-    IO() :$save-as is copy,
+    IO() :$save-as  is copy,
     UInt:D :$width  is copy = 612,
     UInt:D :$height is copy = 792,
     UInt:D :$margin is copy = 20,
     Bool :$index    is copy = True,
     Bool :$contents is copy = True,
     Bool :$page-numbers is copy,
+    IO() :$stylesheet   is copy,
     |c,
 ) {
     state %cache{Any};
@@ -146,12 +148,13 @@ method render(
             when /^'--width='(\d+)$/   { $width  = $0.Int }
             when /^'--height='(\d+)$/  { $height = $0.Int }
             when /^'--margin='(\d+)$/  { $margin = $0.Int }
+            when /^'--stylesheet='(.+)$/  { $stylesheet = $0.Str }
             when /^'--save-as='(.+)$/  { $save-as = $0.Str }
             default { note "ignoring $_ argument" }
         }
         $save-as //= tempfile("pod2pdf-api6-****.pdf", :!unlink)[1];
         # render method may be called more than once: Rakudo #2588
-        my $renderer = $class.new: |c, :$width, :$height, :$pod, :$margin, :$contents, :$page-numbers;
+        my $renderer = $class.new: |c, :$width, :$height, :$pod, :$margin, :$contents, :$page-numbers, :$stylesheet;
         $renderer.build-index
             if $index && $renderer.index;
         my PDF::API6 $pdf = $renderer.pdf;
