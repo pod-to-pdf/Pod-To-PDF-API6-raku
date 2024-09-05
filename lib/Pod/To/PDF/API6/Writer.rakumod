@@ -141,7 +141,7 @@ sub dest-name(Str:D $_) {
     .subst('#', '', :g);
 }
 
-method !table-row(@row, @widths, Bool :$header) {
+method !table-row(@row, @widths, :@border!, Bool :$header) {
     if +@row -> \cols {
         my @overflow;
         # simple fixed column widths, for now
@@ -176,7 +176,7 @@ method !table-row(@row, @widths, Bool :$header) {
                     @overflow[$_] = $tb.clone: :$text, :$width, :height(0);
                 }
             }
-            $tab += $width + hpad;
+            $tab += $width + @border[0];
         }
         if @overflow {
             # continue table
@@ -185,7 +185,7 @@ method !table-row(@row, @widths, Bool :$header) {
             }
         }
         else {
-            $!ty -= $row-height + vpad;
+            $!ty -= $row-height + @border[1];
             $!ty -= $head-space if $header;
         }
     }
@@ -198,7 +198,7 @@ method !table-cell($pod) {
 
 method !build-table($pod, @table) {
     my $x0 = self!indent;
-    my \total-width = self!gfx.canvas.width - $x0 - $!margin;
+
     @table = ();
 
     if $pod.headers {
@@ -227,17 +227,20 @@ method !build-table($pod, @table) {
     }
 
     my $cols = @table.max: *.elems;
-    my Numeric @widths = (^$cols).map: -> $col {
+    (^$cols).map: -> $col {
         @table.map({
             do with .[$col] { with .value { .width }  } // 0
         }).max
     };
-    fit-widths(total-width - hpad * (@widths-1), @widths);
 }
 
 multi method pod2pdf(Pod::Block::Table $pod) {
 
     self!style: :tag(Table), :block, {
+        my Numeric @border = $.style.measure(:border-spacing);
+        @border[1] //= @border[0];
+
+        my \total-width = self!gfx.canvas.width - self!indent - $!margin;
         self!pad-here;
         if $pod.caption -> $caption {
             self!style: :tag(Caption), {
@@ -246,16 +249,17 @@ multi method pod2pdf(Pod::Block::Table $pod) {
         }
 
         my @widths = self!build-table: $pod, my @table;
+        fit-widths(total-width - @border[0] * (@widths-1), @widths);
         my Pair @headers = @table.shift.List;
         if @headers {
-            self!table-row: @headers, @widths, :header;
+            self!table-row: @headers, @widths, :header, :@border;
         }
 
         if @table {
             for @table {
                 my @row = .List;
                 if @row {
-                    self!table-row: @row, @widths;
+                    self!table-row: @row, @widths, :@border;
                 }
             }
         }
