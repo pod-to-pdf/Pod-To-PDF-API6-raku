@@ -1,7 +1,7 @@
 unit class Pod::To::PDF::API6::Writer;
 
-use Pod::To::PDF::API6::Podish :Level, :Roles;
-also does Pod::To::PDF::API6::Podish;
+use Pod::To::PDF::API6::Metadata :Level, :Roles;
+also does Pod::To::PDF::API6::Metadata;
 
 use PDF::API6;
 use Pod::To::PDF::API6::Style;
@@ -31,6 +31,7 @@ has Bool $.contents   is required;
 has %.replace is required;
 has PDF::Content::FontObj %.font-map is required;
 has PDF::Content::PageTree:D $.pages is required;
+has Bool $.finish;
 
 has %.index;
 
@@ -944,6 +945,7 @@ method !finish-page {
 
 method !new-page {
     self!finish-page();
+    $!page.finish if $!page.defined && $!finish;
     $!gutter = Gutter;
     $!page = $!pdf.add-page;
     $!gfx = $!page.gfx;

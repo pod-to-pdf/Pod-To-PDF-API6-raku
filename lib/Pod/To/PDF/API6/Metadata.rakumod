@@ -1,9 +1,9 @@
-unit role Pod::To::PDF::API6::Podish;
+unit role Pod::To::PDF::API6::Metadata;
 
 my subset Level is export(:Level) of Int:D  where 0..6;
 my enum Roles is export(:Roles) « :FootNote<Note> »;
 
-my subset PodMetaType of Str where 'title'|'subtitle'|'author'|'name'|'version';
+my subset MetaType of Str where 'title'|'subtitle'|'author'|'name'|'version';
 
 has @.toc; # table of contents
 has Str %!metadata;
@@ -49,7 +49,7 @@ method !build-metadata-title {
     @title.join: ' ';
 }
 
-method set-metadata(PodMetaType $key, $value) {
+method set-metadata(MetaType $key, $value) {
 
     %!metadata{$key.lc} = $value;
 
@@ -67,7 +67,7 @@ method set-metadata(PodMetaType $key, $value) {
 }
 
 multi method metadata { %!metadata }
-multi method metadata(PodMetaType $t) is rw {
+multi method metadata(MetaType $t) is rw {
     Proxy.new(
         FETCH => { %!metadata{$t} },
         STORE => -> $, Str:D() $v {

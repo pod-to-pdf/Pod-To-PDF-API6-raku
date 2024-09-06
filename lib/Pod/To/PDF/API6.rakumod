@@ -1,7 +1,7 @@
 unit class Pod::To::PDF::API6:ver<0.0.1>;
 
-use Pod::To::PDF::API6::Podish :Level, :Roles;
-also does Pod::To::PDF::API6::Podish;
+use Pod::To::PDF::API6::Metadata :Level, :Roles;
+also does Pod::To::PDF::API6::Metadata;
 
 my constant %role-map = Roles.enums.Hash;
 
@@ -50,12 +50,12 @@ method !paginate($pdf) {
     }
 }
 
-method read-batch($pod, PDF::Content::PageTree:D $pages, $frag, |c) is hidden-from-backtrace {
+method read-batch($section, PDF::Content::PageTree:D $pages, $frag, |c) is hidden-from-backtrace {
     $pages.media-box = 0, 0, $!width, $!height;
     my $finish = ! $!page-numbers;
     my @index;
     my Pod::To::PDF::API6::Writer $writer .= new: :%!font-map, :$pages, :$finish, :$!tag, :$!pdf, :$!margin, :%!replace, :$!contents, |c;
-    $writer.write($pod, $frag);
+    $writer.write($section, $frag);
     my Hash:D $meta = $writer.metadata;
     my Hash:D $index = $writer.index;
     my @toc = $writer.toc;
@@ -77,8 +77,8 @@ method merge-batch( % ( :@toc!, :%index!, :$frag!, :%meta! ) ) {
     }
 }
 
-method read($pod, |c) {
-    my %batch = $.read-batch: $pod, $!pdf.Pages, $!root.fragment, |c;
+method read($section, |c) {
+    my %batch = $.read-batch: $section, $!pdf.Pages, $!root.fragment, |c;
     $.merge-batch: %batch;
     self!paginate($!pdf)
         if $!page-numbers;
