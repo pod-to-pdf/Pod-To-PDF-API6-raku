@@ -18,7 +18,6 @@ use PDF::Destination :Fit, :DestRef;
 use PDF::Tags::Elem;
 use PDF::Tags::Node;
 use CSS::Properties;
-use CSS::TagSet::TaggedPDF;
 
 use URI;
 use IETF::RFC_Grammar::URI;
@@ -75,9 +74,9 @@ class DefaultLinker {
 }
 has $.linker = DefaultLinker;
 
-method write($pod, $*root) {
+method write($pod, PDF::Tags::Elem $*root) {
     my $*tag = $*root;
-    my $style = $*tag.style;
+    my CSS::Properties $style = $*tag.style;
     $!styler .= new: :$style;
     self.pod2pdf($pod);
     self!finish-page;
@@ -351,7 +350,7 @@ method !replace(Pod::FormattingCode $pod where .type eq 'R', &continue) {
 
     my $rv := &continue($new-pod);
 
-    %!replacing{$place-holder}:delete;;
+    %!replacing{$place-holder}:delete;
     $rv;
 }
 
