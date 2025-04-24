@@ -7,7 +7,7 @@ use PDF::API6;
 plan 2;
 
 my PDF::API6 $pdf = pod2pdf($=pod);
-$pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
+$pdf.id = $*PROGRAM.basename.fmt('%-16.16s');
 lives-ok {$pdf.save-as: "t/defn.pdf", :!info}
 
 my $xml = q{<Document Lang="en">

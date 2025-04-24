@@ -66,7 +66,7 @@ code</Code>
 
 my Pod::To::PDF::API6 $doc .= new: :$=pod;
 my PDF::API6 $pdf = $doc.pdf;
-$pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
+$pdf.id = $*PROGRAM.basename.fmt('%-16.16s');
 $pdf.save-as: "t/code.pdf", :!info;
 my PDF::Tags $tags = $doc.tags;
 

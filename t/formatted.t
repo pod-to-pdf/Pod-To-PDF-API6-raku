@@ -40,7 +40,7 @@ my $xml = q{<Document Lang="en">
 
 my Pod::To::PDF::API6 $doc .= new: :$=pod, :replace{'to be replaced' => 'replaced'};
 my PDF::API6 $pdf = $doc.pdf;
-$pdf.id = $*PROGRAM-NAME.fmt('%-16.16s');
+$pdf.id = $*PROGRAM.basename.fmt('%-16.16s');
 $pdf.save-as: "t/formatted.pdf", :!info;
 my PDF::Tags $tags = $doc.tags;
 
