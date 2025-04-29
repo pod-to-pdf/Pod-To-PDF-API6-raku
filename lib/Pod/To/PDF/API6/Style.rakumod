@@ -33,9 +33,9 @@ constant %CoreFont = %(
 my subset FontKey of Str where %CoreFont{$_}:exists;
 method font-key {
     (
-        ($!bold ?? 'B' !! '_'),
+        ($!bold   ?? 'B' !! '_'),
         ($!italic ?? 'I' !! '_'),
-        ($!mono ?? 'M' !! '_'),
+        ($!mono   ?? 'M' !! '_'),
     ).join;
 }
 

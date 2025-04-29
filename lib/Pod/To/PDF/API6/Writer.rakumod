@@ -25,7 +25,10 @@ use IETF::RFC_Grammar::URI;
 my constant Gutter = 3;
 
 has PDF::API6:D $.pdf is required;
-has Numeric $.margin  is required;
+has Numeric $.margin-left;
+has Numeric $.margin-right;
+has Numeric $.margin-top;
+has Numeric $.margin-bottom;
 has Bool $.contents   is required;
 has %.replace is required;
 has PDF::Content::FontObj %.font-map is required;
@@ -48,7 +51,7 @@ has DestRef @!footnotes-back; # per-footnote return links
 
 ### Rendering State ###
 has Pod::To::PDF::API6::Style $.styler handles<style font-size leading line-height bold italic mono underline lines-before link verbatim>;
-has $!tx = $!margin; # text-flow x
+has $!tx = $!margin-left; # text-flow x
 has $!ty; # text-flow y
 has UInt $!indent = 0;
 has Numeric $!padding = 0.0;
@@ -80,6 +83,13 @@ method write($pod, PDF::Tags::Elem $*root) {
     $!styler .= new: :$style;
     self.pod2pdf($pod);
     self!finish-page;
+}
+
+submethod TWEAK(Numeric:D :$margin = 20) {
+    $!margin-top    //= $margin;
+    $!margin-left   //= $margin;
+    $!margin-bottom //= $margin;
+    $!margin-right  //= $margin;
 }
 
 method !tag-begin($name) {
@@ -148,7 +158,7 @@ method !table-row(@row, @widths, :@border!, Bool :$header) {
         self!gfx;
         my $tab = self!indent;
         my $row-height = 0;
-        my $height = $!ty - $!margin;
+        my $height = $!ty - $!margin-bottom;
         my $head-space = $.line-height - $.font-size;
 
         for ^cols {
@@ -240,7 +250,7 @@ multi method pod2pdf(Pod::Block::Table $pod) {
         my Numeric @border = $.style.measure(:border-spacing);
         @border[1] //= @border[0];
 
-        my \total-width = self!gfx.canvas.width - self!indent - $!margin;
+        my \total-width = self!gfx.canvas.width - self!indent - $!margin-right;
         self!pad-here;
         if $pod.caption -> $caption {
             self!style: :tag(Caption), {
@@ -382,7 +392,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'N' {
-            $!gutter-link //= self!make-dest: :left(0), :top($!margin + (Gutter + 2) * $.line-height);
+            $!gutter-link //= self!make-dest: :left(0), :top($!margin-bottom + (Gutter + 2) * $.line-height);
             my $ind = '[' ~ @!footnotes+1 ~ ']';
             my PDF::Action $link = PDF::API6.action: :destination($!gutter-link);
 
@@ -399,7 +409,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
                 # pre-compute footnote size
                 my $style = $*tag.style;
                 temp $!styler .= new: :$style;
-                temp $!tx = $!margin;
+                temp $!tx = $!margin-left;
                 temp $!ty = $!page.height;
                 temp $!indent = 0;
                 my $draft-footnote = $ind ~ $.pod2text-inline($pod.contents);
@@ -625,7 +635,7 @@ multi method pod2pdf($pod) {
 }
 
 multi method say {
-    $!tx = $!margin;
+    $!tx = $!margin-left;
     $!ty -= $.line-height;
 }
 multi method say(Str $text, |c) {
@@ -648,17 +658,17 @@ method block(&codez, Numeric :$padding) {
 
 method !text-box(
     Str $text,
-    :$width  = self!gfx.canvas.width - self!indent - $!margin,
+    :$width  = self!gfx.canvas.width - self!indent - $!margin-right,
     :$height = self!height-remaining,
     |c) {
-    my $indent = $!tx - $!margin;
+    my $indent = $!tx - $!margin-left;
     my Bool $kern = !$.mono;
     PDF::Content::Text::Box.new: :$text, :$indent, :$.leading, :$.font, :$.font-size, :$width, :$height, :$.verbatim, :$kern, |c;
 }
 
 method !pad-here {
     if $!padding && !$!float {
-        $!tx  = $!margin;
+        $!tx  = $!margin-left;
         $!ty -= $!padding;
     }
     $!float = False;
@@ -687,7 +697,7 @@ method print(Str $text, Bool :$nl, :$reflow = True, |c) {
         self!mark: {
             $gfx.text: {
                 .print: $tb, |$pos, :$nl, :shape, |c;
-                $!tx = $!margin;
+                $!tx = $!margin-left;
                 $!tx += .text-position[0] - self!indent
                     unless $nl;
 
@@ -799,7 +809,7 @@ method !finish-code {
     my constant pad = 5;
     with $!code-start-y -> $y0 {
         my $x0 = self!indent;
-        my $width = self!gfx.canvas.width - $!margin - $x0;
+        my $width = self!gfx.canvas.width - $!margin-right - $x0;
         $!gfx.tag: Artifact, {
             .graphics: {
                 my constant Black = 0;
@@ -870,7 +880,7 @@ method !underline(PDF::Content::Text::Box $tb, :$tab = self!indent, ) {
     }
 }
 
-method !link(PDF::Content::Text::Box $tb, :$tab = $!margin, ) {
+method !link(PDF::Content::Text::Box $tb, :$tab = $!margin-left, ) {
     my constant pad = 2;
     my $y = $!ty + $tb.underline-position;
     for $tb.lines {
@@ -898,15 +908,15 @@ method !gfx {
     if !$!gfx.defined {
         self!new-page;
     }
-    elsif $!tx > $!margin && $!tx > $!gfx.canvas.width - self!indent {
+    elsif $!tx > $!margin-right && $!tx > $!gfx.canvas.width - self!indent {
         self.say;
     }
     $!gfx;
 }
 
-method !bottom { $!margin + ($!gutter-2) * $.line-height; }
+method !bottom { $!margin-bottom + ($!gutter-2) * $.line-height; }
 method !height-remaining {
-    $!ty - $!margin - $!gutter * $.line-height;
+    $!ty - $!margin-bottom - $!gutter * $.line-height;
 }
 
 method !lines-remaining {
@@ -919,10 +929,10 @@ method !finish-page {
     if @!footnotes {
         temp $!styler .= new: :lines-before(0); # avoid current styling
         temp $!indent = 0;
-        $!tx = $!margin;
+        $!tx = $!margin-left;
         $!ty = self!bottom;
         $!gutter = 0;
-        self!draw-line($!margin, $!ty, $!gfx.canvas.width - $!margin, $!ty);
+        self!draw-line($!margin-left, $!ty, $!gfx.canvas.width - $!margin-right, $!ty);
         while @!footnotes {
             $!padding = $.line-height;
             my $footnote = @!footnotes.shift;
@@ -948,14 +958,14 @@ method !new-page {
     $!gutter = Gutter;
     $!page = $!pdf.add-page;
     $!gfx = $!page.gfx;
-    $!tx = $!margin;
-    $!ty = $!page.height - $!margin - 16;
+    $!tx = $!margin-left;
+    $!ty = $!page.height - $!margin-top - 16;
     # suppress whitespace before significant content
     $!padding = 0;
 }
 
 method !indent {
-    $!margin  +  10 * $!indent;
+    $!margin-left  +  10 * $!indent;
 }
 
 method pod2text-inline($pod) {

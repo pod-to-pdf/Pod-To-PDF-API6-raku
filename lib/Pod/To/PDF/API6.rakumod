@@ -26,22 +26,28 @@ has PDF::Tags::Elem $.root = $!tags.Document;
 has PDF::Content::FontObj %.font-map;
 has Numeric $.width  = 612;
 has Numeric $.height = 792;
-has Numeric $.margin = 20;
 has Bool $.contents = True;
 has %.index;
 has %.replace;
 has Bool $.tag = True;
 has Bool $.page-numbers;
 
-method !paginate($pdf) {
+method !paginate(
+    $pdf,
+    UInt:D :$margin = 20,
+    Numeric:D :$margin-right is copy,
+    Numeric:D :$margin-bottom is copy,
+                ) {
     my $page-count = $pdf.Pages.page-count;
     my $font = $pdf.core-font: "Helvetica";
     my $font-size := 9;
     my $align := 'right';
     my $page-num;
+    $margin-right //= $margin;
+    $margin-bottom //= $margin;
     for $pdf.Pages.iterate-pages -> $page {
         my PDF::Content $gfx = $page.gfx;
-        my @position = $gfx.width - $!margin, $!margin - $font-size;
+        my @position = $gfx.width - $margin-right, $margin-bottom - $font-size;
         my $text = "Page {++$page-num} of $page-count";
         $gfx.tag: 'Artifact', {
             .print: $text, :@position, :$font, :$font-size, :$align;
@@ -54,7 +60,7 @@ method read-batch($section, PDF::Content::PageTree:D $pages, $frag, |c) is hidde
     $pages.media-box = 0, 0, $!width, $!height;
     my $finish = ! $!page-numbers;
     my @index;
-    my Pod::To::PDF::API6::Writer $writer .= new: :%!font-map, :$pages, :$finish, :$!tag, :$!pdf, :$!margin, :%!replace, :$!contents, |c;
+    my Pod::To::PDF::API6::Writer $writer .= new: :%!font-map, :$pages, :$finish, :$!tag, :$!pdf, :%!replace, :$!contents, |c;
     $writer.write($section, $frag);
     my Hash:D $meta = $writer.metadata;
     my Hash:D $index = $writer.index;
@@ -80,7 +86,7 @@ method merge-batch( % ( :@toc!, :%index!, :$frag!, :%meta! ) ) {
 method read($section, |c) {
     my %batch = $.read-batch: $section, $!pdf.Pages, $!root.fragment, |c;
     $.merge-batch: %batch;
-    self!paginate($!pdf)
+    self!paginate($!pdf, |c)
         if $!page-numbers;
     .Lang = self.lang with $!root;
 }
@@ -111,7 +117,11 @@ method !init-pdf(Str :$lang) {
     self.lang = $_ with $lang;
 }
 
-submethod TWEAK(Str:D :$lang = 'en', :$pod, :%metadata, :@fonts, :$stylesheet) {
+sub apply-page-styling(CSS::Properties:D $css, %props) {
+    %props{.key} = .value for $css.Hash;
+}
+
+submethod TWEAK(Str:D :$lang = 'en', :$pod, :%metadata, :@fonts, :$stylesheet, :$page-style, *%opts) {
     self!init-pdf(:$lang);
     self!preload-fonts(@fonts)
         if @fonts;
@@ -123,24 +133,33 @@ submethod TWEAK(Str:D :$lang = 'en', :$pod, :%metadata, :@fonts, :$stylesheet) {
             $info{.key} = .value;
         }
     }
-    $!styler.load-stylesheet($_) with $stylesheet;
-    self.read($_) with $pod;
+    with $page-style -> $style {
+        my CSS::Properties $css .= new: :$style;
+        apply-page-styling($css, %opts);
+    }
+    self.read($_, |%opts) with $pod;
 }
 
 method render(
     $class: $pod,
     IO() :$save-as  is copy,
-    UInt:D :$width  is copy = 612,
-    UInt:D :$height is copy = 792,
-    UInt:D :$margin is copy = 20,
+    Numeric:D :$width  is copy = 612,
+    Numeric:D :$height is copy = 792,
+    Numeric:D :$margin is copy = 20,
+    Numeric   :$margin-left   is copy,
+    Numeric   :$margin-right  is copy,
+    Numeric   :$margin-top    is copy,
+    Numeric   :$margin-bottom is copy,
     Bool :$index    is copy = True,
     Bool :$contents is copy = True,
     Bool :$page-numbers is copy,
+    Str  :$page-style   is copy,
     IO() :$stylesheet   is copy,
     |c,
 ) {
     state %cache{Any};
     %cache{$pod} //= do {
+        my Bool $show-usage;
         for @*ARGS {
             when /^'--page-numbers'$/  { $page-numbers = True }
             when /^'--/index'$/        { $index  = False }
@@ -148,13 +167,20 @@ method render(
             when /^'--width='(\d+)$/   { $width  = $0.Int }
             when /^'--height='(\d+)$/  { $height = $0.Int }
             when /^'--margin='(\d+)$/  { $margin = $0.Int }
+            when /^'--margin-top='(\d+)$/     { $margin-top = $0.Int }
+            when /^'--margin-bottom='(\d+)$/  { $margin-bottom = $0.Int }
+            when /^'--margin-left='(\d+)$/    { $margin-left = $0.Int }
+            when /^'--margin-right='(\d+)$/   { $margin-right = $0.Int }
+            when /^'--page-style='(.+)$/      { $page-style = $0.Str }
             when /^'--stylesheet='(.+)$/  { $stylesheet = $0.Str }
             when /^'--save-as='(.+)$/  { $save-as = $0.Str }
-            default { note "ignoring $_ argument" }
+            default {  $show-usage = True; note "ignoring $_ argument" }
         }
-        $save-as //= tempfile("pod2pdf-api6-****.pdf", :!unlink)[1];
+        note '(valid options are: --save-as= --page-numbers --width= --height= --margin[-left|-right|-top|-bottom]= --stylesheet= --page-style=)'
+            if $show-usage;
+         $save-as //= tempfile("pod2pdf-api6-****.pdf", :!unlink)[1];
         # render method may be called more than once: Rakudo #2588
-        my $renderer = $class.new: |c, :$width, :$height, :$pod, :$margin, :$contents, :$page-numbers, :$stylesheet;
+        my $renderer = $class.new: |c, :$width, :$height, :$pod, :$margin, :$margin-top, :$margin-bottom, :$margin-left, :$margin-right, :$contents, :$page-numbers, :$page-style, :$stylesheet;
         $renderer.build-index
             if $index && $renderer.index;
         my PDF::API6 $pdf = $renderer.pdf;

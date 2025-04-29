@@ -69,7 +69,7 @@ An existing PDF::API6 object to add pages to.
 
 The page size in points (there are 72 points per inch).
 
-**`UInt:D :$margin`**
+**`UInt:D :$margin, :$margin-top, :$margin-left, :$margin-bottom, :$margin-right``**
 
 The page margin in points (default 20).
 
