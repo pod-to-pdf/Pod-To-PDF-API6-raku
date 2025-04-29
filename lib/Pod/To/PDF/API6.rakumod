@@ -36,8 +36,8 @@ has Bool $.page-numbers;
 method !paginate(
     $pdf,
     UInt:D :$margin = 20,
-    Numeric:D :$margin-right is copy,
-    Numeric:D :$margin-bottom is copy,
+    Numeric :$margin-right is copy,
+    Numeric :$margin-bottom is copy,
                 ) {
     my $page-count = $pdf.Pages.page-count;
     my $font = $pdf.core-font: "Helvetica";

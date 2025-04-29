@@ -826,11 +826,15 @@ method !finish-code {
 }
 
 method !code(@contents is copy) {
+    use PDF::COS:::Name;
+    sub prefix:</>($s) { PDF::COS::Name.COERCE($s) };
+
     @contents.pop if @contents.tail ~~ "\n";
 
     self!gfx;
 
     self!style: :indent, :tag(CODE), :lines-before(0), :block, {
+        $*tag.set-attribute('Placement', /'Block');
         self!pad-here;
 
         my @plain-text;
