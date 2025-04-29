@@ -13,6 +13,7 @@ use PDF::Content;
 use Pod::To::PDF::API6::Style;
 use Pod::To::PDF::API6::Writer;
 use CSS::TagSet::TaggedPDF;
+use CSS::Stylesheet;
 use File::Temp;
 # PDF::Class
 use PDF::Action;
@@ -133,10 +134,23 @@ submethod TWEAK(Str:D :$lang = 'en', :$pod, :%metadata, :@fonts, :$stylesheet, :
             $info{.key} = .value;
         }
     }
+
+    with $stylesheet {
+        # dig out any @page{...} styling from the stylesheet
+        with $!styler.load-stylesheet($_) -> CSS::Stylesheet $_ {
+            apply-page-styling($_, %opts)
+                with .page-properties;
+        }
+    }
+
     with $page-style -> $style {
+        # apply any command-line page styling at a higher precedence
         my CSS::Properties $css .= new: :$style;
         apply-page-styling($css, %opts);
     }
+
+    $!width  = $_ with %opts<width>;
+    $!height = $_ with %opts<height>;
     self.read($_, |%opts) with $pod;
 }
 
