@@ -12,11 +12,11 @@ my $xml = q{<Document Lang="en">
         <Lbl>
           <Link>[1]</Link>
         </Lbl>
-      </Reference><Note role="FootNote">
-        <Lbl>
-          <Link>[1]</Link>
-        </Lbl>
-        if you click, here, you should got back to the paragraph</Note></Span> footnotes.
+      </Reference></Span> footnotes.<Note role="FootNote">
+      <Lbl>
+        <Link>[1]</Link>
+      </Lbl>
+      if you click, here, you should got back to the paragraph</Note>
   </P>
 </Document>
 };

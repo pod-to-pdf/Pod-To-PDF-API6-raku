@@ -47,13 +47,14 @@ has PDF::Page $!page;
 has PDF::Content $!gfx;
 has DestRef $!gutter-link;    # forward link to footnote area
 has @!footnotes;
+has Pod::To::PDF::API6::Style $!footer-style;
 has DestRef @!footnotes-back; # per-footnote return links
 
 ### Rendering State ###
 has Pod::To::PDF::API6::Style $.styler handles<style font-size leading line-height bold italic mono underline lines-before link verbatim>;
 has $!tx = $!margin-left; # text-flow x
 has $!ty; # text-flow y
-has UInt $!indent = 0;
+has Numeric $!indent = 0.0;
 has Numeric $!padding = 0.0;
 has Numeric $!code-start-y;
 has UInt:D $!level = 1;
@@ -81,6 +82,8 @@ method write($pod, PDF::Tags::Elem $*root) {
     my $*tag = $*root;
     my CSS::Properties $style = $*tag.style;
     $!styler .= new: :$style;
+    $style = $*tag.root.styler.tag-style(FootNote);
+    $!footer-style .= new: :$style, :lines-before(0);
     self.pod2pdf($pod);
     self!finish-page;
 }
@@ -392,28 +395,33 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'N' {
-            $!gutter-link //= self!make-dest: :left(0), :top($!margin-bottom + (Gutter + 2) * $.line-height);
             my $ind = '[' ~ @!footnotes+1 ~ ']';
+            my UInt:D $footnote-lines = do {
+                # pre-compute footnote size
+                temp $!styler = $!footer-style;
+                temp $!tx = $!margin-left;
+                temp $!ty = $!page.height;
+                temp $!indent = 0;
+                my $draft-footnote = $ind ~ $.pod2text-inline($pod.contents);
+                +self!text-box($draft-footnote).lines;
+            }
+            unless self!height-remaining > ($footnote-lines+1) * $!footer-style.line-height {
+                # force a page break, unless there's room for both the reference and
+                # the footnote on the current page
+                self!new-page;
+                $ind = '[1]';
+            }
+            my @contents = $ind, $pod.contents.Slip;
+            $!gutter += $footnote-lines;
+            @!footnotes.push: @contents;
+            @!footnotes-back.push: self!make-dest;
+            @!footnotes-tag.push: $*tag;
+            $!gutter-link //= self!make-dest: :left(0), :top($!margin-bottom + (Gutter + 2) * $.line-height);
             my PDF::Action $link = PDF::API6.action: :destination($!gutter-link);
 
             temp $*tag .= Span;
             self!style: :tag(Reference), {
                 self!style: :tag(Label), :$link, {  $.pod2pdf($ind); }
-            }
-
-            my @contents = $ind, $pod.contents.Slip;
-            @!footnotes.push: @contents;
-            @!footnotes-back.push: self!make-dest;
-            @!footnotes-tag.push: $*tag;
-            do {
-                # pre-compute footnote size
-                my $style = $*tag.style;
-                temp $!styler .= new: :$style;
-                temp $!tx = $!margin-left;
-                temp $!ty = $!page.height;
-                temp $!indent = 0;
-                my $draft-footnote = $ind ~ $.pod2text-inline($pod.contents);
-                $!gutter += self!text-box($draft-footnote).lines;
             }
         }
         when 'U' {
@@ -490,30 +498,34 @@ multi method pod2pdf(Pod::Defn $pod) {
 }
 
 multi method pod2pdf(Pod::Item $pod) {
-        my Level $level = min($pod.level // 1, 3);
-        my $indent = $level - $!indent;
-
-        $.block: {
+    if ($*tag.name eq List) {
+        self!style: :tag(ListItem), :bold, :block, {
+            my Level $level = min($pod.level // 1, 3);
+            temp $!indent += $.style.measure(:margin-left) / 10 - 1;
             $!padding = $.line-height * 2;
             self!pad-here;
-            self!style: :tag(ListItem), :$indent, :bold, {
-                {
-                    my constant BulletPoints = (
-                    "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
-                );
-                    my Str $bp = BulletPoints[$level - 1];
-                    temp $*tag .= Label;
-                    $.print: $bp;
-                }
+            {
+                my constant BulletPoints = (
+                "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
+            );
+                my Str $bp = BulletPoints[$level - 1];
+                temp $*tag .= Label;
+                $.print: $bp;
+            }
 
-                # omit any leading vertical padding in the list-body
-                $!float = True;
+            # omit any leading vertical padding in the list-body
+            $!float = True;
 
-                self!style: :tag(ListBody), :indent, {
-                    $.pod2pdf($pod.contents);
-                }
+            self!style: :tag(ListBody), :indent, {
+                $.pod2pdf($pod.contents);
             }
         }
+    }
+    else {
+        $*tag .= add-kid: :name(List);
+        $.pod2pdf($pod);
+        $.say;
+    }
 }
 
 multi method pod2pdf(Pod::Block::Declarator $pod) {
@@ -676,13 +688,11 @@ method !pad-here {
 }
 
 has $!last-chunk-height = 0;
-method print(Str $text, Bool :$nl, :$reflow = True, |c) {
+method print(Str $text, Bool :$nl, |c) {
     self!pad-here;
-    my PDF::Content::Text::Box $tb = self!text-box: $text, |c;
-    my $w = $tb.content-width;
-    my $h = $tb.content-height;
-    my Pair $pos = self!text-position();
     my $gfx = self!gfx;
+    my PDF::Content::Text::Box $tb = self!text-box: $text, |c;
+    my Pair $pos = self!text-position();
 
     {
         temp $*tag;
@@ -709,7 +719,8 @@ method print(Str $text, Bool :$nl, :$reflow = True, |c) {
         $gfx.Restore if $.link;
 
         $tb.lines.pop unless $nl;
-        $!ty -= $tb.content-height;
+        my $h = $tb.content-height;
+        $!ty -= $h;
         $!last-chunk-height = $h;
     }
 
@@ -740,7 +751,7 @@ method !mark(&action, |c) {
     }
 }
 
-method !style(&codez, Int :$indent, Str :tag($name) is copy, Bool :$block is copy, |c) {
+method !style(&codez, Numeric :$indent, Str :tag($name) is copy, Bool :$block is copy, |c) {
     temp $!indent;
     temp $*tag;
     if $name.defined {
@@ -912,30 +923,32 @@ method !gfx {
     if !$!gfx.defined {
         self!new-page;
     }
-    elsif $!tx > $!margin-right && $!tx > $!gfx.canvas.width - self!indent {
+    elsif $!tx > $!gfx.canvas.width - $!margin-right {
         self.say;
     }
     $!gfx;
 }
 
-method !bottom { $!margin-bottom + ($!gutter-2) * $.line-height; }
+method !bottom { $!margin-bottom + ($!gutter-2) * $!footer-style.line-height; }
 method !height-remaining {
-    $!ty - $!margin-bottom - $!gutter * $.line-height;
+    $!ty - $!margin-bottom - $!padding - $!gutter * $!footer-style.line-height;
 }
 
 method !lines-remaining {
-    (self!height-remaining / $.line-height + 0.01).Int;
+    (self!height-remaining / $!footer-style.line-height + 0.01).Int;
 }
 
 method !finish-page {
     self!finish-code
         if $!code-start-y;
     if @!footnotes {
-        temp $!styler .= new: :lines-before(0); # avoid current styling
+        temp $!styler = $!footer-style;
         temp $!indent = 0;
+        temp $!code-start-y = Nil;
         $!tx = $!margin-left;
         $!ty = self!bottom;
         $!gutter = 0;
+        my $start-page = $!page;
         self!draw-line($!margin-left, $!ty, $!gfx.canvas.width - $!margin-right, $!ty);
         while @!footnotes {
             $!padding = $.line-height;
@@ -951,6 +964,14 @@ method !finish-page {
                 $!tx += 2;
 
                 $.pod2pdf($footnote);
+            }
+        }
+        unless $!page === $start-page {
+            # page break in footnotes. draw closing unerline
+            $!gfx.tag: Artifact, {
+                $.say;
+                my $y = $!ty + $.line-height / 2;
+                self!draw-line($!margin-left, $y, $!gfx.canvas.width - $!margin-right, $y);
             }
         }
     }

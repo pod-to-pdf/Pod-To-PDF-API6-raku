@@ -14,7 +14,9 @@ my $xml = q{<Document Lang="en">
     This is a module
   </P>
   <P>
-    <Code>module Asdf1</Code>
+    <Code Placement="Block">
+      module Asdf1
+    </Code>
   </P>
   <H3>
     Sub asdf
@@ -23,10 +25,12 @@ my $xml = q{<Document Lang="en">
     This is a sub
   </P>
   <P>
-    <Code>sub asdf(
-    Str $asdf1,
-    Str :$asdf2 = "asdf",
-) returns Str</Code>
+    <Code Placement="Block">
+      sub asdf(
+          Str $asdf1,
+          Str :$asdf2 = "asdf",
+      ) returns Str
+    </Code>
   </P>
   <H2>
     Class Asdf2
@@ -35,7 +39,9 @@ my $xml = q{<Document Lang="en">
     This is a class
   </P>
   <P>
-    <Code>class Asdf2</Code>
+    <Code Placement="Block">
+      class Asdf2
+    </Code>
   </P>
   <H3>
     Attribute t
@@ -44,7 +50,9 @@ my $xml = q{<Document Lang="en">
     This is an attribute
   </P>
   <P>
-    <Code>has Str $.t</Code>
+    <Code Placement="Block">
+      has Str $.t
+    </Code>
   </P>
   <H3>
     Method asdf
@@ -53,9 +61,11 @@ my $xml = q{<Document Lang="en">
     This is a method
   </P>
   <P>
-    <Code>method asdf(
-    Str :$asdf = "asdf",
-) returns Str</Code>
+    <Code Placement="Block">
+      method asdf(
+          Str :$asdf = "asdf",
+      ) returns Str
+    </Code>
   </P>
 </Document>
 };

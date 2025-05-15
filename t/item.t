@@ -10,124 +10,128 @@ my $xml = q{<Document Lang="en">
   <P>
     asdf
   </P>
-  <LI>
-    <Lbl>
-      •
-    </Lbl>
-    <LBody>
-      <P>
-        Abbreviated 1
-      </P>
-    </LBody>
-  </LI>
-  <LI>
-    <Lbl>
-      •
-    </Lbl>
-    <LBody>
-      <P>
-        Abbreviated 2
-      </P>
-    </LBody>
-  </LI>
-  <P>
-    asdf
-  </P>
-  <LI>
-    <Lbl>
-      •
-    </Lbl>
-    <LBody>
-      <P>
-        Top Item
-      </P>
-      <LI>
-        <Lbl>
-          ·
-        </Lbl>
-        <LBody>
-          <P>
-            First sub-item
-          </P>
-        </LBody>
-      </LI>
-      <LI>
-        <Lbl>
-          ·
-        </Lbl>
-        <LBody>
-          <P>
-            Second sub-item
-          </P>
-        </LBody>
-      </LI>
-    </LBody>
-  </LI>
-  <LI>
-    <Lbl>
-      •
-    </Lbl>
-    <LBody>
-      <P>
-        Paragraph item
-      </P>
-    </LBody>
-  </LI>
-  <P>
-    asdf
-  </P>
-  <LI>
-    <Lbl>
-      •
-    </Lbl>
-    <LBody>
-      <P>
-        Block item
-      </P>
-    </LBody>
-  </LI>
-  <P>
-    asdf
-  </P>
-  <LI>
-    <Lbl>
-      •
-    </Lbl>
-    <LBody>
-      <P>
-        Abbreviated
-      </P>
-    </LBody>
-  </LI>
-  <LI>
-    <Lbl>
-      •
-    </Lbl>
-    <LBody>
-      <P>
-        Paragraph item
-      </P>
-    </LBody>
-  </LI>
-  <LI>
-    <Lbl>
-      •
-    </Lbl>
-    <LBody>
-      <P>
-        Block item
-      </P>
-      <P>
-        with multiple
-      </P>
-      <P>
-        paragraphs
-      </P>
-    </LBody>
-  </LI>
-  <P>
-    asdf
-  </P>
+  <L>
+    <LI>
+      <Lbl>
+        •
+      </Lbl>
+      <LBody>
+        <P>
+          Abbreviated 1
+        </P>
+      </LBody>
+    </LI>
+    <LI>
+      <Lbl>
+        •
+      </Lbl>
+      <LBody>
+        <P>
+          Abbreviated 2
+        </P>
+      </LBody>
+    </LI>
+    <P>
+      asdf
+    </P>
+    <LI>
+      <Lbl>
+        •
+      </Lbl>
+      <LBody>
+        <P>
+          Top Item
+        </P>
+        <L>
+          <LI>
+            <Lbl>
+              ·
+            </Lbl>
+            <LBody>
+              <P>
+                First sub-item
+              </P>
+            </LBody>
+          </LI>
+          <LI>
+            <Lbl>
+              ·
+            </Lbl>
+            <LBody>
+              <P>
+                Second sub-item
+              </P>
+            </LBody>
+          </LI>
+        </L>
+      </LBody>
+    </LI>
+    <LI>
+      <Lbl>
+        •
+      </Lbl>
+      <LBody>
+        <P>
+          Paragraph item
+        </P>
+      </LBody>
+    </LI>
+    <P>
+      asdf
+    </P>
+    <LI>
+      <Lbl>
+        •
+      </Lbl>
+      <LBody>
+        <P>
+          Block item
+        </P>
+      </LBody>
+    </LI>
+    <P>
+      asdf
+    </P>
+    <LI>
+      <Lbl>
+        •
+      </Lbl>
+      <LBody>
+        <P>
+          Abbreviated
+        </P>
+      </LBody>
+    </LI>
+    <LI>
+      <Lbl>
+        •
+      </Lbl>
+      <LBody>
+        <P>
+          Paragraph item
+        </P>
+      </LBody>
+    </LI>
+    <LI>
+      <Lbl>
+        •
+      </Lbl>
+      <LBody>
+        <P>
+          Block item
+        </P>
+        <P>
+          with multiple
+        </P>
+        <P>
+          paragraphs
+        </P>
+      </LBody>
+    </LI>
+    <P>
+      asdf
+    </P>
+  </L>
 </Document>
 };
 
