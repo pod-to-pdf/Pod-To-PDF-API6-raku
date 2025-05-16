@@ -497,34 +497,37 @@ multi method pod2pdf(Pod::Defn $pod) {
     }
 }
 
-multi method pod2pdf(Pod::Item $pod) {
-    if ($*tag.name eq List) {
-        self!style: :tag(ListItem), :bold, :block, {
-            my Level $level = min($pod.level // 1, 3);
-            temp $!indent += $.style.measure(:margin-left) / 10 - 1;
-            $!padding = $.line-height * 2;
-            self!pad-here;
-            {
-                my constant BulletPoints = (
-                "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
-            );
-                my Str $bp = BulletPoints[$level - 1];
-                temp $*tag .= Label;
-                $.print: $bp;
-            }
-
-            # omit any leading vertical padding in the list-body
-            $!float = True;
-
-            self!style: :tag(ListBody), :indent, {
-                $.pod2pdf($pod.contents);
-            }
-        }
+sub vivify-list( PDF::Tags::Elem $tag) {
+    my PDF::Tags::Elem $list;
+    with $tag.kids.tail {
+        $list = $_ if .name eq LIST;
     }
-    else {
-        $*tag .= add-kid: :name(List);
-        $.pod2pdf($pod);
-        $.say;
+    $list // $tag.add-kid: :name(LIST);
+}
+
+multi method pod2pdf(Pod::Item $pod) {
+    temp $*tag .= &vivify-list;
+
+    self!style: :tag(ListItem), :bold, :block, {
+        my Level $level = min($pod.level // 1, 3);
+        temp $!indent += $.style.measure(:margin-left) / 10 - 1;
+        $!padding = $.line-height * 2;
+        self!pad-here;
+        {
+            my constant BulletPoints = (
+            "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
+        );
+            my Str $bp = BulletPoints[$level - 1];
+            temp $*tag .= Label;
+            $.print: $bp;
+        }
+
+        # omit any leading vertical padding in the list-body
+        $!float = True;
+
+        self!style: :tag(ListBody), :indent, {
+            $.pod2pdf($pod.contents);
+        }
     }
 }
 
