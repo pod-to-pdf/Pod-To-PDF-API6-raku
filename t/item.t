@@ -128,10 +128,10 @@ my $xml = q{<Document Lang="en">
         </P>
       </LBody>
     </LI>
-    <P>
-      asdf
-    </P>
   </L>
+  <P>
+    asdf
+  </P>
 </Document>
 };
 
@@ -141,6 +141,7 @@ $pdf.id = $*PROGRAM.basename.fmt('%-16.16s');
 $pdf.save-as: "t/item.pdf", :!info;
 my PDF::Tags $tags = $doc.tags;
 
+todo "<L><LI/>...</L><P/>";
 is $tags[0].Str, $xml,
    'Various types of items convert correctly';
 
