@@ -497,26 +497,16 @@ multi method pod2pdf(Pod::Defn $pod) {
     }
 }
 
-sub vivify-list( PDF::Tags::Elem $tag) {
-    my PDF::Tags::Elem $list;
-    with $tag.kids.tail {
-        $list = $_ if .name eq LIST;
-    }
-    $list // $tag.add-kid: :name(LIST);
-}
-
 multi method pod2pdf(Pod::Item $pod) {
-    temp $*tag .= &vivify-list;
+    my Level $level = min($pod.level // 1, 3);
+    temp $!indent = $level + $.style.measure(:margin-left) / 10 - 1;
+    temp $!padding = $.line-height * 2;
 
     self!style: :tag(ListItem), :bold, :block, {
-        my Level $level = min($pod.level // 1, 3);
-        temp $!indent += $.style.measure(:margin-left) / 10 - 1;
-        $!padding = $.line-height * 2;
-        self!pad-here;
         {
             my constant BulletPoints = (
-            "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
-        );
+                "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
+            );
             my Str $bp = BulletPoints[$level - 1];
             temp $*tag .= Label;
             $.print: $bp;
@@ -525,7 +515,8 @@ multi method pod2pdf(Pod::Item $pod) {
         # omit any leading vertical padding in the list-body
         $!float = True;
 
-        self!style: :tag(ListBody), :indent, {
+        self!style: :tag(ListBody), :indent, :!block, {
+            $!tx = self!indent;
             $.pod2pdf($pod.contents);
         }
     }
@@ -628,10 +619,26 @@ sub param2text($p) {
     $p.raku ~ ',' ~ ( $p.WHY ?? ' # ' ~ $p.WHY !! '')
 }
 
+method !nest-list(@lists, $level) {
+    if $level && (!@lists || @lists.tail < $level) {
+        $*tag .= add-kid: :name(LIST);
+        @lists.push: $level;
+    }
+    else {
+        while @lists && @lists.tail > $level {
+            $*tag .= parent;
+            @lists.pop;
+        }
+    }
+}
+
 multi method pod2pdf(Array $pod) {
+   my @lists;
     for $pod.list {
+        self!nest-list(@lists, .isa(Pod::Item) ?? .level !! 0);
         $.pod2pdf($_);
-    };
+    }
+    self!nest-list(@lists, 0);
 }
 
 multi method pod2pdf(Str $pod) {
