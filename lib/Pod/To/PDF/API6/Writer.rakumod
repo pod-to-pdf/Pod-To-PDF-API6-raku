@@ -620,15 +620,13 @@ sub param2text($p) {
 }
 
 method !nest-list(@lists, $level) {
+    while @lists && @lists.tail > $level {
+        $*tag .= parent;
+        @lists.pop;
+    }
     if $level && (!@lists || @lists.tail < $level) {
         $*tag .= add-kid: :name(LIST);
         @lists.push: $level;
-    }
-    else {
-        while @lists && @lists.tail > $level {
-            $*tag .= parent;
-            @lists.pop;
-        }
     }
 }
 
