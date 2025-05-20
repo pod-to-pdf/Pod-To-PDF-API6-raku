@@ -40,15 +40,20 @@ has %.index;
 ### Accessibilty
 has Bool $.tag;
 has PDF::Tags::Elem @!tags;
-has PDF::Tags::Elem @!footnotes-tag;
 
 ### Paging/Footnotes ###
+my class PageFootNote {
+    has @.contents is required;
+    has Int:D $.num is rw is required;
+    has PDF::Tags::Elem:D $.tag is required;
+    has DestRef $.back is required;
+    method ind { '[' ~ $!num ~ ']' }
+}
+has PageFootNote:D @!footnotes;
 has PDF::Page $!page;
 has PDF::Content $!gfx;
 has DestRef $!gutter-link;    # forward link to footnote area
-has @!footnotes;
 has Pod::To::PDF::API6::Style $!footer-style;
-has DestRef @!footnotes-back; # per-footnote return links
 
 ### Rendering State ###
 has Pod::To::PDF::API6::Style $.styler handles<style font-size leading line-height bold italic mono underline lines-before link verbatim>;
@@ -395,33 +400,35 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'N' {
-            my $ind = '[' ~ @!footnotes+1 ~ ']';
+            my PageFootNote:D $footnote .= new(
+                :contents($pod.contents),
+                :num(@!footnotes+1),
+                :$*tag,
+                :back(self!make-dest),
+            );
             my UInt:D $footnote-lines = do {
                 # pre-compute footnote size
                 temp $!styler = $!footer-style;
                 temp $!tx = $!margin-left;
                 temp $!ty = $!page.height;
                 temp $!indent = 0;
-                my $draft-footnote = $ind ~ $.pod2text-inline($pod.contents);
+                my Str $draft-footnote = $footnote.ind ~ $.pod2text-inline($footnote.contents);
                 +self!text-box($draft-footnote).lines;
             }
             unless self!height-remaining > ($footnote-lines+1) * $!footer-style.line-height {
                 # force a page break, unless there's room for both the reference and
                 # the footnote on the current page
                 self!new-page;
-                $ind = '[1]';
+                $footnote.num = 1;
             }
-            my @contents = $ind, $pod.contents.Slip;
+            @!footnotes.push: $footnote;
             $!gutter += $footnote-lines;
-            @!footnotes.push: @contents;
-            @!footnotes-back.push: self!make-dest;
-            @!footnotes-tag.push: $*tag;
             $!gutter-link //= self!make-dest: :left(0), :top($!margin-bottom + (Gutter + 2) * $.line-height);
             my PDF::Action $link = PDF::API6.action: :destination($!gutter-link);
 
             temp $*tag .= Span;
             self!style: :tag(Reference), {
-                self!style: :tag(Label), :$link, {  $.pod2pdf($ind); }
+                self!style: :tag(Label), :$link, {  $.pod2pdf($footnote.ind); }
             }
         }
         when 'U' {
@@ -959,19 +966,19 @@ method !finish-page {
         my $start-page = $!page;
         self!draw-line($!margin-left, $!ty, $!gfx.canvas.width - $!margin-right, $!ty);
         while @!footnotes {
+            my PageFootNote:D $footnote := @!footnotes.shift;
+            temp $*tag = $footnote.tag;
+            my DestRef $destination = $footnote.back;
             $!padding = $.line-height;
-            my $footnote = @!footnotes.shift;
-            my DestRef $destination = @!footnotes-back.shift;
-            temp $*tag = @!footnotes-tag.shift;
             self!style: :tag(FootNote), {
                 my PDF::Action $link = $!pdf.action: :$destination;
                 self!style: :tag(Label), :$link, :italic, {
-                    $.print($footnote.shift);
+                    $.print($footnote.ind);
                 } # [n]
 
                 $!tx += 2;
 
-                $.pod2pdf($footnote);
+                $.pod2pdf($footnote.contents);
             }
         }
         unless $!page === $start-page {
