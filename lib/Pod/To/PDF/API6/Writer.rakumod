@@ -42,6 +42,9 @@ has Bool $.tag;
 has PDF::Tags::Elem @!tags;
 
 ### Paging/Footnotes ###
+has PDF::Page $!page;
+has PDF::Content $!gfx;
+has DestRef $!gutter-link;    # forward link to footnote area
 my class PageFootNote {
     has @.contents is required;
     has Int:D $.num is rw is required;
@@ -50,9 +53,6 @@ my class PageFootNote {
     method ind { '[' ~ $!num ~ ']' }
 }
 has PageFootNote:D @!footnotes;
-has PDF::Page $!page;
-has PDF::Content $!gfx;
-has DestRef $!gutter-link;    # forward link to footnote area
 has Pod::To::PDF::API6::Style $!footer-style;
 
 ### Rendering State ###
@@ -412,8 +412,10 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
                 temp $!tx = $!margin-left;
                 temp $!ty = $!page.height;
                 temp $!indent = 0;
-                my Str $draft-footnote = $footnote.ind ~ $.pod2text-inline($footnote.contents);
-                +self!text-box($draft-footnote).lines;
+                given $footnote {
+                    my $draft-text = .ind ~ $.pod2text-inline(.contents);
+                    +self!text-box($draft-text).lines;
+                }
             }
             unless self!height-remaining > ($footnote-lines+1) * $!footer-style.line-height {
                 # force a page break, unless there's room for both the reference and
@@ -982,7 +984,7 @@ method !finish-page {
             }
         }
         unless $!page === $start-page {
-            # page break in footnotes. draw closing unerline
+            # page break in footnotes. draw closing underline
             $!gfx.tag: Artifact, {
                 $.say;
                 my $y = $!ty + $.line-height / 2;
