@@ -192,15 +192,15 @@ method render(
         }
         note '(valid options are: --save-as= --page-numbers --width= --height= --margin[-left|-right|-top|-bottom]= --stylesheet= --page-style=)'
             if $show-usage;
-         $save-as //= tempfile("pod2pdf-api6-****.pdf", :!unlink)[1];
-        # render method may be called more than once: Rakudo #2588
-        my $renderer = $class.new: |c, :$width, :$height, :$pod, :$margin, :$margin-top, :$margin-bottom, :$margin-left, :$margin-right, :$contents, :$page-numbers, :$page-style, :$stylesheet;
+
+        my $renderer = $class.new: |c,  :$pod, :$width, :$height, :$margin, :$margin-top, :$margin-bottom, :$margin-left, :$margin-right, :$contents, :$page-numbers, :$page-style, :$stylesheet;
         $renderer.build-index
             if $index && $renderer.index;
         my PDF::API6 $pdf = $renderer.pdf;
         $pdf.media-box = 0, 0, $width, $height;
         # save to a file, since PDF is a binary format
-        $pdf.save-as: $save-as;
+        $save-as //= tempfile("pod2pdf-api6-****.pdf";
+        $pdf.save-as: $save-as, :!unlink)[1];
         $save-as.path;
     }
 }

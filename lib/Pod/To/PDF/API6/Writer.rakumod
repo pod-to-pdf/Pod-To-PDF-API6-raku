@@ -319,9 +319,7 @@ multi method pod2pdf(Pod::Block::Named $pod) {
 }
 
 multi method pod2pdf(Pod::Block::Code $pod) {
-    self!style: :tag(Paragraph), {
-        self!code: $pod.contents;
-    }
+    self!code: $pod.contents;
 }
 
 multi method pod2pdf(Pod::Heading $pod) {
@@ -861,7 +859,7 @@ method !code(@contents is copy) {
 
     self!gfx;
 
-    self!style: :indent, :tag(CODE), :lines-before(0), :block, {
+    self!style: :indent, :tag(CODE), :lines-before(3), :block, {
         $*tag.set-attribute('Placement', /'Block');
         self!pad-here;
 
