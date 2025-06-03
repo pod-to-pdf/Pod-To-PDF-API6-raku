@@ -1,6 +1,6 @@
 unit class Pod::To::PDF::API6::Writer;
 
-use Pod::To::PDF::API6::Metadata :Level, :Roles;
+use Pod::To::PDF::API6::Metadata :Level;
 also does Pod::To::PDF::API6::Metadata;
 
 use PDF::API6;
@@ -87,7 +87,7 @@ method write($pod, PDF::Tags::Elem $*root) {
     my $*tag = $*root;
     my CSS::Properties $style = $*tag.style;
     $!styler .= new: :$style;
-    $style = $*tag.root.styler.tag-style(FootNote);
+    $style = $*tag.root.styler.tag-style(Note);
     $!footer-style .= new: :$style, :lines-before(0);
     self.pod2pdf($pod);
     self!finish-page;
@@ -116,7 +116,7 @@ method !tag-end {
 
 method !tag($tag, &codez) {
     self!tag-begin($tag);
-    &codez();
+    self!gfx.&codez();
     self!tag-end;
 }
 
@@ -424,11 +424,12 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             @!footnotes.push: $footnote;
             $!gutter += $footnote-lines;
             $!gutter-link //= self!make-dest: :left(0), :top($!margin-bottom + (Gutter + 2) * $.line-height);
-            my PDF::Action $link = PDF::API6.action: :destination($!gutter-link);
 
-            temp $*tag .= Span;
-            self!style: :tag(Reference), {
-                self!style: :tag(Label), :$link, {  $.pod2pdf($footnote.ind); }
+            self!tag: Artifact, {
+                self!tag: Reference, {
+                    my PDF::Action $link = PDF::API6.action: :destination($!gutter-link);
+                    self!style: :tag(Label), :$link, {  $.pod2pdf($footnote.ind); }
+                }
             }
         }
         when 'U' {
@@ -628,11 +629,11 @@ sub param2text($p) {
 
 method !nest-list(@lists, $level) {
     while @lists && @lists.tail > $level {
-        $*tag .= parent;
+        self!tag-end;
         @lists.pop;
     }
     if $level && (!@lists || @lists.tail < $level) {
-        $*tag .= add-kid: :name(LIST);
+        self!tag-begin(LIST);
         @lists.push: $level;
     }
 }
@@ -756,8 +757,8 @@ method !mark(&action, |c) {
         if !$!tag {
             &action();
         }
-        elsif .open-tags.first(*.mcid.defined) {
-            # caller is already marking
+        elsif .artifact || .open-tags.first(*.mcid.defined) {
+            # caller is already marking, or in non-marking artifact
             .tag: $*tag.name, &action, |$*tag.attributes;
         }
         else {
@@ -768,16 +769,14 @@ method !mark(&action, |c) {
 
 method !style(&codez, Numeric :$indent, Str :tag($name) is copy, Bool :$block is copy, |c) {
     temp $!indent;
-    temp $*tag;
-    if $name.defined {
-        $name .= key if $name ~~ Enumeration && $name ~~ Roles;
-        $*tag .= add-kid: :$name;
-    }
+    self!tag-begin($_) with $name;
     my $style = $*tag.style;
     $block //= $style.display ~~ 'block';
     temp $!styler .= new: :$style, |c;
     $!indent += $indent if $indent;
-    $block ?? $.block(&codez) !! &codez();
+    my $rv := $block ?? $.block(&codez) !! &codez();
+    self!tag-end() with $name;
+    $rv;
 }
 
 method !pod2dest($pod, Str :$name) {
@@ -836,7 +835,7 @@ method !finish-code {
     with $!code-start-y -> $y0 {
         my $x0 = self!indent;
         my $width = self!gfx.canvas.width - $!margin-right - $x0;
-        $!gfx.tag: Artifact, {
+        self!tag: Artifact, {
             .graphics: {
                 my constant Black = 0;
                 .FillColor = color Black;
@@ -900,7 +899,7 @@ method !draw-line($x0, $y0, $x1, $y1 = $y0, :$linewidth = 1) {
 method !underline(PDF::Content::Text::Box $tb, :$tab = self!indent, ) {
     my $y = $!ty + $tb.underline-position;
     my $linewidth = $tb.underline-thickness;
-    $!gfx.tag: Artifact, {
+    self!tag: Artifact, {
         for $tb.lines {
             my $x0 = $tab + .indent;
             my $x1 = $tab + .content-width;
@@ -930,7 +929,8 @@ method !link(PDF::Content::Text::Box $tb, :$tab = $!margin-left, ) {
         );
 
         $y -= .height * $tb.leading;
-        $*tag.Link($!gfx, $link);
+        $*tag.Link($!gfx, $link)
+             unless $!gfx.artifact;
     }
 }
 
@@ -970,12 +970,13 @@ method !finish-page {
             temp $*tag = $footnote.tag;
             my DestRef $destination = $footnote.back;
             $!padding = $.line-height;
-            self!style: :tag(FootNote), {
-                my PDF::Action $link = $!pdf.action: :$destination;
-                self!style: :tag(Label), :$link, :italic, {
-                    $.print($footnote.ind);
-                } # [n]
-
+            self!style: :tag(Note), {
+                self!tag: Artifact, {
+                    my PDF::Action $link = $!pdf.action: :$destination;
+                    self!style: :tag(Label), :$link, :italic, {
+                        $.print($footnote.ind);
+                    } # [n]
+                }
                 $!tx += 2;
 
                 $.pod2pdf($footnote.contents);
@@ -983,7 +984,7 @@ method !finish-page {
         }
         unless $!page === $start-page {
             # page break in footnotes. draw closing underline
-            $!gfx.tag: Artifact, {
+            self!tag: Artifact, {
                 $.say;
                 my $y = $!ty + $.line-height / 2;
                 self!draw-line($!margin-left, $y, $!gfx.canvas.width - $!margin-right, $y);

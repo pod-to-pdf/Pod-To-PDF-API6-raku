@@ -1,7 +1,6 @@
 unit role Pod::To::PDF::API6::Metadata;
 
 my subset Level is export(:Level) of Int:D  where 0..6;
-my enum Roles is export(:Roles) « :FootNote<Note> »;
 
 my subset MetaType of Str where 'title'|'subtitle'|'author'|'name'|'version';
 

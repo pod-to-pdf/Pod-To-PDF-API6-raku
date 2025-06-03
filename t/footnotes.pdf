@@ -33,8 +33,7 @@ endobj
   /Border [ 0 0 0 ]
   /Contents ([1])
   /P 3 0 R
-  /Rect [ 82.332 752.8 101.668 768 ]
-  /StructParent 1
+  /Rect [ 18 739.36 35.992 754.56 ]
 >>
 endobj
 
@@ -51,7 +50,6 @@ endobj
   /Contents ([1])
   /P 3 0 R
   /Rect [ 18 30 37.336 45.2 ]
-  /StructParent 2
 >>
 endobj
 
@@ -60,7 +58,7 @@ endobj
 endobj
 
 8 0 obj
-<< /Length 602 >> stream
+<< /Length 733 >> stream
 /P << /MCID 0 >> BDC
   BT
     1 0 0 1 20 756 Tm
@@ -68,20 +66,25 @@ endobj
     (sanity test of ) Tj
   ET
 EMC
-q
-  0 0 1 rg
-  /Link << /MCID 1 >> BDC
-    BT
-      1 0 0 1 20 756 Tm
-      /F2 12 Tf
-      [ -5361 ([1]) ] TJ
-    ET
+/Artifact BMC
+  /Reference BMC
+    /Lbl BMC
+      q
+        0 0 1 rg
+        /P BMC
+          BT
+            1 0 0 1 20 742.56 Tm
+            ([1]) Tj
+          ET
+        EMC
+      Q
+    EMC
   EMC
-Q
-/P << /MCID 2 >> BDC
+EMC
+/P << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 756 Tm
-    [ -6639 ( footnotes.) ] TJ
+    1 0 0 1 20 729.12 Tm
+    ( footnotes.) Tj
   ET
 EMC
 q
@@ -90,17 +93,21 @@ q
   592 46.4 l
   S
 Q
-q
-  0 0 1 rg
-  /Link << /MCID 3 >> BDC
-    BT
-      1 0 0 1 20 33.2 Tm
-      /F2 12 Tf
-      ([1]) Tj
-    ET
+/Artifact BMC
+  /Link BMC
+    q
+      0 0 1 rg
+      /Note BMC
+        BT
+          1 0 0 1 20 33.2 Tm
+          /F2 12 Tf
+          ([1]) Tj
+        ET
+      EMC
+    Q
   EMC
-Q
-/Note << /MCID 4 >> BDC
+EMC
+/Note << /MCID 2 >> BDC
   BT
     1 0 0 1 20 33.2 Tm
     [ -1445 (if you click, here, you should got back to the paragraph) ] TJ
@@ -131,10 +138,7 @@ endobj
 <<
   /Type /StructTreeRoot
   /K [ 12 0 R ]
-  /ParentTree <<
-    /Nums [ 0 [ 13 0 R 17 0 R 13 0 R 21 0 R 19 0 R ] 1 17 0 R 2 21 0 R ]
-  >>
-  /RoleMap << /FootNote /Note >>
+  /ParentTree << /Nums [ 0 [ 13 0 R 13 0 R 14 0 R ] ] >>
 >>
 endobj
 
@@ -143,72 +147,32 @@ endobj
 endobj
 
 13 0 obj
-<< /Type /StructElem /S /P /K [ 0 14 0 R 2 19 0 R ] /P 12 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /P /K [ 0 1 14 0 R ] /P 12 0 R /Pg 3 0 R >>
 endobj
 
 14 0 obj
-<< /Type /StructElem /S /Span /K [ 15 0 R ] /P 13 0 R >>
-endobj
-
-15 0 obj
-<< /Type /StructElem /S /Reference /K [ 16 0 R ] /P 14 0 R >>
-endobj
-
-16 0 obj
-<< /Type /StructElem /S /Lbl /K [ 17 0 R ] /P 15 0 R >>
-endobj
-
-17 0 obj
-<< /Type /StructElem /S /Link /K [ 18 0 R 1 ] /P 16 0 R >>
-endobj
-
-18 0 obj
-<< /Type /OBJR /Obj 4 0 R /Pg 3 0 R >>
-endobj
-
-19 0 obj
-<< /Type /StructElem /S /FootNote /K [ 20 0 R 4 ] /P 13 0 R >>
-endobj
-
-20 0 obj
-<< /Type /StructElem /S /Lbl /K [ 21 0 R ] /P 19 0 R >>
-endobj
-
-21 0 obj
-<< /Type /StructElem /S /Link /K [ 22 0 R 3 ] /P 20 0 R >>
-endobj
-
-22 0 obj
-<< /Type /OBJR /Obj 6 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /Note /K [ 2 ] /P 13 0 R >>
 endobj
 
 xref
-0 23
+0 15
 0000000000 65535 f 
 0000000015 00000 n 
 0000000138 00000 n 
 0000000224 00000 n 
 0000000391 00000 n 
-0000000560 00000 n 
-0000000633 00000 n 
-0000000795 00000 n 
-0000000876 00000 n 
-0000001530 00000 n 
-0000001638 00000 n 
-0000001748 00000 n 
-0000001939 00000 n 
-0000002028 00000 n 
-0000002120 00000 n 
-0000002194 00000 n 
-0000002273 00000 n 
-0000002346 00000 n 
-0000002422 00000 n 
-0000002478 00000 n 
-0000002558 00000 n 
-0000002631 00000 n 
-0000002707 00000 n 
+0000000541 00000 n 
+0000000614 00000 n 
+0000000758 00000 n 
+0000000839 00000 n 
+0000001624 00000 n 
+0000001732 00000 n 
+0000001842 00000 n 
+0000001962 00000 n 
+0000002051 00000 n 
+0000002136 00000 n 
 trailer
-<< /ID [ (footnotes.t     ) (footnotes.t     ) ] /Root 1 0 R /Size 23 >>
+<< /ID [ (footnotes.t     ) (footnotes.t     ) ] /Root 1 0 R /Size 15 >>
 startxref
-2763
+2205
 %%EOF

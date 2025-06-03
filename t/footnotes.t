@@ -8,15 +8,7 @@ plan 1;
 
 my $xml = q{<Document Lang="en">
   <P>
-    sanity test of <Span><Reference>
-        <Lbl>
-          <Link>[1]</Link>
-        </Lbl>
-      </Reference></Span> footnotes.<Note role="FootNote">
-      <Lbl>
-        <Link>[1]</Link>
-      </Lbl>
-      if you click, here, you should got back to the paragraph</Note>
+    sanity test of  footnotes.<Note>if you click, here, you should got back to the paragraph</Note>
   </P>
 </Document>
 };
