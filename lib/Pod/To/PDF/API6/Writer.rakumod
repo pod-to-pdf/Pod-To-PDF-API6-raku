@@ -755,10 +755,10 @@ method !text-position {
 method !mark(&action, |c) {
     given $!gfx {
         if !$!tag {
-            &action();
+            &action($_);
         }
-        elsif .artifact || .open-tags.first(*.mcid.defined) {
-            # caller is already marking, or in non-marking artifact
+        elsif .open-tags.first(*.mcid.defined) {
+            # caller is already marking
             .tag: $*tag.name, &action, |$*tag.attributes;
         }
         else {
@@ -835,7 +835,7 @@ method !finish-code {
     with $!code-start-y -> $y0 {
         my $x0 = self!indent;
         my $width = self!gfx.canvas.width - $!margin-right - $x0;
-        self!tag: Artifact, {
+        self!gfx.tag: Artifact, {
             .graphics: {
                 my constant Black = 0;
                 .FillColor = color Black;

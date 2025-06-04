@@ -18,7 +18,7 @@ my $xml = q{<Document Lang="en">
     This text is of <Strong>fundamental significance</Strong>.
   </P>
   <P>
-    This text is verbatim C<with> B<disarmed> Z<formatting>.
+    This text is verbatim C&lt;with&gt; B&lt;disarmed&gt; Z&lt;formatting&gt;.
   </P>
   <P>
     This text is replaced.
