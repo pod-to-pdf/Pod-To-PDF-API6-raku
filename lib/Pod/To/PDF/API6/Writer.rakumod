@@ -53,10 +53,10 @@ my class PageFootNote {
     method ind { '[' ~ $!num ~ ']' }
 }
 has PageFootNote:D @!footnotes;
-has Pod::To::PDF::API6::Style $!footer-style;
 
 ### Rendering State ###
 has Pod::To::PDF::API6::Style $.styler handles<style font-size leading line-height bold italic mono underline lines-before link verbatim>;
+has Pod::To::PDF::API6::Style $!footer-style;
 has $!tx = $!margin-left; # text-flow x
 has $!ty; # text-flow y
 has Numeric $!indent = 0.0;
@@ -87,8 +87,8 @@ method write($pod, PDF::Tags::Elem $*root) {
     my $*tag = $*root;
     my CSS::Properties $style = $*tag.style;
     $!styler .= new: :$style;
-    $style = $*tag.root.styler.tag-style(Note);
-    $!footer-style .= new: :$style, :lines-before(0);
+    my $note-style = $*tag.root.styler.tag-style(FENote);
+    $!footer-style .= new: :style($note-style), :lines-before(0);
     self.pod2pdf($pod);
     self!finish-page;
 }
@@ -333,7 +333,7 @@ multi method pod2pdf(Pod::Block::Para $pod) {
     }
 }
 
-method !external-link(Str $url) {
+method !make-link(Str $url) {
     my %style = :!block;
     with $url {
         if .starts-with('#') {
@@ -466,7 +466,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
         }
         when 'L' {
             my $text = $.pod2text-inline($pod.contents);
-            my %style = self!external-link: $pod.meta.head // $text;
+            my %style = self!make-link: $pod.meta.head // $text;
             self!style: |%style, {
                 $.print: $text;
             }
@@ -474,7 +474,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
         when 'P' {
             # todo insertion of placed text
             if $.pod2text-inline($pod.contents) -> $url {
-                my %style = self!external-link: $url;
+                my %style = self!make-link: $url;
                 $.pod2pdf('(see: ');
                 self!style: |%style, {
                     $.print: $url;
@@ -964,13 +964,15 @@ method !finish-page {
         $!ty = self!bottom;
         $!gutter = 0;
         my $start-page = $!page;
-        self!draw-line($!margin-left, $!ty, $!gfx.canvas.width - $!margin-right, $!ty);
-        while @!footnotes {
+        self!tag: Artifact, {
+            self!draw-line($!margin-left, $!ty, $!gfx.canvas.width - $!margin-right, $!ty);
+         }
+         while @!footnotes {
             my PageFootNote:D $footnote := @!footnotes.shift;
             temp $*tag = $footnote.tag;
             my DestRef $destination = $footnote.back;
             $!padding = $.line-height;
-            self!style: :tag(Note), {
+            self!style: :tag(FENote), {
                 self!tag: Artifact, {
                     my PDF::Action $link = $!pdf.action: :$destination;
                     self!style: :tag(Label), :$link, :italic, {
@@ -981,13 +983,13 @@ method !finish-page {
 
                 $.pod2pdf($footnote.contents);
             }
-        }
-        unless $!page === $start-page {
-            # page break in footnotes. draw closing underline
-            self!tag: Artifact, {
+            unless $!page === $start-page {
+                # page break in footnotes. draw closing underline
                 $.say;
                 my $y = $!ty + $.line-height / 2;
-                self!draw-line($!margin-left, $y, $!gfx.canvas.width - $!margin-right, $y);
+                self!tag: Artifact, {
+                    self!draw-line($!margin-left, $y, $!gfx.canvas.width - $!margin-right, $y);
+                }
             }
         }
     }
