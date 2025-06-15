@@ -9,7 +9,7 @@ plan 1;
 
 my $xml = q{<Document Lang="en">
   <P>
-    This text is of minor significance.
+    This text is of <Span TextDecorationType="Underline">minor significance</Span>.
   </P>
   <P>
     This text is of <Em>major significance</Em>.
@@ -21,7 +21,7 @@ my $xml = q{<Document Lang="en">
     This text is verbatim C&lt;with&gt; B&lt;disarmed&gt; Z&lt;formatting&gt;.
   </P>
   <P>
-    This text is replaced.
+    This text has been replaced.
   </P>
   <P>
     This text is invisible.
@@ -38,7 +38,7 @@ my $xml = q{<Document Lang="en">
 </Document>
 };
 
-my Pod::To::PDF::API6 $doc .= new: :$=pod, :replace{'to be replaced' => 'replaced'};
+my Pod::To::PDF::API6 $doc .= new: :$=pod, :replace{'is to be replaced' => 'has been replaced'};
 my PDF::API6 $pdf = $doc.pdf;
 $pdf.id = $*PROGRAM.basename.fmt('%-16.16s');
 $pdf.save-as: "t/formatted.pdf", :!info;
@@ -56,7 +56,7 @@ This text is of B<fundamental significance>.
 
 This text is V<verbatim C<with> B<disarmed> Z<formatting>>.
 
-This text is R<to be replaced>.
+This text R<is to be replaced>.
 
 This text is Z<blabla>invisible.
 

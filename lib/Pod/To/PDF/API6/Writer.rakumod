@@ -30,7 +30,6 @@ has Numeric $.margin-right;
 has Numeric $.margin-top;
 has Numeric $.margin-bottom;
 has Bool $.contents   is required;
-has %.replace is required;
 has PDF::Content::FontObj %.font-map is required;
 has PDF::Content::PageTree:D $.pages is required;
 has Bool $.finish;
@@ -89,7 +88,7 @@ method write($pod, PDF::Tags::Elem $*root) {
     $!styler .= new: :$style;
     my $note-style = $*tag.root.styler.tag-style(FENote);
     $!footer-style .= new: :style($note-style), :lines-before(0);
-    self.pod2pdf($pod);
+    self.ast2pdf($pod);
     self!finish-page;
 }
 
@@ -100,9 +99,10 @@ submethod TWEAK(Numeric:D :$margin = 20) {
     $!margin-right  //= $margin;
 }
 
-method !tag-begin($name) {
+method !tag-begin($name, :%atts) {
     if $!tag {
         $*tag .= add-kid: :$name;
+        $*tag.set-attributes: |%atts if %atts;
         @!tags.push: $*tag;
     }
 }
@@ -252,6 +252,8 @@ method !build-table($pod, @table) {
     };
 }
 
+proto method pod2pdf(|) is DEPRECATED<ast2pdf> {*}
+
 multi method pod2pdf(Pod::Block::Table $pod) {
 
     self!style: :tag(Table), :block, {
@@ -349,25 +351,6 @@ method !make-link(Str $url) {
         }
     }
     %style;
-}
-
-has %!replacing;
-method !replace(Pod::FormattingCode $pod where .type eq 'R', &continue) {
-    my $place-holder = $.pod2text($pod.contents);
-
-    die "unable to recursively replace R\<$place-holder\>"
-         if %!replacing{$place-holder}++;
-
-    my $new-pod = %!replace{$place-holder};
-    without $new-pod {
-        note "replacement not specified for R\<$place-holder\>";
-        $_ = $pod.contents;
-    }
-
-    my $rv := &continue($new-pod);
-
-    %!replacing{$place-holder}:delete;
-    $rv;
 }
 
 multi method pod2pdf(Pod::FormattingCode $pod) {
@@ -483,7 +466,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'R' {
-            self!replace: $pod, {$.pod2pdf($_)};
+            ...
         }
         default {
             warn "unhandled: POD formatting code: $_\<\>";
@@ -627,39 +610,34 @@ sub param2text($p) {
     $p.raku ~ ',' ~ ( $p.WHY ?? ' # ' ~ $p.WHY !! '')
 }
 
-method !nest-list(@lists, $level) {
-    while @lists && @lists.tail > $level {
-        self!tag-end;
-        @lists.pop;
-    }
-    if $level && (!@lists || @lists.tail < $level) {
-        self!tag-begin(LIST);
-        @lists.push: $level;
+multi method ast2pdf(@ast) {
+    for @ast {
+        when Str { self.ast2pdf: $_ }
+        when Pair {
+            my $tag = .key;
+            my @nodes = .value;
+            my %atts;
+            my subset AttAst of Pair where .value ~~ Str;
+            %atts ,= @nodes.shift while @nodes.head ~~ AttAst;
+            self!style: :$tag, :%atts, {
+                self.ast2pdf: @nodes;
+            }
+        }
+        default { die "unexpected node: {.raku}" }
     }
 }
 
-multi method pod2pdf(Array $pod) {
-   my @lists;
-    for $pod.list {
-        self!nest-list(@lists, .isa(Pod::Item) ?? .level !! 0);
-        $.pod2pdf($_);
-    }
-    self!nest-list(@lists, 0);
+multi method ast2pdf(Str $ast) {
+    $.print: $ast;
 }
 
-multi method pod2pdf(Str $pod) {
-    $.print: $pod;
+multi method ast2pdf(Pair:D $_) {
+    warn "ignoring {.key} tag";
+    $.ast2pdf(.value);
 }
 
-multi method pod2pdf($pod) {
-    if $pod.WHAT.raku ~~ 'List'|'Array' {
-        ## Huh?
-        $.pod2pdf($_) for $pod.list;
-    }
-    else {
-        warn "fallback render of {$pod.WHAT.raku}";
-        $.say: $.pod2text($pod);
-    }
+multi method ast2pdf($_) {
+   die .raku;
 }
 
 multi method say {
@@ -767,9 +745,9 @@ method !mark(&action, |c) {
     }
 }
 
-method !style(&codez, Numeric :$indent, Str :tag($name) is copy, Bool :$block is copy, |c) {
+method !style(&codez, Numeric :$indent, Str :tag($name), :%atts, Bool :$block is copy, |c) {
     temp $!indent;
-    self!tag-begin($_) with $name;
+    self!tag-begin($_, :%atts) with $name;
     my $style = $*tag.style;
     $block //= $style.display ~~ 'block';
     temp $!styler .= new: :$style, |c;
@@ -1018,7 +996,7 @@ method pod2text-inline($pod) {
 multi method pod2text(Pod::FormattingCode $pod) {
     given $pod.type {
         when 'N'|'Z' { '' }
-        when 'R' { self!replace: $pod, { $.pod2text($_) } }
+        when 'R' { ... }
         default  { $.pod2text: $pod.contents }
     }
 }
