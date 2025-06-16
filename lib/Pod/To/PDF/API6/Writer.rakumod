@@ -381,39 +381,7 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             }
         }
         when 'N' {
-            my PageFootNote:D $footnote .= new(
-                :contents($pod.contents),
-                :num(@!footnotes+1),
-                :$*tag,
-                :back(self!make-dest),
-            );
-            my UInt:D $footnote-lines = do {
-                # pre-compute footnote size
-                temp $!styler = $!footer-style;
-                temp $!tx = $!margin-left;
-                temp $!ty = $!page.height;
-                temp $!indent = 0;
-                given $footnote {
-                    my $draft-text = .ind ~ $.pod2text-inline(.contents);
-                    +self!text-box($draft-text).lines;
-                }
-            }
-            unless self!height-remaining > ($footnote-lines+1) * $!footer-style.line-height {
-                # force a page break, unless there's room for both the reference and
-                # the footnote on the current page
-                self!new-page;
-                $footnote.num = 1;
-            }
-            @!footnotes.push: $footnote;
-            $!gutter += $footnote-lines;
-            $!gutter-link //= self!make-dest: :left(0), :top($!margin-bottom + (Gutter + 2) * $.line-height);
-
-            self!tag: Artifact, {
-                self!tag: Reference, {
-                    my PDF::Action $link = PDF::API6.action: :destination($!gutter-link);
-                    self!style: :tag(Label), :$link, {  $.pod2pdf($footnote.ind); }
-                }
-            }
+            ...
         }
         when 'U' {
             self!style: :underline, :!block, {
@@ -618,6 +586,55 @@ dd (:@content, :$!ty);
        self.ast2pdf: @content;
        self!finish-code;
    }
+}
+
+multi sub text-content(@content) {
+    @content.map: {
+        when Str { $_ }
+        when Pair {
+            my :(@content, %atts) := .value.&get-content;
+            @content.&text-content;
+        }
+        default { die "unexpected node: {.raku}" }
+    }
+}
+
+multi sub text-content($) { '' }
+
+multi method ast2pdf('FENote', @contents, *%atts) {
+    my PageFootNote:D $footnote .= new(
+        :@contents,
+        :num(@!footnotes+1),
+        :$*tag,
+        :back(self!make-dest),
+    );
+    my UInt:D $footnote-lines = do {
+        # pre-compute footnote size
+        temp $!styler = $!footer-style;
+        temp $!tx = $!margin-left;
+        temp $!ty = $!page.height;
+        temp $!indent = 0;
+        given $footnote {
+            my $draft-text = .ind ~ @contents.&text-content;
+            +self!text-box($draft-text).lines;
+        }
+    }
+    unless self!height-remaining > ($footnote-lines+1) * $!footer-style.line-height {
+        # force a page break, unless there's room for both the reference and
+        # the footnote on the current page
+        self!new-page;
+        $footnote.num = 1;
+    }
+    @!footnotes.push: $footnote;
+    $!gutter += $footnote-lines;
+    $!gutter-link //= self!make-dest: :left(0), :top($!margin-bottom + (Gutter + 2) * $.line-height);
+
+    self!tag: Artifact, {
+        self!tag: Reference, {
+            my PDF::Action $link = PDF::API6.action: :destination($!gutter-link);
+            self!style: :tag(Label), :$link, {  $.ast2pdf($footnote.ind); }
+        }
+    }
 }
 
 multi method ast2pdf('Link', @content, Str:D :$href!) {
@@ -988,7 +1005,7 @@ method !finish-page {
                 }
                 $!tx += 2;
 
-                $.pod2pdf($footnote.contents);
+                $.ast2pdf($footnote.contents);
             }
             unless $!page === $start-page {
                 # page break in footnotes. draw closing underline
