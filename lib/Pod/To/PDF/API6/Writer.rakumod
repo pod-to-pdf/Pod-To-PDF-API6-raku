@@ -457,28 +457,7 @@ multi method pod2pdf(Pod::Defn $pod) {
 }
 
 multi method pod2pdf(Pod::Item $pod) {
-    my Level $level = min($pod.level // 1, 3);
-    temp $!indent = $level + $.style.measure(:margin-left) / 10 - 1;
-    temp $!padding = $.line-height * 2;
-
-    self!style: :tag(ListItem), :bold, :block, {
-        {
-            my constant BulletPoints = (
-                "\c[BULLET]",  "\c[MIDDLE DOT]", '-'
-            );
-            my Str $bp = BulletPoints[$level - 1];
-            temp $*tag .= Label;
-            $.print: $bp;
-        }
-
-        # omit any leading vertical padding in the list-body
-        $!float = True;
-
-        self!style: :tag(ListBody), :indent, :!block, {
-            $!tx = self!indent;
-            $.pod2pdf($pod.contents);
-        }
-    }
+...
 }
 
 multi method pod2pdf(Pod::Block::Declarator $pod) {
@@ -644,6 +623,33 @@ multi method ast2pdf('Link', @content, Str:D :$href!) {
     }
 }
 
+multi method ast2pdf('L', @content,) {
+    $!level++;
+    self!style: :tag(LIST), {
+        self.ast2pdf: @content;
+    }
+    $!level--;
+}
+
+multi method ast2pdf('LI', @content,) {
+    my Level $level = min($!level, 5);
+    temp $!indent = $level + $.style.measure(:margin-left) / 10 - 1;
+    temp $!padding = $.line-height * 2;
+
+    self!style: :tag(ListItem), :bold, :block, {
+        my subset LabelAst of Pair where .key eq 'Lbl';
+        if (@content.head ~~ LabelAst)  {
+            self.ast2pdf: @content.shift;
+        }
+
+        # omit any leading vertical padding in the list-body
+        $!float = True;
+        $!tx = self!indent;
+
+        $.ast2pdf: @content;
+    }
+}
+
 multi method ast2pdf(Str:D $tag, @content, *%atts) {
     self!style: :$tag, :%atts, {
         self.ast2pdf: @content;
@@ -678,8 +684,7 @@ multi method ast2pdf(Str $ast) {
 }
 
 multi method ast2pdf(Pair:D $_) {
-    warn "ignoring {.key} tag";
-    $.ast2pdf(.value);
+    $.ast2pdf(.key, .value);
 }
 
 multi method ast2pdf($_) {
@@ -792,12 +797,11 @@ method !mark(&action, |c) {
 }
 
 method !style(&codez, Numeric :$indent, Str :tag($name), :%atts, Bool :$block is copy, |c) {
-    temp $!indent;
     self!tag-begin($_, :%atts) with $name;
     my $style = $*tag.style;
     $block //= $style.display ~~ 'block';
     temp $!styler .= new: :$style, |c;
-    $!indent += $indent if $indent;
+    temp $!indent += $indent if $indent;
     my $rv := $block ?? $.block(&codez) !! &codez();
     self!tag-end() with $name;
     $rv;
