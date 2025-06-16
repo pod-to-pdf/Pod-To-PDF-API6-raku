@@ -610,6 +610,16 @@ sub param2text($p) {
     $p.raku ~ ',' ~ ( $p.WHY ?? ' # ' ~ $p.WHY !! '')
 }
 
+multi method ast2pdf('Code', @content, *%atts where .<Placement> ~~ 'Block') {
+dd (:@content, :$!ty);
+    self!style: :indent, :tag(CODE), :lines-before(3), :%atts, {
+       self!pad-here;
+       $!code-start-y //= $!ty;
+       self.ast2pdf: @content;
+       self!finish-code;
+   }
+}
+
 multi method ast2pdf('Link', @content, Str:D :$href!) {
     my %style = self!make-link: $href;
     self!style: |%style, {
