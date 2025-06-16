@@ -610,18 +610,37 @@ sub param2text($p) {
     $p.raku ~ ',' ~ ( $p.WHY ?? ' # ' ~ $p.WHY !! '')
 }
 
-multi method ast2pdf(@ast) {
-    for @ast {
+multi method ast2pdf('Link', @content, Str:D :$href!) {
+    my %style = self!make-link: $href;
+    self!style: |%style, {
+        self.ast2pdf: @content;
+    }
+}
+
+multi method ast2pdf(Str:D $tag, @content, *%atts) {
+    self!style: :$tag, :%atts, {
+        self.ast2pdf: @content;
+    }
+}
+
+sub get-content(@content) {
+    my subset AttContent of Pair where .value ~~ Str;
+    my %atts;
+
+    while @content.head ~~ AttContent {
+        %atts{.key} = .value given @content.shift;
+    }
+
+    (@content, %atts);
+}
+
+multi method ast2pdf(@content) {
+    for @content {
         when Str { self.ast2pdf: $_ }
         when Pair {
-            my $tag = .key;
-            my @nodes = .value;
-            my %atts;
-            my subset AttAst of Pair where .value ~~ Str;
-            %atts ,= @nodes.shift while @nodes.head ~~ AttAst;
-            self!style: :$tag, :%atts, {
-                self.ast2pdf: @nodes;
-            }
+            my $tag := .key;
+            my :(@content, %atts) := .value.&get-content;
+            self.ast2pdf: $tag, @content, |%atts;
         }
         default { die "unexpected node: {.raku}" }
     }
