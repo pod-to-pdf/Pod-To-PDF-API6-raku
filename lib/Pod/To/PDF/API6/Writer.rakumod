@@ -61,7 +61,7 @@ has $!ty; # text-flow y
 has Numeric $!indent = 0.0;
 has Numeric $!padding = 0.0;
 has Numeric $!code-start-y;
-has UInt:D $!level = 1;
+has UInt:D $!level = 0;
 has $!gutter = Gutter;
 has Bool $!float;
 
@@ -624,11 +624,10 @@ multi method ast2pdf('Link', @content, Str:D :$href!) {
 }
 
 multi method ast2pdf('L', @content,) {
-    $!level++;
+    temp $!level = $!level + 1;
     self!style: :tag(LIST), {
         self.ast2pdf: @content;
     }
-    $!level--;
 }
 
 multi method ast2pdf('LI', @content,) {
@@ -637,12 +636,20 @@ multi method ast2pdf('LI', @content,) {
     temp $!padding = $.line-height * 2;
 
     self!style: :tag(ListItem), :bold, :block, {
-        my subset LabelAst of Pair where .key eq 'Lbl';
-        if (@content.head ~~ LabelAst)  {
-            self.ast2pdf: @content.shift;
+        my subset LabelAst of Pair where .key eq 'Lbl' && .value.isa(List);
+        my Pair $label-ast;
+        if @content.head ~~ LabelAst {
+            $label-ast = @content.shift
         }
+        else {
+            my constant BulletPoints = (
+                "\c[BULLET]",
+                "\c[MIDDLE DOT]",
+                '-');
+            $label-ast = :Lbl[ BulletPoints[$level-1] || BulletPoints.tail ]
+        }
+        $.ast2pdf: $label-ast;
 
-        # omit any leading vertical padding in the list-body
         $!float = True;
         $!tx = self!indent;
 
