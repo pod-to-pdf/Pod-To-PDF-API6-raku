@@ -99,8 +99,12 @@ submethod TWEAK(Numeric:D :$margin = 20) {
     $!margin-right  //= $margin;
 }
 
-method !tag-begin($name, :%atts) {
+method !tag-begin($name is copy, :$role, *%atts) {
     if $!tag {
+        if $role {
+            $*tag.root.set-role($role => $name);
+            $name = $role;
+        }
         $*tag .= add-kid: :$name;
         $*tag.set-attributes: |%atts if %atts;
         @!tags.push: $*tag;
@@ -558,12 +562,12 @@ sub param2text($p) {
 }
 
 multi method ast2pdf('Code', @content, *%atts where .<Placement> ~~ 'Block') {
-dd (:@content, :$!ty);
-    self!style: :indent, :tag(CODE), :lines-before(3), :%atts, {
+    self!style: :indent, :tag(CODE), :lines-before(3), :%atts, :block, {
        self!pad-here;
        $!code-start-y //= $!ty;
        self.ast2pdf: @content;
        self!finish-code;
+       self.say;
    }
 }
 
@@ -652,6 +656,7 @@ multi method ast2pdf('LI', @content,) {
 
         $!float = True;
         $!tx = self!indent;
+        temp $!indent += 1;
 
         $.ast2pdf: @content;
     }
@@ -804,7 +809,7 @@ method !mark(&action, |c) {
 }
 
 method !style(&codez, Numeric :$indent, Str :tag($name), :%atts, Bool :$block is copy, |c) {
-    self!tag-begin($_, :%atts) with $name;
+    self!tag-begin($_, |%atts) with $name;
     my $style = $*tag.style;
     $block //= $style.display ~~ 'block';
     temp $!styler .= new: :$style, |c;

@@ -8,34 +8,34 @@ use PDF::API6;
 plan 1;
 
 my $xml = q{<Document Lang="en">
-  <H2>
-    Class Magician
-  </H2>
-  <P>
-    Base class for magicians
-  </P>
-  <P>
-    <Code Placement="Block">
+  <Div role="Declaration">
+    <H2>
+      Class Magician
+    </H2>
+    <P>
+      Base class for magicians
+    </P>
+    <Code Placement="Block" role="Raku">
       class Magician
     </Code>
-  </P>
-  <H3>
-    Sub duel
-  </H3>
-  <P>
-    Fight mechanics
-  </P>
-  <P>
-    <Code Placement="Block">
+  </Div>
+  <Div role="Declaration">
+    <H3>
+      Sub duel
+    </H3>
+    <P>
+      Fight mechanics
+    </P>
+    <Code Placement="Block" role="Raku">
       sub duel(
           Magician $a,
           Magician $b,
       )
     </Code>
-  </P>
-  <P>
-    Magicians only, no mortals.
-  </P>
+    <P>
+      Magicians only, no mortals.
+    </P>
+  </Div>
 </Document>
 };
 
