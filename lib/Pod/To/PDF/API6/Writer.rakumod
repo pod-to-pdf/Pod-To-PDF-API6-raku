@@ -82,13 +82,13 @@ class DefaultLinker {
 }
 has $.linker = DefaultLinker;
 
-method write($pod, PDF::Tags::Elem $*root) {
+method write($ast, PDF::Tags::Elem $*root) {
     my $*tag = $*root;
     my CSS::Properties $style = $*tag.style;
     $!styler .= new: :$style;
     my $note-style = $*tag.root.styler.tag-style(FENote);
     $!footer-style .= new: :style($note-style), :lines-before(0);
-    self.ast2pdf($pod);
+    self.ast2pdf($ast);
     self!finish-page;
 }
 
@@ -285,7 +285,8 @@ method !deref(@content, Str:D $tag, Bool :$consume) {
 
 multi method ast2pdf('Table', @content, *%atts) {
     self!style: :tag(Table), :block, :%atts, {
-        my Numeric @border = $.style.measure(:border-spacing);
+        my $cell-style = $*tag.root.styler.tag-style(TableData);
+        my Numeric @border = $cell-style.measure(:border-width);
         @border[1] //= @border[0];
 
         my \total-width = self!gfx.canvas.width - self!indent - $!margin-right;
@@ -358,14 +359,13 @@ multi method pod2pdf(Pod::Block::Para $pod) {
     }
 }
 
-method !make-link(Str $url) {
+method !make-link(Str:D $url) {
     my %style = :!block;
-    with $url {
+    given $url {
         if .starts-with('#') {
             # internal link
             my $destination = dest-name($_);
             %style<link> = $!pdf.action: :$destination;
-            %style<tag> = Reference;
         }
         else {
             with $!linker.resolve-link($_) -> $uri {
@@ -696,7 +696,7 @@ multi method ast2pdf(Str:D $tag, @content, *%atts) {
 }
 
 sub get-content(@content) {
-    my subset AttContent of Pair where .value ~~ Str;
+    my subset AttContent of Pair where .value !~~ List;
     my %atts;
 
     while @content.head ~~ AttContent {

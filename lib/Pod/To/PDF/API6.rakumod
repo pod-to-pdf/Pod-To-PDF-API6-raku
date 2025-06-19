@@ -198,11 +198,11 @@ method render(
         my $renderer = $class.new: |c,  :$pod, :$width, :$height, :$margin, :$margin-top, :$margin-bottom, :$margin-left, :$margin-right, :$contents, :$page-numbers, :$page-style, :$stylesheet;
         $renderer.build-index
             if $index && $renderer.index;
-        my PDF::API6 $pdf = $renderer.pdf;
+        my PDF::API6:D $pdf = $renderer.pdf;
         $pdf.media-box = 0, 0, $width, $height;
         # save to a file, since PDF is a binary format
-        $save-as //= tempfile("pod2pdf-api6-****.pdf";
-        $pdf.save-as: $save-as, :!unlink)[1];
+        $save-as //= tempfile("pod2pdf-api6-****.pdf")[1];
+        $pdf.save-as: $save-as, :!unlink;
         $save-as.path;
     }
 }

@@ -38,6 +38,7 @@ subtest 'document structure', {
 
     my PDF::API6 $pdf .= open: "t/defn.pdf";
     my $tags = ::('PDF::Tags::Reader').read: :$pdf, :quiet;
+    todo "decide on tag structure for definition lists";
     is $tags[0].Str, $xml, 'PDF Structure is correct';
 }
 

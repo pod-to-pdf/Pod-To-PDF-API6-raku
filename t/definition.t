@@ -7,66 +7,66 @@ use PDF::API6;
 plan 1;
 
 my $xml = q{<Document Lang="en">
-  <H2>
-    Module Asdf1
-  </H2>
-  <P>
-    This is a module
-  </P>
-  <P>
-    <Code Placement="Block">
+  <Div role="Declaration">
+    <H2>
+      Module Asdf1
+    </H2>
+    <P>
+      This is a module
+    </P>
+    <Code Placement="Block" role="Raku">
       module Asdf1
     </Code>
-  </P>
-  <H3>
-    Sub asdf
-  </H3>
-  <P>
-    This is a sub
-  </P>
-  <P>
-    <Code Placement="Block">
+  </Div>
+  <Div role="Declaration">
+    <H3>
+      Sub asdf
+    </H3>
+    <P>
+      This is a sub
+    </P>
+    <Code Placement="Block" role="Raku">
       sub asdf(
           Str $asdf1,
           Str :$asdf2 = "asdf",
       ) returns Str
     </Code>
-  </P>
-  <H2>
-    Class Asdf2
-  </H2>
-  <P>
-    This is a class
-  </P>
-  <P>
-    <Code Placement="Block">
+  </Div>
+  <Div role="Declaration">
+    <H2>
+      Class Asdf2
+    </H2>
+    <P>
+      This is a class
+    </P>
+    <Code Placement="Block" role="Raku">
       class Asdf2
     </Code>
-  </P>
-  <H3>
-    Attribute t
-  </H3>
-  <P>
-    This is an attribute
-  </P>
-  <P>
-    <Code Placement="Block">
+  </Div>
+  <Div role="Declaration">
+    <H3>
+      Attribute t
+    </H3>
+    <P>
+      This is an attribute
+    </P>
+    <Code Placement="Block" role="Raku">
       has Str $.t
     </Code>
-  </P>
-  <H3>
-    Method asdf
-  </H3>
-  <P>
-    This is a method
-  </P>
-  <P>
-    <Code Placement="Block">
+  </Div>
+  <Div role="Declaration">
+    <H3>
+      Method asdf
+    </H3>
+    <P>
+      This is a method
+    </P>
+    <Code Placement="Block" role="Raku">
       method asdf(
           Str :$asdf = "asdf",
       ) returns Str
     </Code>
-  </P>
+  </Div>
 </Document>
 };
 
