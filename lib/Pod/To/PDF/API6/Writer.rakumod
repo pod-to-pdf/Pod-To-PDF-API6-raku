@@ -213,39 +213,50 @@ method !table-row(@row, @widths, :@border!, Bool :$header) {
     }
 }
 
-method !table-cell($pod) {
-    my $text = $.pod2text-inline($pod);
-    self!text-box: $text, :width(0), :height(0), :indent(0);
+method !add-row(@table, @tr) {
+    my subset TableCell of Pair where .key ~~ 'TH'|'TD' && .value.isa(List);
+    my @row = @tr.map: {
+        when TableCell {
+            my $tag = .key;
+            my :(@v, %atts) := .value.&get-content;
+            self!style: :$tag, :%atts, {
+                my $text = text-content(@v, :inline );
+                $*tag => self!text-box: $text, :width(0), :height(0), :indent(0);
+            }
+        }
+        default {
+            $.ast2pdf: $_;
+            Empty;
+        }
+    }
+    @table.push: @row if @row;
 }
 
-method !build-table($pod, @table) {
+method !build-table(@content, @table) {
     my $x0 = self!indent;
-
     @table = ();
 
-    if $pod.headers {
-        self!style: :tag(TableHead), :bold, {
-            $*tag .= TableRow;
-            my @row = $pod.headers.map: {
-                temp $*tag .= TableHeader;
-                $*tag => self!table-cell($_)
+    if self!deref(@content, TableHead) -> (@thead, %atts) {
+        self!style: :tag(TableHead), :%atts, {
+            if self!deref(@thead, 'TR', :consume) -> (@tr, %atts) {
+                self!style: :tag(TableRow), :%atts, { self!add-row(@table, @tr) };
             }
-            @table.push: @row;
         }
     }
-    else {
-        @table.push: [];
-    }
 
-    temp $*tag .= TableBody;
+    @table.push: [] unless @table;
 
-    $pod.contents.map: {
-        temp $*tag .= TableRow;
-        my @row = .map: {
-            temp $*tag .= TableData;
-            $*tag => self!table-cell($_);
+    if self!deref(@content, TableBody, :consume) -> (@tbody, %atts) {
+        self!style: :tag(TableBody), :%atts, {
+            while @tbody {
+                if self!deref(@tbody, 'TR') -> (@tr, %atts) {
+                    self!style: :tag(TableRow), :%atts, { self!add-row(@table, @tr) };
+                }
+                else {
+                    $.ast2pdf: @tbody.shift;
+                }
+            }
         }
-        @table.push: @row;
     }
 
     my $cols = @table.max: *.elems;
@@ -258,33 +269,41 @@ method !build-table($pod, @table) {
 
 proto method pod2pdf(|) is DEPRECATED<ast2pdf> {*}
 
-multi method pod2pdf(Pod::Block::Table $pod) {
+method !deref(@content, Str:D $tag, Bool :$consume) {
+    my $elem = @content.head;
+    my $rv;
+    if ($elem ~~ Pair:D && $elem.key eq $tag && $elem.value ~~ List) {
+        @content.shift;
+        $rv := $elem.value.&get-content;
+    }
+    if ($consume && @content) {
+        $.ast2pdf(@content);
+        @content = [];
+    }
+    $rv;
+}
 
-    self!style: :tag(Table), :block, {
+multi method ast2pdf('Table', @content, *%atts) {
+    self!style: :tag(Table), :block, :%atts, {
         my Numeric @border = $.style.measure(:border-spacing);
         @border[1] //= @border[0];
 
         my \total-width = self!gfx.canvas.width - self!indent - $!margin-right;
         self!pad-here;
-        if $pod.caption -> $caption {
-            self!style: :tag(Caption), {
-                $.say: $caption;
-            }
+        if @content.head.&is-elem(Caption) {
+            $.ast2pdf: @content.shift;
+            $.say;
         }
 
-        my @widths = self!build-table: $pod, my @table;
+        my @widths = self!build-table: @content, my @table;
         fit-widths(total-width - @border[0] * (@widths-1), @widths);
-        my Pair @headers = @table.shift.List;
-        if @headers {
+        if @table.shift.List -> @headers {
             self!table-row: @headers, @widths, :header, :@border;
         }
 
-        if @table {
-            for @table {
-                my @row = .List;
-                if @row {
-                    self!table-row: @row, @widths, :@border;
-                }
+        for @table {
+            if .List -> @row {
+                self!table-row: @row, @widths, :@border;
             }
         }
     }
@@ -571,6 +590,10 @@ multi method ast2pdf('Code', @content, *%atts where .<Placement> ~~ 'Block') {
    }
 }
 
+multi sub text-content(:inline($)! where .so, |c) {
+    text-content(|c).subst(/\s+/, ' ', :g);
+}
+
 multi sub text-content(@content) {
     @content.map: {
         when Str { $_ }
@@ -628,11 +651,16 @@ multi method ast2pdf('Link', @content, Str:D :$href!) {
 }
 
 multi method ast2pdf('L', @content,) {
-    temp $!level = $!level + 1;
+    temp $!level += 1;
     self!style: :tag(LIST), {
         self.ast2pdf: @content;
     }
 }
+
+multi sub is-elem(Pair:D $_, Str:D $tag) {
+    .key eq $tag && .value ~~ List
+}
+multi sub is-elem($, $) { False }
 
 multi method ast2pdf('LI', @content,) {
     my Level $level = min($!level, 5);
@@ -640,9 +668,8 @@ multi method ast2pdf('LI', @content,) {
     temp $!padding = $.line-height * 2;
 
     self!style: :tag(ListItem), :bold, :block, {
-        my subset LabelAst of Pair where .key eq 'Lbl' && .value.isa(List);
-        my Pair $label-ast;
-        if @content.head ~~ LabelAst {
+        my $label-ast;
+        if @content.head.&is-elem(Label) {
             $label-ast = @content.shift
         }
         else {
