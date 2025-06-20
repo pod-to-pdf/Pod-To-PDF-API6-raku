@@ -418,25 +418,8 @@ multi method pod2pdf(Pod::FormattingCode $pod) {
             # invisable
         }
         when 'X' {
-            if $.pod2text-inline($pod.contents) -> $term {
-                my Str $name = dest-name($term);
-
-                my DestRef $dest = self!pod2dest($pod.contents, :$name);
-                my PDF::StructElem $SE = $*tag.cos;
-                my %ref = %{ :$dest, :$SE  };
-
-                if $pod.meta -> $meta {
-                    for $meta.List {
-                        my $idx = %!index{.head} //= %();
-                        $idx = $idx{$_} //= %() for .skip;
-                        $idx<#refs>.push: %ref;
-                    }
-                }
-                else {
-                    %!index{$term}<#refs>.push: %ref;
-                }
-            }
-            # otherwise X<|> ?
+            ...
+              # otherwise X<|> ?
         }
         when 'L' {
             my $text = $.pod2text-inline($pod.contents);
@@ -588,6 +571,24 @@ multi method ast2pdf('Code', @content, *%atts where .<Placement> ~~ 'Block') {
        self!finish-code;
        self.say;
    }
+}
+
+multi method ast2pdf('Span', @content, :role($)! where 'Index', :$Terms) {
+  if text-content(@content, :inline) -> $term {
+        my Str $name = dest-name($term);
+
+        my DestRef $dest = self!ast2dest(@content, :$name);
+        my PDF::StructElem $SE = $*tag.cos;
+        my %ref = %{ :$dest, :$SE  };
+        my @terms = .split('|') with $Terms;
+        @terms ||= $term;
+
+        my $idx = %!index;
+        for @terms {
+            $idx = $idx{$_} //= %();
+        }
+        $idx<#refs>.push: %ref;
+    }
 }
 
 multi sub text-content(:inline($)! where .so, |c) {
@@ -850,10 +851,10 @@ method !style(&codez, Numeric :$indent, Str :tag($name), :%atts, Bool :$block is
     $rv;
 }
 
-method !pod2dest($pod, Str :$name) {
+method !ast2dest(@content, Str :$name) {
     my $y0 := $!ty;
 
-    $.pod2pdf($pod);
+    $.ast2pdf(@content);
 
     my \y = $!ty;
     my \h = max(y - $y0, $!last-chunk-height);
@@ -872,7 +873,7 @@ method !heading($pod is copy, Level:D :$level = $!level, Bool :$toc = True) {
         if $!contents && $toc {
             # Register in table of contents
             my $name = dest-name($Title);
-            my DestRef $dest = self!pod2dest($pod, :$name);
+            my DestRef $dest = ...; #self!pod2dest($pod, :$name);
             my PDF::StructElem $SE = $*tag.cos;
             self.add-toc-entry: { :$Title, :$dest, :$SE  }, :$level;
         }
