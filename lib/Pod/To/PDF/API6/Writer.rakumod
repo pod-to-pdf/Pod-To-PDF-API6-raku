@@ -220,7 +220,7 @@ method !add-row(@table, @tr) {
             my $tag = .key;
             my :(@v, %atts) := .value.&get-content;
             self!style: :$tag, :%atts, {
-                my $text = text-content(@v, :inline );
+                my $text = @v.&text-content( :inline );
                 $*tag => self!text-box: $text, :width(0), :height(0), :indent(0);
             }
         }
@@ -267,8 +267,6 @@ method !build-table(@content, @table) {
     };
 }
 
-proto method pod2pdf(|) is DEPRECATED<ast2pdf> {*}
-
 method !deref(@content, Str:D $tag, Bool :$consume) {
     my $elem = @content.head;
     my $rv;
@@ -291,9 +289,11 @@ multi method ast2pdf('Table', @content, *%atts) {
 
         my \total-width = self!gfx.canvas.width - self!indent - $!margin-right;
         self!pad-here;
-        if @content.head.&is-elem(Caption) {
-            $.ast2pdf: @content.shift;
-            $.say;
+        if self!deref(@content, Caption) -> (@caption, %atts) {
+            self!style: :tag(Caption), :%atts, {
+                $.ast2pdf: @caption;
+                $.say;
+            }
         }
 
         my @widths = self!build-table: @content, my @table;
@@ -310,54 +310,6 @@ multi method ast2pdf('Table', @content, *%atts) {
     }
 }
 
-multi method pod2pdf(Pod::Block::Named $pod) {
-    given $pod.name {
-        when 'pod'  { $.pod2pdf($pod.contents)     }
-        when 'para' {
-            $.pod2pdf: $pod.contents;
-        }
-        when 'config' { }
-        when 'nested' {
-            self!style: :indent, {
-                $.pod2pdf: $pod.contents;
-            }
-        }
-        when 'TITLE'|'SUBTITLE' {
-            my Bool $toc = $_ eq 'TITLE';
-            my $level = $toc ?? 0 !! 2;
-            self.metadata(.lc) ||= $.pod2text-inline($pod.contents);
-            self!heading($pod.contents, :$toc, :$level);
-        }
-        default {
-            my $name = $_;
-            temp $!level += 1;
-            if $name eq $name.uc {
-                if $name ~~ 'VERSION'|'NAME'|'AUTHOR' {
-                    self.metadata(.lc) ||= $.pod2text-inline($pod.contents);
-                }
-                $!level = 2;
-                $name = .tclc;
-            }
-            self!heading($name);
-            $.pod2pdf($pod.contents);
-        }
-    }
-}
-
-multi method pod2pdf(Pod::Block::Code $pod) {
-    self!code: $pod.contents;
-}
-
-multi method pod2pdf(Pod::Heading $pod) {
-    $!level = min($pod.level, 6);
-    self!heading: $pod.contents;
-}
-
-multi method pod2pdf(Pod::Block::Para $pod) {
-    self!style: :tag(Paragraph), {
-        $.pod2pdf($pod.contents);
-    }
-}
 
 method !make-link(Str:D $url) {
     my %style = :!block;
@@ -376,176 +328,6 @@ method !make-link(Str:D $url) {
     %style;
 }
 
-multi method pod2pdf(Pod::FormattingCode $pod) {
-    given $pod.type {
-        when 'B' {
-            self!style: :tag(Strong), {
-                $.pod2pdf($pod.contents);
-            }
-        }
-        when 'C' {
-            self!style: :tag(CODE), {
-                $.print: $.pod2text($pod);
-            }
-        }
-        when 'T' {
-            self!style: :mono, :!block, {
-                $.pod2pdf($pod.contents);
-            }
-        }
-        when 'K' {
-            self!style: :italic, :mono, :!block, {
-                $.pod2pdf($pod.contents);
-            }
-        }
-        when 'I' {
-            self!style: :tag(Emphasis), {
-                $.pod2pdf($pod.contents);
-            }
-        }
-        when 'N' {
-            ...
-        }
-        when 'U' {
-            self!style: :underline, :!block, {
-                $.pod2pdf($pod.contents);
-            }
-        }
-        when 'E' { # Unicode; already converted.
-            $.pod2pdf($pod.contents);
-        }
-        when 'Z' {
-            # invisable
-        }
-        when 'X' {
-            ...
-              # otherwise X<|> ?
-        }
-        when 'L' {
-            my $text = $.pod2text-inline($pod.contents);
-            my %style = self!make-link: $pod.meta.head // $text;
-            self!style: |%style, {
-                $.print: $text;
-            }
-        }
-        when 'P' {
-            # todo insertion of placed text
-            if $.pod2text-inline($pod.contents) -> $url {
-                my %style = self!make-link: $url;
-                $.pod2pdf('(see: ');
-                self!style: |%style, {
-                    $.print: $url;
-                }
-                $.pod2pdf(')');
-            }
-        }
-        when 'R' {
-            ...
-        }
-        default {
-            warn "unhandled: POD formatting code: $_\<\>";
-            $.pod2pdf($pod.contents);
-        }
-    }
-}
-
-multi method pod2pdf(Pod::Defn $pod) {
-    self!tag: ListItem, {
-        self.block: :padding($.line-height), {
-            self!style: :tag(Label), :bold, {
-                $.pod2pdf($pod.term);
-            }
-            self!style: :tag(ListBody), :!block, {
-                $.pod2pdf($pod.contents);
-            }
-        }
-    }
-}
-
-multi method pod2pdf(Pod::Item $pod) {
-...
-}
-
-multi method pod2pdf(Pod::Block::Declarator $pod) {
-    my $w := $pod.WHEREFORE;
-    my Level $level = 3;
-    my ($type, $code, $name, $decl) = do given $w {
-        when Method {
-            my @params = .signature.params.skip(1);
-            @params.pop if @params.tail.name eq '%_';
-            (
-                (.multi ?? 'multi ' !! '') ~ 'method',
-                .name ~ signature2text(@params, .returns),
-            )
-        }
-        when Sub {
-            (
-                (.multi ?? 'multi ' !! '') ~ 'sub',
-                .name ~ signature2text(.signature.params, .returns)
-            )
-        }
-        when Attribute {
-            my $gist = .gist;
-            my $name = .name.subst('$!', '');
-            $gist .= subst('!', '.')
-                if .has_accessor;
-
-            ('attribute', $gist, $name, 'has');
-        }
-        when .HOW ~~ Metamodel::EnumHOW {
-            ('enum', .raku() ~ signature2text($_.enums.pairs));
-        }
-        when .HOW ~~ Metamodel::ClassHOW {
-            $level = 2;
-            ('class', .raku, .^name);
-        }
-        when .HOW ~~ Metamodel::ModuleHOW {
-            $level = 2;
-            ('module', .raku, .^name);
-        }
-        when .HOW ~~ Metamodel::SubsetHOW {
-            ('subset', .raku ~ ' of ' ~ .^refinee().raku);
-        }
-        when .HOW ~~ Metamodel::PackageHOW {
-            ('package', .raku)
-        }
-        default {
-            '', ''
-        }
-    }
-
-    $name //= $w.?name // '';
-    $decl //= $type;
-
-    if $pod.leading || $code || $pod.trailing {
-        $.block: :padding($.line-height), {
-            self!heading($type.tclc ~ ' ' ~ $name, :$level);
-
-            if $pod.leading -> $pre-pod {
-                self!style: :tag(Paragraph), {
-                    $.pod2pdf($pre-pod);
-                }
-            }
-
-            if $code {
-                self!style: :tag(Paragraph), {
-                    self!code([$decl ~ ' ' ~ $code]);
-                }
-            }
-
-            if $pod.trailing -> $post-pod {
-                self!style: :tag(Paragraph), {
-                    $.pod2pdf($post-pod);
-                }
-            }
-        }
-    }
-}
-
-multi method pod2pdf(Pod::Block::Comment) {
-    # ignore comments
-}
-
 sub signature2text($params, Mu $returns?) {
     my constant NL = "\n    ";
     my $result = '(';
@@ -559,6 +341,7 @@ sub signature2text($params, Mu $returns?) {
     }
     $result;
 }
+
 sub param2text($p) {
     $p.raku ~ ',' ~ ( $p.WHY ?? ' # ' ~ $p.WHY !! '')
 }
@@ -574,7 +357,7 @@ multi method ast2pdf('Code', @content, *%atts where .<Placement> ~~ 'Block') {
 }
 
 multi method ast2pdf('Span', @content, :role($)! where 'Index', :$Terms) {
-  if text-content(@content, :inline) -> $term {
+  if @content.&text-content(:inline) -> $term {
         my Str $name = dest-name($term);
 
         my DestRef $dest = self!ast2dest(@content, :$name);
@@ -658,11 +441,6 @@ multi method ast2pdf('L', @content,) {
     }
 }
 
-multi sub is-elem(Pair:D $_, Str:D $tag) {
-    .key eq $tag && .value ~~ List
-}
-multi sub is-elem($, $) { False }
-
 multi method ast2pdf('LI', @content,) {
     my Level $level = min($!level, 5);
     temp $!indent = $level + $.style.measure(:margin-left) / 10 - 1;
@@ -671,7 +449,7 @@ multi method ast2pdf('LI', @content,) {
 
     self!style: :tag(ListItem), :bold, :block, {
         if self!deref(@content, 'Lbl') -> (@lbl, %atts) {
-            $do-float = False if %atts<Placement> ~~ 'Block';
+            $do-float = False if %atts<Placement> ~~ 'Block' || @lbl.&text-content.chars > 3;
             self!style: :tag<Lbl>, :%atts, {
                 self.ast2pdf: @lbl;
             }
@@ -696,11 +474,18 @@ multi method ast2pdf('LI', @content,) {
 
 multi method ast2pdf(Str:D $tag, @content, *%atts) {
     self!style: :$tag, :%atts, {
-        self.ast2pdf: @content;
+        if $tag ~~ /^H(\d*)|Title$/ {
+            # header
+            my Int() $level = ($0//'').Str || 1;
+            self!heading(@content, :$level);
+        }
+        else {
+            self.ast2pdf: @content;
+        }
     }
 }
 
-sub get-content(@content) {
+sub get-content(@content is copy) {
     my subset AttContent of Pair where .value !~~ List;
     my %atts;
 
@@ -861,36 +646,21 @@ method !ast2dest(@content, Str :$name) {
     my DestRef $ = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h);
 }
 
-method !heading($pod is copy, Level:D :$level = $!level, Bool :$toc = True) {
-    $pod .= &strip-para;
+method !heading(@content is copy, Level:D :$level = $!level, Bool :$toc = True) {
+    my Str $Title = @content.&text-content(:inline);
+    $*tag.cos.title = $Title;
 
-    my $tag =  $level ?? 'H' ~ $level !! Title;
-    self!style: :$tag, {
-
-        my Str $Title = $.pod2text-inline($pod);
-        $*tag.cos.title = $Title;
-
-        if $!contents && $toc {
-            # Register in table of contents
-            my $name = dest-name($Title);
-            my DestRef $dest = ...; #self!pod2dest($pod, :$name);
-            my PDF::StructElem $SE = $*tag.cos;
-            self.add-toc-entry: { :$Title, :$dest, :$SE  }, :$level;
-        }
-        else {
-            $.pod2pdf($pod);
-        }
+    if $!contents && $toc {
+        # Register in table of contents
+        my $name = dest-name($Title);
+        my DestRef $dest = self!ast2dest(@content, :$name);
+        my PDF::StructElem $SE = $*tag.cos;
+        self.add-toc-entry: { :$Title, :$dest, :$SE  }, :$level;
+    }
+    else {
+        $.ast2pdf(@content);
     }
 }
-
-# to reduce the common case <Hn><P>Xxxx<P></Hn> -> <Hn>Xxxx</Hn>
-multi sub strip-para(Array $_ where +$_ == 1) {
-    .map(&strip-para).List;
-}
-multi sub strip-para(Pod::Block::Para $_) {
-    .contents;
-}
-multi sub strip-para($_) { $_ }
 
 method !make-dest(
     :$fit = FitXYZoom,
@@ -1082,22 +852,4 @@ method !new-page {
 method !indent {
     $!margin-left  +  10 * $!indent;
 }
-
-method pod2text-inline($pod) {
-    $.pod2text($pod).subst(/\s+/, ' ', :g);
-}
-
-multi method pod2text(Pod::FormattingCode $pod) {
-    given $pod.type {
-        when 'N'|'Z' { '' }
-        when 'R' { ... }
-        default  { $.pod2text: $pod.contents }
-    }
-}
-
-multi method pod2text(Pod::Block $pod) {
-    $pod.contents.map({$.pod2text($_)}).join;
-}
-multi method pod2text(Str $pod) { $pod }
-multi method pod2text($pod) { $pod.map({$.pod2text($_)}).join }
 

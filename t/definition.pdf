@@ -3,25 +3,33 @@
 1 0 obj
 <<
   /Type /Catalog
+  /Dests 2 0 R
   /Lang (en)
   /MarkInfo << /Marked true >>
-  /Pages 2 0 R
-  /StructTreeRoot 10 0 R
+  /Outlines 11 0 R
+  /Pages 5 0 R
+  /StructTreeRoot 36 0 R
 >>
 endobj
 
 2 0 obj
-<< /Type /Pages /Count 1 /Kids [ 3 0 R ] /MediaBox [ 0 0 612 792 ] >>
+<<
+  /Attribute_t [ 3 0 R /FitBH 532.5804 ]
+  /Class_Asdf2 [ 3 0 R /FitBH 595.8336 ]
+  /Method_asdf [ 3 0 R /FitBH 471.174 ]
+  /Module_Asdf1 [ 3 0 R /FitBH 756 ]
+  /Sub_asdf [ 3 0 R /FitBH 692.7468 ]
+>>
 endobj
 
 3 0 obj
 <<
   /Type /Page
   /Contents 4 0 R
-  /Parent 2 0 R
+  /Parent 5 0 R
   /Resources <<
-    /ExtGState << /GS1 5 0 R /GS2 6 0 R >>
-    /Font << /F1 7 0 R /F2 8 0 R /F3 9 0 R >>
+    /ExtGState << /GS1 6 0 R /GS2 7 0 R >>
+    /Font << /F1 8 0 R /F2 9 0 R /F3 10 0 R >>
   >>
   /StructParents 0
 >>
@@ -199,14 +207,18 @@ endstream
 endobj
 
 5 0 obj
-<< /Type /ExtGState /ca 0.1 >>
+<< /Type /Pages /Count 1 /Kids [ 3 0 R ] /MediaBox [ 0 0 612 792 ] >>
 endobj
 
 6 0 obj
-<< /Type /ExtGState /CA 0.25 >>
+<< /Type /ExtGState /ca 0.1 >>
 endobj
 
 7 0 obj
+<< /Type /ExtGState /CA 0.25 >>
+endobj
+
+8 0 obj
 <<
   /Type /Font
   /Subtype /Type1
@@ -215,7 +227,7 @@ endobj
 >>
 endobj
 
-8 0 obj
+9 0 obj
 <<
   /Type /Font
   /Subtype /Type1
@@ -224,7 +236,7 @@ endobj
 >>
 endobj
 
-9 0 obj
+10 0 obj
 <<
   /Type /Font
   /Subtype /Type1
@@ -233,73 +245,49 @@ endobj
 >>
 endobj
 
-10 0 obj
-<<
-  /Type /StructTreeRoot
-  /K [ 11 0 R ]
-  /ParentTree <<
-    /Nums [ 0 [ 13 0 R 14 0 R 15 0 R 17 0 R 18 0 R 19 0 R 21 0 R 22 0 R 23 0 R 25 0 R 26 0 R 27 0 R 29 0 R 30 0 R 31 0 R ] ]
-  >>
-  /RoleMap << /Declaration /Div /Raku /Code >>
->>
-endobj
-
 11 0 obj
-<<
-  /Type /StructElem
-  /S /Document
-  /K [ 12 0 R 16 0 R 20 0 R 24 0 R 28 0 R ]
-  /Lang (en)
-  /P 10 0 R
->>
+<< /Count 6 /First 12 0 R /Last 12 0 R >>
 endobj
 
 12 0 obj
-<<
-  /Type /StructElem
-  /S /Declaration
-  /K [ 13 0 R 14 0 R 15 0 R ]
-  /P 11 0 R
->>
+<< /Count 5 /First 13 0 R /Last 37 0 R /Parent 11 0 R /Title ( ) >>
 endobj
 
 13 0 obj
-<< /Type /StructElem /S /H2 /K [ 0 ] /P 12 0 R /Pg 3 0 R >>
+<<
+  /Count 1
+  /Dest /Module_Asdf1
+  /First 14 0 R
+  /Last 14 0 R
+  /Next 37 0 R
+  /Parent 12 0 R
+  /SE 21 0 R
+  /Title (Module Asdf1)
+>>
 endobj
 
 14 0 obj
-<< /Type /StructElem /S /P /K [ 1 ] /P 12 0 R /Pg 3 0 R >>
+<< /Dest /Sub_asdf /Parent 13 0 R /SE 15 0 R /Title (Sub asdf) >>
 endobj
 
 15 0 obj
-<<
-  /Type /StructElem
-  /S /Raku
-  /A << /O /Layout /Placement /Block >>
-  /K [ 2 ]
-  /P 12 0 R
-  /Pg 3 0 R
->>
+<< /Type /StructElem /S /H3 /K [ 3 ] /P 16 0 R /Pg 3 0 R /T (Sub asdf) >>
 endobj
 
 16 0 obj
 <<
   /Type /StructElem
   /S /Declaration
-  /K [ 17 0 R 18 0 R 19 0 R ]
-  /P 11 0 R
+  /K [ 15 0 R 17 0 R 18 0 R ]
+  /P 19 0 R
 >>
 endobj
 
 17 0 obj
-<< /Type /StructElem /S /H3 /K [ 3 ] /P 16 0 R /Pg 3 0 R >>
-endobj
-
-18 0 obj
 << /Type /StructElem /S /P /K [ 4 ] /P 16 0 R /Pg 3 0 R >>
 endobj
 
-19 0 obj
+18 0 obj
 <<
   /Type /StructElem
   /S /Raku
@@ -310,21 +298,38 @@ endobj
 >>
 endobj
 
+19 0 obj
+<<
+  /Type /StructElem
+  /S /Document
+  /K [ 20 0 R 16 0 R 24 0 R 28 0 R 32 0 R ]
+  /Lang (en)
+  /P 36 0 R
+>>
+endobj
+
 20 0 obj
 <<
   /Type /StructElem
   /S /Declaration
   /K [ 21 0 R 22 0 R 23 0 R ]
-  /P 11 0 R
+  /P 19 0 R
 >>
 endobj
 
 21 0 obj
-<< /Type /StructElem /S /H2 /K [ 6 ] /P 20 0 R /Pg 3 0 R >>
+<<
+  /Type /StructElem
+  /S /H2
+  /K [ 0 ]
+  /P 20 0 R
+  /Pg 3 0 R
+  /T (Module Asdf1)
+>>
 endobj
 
 22 0 obj
-<< /Type /StructElem /S /P /K [ 7 ] /P 20 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /P /K [ 1 ] /P 20 0 R /Pg 3 0 R >>
 endobj
 
 23 0 obj
@@ -332,7 +337,7 @@ endobj
   /Type /StructElem
   /S /Raku
   /A << /O /Layout /Placement /Block >>
-  /K [ 8 ]
+  /K [ 2 ]
   /P 20 0 R
   /Pg 3 0 R
 >>
@@ -343,16 +348,23 @@ endobj
   /Type /StructElem
   /S /Declaration
   /K [ 25 0 R 26 0 R 27 0 R ]
-  /P 11 0 R
+  /P 19 0 R
 >>
 endobj
 
 25 0 obj
-<< /Type /StructElem /S /H3 /K [ 9 ] /P 24 0 R /Pg 3 0 R >>
+<<
+  /Type /StructElem
+  /S /H2
+  /K [ 6 ]
+  /P 24 0 R
+  /Pg 3 0 R
+  /T (Class Asdf2)
+>>
 endobj
 
 26 0 obj
-<< /Type /StructElem /S /P /K [ 10 ] /P 24 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /P /K [ 7 ] /P 24 0 R /Pg 3 0 R >>
 endobj
 
 27 0 obj
@@ -360,7 +372,7 @@ endobj
   /Type /StructElem
   /S /Raku
   /A << /O /Layout /Placement /Block >>
-  /K [ 11 ]
+  /K [ 8 ]
   /P 24 0 R
   /Pg 3 0 R
 >>
@@ -371,16 +383,23 @@ endobj
   /Type /StructElem
   /S /Declaration
   /K [ 29 0 R 30 0 R 31 0 R ]
-  /P 11 0 R
+  /P 19 0 R
 >>
 endobj
 
 29 0 obj
-<< /Type /StructElem /S /H3 /K [ 12 ] /P 28 0 R /Pg 3 0 R >>
+<<
+  /Type /StructElem
+  /S /H3
+  /K [ 9 ]
+  /P 28 0 R
+  /Pg 3 0 R
+  /T (Attribute t)
+>>
 endobj
 
 30 0 obj
-<< /Type /StructElem /S /P /K [ 13 ] /P 28 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /P /K [ 10 ] /P 28 0 R /Pg 3 0 R >>
 endobj
 
 31 0 obj
@@ -388,48 +407,135 @@ endobj
   /Type /StructElem
   /S /Raku
   /A << /O /Layout /Placement /Block >>
-  /K [ 14 ]
+  /K [ 11 ]
   /P 28 0 R
   /Pg 3 0 R
 >>
 endobj
 
+32 0 obj
+<<
+  /Type /StructElem
+  /S /Declaration
+  /K [ 33 0 R 34 0 R 35 0 R ]
+  /P 19 0 R
+>>
+endobj
+
+33 0 obj
+<<
+  /Type /StructElem
+  /S /H3
+  /K [ 12 ]
+  /P 32 0 R
+  /Pg 3 0 R
+  /T (Method asdf)
+>>
+endobj
+
+34 0 obj
+<< /Type /StructElem /S /P /K [ 13 ] /P 32 0 R /Pg 3 0 R >>
+endobj
+
+35 0 obj
+<<
+  /Type /StructElem
+  /S /Raku
+  /A << /O /Layout /Placement /Block >>
+  /K [ 14 ]
+  /P 32 0 R
+  /Pg 3 0 R
+>>
+endobj
+
+36 0 obj
+<<
+  /Type /StructTreeRoot
+  /K [ 19 0 R ]
+  /ParentTree <<
+    /Nums [ 0 [ 21 0 R 22 0 R 23 0 R 15 0 R 17 0 R 18 0 R 25 0 R 26 0 R 27 0 R 29 0 R 30 0 R 31 0 R 33 0 R 34 0 R 35 0 R ] ]
+  >>
+  /RoleMap << /Declaration /Div /Raku /Code >>
+>>
+endobj
+
+37 0 obj
+<<
+  /Count 2
+  /Dest /Class_Asdf2
+  /First 38 0 R
+  /Last 39 0 R
+  /Parent 12 0 R
+  /Prev 13 0 R
+  /SE 25 0 R
+  /Title (Class Asdf2)
+>>
+endobj
+
+38 0 obj
+<<
+  /Dest /Attribute_t
+  /Next 39 0 R
+  /Parent 37 0 R
+  /SE 29 0 R
+  /Title (Attribute t)
+>>
+endobj
+
+39 0 obj
+<<
+  /Dest /Method_asdf
+  /Parent 37 0 R
+  /Prev 38 0 R
+  /SE 33 0 R
+  /Title (Method asdf)
+>>
+endobj
+
 xref
-0 32
+0 40
 0000000000 65535 f 
 0000000015 00000 n 
-0000000138 00000 n 
-0000000224 00000 n 
-0000000423 00000 n 
-0000002693 00000 n 
-0000002740 00000 n 
-0000002788 00000 n 
-0000002895 00000 n 
-0000003003 00000 n 
-0000003107 00000 n 
-0000003364 00000 n 
-0000003491 00000 n 
-0000003594 00000 n 
-0000003671 00000 n 
-0000003747 00000 n 
-0000003876 00000 n 
-0000003979 00000 n 
-0000004056 00000 n 
-0000004132 00000 n 
-0000004261 00000 n 
-0000004364 00000 n 
-0000004441 00000 n 
-0000004517 00000 n 
-0000004646 00000 n 
-0000004749 00000 n 
-0000004826 00000 n 
-0000004903 00000 n 
-0000005033 00000 n 
-0000005136 00000 n 
-0000005214 00000 n 
-0000005291 00000 n 
+0000000172 00000 n 
+0000000391 00000 n 
+0000000591 00000 n 
+0000002861 00000 n 
+0000002947 00000 n 
+0000002994 00000 n 
+0000003042 00000 n 
+0000003149 00000 n 
+0000003257 00000 n 
+0000003362 00000 n 
+0000003421 00000 n 
+0000003506 00000 n 
+0000003662 00000 n 
+0000003745 00000 n 
+0000003836 00000 n 
+0000003939 00000 n 
+0000004015 00000 n 
+0000004144 00000 n 
+0000004271 00000 n 
+0000004374 00000 n 
+0000004481 00000 n 
+0000004557 00000 n 
+0000004686 00000 n 
+0000004789 00000 n 
+0000004895 00000 n 
+0000004971 00000 n 
+0000005100 00000 n 
+0000005203 00000 n 
+0000005309 00000 n 
+0000005386 00000 n 
+0000005516 00000 n 
+0000005619 00000 n 
+0000005726 00000 n 
+0000005803 00000 n 
+0000005933 00000 n 
+0000006190 00000 n 
+0000006344 00000 n 
+0000006456 00000 n 
 trailer
-<< /ID [ (definition.t    ) (definition.t    ) ] /Root 1 0 R /Size 32 >>
+<< /ID [ (definition.t    ) (definition.t    ) ] /Root 1 0 R /Size 40 >>
 startxref
-5421
+6568
 %%EOF
