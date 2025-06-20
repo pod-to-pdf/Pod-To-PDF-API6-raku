@@ -14,16 +14,18 @@ my $xml = q{<Document Lang="en">
   <H2>
     pod2pdf() Options
   </H2>
-  <LI>
-    <Lbl>
-      PDF::API6 :$pdf
-    </Lbl>
-    <LBody>
-      <P>
-        A PDF object to render to.
-      </P>
-    </LBody>
-  </LI>
+  <L>
+    <LI>
+      <Lbl Placement="Block" role="Term">
+        PDF::API6 :$pdf
+      </Lbl>
+      <LBody role="Definition">
+        <P>
+          A PDF object to render to.
+        </P>
+      </LBody>
+    </LI>
+  </L>
 </Document>
 };
 
@@ -38,7 +40,6 @@ subtest 'document structure', {
 
     my PDF::API6 $pdf .= open: "t/defn.pdf";
     my $tags = ::('PDF::Tags::Reader').read: :$pdf, :quiet;
-    todo "decide on tag structure for definition lists";
     is $tags[0].Str, $xml, 'PDF Structure is correct';
 }
 

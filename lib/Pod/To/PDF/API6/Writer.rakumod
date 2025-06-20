@@ -666,22 +666,26 @@ multi method ast2pdf('LI', @content,) {
     my Level $level = min($!level, 5);
     temp $!indent = $level + $.style.measure(:margin-left) / 10 - 1;
     temp $!padding = $.line-height * 2;
+    my $do-float = True;
 
     self!style: :tag(ListItem), :bold, :block, {
-        my $label-ast;
-        if @content.head.&is-elem(Label) {
-            $label-ast = @content.shift
+        if self!deref(@content, 'Lbl') -> (@lbl, %atts) {
+            $do-float = False if %atts<Placement> ~~ 'Block';
+            self!style: :tag<Lbl>, :%atts, {
+                self.ast2pdf: @lbl;
+            }
         }
         else {
             my constant BulletPoints = (
                 "\c[BULLET]",
                 "\c[MIDDLE DOT]",
                 '-');
-            $label-ast = :Lbl[ BulletPoints[$level-1] || BulletPoints.tail ]
+            self!style: :tag<Lbl>, {
+                 self.ast2pdf: BulletPoints[$level-1] || BulletPoints.tail;
+            }
         }
-        $.ast2pdf: $label-ast;
 
-        $!float = True;
+        $!float = $do-float;
         $!tx = self!indent;
         temp $!indent += 1;
 
