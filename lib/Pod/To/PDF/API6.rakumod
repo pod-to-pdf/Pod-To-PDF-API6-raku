@@ -62,26 +62,26 @@ method read-batch($section, PDF::Content::PageTree:D $pages, $frag, |c) is hidde
     my @index;
     my Pod::To::PDF::API6::Writer $writer .= new: :%!font-map, :$pages, :$finish, :$!tag, :$!pdf, :$!contents, |c;
     my Pod::To::PDF::AST $pod-reader .= new: :%!replace;
-    my $doc-ast = $pod-reader.render($section);
-    my Pair:D @ast-nodes = $doc-ast.value.grep(*.value.isa(List));
-    $writer.write(@ast-nodes, $frag);
-    my Hash:D $meta = $writer.metadata;
+    my Pair:D $doc-ast = $pod-reader.render($section);
+    my Pair:D @content = $writer.process-root(|$doc-ast);
+    $writer.write(@content, $frag);
+    my Hash:D $info  = $pod-reader.info;
     my Hash:D $index = $writer.index;
     my @toc = $writer.toc;
 
-    %( :@toc, :$index, :$frag, :$meta);
+    %( :@toc, :$index, :$frag, :$info);
 }
 
-method merge-batch( % ( :@toc!, :%index!, :$frag!, :%meta! ) ) {
+method merge-batch( % ( :@toc!, :%index!, :$frag!, :%info! ) ) {
     @.toc.append: @toc;
     %.index ,= %index;
     for $frag.kids -> $node {
         $.root.add-kid: :$node;
     }
-    if %meta {
-        my $info = ($!pdf.Info //= {});
-        for %meta.pairs.map({self.set-metadata(.key, .value)}) {
-            $info{.key} = .value;
+    if %info {
+        my $pdf-info = ($!pdf.Info //= {});
+        for %info.pairs {
+            $pdf-info{.key} = .value;
         }
     }
 }
@@ -124,18 +124,12 @@ sub apply-page-styling(CSS::Properties:D $css, %props) {
     %props{.key} = .value for $css.Hash;
 }
 
-submethod TWEAK(Str:D :$lang = 'en', :$pod, :%metadata, :@fonts, :$stylesheet, :$page-style, *%opts) {
+submethod TWEAK(Str:D :$lang = 'en', :$pod, :@fonts, :$stylesheet, :$page-style, *%opts) {
     self!init-pdf(:$lang);
     self!preload-fonts(@fonts)
         if @fonts;
 
     $!pdf.creator.push: "{self.^name}-{self.^ver//'v0'}";
-    if %metadata {
-        my $info = ($!pdf.Info //= {});
-        for %metadata.pairs.map({self.set-metadata(.key, .value)}) {
-            $info{.key} = .value;
-        }
-    }
 
     with $stylesheet {
         # dig out any @page{...} styling from the stylesheet

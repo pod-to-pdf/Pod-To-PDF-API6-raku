@@ -1,7 +1,7 @@
 %PDF-1.4
 %¥±ë¼
 1 0 obj
-<< /Title (Title as option) >>
+<< /Subject (Subtitle from POD) /Title (Main Title v1.2.3) >>
 endobj
 
 2 0 obj
@@ -17,9 +17,10 @@ endobj
 
 3 0 obj
 <<
-  /Head2_from_POD [ 4 0 R /FitBH 675.12 ]
-  /Subtitle_from_POD [ 4 0 R /FitBH 756 ]
-  /Version [ 4 0 R /FitBH 729 ]
+  /Head2_from_POD [ 4 0 R /FitBH 646.62 ]
+  /Main_Title [ 4 0 R /FitBH 756 ]
+  /Subtitle_from_POD [ 4 0 R /FitBH 727.5 ]
+  /Version [ 4 0 R /FitBH 700.5 ]
 >>
 endobj
 
@@ -34,49 +35,62 @@ endobj
 endobj
 
 5 0 obj
-<< /Length 647 >> stream
-/H2 << /MCID 0 >> BDC
+<< /Length 811 >> stream
+/Title << /MCID 0 >> BDC
   BT
     1 0 0 1 20 756 Tm
+    /F1 30 Tf
+    [ (Main T) 18 (itle) ] TJ
+  ET
+  q
+    1.5 w
+    20 753 m
+    155.3 753 l
+    S
+  Q
+EMC
+/H2 << /MCID 1 >> BDC
+  BT
+    1 0 0 1 20 727.5 Tm
     /F1 18 Tf
     [ (Subtitle fr) 18 (om ) ] TJ
   ET
 EMC
-/H2 << /MCID 1 >> BDC
+/H2 << /MCID 2 >> BDC
   BT
-    1 0 0 1 20 756 Tm
+    1 0 0 1 20 727.5 Tm
     [ -5926 (POD) ] TJ
   ET
 EMC
-/H2 << /MCID 2 >> BDC
+/H2 << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 729 Tm
+    1 0 0 1 20 700.5 Tm
     [ (V) 100 (ersion) ] TJ
   ET
 EMC
-/P << /MCID 3 >> BDC
+/P << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 702.06 Tm
+    1 0 0 1 20 673.56 Tm
     /F2 12 Tf
     (1.2.3) Tj
   ET
 EMC
-/H2 << /MCID 4 >> BDC
+/H2 << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 675.12 Tm
+    1 0 0 1 20 646.62 Tm
     /F1 18 Tf
     [ (Head2 fr) 18 (om ) ] TJ
   ET
 EMC
-/H2 << /MCID 5 >> BDC
+/H2 << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 675.12 Tm
+    1 0 0 1 20 646.62 Tm
     [ -5370 (POD) ] TJ
   ET
 EMC
-/P << /MCID 6 >> BDC
+/P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 648.18 Tm
+    1 0 0 1 20 619.68 Tm
     /F2 12 Tf
     (a paragraph.) Tj
   ET
@@ -110,7 +124,9 @@ endobj
 <<
   /Type /StructTreeRoot
   /K [ 10 0 R ]
-  /ParentTree << /Nums [ 0 [ 11 0 R 11 0 R 12 0 R 13 0 R 14 0 R 14 0 R 15 0 R ] ] >>
+  /ParentTree <<
+    /Nums [ 0 [ 11 0 R 13 0 R 13 0 R 14 0 R 15 0 R 16 0 R 16 0 R 17 0 R ] ]
+  >>
 >>
 endobj
 
@@ -118,7 +134,7 @@ endobj
 <<
   /Type /StructElem
   /S /Document
-  /K [ 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R ]
+  /K [ 11 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R ]
   /Lang (en)
   /P 9 0 R
 >>
@@ -127,62 +143,79 @@ endobj
 11 0 obj
 <<
   /Type /StructElem
+  /S /Title
+  /K [ 12 0 R 0 ]
+  /P 10 0 R
+  /Pg 4 0 R
+  /T (Main Title)
+>>
+endobj
+
+12 0 obj
+<< /Type /StructElem /S /Artifact /P 11 0 R >>
+endobj
+
+13 0 obj
+<<
+  /Type /StructElem
   /S /H2
-  /K [ 0 1 ]
+  /K [ 1 2 ]
   /P 10 0 R
   /Pg 4 0 R
   /T (Subtitle from POD)
 >>
 endobj
 
-12 0 obj
-<< /Type /StructElem /S /H2 /K [ 2 ] /P 10 0 R /Pg 4 0 R /T (Version) >>
-endobj
-
-13 0 obj
-<< /Type /StructElem /S /P /K [ 3 ] /P 10 0 R /Pg 4 0 R >>
-endobj
-
 14 0 obj
+<< /Type /StructElem /S /H2 /K [ 3 ] /P 10 0 R /Pg 4 0 R /T (Version) >>
+endobj
+
+15 0 obj
+<< /Type /StructElem /S /P /K [ 4 ] /P 10 0 R /Pg 4 0 R >>
+endobj
+
+16 0 obj
 <<
   /Type /StructElem
   /S /H2
-  /K [ 4 5 ]
+  /K [ 5 6 ]
   /P 10 0 R
   /Pg 4 0 R
   /T (Head2 from POD)
 >>
 endobj
 
-15 0 obj
-<< /Type /StructElem /S /P /K [ 6 ] /P 10 0 R /Pg 4 0 R >>
+17 0 obj
+<< /Type /StructElem /S /P /K [ 7 ] /P 10 0 R /Pg 4 0 R >>
 endobj
 
 xref
-0 16
+0 18
 0000000000 65535 f 
 0000000015 00000 n 
-0000000062 00000 n 
-0000000199 00000 n 
-0000000337 00000 n 
-0000000477 00000 n 
-0000001176 00000 n 
-0000001262 00000 n 
-0000001369 00000 n 
-0000001477 00000 n 
-0000001624 00000 n 
-0000001750 00000 n 
-0000001864 00000 n 
-0000001954 00000 n 
-0000002030 00000 n 
-0000002141 00000 n 
+0000000093 00000 n 
+0000000230 00000 n 
+0000000407 00000 n 
+0000000547 00000 n 
+0000001410 00000 n 
+0000001496 00000 n 
+0000001603 00000 n 
+0000001711 00000 n 
+0000001871 00000 n 
+0000002004 00000 n 
+0000002119 00000 n 
+0000002183 00000 n 
+0000002297 00000 n 
+0000002387 00000 n 
+0000002463 00000 n 
+0000002574 00000 n 
 trailer
 <<
   /ID [ (metadata.t      ) (metadata.t      ) ]
   /Info 1 0 R
   /Root 2 0 R
-  /Size 16
+  /Size 18
 >>
 startxref
-2217
+2650
 %%EOF

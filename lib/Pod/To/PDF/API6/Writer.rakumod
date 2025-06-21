@@ -82,6 +82,16 @@ class DefaultLinker {
 }
 has $.linker = DefaultLinker;
 
+method process-root(:@Document!) {
+    my :(@content, %info) := @Document.&get-content;
+    $!pdf.Root<Lang> = $_ with %info<Lang>:delete;
+    if %info {
+        my $Info = $!pdf.Info //= {};
+        $Info{.key} = .value for %info.sort;
+    }
+    @content;
+}
+
 method write($ast, PDF::Tags::Elem $*root) {
     my $*tag = $*root;
     my CSS::Properties $style = $*tag.style;
@@ -281,6 +291,17 @@ method !deref(@content, Str:D $tag, Bool :$consume) {
     $rv;
 }
 
+multi method ast2pdf('Document', @content, :$Lang, *%info) {
+    $!pdf.Root<Lang> = $_ with $Lang;
+    if %info {
+        my $info = $!pdf.Info //= {};
+        $info{.key} = .value for %info;
+    }
+    self!tag: Document, {
+        $.ast2pdf: @content;
+    }
+}
+
 multi method ast2pdf('Table', @content, *%atts) {
     self!style: :tag(Table), :block, :%atts, {
         my $cell-style = $*tag.root.styler.tag-style(TableData);
@@ -347,7 +368,7 @@ sub param2text($p) {
 }
 
 multi method ast2pdf('Code', @content, *%atts where .<Placement> ~~ 'Block') {
-    self!style: :indent, :tag(CODE), :lines-before(3), :%atts, :block, {
+    self!style: :indent, :tag(CODE), :lines-before(3), :%atts, {
        self!pad-here;
        $!code-start-y //= $!ty;
        self.ast2pdf: @content;
@@ -480,6 +501,7 @@ multi method ast2pdf(Str:D $tag, @content, *%atts) {
             self!heading(@content, :$level);
         }
         else {
+            # vanilla tag
             self.ast2pdf: @content;
         }
     }
@@ -490,7 +512,7 @@ sub get-content(@content is copy) {
     my %atts;
 
     while @content.head ~~ AttContent {
-        %atts{.key} = .value given @content.shift;
+        %atts{.key} = .value given @content.shift
     }
 
     (@content, %atts);
@@ -501,8 +523,10 @@ multi method ast2pdf(@content) {
         when Str { self.ast2pdf: $_ }
         when Pair {
             my $tag := .key;
-            my :(@content, %atts) := .value.&get-content;
-            self.ast2pdf: $tag, @content, |%atts;
+            unless $tag eq '#comment' {
+                my :(@content, %atts) := .value.&get-content;
+                self.ast2pdf: $tag, @content, |%atts;
+            }
         }
         default { die "unexpected node: {.raku}" }
     }
@@ -515,6 +539,7 @@ multi method ast2pdf(Str $ast) {
 multi method ast2pdf(Pair:D $_) {
     $.ast2pdf(.key, .value);
 }
+
 
 multi method ast2pdf($_) {
    die .raku;
@@ -646,7 +671,7 @@ method !ast2dest(@content, Str :$name) {
     my DestRef $ = self!make-dest: :$name, :fit(FitBoxHoriz), :top(y+h);
 }
 
-method !heading(@content is copy, Level:D :$level = $!level, Bool :$toc = True) {
+method !heading(@content is copy, Level:D :$level!, Bool :$toc = True, ) {
     my Str $Title = @content.&text-content(:inline);
     $*tag.cos.title = $Title;
 
@@ -700,8 +725,8 @@ method !code(@contents is copy) {
 
     self!gfx;
 
-    self!style: :indent, :tag(CODE), :lines-before(3), :block, {
-        $*tag.set-attribute('Placement', /'Block');
+    my %atts = :Placement<Block>;
+    self!style: :indent, :tag(CODE), :%atts, :lines-before(3), {
         self!pad-here;
 
         my @plain-text;
