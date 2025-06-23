@@ -3,13 +3,8 @@
   "build-depends": [
   ],
   "depends": [
+    "PDF::Tags::Writer",      
     "IETF::RFC_Grammar::URI",
-    "PDF::API6:ver<0.2.5+>",
-    "PDF::Content:ver<0.9.6+>",
-    "PDF::Class:ver<0.4.18+>",
-    "PDF::Tags:ver<0.0.17+>",
-    "CSS::Properties:ver<0.9.7+>",
-    "CSS::TagSet:ver<0.1.2+>",
     "File::Temp",
     "URI"
   ],
@@ -19,10 +14,7 @@
   "provides": {
     "Pod::To::PDF::API6": "lib/Pod/To/PDF/API6.rakumod",
     "Pod::To::PDF::API6::Async": "lib/Pod/To/PDF/API6/Async.rakumod",
-    "Pod::To::PDF::API6::Async::Scheduler": "lib/Pod/To/PDF/API6/Async/Scheduler.rakumod",
-    "Pod::To::PDF::API6::Metadata": "lib/Pod/To/PDF/API6/Metadata.rakumod",
-    "Pod::To::PDF::API6::Style": "lib/Pod/To/PDF/API6/Style.rakumod",
-    "Pod::To::PDF::API6::Writer": "lib/Pod/To/PDF/API6/Writer.rakumod"
+    "Pod::To::PDF::API6::Async::Scheduler": "lib/Pod/To/PDF/API6/Async/Scheduler.rakumod"
   },
   "resources": [
   ],

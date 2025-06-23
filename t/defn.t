@@ -16,10 +16,10 @@ my $xml = q{<Document Lang="en">
   </H2>
   <L>
     <LI>
-      <Lbl Placement="Block" role="Term">
+      <Lbl Placement="Block" role="DT">
         PDF::API6 :$pdf
       </Lbl>
-      <LBody role="Definition">
+      <LBody role="DD">
         <P>
           A PDF object to render to.
         </P>

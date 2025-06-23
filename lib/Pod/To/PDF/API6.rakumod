@@ -1,15 +1,15 @@
 unit class Pod::To::PDF::API6:ver<0.0.1>;
 
-use Pod::To::PDF::API6::Metadata :Level;
-also does Pod::To::PDF::API6::Metadata;
+use PDF::Tags::Writer::Outlines :Level;
+also does PDF::Tags::Writer::Outlines;
 
 use PDF::API6;
 use PDF::Tags;
 use PDF::Tags::Elem;
 use PDF::Tags::Node;
 use PDF::Content;
-use Pod::To::PDF::API6::Style;
-use Pod::To::PDF::API6::Writer;
+use PDF::Tags::Writer::Style;
+use PDF::Tags::Writer::AST;
 use Pod::To::PDF::AST;
 use CSS::TagSet::TaggedPDF;
 use CSS::Stylesheet;
@@ -60,11 +60,12 @@ method read-batch($section, PDF::Content::PageTree:D $pages, $frag, |c) is hidde
     $pages.media-box = 0, 0, $!width, $!height;
     my $finish = ! $!page-numbers;
     my @index;
-    my Pod::To::PDF::API6::Writer $writer .= new: :%!font-map, :$pages, :$finish, :$!tag, :$!pdf, :$!contents, |c;
+    my PDF::Tags::Writer::AST $writer .= new: :%!font-map, :$pages, :$finish, :$!tag, :$!pdf, :$!contents, |c;
     my Pod::To::PDF::AST $pod-reader .= new: :%!replace;
     my Pair:D $doc-ast = $pod-reader.render($section);
+    dd $doc-ast;
     my Pair:D @content = $writer.process-root(|$doc-ast);
-    $writer.write(@content, $frag);
+    $writer.write-batch(@content, $frag);
     my Hash:D $info  = $pod-reader.info;
     my Hash:D $index = $writer.index;
     my @toc = $writer.toc;
@@ -105,7 +106,7 @@ method !preload-fonts(@fonts) {
     my $loader = (require ::('PDF::Font::Loader'));
     for @fonts -> % ( Str :$file!, Bool :$bold, Bool :$italic, Bool :$mono ) {
         # font preload
-        my Pod::To::PDF::API6::Style $style .= new: :$bold, :$italic, :$mono;
+        my PDF::Tags::Writer::Style $style .= new: :$bold, :$italic, :$mono;
         if $file.IO.e {
             %!font-map{$style.font-key} = $loader.load-font: :$file;
         }
