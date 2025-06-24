@@ -3,7 +3,7 @@
   "build-depends": [
   ],
   "depends": [
-    "PDF::Tags::Writer",      
+    "PDF::Tags::Renderer",
     "IETF::RFC_Grammar::URI",
     "File::Temp",
     "URI"

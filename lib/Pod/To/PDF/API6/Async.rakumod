@@ -17,7 +17,6 @@ method read(@pod, |c) {
     my Lock $lock .= new;
 
     if +@batches == 1 {
-        # avoid creating sub-trees
          @results[0] = self.read-batch: @pod, $.pdf.Pages, |c;
     }
     else {

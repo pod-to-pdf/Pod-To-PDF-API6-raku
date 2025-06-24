@@ -1,8 +1,10 @@
 unit class Pod::To::PDF::API6:ver<0.0.1>;
 
-use PDF::Tags::Writer;
-also is PDF::Tags::Writer;
+use PDF::Tags::Renderer;
+also is PDF::Tags::Renderer;
 
+use PDF::Tags::Renderer::Writer;
+use Pod::To::PDF::AST;
 use File::Temp;
 
 has %.replace;
@@ -10,7 +12,7 @@ has %.replace;
 method read-batch($section, PDF::Content::PageTree:D $pages, $frag, |c) is hidden-from-backtrace {
     my @index;
     my Pod::To::PDF::AST $pod-reader .= new: :%!replace;
-    my PDF::Tags::Writer::AST $writer = self.new-writer: :$pages, :$frag;
+    my PDF::Tags::Renderer::Writer $writer = self.writer: :$pages, :$frag;
     my Pair:D $doc-ast = $pod-reader.render($section);
     my Pair:D @content = $writer.process-root(|$doc-ast);
     $writer.write-batch(@content, $frag);
