@@ -1,69 +1,17 @@
 unit class Pod::To::PDF::API6:ver<0.0.1>;
 
-use PDF::Tags::Writer::Outlines :Level;
-also does PDF::Tags::Writer::Outlines;
+use PDF::Tags::Writer;
+also is PDF::Tags::Writer;
 
-use PDF::API6;
-use PDF::Tags;
-use PDF::Tags::Elem;
-use PDF::Tags::Node;
-use PDF::Content;
-use PDF::Tags::Writer::Style;
-use PDF::Tags::Writer::AST;
-use Pod::To::PDF::AST;
-use CSS::TagSet::TaggedPDF;
-use CSS::Stylesheet;
 use File::Temp;
-# PDF::Class
-use PDF::Action;
-use PDF::StructElem;
 
-### Attributes ###
-has PDF::API6 $.pdf .= new;
-has CSS::TagSet::TaggedPDF $.styler .= new;
-has PDF::Tags $.tags .= create: :$!pdf, :$!styler;
-has PDF::Tags::Elem $.root = $!tags.Document;
-has PDF::Content::FontObj %.font-map;
-has Numeric $.width  = 612;
-has Numeric $.height = 792;
-has Bool $.contents = True;
-has %.index;
 has %.replace;
-has Bool $.tag = True;
-has Bool $.page-numbers;
-
-method !paginate(
-    $pdf,
-    UInt:D :$margin = 20,
-    Numeric :$margin-right is copy,
-    Numeric :$margin-bottom is copy,
-                ) {
-    my $page-count = $pdf.Pages.page-count;
-    my $font = $pdf.core-font: "Helvetica";
-    my $font-size := 9;
-    my $align := 'right';
-    my $page-num;
-    $margin-right //= $margin;
-    $margin-bottom //= $margin;
-    for $pdf.Pages.iterate-pages -> $page {
-        my PDF::Content $gfx = $page.gfx;
-        my @position = $gfx.width - $margin-right, $margin-bottom - $font-size;
-        my $text = "Page {++$page-num} of $page-count";
-        $gfx.tag: 'Artifact', {
-            .print: $text, :@position, :$font, :$font-size, :$align;
-        }
-        $page.finish;
-    }
-}
 
 method read-batch($section, PDF::Content::PageTree:D $pages, $frag, |c) is hidden-from-backtrace {
-    $pages.media-box = 0, 0, $!width, $!height;
-    my $finish = ! $!page-numbers;
     my @index;
-    my PDF::Tags::Writer::AST $writer .= new: :%!font-map, :$pages, :$finish, :$!tag, :$!pdf, :$!contents, |c;
     my Pod::To::PDF::AST $pod-reader .= new: :%!replace;
+    my PDF::Tags::Writer::AST $writer = self.new-writer: :$pages, :$frag;
     my Pair:D $doc-ast = $pod-reader.render($section);
-    dd $doc-ast;
     my Pair:D @content = $writer.process-root(|$doc-ast);
     $writer.write-batch(@content, $frag);
     my Hash:D $info  = $pod-reader.info;
@@ -73,82 +21,13 @@ method read-batch($section, PDF::Content::PageTree:D $pages, $frag, |c) is hidde
     %( :@toc, :$index, :$frag, :$info);
 }
 
-method merge-batch( % ( :@toc!, :%index!, :$frag!, :%info! ) ) {
-    @.toc.append: @toc;
-    %.index ,= %index;
-    for $frag.kids -> $node {
-        $.root.add-kid: :$node;
-    }
-    if %info {
-        my $pdf-info = ($!pdf.Info //= {});
-        for %info.pairs {
-            $pdf-info{.key} = .value;
-        }
-    }
-}
-
 method read($section, |c) {
-    my %batch = $.read-batch: $section, $!pdf.Pages, $!root.fragment, |c;
+    my %batch = $.read-batch: $section, $.pdf.Pages, $.root.fragment, |c;
     $.merge-batch: %batch;
-    self!paginate($!pdf, |c)
-        if $!page-numbers;
-    .Lang = self.lang with $!root;
 }
 
-method pdf {
-    if @.toc {
-        $!pdf.outlines.kids = @.toc;
-    }
-    $!pdf;
-}
-
-method !preload-fonts(@fonts) {
-    my $loader = (require ::('PDF::Font::Loader'));
-    for @fonts -> % ( Str :$file!, Bool :$bold, Bool :$italic, Bool :$mono ) {
-        # font preload
-        my PDF::Tags::Writer::Style $style .= new: :$bold, :$italic, :$mono;
-        if $file.IO.e {
-            %!font-map{$style.font-key} = $loader.load-font: :$file;
-        }
-        else {
-            warn "no such font file: $file";
-        }
-    }
-}
-
-method !init-pdf(Str :$lang) {
-    $!pdf.media-box = 0, 0, $!width, $!height;
-    self.lang = $_ with $lang;
-}
-
-sub apply-page-styling(CSS::Properties:D $css, %props) {
-    %props{.key} = .value for $css.Hash;
-}
-
-submethod TWEAK(Str:D :$lang = 'en', :$pod, :@fonts, :$stylesheet, :$page-style, *%opts) {
-    self!init-pdf(:$lang);
-    self!preload-fonts(@fonts)
-        if @fonts;
-
-    $!pdf.creator.push: "{self.^name}-{self.^ver//'v0'}";
-
-    with $stylesheet {
-        # dig out any @page{...} styling from the stylesheet
-        with $!styler.load-stylesheet($_) -> CSS::Stylesheet $_ {
-            apply-page-styling($_, %opts)
-                with .page-properties;
-        }
-    }
-
-    with $page-style -> $style {
-        # apply any command-line page styling at a higher precedence
-        my CSS::Properties $css .= new: :$style;
-        apply-page-styling($css, %opts);
-    }
-
-    $!width  = $_ with %opts<width>;
-    $!height = $_ with %opts<height>;
-    self.read($_, |%opts) with $pod;
+submethod TWEAK(:$pod, |c) {
+    self.read($_, |c) with $pod;
 }
 
 method render(
@@ -208,25 +87,6 @@ our sub pod2pdf($pod, :$class = $?CLASS, Bool :$index = True, |c) is export {
         if $index && $renderer.index;
     $renderer.pdf;
 }
-
-method build-index {
-    self.add-toc-entry(%( :Title('Index')), :level(1));
-    my %idx := %!index;
-    %idx .= &categorize-alphabetically
-        if %idx > 64;
-    self.add-terms(%idx);
-}
-
-sub categorize-alphabetically(%index) {
-    my %alpha-index;
-    for %index.sort(*.key.uc) {
-        %alpha-index{.key.substr(0,1).uc}{.key} = .value;
-    }
-    %alpha-index;
-}
-
-
-method lang is rw { $!pdf.catalog.Lang; }
 
 =begin pod
 
