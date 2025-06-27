@@ -3,12 +3,12 @@
   "build-depends": [
   ],
   "depends": [
-    "PDF::Tags::Renderer",
+    "PdfAST::Render::API6",
     "IETF::RFC_Grammar::URI",
     "File::Temp",
     "URI"
   ],
-  "description": "Render Pod as PDF via PDF::API6 (experimental)",
+  "description": "Render Pod as PDF via PDF::API6",
   "license": "Artistic-2.0",
   "name": "Pod::To::PDF::API6",
   "provides": {
@@ -18,7 +18,7 @@
   },
   "resources": [
   ],
-  "source-url": "git://github.com/pod-to-pdf/Pod-to-PDF-API6-raku.git",
+  "source-url": "git://github.com/pod-to-pdf/Pod-To-PDF-API6-raku.git",
   "tags": [
     "pdf",
     "pod"
