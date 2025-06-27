@@ -1,8 +1,6 @@
 unit class Pod::To::PDF::API6:ver<0.0.1>;
 
 use PdfAST::Render::API6;
-also is PdfAST::Render::API6;
-
 use PdfAST::Render::API6::Writer;
 use Pod::To::PdfAST;
 use File::Temp;
@@ -10,11 +8,12 @@ use PDF::Content::PageTree;
 use PDF::API6;
 
 has %.replace;
+has PdfAST::Render::API6 $.delegate is built handles<pdf index build-index root merge-batch tags>;
 
 method read-batch($section, PDF::Content::PageTree:D $pages, $frag, |c) is hidden-from-backtrace {
     my @index;
     my Pod::To::PdfAST $pod-reader .= new: :%!replace;
-    my PdfAST::Render::API6::Writer $writer = self.writer: :$pages, :$frag;
+    my PdfAST::Render::API6::Writer $writer = $!delegate.writer: :$pages, :$frag;
     my Pair:D $doc-ast = $pod-reader.render($section);
     my Pair:D @content = $writer.process-root(|$doc-ast);
     $writer.write-batch(@content, $frag);
@@ -31,6 +30,7 @@ method read($section, |c) {
 }
 
 submethod TWEAK(:$pod, |c) {
+    $!delegate .= new: |c;
     self.read($_, |c) with $pod;
 }
 
