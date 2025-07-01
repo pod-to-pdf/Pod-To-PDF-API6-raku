@@ -116,7 +116,7 @@ endobj
 endobj
 
 14 0 obj
-<< /Type /StructElem /S /LI /K [ 15 0 R 16 0 R ] /P 13 0 R >>
+<< /Type /StructElem /S /DL-DIV /K [ 15 0 R 16 0 R ] /P 13 0 R >>
 endobj
 
 15 0 obj
@@ -143,7 +143,7 @@ endobj
   /Type /StructTreeRoot
   /K [ 12 0 R ]
   /ParentTree << /Nums [ 0 [ 11 0 R 15 0 R 17 0 R ] ] >>
-  /RoleMap << /DD /LBody /DT /Lbl >>
+  /RoleMap << /DD /LBody /DL-DIV /LI /DT /Lbl >>
 >>
 endobj
 
@@ -164,12 +164,12 @@ xref
 0000001393 00000 n 
 0000001499 00000 n 
 0000001570 00000 n 
-0000001649 00000 n 
-0000001776 00000 n 
-0000001848 00000 n 
-0000001924 00000 n 
+0000001653 00000 n 
+0000001780 00000 n 
+0000001852 00000 n 
+0000001928 00000 n 
 trailer
 << /ID [ (defn.t          ) (defn.t          ) ] /Root 1 0 R /Size 19 >>
 startxref
-2081
+2097
 %%EOF

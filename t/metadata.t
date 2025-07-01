@@ -1,15 +1,14 @@
 use v6;
 
 use Test;
-use Pod::To::PDF::API6;
+use Pod::To::PDF::API6 :&pod-render;
 use PDF::API6;
 
 plan 2;
 
 my PDF::API6 $pdf .= new;
 my %replace = :where<POD>;
-my Pod::To::PDF::API6 $pod .= new(:$=pod, :$pdf, :%replace);
-
+my $renderer = pod-render($=pod, :%replace, :$pdf);
 $pdf.id = $*PROGRAM.basename.fmt('%-16.16s');
 lives-ok {$pdf.save-as: "t/metadata.pdf", :!info}
 

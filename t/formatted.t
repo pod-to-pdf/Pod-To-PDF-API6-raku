@@ -1,7 +1,7 @@
 use v6;
 
 use Test;
-use Pod::To::PDF::API6;
+use Pod::To::PDF::API6 :&pod-render;
 use PDF::Tags;
 use PDF::API6;
 
@@ -38,11 +38,11 @@ my $xml = q{<Document Lang="en">
 </Document>
 };
 
-my Pod::To::PDF::API6 $doc .= new: :$=pod, :replace{'is to be replaced' => 'has been replaced'};
-my PDF::API6 $pdf = $doc.pdf;
+my $renderer = pod-render($=pod, :replace{'is to be replaced' => 'has been replaced'});
+my PDF::API6 $pdf = $renderer.pdf;
 $pdf.id = $*PROGRAM.basename.fmt('%-16.16s');
 $pdf.save-as: "t/formatted.pdf", :!info;
-my PDF::Tags $tags = $doc.tags;
+my PDF::Tags $tags = $renderer.tags;
 
 is $tags[0].Str, $xml,
    'Various types of code blocks convert correctly.';

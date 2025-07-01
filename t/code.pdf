@@ -28,7 +28,7 @@ endobj
 endobj
 
 4 0 obj
-<< /Length 3139 >> stream
+<< /Length 3135 >> stream
 /P << /MCID 0 >> BDC
   BT
     1 0 0 1 20 756 Tm
@@ -38,7 +38,7 @@ endobj
 EMC
 /Code << /MCID 1 >> BDC
   BT
-    1 0 0 1 30 742.56 Tm
+    1 0 0 1 30 731.34 Tm
     /F2 10.2 Tf
     (indented) Tj
   ET
@@ -49,20 +49,20 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 737.56 572 15 re
+    25 726.34 572 15 re
     B
   Q
 EMC
 /P << /MCID 2 >> BDC
   BT
-    1 0 0 1 20 717.9 Tm
+    1 0 0 1 20 706.68 Tm
     /F1 12 Tf
     (asdf) Tj
   ET
 EMC
 /Code << /MCID 3 >> BDC
   BT
-    1 0 0 1 30 704.46 Tm
+    1 0 0 1 30 682.02 Tm
     /F2 10.2 Tf
     (indented) Tj
     11.22 TL
@@ -78,20 +78,20 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 677.02 572 37.44 re
+    25 654.58 572 37.44 re
     B
   Q
 EMC
 /P << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 657.36 Tm
+    1 0 0 1 20 634.92 Tm
     /F1 12 Tf
     (asdf) Tj
   ET
 EMC
 /Code << /MCID 5 >> BDC
   BT
-    1 0 0 1 30 643.92 Tm
+    1 0 0 1 30 610.26 Tm
     /F2 10.2 Tf
     (indented) Tj
     T*
@@ -116,27 +116,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 560.38 572 93.54 re
+    25 526.72 572 93.54 re
     B
   Q
 EMC
 /P << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 540.72 Tm
+    1 0 0 1 20 507.06 Tm
     /F1 12 Tf
     (asdf) Tj
   ET
 EMC
 /Code << /MCID 7 >> BDC
   BT
-    1 0 0 1 30 527.28 Tm
+    1 0 0 1 30 482.4 Tm
     /F2 10.2 Tf
     (Abbreviated) Tj
   ET
 EMC
 /Code << /MCID 8 >> BDC
   BT
-    1 0 0 1 30 527.28 Tm
+    1 0 0 1 30 482.4 Tm
     [ -6600 ] TJ
     T*
     () Tj
@@ -148,27 +148,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 511.06 572 26.22 re
+    25 466.18 572 26.22 re
     B
   Q
 EMC
 /P << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 491.4 Tm
+    1 0 0 1 20 446.52 Tm
     /F1 12 Tf
     (asdf) Tj
   ET
 EMC
 /Code << /MCID 10 >> BDC
   BT
-    1 0 0 1 30 477.96 Tm
+    1 0 0 1 30 421.86 Tm
     /F2 10.2 Tf
     (Paragraph) Tj
   ET
 EMC
 /Code << /MCID 11 >> BDC
   BT
-    1 0 0 1 30 477.96 Tm
+    1 0 0 1 30 421.86 Tm
     [ -5400 ] TJ
     T*
     () Tj
@@ -176,13 +176,13 @@ EMC
 EMC
 /Code << /MCID 12 >> BDC
   BT
-    1 0 0 1 30 466.74 Tm
+    1 0 0 1 30 410.64 Tm
     (code) Tj
   ET
 EMC
 /Code << /MCID 13 >> BDC
   BT
-    1 0 0 1 30 466.74 Tm
+    1 0 0 1 30 410.64 Tm
     [ -2400 ] TJ
     T*
     () Tj
@@ -194,27 +194,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 450.52 572 37.44 re
+    25 394.42 572 37.44 re
     B
   Q
 EMC
 /P << /MCID 14 >> BDC
   BT
-    1 0 0 1 20 430.86 Tm
+    1 0 0 1 20 374.76 Tm
     /F1 12 Tf
     (asdf) Tj
   ET
 EMC
 /Code << /MCID 15 >> BDC
   BT
-    1 0 0 1 30 417.42 Tm
+    1 0 0 1 30 350.1 Tm
     /F2 10.2 Tf
     (Delimited) Tj
   ET
 EMC
 /Code << /MCID 16 >> BDC
   BT
-    1 0 0 1 30 417.42 Tm
+    1 0 0 1 30 350.1 Tm
     [ -5400 ] TJ
     T*
     () Tj
@@ -222,13 +222,13 @@ EMC
 EMC
 /Code << /MCID 17 >> BDC
   BT
-    1 0 0 1 30 406.2 Tm
+    1 0 0 1 30 338.88 Tm
     (code) Tj
   ET
 EMC
 /Code << /MCID 18 >> BDC
   BT
-    1 0 0 1 30 406.2 Tm
+    1 0 0 1 30 338.88 Tm
     [ -2400 ] TJ
     T*
     () Tj
@@ -240,27 +240,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 389.98 572 37.44 re
+    25 322.66 572 37.44 re
     B
   Q
 EMC
 /P << /MCID 19 >> BDC
   BT
-    1 0 0 1 20 370.32 Tm
+    1 0 0 1 20 303 Tm
     /F1 12 Tf
     (asdf) Tj
   ET
 EMC
 /Strong << /MCID 20 >> BDC
   BT
-    1 0 0 1 30 356.88 Tm
+    1 0 0 1 30 278.34 Tm
     /F3 12 Tf
     [ (F) 25 (ormatted) ] TJ
   ET
 EMC
 /Code << /MCID 21 >> BDC
   BT
-    1 0 0 1 30 356.88 Tm
+    1 0 0 1 30 278.34 Tm
     /F2 10.2 Tf
     [ -5328 ] TJ
     T*
@@ -269,13 +269,13 @@ EMC
 EMC
 /Code << /MCID 22 >> BDC
   BT
-    1 0 0 1 30 345.66 Tm
+    1 0 0 1 30 267.12 Tm
     (code) Tj
   ET
 EMC
 /Code << /MCID 23 >> BDC
   BT
-    1 0 0 1 30 345.66 Tm
+    1 0 0 1 30 267.12 Tm
     [ -2400 ] TJ
     T*
     () Tj
@@ -287,7 +287,7 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 329.44 572 37.44 re
+    25 250.9 572 37.44 re
     B
   Q
 EMC
@@ -465,30 +465,30 @@ xref
 0000000138 00000 n 
 0000000224 00000 n 
 0000000423 00000 n 
-0000003615 00000 n 
-0000003662 00000 n 
-0000003710 00000 n 
-0000003818 00000 n 
-0000003922 00000 n 
-0000004029 00000 n 
-0000004302 00000 n 
-0000004492 00000 n 
-0000004568 00000 n 
-0000004697 00000 n 
-0000004773 00000 n 
-0000004902 00000 n 
-0000004978 00000 n 
-0000005107 00000 n 
-0000005183 00000 n 
-0000005314 00000 n 
-0000005390 00000 n 
-0000005529 00000 n 
-0000005606 00000 n 
-0000005745 00000 n 
-0000005822 00000 n 
-0000005965 00000 n 
+0000003611 00000 n 
+0000003658 00000 n 
+0000003706 00000 n 
+0000003814 00000 n 
+0000003918 00000 n 
+0000004025 00000 n 
+0000004298 00000 n 
+0000004488 00000 n 
+0000004564 00000 n 
+0000004693 00000 n 
+0000004769 00000 n 
+0000004898 00000 n 
+0000004974 00000 n 
+0000005103 00000 n 
+0000005179 00000 n 
+0000005310 00000 n 
+0000005386 00000 n 
+0000005525 00000 n 
+0000005602 00000 n 
+0000005741 00000 n 
+0000005818 00000 n 
+0000005961 00000 n 
 trailer
 << /ID [ (code.t          ) (code.t          ) ] /Root 1 0 R /Size 27 >>
 startxref
-6047
+6043
 %%EOF

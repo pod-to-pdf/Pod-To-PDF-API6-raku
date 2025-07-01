@@ -1,19 +1,16 @@
 unit class Pod::To::PDF::API6:ver<0.0.1>;
 
+use Pod::To::PdfAST;
 use PdfAST::Render::API6;
 use PdfAST::Render::API6::Writer;
-use Pod::To::PdfAST;
 use File::Temp;
 use PDF::Content::PageTree;
 use PDF::API6;
 
-has %.replace;
-has PdfAST::Render::API6 $.delegate is built handles<pdf index build-index root merge-batch tags>;
-
-method read-batch($section, PDF::Content::PageTree:D $pages, $frag, |c) is hidden-from-backtrace {
+sub read-batch($renderer, $section, PDF::Content::PageTree:D $pages, $frag, :%replace, |c) is hidden-from-backtrace {
     my @index;
-    my Pod::To::PdfAST $pod-reader .= new: :%!replace;
-    my PdfAST::Render::API6::Writer $writer = $!delegate.writer: :$pages, :$frag;
+    my Pod::To::PdfAST $pod-reader .= new: :%replace;
+    my PdfAST::Render::API6::Writer $writer = $renderer.writer: :$pages, :$frag;
     my Pair:D $doc-ast = $pod-reader.render($section);
     my Pair:D @content = $writer.process-root(|$doc-ast);
     $writer.write-batch(@content, $frag);
@@ -24,72 +21,71 @@ method read-batch($section, PDF::Content::PageTree:D $pages, $frag, |c) is hidde
     %( :@toc, :$index, :$frag, :$info);
 }
 
-method read($section, |c) {
-    my %batch = $.read-batch: $section, $.pdf.Pages, $.root.fragment, |c;
-    $.merge-batch: %batch;
+sub get-opts(%opt) {
+    my Bool $show-usage;
+    for @*ARGS {
+        when /^'--page-numbers'$/  { %opt<page-numbers> = True }
+        when /^'--/index'$/        { %opt<index>  = False }
+        when /^'--/'[toc|['table-of-']?contents]$/ { %opt<contents>  = False }
+        when /^'--width='(\d+)$/   { %opt<width>  = $0.Int }
+        when /^'--height='(\d+)$/  { %opt<height> = $0.Int }
+        when /^'--margin='(\d+)$/  { %opt<margin> = $0.Int }
+        when /^'--margin-top='(\d+)$/     { %opt<margin-top> = $0.Int }
+        when /^'--margin-bottom='(\d+)$/  { %opt<margin-bottom> = $0.Int }
+        when /^'--margin-left='(\d+)$/    { %opt<margin-left> = $0.Int }
+        when /^'--margin-right='(\d+)$/   { %opt<margin-right> = $0.Int }
+        when /^'--page-style='(.+)$/      { %opt<page-style> = $0.Str }
+        when /^'--stylesheet='(.+)$/      { %opt<stylesheet> = $0.Str }
+        when /^'--save-as='(.+)$/         { %opt<save-as> = $0.Str }
+        default {  $show-usage = True; note "ignoring $_ argument" }
+    }
+    note '(valid options are: --save-as= --page-numbers --width= --height= --margin[-left|-right|-top|-bottom]= --stylesheet= --page-style=)'
+        if $show-usage;
+    %opt;
 }
 
-submethod TWEAK(:$pod, |c) {
-    $!delegate .= new: |c;
-    self.read($_, |c) with $pod;
-}
-
-method render(
-    $class: $pod,
-    IO() :$save-as  is copy,
-    Numeric:D :$width  is copy = 612,
-    Numeric:D :$height is copy = 792,
-    Numeric:D :$margin is copy = 20,
-    Numeric   :$margin-left   is copy,
-    Numeric   :$margin-right  is copy,
-    Numeric   :$margin-top    is copy,
-    Numeric   :$margin-bottom is copy,
-    Bool :$index    is copy = True,
-    Bool :$contents is copy = True,
-    Bool :$page-numbers is copy,
-    Str  :$page-style   is copy,
-    IO() :$stylesheet   is copy,
+our sub pod-render(
+    $pod,
+    :$class = PdfAST::Render::API6,
+    IO() :$save-as,
+    Numeric:D :$width  = 612,
+    Numeric:D :$height = 792,
+    Numeric:D :$margin = 20,
+    Numeric   :$margin-left,
+    Numeric   :$margin-right,
+    Numeric   :$margin-top,
+    Numeric   :$margin-bottom,
+    Bool :$index    = True,
+    Bool :$contents = True,
+    Bool :$page-numbers,
+    Str  :$page-style,
+    IO() :$stylesheet,
+    :%replace,
     |c,
-) {
+) is export(:pod-render) {
     state %cache{Any};
     %cache{$pod} //= do {
-        my Bool $show-usage;
-        for @*ARGS {
-            when /^'--page-numbers'$/  { $page-numbers = True }
-            when /^'--/index'$/        { $index  = False }
-            when /^'--/'[toc|['table-of-']?contents]$/ { $contents  = False }
-            when /^'--width='(\d+)$/   { $width  = $0.Int }
-            when /^'--height='(\d+)$/  { $height = $0.Int }
-            when /^'--margin='(\d+)$/  { $margin = $0.Int }
-            when /^'--margin-top='(\d+)$/     { $margin-top = $0.Int }
-            when /^'--margin-bottom='(\d+)$/  { $margin-bottom = $0.Int }
-            when /^'--margin-left='(\d+)$/    { $margin-left = $0.Int }
-            when /^'--margin-right='(\d+)$/   { $margin-right = $0.Int }
-            when /^'--page-style='(.+)$/      { $page-style = $0.Str }
-            when /^'--stylesheet='(.+)$/  { $stylesheet = $0.Str }
-            when /^'--save-as='(.+)$/  { $save-as = $0.Str }
-            default {  $show-usage = True; note "ignoring $_ argument" }
-        }
-        note '(valid options are: --save-as= --page-numbers --width= --height= --margin[-left|-right|-top|-bottom]= --stylesheet= --page-style=)'
-            if $show-usage;
+        my $renderer = $class.new: |c,  :$width, :$height, :$margin, :$margin-top, :$margin-bottom, :$margin-left, :$margin-right, :$contents, :$page-numbers, :$page-style, :$stylesheet;
 
-        my $renderer = $class.new: |c,  :$pod, :$width, :$height, :$margin, :$margin-top, :$margin-bottom, :$margin-left, :$margin-right, :$contents, :$page-numbers, :$page-style, :$stylesheet;
+        $renderer.pdf.media-box = 0, 0, $width, $height;
+        $renderer.merge-batch: $renderer.&read-batch($pod, $renderer.pdf.Pages, $renderer.root.fragment, :%replace);
         $renderer.build-index
             if $index && $renderer.index;
-        my PDF::API6:D $pdf = $renderer.pdf;
-        $pdf.media-box = 0, 0, $width, $height;
-        # save to a file, since PDF is a binary format
-        $save-as //= tempfile("pod2pdf-api6-****.pdf")[1];
-        $pdf.save-as: $save-as, :!unlink;
-        $save-as.path;
+        $renderer.pdf.save-as: $_, :!unlink with $save-as;
+        $renderer;
     }
 }
 
-our sub pod2pdf($pod, :$class = $?CLASS, Bool :$index = True, |c) is export {
-    my $renderer = $class.new(|c, :$pod);
-    $renderer.build-index
-        if $index && $renderer.index;
+sub pod2pdf(|c --> PDF::API6:D) is export {
+    my $renderer = pod-render(|c);
     $renderer.pdf;
+}
+
+method render(|c) {
+    get-opts(my %opt);
+    %opt<save-as> //= tempfile("pod2pdf-api6-****.pdf")[1];
+    pod-render(|%opt, |c);
+    %opt<save-as>;
 }
 
 =begin pod
