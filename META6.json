@@ -13,7 +13,6 @@
   "name": "Pod::To::PDF::API6",
   "provides": {
     "Pod::To::PDF::API6": "lib/Pod/To/PDF/API6.rakumod",
-    "Pod::To::PDF::API6::Async": "lib/Pod/To/PDF/API6/Async.rakumod",
     "Pod::To::PDF::API6::Async::Scheduler": "lib/Pod/To/PDF/API6/Async/Scheduler.rakumod"
   },
   "resources": [

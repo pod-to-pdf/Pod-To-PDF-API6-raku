@@ -36,16 +36,6 @@ my PDF::API6 $pdf = pod2pdf($=pod);
 $pdf.save-as: "foobar.pdf";
 ```
 
-Async Mode
----------
-
-Even more experimental is Async mode, for faster parallel processing of larger documents:
-
-    $ raku --doc=PDF::API6::Async lib/to/class.rakumod --save-as=class.pdf
-
-To see a useful speed-up, he document needs to contain multiple sections, each starting with level-1 headers,
-on a new page. 
-
 Exports
 -------
 
@@ -96,6 +86,13 @@ PDF::API6 $pdf = pod2pdf($=pod, :@fonts);
 $pdf.save-as: "pod.pdf";
 ```
 
+**Bool :$async**
+
+Process a large document in asynchronous batches.
+
+This is only useful for a large Pod document that has multiple sections, each beginning with
+a title, or level-1 heading.
+
 See Also
 --------
 
@@ -106,9 +103,6 @@ See Also
 ### Status
 
 `Pod::To::PDF::API6` is on a near equal footing to [Pod::To::PDF](https://github.com/pod-to-pdf/Pod-To-PDF-raku), with regard to general rendering, handling of internal and external links, table-of-contents, footnotes and indexing.
-
-The experimental Pod::To::PDF::API6::Async will render faster for larger documents, at the expense of using more CPU cores
-and memory.
 
 The `Pod::To::PDF::Lite` module currently renders faster than this module (by about 2x). However it isn't doing links,
 table of contents, or accessibility tagging.

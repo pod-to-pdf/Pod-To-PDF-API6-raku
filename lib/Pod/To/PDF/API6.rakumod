@@ -21,31 +21,51 @@ sub read-batch($renderer, $section, PDF::Content::PageTree:D $pages, $frag, :%re
     %( :@toc, :$index, :$frag, :$info);
 }
 
-sub get-opts(%opt) {
+sub get-opts(%opts) {
     my Bool $show-usage;
     for @*ARGS {
-        when /^'--page-numbers'$/  { %opt<page-numbers> = True }
-        when /^'--/index'$/        { %opt<index>  = False }
-        when /^'--/'[toc|['table-of-']?contents]$/ { %opt<contents>  = False }
-        when /^'--width='(\d+)$/   { %opt<width>  = $0.Int }
-        when /^'--height='(\d+)$/  { %opt<height> = $0.Int }
-        when /^'--margin='(\d+)$/  { %opt<margin> = $0.Int }
-        when /^'--margin-top='(\d+)$/     { %opt<margin-top> = $0.Int }
-        when /^'--margin-bottom='(\d+)$/  { %opt<margin-bottom> = $0.Int }
-        when /^'--margin-left='(\d+)$/    { %opt<margin-left> = $0.Int }
-        when /^'--margin-right='(\d+)$/   { %opt<margin-right> = $0.Int }
-        when /^'--page-style='(.+)$/      { %opt<page-style> = $0.Str }
-        when /^'--stylesheet='(.+)$/      { %opt<stylesheet> = $0.Str }
-        when /^'--save-as='(.+)$/         { %opt<save-as> = $0.Str }
+        when /^'--'('/')?(page\-numbers|async|index)$/         { %opts{$1} = ! $0.so }
+        when /^'--'('/')?[toc|['table-of-']?contents]$/        { %opts<contents>  = ! $0.so }
+        when /^'--'(page\-style|stylesheet|save\-as)'='(.+)$/  { %opts{$0} = $1.Str }
+        when /^'--'(width|height|margin[\-[top|bottom|left|right]]?)'='(\d+)$/
+                                                               { %opts{$0}  = $1.Int }
         default {  $show-usage = True; note "ignoring $_ argument" }
     }
     note '(valid options are: --save-as= --page-numbers --width= --height= --margin[-left|-right|-top|-bottom]= --stylesheet= --page-style=)'
         if $show-usage;
-    %opt;
+    %opts;
+}
+
+# asynchronous pod processing
+multi sub process-pod($renderer, @pod, :$async! where .so, |c) {
+    need Pod::To::PDF::API6::Async::Scheduler;
+    my List @batches = Pod::To::PDF::API6::Async::Scheduler.divvy(@pod).map: -> $pod {
+        ($pod, PDF::Content::PageTree.pages-fragment, $renderer.root.fragment);
+    }
+
+    nextsame if @batches == 1;
+
+    {
+        my PDF::API6 $pdf = $renderer.pdf;
+        my @results;
+        my Lock $lock .= new;
+        @batches.pairs.race(:batch(1)).map: {
+            my $result = $renderer.&read-batch: |.value, |c;
+            $lock.protect: { @results[.key] = $result };
+        }
+        $pdf.add-pages(.[1]) for @batches;
+        $renderer.merge-batch($_) for @results;
+    }
+}
+
+# synchronous pod processing
+multi sub process-pod($renderer, @pod, :%replace, |c) {
+    my %batch = $renderer.&read-batch(@pod, $renderer.pdf.Pages, $renderer.root.fragment, :%replace);
+    $renderer.merge-batch: %batch;
 }
 
 our sub pod-render(
-    $pod,
+    @pod,
     :$class = PdfAST::Render::API6,
     IO() :$save-as,
     Numeric:D :$width  = 612,
@@ -58,22 +78,20 @@ our sub pod-render(
     Bool :$index    = True,
     Bool :$contents = True,
     Bool :$page-numbers,
+    Bool :$async,
     Str  :$page-style,
     IO() :$stylesheet,
     :%replace,
     |c,
 ) is export(:pod-render) {
-    state %cache{Any};
-    %cache{$pod} //= do {
-        my $renderer = $class.new: |c,  :$width, :$height, :$margin, :$margin-top, :$margin-bottom, :$margin-left, :$margin-right, :$contents, :$page-numbers, :$page-style, :$stylesheet;
+    my $renderer = $class.new: |c,  :$width, :$height, :$margin, :$margin-top, :$margin-bottom, :$margin-left, :$margin-right, :$contents, :$page-numbers, :$page-style, :$stylesheet;
 
-        $renderer.pdf.media-box = 0, 0, $width, $height;
-        $renderer.merge-batch: $renderer.&read-batch($pod, $renderer.pdf.Pages, $renderer.root.fragment, :%replace);
-        $renderer.build-index
-            if $index && $renderer.index;
-        $renderer.pdf.save-as: $_, :!unlink with $save-as;
-        $renderer;
-    }
+    $renderer.pdf.media-box = 0, 0, $width, $height;
+    $renderer.&process-pod(@pod, :$async, :%replace, |c);
+    $renderer.build-index
+    if $index && $renderer.index;
+    $renderer.pdf.save-as: $_, :!unlink with $save-as;
+    $renderer;
 }
 
 sub pod2pdf(|c --> PDF::API6:D) is export {
@@ -82,10 +100,10 @@ sub pod2pdf(|c --> PDF::API6:D) is export {
 }
 
 method render(|c) {
-    get-opts(my %opt);
-    %opt<save-as> //= tempfile("pod2pdf-api6-****.pdf")[1];
-    pod-render(|%opt, |c);
-    %opt<save-as>;
+    my %opts .= &get-opts;
+    %opts<save-as> //= tempfile("pod2pdf-api6-****.pdf")[1];
+    state $rendered //= pod-render(|%opts, |c);
+    %opts<save-as>;
 }
 
 =begin pod
