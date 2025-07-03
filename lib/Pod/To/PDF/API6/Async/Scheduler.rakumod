@@ -18,8 +18,8 @@ has Iterator $.pod is required;
 has Pod::Heading $!next;
 
 multi sub pod-cost(Str:D $pod) { $pod.chars }
-multi sub pod-cost(@pod) { @pod.map({pod-cost($_)}).sum }
-multi sub pod-cost(Pod::Block $pod) { 20 + pod-cost($pod.contents) }
+multi sub pod-cost(@pod) { @pod.map(*.&pod-cost).sum }
+multi sub pod-cost(Pod::Block $pod) { 20 + $pod.contents.&pod-cost }
 
 method pull-one {
     my @chunk = $_ with $!next;

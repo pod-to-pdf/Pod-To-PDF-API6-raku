@@ -8,7 +8,6 @@ use PDF::Content::PageTree;
 use PDF::API6;
 
 sub read-batch($renderer, $section, PDF::Content::PageTree:D $pages, $frag, :%replace, |c) is hidden-from-backtrace {
-    my @index;
     my Pod::To::PdfAST $pod-reader .= new: :%replace;
     my PdfAST::Render::API6::Writer $writer = $renderer.writer: :$pages, :$frag;
     my Pair:D $doc-ast = $pod-reader.render($section);
