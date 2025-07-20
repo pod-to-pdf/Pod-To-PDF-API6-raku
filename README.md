@@ -88,10 +88,9 @@ $pdf.save-as: "pod.pdf";
 
 **Bool :$async**
 
-Process a large document in asynchronous batches.
+Process a document in asynchronous batches.
 
-This is only useful for a large Pod document that has multiple sections, each beginning with
-a title, or level-1 heading.
+This is only useful for a large Pod document that has multiple sections, each beginning with a title, or level-1 heading.
 
 See Also
 --------

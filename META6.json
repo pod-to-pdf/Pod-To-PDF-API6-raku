@@ -3,7 +3,8 @@
   "build-depends": [
   ],
   "depends": [
-    "PdfAST::Render::API6",
+    "Pod::To::PDF::AST",
+    "PDF::AST::Render",
     "IETF::RFC_Grammar::URI",
     "File::Temp",
     "URI"

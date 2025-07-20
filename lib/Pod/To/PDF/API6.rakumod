@@ -1,17 +1,19 @@
 unit class Pod::To::PDF::API6:ver<0.0.1>;
 
-use Pod::To::PdfAST;
-use PdfAST::Render::API6;
-use PdfAST::Render::API6::Writer;
+use Pod::To::PDF::AST;
+use PDF::AST::Render;
+use PDF::AST::Render::Writer;
 use File::Temp;
 use PDF::Content::PageTree;
 use PDF::API6;
 
+my subset PdfASTRoot of Pair:D where .key ~~ 'Document' && .value.isa(List);
+
 sub read-batch($renderer, $section, PDF::Content::PageTree:D $pages, $frag, :%replace, |c) is hidden-from-backtrace {
-    my Pod::To::PdfAST $pod-reader .= new: :%replace;
-    my PdfAST::Render::API6::Writer $writer = $renderer.writer: :$pages, :$frag;
-    my Pair:D $doc-ast = $pod-reader.render($section);
-    my Pair:D @content = $writer.process-root(|$doc-ast);
+    my Pod::To::PDF::AST $pod-reader .= new: :%replace;
+    my PDF::AST::Render::Writer $writer = $renderer.writer: :$pages, :$frag;
+    my PdfASTRoot $pdf-ast = $pod-reader.render($section);
+    my Pair:D @content = $writer.process-root(|$pdf-ast);
     $writer.write-batch(@content, $frag);
     my Hash:D $info  = $pod-reader.info;
     my Hash:D $index = $writer.index;
@@ -36,7 +38,7 @@ sub get-opts(%opts) {
 }
 
 # asynchronous pod processing
-multi sub process-pod($renderer, @pod, :$async! where .so, |c) {
+multi sub read($renderer, @pod, :$async! where .so, |c) {
     need Pod::To::PDF::API6::Async::Scheduler;
     my List @batches = Pod::To::PDF::API6::Async::Scheduler.divvy(@pod).map: -> $pod {
         ($pod, PDF::Content::PageTree.pages-fragment, $renderer.root.fragment);
@@ -46,11 +48,9 @@ multi sub process-pod($renderer, @pod, :$async! where .so, |c) {
 
     {
         my PDF::API6 $pdf = $renderer.pdf;
-        my @results;
         my Lock $lock .= new;
-        @batches.pairs.race(:batch(1)).map: {
-            my $result = $renderer.&read-batch: |.value, |c;
-            $lock.protect: { @results[.key] = $result };
+        my @results = @batches.pairs.race(:batch(1)).map: {
+            $renderer.&read-batch: |.value, |c;
         }
         $pdf.add-pages(.[1]) for @batches;
         $renderer.merge-batch($_) for @results;
@@ -58,14 +58,14 @@ multi sub process-pod($renderer, @pod, :$async! where .so, |c) {
 }
 
 # synchronous pod processing
-multi sub process-pod($renderer, @pod, :%replace, |c) {
+multi sub read($renderer, @pod, :%replace, |c) {
     my %batch = $renderer.&read-batch(@pod, $renderer.pdf.Pages, $renderer.root.fragment, :%replace);
     $renderer.merge-batch: %batch;
 }
 
-our sub pod-render(
+sub pod-render(
     @pod,
-    :$class = PdfAST::Render::API6,
+    :$renderer is copy = PDF::AST::Render,
     IO() :$save-as,
     Numeric:D :$width  = 612,
     Numeric:D :$height = 792,
@@ -83,26 +83,26 @@ our sub pod-render(
     :%replace,
     |c,
 ) is export(:pod-render) {
-    my $renderer = $class.new: |c,  :$width, :$height, :$margin, :$margin-top, :$margin-bottom, :$margin-left, :$margin-right, :$contents, :$page-numbers, :$page-style, :$stylesheet;
+    $renderer .= new: |c,  :$width, :$height, :$margin, :$margin-top, :$margin-bottom, :$margin-left, :$margin-right, :$contents, :$page-numbers, :$page-style, :$stylesheet;
 
     $renderer.pdf.media-box = 0, 0, $width, $height;
-    $renderer.&process-pod(@pod, :$async, :%replace, |c);
+    $renderer.&read(@pod, :$async, :%replace, |c);
     $renderer.build-index
     if $index && $renderer.index;
     $renderer.pdf.save-as: $_, :!unlink with $save-as;
     $renderer;
 }
 
-sub pod2pdf(|c --> PDF::API6:D) is export {
-    my $renderer = pod-render(|c);
-    $renderer.pdf;
-}
-
-method render(|c) {
+method render(::?CLASS: |c) {
     my %opts .= &get-opts;
     %opts<save-as> //= tempfile("pod2pdf-api6-****.pdf")[1];
     state $rendered //= pod-render(|%opts, |c);
     %opts<save-as>;
+}
+
+sub pod2pdf(|c --> PDF::API6:D) is export {
+    my $renderer = pod-render(|c);
+    $renderer.pdf;
 }
 
 =begin pod

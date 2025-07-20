@@ -6,9 +6,8 @@
   /Dests 2 0 R
   /Lang (en)
   /MarkInfo << /Marked true >>
-  /Outlines 8 0 R
   /Pages 5 0 R
-  /StructTreeRoot 18 0 R
+  /StructTreeRoot 8 0 R
 >>
 endobj
 
@@ -74,102 +73,82 @@ endobj
 endobj
 
 8 0 obj
-<< /Count 2 /First 9 0 R /Last 9 0 R >>
+<<
+  /Type /StructTreeRoot
+  /K [ 9 0 R ]
+  /ParentTree << /Nums [ 0 [ 10 0 R 13 0 R 15 0 R ] ] >>
+  /RoleMap << /DD /LBody /DL-DIV /LI /DT /Lbl >>
+>>
 endobj
 
 9 0 obj
-<< /Count 1 /First 10 0 R /Last 10 0 R /Parent 8 0 R /Title ( ) >>
+<<
+  /Type /StructElem
+  /S /Document
+  /K [ 10 0 R 11 0 R ]
+  /Lang (en)
+  /P 8 0 R
+>>
 endobj
 
 10 0 obj
 <<
-  /Dest /pod2pdf#28#29_Options
-  /Parent 9 0 R
-  /SE 11 0 R
-  /Title (pod2pdf\(\) Options)
->>
-endobj
-
-11 0 obj
-<<
   /Type /StructElem
   /S /H2
   /K [ 0 ]
-  /P 12 0 R
+  /P 9 0 R
   /Pg 3 0 R
   /T (pod2pdf\(\) Options)
 >>
 endobj
 
+11 0 obj
+<< /Type /StructElem /S /L /K [ 12 0 R ] /P 9 0 R >>
+endobj
+
 12 0 obj
-<<
-  /Type /StructElem
-  /S /Document
-  /K [ 11 0 R 13 0 R ]
-  /Lang (en)
-  /P 18 0 R
->>
+<< /Type /StructElem /S /DL-DIV /K [ 13 0 R 14 0 R ] /P 11 0 R >>
 endobj
 
 13 0 obj
-<< /Type /StructElem /S /L /K [ 14 0 R ] /P 12 0 R >>
-endobj
-
-14 0 obj
-<< /Type /StructElem /S /DL-DIV /K [ 15 0 R 16 0 R ] /P 13 0 R >>
-endobj
-
-15 0 obj
 <<
   /Type /StructElem
   /S /DT
   /A << /O /Layout /Placement /Block >>
   /K [ 1 ]
-  /P 14 0 R
+  /P 12 0 R
   /Pg 3 0 R
 >>
 endobj
 
-16 0 obj
-<< /Type /StructElem /S /DD /K [ 17 0 R ] /P 14 0 R >>
+14 0 obj
+<< /Type /StructElem /S /DD /K [ 15 0 R ] /P 12 0 R >>
 endobj
 
-17 0 obj
-<< /Type /StructElem /S /P /K [ 2 ] /P 16 0 R /Pg 3 0 R >>
-endobj
-
-18 0 obj
-<<
-  /Type /StructTreeRoot
-  /K [ 12 0 R ]
-  /ParentTree << /Nums [ 0 [ 11 0 R 15 0 R 17 0 R ] ] >>
-  /RoleMap << /DD /LBody /DL-DIV /LI /DT /Lbl >>
->>
+15 0 obj
+<< /Type /StructElem /S /P /K [ 2 ] /P 14 0 R /Pg 3 0 R >>
 endobj
 
 xref
-0 19
+0 16
 0000000000 65535 f 
 0000000015 00000 n 
-0000000171 00000 n 
-0000000237 00000 n 
-0000000377 00000 n 
-0000000725 00000 n 
-0000000811 00000 n 
-0000000918 00000 n 
-0000001026 00000 n 
-0000001082 00000 n 
-0000001165 00000 n 
-0000001279 00000 n 
-0000001393 00000 n 
-0000001499 00000 n 
-0000001570 00000 n 
-0000001653 00000 n 
-0000001780 00000 n 
-0000001852 00000 n 
-0000001928 00000 n 
+0000000152 00000 n 
+0000000218 00000 n 
+0000000358 00000 n 
+0000000706 00000 n 
+0000000792 00000 n 
+0000000899 00000 n 
+0000001007 00000 n 
+0000001174 00000 n 
+0000001278 00000 n 
+0000001391 00000 n 
+0000001461 00000 n 
+0000001544 00000 n 
+0000001671 00000 n 
+0000001743 00000 n 
 trailer
-<< /ID [ (defn.t          ) (defn.t          ) ] /Root 1 0 R /Size 19 >>
+<< /ID [ (defn.t          ) (defn.t          ) ] /Root 1 0 R /Size 16 >>
 startxref
-2097
+1819
 %%EOF
