@@ -1,6 +1,6 @@
 unit class Pod::To::PDF::API6:ver<0.0.1>;
 
-use Pod::To::PDF::AST;
+use Pod::To::XML::AST;
 use PDF::AST::Render;
 use PDF::AST::Render::Writer;
 use File::Temp;
@@ -10,7 +10,7 @@ use PDF::API6;
 my subset PdfASTRoot of Pair:D where .key ~~ 'Document' && .value.isa(List);
 
 sub read-batch($renderer, $section, PDF::Content::PageTree:D $pages, $frag, :%replace, |c) is hidden-from-backtrace {
-    my Pod::To::PDF::AST $pod-reader .= new: :%replace;
+    my Pod::To::XML::AST $pod-reader .= new: :%replace;
     my PDF::AST::Render::Writer $writer = $renderer.writer: :$pages, :$frag;
     my PdfASTRoot $pdf-ast = $pod-reader.render($section);
     my Pair:D @content = $writer.process-root(|$pdf-ast);
