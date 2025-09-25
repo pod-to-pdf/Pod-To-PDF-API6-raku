@@ -3,8 +3,9 @@
   "build-depends": [
   ],
   "depends": [
-    "Pod::To::XML",
-    "PDF::AST::Render",
+    "PDF::API6",
+    "PDF::Render",
+    "PDF::Render::Tree::Reader::Pod",
     "IETF::RFC_Grammar::URI",
     "File::Temp",
     "URI"

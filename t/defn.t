@@ -14,7 +14,7 @@ my $xml = q{<Document Lang="en">
   <H2>
     pod2pdf() Options
   </H2>
-  <L>
+  <L role="DL">
     <LI role="DL-DIV">
       <Lbl Placement="Block" role="DT">
         PDF::API6 :$pdf

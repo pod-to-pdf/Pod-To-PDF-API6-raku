@@ -162,8 +162,11 @@ asdf
 
 =begin item1
 Top Item
-=item2     First sub-item
-=item2     Second sub-item
+=item2 #  Should be 1
+=item2 #  Should be 2
+=item3 #  Should be 2.1
+=item2    Shouldn't be numbered
+=item3 #  Should be 1
 =end item1
 
 =for item

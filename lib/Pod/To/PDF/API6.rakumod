@@ -1,17 +1,17 @@
 unit class Pod::To::PDF::API6:ver<0.0.1>;
 
-use Pod::To::XML::AST;
-use PDF::AST::Render;
-use PDF::AST::Render::Writer;
-use File::Temp;
-use PDF::Content::PageTree;
 use PDF::API6;
+use PDF::Render;
+use PDF::Render::Tree;
+use PDF::Render::Tree::Reader::Pod;
+use PDF::Content::PageTree;
+use File::Temp;
 
 my subset PdfASTRoot of Pair:D where .key ~~ 'Document' && .value.isa(List);
 
 sub read-batch($renderer, $section, PDF::Content::PageTree:D $pages, $frag, :%replace, |c) is hidden-from-backtrace {
-    my Pod::To::XML::AST $pod-reader .= new: :%replace;
-    my PDF::AST::Render::Writer $writer = $renderer.writer: :$pages, :$frag;
+    my PDF::Render::Tree::Reader::Pod $pod-reader .= new: :%replace;
+    my PDF::Render::Tree $writer = $renderer.writer: :$pages, :$frag;
     my PdfASTRoot $pdf-ast = $pod-reader.render($section);
     my Pair:D @content = $writer.process-root(|$pdf-ast);
     $writer.write-batch(@content, $frag);
@@ -65,7 +65,7 @@ multi sub read($renderer, @pod, :%replace, |c) {
 
 sub pod-render(
     @pod,
-    :$renderer is copy = PDF::AST::Render,
+    :$renderer is copy = PDF::Render,
     IO() :$save-as,
     Numeric:D :$width  = 612,
     Numeric:D :$height = 792,
