@@ -17,10 +17,10 @@ endobj
 
 3 0 obj
 <<
-  /Head2_from_POD [ 4 0 R /FitBH 646.62 ]
-  /Main_Title [ 4 0 R /FitBH 756 ]
-  /Subtitle_from_POD [ 4 0 R /FitBH 727.5 ]
-  /Version [ 4 0 R /FitBH 700.5 ]
+  /Head2_from_POD [ 4 0 R /FitBH 629.62 ]
+  /Main_Title [ 4 0 R /FitBH 739 ]
+  /Subtitle_from_POD [ 4 0 R /FitBH 710.5 ]
+  /Version [ 4 0 R /FitBH 683.5 ]
 >>
 endobj
 
@@ -38,59 +38,59 @@ endobj
 << /Length 811 >> stream
 /Title << /MCID 0 >> BDC
   BT
-    1 0 0 1 20 756 Tm
+    1 0 0 1 20 739 Tm
     /F1 30 Tf
     [ (Main T) 18 (itle) ] TJ
   ET
   q
     1.5 w
-    20 753 m
-    155.3 753 l
+    20 736 m
+    155.3 736 l
     S
   Q
 EMC
 /H2 << /MCID 1 >> BDC
   BT
-    1 0 0 1 20 727.5 Tm
+    1 0 0 1 20 710.5 Tm
     /F1 18 Tf
     [ (Subtitle fr) 18 (om ) ] TJ
   ET
 EMC
 /H2 << /MCID 2 >> BDC
   BT
-    1 0 0 1 20 727.5 Tm
+    1 0 0 1 20 710.5 Tm
     [ -5926 (POD) ] TJ
   ET
 EMC
 /H2 << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 700.5 Tm
+    1 0 0 1 20 683.5 Tm
     [ (V) 100 (ersion) ] TJ
   ET
 EMC
 /P << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 673.56 Tm
+    1 0 0 1 20 656.56 Tm
     /F2 12 Tf
     (1.2.3) Tj
   ET
 EMC
 /H2 << /MCID 5 >> BDC
   BT
-    1 0 0 1 20 646.62 Tm
+    1 0 0 1 20 629.62 Tm
     /F1 18 Tf
     [ (Head2 fr) 18 (om ) ] TJ
   ET
 EMC
 /H2 << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 646.62 Tm
+    1 0 0 1 20 629.62 Tm
     [ -5370 (POD) ] TJ
   ET
 EMC
 /P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 619.68 Tm
+    1 0 0 1 20 602.68 Tm
     /F2 12 Tf
     (a paragraph.) Tj
   ET

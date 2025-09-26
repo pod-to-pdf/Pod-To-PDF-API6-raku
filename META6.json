@@ -5,7 +5,7 @@
   "depends": [
     "PDF::API6",
     "PDF::Render",
-    "PDF::Render::Tree::Reader::Pod",
+    "PDF::Render::Tree::From::Pod",
     "IETF::RFC_Grammar::URI",
     "File::Temp",
     "URI"

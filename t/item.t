@@ -48,24 +48,58 @@ my $xml = q{<Document Lang="en">
         <L>
           <LI>
             <Lbl>
-              ·
+              1.
             </Lbl>
             <LBody>
               <P>
-                First sub-item
+                Should be 1.
               </P>
             </LBody>
           </LI>
+          <LI>
+            <Lbl>
+              2.
+            </Lbl>
+            <LBody>
+              <P>
+                Should be 2.
+              </P>
+            </LBody>
+          </LI>
+          <L>
+            <LI>
+              <Lbl>
+                2.1.
+              </Lbl>
+              <LBody>
+                <P>
+                  Should be 2.1.
+                </P>
+              </LBody>
+            </LI>
+          </L>
           <LI>
             <Lbl>
               ·
             </Lbl>
             <LBody>
               <P>
-                Second sub-item
+                Shouldn't be numbered
               </P>
             </LBody>
           </LI>
+          <L>
+            <LI>
+              <Lbl>
+                1.
+              </Lbl>
+              <LBody>
+                <P>
+                  Should be 1.
+                </P>
+              </LBody>
+            </LI>
+          </L>
         </L>
       </LBody>
     </LI>
@@ -162,11 +196,11 @@ asdf
 
 =begin item1
 Top Item
-=item2 #  Should be 1
-=item2 #  Should be 2
-=item3 #  Should be 2.1
+=item2 #  Should be 1.
+=item2 #  Should be 2.
+=item3 #  Should be 2.1.
 =item2    Shouldn't be numbered
-=item3 #  Should be 1
+=item3 #  Should be 1.
 =end item1
 
 =for item
