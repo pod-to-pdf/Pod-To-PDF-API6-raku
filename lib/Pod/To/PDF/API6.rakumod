@@ -13,13 +13,11 @@ sub read-batch($renderer, $section, PDF::Content::PageTree:D $pages, $frag, :%re
     my PDF::Render::Tree::From::Pod $pod-reader .= new: :%replace;
     my PDF::Render::Tree $writer = $renderer.writer: :$pages, :$frag;
     my PdfASTRoot $pdf-ast = $pod-reader.render($section);
-    my Pair:D @content = $writer.process-root(|$pdf-ast);
-    $writer.write-batch(@content, $frag);
-    my Hash:D $info  = $pod-reader.info;
+    my %info = $writer.write-batch($pdf-ast.value, $frag);
     my Hash:D $index = $writer.index;
     my @toc = $writer.toc;
 
-    %( :@toc, :$index, :$frag, :$info);
+    %( :@toc, :$index, :$frag, :%info);
 }
 
 sub get-opts(%opts) {
@@ -48,7 +46,6 @@ multi sub read($renderer, @pod, :$async! where .so, |c) {
 
     {
         my PDF::API6 $pdf = $renderer.pdf;
-        my Lock $lock .= new;
         my @results = @batches.pairs.race(:batch(1)).map: {
             $renderer.&read-batch: |.value, |c;
         }
@@ -88,7 +85,7 @@ sub pod-render(
     $renderer.pdf.media-box = 0, 0, $width, $height;
     $renderer.&read(@pod, :$async, :%replace, |c);
     $renderer.build-index
-    if $index && $renderer.index;
+        if $index && $renderer.index;
     $renderer.pdf.save-as: $_, :!unlink with $save-as;
     $renderer;
 }
