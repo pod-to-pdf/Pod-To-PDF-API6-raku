@@ -20,7 +20,7 @@ endobj
 3 0 obj
 <<
   /Class_Magician [ 4 0 R /FitBH 752.2 ]
-  /Sub_duel [ 4 0 R /FitBH 677.7268 ]
+  /Sub_duel [ 4 0 R /FitBH 686.7268 ]
 >>
 endobj
 
@@ -38,7 +38,7 @@ endobj
 endobj
 
 5 0 obj
-<< /Length 1024 >> stream
+<< /Length 1026 >> stream
 /H2 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752.2 Tm
@@ -55,7 +55,7 @@ EMC
 EMC
 /Code << /MCID 2 >> BDC
   BT
-    1 0 0 1 30 700.6 Tm
+    1 0 0 1 30 698.38 Tm
     /F3 10.2 Tf
     (class Magician) Tj
   ET
@@ -66,27 +66,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 695.6 572 15 re
+    25 693.38 572 15 re
     B
   Q
 EMC
 /H3 << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 677.7268 Tm
+    1 0 0 1 20 686.7268 Tm
     /F1 14.04 Tf
     (Sub duel) Tj
   ET
 EMC
 /P << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 652.6336 Tm
+    1 0 0 1 20 661.6336 Tm
     /F2 12 Tf
     (Fight mechanics) Tj
   ET
 EMC
 /Code << /MCID 5 >> BDC
   BT
-    1 0 0 1 30 627.9736 Tm
+    1 0 0 1 30 634.7536 Tm
     /F3 10.2 Tf
     (sub duel\() Tj
     11.22 TL
@@ -104,13 +104,13 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 589.3136 572 48.66 re
+    25 596.0936 572 48.66 re
     B
   Q
 EMC
 /P << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 569.6536 Tm
+    1 0 0 1 20 574.2136 Tm
     /F2 12 Tf
     [ (Magicians only) 65 (, no mortals.) ] TJ
   ET
@@ -161,7 +161,7 @@ endobj
 <<
   /Type /StructTreeRoot
   /K [ 13 0 R ]
-  /ParentTree << /Nums [ 0 [ 15 0 R 16 0 R 17 0 R 19 0 R 20 0 R 21 0 R 22 0 R ] ] >>
+  /ParentTree << /Nums [ 0 [ 15 0 R 16 0 R 18 0 R 20 0 R 21 0 R 23 0 R 24 0 R ] ] >>
   /RoleMap << /Declaration /Div /Raku /Code >>
 >>
 endobj
@@ -170,7 +170,7 @@ endobj
 <<
   /Type /StructElem
   /S /Document
-  /K [ 14 0 R 18 0 R ]
+  /K [ 14 0 R 19 0 R ]
   /Lang (en)
   /P 12 0 R
 >>
@@ -201,80 +201,90 @@ endobj
 endobj
 
 17 0 obj
-<<
-  /Type /StructElem
-  /S /Raku
-  /A << /O /Layout /Placement /Block >>
-  /K [ 2 ]
-  /P 14 0 R
-  /Pg 4 0 R
->>
+<< /Type /StructElem /S /P /K [ 18 0 R ] /P 14 0 R >>
 endobj
 
 18 0 obj
 <<
   /Type /StructElem
-  /S /Declaration
-  /K [ 19 0 R 20 0 R 21 0 R 22 0 R ]
-  /P 13 0 R
+  /S /Raku
+  /A << /O /Layout /Placement /Block >>
+  /K [ 2 ]
+  /P 17 0 R
+  /Pg 4 0 R
 >>
 endobj
 
 19 0 obj
-<< /Type /StructElem /S /H3 /K [ 3 ] /P 18 0 R /Pg 4 0 R /T (Sub duel) >>
+<<
+  /Type /StructElem
+  /S /Declaration
+  /K [ 20 0 R 21 0 R 22 0 R 24 0 R ]
+  /P 13 0 R
+>>
 endobj
 
 20 0 obj
-<< /Type /StructElem /S /P /K [ 4 ] /P 18 0 R /Pg 4 0 R >>
+<< /Type /StructElem /S /H3 /K [ 3 ] /P 19 0 R /Pg 4 0 R /T (Sub duel) >>
 endobj
 
 21 0 obj
+<< /Type /StructElem /S /P /K [ 4 ] /P 19 0 R /Pg 4 0 R >>
+endobj
+
+22 0 obj
+<< /Type /StructElem /S /P /K [ 23 0 R ] /P 19 0 R >>
+endobj
+
+23 0 obj
 <<
   /Type /StructElem
   /S /Raku
   /A << /O /Layout /Placement /Block >>
   /K [ 5 ]
-  /P 18 0 R
+  /P 22 0 R
   /Pg 4 0 R
 >>
 endobj
 
-22 0 obj
-<< /Type /StructElem /S /P /K [ 6 ] /P 18 0 R /Pg 4 0 R >>
+24 0 obj
+<< /Type /StructElem /S /P /K [ 6 ] /P 19 0 R /Pg 4 0 R >>
 endobj
 
 xref
-0 23
+0 25
 0000000000 65535 f 
 0000000015 00000 n 
 0000000118 00000 n 
 0000000256 00000 n 
 0000000357 00000 n 
 0000000558 00000 n 
-0000001635 00000 n 
-0000001721 00000 n 
-0000001768 00000 n 
-0000001816 00000 n 
-0000001923 00000 n 
-0000002032 00000 n 
-0000002137 00000 n 
-0000002332 00000 n 
-0000002438 00000 n 
-0000002541 00000 n 
-0000002650 00000 n 
-0000002726 00000 n 
-0000002855 00000 n 
-0000002965 00000 n 
-0000003056 00000 n 
-0000003132 00000 n 
-0000003261 00000 n 
+0000001637 00000 n 
+0000001723 00000 n 
+0000001770 00000 n 
+0000001818 00000 n 
+0000001925 00000 n 
+0000002034 00000 n 
+0000002139 00000 n 
+0000002334 00000 n 
+0000002440 00000 n 
+0000002543 00000 n 
+0000002652 00000 n 
+0000002728 00000 n 
+0000002799 00000 n 
+0000002928 00000 n 
+0000003038 00000 n 
+0000003129 00000 n 
+0000003205 00000 n 
+0000003276 00000 n 
+0000003405 00000 n 
 trailer
 <<
   /ID [ (declarator.t    ) (declarator.t    ) ]
   /Info 1 0 R
   /Root 2 0 R
-  /Size 23
+  /Size 25
 >>
 startxref
-3337
+3481
 %%EOF

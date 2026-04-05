@@ -15,9 +15,11 @@ my $xml = q{<Document Lang="en">
     <P>
       Base class for magicians
     </P>
-    <Code Placement="Block" role="Raku">
-      class Magician
-    </Code>
+    <P>
+      <Code Placement="Block" role="Raku">
+        class Magician
+      </Code>
+    </P>
   </Div>
   <Div role="Declaration">
     <H3>
@@ -26,12 +28,14 @@ my $xml = q{<Document Lang="en">
     <P>
       Fight mechanics
     </P>
-    <Code Placement="Block" role="Raku">
-      sub duel(
-          Magician $a,
-          Magician $b,
-      )
-    </Code>
+    <P>
+      <Code Placement="Block" role="Raku">
+        sub duel(
+            Magician $a,
+            Magician $b,
+        )
+      </Code>
+    </P>
     <P>
       Magicians only, no mortals.
     </P>

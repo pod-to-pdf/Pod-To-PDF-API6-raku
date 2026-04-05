@@ -13,11 +13,11 @@ endobj
 
 2 0 obj
 <<
-  /Attribute_t [ 3 0 R /FitBH 495.1204 ]
-  /Class_Asdf2 [ 3 0 R /FitBH 569.5936 ]
-  /Method_asdf [ 3 0 R /FitBH 422.494 ]
+  /Attribute_t [ 3 0 R /FitBH 522.1204 ]
+  /Class_Asdf2 [ 3 0 R /FitBH 587.5936 ]
+  /Method_asdf [ 3 0 R /FitBH 458.494 ]
   /Module_Asdf1 [ 3 0 R /FitBH 752.2 ]
-  /Sub_asdf [ 3 0 R /FitBH 677.7268 ]
+  /Sub_asdf [ 3 0 R /FitBH 686.7268 ]
 >>
 endobj
 
@@ -35,7 +35,7 @@ endobj
 endobj
 
 4 0 obj
-<< /Length 2217 >> stream
+<< /Length 2219 >> stream
 /H2 << /MCID 0 >> BDC
   BT
     1 0 0 1 20 752.2 Tm
@@ -52,7 +52,7 @@ EMC
 EMC
 /Code << /MCID 2 >> BDC
   BT
-    1 0 0 1 30 700.6 Tm
+    1 0 0 1 30 698.38 Tm
     /F3 10.2 Tf
     (module Asdf1) Tj
   ET
@@ -63,27 +63,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 695.6 572 15 re
+    25 693.38 572 15 re
     B
   Q
 EMC
 /H3 << /MCID 3 >> BDC
   BT
-    1 0 0 1 20 677.7268 Tm
+    1 0 0 1 20 686.7268 Tm
     /F1 14.04 Tf
     (Sub asdf) Tj
   ET
 EMC
 /P << /MCID 4 >> BDC
   BT
-    1 0 0 1 20 652.6336 Tm
+    1 0 0 1 20 661.6336 Tm
     /F2 12 Tf
     (This is a sub) Tj
   ET
 EMC
 /Code << /MCID 5 >> BDC
   BT
-    1 0 0 1 30 627.9736 Tm
+    1 0 0 1 30 634.7536 Tm
     /F3 10.2 Tf
     (sub asdf\() Tj
     11.22 TL
@@ -101,27 +101,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 589.3136 572 48.66 re
+    25 596.0936 572 48.66 re
     B
   Q
 EMC
 /H2 << /MCID 6 >> BDC
   BT
-    1 0 0 1 20 569.5936 Tm
+    1 0 0 1 20 587.5936 Tm
     /F1 18 Tf
     (Class Asdf2) Tj
   ET
 EMC
 /P << /MCID 7 >> BDC
   BT
-    1 0 0 1 20 542.6536 Tm
+    1 0 0 1 20 560.6536 Tm
     /F2 12 Tf
     (This is a class) Tj
   ET
 EMC
 /Code << /MCID 8 >> BDC
   BT
-    1 0 0 1 30 517.9936 Tm
+    1 0 0 1 30 533.7736 Tm
     /F3 10.2 Tf
     (class Asdf2) Tj
   ET
@@ -132,27 +132,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 512.9936 572 15 re
+    25 528.7736 572 15 re
     B
   Q
 EMC
 /H3 << /MCID 9 >> BDC
   BT
-    1 0 0 1 20 495.1204 Tm
+    1 0 0 1 20 522.1204 Tm
     /F1 14.04 Tf
     [ (Attrib) 20 (ute t) ] TJ
   ET
 EMC
 /P << /MCID 10 >> BDC
   BT
-    1 0 0 1 20 470.0272 Tm
+    1 0 0 1 20 497.0272 Tm
     /F2 12 Tf
     [ (This is an attrib) 20 (ute) ] TJ
   ET
 EMC
 /Code << /MCID 11 >> BDC
   BT
-    1 0 0 1 30 445.3672 Tm
+    1 0 0 1 30 470.1472 Tm
     /F3 10.2 Tf
     (has Str $.t) Tj
   ET
@@ -163,27 +163,27 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 440.3672 572 15 re
+    25 465.1472 572 15 re
     B
   Q
 EMC
 /H3 << /MCID 12 >> BDC
   BT
-    1 0 0 1 20 422.494 Tm
+    1 0 0 1 20 458.494 Tm
     /F1 14.04 Tf
     (Method asdf) Tj
   ET
 EMC
 /P << /MCID 13 >> BDC
   BT
-    1 0 0 1 20 397.4008 Tm
+    1 0 0 1 20 433.4008 Tm
     /F2 12 Tf
     (This is a method) Tj
   ET
 EMC
 /Code << /MCID 14 >> BDC
   BT
-    1 0 0 1 30 372.7408 Tm
+    1 0 0 1 30 406.5208 Tm
     /F3 10.2 Tf
     (method asdf\() Tj
     T*
@@ -198,7 +198,7 @@ EMC
     0 G
     /GS1 gs
     /GS2 gs
-    25 345.3008 572 37.44 re
+    25 379.0808 572 37.44 re
     B
   Q
 EMC
@@ -249,7 +249,7 @@ endobj
   /Type /StructTreeRoot
   /K [ 12 0 R ]
   /ParentTree <<
-    /Nums [ 0 [ 14 0 R 15 0 R 16 0 R 18 0 R 19 0 R 20 0 R 22 0 R 23 0 R 24 0 R 26 0 R 27 0 R 28 0 R 30 0 R 31 0 R 32 0 R ] ]
+    /Nums [ 0 [ 14 0 R 15 0 R 17 0 R 19 0 R 20 0 R 22 0 R 24 0 R 25 0 R 27 0 R 29 0 R 30 0 R 32 0 R 34 0 R 35 0 R 37 0 R ] ]
   >>
   /RoleMap << /Declaration /Div /Raku /Code >>
 >>
@@ -259,7 +259,7 @@ endobj
 <<
   /Type /StructElem
   /S /Document
-  /K [ 13 0 R 17 0 R 21 0 R 25 0 R 29 0 R ]
+  /K [ 13 0 R 18 0 R 23 0 R 28 0 R 33 0 R ]
   /Lang (en)
   /P 11 0 R
 >>
@@ -290,136 +290,117 @@ endobj
 endobj
 
 16 0 obj
-<<
-  /Type /StructElem
-  /S /Raku
-  /A << /O /Layout /Placement /Block >>
-  /K [ 2 ]
-  /P 13 0 R
-  /Pg 3 0 R
->>
+<< /Type /StructElem /S /P /K [ 17 0 R ] /P 13 0 R >>
 endobj
 
 17 0 obj
 <<
   /Type /StructElem
-  /S /Declaration
-  /K [ 18 0 R 19 0 R 20 0 R ]
-  /P 12 0 R
->>
-endobj
-
-18 0 obj
-<< /Type /StructElem /S /H3 /K [ 3 ] /P 17 0 R /Pg 3 0 R /T (Sub asdf) >>
-endobj
-
-19 0 obj
-<< /Type /StructElem /S /P /K [ 4 ] /P 17 0 R /Pg 3 0 R >>
-endobj
-
-20 0 obj
-<<
-  /Type /StructElem
   /S /Raku
   /A << /O /Layout /Placement /Block >>
-  /K [ 5 ]
-  /P 17 0 R
+  /K [ 2 ]
+  /P 16 0 R
   /Pg 3 0 R
 >>
 endobj
 
-21 0 obj
+18 0 obj
 <<
   /Type /StructElem
   /S /Declaration
-  /K [ 22 0 R 23 0 R 24 0 R ]
+  /K [ 19 0 R 20 0 R 21 0 R ]
   /P 12 0 R
 >>
+endobj
+
+19 0 obj
+<< /Type /StructElem /S /H3 /K [ 3 ] /P 18 0 R /Pg 3 0 R /T (Sub asdf) >>
+endobj
+
+20 0 obj
+<< /Type /StructElem /S /P /K [ 4 ] /P 18 0 R /Pg 3 0 R >>
+endobj
+
+21 0 obj
+<< /Type /StructElem /S /P /K [ 22 0 R ] /P 18 0 R >>
 endobj
 
 22 0 obj
 <<
   /Type /StructElem
-  /S /H2
-  /K [ 6 ]
+  /S /Raku
+  /A << /O /Layout /Placement /Block >>
+  /K [ 5 ]
   /P 21 0 R
   /Pg 3 0 R
-  /T (Class Asdf2)
 >>
 endobj
 
 23 0 obj
-<< /Type /StructElem /S /P /K [ 7 ] /P 21 0 R /Pg 3 0 R >>
+<<
+  /Type /StructElem
+  /S /Declaration
+  /K [ 24 0 R 25 0 R 26 0 R ]
+  /P 12 0 R
+>>
 endobj
 
 24 0 obj
 <<
   /Type /StructElem
-  /S /Raku
-  /A << /O /Layout /Placement /Block >>
-  /K [ 8 ]
-  /P 21 0 R
+  /S /H2
+  /K [ 6 ]
+  /P 23 0 R
   /Pg 3 0 R
+  /T (Class Asdf2)
 >>
 endobj
 
 25 0 obj
-<<
-  /Type /StructElem
-  /S /Declaration
-  /K [ 26 0 R 27 0 R 28 0 R ]
-  /P 12 0 R
->>
+<< /Type /StructElem /S /P /K [ 7 ] /P 23 0 R /Pg 3 0 R >>
 endobj
 
 26 0 obj
-<<
-  /Type /StructElem
-  /S /H3
-  /K [ 9 ]
-  /P 25 0 R
-  /Pg 3 0 R
-  /T (Attribute t)
->>
+<< /Type /StructElem /S /P /K [ 27 0 R ] /P 23 0 R >>
 endobj
 
 27 0 obj
-<< /Type /StructElem /S /P /K [ 10 ] /P 25 0 R /Pg 3 0 R >>
+<<
+  /Type /StructElem
+  /S /Raku
+  /A << /O /Layout /Placement /Block >>
+  /K [ 8 ]
+  /P 26 0 R
+  /Pg 3 0 R
+>>
 endobj
 
 28 0 obj
 <<
   /Type /StructElem
-  /S /Raku
-  /A << /O /Layout /Placement /Block >>
-  /K [ 11 ]
-  /P 25 0 R
-  /Pg 3 0 R
+  /S /Declaration
+  /K [ 29 0 R 30 0 R 31 0 R ]
+  /P 12 0 R
 >>
 endobj
 
 29 0 obj
 <<
   /Type /StructElem
-  /S /Declaration
-  /K [ 30 0 R 31 0 R 32 0 R ]
-  /P 12 0 R
+  /S /H3
+  /K [ 9 ]
+  /P 28 0 R
+  /Pg 3 0 R
+  /T (Attribute t)
 >>
 endobj
 
 30 0 obj
-<<
-  /Type /StructElem
-  /S /H3
-  /K [ 12 ]
-  /P 29 0 R
-  /Pg 3 0 R
-  /T (Method asdf)
->>
+<< /Type /StructElem /S /P /K [ 10 ] /P 28 0 R /Pg 3 0 R >>
 endobj
 
 31 0 obj
-<< /Type /StructElem /S /P /K [ 13 ] /P 29 0 R /Pg 3 0 R >>
+<< /Type /StructElem /S /P /K [ 32 0 R ] /P 28 0 R >>
 endobj
 
 32 0 obj
@@ -427,49 +408,93 @@ endobj
   /Type /StructElem
   /S /Raku
   /A << /O /Layout /Placement /Block >>
+  /K [ 11 ]
+  /P 31 0 R
+  /Pg 3 0 R
+>>
+endobj
+
+33 0 obj
+<<
+  /Type /StructElem
+  /S /Declaration
+  /K [ 34 0 R 35 0 R 36 0 R ]
+  /P 12 0 R
+>>
+endobj
+
+34 0 obj
+<<
+  /Type /StructElem
+  /S /H3
+  /K [ 12 ]
+  /P 33 0 R
+  /Pg 3 0 R
+  /T (Method asdf)
+>>
+endobj
+
+35 0 obj
+<< /Type /StructElem /S /P /K [ 13 ] /P 33 0 R /Pg 3 0 R >>
+endobj
+
+36 0 obj
+<< /Type /StructElem /S /P /K [ 37 0 R ] /P 33 0 R >>
+endobj
+
+37 0 obj
+<<
+  /Type /StructElem
+  /S /Raku
+  /A << /O /Layout /Placement /Block >>
   /K [ 14 ]
-  /P 29 0 R
+  /P 36 0 R
   /Pg 3 0 R
 >>
 endobj
 
 xref
-0 33
+0 38
 0000000000 65535 f 
 0000000015 00000 n 
 0000000153 00000 n 
 0000000374 00000 n 
 0000000574 00000 n 
-0000002844 00000 n 
-0000002930 00000 n 
-0000002977 00000 n 
-0000003025 00000 n 
-0000003132 00000 n 
-0000003240 00000 n 
-0000003345 00000 n 
-0000003602 00000 n 
-0000003729 00000 n 
-0000003832 00000 n 
-0000003939 00000 n 
-0000004015 00000 n 
-0000004144 00000 n 
-0000004247 00000 n 
-0000004338 00000 n 
-0000004414 00000 n 
-0000004543 00000 n 
-0000004646 00000 n 
-0000004752 00000 n 
-0000004828 00000 n 
-0000004957 00000 n 
-0000005060 00000 n 
-0000005166 00000 n 
-0000005243 00000 n 
-0000005373 00000 n 
-0000005476 00000 n 
-0000005583 00000 n 
-0000005660 00000 n 
+0000002846 00000 n 
+0000002932 00000 n 
+0000002979 00000 n 
+0000003027 00000 n 
+0000003134 00000 n 
+0000003242 00000 n 
+0000003347 00000 n 
+0000003604 00000 n 
+0000003731 00000 n 
+0000003834 00000 n 
+0000003941 00000 n 
+0000004017 00000 n 
+0000004088 00000 n 
+0000004217 00000 n 
+0000004320 00000 n 
+0000004411 00000 n 
+0000004487 00000 n 
+0000004558 00000 n 
+0000004687 00000 n 
+0000004790 00000 n 
+0000004896 00000 n 
+0000004972 00000 n 
+0000005043 00000 n 
+0000005172 00000 n 
+0000005275 00000 n 
+0000005381 00000 n 
+0000005458 00000 n 
+0000005529 00000 n 
+0000005659 00000 n 
+0000005762 00000 n 
+0000005869 00000 n 
+0000005946 00000 n 
+0000006017 00000 n 
 trailer
-<< /ID [ (definition.t    ) (definition.t    ) ] /Root 1 0 R /Size 33 >>
+<< /ID [ (definition.t    ) (definition.t    ) ] /Root 1 0 R /Size 38 >>
 startxref
-5790
+6147
 %%EOF

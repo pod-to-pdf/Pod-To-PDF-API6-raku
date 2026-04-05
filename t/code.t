@@ -11,57 +11,71 @@ my $xml = q{<Document Lang="en">
   <P>
     asdf
   </P>
-  <Code Placement="Block">
-    indented
-  </Code>
+  <P>
+    <Code Placement="Block">
+      indented
+    </Code>
+  </P>
   <P>
     asdf
   </P>
-  <Code Placement="Block">
-    indented
-    multi
-    line
-  </Code>
+  <P>
+    <Code Placement="Block">
+      indented
+      multi
+      line
+    </Code>
+  </P>
   <P>
     asdf
   </P>
-  <Code Placement="Block">
-    indented
-    multi
-    line
-    
-        nested
-    and
-    broken
-    up
-  </Code>
+  <P>
+    <Code Placement="Block">
+      indented
+      multi
+      line
+      
+          nested
+      and
+      broken
+      up
+    </Code>
+  </P>
   <P>
     asdf
   </P>
-  <Code Placement="Block">
-    Abbreviated
-  </Code>
+  <P>
+    <Code Placement="Block">
+      Abbreviated
+    </Code>
+  </P>
   <P>
     asdf
   </P>
-  <Code Placement="Block">
-    Paragraph
-    code
-  </Code>
+  <P>
+    <Code Placement="Block">
+      Paragraph
+      code
+    </Code>
+  </P>
   <P>
     asdf
   </P>
-  <Code Placement="Block">
-    Delimited
-    code
-  </Code>
+  <P>
+    <Code Placement="Block">
+      Delimited
+      code
+    </Code>
+  </P>
   <P>
     asdf
   </P>
-  <Code Placement="Block">
-    <Strong>Formatted</Strong>
-    code
-  </Code>
+  <P>
+    <Code Placement="Block">
+      <Strong>Formatted</Strong>
+      code
+    </Code>
+  </P>
 </Document>
 };
 

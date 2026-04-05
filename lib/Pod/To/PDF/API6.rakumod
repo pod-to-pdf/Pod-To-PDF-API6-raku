@@ -13,11 +13,11 @@ sub read-batch($renderer, $section, PDF::Content::PageTree:D $pages, $frag, :%re
     my PDF::Render::Tree::From::Pod $pod-reader .= new: :%replace;
     my PDF::Render::Tree $writer = $renderer.writer: :$pages, :$frag;
     my PdfASTRoot $pdf-ast = $pod-reader.render($section);
-    my %info = $writer.write-batch($pdf-ast.value, $frag);
+    my Hash:D $info = $writer.write-batch($pdf-ast.value, $frag);
     my Hash:D $index = $writer.index;
     my @toc = $writer.toc;
 
-    %( :@toc, :$index, :$frag, :%info);
+    %( :@toc, :$index, :$frag, :$info);
 }
 
 sub get-opts(%opts) {
@@ -195,7 +195,7 @@ $pdf.save-as: "pod.pdf";
 
 C<Pod::To::PDF::API6> is on a near equal footing to L<Pod::To::PDF|https://github.com/pod-to-pdf/Pod-To-PDF-raku>, with regard to general rendering, handling of internal and external links, table-of-contents, footnotes and indexing.
 
-It out-performs it content tagging, with better handling  foot-notes and artifacts.
+It out-performs its content tagging, with better handling  foot-notes and artifacts.
 
 However
 
