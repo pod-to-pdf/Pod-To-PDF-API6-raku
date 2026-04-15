@@ -8,73 +8,45 @@ use PDF::Tags;
 plan 1;
 
 my $xml = q{<Document Lang="en">
+  <P>asdf</P>
   <P>
-    asdf
+    <Code Placement="Block">indented</Code>
   </P>
+  <P>asdf</P>
   <P>
-    <Code Placement="Block">
-      indented
-    </Code>
+    <Code Placement="Block">indented
+multi
+line</Code>
   </P>
+  <P>asdf</P>
   <P>
-    asdf
+    <Code Placement="Block">indented
+multi
+line
+
+    nested
+and
+broken
+up</Code>
   </P>
+  <P>asdf</P>
   <P>
-    <Code Placement="Block">
-      indented
-      multi
-      line
-    </Code>
+    <Code Placement="Block">Abbreviated</Code>
   </P>
+  <P>asdf</P>
   <P>
-    asdf
+    <Code Placement="Block">Paragraph
+code</Code>
   </P>
+  <P>asdf</P>
   <P>
-    <Code Placement="Block">
-      indented
-      multi
-      line
-      
-          nested
-      and
-      broken
-      up
-    </Code>
+    <Code Placement="Block">Delimited
+code</Code>
   </P>
+  <P>asdf</P>
   <P>
-    asdf
-  </P>
-  <P>
-    <Code Placement="Block">
-      Abbreviated
-    </Code>
-  </P>
-  <P>
-    asdf
-  </P>
-  <P>
-    <Code Placement="Block">
-      Paragraph
-      code
-    </Code>
-  </P>
-  <P>
-    asdf
-  </P>
-  <P>
-    <Code Placement="Block">
-      Delimited
-      code
-    </Code>
-  </P>
-  <P>
-    asdf
-  </P>
-  <P>
-    <Code Placement="Block">
-      <Strong>Formatted</Strong>
-      code
-    </Code>
+    <Code Placement="Block"><Strong>Formatted</Strong>
+code</Code>
   </P>
 </Document>
 };

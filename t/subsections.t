@@ -8,24 +8,12 @@ use PDF::Tags;
 plan 1;
 
 my $xml = q{<Document Lang="en">
-  <H2>
-    Outer
-  </H2>
-  <P>
-    This is an outer paragraph
-  </P>
-  <H3>
-    Inner1
-  </H3>
-  <P>
-    This is the first inner paragraph
-  </P>
-  <H3>
-    Inner2
-  </H3>
-  <P>
-    This is the second inner paragraph
-  </P>
+  <H2>Outer</H2>
+  <P>This is an outer paragraph</P>
+  <H3>Inner1</H3>
+  <P>This is the first inner paragraph</P>
+  <H3>Inner2</H3>
+  <P>This is the second inner paragraph</P>
 </Document>
 };
 

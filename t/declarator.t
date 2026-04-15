@@ -9,36 +9,22 @@ plan 1;
 
 my $xml = q{<Document Lang="en">
   <Div role="Declaration">
-    <H2>
-      Class Magician
-    </H2>
+    <H2>Class Magician</H2>
+    <P>Base class for magicians</P>
     <P>
-      Base class for magicians
-    </P>
-    <P>
-      <Code Placement="Block" role="Raku">
-        class Magician
-      </Code>
+      <Code Placement="Block" role="Raku">class Magician</Code>
     </P>
   </Div>
   <Div role="Declaration">
-    <H3>
-      Sub duel
-    </H3>
+    <H3>Sub duel</H3>
+    <P>Fight mechanics</P>
     <P>
-      Fight mechanics
+      <Code Placement="Block" role="Raku">sub duel(
+    Magician $a,
+    Magician $b,
+)</Code>
     </P>
-    <P>
-      <Code Placement="Block" role="Raku">
-        sub duel(
-            Magician $a,
-            Magician $b,
-        )
-      </Code>
-    </P>
-    <P>
-      Magicians only, no mortals.
-    </P>
+    <P>Magicians only, no mortals.</P>
   </Div>
 </Document>
 };

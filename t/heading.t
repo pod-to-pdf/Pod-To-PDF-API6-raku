@@ -8,59 +8,25 @@ use PDF::Tags;
 plan 1;
 
 my $xml = q{<Document Lang="en">
-  <Title>
-    Heading tests
-  </Title>
-  <H2>
-    for <Link href="pod::To::PDF">Pod::To::PDF</Link>
-  </H2>
+  <Title>Heading tests</Title>
+  <H2>for <Link href="pod::To::PDF">Pod::To::PDF</Link></H2>
+  <H1>Abbreviated heading1</H1>
+  <P>asdf</P>
+  <H1>Paragraph heading1</H1>
+  <P>asdf</P>
+  <H2>Subheading2</H2>
   <H1>
-    Abbreviated heading1
+    <P>Structured</P>
+    <P>heading1</P>
   </H1>
-  <P>
-    asdf
-  </P>
-  <H1>
-    Paragraph heading1
-  </H1>
-  <P>
-    asdf
-  </P>
-  <H2>
-    Subheading2
-  </H2>
-  <H1>
-    <P>
-      Structured
-    </P>
-    <P>
-      heading1
-    </P>
-  </H1>
-  <H3>
-    Heading3
-  </H3>
-  <P>
-    asdf
-  </P>
-  <H2>
-    Head2
-  </H2>
-  <P>
-    asdf
-  </P>
-  <H3>
-    Head3
-  </H3>
-  <P>
-    asdf
-  </P>
-  <H4>
-    Head4
-  </H4>
-  <P>
-    asdf
-  </P>
+  <H3>Heading3</H3>
+  <P>asdf</P>
+  <H2>Head2</H2>
+  <P>asdf</P>
+  <H3>Head3</H3>
+  <P>asdf</P>
+  <H4>Head4</H4>
+  <P>asdf</P>
 </Document>
 };
 

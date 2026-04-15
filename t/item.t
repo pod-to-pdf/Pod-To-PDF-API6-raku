@@ -8,95 +8,59 @@ use PDF::Tags;
 plan 1;
 
 my $xml = q{<Document Lang="en">
-  <P>
-    asdf
-  </P>
+  <P>asdf</P>
   <L>
     <LI>
-      <Lbl>
-        •
-      </Lbl>
+      <Lbl>•</Lbl>
       <LBody>
-        <P>
-          Abbreviated 1
-        </P>
+        <P>Abbreviated 1</P>
       </LBody>
     </LI>
     <LI>
-      <Lbl>
-        •
-      </Lbl>
+      <Lbl>•</Lbl>
       <LBody>
-        <P>
-          Abbreviated 2
-        </P>
+        <P>Abbreviated 2</P>
       </LBody>
     </LI>
   </L>
-  <P>
-    asdf
-  </P>
+  <P>asdf</P>
   <L>
     <LI>
-      <Lbl>
-        •
-      </Lbl>
+      <Lbl>•</Lbl>
       <LBody>
-        <P>
-          Top Item
-        </P>
+        <P>Top Item</P>
         <L>
           <LI>
-            <Lbl>
-              1.
-            </Lbl>
+            <Lbl>1.</Lbl>
             <LBody>
-              <P>
-                Should be 1.
-              </P>
+              <P>Should be 1.</P>
             </LBody>
           </LI>
           <LI>
-            <Lbl>
-              2.
-            </Lbl>
+            <Lbl>2.</Lbl>
             <LBody>
-              <P>
-                Should be 2.
-              </P>
+              <P>Should be 2.</P>
             </LBody>
           </LI>
           <L>
             <LI>
-              <Lbl>
-                2.1.
-              </Lbl>
+              <Lbl>2.1.</Lbl>
               <LBody>
-                <P>
-                  Should be 2.1.
-                </P>
+                <P>Should be 2.1.</P>
               </LBody>
             </LI>
           </L>
           <LI>
-            <Lbl>
-              ·
-            </Lbl>
+            <Lbl>·</Lbl>
             <LBody>
-              <P>
-                Shouldn't be numbered
-              </P>
+              <P>Shouldn't be numbered</P>
             </LBody>
           </LI>
           <L>
             <LI>
-              <Lbl>
-                1.
-              </Lbl>
+              <Lbl>1.</Lbl>
               <LBody>
-                <P>
-                  Should be 1.
-                </P>
+                <P>Should be 1.</P>
               </LBody>
             </LI>
           </L>
@@ -104,75 +68,45 @@ my $xml = q{<Document Lang="en">
       </LBody>
     </LI>
     <LI>
-      <Lbl>
-        •
-      </Lbl>
+      <Lbl>•</Lbl>
       <LBody>
-        <P>
-          Paragraph item
-        </P>
+        <P>Paragraph item</P>
       </LBody>
     </LI>
   </L>
-  <P>
-    asdf
-  </P>
+  <P>asdf</P>
   <L>
     <LI>
-      <Lbl>
-        •
-      </Lbl>
+      <Lbl>•</Lbl>
       <LBody>
-        <P>
-          Block item
-        </P>
+        <P>Block item</P>
       </LBody>
     </LI>
   </L>
-  <P>
-    asdf
-  </P>
+  <P>asdf</P>
   <L>
     <LI>
-      <Lbl>
-        •
-      </Lbl>
+      <Lbl>•</Lbl>
       <LBody>
-        <P>
-          Abbreviated
-        </P>
+        <P>Abbreviated</P>
       </LBody>
     </LI>
     <LI>
-      <Lbl>
-        •
-      </Lbl>
+      <Lbl>•</Lbl>
       <LBody>
-        <P>
-          Paragraph item
-        </P>
+        <P>Paragraph item</P>
       </LBody>
     </LI>
     <LI>
-      <Lbl>
-        •
-      </Lbl>
+      <Lbl>•</Lbl>
       <LBody>
-        <P>
-          Block item
-        </P>
-        <P>
-          with multiple
-        </P>
-        <P>
-          paragraphs
-        </P>
+        <P>Block item</P>
+        <P>with multiple</P>
+        <P>paragraphs</P>
       </LBody>
     </LI>
   </L>
-  <P>
-    asdf
-  </P>
+  <P>asdf</P>
 </Document>
 };
 

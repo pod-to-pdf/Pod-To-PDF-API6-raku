@@ -8,39 +8,17 @@ use PDF::Tags;
 plan 1;
 
 my $xml = q{<Document Lang="en">
-  <P>
-    This is all a paragraph.
-  </P>
-  <P>
-    This is the next paragraph.
-  </P>
-  <P>
-    This is the third paragraph.
-  </P>
-  <P>
-    Abbreviated paragraph
-  </P>
-  <P>
-    Paragraph paragraph
-  </P>
-  <P>
-    Block
-  </P>
-  <P>
-    paragraph
-  </P>
-  <P>
-    spaces and tabs are ignored
-  </P>
-  <P>
-    Paragraph with <Strong>formatting</Strong>, <Code>code</Code> and <Reference><Link href="#blah">links</Link></Reference>.
-  </P>
-  <P>
-    Paragraph with (see: <Link href="file:included.pod">file:included.pod</Link>) placement
-  </P>
-  <P>
-    aaaaabbbbbcccccdddddeeeeefffffggggghhhhhiiiiijjjjjkkkkklllllmmmmmnnnnnooooopppppqqqqqrrrrrssssstttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz
-  </P>
+  <P>This is all a paragraph.</P>
+  <P>This is the next paragraph.</P>
+  <P>This is the third paragraph.</P>
+  <P>Abbreviated paragraph</P>
+  <P>Paragraph paragraph</P>
+  <P>Block</P>
+  <P>paragraph</P>
+  <P>spaces and tabs are ignored</P>
+  <P>Paragraph with <Strong>formatting</Strong>, <Code>code</Code> and <Reference><Link href="#blah">links</Link></Reference>.</P>
+  <P>Paragraph with (see: <Link href="file:included.pod">file:included.pod</Link>) placement</P>
+  <P>aaaaabbbbbcccccdddddeeeeefffffggggghhhhhiiiiijjjjjkkkkklllllmmmmmnnnnnooooopppppqqqqqrrrrrssssstttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz</P>
 </Document>
 };
 
