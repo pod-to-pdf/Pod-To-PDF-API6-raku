@@ -82,17 +82,18 @@ sub pod-render(
 
     $renderer.pdf.media-box = 0, 0, $width, $height;
     $renderer.&read(@pod, :$async, :%replace, |c);
-    $renderer.build-index
-        if $index && $renderer.index;
+    $renderer.finish(:$index);
     $renderer.pdf.save-as: $_, :!unlink with $save-as;
     $renderer;
 }
 
 method render(::?CLASS: |c) {
-    my %opts .= &get-opts;
-    %opts<save-as> //= tempfile("pod2pdf-api6-****.pdf")[1];
-    state $rendered //= pod-render(|%opts, |c);
-    %opts<save-as>;
+    state $rendered //= do {
+        my %opts .= &get-opts;
+        %opts<save-as> //= tempfile("pod2pdf-api6-****.pdf", :!unlink)[0];
+        pod-render(|%opts, |c);
+        %opts<save-as>;
+    }
 }
 
 sub pod2pdf(|c --> PDF::API6:D) is export {
